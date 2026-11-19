@@ -12,21 +12,21 @@
 
 Изаберите жељени метод:
 
-### Опција A: npm (препоручено)
+### Опција А: нпм (препоручено)
 
 ```bash
 npm install -g omniroute
 ```
 
-### Опција B: Docker
+### Опција Б: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` је највиша **објављена** стабилна SemVer верзија. Она **не** прати git грану `main`. За GitOps фиксирајте `diegosouzapw/omniroute:X.Y.Z`. Погледајте [ознаке слика / канале издања](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` је највиши** објављено** стабилан SemVer. Има** не** трацк гит `main`. Пин `cheaperinference/omniroute:X.Y.Z` за GitOps. Погледајте [Ознаке слика / Канали издања](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Опција C: Из изворног кода
+### Опција Ц: Из извора
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

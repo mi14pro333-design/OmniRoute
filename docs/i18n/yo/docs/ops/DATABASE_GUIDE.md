@@ -228,7 +228,7 @@ Fun lorukọ mii jẹ ailewu nikan fun faili ti ko dapọ sibẹsibẹ, eyiti o 
 
 Lori ibeere fifa ati awọn ṣiṣe isinyi, `npm run check:migration-numbering` ṣe afiwe `src/lib/db/migrations/` lori disiki pẹlu itọsọna kanna lori ẹka ipilẹ. Ipilẹ jẹ, ni aṣẹ yii: `--base-latest-tag`, `--base <ref>`, oniyipada `MIGRATION_BASE_REF`, tabi, nigbati `GITHUB_EVENT_NAME` jẹ `pull_request`, `pull_request_target` tabi `merge_group`, obi akọkọ ti idapọpọ, `merge_group.base_sha` ti isanwo iṣẹlẹ, tabi `git merge-base HEAD origin/$GITHUB_BASE_REF`. Ni a fa ìbéèrè tabi dapọ-ti isinyi run pẹlu ko si resolvable mimọ ẹnu-bode kuna. Ni ita CI laisi `--base` o tẹ `comparação com a base: pulada (sem --base)` o si fo awọn ofin wọnyi.
 
-`--base-latest-tag` ṣe afiwe pẹlu aami itusilẹ tuntun (`vX.Y.Z` ni aṣẹ semver; awọn ami isunmọ gẹgẹbi awọn irọlẹ alẹ ko ka) ti o wa ninu itan-akọọlẹ `HEAD`, pẹlu awọn ofin kanna bi `--base`. Tu-Green (`scripts/quality/validate-release-green.mjs`) gba ẹnu-bode ni ọna yii, nitori titari ati awọn ṣiṣe eto ko ni ipilẹ ibeere fa ati pe idapọ le de laisi ṣiṣiṣẹ CI tuntun. Laisi aami itusilẹ ninu itan-akọọlẹ ẹnu-bode naa kuna; ṣiṣe `git fetch --tags` (ni CI, `actions/checkout` pẹlu `fetch-depth: 0` mu awọn afi).
+`--base-latest-tag` ṣe afiwe pẹlu aami itusilẹ tuntun (`vX.Y.Z` ni aṣẹ semver; awọn ami isunmọ gẹgẹbi awọn irọlẹ alẹ ko ka) ti o wa ninu itan-akọọlẹ `HEAD`, pẹlu awọn ofin kanna bi `--base`. Tu-Green (`scripts/quality/validate-release-green.mjs`) gba ẹnu-bode ni ọna yii, nitori titari ati awọn ṣiṣe eto ko ni ipilẹ ibeere fa ati idapọ le de laisi ṣiṣiṣẹ CI tuntun. Laisi aami itusilẹ ninu itan-akọọlẹ ẹnu-bode naa kuna; ṣiṣe `git fetch --tags` (ni CI, `actions/checkout` pẹlu `fetch-depth: 0` mu awọn afi).
 
 | Yi pada lori fa ìbéèrè                                                                                   | Abajade                                                                                                                                                                                                                                                                                                                      |
 | -------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -304,11 +304,12 @@ Lo `IF NOT EXISTS`, `IF EXISTS`, ati awọn gbolohun ọrọ `OR IGNORE` / `OR R
 
 ### Fifi a New Migration
 
-1. **Ṣẹda faili pẹlu monomono** : `npm run db:new-migration -- <description>` (fun apẹẹrẹ `npm run db:new-migration -- add combo priority`). O kọ `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` pẹlu akoko UTC lọwọlọwọ ati akọsori asọye, gbe siwaju ni iṣẹju-aaya kan ti akoko yẹn ba gba, ati pe ko tun atunkọ faili rara. Ma ṣe mu nọmba pẹlu ọwọ.
+1. **Ṣẹda faili pẹlu monomono** : `npm run db:new-migration -- <description>` (fun apẹẹrẹ `npm run db:new-migration -- add combo priority`). O kọ `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` pẹlu akoko UTC lọwọlọwọ ati akọsori asọye, gbe siwaju iṣẹju-aaya kan ti akoko yẹn ba gba, ati pe ko tun atunkọ faili rara. Ma ṣe mu nọmba pẹlu ọwọ.
 2. **DDL ailewu** : `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `ALTER TABLE ... ADD COLUMN`
 3. **Pada data fara** : lo `UPDATE ... WHERE ...` lati mu awọn ori ila ti o wa tẹlẹ
 4. **Ṣayẹwo ibere ati lorukọ** : `npm run test:migrations:fresh` (gbogbo awọn ijira lori aaye data ti o ṣofo) ati `npm run check:migration-numbering`
 5. **Idanwo lori ẹda kan** : ko ṣiṣe awọn iṣiwa ti ko ni idanwo lori iṣelọpọ
+6. **Tabili ti a ṣẹda lati koodu nilo ijira paapaa** : ti module ba tun ṣẹda tabili ni ọlẹ (`CREATE TABLE IF NOT EXISTS`, ti a tọju bi ọna imularada ti ara ẹni), ijira gbọdọ ṣẹda pẹlu DDL kanna. Bibẹẹkọ fifi sori ẹrọ ti o mọ ati fifi sori ẹrọ igbesoke pari pẹlu awọn eto oriṣiriṣi, da lori boya ọna koodu yẹn ṣiṣẹ. `tests/unit/db/lazy-table-migration-guard.test.ts` ṣayẹwo `src/` ati `open-sse/` o kuna lori `CREATE` ọlẹ laisi ijira (#20557). Apeere: `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`.
 
 Apeere:
 

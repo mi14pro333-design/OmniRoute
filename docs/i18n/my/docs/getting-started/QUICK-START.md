@@ -8,11 +8,11 @@
 
 ---
 
-## အဆင့် 1: OmniRoute ကို ထည့်သွင်းပါ
+## အဆင့် 1: OmniRoute install လုပ်ပါ။
 
-သင်နှစ်သက်ရာ နည်းလမ်းကို ရွေးချယ်ပါ:
+သင်နှစ်သက်သောနည်းလမ်းကို ရွေးချယ်ပါ-
 
-### ရွေးချယ်မှု A: npm (အကြံပြုထားသည်)
+### ရွေးချယ်မှု A- npm (အကြံပြုထားသည်)
 
 ```bash
 npm install -g omniroute
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### ရွေးချယ်မှု B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` သည် **ထုတ်ဝေထားသော** stable SemVer များအနက် အမြင့်ဆုံးဖြစ်သည်။ ၎င်းသည် git `main` ကို လိုက်လံညှိပေးခြင်း **မရှိပါ**။ GitOps အတွက် `diegosouzapw/omniroute:X.Y.Z` ကို သတ်မှတ်အသုံးပြုပါ။ [Image Tags / Release Channels](../guides/DOCKER_GUIDE.md#release-channels) ကို ကြည့်ပါ။
+`:latest` သည် အမြင့်ဆုံးဖြစ်သည်။** ထုတ်ဝေခဲ့သည်။** တည်ငြိမ်သော SemVer။ အဲဒါကိုပြောတာ** မဟုတ်ဘူး** git `main` ကို ခြေရာခံပါ။ GitOps အတွက် `cheaperinference/omniroute:X.Y.Z` ပင်ထိုးပါ။ [ပုံတဂ်များ / ဖြန့်ချိသည့်ချန်နယ်များကို](../guides/DOCKER_GUIDE.md#release-channels) ကြည့်ပါ။
 
-### ရွေးချယ်မှု C: Source မှ
+### ရွေးချယ်မှု C- အရင်းအမြစ်မှ
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

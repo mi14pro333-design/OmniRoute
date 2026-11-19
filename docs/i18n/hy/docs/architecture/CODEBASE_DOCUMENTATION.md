@@ -426,7 +426,7 @@ open-sse/
 
 ### 4.2 `open-sse/executors/`
 
-170 վերին մակարդակի կատարող մոդուլ (`*.ts` մինուս `base.ts`, `index.ts` և թեստեր — `npm run check:docs-counts` ի հաշվառումը): Յուրաքանչյուր կատարողի դաս ընդլայնում է `BaseExecutor` (`base.ts`) ուղղակիորեն կամ `DefaultExecutor` կամ մեկ այլ կատարողի միջոցով; մնացած մոդուլները յուրաքանչյուր մատակարարի օգնականներ են (գործիքների սխեմաներ, fetch/TTS ադապտերներ, տարօրինակ մշակիչներ): Կատարողները ներառում են.
+170 վերին մակարդակի կատարող մոդուլներ (`*.ts` մինուս `base.ts`, `index.ts` և թեստեր — `npm run check:docs-counts` ի հաշվարկը): Յուրաքանչյուր կատարողի դաս ընդլայնում է `BaseExecutor` (`base.ts`) ուղղակիորեն կամ `DefaultExecutor` կամ մեկ այլ կատարողի միջոցով; մնացած մոդուլները յուրաքանչյուր մատակարարի օգնականներ են (գործիքների սխեմաներ, fetch/TTS ադապտերներ, տարօրինակ մշակիչներ): Կատարողները ներառում են.
 
 `antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder` `devin-desktop` `vertex` `claudeIdentity.ts` պլյուս (ընդհանուր) օգնական `index.ts`
 
@@ -481,7 +481,7 @@ Provider registries (`providerRegistry.ts`, `providerModels.ts`, `providerHeader
 
 ### 4.8 `open-sse/utils/`
 
-Պրիմիտիվների հոսքի և մատակարարի օգնականներ՝ `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, zq `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
+Պրիմիտիվների հոսքի և մատակարարի օգնականներ՝ `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, zq `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-Ըստ նշանակության կազմակերպված է 6 ենթապանակների մեջ։
+Կազմակերպված է 6 ենթաթղթապանակներով՝ ըստ նպատակի:
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`։
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, ինչպես նաև PR-ների վերահսկման՝ միայն կարդալու համար նախատեսված օժանդակ գործիքները՝
-  `ci-discriminate.sh` (PR-ի ձախողված ստուգումների ստորագրությունները դասակարգում է որպես սեփական / ժառանգված /
-  անհայտ՝ համեմատելով հղումային PR-ի կամ բազային ճյուղի չանցնող ստուգումների խնդրի հետ) և `audit-worktree.sh`
-  (փոփոխված ֆայլեր, պաշտպանված հատվածներ, հեռացված assert-ներ, ճնշումների քանակներ, մնացորդային
-  ժամանակավոր tsconfig-ներ, PR-ի head-ն ընդդեմ տեղային HEAD-ի՝ նախքան աշխատողի PR-ն ընդունելը)։
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`։
-- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`։
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`։
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`։
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, գումարած միայն կարդալու համար PR դայակի օգնականները `ci-discriminate.sh` (տեսակավորում է PR ի անհայտ տեղեկանքը անսարքության մեջ // PR բազային-կարմիր խնդիրը) և `audit-worktree.sh` (կեղտոտ ֆայլեր, պաշտպանված մակերեսներ, հեռացված պնդումներ, ճնշումների քանակ, մնացորդներ tmp tsconfigs, PR head ընդդեմ տեղական HEAD — նախքան աշխատողի PR ընդունումը):
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

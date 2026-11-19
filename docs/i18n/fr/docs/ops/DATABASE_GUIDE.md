@@ -304,11 +304,12 @@ Utilisez généreusement les clauses `IF NOT EXISTS`, `IF EXISTS` et `OR IGNORE`
 
 ### Ajouter une nouvelle migration
 
-1. **Créez le fichier avec le générateur** : `npm run db:new-migration -- <description>` (par exemple `npm run db:new-migration -- add combo priority`). Il écrit `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` avec l'heure UTC actuelle et un en-tête de commentaire, avance d'une seconde si cet horodatage est pris et n'écrase jamais un fichier. Ne choisissez pas un numéro à la main.
+1. **Créez le fichier avec le générateur** : `npm run db:new-migration -- <description>` (par exemple `npm run db:new-migration -- add combo priority`). It writes `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` with the current UTC time and a comment header, moves forward one second if that timestamp is taken, and never overwrites a file. Ne choisissez pas un numéro à la main.
 2. **Utilisez DDL en toute sécurité** : `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `ALTER TABLE ... ADD COLUMN`
 3. **Remplissez soigneusement les données** : utilisez `UPDATE ... WHERE ...` pour gérer les lignes existantes
-4. **Vérifier l'ordre et le nom** : `npm run test:migrations:fresh` (toutes les migrations sur une base de données vide) et `npm run check:migration-numbering`
+4. **Vérifier l'ordre et le nom** : `npm run test:migrations:fresh` (all migrations on an empty database) and `npm run check:migration-numbering`
 5. **Test sur copie** : n'exécutez jamais de migrations non testées en production
+6. **Une table créée à partir de code nécessite également une migration** : if a module also creates the table lazily (`CREATE TABLE IF NOT EXISTS`, kept as a self-heal path), a migration must create it with the same DDL. Otherwise a clean install and an upgraded install end up with different schemas, depending on whether that code path ran. `tests/unit/db/lazy-table-migration-guard.test.ts` scans `src/` and `open-sse/` and fails on a lazy `CREATE` without a migration (#20557). Exemple : `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`.
 
 Exemple:
 
@@ -319,7 +320,7 @@ UPDATE combos SET priority = 100 WHERE priority IS NULL;
 CREATE INDEX IF NOT EXISTS idx_combos_priority ON combos(priority);
 ```
 
-> **Modifications rétrocompatibles** (par exemple, supprimer des colonnes) sont délicats. OmniRoute prend NOT il en charge la rétrogradation — une fois la migration appliquée, le changement de schéma est permanent. Planifiez en conséquence.
+> **Modifications rétrocompatibles** (par exemple, supprimer des colonnes) sont délicats. OmniRoute does NOT support downgrade — once a migration is applied, the schema change is permanent. Planifiez en conséquence.
 
 ---
 

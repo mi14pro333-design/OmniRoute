@@ -426,7 +426,7 @@ open-sse/
 
 ### 4.2 `open-sse/executors/`
 
-ထိပ်တန်းအဆင့် executor module 170 (`*.ts` အနှုတ် `base.ts`၊ `index.ts` နှင့် စမ်းသပ်မှုများ — အရေအတွက် `npm run check:docs-counts` အစီအမံများ)။ executor အတန်းတိုင်းသည် `BaseExecutor` (`base.ts`) ကို တိုက်ရိုက် သို့မဟုတ် `DefaultExecutor` သို့မဟုတ် အခြားသော executor မှတဆင့် တိုးချဲ့သည်။ ကျန်ရှိသော module များသည် per-provider helpers (tool schemas၊ fetch/TTS adapters၊ quirk handlers) များဖြစ်သည်။ စီမံဆောင်ရွက်သူများ ပါဝင်သည်-
+170 ထိပ်တန်းအဆင့် executor modules (`*.ts` အနှုတ် `base.ts`၊ `index.ts` နှင့် စမ်းသပ်မှုများ — အရေအတွက် `npm run check:docs-counts` အစီအမံများ)။ executor အတန်းတိုင်းသည် `BaseExecutor` (`base.ts`) ကို တိုက်ရိုက် သို့မဟုတ် `DefaultExecutor` သို့မဟုတ် အခြားသော executor မှတဆင့် တိုးချဲ့သည်။ ကျန်ရှိသော module များသည် per-provider helpers (tool schemas၊ fetch/TTS adapters၊ quirk handlers) များဖြစ်သည်။ စီမံဆောင်ရွက်သူများ ပါဝင်သည်-
 
 `antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder`, `vertex`, `devin-desktop`, `claudeIdentity.ts` (အကူအညီ) နှင့် `index.ts`
 
@@ -481,7 +481,7 @@ Hub-and-spoke ဘာသာပြန်ဆိုချက် (OpenAI သည် �
 
 ### 4.8 `open-sse/utils/`
 
-ထုတ်လွှ `thinkTagParser.ts`် `awsSigV4.ts` `tlsClient.ts` `stream.ts` `streamHandler.ts` `streamHelpers.ts` `streamPayloadCollector.ts` `streamReadiness.ts` `sseHeartbeat.ts` `proxyFetch.ts` `proxyDispatcher.ts` `networkProxy.ts` `cacheControlPolicy.ts` `cursorChecksum.ts` `cursorAgentProtobuf.ts` `cursorVersionDetector.ts` `comfyuiClient.ts` `kieTask.ts` `bypassHandler.ts` `aiSdkCompat.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
+ထုတ်လွှ `urlSanitize.ts`် `awsSigV4.ts` `tlsClient.ts` `stream.ts` `streamHandler.ts` `streamHelpers.ts` `streamPayloadCollector.ts` `streamReadiness.ts` `sseHeartbeat.ts` `proxyFetch.ts` `proxyDispatcher.ts` `networkProxy.ts` `cacheControlPolicy.ts` `cursorAgentProtobuf.ts` `cursorVersionDetector.ts` `comfyuiClient.ts` `kieTask.ts` `bypassHandler.ts` `aiSdkCompat.ts` `thinkTagParser.ts`, `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-ရည်ရွယ်ချက်အလိုက် ဖိုင်တွဲခွဲ 6 ခုဖြင့် စုစည်းထားသည်။
+ရည်ရွယ်ချက်ဖြင့် ဖိုင်တွဲခွဲ 6 ခုအဖြစ် စုစည်းထားသည်။
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`။
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`၊ ထို့အပြင် ဖတ်ရှုရန်သက်သက်ဖြစ်သော PR စောင့်ကြည့်ရေး အကူကိရိယာများဖြစ်သည့်
-  `ci-discriminate.sh` (PR တစ်ခု၏ မအောင်မြင်သော စစ်ဆေးမှု လက္ခဏာများကို ကိုယ်ပိုင် / အမွေဆက်ခံရရှိသော /
-  မသိရှိသော ဟူ၍ ရည်ညွှန်း PR သို့မဟုတ် base-red issue နှင့် နှိုင်းယှဉ်ကာ ခွဲခြားပေးသည်) နှင့် `audit-worktree.sh`
-  (worker တစ်ဦး၏ PR ကို လက်မခံမီ dirty ဖိုင်များ၊ ကာကွယ်ထားသော မျက်နှာပြင်များ၊ ဖယ်ရှားထားသော asserts များ၊ suppression အရေအတွက်များ၊ ကျန်ရှိနေသော
-  ယာယီ tsconfigs များ၊ PR head နှင့် local HEAD တို့ကို စစ်ဆေးသည်)။
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`။
-- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`။
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`။
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`။
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, ပေါင်းဖတ်ရန်-သပ်သပ် PR ကလေးထိန်းအကူအညီပေးသူများ `ci-discriminate.sh` (အမည်မသိ PR၏ အမွေဆက်ခံခြင်း သို့မဟုတ် ပျက်ကွက်ခြင်းသို့ အမျိုးအစားခွဲထားသည် အခြေခံ-အနီရောင်ပြဿနာ) နှင့် PR (ညစ်ပတ်သောဖိုင်များ၊ ကာကွယ်ထားသောမျက်နှာပြင်များ၊ အခိုင်အမာပြောဆိုမှုများ၊ ဖိနှိပ်မှုအရေအတွက်များ၊ လက်ကျန် tmp tsconfigs၊ PR ဦးခေါင်းနှင့် ဒေသခံ HEAD — `audit-worktree.sh` အလုပ်သမားတစ်ဦး၏ PR လက်ခံခြင်းမပြုမီ)။
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

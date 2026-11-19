@@ -481,7 +481,7 @@ Provider registries (`providerRegistry.ts`, `providerModels.ts`, `providerHeader
 
 ### 4.8 `open-sse/utils/`
 
-`thinkTagParser.ts` alakoko ṣiṣanwọle `kieTask.ts` `usageTracking.ts` `cursorVersionDetector.ts` olupese: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts` `ollamaTransform.ts` `streamPayloadCollector.ts` `awsSigV4.ts` `streamReadiness.ts` `sleep.ts` `sseHeartbeat.ts` `tlsClient.ts` `proxyDispatcher.ts` `proxyFetch.ts` `cursorAgentProtobuf.ts` `cacheControlPolicy.ts` `networkProxy.ts` `cursorChecksum.ts` `requestLogger.ts` `comfyuiClient.ts` `progressTracker.ts` `bypassHandler.ts` `cors.ts` `aiSdkCompat.ts` `logger.ts` `urlSanitize.ts` `error.ts`
+`urlSanitize.ts` alakoko ṣiṣanwọle `cursorVersionDetector.ts` awọn `kieTask.ts` olupese `bypassHandler.ts` `stream.ts`, `streamHandler.ts` `requestLogger.ts` `streamHelpers.ts` `sleep.ts` `streamPayloadCollector.ts` `awsSigV4.ts` `streamReadiness.ts` `ollamaTransform.ts` `proxyFetch.ts` `proxyDispatcher.ts` `tlsClient.ts` `sseHeartbeat.ts` `cacheControlPolicy.ts` `cursorAgentProtobuf.ts` `networkProxy.ts` `comfyuiClient.ts` `progressTracker.ts` `aiSdkCompat.ts` `cors.ts` `thinkTagParser.ts` `logger.ts` `usageTracking.ts` `error.ts`
 
 ---
 
@@ -566,35 +566,14 @@ A ṣe àfihàn binary méjì nínú `package.json` → `bin`:
 
 ## 8. `scripts/`
 
-A ṣètò rẹ̀ sínú àwọn fódà kéékèèké mẹ́fà gẹ́gẹ́ bí ète wọn.
+Ṣeto sinu awọn folda kekere 6 nipasẹ idi.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, pẹ̀lú àwọn olùrànlọ́wọ́ àbójútó PR tí ó jẹ́ fún kíkà nìkan
-  `ci-discriminate.sh` (ń ṣètò àwọn àmì ìdánwò tí ó kùnà ti PR sí ti ara rẹ̀ / èyí tí ó jogún /
-  àìmọ̀ ní ìfiwéra pẹ̀lú PR àtọ́ka tàbí ọ̀ràn base-red) àti `audit-worktree.sh`
-  (àwọn fáìlì tí ó ní àyípadà, àwọn apá tí a dáàbò bò, àwọn assert tí a yọ, iye ìdínkù ìkìlọ̀, àwọn
-  tmp tsconfigs tí ó ṣẹ́ kù, orí PR ní ìfiwéra pẹ̀lú HEAD abẹ́lé — kí a tó gba PR òṣìṣẹ́ kan).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, pẹlu awọn oluranlọwọ PR olutọju ọmọ-ọwọ nikan `ci-discriminate.sh` (to iru aṣiṣe PR kan si ami aimọ / ṣayẹwo PR ti ara rẹ) Ọrọ ipilẹ-pupa) ati `audit-worktree.sh` (awọn faili idọti, awọn ipele ti o ni aabo, awọn imuduro yiyọ kuro, awọn iṣiro idinku, awọn tmp tsconfigs ajẹkù, ori PR vs HEAD — ṣaaju ki o to gba PR oṣiṣẹ).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

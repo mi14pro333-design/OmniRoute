@@ -332,11 +332,11 @@ docker start omniroute
 
 ## 6. 高度なセキュリティ
 
-### nginx へのアクセスを Cloudflare IP に制限
+### nginx をCloudflare IPsに制限する
 
 ```bash
 cat > /etc/nginx/cloudflare-ips.conf << 'CF'
-# Cloudflare の IPv4 範囲 — 定期的に更新してください
+# Cloudflare IPv4 ranges — update periodically
 # https://www.cloudflare.com/ips-v4/
 set_real_ip_from 173.245.48.0/20;
 set_real_ip_from 103.21.244.0/22;
@@ -357,31 +357,31 @@ real_ip_header CF-Connecting-IP;
 CF
 ```
 
-`nginx.conf` の `http {}` ブロック内に以下を追加します。
+`http {}`ブロック内の`nginx.conf`に以下を追加します。
 
 ```nginx
 include /etc/nginx/cloudflare-ips.conf;
 ```
 
-### fail2ban のインストール
+### フェイル2バンをインストールする
 
 ```bash
 apt install -y fail2ban
 systemctl enable fail2ban
 systemctl start fail2ban
 
-# ステータスを確認
+# Check status
 fail2ban-client status sshd
 ```
 
-### Docker ポートへの直接アクセスをブロック
+### Dockerポートへの直接アクセスをブロックする
 
 ```bash
-# ポート20128への外部からの直接アクセスを防止
+# Prevent direct external access to port 20128
 iptables -I DOCKER-USER -p tcp --dport 20128 -j DROP
 iptables -I DOCKER-USER -i lo -p tcp --dport 20128 -j ACCEPT
 
-# ルールを永続化
+# Persist the rules
 apt install -y iptables-persistent
 netfilter-persistent save
 ```

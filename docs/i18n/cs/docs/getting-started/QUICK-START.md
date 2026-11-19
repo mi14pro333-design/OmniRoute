@@ -10,7 +10,7 @@
 
 ## Krok 1: Nainstalujte OmniRoute
 
-Vyberte si preferovaný způsob:
+Vyberte preferovanou metodu:
 
 ### Možnost A: npm (doporučeno)
 
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### Možnost B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` označuje nejvyšší **publikovanou** stabilní verzi SemVer. Nesleduje větev `main` v gitu. Pro GitOps připněte `diegosouzapw/omniroute:X.Y.Z`. Viz [Tagy obrazů / kanály vydání](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` je nejvyšší** zveřejněno** stabilní SemVer. To ano** ne** sledovat git `main`. Pin `cheaperinference/omniroute:X.Y.Z` pro GitOps. Viz [Image Tags / Release Channels](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Možnost C: Ze zdrojového kódu
+### Možnost C: Ze zdroje
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

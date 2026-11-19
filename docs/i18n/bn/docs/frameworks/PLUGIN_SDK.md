@@ -72,17 +72,20 @@ onRequest: (ctx) => {
 };
 ```
 
-## Plugin Context (`PluginContext`)
+## প্লাগইন প্রসঙ্গ (`PluginContext`)
 
-| ফিল্ড       | ধরন                       | বিবরণ                     |
-| ----------- | ------------------------- | ------------------------- |
-| `requestId` | `string`                  | অনুরোধের অনন্য শনাক্তকারী |
-| `model`     | `string`                  | অনুরোধ করা model-এর নাম   |
-| `provider`  | `string`                  | লক্ষ্য provider ID        |
-| `body`      | `Record<string, unknown>` | Request body              |
-| `headers`   | `Record<string, string>`  | Request headers           |
-| `metadata`  | `Record<string, unknown>` | পরিবর্তনযোগ্য metadata    |
-| `timestamp` | `number`                  | অনুরোধের timestamp        |
+| মাঠ          | টাইপ                      | বর্ণনা                           |
+| ------------ | ------------------------- | -------------------------------- |
+| `requestId`  | `string`                  | অনন্য অনুরোধ শনাক্তকারী          |
+| `model`      | `string`                  | মডেল নাম অনুরোধ করা হয়েছে       |
+| `provider`   | `string`                  | লক্ষ্য প্রদানকারী ID             |
+| `body`       | `Record<string, unknown>` | শরীরের অনুরোধ                    |
+| `headers`    | `Record<string, string>`  | অনুরোধ শিরোনাম (দ্রষ্টব্য দেখুন) |
+| `metadata`   | `Record<string, unknown>` | পরিবর্তনযোগ্য মেটাডেটা           |
+| `timestamp`  | `number`                  | অনুরোধ টাইমস্ট্যাম্প             |
+| `apiKeyInfo` | `object` (ঐচ্ছিক)         | API কী মেটাডেটা (নোট দেখুন)      |
+
+প্রসঙ্গটি কখনই ক্লায়েন্টের শংসাপত্র বহন করে না: `authorization`, `x-api-key`, `proxy-authorization` এবং `cookie` শিরোনামগুলি সরানো হয় (যেকোন কেসিং), এবং `apiKeyInfo` কী এর মেটাডেটা রাখে (যেমন `id`, `name` এবং `scopes`) কিন্তু মূল মান বা এর আঙুলের ছাপ `src/lib/plugins/hooks.ts` `redactPluginContext()` নয়। এটি `onRequest`, `onResponse` এবং `onError` ক্ষেত্রে প্রযোজ্য।
 
 ## Manifest (`plugin.json`)
 
@@ -138,19 +141,18 @@ Hook-গুলো priority দিয়ে কনফিগার করা য�
 }
 ```
 
-## অনুমতি ব্যবস্থা
+## অনুমতি সিস্টেম
 
-প্লাগইনগুলো একটি স্যান্ডবক্সযুক্ত VM প্রসঙ্গে চলে। বাহ্যিক রিসোর্সে অ্যাক্সেসের জন্য সুস্পষ্ট অনুমতি প্রয়োজন:
+প্লাগইন হয়** স্যান্ডবক্সযুক্ত নয়** . প্রতিটি সক্রিয় প্লাগইন একটি পৃথক, সাধারণ Node.js চাইল্ড প্রক্রিয়া ( `src/lib/plugins/loader.ts` তে`loadPlugin()` ) OmniRoute মতো একই অপারেটিং-সিস্টেম ব্যবহারকারীর অধীনে চলে, কোনো VM প্রসঙ্গ এবং কোনো Node.js অনুমতি পতাকা ছাড়াই। প্লাগইন কোড `node:fs`, `node:child_process`, `fetch` এবং অন্যান্য Node.js API ব্যবহার করতে পারে: এটি OmniRoute ব্যবহারকারী (ডেটা ডিরেক্টরি সহ) যেকোন ফাইল পড়তে এবং লিখতে পারে, প্রোগ্রাম চালাতে পারে এবং নেটওয়ার্কে পৌঁছাতে পারে।
 
-| অনুমতি       | যা ব্যবহারের অনুমতি দেয়                                     |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | শুধুমাত্র-পঠনযোগ্য `process.env` প্রক্সি                     |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+ম্যানিফেস্টের `requires.permissions` `network`, `file-read`, `file-write`, `env` এবং `exec` গ্রহণ করে, কিন্তু আজ রানটাইমে শুধুমাত্র `env` প্রভাব আছে:
 
-কোনো অনুমতি না থাকলে, সংশ্লিষ্ট গ্লোবালগুলো স্যান্ডবক্সে একেবারেই উপলভ্য থাকে না।
+| অনুমতি                                       | আজ প্রভাব                                                                                                                                                                                                                                |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | The plugin process also receives `PORT`, `HOSTNAME`, `TZ` and `TMPDIR`. Without it, it receives only `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` and `PLUGIN_NAME` (plus `SystemRoot` and `windir` on Windows). |
+| `network`, `file-read`, `file-write`, `exec` | কোনোটিই নয়। তারা শুধুমাত্র ঘোষণা: তারা অনুপস্থিত যখন কিছুই অবরুদ্ধ করা হয় না.                                                                                                                                                          |
+
+একটি প্লাগইন ইনস্টল করা হোস্টে অন্য কোনো প্রোগ্রাম ইনস্টল করার মতো। শুধুমাত্র প্লাগইন ইনস্টল করুন যার উৎস আপনি বিশ্বাস করেন।
 
 ## কনফিগ স্কিমা
 
@@ -194,7 +196,7 @@ Hook-গুলো priority দিয়ে কনফিগার করা য�
 
 ## উদাহরণ
 
-### অনুরোধ লগার
+### লগার অনুরোধ করুন
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // ১ মিনিট
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);
@@ -234,7 +236,7 @@ export default definePlugin({
 });
 ```
 
-### প্রতিক্রিয়া রূপান্তরকারী
+### রেসপন্স ট্রান্সফরমার
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";

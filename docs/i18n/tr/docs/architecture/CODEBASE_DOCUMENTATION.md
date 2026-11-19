@@ -458,145 +458,102 @@ Odaklanılmış alt dizinlere ayırın:
 
 ## 4. `open-sse/` — Akış motoru çalışma alanı
 
-`@omniroute/open-sse` olarak yayımlanan ayrı bir npm çalışma alanıdır. İstek
-işleme, yürütücüler, çeviriciler, hizmetler, dönüştürücü ve MCP sunucusundan sorumludur.
+`@omniroute/open-sse` olarak yayınlanan ayrı npm çalışma alanı. Talep işleme, uygulayıcılar, çevirmenler, hizmetler, transformatör ve MCP sunucusunun sahibidir.
 
 ```
 open-sse/
-├── index.ts                Genel dışa aktarımlar
-├── package.json            Çalışma alanı bildirimi
+├── index.ts                Public exports
+├── package.json            Workspace manifest
 ├── tsconfig.json
 ├── types.d.ts
-├── config/                 Sağlayıcı kayıtları, başlık profilleri, kimlik, …
-├── handlers/               İstek işleyicileri (sohbet, yerleştirmeler, ses, görüntü, …)
-├── executors/              170 sağlayıcı yürütücü modülü (yürütücü sınıfları + sağlayıcı başına yardımcılar)
-├── translator/             Biçim dönüştürme (OpenAI ↔ Claude ↔ Gemini ↔ Cursor ↔ Kiro)
-├── transformer/            Responses API ↔ Chat Completions akış dönüştürücüsü
-├── services/               80+ hizmet modülü (kombinasyonlar, geri dönüş, kotalar, kimlik, …)
-├── utils/                  Akış yardımcıları, TLS istemcisi, AWS SigV4, proxy fetch, …
-└── mcp-server/             MCP sunucusu (3 aktarım, 33 kapsam, 110 araç)
+├── config/                 Provider registries, header profiles, identity, …
+├── handlers/               Request handlers (chat, embeddings, audio, image, …)
+├── executors/              170 provider executor modules (executor classes + per-provider helpers)
+├── translator/             Format conversion (OpenAI ↔ Claude ↔ Gemini ↔ Cursor ↔ Kiro)
+├── transformer/            Responses API ↔ Chat Completions stream transformer
+├── services/               80+ service modules (combos, fallback, quotas, identity, …)
+├── utils/                  Streaming helpers, TLS client, AWS SigV4, proxy fetch, …
+└── mcp-server/             MCP server (3 transports, 33 scopes, 110 tools)
 ```
 
 ### 4.1 `open-sse/handlers/`
 
-| Handler                 | Amaç                                                                                      |
-| ----------------------- | ----------------------------------------------------------------------------------------- |
-| `chatCore.ts`           | Ana sohbet işlem hattı (önbellek, hız sınırı, kombinasyon yönlendirme, yürütücü dağıtımı) |
-| `responsesHandler.ts`   | OpenAI Responses API giriş noktası                                                        |
-| `embeddings.ts`         | Yerleştirmeler                                                                            |
-| `imageGeneration.ts`    | Görüntü oluşturma                                                                         |
-| `audioSpeech.ts`        | Metinden sese                                                                             |
-| `audioTranscription.ts` | Sesten metne                                                                              |
-| `videoGeneration.ts`    | Video oluşturma                                                                           |
-| `musicGeneration.ts`    | Müzik oluşturma                                                                           |
-| `rerank.ts`             | Yeniden sıralama                                                                          |
-| `moderations.ts`        | Moderasyon                                                                                |
-| `search.ts`             | Web araması                                                                               |
-| `sseParser.ts`          | SSE olay ayrıştırıcısı                                                                    |
-| `usageExtractor.ts`     | Yukarı akış akışlarından belirteç sayılarını çıkarır                                      |
-| `responseSanitizer.ts`  | Sağlayıcıya özgü gereksiz verileri ayıklar                                                |
-| `responseTranslator.ts` | Sağlayıcı yanıtı ile çeviri katmanı arasındaki bağlantı                                   |
+| İşleyici                | Amaç                                                                              |
+| ----------------------- | --------------------------------------------------------------------------------- |
+| `chatCore.ts`           | Ana sohbet hattı (önbellek, hız sınırı, birleşik yönlendirme, yürütücü gönderimi) |
+| `responsesHandler.ts`   | OpenAI Yanıtları API giriş noktası                                                |
+| `embeddings.ts`         | Gömmeler                                                                          |
+| `imageGeneration.ts`    | Görüntü oluşturma                                                                 |
+| `audioSpeech.ts`        | Metinden konuşmaya                                                                |
+| `audioTranscription.ts` | Konuşmayı metne dönüştürme                                                        |
+| `videoGeneration.ts`    | Video oluşturma                                                                   |
+| `musicGeneration.ts`    | Müzik üretimi                                                                     |
+| `rerank.ts`             | Yeniden sıralama                                                                  |
+| `moderations.ts`        | Moderasyon                                                                        |
+| `search.ts`             | Web araması                                                                       |
+| `sseParser.ts`          | SSE olay ayrıştırıcısı                                                            |
+| `usageExtractor.ts`     | Token sayımlarını yukarı akışlardan çekin                                         |
+| `responseSanitizer.ts`  | Sağlayıcıya özgü gürültüyü soyun                                                  |
+| `responseTranslator.ts` | Sağlayıcı yanıtı ile çevirmen katmanı arasındaki yapıştırıcı                      |
 
 ### 4.2 `open-sse/executors/`
 
-170 üst düzey yürütücü modülü (`base.ts`, `index.ts` ve testler hariç `*.ts` — bu sayıyı
-`npm run check:docs-counts` ölçer). Her yürütücü sınıfı doğrudan veya `DefaultExecutor` ya da başka
-bir yürütücü aracılığıyla `BaseExecutor` (`base.ts`) sınıfını genişletir; kalan modüller sağlayıcı başına
-yardımcılardır (araç şemaları, fetch/TTS bağdaştırıcıları, tuhaflık işleyicileri). Yürütücüler şunları içerir:
+170 üst düzey yürütücü modül (`*.ts` eksi `base.ts`, `index.ts` ve — sayımı `npm run check:docs-counts` ölçümlerini test eder). Her yürütücü sınıfı `BaseExecutor` (`base.ts`) doğrudan veya `DefaultExecutor` veya başka bir yürütücü aracılığıyla genişletir; geri kalan modüller sağlayıcı başına yardımcılardır (araç şemaları, fetch/TTS bağdaştırıcıları, tuhaf işleyiciler). Yürütücüler şunları içerir:
 
-`antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`,
-`chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`,
-`muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`,
-`pollinations`, `qoder`, `vertex`, `devin-desktop` ve ayrıca
-`claudeIdentity.ts` (paylaşılan kimlik yardımcısı) ile `index.ts` (kayıt defteri).
+`antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder`, `vertex`, `devin-desktop`, plus `claudeIdentity.ts` (paylaşılan kimlik yardımcısı) ve `index.ts` (kayıt defteri).
 
-> Not: Burada listelenmeyen sağlayıcılar, genel OpenAI uyumlu yürütücüyü kullanan
-> `default.ts` tarafından sunulur. Tam sağlayıcı kataloğu (394 sağlayıcı)
-> `src/shared/constants/providers.ts` içinde bulunur.
+> Not: Burada listelenmeyen sağlayıcılar, genel OpenAI uyumlu yürütücü kullanılarak `default.ts` tarafından sunulur. Sağlayıcı kataloğunun tamamı (394 sağlayıcı) `src/shared/constants/providers.ts` bulunmaktadır.
 
 ### 4.3 `open-sse/translator/`
 
-Hub ve spoke çevirisi (hub OpenAI'dir).
+Hub ve bağlı bileşen çevirisi (OpenAI hub'dır).
 
-- **9 istek çeviricisi** (`translator/request/`):
-  `antigravity-to-openai`, `claude-to-gemini`, `claude-to-openai`,
-  `gemini-to-openai`, `openai-responses`, `openai-to-claude`,
-  `openai-to-cursor`, `openai-to-gemini`, `openai-to-kiro`.
-- **9 yanıt çeviricisi** (`translator/response/`):
-  `claude-to-openai`, `cursor-to-openai`, `gemini-to-claude`, `gemini-to-openai`,
-  `kiro-to-openai`, `openai-responses`, `openai-to-antigravity`,
-  `openai-to-claude`.
-- **9 yardımcı** (`translator/helpers/`):
-  `claudeHelper`, `geminiHelper`, `geminiToolsSanitizer`, `maxTokensHelper`,
-  `openaiHelper`, `responsesApiHelper`, `schemaCoercion`, `toolCallHelper` ve
-  yardımcı testleri.
+- **9 çevirmen talep ediyorum** (`translator/request/`): `antigravity-to-openai`, `claude-to-gemini`, `claude-to-openai`, `gemini-to-openai`, `openai-responses`, `openai-to-claude`, `openai-to-cursor`, `openai-to-gemini`, `openai-to-kiro`.
+- **9 yanıt çevirmeni** (`translator/response/`): `claude-to-openai`, `cursor-to-openai`, `gemini-to-claude`, `gemini-to-openai`, `kiro-to-openai`, `openai-responses`, `openai-to-antigravity`, `openai-to-claude`.
+- **9 yardımcı** (`translator/helpers/`): `claudeHelper`, `geminiHelper`, `geminiToolsSanitizer`, `maxTokensHelper`, `openaiHelper`, `responsesApiHelper`, `schemaCoercion`, `toolCallHelper` ve ayrıca yardımcı testler.
 - **Görüntü yardımcıları** (`translator/image/sizeMapper.ts`).
 - Üst düzey: `bootstrap.ts`, `formats.ts`, `registry.ts`, `index.ts`.
 
 ### 4.4 `open-sse/transformer/`
 
-- `responsesTransformer.ts` — `TransformStream` tabanlı Responses API ↔ Chat
-  Completions dönüştürücüsü (`responses/` rota catch-all'ı tarafından kullanılır).
+- `responsesTransformer.ts` — `TransformStream` -based Yanıtlar API ↔ Sohbet Tamamlamaları dönüştürücüsü ( `responses/` rotasının tümünü yakalaması tarafından kullanılır).
 
 ### 4.5 `open-sse/services/`
 
-Öne çıkanlar (tam liste `open-sse/services/` altında):
+Öne Çıkanlar (tam liste `open-sse/services/` altında):
 
-| Concern                     | Files                                                                                                                                                                                                                                                    |
+| Kaygı                       | Dosyalar                                                                                                                                                                                                                                                 |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Kombinasyon yönlendirme     | `combo.ts` (22 strateji), `comboConfig.ts`, `comboMetrics.ts`, `comboManifestMetrics.ts`, `comboAgentMiddleware.ts`                                                                                                                                      |
+| Birleşik yönlendirme        | `combo.ts` (22 strateji), `comboConfig.ts`, `comboMetrics.ts`, `comboManifestMetrics.ts`, `comboAgentMiddleware.ts`                                                                                                                                      |
 | Otomatik Kombinasyon motoru | `autoCombo/` — `engine.ts`, `scoring.ts`, `taskFitness.ts`, `virtualFactory.ts`, `modePacks.ts`, `autoPrefix.ts`, `persistence.ts`, `providerDiversity.ts`, `providerRegistryAccessor.ts`, `routerStrategy.ts`, `selfHealing.ts`, `index.ts`             |
 | Dayanıklılık                | `accountFallback.ts` (bekleme süresi + kilitleme), `errorClassifier.ts`, `requestRejectedStreak.ts`, `emergencyFallback.ts`, `rateLimitManager.ts`, `rateLimitSemaphore.ts`, `accountSemaphore.ts`, `accountSelector.ts`                                 |
 | Kotalar                     | `quotaMonitor.ts`, `quotaPreflight.ts`, `bailianQuotaFetcher.ts`, `codexQuotaFetcher.ts`, `deepseekQuotaFetcher.ts`, `openrouterQuotaFetcher.ts`, `openrouterFreeWindow.ts`, `llmgatewayQuotaFetcher.ts`, `crofUsageFetcher.ts`, `antigravityCredits.ts` |
 | Önbelleğe alma              | `reasoningCache.ts`, `searchCache.ts`, `signatureCache.ts`, `requestDedup.ts`                                                                                                                                                                            |
-| Yönlendirme zekâsı          | `intentClassifier.ts`, `taskAwareRouter.ts`, `backgroundTaskDetector.ts`, `volumeDetector.ts`, `wildcardRouter.ts`, `workflowFSM.ts`, `specificityDetector.ts`, `specificityRules.ts`, `specificityTypes.ts`                                             |
-| Model işleme                | `modelCapabilities.ts`, `modelDeprecation.ts`, `modelFamilyFallback.ts`, `modelStrip.ts`, `model.ts`, `provider.ts`, `providerRequestDefaults.ts`, `providerCostData.ts`, `payloadRules.ts`                                                              |
-| Sıkıştırma                  | `compression/` — eksiksiz sıkıştırma motoru bağlantıları                                                                                                                                                                                                 |
-| Belirteç + oturum           | `tokenRefresh.ts`, `sessionManager.ts`, `apiKeyRotator.ts`, `contextManager.ts`, `contextHandoff.ts`, `systemPrompt.ts`, `roleNormalizer.ts`, `responsesInputSanitizer.ts`, `toolSchemaSanitizer.ts`, `toolLimitDetector.ts`, `thinkingBudget.ts`        |
+| Yönlendirme zekası          | `intentClassifier.ts`, `taskAwareRouter.ts`, `backgroundTaskDetector.ts`, `volumeDetector.ts`, `wildcardRouter.ts`, `workflowFSM.ts`, `specificityDetector.ts`, `specificityRules.ts`, `specificityTypes.ts`                                             |
+| Model kullanımı             | `modelCapabilities.ts`, `modelDeprecation.ts`, `modelFamilyFallback.ts`, `modelStrip.ts`, `model.ts`, `provider.ts`, `providerRequestDefaults.ts`, `providerCostData.ts`, `payloadRules.ts`                                                              |
+| Sıkıştırma                  | `compression/` — tam sıkıştırmalı motor kablolaması                                                                                                                                                                                                      |
+| Token + oturumu             | `tokenRefresh.ts`, `sessionManager.ts`, `apiKeyRotator.ts`, `contextManager.ts`, `contextHandoff.ts`, `systemPrompt.ts`, `roleNormalizer.ts`, `responsesInputSanitizer.ts`, `toolSchemaSanitizer.ts`, `toolLimitDetector.ts`, `thinkingBudget.ts`        |
 | Katman / bildirim           | `tierResolver.ts`, `tierConfig.ts`, `tierDefaults.json`, `tierTypes.ts`, `manifestAdapter.ts`                                                                                                                                                            |
 | IP / ağ                     | `ipFilter.ts`, `webSearchFallback.ts`                                                                                                                                                                                                                    |
-| Toplu işlemler              | `batchProcessor.ts`                                                                                                                                                                                                                                      |
+| Gruplar                     | `batchProcessor.ts`                                                                                                                                                                                                                                      |
 | Kullanım                    | `usage.ts`                                                                                                                                                                                                                                               |
 
 ### 4.6 `open-sse/mcp-server/`
 
-- `server.ts` içinde bağlanmış **110 benzersiz araç** (`schemas/tools.ts` içinde 45 kanonik araç +
-  bellek, beceriler, GitHub becerileri, havuz, oyunlaştırma, eklenti, Notion, Obsidian,
-  yerel derlem ve sıkıştırma modülleri — birleşim, `countUniqueMcpTools` tarafından sayılır).
-- **3 aktarım**: stdio, HTTP Streamable, SSE.
-- Çalışma zamanında uygulanan **33 kapsam** — temel liste `src/shared/constants/mcpScopes.ts` içindedir; tam küme, her araç modülü tarafından bildirilen kapsamların birleşimidir.
-- Denetim tablosu: `mcp_tool_audit` (`audit.ts` tarafından doldurulur).
-- Dosyalar: `server.ts`, `index.ts`, `httpTransport.ts`, `audit.ts`, `scopeEnforcement.ts`,
-  `runtimeHeartbeat.ts`, `descriptionCompressor.ts`, `schemas/{tools, a2a, audit, index}.ts`,
-  `tools/{advancedTools, compressionTools, memoryTools, skillTools}.ts`,
-  ayrıca `__tests__/` altındaki testler.
-- Araç kataloğunun tamamı için [MCP-SERVER.md](../frameworks/MCP-SERVER.md) dosyasına bakın.
+- **110 benzersiz araç** `server.ts` kablolu ( `schemas/tools.ts` + belleği, beceriler, GitHub becerileri, havuz, oyunlaştırma, eklenti, Notion, Obsidian, yerel derlem ve — birliği `countUniqueMcpTools` tarafından sayılan sıkıştırma modüllerinde 45 kanonik).
+- **3 taşıma** : stdio, HTTP Yayınlanabilir, SSE.
+- **33 kapsam** `src/shared/constants/mcpScopes.ts` — base list çalışma zamanında uygulanan tam set, her araç modülü tarafından bildirilen kapsamların birleşimidir.
+- Denetim tablosu: `mcp_tool_audit` ( `audit.ts` tarafından doldurulur).
+- Dosyalar: `server.ts`, `index.ts`, `httpTransport.ts`, `audit.ts`, `scopeEnforcement.ts`, `runtimeHeartbeat.ts`, `descriptionCompressor.ts`, `schemas/{tools, a2a, audit, index}.ts`, `tools/{advancedTools, compressionTools, memoryTools, skillTools}.ts` ve ayrıca `__tests__/` altında testler.
+- Araç kataloğunun tamamı için [MCP-SERVER.md](../frameworks/MCP-SERVER.md) bakın.
 
 ### 4.7 `open-sse/config/`
 
-Sağlayıcı kayıtları (`providerRegistry.ts`, `providerModels.ts`,
-`providerHeaderProfiles.ts`), biçim başına model kayıtları (`audioRegistry.ts`,
-`embeddingRegistry.ts`, `imageRegistry.ts`, `moderationRegistry.ts`,
-`musicRegistry.ts`, `rerankRegistry.ts`, `searchRegistry.ts`, `videoRegistry.ts`),
-kimlik yardımcıları (`codexIdentity.ts`, `codexInstructions.ts`,
-`anthropicHeaders.ts`, `antigravityUpstream.ts`, `antigravityModelAliases.ts`,
-`cliFingerprints.ts`, `toolCloaking.ts`, `defaultThinkingSignature.ts`),
-kimlik bilgisi yardımcıları (`credentialLoader.ts`, `codexClient.ts`) ve bulut
-adaptörleri (`azureAi.ts`, `bedrock.ts`, `datarobot.ts`, `glmProvider.ts`,
-`maritalk.ts`, `oci.ts`, `petals.ts`, `runway.ts`, `sap.ts`, `watsonx.ts`,
-`ollamaModels.ts`, `errorConfig.ts`, `constants.ts`, `registryUtils.ts`).
+Provider registries (`providerRegistry.ts`, `providerModels.ts`, `providerHeaderProfiles.ts`), per-format model registries (`audioRegistry.ts`, `embeddingRegistry.ts`, `imageRegistry.ts`, `moderationRegistry.ts`, `musicRegistry.ts`, `rerankRegistry.ts`, `searchRegistry.ts`, `videoRegistry.ts`), identity helpers (`codexIdentity.ts`, `codexInstructions.ts`, `anthropicHeaders.ts`, `antigravityUpstream.ts`, `antigravityModelAliases.ts`, `cliFingerprints.ts`, `toolCloaking.ts`, `defaultThinkingSignature.ts`), credential helpers (`credentialLoader.ts`, `codexClient.ts`), and cloud adapters (`azureAi.ts`, `bedrock.ts`, `datarobot.ts`, `glmProvider.ts`, `maritalk.ts`, `oci.ts`, `petals.ts`, `runway.ts`, `sap.ts`, `watsonx.ts`, `ollamaModels.ts`, `errorConfig.ts`, `constants.ts`, `registryUtils.ts`).
 
 ### 4.8 `open-sse/utils/`
 
-Akış temel öğeleri ve sağlayıcı yardımcıları: `stream.ts`, `streamHandler.ts`,
-`streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`,
-`sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`,
-`networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`,
-`cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`,
-`comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`,
-`thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`,
-`progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`,
-`ollamaTransform.ts`.
+Akış ilkelleri ve sağlayıcı yardımcıları: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
 
 ---
 
@@ -683,34 +640,12 @@ Yaygın komutlar:
 
 Amaca göre 6 alt klasör halinde düzenlenmiştir.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs` ve ayrıca salt okunur PR gözetim yardımcıları:
-  `ci-discriminate.sh` (bir PR'nin başarısız kontrol imzalarını bir referans PR'ye
-  veya base-red sorununa göre kendisine ait / devralınmış / bilinmeyen olarak
-  sınıflandırır) ve `audit-worktree.sh` (bir çalışanın PR'si kabul edilmeden önce
-  kirli dosyaları, korunan yüzeyleri, kaldırılan assert'leri, bastırma sayılarını,
-  geride kalan geçici tsconfig'leri ve PR başı ile yerel HEAD'i denetler).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs` ve ayrıca salt okunur PR bebek bakıcılığı yardımcıları `ci-discriminate.sh` ( PR başarısız kontrol imzalarını bir referans PR veya kırmızı tabana göre kendi / devralınan / bilinmeyen olarak sıralar) sorun) ve `audit-worktree.sh` (kirli dosyalar, korumalı yüzeyler, kaldırılan iddialar, bastırma sayıları, kalan tmp tsconfig'ler, PR kafasına karşı bir çalışanın PR kabul edilmeden önce yerel HEAD — ).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

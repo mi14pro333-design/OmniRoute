@@ -71,75 +71,70 @@
 
 <div align="center">
 
-|                                     |          v3.8.50           | **v3.8.51** |       `v3.8.55+`       |
-| ----------------------------------- | :------------------------: | :---------: | :--------------------: |
-| 🌐 Təchizatçılar                    |            352             |   **358**   |          394           |
-| 🧠 Unikal çat model ID-ləri         |            1320            |  **1374**   |          1491          |
-| 🖼️ Modallıq körpüsü                 | 🆕 görüntü + audio + video |      ✓      |           ✓            |
-| 📡 Radar pulsuz kataloqu            |     🆕 seçimlə qoşulma     |      ✓      |           ✓            |
-| ⚖️ Kvotanı nəzərə alan planlaşdırma |       🆕 Quota-Share       |      ✓      |           ✓            |
-| 📊 Kvota telemetriyası              |          🆕 canlı          |      ✓      |           ✓            |
-| 🧰 Headless rejim                   |             —              |      —      | 🆕 `serve --headless`  |
-| 🛤️ LTS rel infrastrukturu           |             —              |      —      | 🆕 buraxılış kanalları |
-| 🔎 Model aşkarlama API-si           |             —              |      —      | 🆕 `/v1/models/query`  |
+|                                   |          v3.8.50          | **v3.8.51** |       `v3.8.55+`       |
+| --------------------------------- | :-----------------------: | :---------: | :--------------------: |
+| 🌐 Provayderləri                  |            352            |   **358**   |          394           |
+| 🧠 Unikal söhbət modeli IDs       |           1320            |  **1374**   |          1491          |
+| 🖼️ Modallıq Körpüsü               | 🆕 vision + audio + video |      ✓      |           ✓            |
+| 📡 radar pulsuz kataloqu          |       🆕 daxil olun       |      ✓      |           ✓            |
+| ⚖️ Kvotadan xəbərdar planlaşdırma |     🆕 Kvota-Paylaşın     |      ✓      |           ✓            |
+| 📊 Kvota telemetriyası            |         🆕 canlı          |      ✓      |           ✓            |
+| 🧰 Başsız rejimi                  |             —             |      —      | 🆕 `serve --headless`  |
+| 🛤️ LTS dəmir yolu infra           |             —             |      —      | 🆕 buraxılış kanalları |
+| 🔎 Model kəşfi API                |             —             |      —      | 🆕 `/v1/models/query`  |
 
-**→ [Yol xəritəsi](ROADMAP.md) — `v3.9.0 LTS` relinə doğru irəliləyirik**
+**→ [Roadmap](ROADMAP.md) — `v3.9.0 LTS` gedən dəmir yolu**
 
 </div>
 
 <br/>
 
-## 🧩 Mövcuddur
+## 🧩 mövcuddur
 
-[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)
-![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)
-[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)
-![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
+[![npm versiyası](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm) ](https://www.npmjs.com/package/omniroute) ![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm) [![Docker Hub](https://img.shields.io/docker/v/cheaperinference/omniroute?label=Docker%20Hub&logo=docker&color=2496ED) ](https://hub.docker.com/r/cheaperinference/omniroute) [![Lisenziya: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square) ](LICENSE) ![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED) ![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
 
 <table>
   <tr>
-    <td align="right"><b>🚀 Başla</b></td>
-    <td align="center"><a href="#-quick-start">🚀 Sürətli başlanğıc</a></td>
-    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 Quraşdırma</a></td>
-    <td align="center"><a href="#first-run">🆓 Provayderə qoşul</a></td>
+    <td align="right"><b>🚀 Start</b></td>
+    <td align="center"><a href="#-quick-start">🚀 Tez Başlanğıc</a></td>
+    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 Quraşdırın</a></td>
+    <td align="center"><a href="#first-run">🆓 Provayderi birləşdirin</a></td>
   </tr>
   <tr>
     <td align="right"><b>💡 Öyrən</b></td>
-    <td align="center"><a href="#-the-promise">💥 Vəd</a></td>
-    <td align="center"><a href="#-why-omniroute">🤔 OmniRoute niyə?</a></td>
-    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 Fərqləndirən cəhətlər</a></td>
+    <td align="center"><a href="#-the-promise">💥 The Promise</a></td>
+    <td align="center"><a href="#-why-omniroute">🤔 niyə OmniRoute</a></td>
+    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 Nə Ayırır</a></td>
   </tr>
   <tr>
-    <td align="right"><b>⚙️ Xüsusiyyətlər</b></td>
-    <td align="center"><a href="#-combos--the-flagship">🎯 Kombinasiyalar</a></td>
-    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 Provayderlər</a></td>
-    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI və MCP</a></td>
+    <td align="right"><b>⚙️ Xüsusiyyətləri</b></td>
+    <td align="center"><a href="#-combos--the-flagship">🎯 Combos</a></td>
+    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 Provayderləri</a></td>
+    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI &amp; MCP</a></td>
   </tr>
   <tr>
     <td align="right"></td>
-    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ Sıxışdırma</a></td>
-    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ Harada işləyir</a></td>
-    <td align="center"><a href="#-private--local-first">🔒 Məxfi</a></td>
+    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ sıxılma</a></td>
+    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ Harada Çalışır</a></td>
+    <td align="center"><a href="#-private--local-first">🔒 Şəxsi</a></td>
   </tr>
   <tr>
-    <td align="right"><b>👀 Bax</b></td>
+    <td align="right"><b>👀 bax</b></td>
     <td align="center"><a href="#-omniroute-in-action">🎬 Fəaliyyətdə</a></td>
     <td align="center"><a href="#-whats-new">✨ Yeniliklər</a></td>
-    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 Uyğun CLI-lər</a></td>
+    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 uyğun CLIs</a></td>
   </tr>
   <tr>
-    <td align="right"><b>💚 Dəstəklə</b></td>
-    <td align="center"><a href="#-support-omniroute">💚 Dəstək / ianə</a></td>
-    <td align="center"><a href="#-community--help">💬 İcma</a></td>
-    <td align="center"><a href="#-sponsors">💖 Sponsorlar</a></td>
+    <td align="right"><b>💚 dəstəyi</b></td>
+    <td align="center"><a href="#-support-omniroute">💚 Dəstəyi / Bağışlayın</a></td>
+    <td align="center"><a href="#-community--help">💬 İcması</a></td>
+    <td align="center"><a href="#-sponsors">💖 Sponsorları</a></td>
   </tr>
   <tr>
-    <td align="right"><b>📦 Layihə</b></td>
-    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ Texnologiya steki</a></td>
+    <td align="right"><b>📦 Layihəsi</b></td>
+    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ Tech Stack</a></td>
     <td align="center"><a href="#-documentation">📖 Sənədlər</a></td>
-    <td align="center"><a href="#-1000-contributors">👥 Töhfə verənlər</a></td>
+    <td align="center"><a href="#-1000-contributors">👥 ianəçilər</a></td>
   </tr>
 </table>
 
@@ -148,73 +143,73 @@
 <div align="center">
   <b>🌐 67 dildə</b>
   <br/><br/>
-  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="İngilis dili (en)" title="İngilis dili (en)"></a>
-  <a href="docs/i18n/pt-BR/README.md"><img src="docs/assets/flags/br.svg" width="30" alt="Portuqal dili — Braziliya (pt-BR)" title="Portuqal dili — Braziliya (pt-BR)"></a>
-  <a href="docs/i18n/pt/README.md"><img src="docs/assets/flags/pt.svg" width="30" alt="Portuqal dili (pt)" title="Portuqal dili (pt)"></a>
-  <a href="docs/i18n/es/README.md"><img src="docs/assets/flags/es.svg" width="30" alt="İspan dili (es)" title="İspan dili (es)"></a>
-  <a href="docs/i18n/fr/README.md"><img src="docs/assets/flags/fr.svg" width="30" alt="Fransız dili (fr)" title="Fransız dili (fr)"></a>
-  <a href="docs/i18n/it/README.md"><img src="docs/assets/flags/it.svg" width="30" alt="İtalyan dili (it)" title="İtalyan dili (it)"></a>
-  <a href="docs/i18n/de/README.md"><img src="docs/assets/flags/de.svg" width="30" alt="Alman dili (de)" title="Alman dili (de)"></a>
-  <a href="docs/i18n/nl/README.md"><img src="docs/assets/flags/nl.svg" width="30" alt="Niderland dili (nl)" title="Niderland dili (nl)"></a>
-  <a href="docs/i18n/ru/README.md"><img src="docs/assets/flags/ru.svg" width="30" alt="Rus dili (ru)" title="Rus dili (ru)"></a>
-  <a href="docs/i18n/uk-UA/README.md"><img src="docs/assets/flags/ua.svg" width="30" alt="Ukrayna dili (uk-UA)" title="Ukrayna dili (uk-UA)"></a>
-  <a href="docs/i18n/pl/README.md"><img src="docs/assets/flags/pl.svg" width="30" alt="Polyak dili (pl)" title="Polyak dili (pl)"></a>
-  <a href="docs/i18n/cs/README.md"><img src="docs/assets/flags/cz.svg" width="30" alt="Çex dili (cs)" title="Çex dili (cs)"></a>
-  <a href="docs/i18n/sk/README.md"><img src="docs/assets/flags/sk.svg" width="30" alt="Slovak dili (sk)" title="Slovak dili (sk)"></a>
-  <a href="docs/i18n/ro/README.md"><img src="docs/assets/flags/ro.svg" width="30" alt="Rumın dili (ro)" title="Rumın dili (ro)"></a>
-  <a href="docs/i18n/hu/README.md"><img src="docs/assets/flags/hu.svg" width="30" alt="Macar dili (hu)" title="Macar dili (hu)"></a>
-  <a href="docs/i18n/bg/README.md"><img src="docs/assets/flags/bg.svg" width="30" alt="Bolqar dili (bg)" title="Bolqar dili (bg)"></a>
-  <a href="docs/i18n/da/README.md"><img src="docs/assets/flags/dk.svg" width="30" alt="Danimarka dili (da)" title="Danimarka dili (da)"></a>
-  <a href="docs/i18n/fi/README.md"><img src="docs/assets/flags/fi.svg" width="30" alt="Fin dili (fi)" title="Fin dili (fi)"></a>
-  <a href="docs/i18n/no/README.md"><img src="docs/assets/flags/no.svg" width="30" alt="Norveç dili (no)" title="Norveç dili (no)"></a>
-  <a href="docs/i18n/sv/README.md"><img src="docs/assets/flags/se.svg" width="30" alt="İsveç dili (sv)" title="İsveç dili (sv)"></a>
-  <a href="docs/i18n/zh-CN/README.md"><img src="docs/assets/flags/cn.svg" width="30" alt="Çin dili — sadələşdirilmiş (zh-CN)" title="Çin dili — sadələşdirilmiş (zh-CN)"></a>
-  <a href="docs/i18n/zh-TW/README.md"><img src="docs/assets/flags/tw.svg" width="30" alt="Çin dili — ənənəvi (zh-TW)" title="Çin dili — ənənəvi (zh-TW)"></a>
-  <a href="docs/i18n/ja/README.md"><img src="docs/assets/flags/jp.svg" width="30" alt="Yapon dili (ja)" title="Yapon dili (ja)"></a>
-  <a href="docs/i18n/ko/README.md"><img src="docs/assets/flags/kr.svg" width="30" alt="Koreya dili (ko)" title="Koreya dili (ko)"></a>
-  <a href="docs/i18n/th/README.md"><img src="docs/assets/flags/th.svg" width="30" alt="Tay dili (th)" title="Tay dili (th)"></a>
-  <a href="docs/i18n/vi/README.md"><img src="docs/assets/flags/vn.svg" width="30" alt="Vyetnam dili (vi)" title="Vyetnam dili (vi)"></a>
-  <a href="docs/i18n/id/README.md"><img src="docs/assets/flags/id.svg" width="30" alt="İndoneziya dili (id)" title="İndoneziya dili (id)"></a>
-  <a href="docs/i18n/ms/README.md"><img src="docs/assets/flags/my.svg" width="30" alt="Malay dili (ms)" title="Malay dili (ms)"></a>
-  <a href="docs/i18n/phi/README.md"><img src="docs/assets/flags/ph.svg" width="30" alt="Filippin dili (phi)" title="Filippin dili (phi)"></a>
-  <a href="docs/i18n/hi/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Hindi dili (hi)" title="Hindi dili (hi)"></a>
-  <a href="docs/i18n/gu/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Qucarat dili (gu)" title="Qucarat dili (gu)"></a>
-  <a href="docs/i18n/mr/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Marathi dili (mr)" title="Marathi dili (mr)"></a>
-  <a href="docs/i18n/ta/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Tamil dili (ta)" title="Tamil dili (ta)"></a>
-  <a href="docs/i18n/te/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Teluqu dili (te)" title="Teluqu dili (te)"></a>
-  <a href="docs/i18n/bn/README.md"><img src="docs/assets/flags/bd.svg" width="30" alt="Benqal dili (bn)" title="Benqal dili (bn)"></a>
-  <a href="docs/i18n/ur/README.md"><img src="docs/assets/flags/pk.svg" width="30" alt="Urdu dili (ur)" title="Urdu dili (ur)"></a>
-  <a href="docs/i18n/fa/README.md"><img src="docs/assets/flags/ir.svg" width="30" alt="Fars dili (fa)" title="Fars dili (fa)"></a>
-  <a href="docs/i18n/ar/README.md"><img src="docs/assets/flags/sa.svg" width="30" alt="Ərəb dili (ar)" title="Ərəb dili (ar)"></a>
-  <a href="docs/i18n/he/README.md"><img src="docs/assets/flags/il.svg" width="30" alt="İvrit dili (he)" title="İvrit dili (he)"></a>
-  <a href="docs/i18n/tr/README.md"><img src="docs/assets/flags/tr.svg" width="30" alt="Türk dili (tr)" title="Türk dili (tr)"></a>
-  <a href="docs/i18n/az/README.md"><img src="docs/assets/flags/az.svg" width="30" alt="Azərbaycan dili (az)" title="Azərbaycan dili (az)"></a>
-  <a href="docs/i18n/sw/README.md"><img src="docs/assets/flags/tz.svg" width="30" alt="Suahili dili (sw)" title="Suahili dili (sw)"></a>
-  <a href="docs/i18n/el/README.md"><img src="docs/assets/flags/gr.svg" width="30" alt="Yunan dili (el)" title="Yunan dili (el)"></a>
-  <a href="docs/i18n/hr/README.md"><img src="docs/assets/flags/hr.svg" width="30" alt="Xorvat dili (hr)" title="Xorvat dili (hr)"></a>
-  <a href="docs/i18n/sr/README.md"><img src="docs/assets/flags/rs.svg" width="30" alt="Serb dili (sr)" title="Serb dili (sr)"></a>
-  <a href="docs/i18n/lt/README.md"><img src="docs/assets/flags/lt.svg" width="30" alt="Litva dili (lt)" title="Litva dili (lt)"></a>
-  <a href="docs/i18n/et/README.md"><img src="docs/assets/flags/ee.svg" width="30" alt="Eston dili (et)" title="Eston dili (et)"></a>
-  <a href="docs/i18n/lv/README.md"><img src="docs/assets/flags/lv.svg" width="30" alt="Latış dili (lv)" title="Latış dili (lv)"></a>
-  <a href="docs/i18n/sl/README.md"><img src="docs/assets/flags/si.svg" width="30" alt="Sloven dili (sl)" title="Sloven dili (sl)"></a>
-  <a href="docs/i18n/mt/README.md"><img src="docs/assets/flags/mt.svg" width="30" alt="Malta dili (mt)" title="Malta dili (mt)"></a>
-  <a href="docs/i18n/ga/README.md"><img src="docs/assets/flags/ie.svg" width="30" alt="İrland dili (ga)" title="İrland dili (ga)"></a>
-  <a href="docs/i18n/kn/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Kannada dili (kn)" title="Kannada dili (kn)"></a>
-  <a href="docs/i18n/ml/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Malayalam dili (ml)" title="Malayalam dili (ml)"></a>
-  <a href="docs/i18n/or/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Odiya dili (or)" title="Odiya dili (or)"></a>
-  <a href="docs/i18n/pa/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Pəncab dili (pa)" title="Pəncab dili (pa)"></a>
-  <a href="docs/i18n/ne/README.md"><img src="docs/assets/flags/np.svg" width="30" alt="Nepal dili (ne)" title="Nepal dili (ne)"></a>
-  <a href="docs/i18n/si/README.md"><img src="docs/assets/flags/lk.svg" width="30" alt="Sinhala dili (si)" title="Sinhala dili (si)"></a>
-  <a href="docs/i18n/my/README.md"><img src="docs/assets/flags/mm.svg" width="30" alt="Birman dili (my)" title="Birman dili (my)"></a>
-  <a href="docs/i18n/km/README.md"><img src="docs/assets/flags/kh.svg" width="30" alt="Kxmer dili (km)" title="Kxmer dili (km)"></a>
-  <a href="docs/i18n/ha/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Hausa dili (ha)" title="Hausa dili (ha)"></a>
-  <a href="docs/i18n/yo/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Yoruba dili (yo)" title="Yoruba dili (yo)"></a>
-  <a href="docs/i18n/ig/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="İqbo dili (ig)" title="İqbo dili (ig)"></a>
-  <a href="docs/i18n/am/README.md"><img src="docs/assets/flags/et.svg" width="30" alt="Amhar dili (am)" title="Amhar dili (am)"></a>
-  <a href="docs/i18n/uz/README.md"><img src="docs/assets/flags/uz.svg" width="30" alt="Özbək dili (uz)" title="Özbək dili (uz)"></a>
-  <a href="docs/i18n/ka/README.md"><img src="docs/assets/flags/ge.svg" width="30" alt="Gürcü dili (ka)" title="Gürcü dili (ka)"></a>
-  <a href="docs/i18n/hy/README.md"><img src="docs/assets/flags/am.svg" width="30" alt="Erməni dili (hy)" title="Erməni dili (hy)"></a>
-  <a href="docs/i18n/bs/README.md"><img src="docs/assets/flags/ba.svg" width="30" alt="Bosniya dili (bs)" title="Bosniya dili (bs)"></a>
+  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="English (en)" title="English (en)"></a>
+  <a href="docs/i18n/pt-BR/README.md"><img src="docs/assets/flags/br.svg" width="30" alt="Português — Brasil (pt-BR)" title="Português — Brasil (pt-BR)"></a>
+  <a href="docs/i18n/pt/README.md"><img src="docs/assets/flags/pt.svg" width="30" alt="Português (pt)" title="Português (pt)"></a>
+  <a href="docs/i18n/es/README.md"><img src="docs/assets/flags/es.svg" width="30" alt="Español (es)" title="Español (es)"></a>
+  <a href="docs/i18n/fr/README.md"><img src="docs/assets/flags/fr.svg" width="30" alt="Français (fr)" title="Français (fr)"></a>
+  <a href="docs/i18n/it/README.md"><img src="docs/assets/flags/it.svg" width="30" alt="Italiano (it)" title="Italiano (it)"></a>
+  <a href="docs/i18n/de/README.md"><img src="docs/assets/flags/de.svg" width="30" alt="Deutsch (de)" title="Deutsch (de)"></a>
+  <a href="docs/i18n/nl/README.md"><img src="docs/assets/flags/nl.svg" width="30" alt="Nederlands (nl)" title="Nederlands (nl)"></a>
+  <a href="docs/i18n/ru/README.md"><img src="docs/assets/flags/ru.svg" width="30" alt="Русский (ru)" title="Русский (ru)"></a>
+  <a href="docs/i18n/uk-UA/README.md"><img src="docs/assets/flags/ua.svg" width="30" alt="Українська (uk-UA)" title="Українська (uk-UA)"></a>
+  <a href="docs/i18n/pl/README.md"><img src="docs/assets/flags/pl.svg" width="30" alt="Polski (pl)" title="Polski (pl)"></a>
+  <a href="docs/i18n/cs/README.md"><img src="docs/assets/flags/cz.svg" width="30" alt="Čeština (cs)" title="Čeština (cs)"></a>
+  <a href="docs/i18n/sk/README.md"><img src="docs/assets/flags/sk.svg" width="30" alt="Slovenčina (sk)" title="Slovenčina (sk)"></a>
+  <a href="docs/i18n/ro/README.md"><img src="docs/assets/flags/ro.svg" width="30" alt="Română (ro)" title="Română (ro)"></a>
+  <a href="docs/i18n/hu/README.md"><img src="docs/assets/flags/hu.svg" width="30" alt="Magyar (hu)" title="Magyar (hu)"></a>
+  <a href="docs/i18n/bg/README.md"><img src="docs/assets/flags/bg.svg" width="30" alt="Български (bg)" title="Български (bg)"></a>
+  <a href="docs/i18n/da/README.md"><img src="docs/assets/flags/dk.svg" width="30" alt="Dansk (da)" title="Dansk (da)"></a>
+  <a href="docs/i18n/fi/README.md"><img src="docs/assets/flags/fi.svg" width="30" alt="Suomi (fi)" title="Suomi (fi)"></a>
+  <a href="docs/i18n/no/README.md"><img src="docs/assets/flags/no.svg" width="30" alt="Norsk (no)" title="Norsk (no)"></a>
+  <a href="docs/i18n/sv/README.md"><img src="docs/assets/flags/se.svg" width="30" alt="Svenska (sv)" title="Svenska (sv)"></a>
+  <a href="docs/i18n/zh-CN/README.md"><img src="docs/assets/flags/cn.svg" width="30" alt="中文 — 简体 (zh-CN)" title="中文 — 简体 (zh-CN)"></a>
+  <a href="docs/i18n/zh-TW/README.md"><img src="docs/assets/flags/tw.svg" width="30" alt="中文 — 繁體 (zh-TW)" title="中文 — 繁體 (zh-TW)"></a>
+  <a href="docs/i18n/ja/README.md"><img src="docs/assets/flags/jp.svg" width="30" alt="日本語 (ja)" title="日本語 (ja)"></a>
+  <a href="docs/i18n/ko/README.md"><img src="docs/assets/flags/kr.svg" width="30" alt="한국어 (ko)" title="한국어 (ko)"></a>
+  <a href="docs/i18n/th/README.md"><img src="docs/assets/flags/th.svg" width="30" alt="ไทย (th)" title="ไทย (th)"></a>
+  <a href="docs/i18n/vi/README.md"><img src="docs/assets/flags/vn.svg" width="30" alt="Tiếng Việt (vi)" title="Tiếng Việt (vi)"></a>
+  <a href="docs/i18n/id/README.md"><img src="docs/assets/flags/id.svg" width="30" alt="Bahasa Indonesia (id)" title="Bahasa Indonesia (id)"></a>
+  <a href="docs/i18n/ms/README.md"><img src="docs/assets/flags/my.svg" width="30" alt="Bahasa Melayu (ms)" title="Bahasa Melayu (ms)"></a>
+  <a href="docs/i18n/phi/README.md"><img src="docs/assets/flags/ph.svg" width="30" alt="Filipino (phi)" title="Filipino (phi)"></a>
+  <a href="docs/i18n/hi/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="हिन्दी (hi)" title="हिन्दी (hi)"></a>
+  <a href="docs/i18n/gu/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ગુજરાતી (gu)" title="ગુજરાતી (gu)"></a>
+  <a href="docs/i18n/mr/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="मराठी (mr)" title="मराठी (mr)"></a>
+  <a href="docs/i18n/ta/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="தமிழ் (ta)" title="தமிழ் (ta)"></a>
+  <a href="docs/i18n/te/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="తెలుగు (te)" title="తెలుగు (te)"></a>
+  <a href="docs/i18n/bn/README.md"><img src="docs/assets/flags/bd.svg" width="30" alt="বাংলা (bn)" title="বাংলা (bn)"></a>
+  <a href="docs/i18n/ur/README.md"><img src="docs/assets/flags/pk.svg" width="30" alt="اردو (ur)" title="اردو (ur)"></a>
+  <a href="docs/i18n/fa/README.md"><img src="docs/assets/flags/ir.svg" width="30" alt="فارسی (fa)" title="فارسی (fa)"></a>
+  <a href="docs/i18n/ar/README.md"><img src="docs/assets/flags/sa.svg" width="30" alt="العربية (ar)" title="العربية (ar)"></a>
+  <a href="docs/i18n/he/README.md"><img src="docs/assets/flags/il.svg" width="30" alt="עברית (he)" title="עברית (he)"></a>
+  <a href="docs/i18n/tr/README.md"><img src="docs/assets/flags/tr.svg" width="30" alt="Türkçe (tr)" title="Türkçe (tr)"></a>
+  <a href="docs/i18n/az/README.md"><img src="docs/assets/flags/az.svg" width="30" alt="Azərbaycan (az)" title="Azərbaycan (az)"></a>
+  <a href="docs/i18n/sw/README.md"><img src="docs/assets/flags/tz.svg" width="30" alt="Kiswahili (sw)" title="Kiswahili (sw)"></a>
+  <a href="docs/i18n/el/README.md"><img src="docs/assets/flags/gr.svg" width="30" alt="Ελληνικά (el)" title="Ελληνικά (el)"></a>
+  <a href="docs/i18n/hr/README.md"><img src="docs/assets/flags/hr.svg" width="30" alt="Hrvatski (hr)" title="Hrvatski (hr)"></a>
+  <a href="docs/i18n/sr/README.md"><img src="docs/assets/flags/rs.svg" width="30" alt="Српски (sr)" title="Српски (sr)"></a>
+  <a href="docs/i18n/lt/README.md"><img src="docs/assets/flags/lt.svg" width="30" alt="Lietuvių (lt)" title="Lietuvių (lt)"></a>
+  <a href="docs/i18n/et/README.md"><img src="docs/assets/flags/ee.svg" width="30" alt="Eesti (et)" title="Eesti (et)"></a>
+  <a href="docs/i18n/lv/README.md"><img src="docs/assets/flags/lv.svg" width="30" alt="Latviešu (lv)" title="Latviešu (lv)"></a>
+  <a href="docs/i18n/sl/README.md"><img src="docs/assets/flags/si.svg" width="30" alt="Slovenščina (sl)" title="Slovenščina (sl)"></a>
+  <a href="docs/i18n/mt/README.md"><img src="docs/assets/flags/mt.svg" width="30" alt="Malti (mt)" title="Malti (mt)"></a>
+  <a href="docs/i18n/ga/README.md"><img src="docs/assets/flags/ie.svg" width="30" alt="Gaeilge (ga)" title="Gaeilge (ga)"></a>
+  <a href="docs/i18n/kn/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ಕನ್ನಡ (kn)" title="ಕನ್ನಡ (kn)"></a>
+  <a href="docs/i18n/ml/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="മലയാളം (ml)" title="മലയാളം (ml)"></a>
+  <a href="docs/i18n/or/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ଓଡ଼ିଆ (or)" title="ଓଡ଼ିଆ (or)"></a>
+  <a href="docs/i18n/pa/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ਪੰਜਾਬੀ (pa)" title="ਪੰਜਾਬੀ (pa)"></a>
+  <a href="docs/i18n/ne/README.md"><img src="docs/assets/flags/np.svg" width="30" alt="नेपाली (ne)" title="नेपाली (ne)"></a>
+  <a href="docs/i18n/si/README.md"><img src="docs/assets/flags/lk.svg" width="30" alt="සිංහල (si)" title="සිංහල (si)"></a>
+  <a href="docs/i18n/my/README.md"><img src="docs/assets/flags/mm.svg" width="30" alt="မြန်မာ (my)" title="မြန်မာ (my)"></a>
+  <a href="docs/i18n/km/README.md"><img src="docs/assets/flags/kh.svg" width="30" alt="ខ្មែរ (km)" title="ខ្មែរ (km)"></a>
+  <a href="docs/i18n/ha/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Hausa (ha)" title="Hausa (ha)"></a>
+  <a href="docs/i18n/yo/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Yorùbá (yo)" title="Yorùbá (yo)"></a>
+  <a href="docs/i18n/ig/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Igbo (ig)" title="Igbo (ig)"></a>
+  <a href="docs/i18n/am/README.md"><img src="docs/assets/flags/et.svg" width="30" alt="አማርኛ (am)" title="አማርኛ (am)"></a>
+  <a href="docs/i18n/uz/README.md"><img src="docs/assets/flags/uz.svg" width="30" alt="Oʻzbekcha (uz)" title="Oʻzbekcha (uz)"></a>
+  <a href="docs/i18n/ka/README.md"><img src="docs/assets/flags/ge.svg" width="30" alt="ქართული (ka)" title="ქართული (ka)"></a>
+  <a href="docs/i18n/hy/README.md"><img src="docs/assets/flags/am.svg" width="30" alt="Հայերեն (hy)" title="Հայերեն (hy)"></a>
+  <a href="docs/i18n/bs/README.md"><img src="docs/assets/flags/ba.svg" width="30" alt="Bosanski (bs)" title="Bosanski (bs)"></a>
 </div>
 
 <br/>
@@ -590,35 +585,35 @@ Radar-a qoşulmaq ixtiyaridir və o, yalnız GET sorğularından istifadə edir.
 
 </div>
 
-> **v3.8.20 → v3.8.55** arasındakı son yeniliklər. Tam tarixçə [`CHANGELOG.md`](CHANGELOG.md) faylındadır.
+> Ən son məqamlar** v3.8.20 → v3.8.55** . [`CHANGELOG.md`](CHANGELOG.md) -də tam tarix.
 
-- **⚖️ `quota-weighted` yönləndirməsi** — 20-ci kombinasiya strategiyası tükənmiş hesabları keçib, sonra qalanlar arasından qalıq kvota ÷ icra olunan yük nisbətinə uyğun seçim edir və mövcud söhbətləri sabit hesablara bağlayır. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
-- **🧰 Başsız rejim** — `omniroute serve --headless` (və ya `OMNIROUTE_HEADLESS=1`) yalnız `/v1/*` proksi mühərrikini işə salır, idarə panelini və yalnız idarə panelinə aid alt sistemləri söndürür. → [Başsız rejim](docs/guides/HEADLESS.md)
-- **🔎 Model aşkarlanması** — `/v1/models` imkan, kontekst, növ və mətn üzrə filtrləyir, `POST /v1/models/query` isə hər açar üçün eyni görünürlük qaydaları ilə qısa, deterministik seçim siyahısı qaytarır. → [API arayışı](docs/reference/API_REFERENCE.md)
-- **🔑 Açar üzrə yönləndirməyə nəzarət** — API açarını `forcedModel` ilə bir modelə və ya kombinasiyaya bağlayın, həmçinin açarın modellərini və kombinasiyalarını atomik şəkildə əlavə edin və ya silin (`/api/keys/{id}/access`). → [API arayışı](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
-- **🛡️ Daha dəqiq PII nəzarətləri** — növ üzrə seçim, 20-yə qədər yoxlanılmış fərdi maskalama nümunəsi və növ üzrə aşkarlama sayğacları; maskalama özü isə seçimə bağlı olaraq qalır. → [Mühafizə tədbirləri](docs/security/GUARDRAILS.md)
-- **🌍 67 dil** — idarə paneli, sənəd güzgüləri və CLI üçün; `npm run i18n:add-locale` bir əmrlə dili hər yerdə əlavə edir. → [i18n təlimatı](docs/guides/I18N.md)
-- **🎛️ OmniConductor** — agentlər parkınıza daxil olan A2A delegasiyası, Agent Card-da Conductor bacarıqları və Faro push-to-talk səsli çatına malik idarə paneli bölməsi. → [A2A serveri](docs/frameworks/A2A-SERVER.md)
-- **🛂 Adaptiv qəbul və həddən artıq yüklənmədən qorunma** — ağır çat sorğuları 503 xətası qaytarmaq əvəzinə növbəyə alınır, hər bağlantı üçün atomik RPM sürüşən icarələri ilə. → [Dayanıqlılıq təlimatı](docs/architecture/RESILIENCE_GUIDE.md)
-- **🗂️ Kanonik `/v1/models` sıralaması** — hər provayder üçün bir bitişik, provayder qruplarına bölünmüş blok (kombinasiyalar əvvəl olmaqla), bütün kataloq mənbələrində sabit qalır. → [API arayışı](docs/reference/API_REFERENCE.md)
-- **🗜️ Sıxlaşdırmanın möhkəmləndirilməsi** — defolt olaraq aktiv inflyasiya qoruması, DE / FR / JA və Çin dili (wényán) üçün Caveman paketləri, Gradle və .NET üçün RTK filtrləri. → [Sıxlaşdırma](docs/compression/COMPRESSION_ENGINES.md)
-- **💸 Dürüst sabit tarifli qiymət** — abunə / kodlaşdırma planı provayderləri xərc analitikasında **$0** göstərir; büdcə, kvota və yönləndirmə hesablama aparmağa davam edir. → [API arayışı](docs/reference/API_REFERENCE.md)
-- **⚖️ Quota-Share yönləndirməsi** — ortaq hesabın kvotasını hovuzdakı açarlar arasında ədalətli bölür, boş qalan payları istifadəyə verir. → [Dayanıqlılıq təlimatı](docs/architecture/RESILIENCE_GUIDE.md)
-- **🤖 Bir əmrlə CLI/agent quraşdırılması** — 15 qeydiyyatdan keçmiş `setup-*` əmri; `omniroute run` 7 CLI-ni (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI) işə salır; `omniroute configure` interaktiv provayder+model seçicisi və kontekst üzrə sevimlilərlə 11 hədəfi dəstəkləyir. → [CLI inteqrasiyaları](docs/guides/CLI-INTEGRATIONS.md)
-- **🛰️ Uzaq rejim** — əhatə dairəsi məhdud tokenlərlə (`connect` / `contexts` / `tokens`) uzaq OmniRoute-u idarə edin və VPS quraşdırmaları üçün `antigravity` OAuth köməkçisindən istifadə edin. → [Uzaq rejim](docs/guides/REMOTE-MODE.md)
-- **🧭 Daha ağıllı avtomatik yönləndirmə** — `auto/<category>:<tier>` kombinasiyaları, **Fusion** (model paneli + hakim), tapşırıqdan xəbərdar yönləndirmə, sorğu üzrə model / rejim / USD-büdcə dəyişiklikləri. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
-- **🗜️ Qoşula bilən sıxlaşdırma** — 12 kompozisiya edilə bilən mühərrik və Compression Studios: LLMLingua-2, iki səviyyəli Ultra, omniglyph, addım üzrə dəqiqlik qapısı, GCF v3.2, sürüklə-yenidən-sırala redaktoru. → [Sıxlaşdırma](docs/compression/COMPRESSION_ENGINES.md)
-- **🕵️ Şəffaf MITM deşifrləməsi (TPROXY)** — proksi mühit dəyişənlərinə məhəl qoymayan CLI-ləri tutmaq üçün, SNI üzrə CA və etibar anbarı quraşdırıcısı ilə. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
-- **💸 Hər yerdə xərc telemetriyası** — hər endpoint-də `X-OmniRoute-*` xərc/istifadə başlıqları, keş-HIT qənaət başlığı və açar üzrə USD xərcləmə kvotaları. → [API arayışı](docs/reference/API_REFERENCE.md)
-- **🧠 Nəzarət etdiyiniz yaddaş** — defolt olaraq söndürülüb, seçimə bağlı int8 vektor kvantlaşdırması + tiplənmiş zəifləmə və sorğu üzrə `x-omniroute-no-memory`. → [Yaddaş](docs/frameworks/MEMORY.md)
-- **🛡️ Təhlükəsizlik** — hər LLM marşrutunda prompt inyeksiyasından qorunma (red-team dəsti), seçimə bağlı etimadnamə maskalama mühafizə tədbiri (sızmış API açarlarını/secret-ləri hər iki istiqamətdə redaktə edir), son çarə kimi pulsuz DuckDuckGo veb axtarışı və idarə paneli üçün seçimə bağlı OIDC giriş qapısı (parolla giriş həmişə əlçatan qalır). → [Mühafizə tədbirləri](docs/security/GUARDRAILS.md)
-- **🖼️ Yeni endpoint-lər** — `/v1/ocr` (Mistral OCR) və `/v1/audio/translations` (Whisper üslubunda) media imkanlarını tamamlayır. → [API arayışı](docs/reference/API_REFERENCE.md)
-- **🎨 Şəkil / video / audio generasiyası** — media üçün bir API: xAI Grok Imagine və Novita AI video, ComfyUI, Magnific, Adobe Firefly, Segmind və ElevenLabs kimi nitq provayderləri. → [API arayışı](docs/reference/API_REFERENCE.md)
-- **🌍 Yerləşdirmə və əməliyyatlar** — əks proksi `basePath`, brauzer dilinin avtomatik aşkarlanması, açar üzrə cihaz izlənməsi, root-suz MITM etibarı, zh-TW lokallaşdırması. → [Mühit](docs/reference/ENVIRONMENT.md)
-- **🤝 Daha çox provayder və agent** — bulud agentləri (Codex Cloud, Cursor, Devin, Jules), brauzer + OAuth girişi olan Grok Build (xAI), tam dəstəklənən Ollama kartı, Claude Opus 5 və Sonnet 5, Kimi ilə rəsmi tərəfdaşlıq (Code/Web/Moonshot), Zed, Requesty, SenseNova, Yuanbao, Agnes AI… və yenilənmiş **394 provayderdən ibarət kataloq**. → [Provayderlər](docs/reference/PROVIDER_REFERENCE.md)
-- **📡 Yönləndirmə şəffaflığı** — hər cavab onu təqdim edən strategiyanın/provayderin/gecikmənin adını göstərən `X-OmniRoute-Decision` başlığını daşıyır, yeni `cache-optimized` kombinasiya strategiyası + Auto-Combo `cacheAffinity` faktoru təkrarlanan sorğuları keşlənmiş prefiksi saxlayan bağlantıya yönləndirir və yalnız oxunan `/v1/auto-combo/{channel}/candidates` endpoint-i `auto/*` kanalının canlı namizəd hovuzunu göstərir. → [Auto-Combo](docs/routing/AUTO-COMBO.md).
-- **⚡ Lokal performans və infrastruktur** — bir kliklə lokal Redis, Cloudflare Workers / Deno Deploy relay yerləşdiriciləri, nəzarət edilən daxili xidmətlər kimi Bifrost və Mux. → [Daxili xidmətlər](docs/frameworks/EMBEDDED-SERVICES.md)
-- **🧩 Qutuda həmçinin** — plagin çərçivəsi + marketplace, Omni/Agent/GitHub skills çərçivələri, Obsidian vault inteqrasiyası (22 MCP aləti), OpenAI ilə uyğun Batch və Files API-ləri, semantik cavab keşi, lider cədvəlləri ilə oyunlaşdırma, ACP agent kəşfi (15 daxili agent), BigQuery-yə planlaşdırılmış jurnal ixracı, `auto/chaos` paralel çoxmodel fan-out-u, Telegram bot körpüsü, tətbiqdaxili versiya meneceri və LMArena-ELO pulsuz provayder reytinqləri. → [Sənədlər](docs/README.md)
+- **⚖️ `quota-weighted` marşrutlaşdırma** — 20-ci kombinasiya strategiyası tükənmiş hesabları atlayır, sonra qalan kvota ÷ uçuş yükü ilə mütənasib olaraq qalanları çəkir, mövcud söhbətləri sabit saxlayır. → [Avtomatik Kombo](docs/routing/AUTO-COMBO.md)
+- **🧰 Başsız rejimi** — `omniroute serve --headless` (və ya `OMNIROUTE_HEADLESS=1`) yalnız `/v1/*` proksi mühərrikini idarə edir, idarə paneli və yalnız tablosuna aid olan alt sistemləri söndürür. → [Başsız Modu](docs/guides/HEADLESS.md)
+- **🔎 Model kəşfi** — `/v1/models` imkanlara, kontekstə, növə və mətnə görə filtrləyir və `POST /v1/models/query` hər açar üçün eyni görünmə qabiliyyətinə malik qısa deterministik qısa siyahı qaytarır. → [API İstinad](docs/reference/API_REFERENCE.md)
+- **🔑 Hər düymə üçün marşrutlaşdırma nəzarəti** — bir API açarını bir modelə və ya `forcedModel` ilə kombinə edin və açarın modellərini və kombinasiyalarını atomik olaraq əlavə edin və ya silin (`/api/keys/{id}/access`). → [API İstinad](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
+- **🛡️ İncə PII nəzarətləri** — hər növ seçim, 20-yə qədər təsdiqlənmiş xüsusi maskalama nümunələri və hər növ aşkarlama sayğacları; maskalanmanın özü seçimdə qalır. → [Korkuluklar](docs/security/GUARDRAILS.md)
+- **🌍 67 dil** — tablosuna, sənəd güzgülərinə və CLI `npm run i18n:add-locale` bir əmrdə hər yerdə dil əlavə edir. → [i18n Bələdçisi](docs/guides/I18N.md)
+- **🎛️ OmniConductor** — agent donanmanıza daxil olan A2A nümayəndə heyəti, Agent Kartında Dirijor bacarıqları və Faro təkanla danışıq səsli söhbəti ilə idarə paneli paneli. → [A2A Server](docs/frameworks/A2A-SERVER.md)
+- **🛂 Adaptiv qəbul və həddindən artıq yükdən qorunma** — ağır çəkili söhbət sorğuları növbəsi 503ing əvəzinə, hər bir əlaqə üçün atomik RPM yuvarlanan icarə ilə. → [Dözümlülük Bələdçisi](docs/architecture/RESILIENCE_GUIDE.md)
+- **🗂️ Canonical `/v1/models` sifarişi** — hər bir kataloq mənbəyində sabit, hər bir provayder üçün bir bitişik provayder qruplaşdırılmış blok (birləşmiş birləşmələr əvvəlcə bağlanır). → [API İstinad](docs/reference/API_REFERENCE.md)
+- **🗜️ Sıxılma sərtləşməsi** — default-on inflyasiya qoruyucusu, DE / FR / JA + Çin (wényán) üçün Caveman paketləri, Gradle & üçün RTK filtrləri.NET. → [sıxılma](docs/compression/COMPRESSION_ENGINES.md)
+- **💸 Dürüst sabit tarif dəyəri** — abunə / kodlaşdırma planı təminatçıları oxudu** $0** xərc analitikasında; büdcə, kvota və marşrutlaşdırma təxmin etməyə davam edir. → [API İstinad](docs/reference/API_REFERENCE.md)
+- **⚖️ Kvota-Paylaşma marşrutu** — paylaşılan hesabın kvotasını birləşdirilmiş açarlar arasında kifayət qədər bölüşdürür, işi qoruyur, beləliklə boş dilimlər borc verilir. → [Dözümlülük Bələdçisi](docs/architecture/RESILIENCE_GUIDE.md)
+- **🤖 Bir komanda CLI/agent quraşdırma** — 15 qeydə alınmış `setup-*` əmri; `omniroute run` 7 CLIs işə salır (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI); `omniroute configure` interaktiv provayder + model seçicisi və hər kontekst üzrə favoritlərlə 11 hədəfi dəstəkləyir. → [CLI İnteqrasiyaları](docs/guides/CLI-INTEGRATIONS.md)
+- **🛰️ Uzaqdan idarəetmə rejimi** — miqyaslı nişanlarla (`connect` / `contexts` / `tokens`) uzaq OmniRoute sürücüsünü VPS quraşdırmaları üçün + və `antigravity` OAuth köməkçisi. → [Uzaqdan idarəetmə rejimi](docs/guides/REMOTE-MODE.md)
+- **🧭 Daha ağıllı avtomatik marşrutlaşdırma** — `auto/<category>:<tier>` kombinləri,** Fusion** (model paneli + hakimi), tapşırıqdan xəbərdar olan marşrutlaşdırma, hər sorğu üçün model / rejim / USD büdcəsi ləğv edilir. → [Avtomatik Kombo](docs/routing/AUTO-COMBO.md)
+- **🗜️ Pluggable sıxılma** — 12 kompozisiya edilə bilən mühərriklər + Compression Studios: LLMLingua-2, iki səviyyəli Ultra, omniqlif, addımbaşı sədaqət qapısı, GCF v3.2, drag-reorder redaktoru. → [sıxılma](docs/compression/COMPRESSION_ENGINES.md)
+- **🕵️ Şəffaf MITM şifrəsini açır (TPROXY)** hər SNI CA + etibar mağazası quraşdırıcısı ilə proxy env variantlarına məhəl qoymayan — capture CLIs. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
+- **💸 Hər yerdə xərc telemetriyası** hər son nöqtədə — `X-OmniRoute-*` cost/usage başlıqları, keş-HIT qənaət başlığı, hər açar üçün USD xərcləmə kvotaları. → [API İstinad](docs/reference/API_REFERENCE.md)
+- **🧠 nəzarət etdiyiniz yaddaş** — defolt olaraq söndürülür, daxil olun int8 vektor kvantlaması + tipli tənəzzül, hər sorğu üçün `x-omniroute-no-memory`. → [Yaddaş](docs/frameworks/MEMORY.md)
+- **🛡️ Təhlükəsizlik** hər LLM marşrutunda — prompt-injection mühafizəsi (qırmızı komanda dəsti), daxil olmaq üçün etimadnaməni maskalayan qoruyucu (hər iki istiqamətdə sızmış API keys/secrets redaktə edir), pulsuz DuckDuckGo son çarə veb axtarışı və tablosuna əlavə OIDC giriş qapısı (parol həmişə mövcuddur). → [Korkuluklar](docs/security/GUARDRAILS.md)
+- **🖼️ Yeni son nöqtələr** — `/v1/ocr` (Mistral OCR) və `/v1/audio/translations` (Pıçıltı tərzi) media səthini yuvarlaqlaşdırır. → [API İstinad](docs/reference/API_REFERENCE.md)
+- **🎨 Şəkil / video / audio nəsil** media üçün — one API : xAI Grok Imagine & Novita AI video, ComfyUI, Magnific, Adobe Firefly, Segmind və ElevenLabs kimi nitq provayderləri. → [API İstinad](docs/reference/API_REFERENCE.md)
+- **🌍 Yerləşdirmə və əməliyyatlar** — reverse-proxy `basePath`, brauzer dilinin avtomatik aşkarlanması, hər əsas cihazda izləmə, köksüz MITM etibarı, zh-TW lokalizasiyası. → [Ətraf Mühit](docs/reference/ENVIRONMENT.md)
+- **🤝 Daha çox provayderlər və agentlər** — bulud agentləri (Codex Cloud, Cursor, Devin, Jules), Grok Build (xAI) ilə brauzer + OAuth girişi, Ollama birinci dərəcəli kart, Claude Opus 5 & Sonnet 5, Kimi rəsmi tərəfdaşlığı (Code/Web/Moonshot, Zed, Yubaz , ), SenseNovaAI… və yenilənmişdir** 394-provayder kataloqu** . → [Provayderləri](docs/reference/PROVIDER_REFERENCE.md)
+- **📡 marşrutlaşdırma şəffaflığı** — hər cavab ona xidmət edən strategy/provider/latency adlandıran `X-OmniRoute-Decision` başlığını daşıyır, yeni `cache-optimized` kombinasiya strategiyası + Auto-Combo `cacheAffinity` faktor marşrutu təkrar sorğuları keşlənmiş prefiksi saxlayan əlaqəyə qaytarır və yalnız oxunan `/v1/auto-combo/{channel}/candidates` son nöqtəsi `auto/*` kanalının canlı namizəd hovuzunu ifşa edir. → [Avtomatik Kombo](docs/routing/AUTO-COMBO.md)
+- **⚡ Yerli performans və infra** — bir kliklə yerli Redis, Cloudflare İşçilər / Deno Deploy relay deployers, Bifrost & Mux nəzarət edilən daxili xidmətlər kimi. → [Daxili Xidmətlər](docs/frameworks/EMBEDDED-SERVICES.md)
+- **🧩 Qutuda da var** — plagin çərçivəsi + bazarı, Omni/Agent/GitHub bacarıqları çərçivələri, Obsidian vault inteqrasiyası (22 MCP alətləri), OpenAI-a uyğun Toplu və Fayllar APIs, semantik cavab keşi, liderlər lövhələri ilə oyunlaşdırma, ACP agent kəşfi (15 daxili agent BigQuery, planlaşdırılmış paralel logout, fanz- `auto/chaos` -a ixrac Telegram bot körpüsü, tətbiqdaxili versiya meneceri və LMArena-ELO pulsuz provayder reytinqi. → [Sənədlər](docs/README.md)
 
 <br/>
 
@@ -768,93 +763,80 @@ shell tarixçənizdən kənarda saxlayır. → [CLI İnteqrasiyaları](docs/guid
 
 <div align="center">
 
-## 🖥️ OmniRoute harada işləyir — hər yerdə
+## 🖥️ Harada OmniRoute Runs — Anywhere
 
 </div>
 
-> Eyni tətbiq, sizin maşınınız, sizin qaydalarınız. Qlobal npm quraşdırılmasından tutmuş **telefonunuza** qədər — Termux vasitəsilə.
+> Eyni proqram, maşınınız, qaydalarınız. Qlobal npm quraşdırmasından** telefonunuz** Termux vasitəsilə.
 
 <table>
-  <tr><th align="left">Platforma</th><th align="left">Quraşdırma</th><th align="left">Üstünlüklər</th></tr>
-  <tr><td align="left" nowrap>📦 <b>npm (qlobal)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">Bir əmr, istənilən ƏS</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Bun (qlobal)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">Eyni reyestr tarball-u, daha sürətli quraşdırma</td></tr>
-  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … diegosouzapw/omniroute</code></td><td align="left">Çox arxitekturalı <b>AMD64 + ARM64</b></td></tr>
-  <tr><td align="left" nowrap>🖥️ <b>Masaüstü (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">Yerli pəncərə + sistem treyi — <b>Windows / macOS / Linux</b></td></tr>
-  <tr><td align="left" nowrap>🎩 <b>Menyu sətri (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">Serverə nəzarət edir və avtomatik yeniləyir — <b>macOS</b></td></tr>
-  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>yerli <code>arm64</code></td><td align="left">Raspberry Pi, ARM serverləri, Apple Silicon</td></tr>
-  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left"><b>Telefonunuzda</b>, 24/7, root olmadan işləyir</td></tr>
-  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"Əsas ekrana əlavə et"</td><td align="left">Tam ekran, oflayn, brauzerdən quraşdırıla bilir</td></tr>
-  <tr><td align="left" nowrap>🧩 <b>OpenCode plaqini</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">Yerli OpenCode inteqrasiyası</td></tr>
-  <tr><td align="left" nowrap>🤖 <b>VS Code Copilot Chat</b></td><td align="left" nowrap><b>OmniCopilot</b> genişlənməsini quraşdırın</td><td align="left">Hər bir OmniRoute modeli yerli Copilot Chat seçimində — stabil və Insiders</td></tr>
-  <tr><td align="left" nowrap>🛠️ <b>Mənbə kodundan</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">Üzərində işləyin, töhfə verin</td></tr>
+  <tr><th align="left">Platforma</th><th align="left">Quraşdırın</th><th align="left">Vurğulananlar</th></tr>
+  <tr><td align="left" nowrap>📦 <b>npm (qlobal)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">Bir əmr, istənilən OS</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Bun (qlobal)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">Eyni registr tarball, daha sürətli quraşdırma</td></tr>
+  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … cheaperinference/omniroute</code></td><td align="left">Çox qövslü <b>AMD64 + ARM64</b></td></tr>
+  <tr><td align="left" nowrap>🖥️ <b>İş masası (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">Doğma pəncərə + sistem tepsisi — <b>Windows / macOS / Linux</b></td></tr>
+  <tr><td align="left" nowrap>🎩 <b>Menyu paneli (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">&amp; serverin avtomatik yenilənməsinə nəzarət edir — <b>macOS</b></td></tr>
+  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>doğma <code>arm64</code></td><td align="left">Raspberry Pi, ARM serverləri, Apple Silicon</td></tr>
+  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">Qaçış <b>telefonunuzda</b>, 24/7, kök yoxdur</td></tr>
+  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"Əsas ekrana əlavə et"</td><td align="left">Tam ekran, oflayn, brauzerdən quraşdırıla bilər</td></tr>
+  <tr><td align="left" nowrap>🧩 <b>OpenCode plagini</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">Doğma OpenCode inteqrasiyası</td></tr>
+  <tr><td align="left" nowrap>🤖 <b>VS Code Copilot Chat</b></td><td align="left" nowrap>quraşdırın <b>OmniCopilot</b> uzadılması</td><td align="left">Doğma Copilot Chat seçicisindəki hər OmniRoute modeli — stabil &amp; İnsayderlər</td></tr>
+  <tr><td align="left" nowrap>🛠️ <b>Mənbədən</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">Hack edin, töhfə verin</td></tr>
 </table>
 
-<sub>📖 [Docker bələdçisi](docs/guides/DOCKER_GUIDE.md) · [Masaüstü](electron/README.md) · [Menyu sətri treyi](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
+<sub>📖 [Docker Bələdçisi](docs/guides/DOCKER_GUIDE.md) · [İş masası](electron/README.md) · [Menyu paneli tepsisi](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
 
 <br/>
 
 <div align="center">
 
-### 🧩 Yeni: OmniRoute VS Code-un yerli Copilot Chat-i daxilində
+### 🧩 Yeni: OmniRoute daxilində VS Kodunun doğma Copilot Çatı
 
 </div>
 
-> Yeni yan panel, yeni söhbət interfeysi yoxdur — OmniRoute-un təqdim etdiyi hər model artıq istifadə etdiyiniz
-> **Copilot Chat model seçimində** görünür. VS Code 1.122 versiyasından etibarən provayder modelləri
-> GitHub hesabına giriş və ya Copilot abunəliyi olmadan işləyir — agent rejimi, alət çağırışı və görüntü dəstəyi
-> pulsuzdur.
+> Yeni yan panel yoxdur, heç bir yeni chat UI — yoxdur, hər bir OmniRoute modelinin xidmət göstərdiyi birbaşa ekranda görünür.** Artıq istifadə etdiyiniz Copilot Chat model seçicisi** . VS Code 1.122-dən bəri provayder modelləri GitHub girişi və ya Copilot abunəsi — agent rejimi, alət çağırışı və görmə olmadan pulsuz işləyir.
 
-**[OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)** genişlənməsini quraşdırın, onu OmniRoute serverinizə yönləndirin
-(`localhost:20128` olaraq təyin edilir), sonra Copilot Chat → model seçimi
-→ **Modelləri idarə et…** → **OmniRoute** bölməsini açın.
+quraşdırın** [OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)** genişləndirmək üçün onu OmniRoute serverinizə yönəldin (defolt olaraq `localhost:20128`), sonra Copilot Chat → model seçicisini → açın** Modelləri idarə edin...** →**OmniRoute** .
 
 <table>
-  <tr><th align="left">Mağaza</th><th align="left">Keçid</th><th align="left">İşlədiyi mühitlər</th></tr>
-  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">Quraşdır →</a></td><td align="left">VS Code — stabil və Insiders</td></tr>
-  <tr><td align="left" nowrap>🔓 <b>Open VSX Registry</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">Quraşdır →</a></td><td align="left">Cursor, Windsurf, VSCodium, Theia, code-server, Gitpod, Antigravity, Kiro…</td></tr>
+  <tr><th align="left">Mağaza</th><th align="left">Link</th><th align="left">ilə işləyir</th></tr>
+  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">→ quraşdırın</a></td><td align="left">VS Kodu — stabil &amp; İnsayderlər</td></tr>
+  <tr><td align="left" nowrap>🔓 <b>VSX Qeydiyyatını açın</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">→ quraşdırın</a></td><td align="left">Cursor, Windsurf, VSCodium, Theia, kod serveri, Gitpod, Antigravity, Kiro…</td></tr>
 </table>
 
-Redaktorun daxilindən: **Extensions** görünüşünü açın, **"OmniRoute"** axtarın, **Quraşdır** düyməsinə klikləyin
-— hər iki mağazada eyni qaydada işləyir. Mənbə kodu, problemlər və yayımlama təlimatı
-[diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot) bölməsində yerləşir.
+Redaktorun içindən: açın** Uzatmalar** baxmaq, axtarmaq** "OmniRoute"** , klikləyin** Quraşdırın** — hər iki mağazada eyni şəkildə işləyir. Mənbə, məsələlər və nəşriyyat kitabçası [diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot) -də canlıdır.
 
-<sub>📖 [VS Code Copilot Chat bələdçisi](docs/guides/VSCODE-COPILOT.md) — quraşdırma, seçimin göstərdikləri, bir tabda idarə paneli, problemlərin aradan qaldırılması</sub>
+<sub>📖 [VS Code Copilot Çat bələdçisi](docs/guides/VSCODE-COPILOT.md) — quraşdırması, seçicinin göstərdiyi şey, panel-in-a-tab, problemlərin aradan qaldırılması</sub>
 
 <br/>
 
 <div align="center">
 
-### 🎩 Yeni: OmniRouteTray — menyu sətrində yaşayan keçidiniz
+### 🎩 Yeni: menyu çubuğunda yaşayan OmniRouteTray — şlüzünüz
 
 </div>
 
-> `omniroute serve` həmişə aktiv olduqda ən yaxşı işləyir. **[OmniRouteTray](https://github.com/zoispag/omniroute-tray)**
-> bunu macOS üçün quraşdırıb-unutacağınız menyu sətri tətbiqinə çevirir: serveri başladır, onu yenidən başladılmalardan
-> sonra da aktiv saxlayır, yerində yeniləyir və canlı token büdcənizi bir klik uzaqda yerləşdirir — **açıq
-> terminal pəncərəsi yoxdur, serverə nəzarət etmək üçün `npm install -g omniroute` lazım deyil.**
+> `omniroute serve` həmişə aktiv olduqda ən xoşbəxtdir.** [OmniRouteTray](https://github.com/zoispag/omniroute-tray)** onu macOS üçün təyin et və unut menyu çubuğu proqramına çevirir: o, serveri işə salır, onu yenidən yükləmələr zamanı canlı saxlayır, yerində yeniləyir və canlı token büdcənizi bir kliklə uzaqlaşdırır —** heç bir terminal pəncərəsi açıq qalmayıb, körpəyə baxmaq üçün heç `npm install -g omniroute` yoxdur.**
 
-[Tauri v2](https://v2.tauri.app/) ilə hazırlanıb (ölçüsü yuvarlaqlaşdırma xətası qədər olan Rust nüvəsi), öz imzalanmış Node 24
-işləmə mühitini təqdim edir və tətbiqə məxsus OmniRoute quraşdırmasını idarə edir; beləliklə, qlobal
-`node`/`bun` quraşdırmanızla heç vaxt toqquşmur. O, mövcud `~/.omniroute/` konfiqurasiyanızı və verilənlər bazanızı
-**paylaşır** — yəni artıq işlətdiyiniz eyni OmniRoute-dur, sadəcə başında papaq var. 🎩
+[Tauri v2](https://v2.tauri.app/) (yuvarlaqlaşdırma xətası ölçüsündə olan Rust nüvəsi) ilə qurulmuş, o, özünün imzalanmış Node 24 iş vaxtını göndərir və proqrama məxsus OmniRoute quraşdırmasını idarə edir, buna görə də qlobal `node`/`bun` ilə heç vaxt mübarizə aparmır. Bu** mövcud `~/.omniroute/` konfiqurasiyanızı və verilənlər bazanızı paylaşır** — deməli, artıq qaçdığınız eyni OmniRoute dir, sadəcə şapka ilə. 🎩
 
 <table>
   <tr><th align="left">Nə edir</th><th align="left">Necə</th></tr>
-  <tr><td align="left" nowrap>🟢 <b>Serverə nəzarət edir</b></td><td align="left"><code>omniroute serve</code> prosesini başladır, artıq işləyən instansiyanı təkrarlamaq əvəzinə ona qoşulur</td></tr>
-  <tr><td align="left" nowrap>📊 <b>İstifadəyə bir baxışda canlı nəzarət</b></td><td align="left">Provayder kvota göstəriciləri, sıfırlanma geri sayımları ilə Claude sessiya/həftəlik limitləri, 30 günlük xərc bölgüsü</td></tr>
-  <tr><td align="left" nowrap>🔄 <b>Yerində avtomatik yenilənir</b></td><td align="left">Mərhələli quraşdırma, atomik dəyişdirmə, uğursuzluq zamanı geri qaytarma — həmişə ən yeni buraxılış</td></tr>
-  <tr><td align="left" nowrap>🚀 <b>Sistemə giriş zamanı başlayır</b></td><td align="left">Sistemə giriş zamanı ixtiyari işə salınma; yalnız tray-də görünür, dock ikonu yoxdur</td></tr>
-  <tr><td align="left" nowrap>🩺 <b>Diaqnostika və jurnallar</b></td><td align="left">Bir kliklə diaqnostika və server jurnalına giriş</td></tr>
+  <tr><td align="left" nowrap>🟢 <b>Serverə nəzarət edir</b></td><td align="left"><code>omniroute serve</code> yaradır, onu təkrarlamaq əvəzinə artıq işləyən nümunəni qəbul edir</td></tr>
+  <tr><td align="left" nowrap>📊 <b>Bir baxışda canlı istifadə</b></td><td align="left">Provayder kvotası, sıfırlama geri sayma ilə Claude session/weekly limitləri, 30 günlük xərc bölgüsü</td></tr>
+  <tr><td align="left" nowrap>🔄 <b>Avtomatik yeniləmələr yerində</b></td><td align="left">Mərhələli quraşdırma, atom dəyişdirmə, uğursuzluqda geri qayıtma — həmişə ən yeni buraxılışda</td></tr>
+  <tr><td align="left" nowrap>🚀 <b>Girişlə başlayın</b></td><td align="left">Giriş zamanı isteğe bağlı işə salınma; yalnız tray, dok ikonu yoxdur</td></tr>
+  <tr><td align="left" nowrap>🩺 <b>Doktor &amp; qeydləri</b></td><td align="left">Bir kliklə diaqnostika və server jurnalına giriş</td></tr>
 </table>
 
 ```sh
 brew install --cask zoispag/tap/omniroute-tray
 ```
 
-<sub>Yükləməyə üstünlük verirsiniz? Ən son <code>.dmg</code> faylını
-<a href="https://github.com/zoispag/omniroute-tray/releases">Buraxılışlar</a> bölməsindən əldə edin. Mənbə kodu, problemlər və build
-sənədləri <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a> ünvanında yerləşir.
-<br/>💛 <a href="https://github.com/zoispag">@zoispag</a> tərəfindən hazırlanmış icma layihəsi — rəsmi OmniRoute buraxılışı deyil.</sub>
+<sub>Endirməyə üstünlük verirsiniz? Ən son <code>.dmg</code> nı əldə edin
+<a href="https://github.com/zoispag/omniroute-tray/releases">Buraxılışlar</a>. Mənbə, problemlər və quruluş
+sənədlər <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a>-də yaşayır.
+<br/>💛 İcma layihəsi <a href="https://github.com/zoispag">@zoispag</a> — rəsmi OmniRoute buraxılışı deyil.</sub>
 
 <br/>
 
@@ -936,15 +918,15 @@ claude mcp add --transport http omniroute http://localhost:20128/api/mcp/stream 
 
 <div align="center">
 
-## 🗜️ Tokenlara 15–95% qənaət edin — Avtomatik olaraq
+## 🗜️ Avtomatik olaraq 15–95% Tokenlərə — edin
 
 </div>
 
-### 📖 Bu necə işləyir — konveyer, arxitektura və qənaət hesablaması
+### 📖 Necə işləyir — boru kəməri, memarlıq və qənaət riyaziyyatı
 
-<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute sıxılma konveyeri: illüstrativ 10 000 tokenlik müştəri sorğusu 12 kompozisiya edilə bilən mühərrikdən — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra və OmniGlyph — keçərək sənədləşdirilmiş yığılmış nümunədə provayderə təxminən 1 080 tokenlə çata bilər. Strukturlaşdırılmış məzmun qoruma qoruyucuları və hər addım üzrə uyğunluq yoxlamaları ilə mühafizə olunur; açıq şəkildə itkilə işləyən və ya eksperimental rejimlər uyğun məzmunu dəyişə bilər."/>
+<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute compression pipeline: an illustrative 10,000-token client request passes through 12 composable engines — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra and OmniGlyph — and can reach the provider at about 1,080 tokens in the documented stacked example. Structured content is protected by preservation guards and per-step fidelity gates; explicit lossy or experimental modes may transform eligible content."/>
 
-Defolt yığılmış kombinasiyada `RTK → Caveman` işlədilir. Hər ikisi eyni alət/kontekst yükünə tətbiq edildikdə qənaət üst-üstə toplanır:
+Defolt yığılmış kombo `RTK → Caveman` işləyir. Hər ikisi eyni tool/context yükü ilə hərəkət etdikdə qənaət mürəkkəbləşir:
 
 ```txt
 combined = 1 − (1 − RTK) × (1 − Caveman_input)
@@ -952,74 +934,74 @@ average  = 1 − (1 − 0.80) × (1 − 0.46) = 89.2%
 range    = 78.4 – 94.6%
 ```
 
-Kod blokları, URL-lər, JSON və strukturlaşdırılmış məlumatlar **həmişə** qoruma mühərriki tərəfindən mühafizə olunur.
+Kod blokları, URLs, JSON və strukturlaşdırılmış məlumatlardır** həmişə qorunur** qoruyucu mühərrik tərəfindən.
 
-> **Az token kifayət etdiyi halda niyə çox token istifadə edək?** Hər sorğu OmniRoute-un sıxılma konveyerindən **şəffaf şəkildə** keçir — müştəri tərəfində heç bir dəyişiklik tələb olunmur. İndi bu, ardıcıllıqla işləyən və hər marşrutlaşdırma kombinasiyası üzrə qarışdırılıb uyğunlaşdırıla bilən **12 kompozisiya edilə bilən mühərrikdən ibarət yığındır** — [RTK](https://github.com/rtk-ai/rtk), [Caveman](https://github.com/JuliusBrussee/caveman) (⭐ 90K+), [LLMLingua-2](https://github.com/microsoft/LLMLingua) və [Troglodita](https://github.com/leninejunior/troglodita) (PT-BR) ideyaları üzərində qurulub.
+> **Bir neçə token hiylə işlətdiyi halda niyə çoxlu tokenlərdən istifadə edin?** Hər sorğu OmniRoute-nın sıxılma boru kəmərindən keçir** şəffaf şəkildə** — heç bir müştəri dəyişikliyi yoxdur. İndi a** 12 birləşdirilə bilən mühərrik yığını** [RTK](https://github.com/rtk-ai/rtk), [Caveman](https://github.com/JuliusBrussee/caveman) (⭐ 90K +), [LLMLingua-2](https://github.com/microsoft/LLMLingua), və [Troglodita](https://github.com/leninejunior/troglodita) (PT-BR) ideyaları əsasında — binası üçün qaydada işləyir və hər marşrut üzrə qarışdırın və uyğunlaşdırın.
 
-### 🧱 12 mühərrikdən ibarət yığın
+### 🧱 12 mühərrikli yığın
 
-Mühərriklər konveyer ardıcıllığı ilə işləyir; hər biri müstəqil şəkildə aktivləşdirilə və hər kombinasiya üzrə konfiqurasiya edilə bilər:
+Mühərriklər boru xətti ilə işləyir; hər bir kombo üçün müstəqil olaraq dəyişdirilə və konfiqurasiya edilə bilər:
 
 <table>
-  <tr><th align="center">#</th><th align="left">Mühərrik</th><th align="left">Gördüyü iş</th></tr>
-  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Session-Dedup</b></td><td align="left">Döngələr arasında təkrarlanan məzmunu silir (məzmun ünvanlı, döngələrarası)</td></tr>
-  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">Böyük blokları əldəetmə markerlərinin arxasında arxivləşdirir, tələb olunduqda gətirir</td></tr>
-  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">Boşluqların və şəkil URL-lərinin ixtisarı (gecikməsi az olan baza)</td></tr>
-  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">Ağıllı alət-nəticəsi filtrasiyası, dublikatların silinməsi və kəsilməsi (əmr-xəbərdar)</td></tr>
-  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Responses Tool Output</b></td><td align="left">Shell/patch/search/build çıxışları üçün itkisizliyi prioritetləşdirən JSON və məhdud diaqnostik sıxılma (Responses API)</td></tr>
-  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Headroom</b></td><td align="left">Vendored <b>GCF</b> kodekindən istifadə etməklə JSON massivlərinin itkisiz cədvəlvari yığcamlaşdırılması (~30%)</td></tr>
-  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Relevance</b></td><td align="left">Son istifadəçi sorğusuna əsasən cümlələrin ekstraktiv qiymətləndirilməsi</td></tr>
-  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Caveman</b></td><td align="left">Qayda əsaslı nəsr sıxılması (çıxışda ~65–75%)</td></tr>
-  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Aggressive</b></td><td align="left">Köhnə döngələrin xülasələşdirilməsi və tədricən köhnəldilməsi</td></tr>
-  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">MobileBERT ONNX vasitəsilə ML semantik budaması — kod üçün təhlükəsiz, asinxron</td></tr>
-  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ultra</b></td><td align="left">İstəyə bağlı kiçik model (SLM) səviyyəsi ilə evristik token budaması</td></tr>
-  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">Birbaşa Anthropic xəttində ölçülmüş Claude Fable 5 üçün eksperimental kontekstdən şəkilə kodlaşdırma; GPT 5.6 transformerləri provayder qəbzləri gözlənildiyi üçün hələlik uğursuzluqda bağlanır. Dörd sıxılma profili (defolt olaraq aqressiv, balanslaşdırılmış, kodlaşdırma üçün təhlükəsiz, passthrough) (ən aqressiv; könüllü aktivləşdirilir)</td></tr>
+  <tr><th align="center">#</th><th align="left">Mühərrik</th><th align="left">Nə edir</th></tr>
+  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Sessiya-Dedup</b></td><td align="left">Növbələr üzrə təkrarlanan məzmunu azaldır (məzmun ünvanlı, çarpaz növbə)</td></tr>
+  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">Tələblə gətirilən markerlərin arxasındakı böyük blokları arxivləşdirir</td></tr>
+  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">Boş boşluq + şəkil-URL kəsimi (gecikmə-işıq əsas xətti)</td></tr>
+  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">Ağıllı alət-nəticə filtrasiyası, təkmilləşdirmə və kəsmə (əmrdən xəbərdar)</td></tr>
+  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Cavab Aləti Çıxışı</b></td><td align="left">shell/patch/search/build çıxışları üçün itkisiz-ilk JSON + məhdud diaqnostik sıxılma (Cavablar API)</td></tr>
+  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Baş boşluğu</b></td><td align="left">Satıcı vasitəsilə JSON massivlərinin itkisiz cədvəlli sıxlaşdırılması (~ 30%) <b>GCF</b> kodek</td></tr>
+  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Uyğunluq</b></td><td align="left">Son istifadəçi sorğusuna qarşı çıxarış cümləsi</td></tr>
+  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Mağara adamı</b></td><td align="left">Qayda əsaslı nəsr sıxışdırması (çıxış ~ 65-75%)</td></tr>
+  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Aqressiv</b></td><td align="left">Xülasə + köhnə növbələrin mütərəqqi yaşlanması</td></tr>
+  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">MobileBERT vasitəsilə ML semantik budama ONNX — kodu təhlükəsiz, async</td></tr>
+  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ultra</b></td><td align="left">İsteğe bağlı kiçik model (SLM) səviyyəsi ilə evristik token budaması</td></tr>
+  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">Birbaşa Anthropic naqilində ölçülən Claude Fable 5 üçün eksperimental kontekst-şəkil kimi kodlaşdırma; GPT 5.6 transformatorları uğursuz bağlı olaraq gözlənilən provayder qəbzləri olaraq qalır. Dörd sıxılma profili (aqressiv defolt, balanslaşdırılmış, kodlaşdırma üçün təhlükəsiz, keçid) (ən aqressiv; qoşulma)</td></tr>
 </table>
 
-Kod blokları, URL-lər və strukturlaşdırılmış məlumatlar **həmişə** bayt səviyyəsində dəqiq qorunur. **Bir kliklə tətbiq olunan presetlər** mühərrikləri birləşdirir:
+Kod blokları, URLs və strukturlaşdırılmış məlumatlardır** həmişə qorunur** bayt-mükəmməl.** Bir kliklə əvvəlcədən təyinlər** mühərrikləri birləşdirin:
 
 <table>
-  <tr><th align="left">Rejim</th><th align="left">Qənaət</th><th align="left">Ən uyğun olduğu sahə</th></tr>
-  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~15%</td><td align="left">Həmişə aktiv təhlükəsiz defolt</td></tr>
-  <tr><td align="left" nowrap>🪨 <b>Standard (Caveman)</b></td><td align="left" nowrap>~30%</td><td align="left">Gündəlik kodlaşdırma</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Aggressive</b></td><td align="left" nowrap>~50%</td><td align="left">Alətlərlə zəngin uzun sessiyalar</td></tr>
+  <tr><th align="left">Rejim</th><th align="left">Qənaət</th><th align="left">Üçün ən yaxşısı</th></tr>
+  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~15%</td><td align="left">Həmişə açıq təhlükəsiz defolt</td></tr>
+  <tr><td align="left" nowrap>🪨 <b>Standart (mağara adamı)</b></td><td align="left" nowrap>~30%</td><td align="left">Gündəlik kodlaşdırma</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Aqressiv</b></td><td align="left" nowrap>~50%</td><td align="left">Uzun alət-ağır seanslar</td></tr>
   <tr><td align="left" nowrap>🔥 <b>Ultra</b></td><td align="left" nowrap>~75%</td><td align="left">Maksimum qənaət</td></tr>
   <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>60–90%</td><td align="left">Shell/test/build/git çıxışı</td></tr>
-  <tr><td align="left" nowrap>🔗 <b>Stacked (RTK → Caveman)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">Qarışıq sorğular + alət jurnalları</td></tr>
+  <tr><td align="left" nowrap>🔗 <b>Yığılmış (RTK → Caveman)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">Qarışıq təkliflər + alət qeydləri</td></tr>
 </table>
 
-**Real nümunə — Standard rejimi:**
+**Real nümunə — Standart rejimi:**
 
-> **Əvvəl (69 token):** _"React komponentinizin yenidən render olunmasının ehtimal olunan səbəbi hər render dövründə yeni obyekt istinadı yaratmağınızdır. Sətirdaxili obyekti prop kimi ötürdükdə React-in səthi müqayisəsi onu hər dəfə fərqli obyekt kimi görür və bu da yenidən render olunmanı işə salır. Obyekti memoizasiya etmək üçün useMemo istifadə etməyinizi tövsiyə edərdim."_
+> **Əvvəl (69 token):** _" React komponentinizin yenidən göstərilməsinin səbəbi, çox güman ki, hər render dövründə yeni obyekt arayışı yaratmağınızdır. Daxil edilmiş obyekti dayaq kimi ötürdüyünüz zaman, React-nin dayaz müqayisəsi onu hər dəfə fərqli obyekt kimi görür və bu, yenidən renderə səbəb olur. Obyekti yadda saxlamaq üçün useMemo istifadə etməyi tövsiyə edərdim."_
 >
-> **Sonra (19 token):** _"Hər renderdə yeni obyekt istinadı. Sətirdaxili obyekt propu = yeni istinad = yenidən render. useMemo ilə əhatə edin."_
+> **Sonra (19 token):** _"Yeni obyekt ref hər render. Daxili obyekt prop = yeni ref = yenidən render. useMemo ilə sarın."_
 >
-> **Eyni cavab. 72% daha az token. Dəqiqlik itkisi yoxdur.** ✅
+> **Eyni cavab. 72% daha az token. Sıfır dəqiqlik itkisi.** ✅
 
 **PT-BR nümunəsi — [Troglodita](https://github.com/leninejunior/troglodita) rejimi:**
 
-> **Əvvəl (42 token):** _"Problem ondadır ki, komponent hər render dövründə yeni obyekt referansı yaradıldığı üçün yenidən render olunur. `useMemo` istifadə etməyi tövsiyə edərdim."_
+> **Antes (42 token):** _"O problema é que o komponente está re-renderizando porque uma nova referência de objeto está sendo criada em cada ciclo de renderização. Eu recomendaria usar useMemo."_
 >
-> **Sonra (12 token):** _"Yenidən render: hər dövrdə yeni ref (inline obyekt yenidən yaradılır). `useMemo` istifadə edin."_
+> **Depozit (12 token):** _"Yenidən göstərin: ref nova cada ciclo (objeto inline recriado). İstifadə `useMemo`."_
 >
-> **Eyni cavab. Təxminən 70% daha az token. Texniki dəqiqlik qorunub.** ✅
+> **Məsmə cavab. ~ 70% menos tokenləri. Dəqiq técnica intacta.** ✅
 
 <br/>
 
-### 🎚️ Mühərriklərdən kənarda — çıxış üslubları, adaptiv tənzimləyici və hər sorğuya nəzarət
+### 🎚️ Mühərriklərdən başqa — çıxış üslubları, adaptiv yığım və hər sorğuya nəzarət
 
-Yuxarıdakı 12 mühərrik **daxil olanı** kiçildir. Daha üç qat **necə**, **nə vaxt** və nəyin **çıxacağını** formalaşdırır:
+Yuxarıdakı 12 mühərrik getdikcə azalır** in** . Daha üç təbəqə forması** necə** ,** nə vaxt** , və nə gəlir** həyata** :
 
-- **🪄 Çıxış üslubları** _(çıxış oxunun yönləndirilməsi)_ — deterministik, keş üçün təhlükəsiz cavab-formalaşdırma təlimatları əlavə edir; birləşdirilə bilər, hər biri `lite` / `full` / `ultra` intensivliklərindədir. Üslub əlavə etmək üçün registrə bir sətirlik qeyd kifayətdir:
-  - **Yığcam nəsr** — doldurucu sözləri / artiklları / ehtiyatlı ifadələri çıxarır; texniki məzmunu tam dəqiq saxlayır.
-  - **Daha az kod** — YAGNI prinsipi ilə "tənbəl senior proqramçı": ən kiçik işlək dəyişiklik, istənilməyən əlavə hazırlıq yoxdur.
-  - **Atquyruğu (tənbəl senior proqramçı)** — YAGNI nərdivanı ilə irəliləyir, kök səbəbi düzəldir, ən kiçik işlək diff-i yaradır.
-  - **Məndə ADHD var (fəaliyyətə yönəlik)** — növbəti fəaliyyət öndə gəlir, addımlar nömrələnir, bir konkret növbəti addım verilir, giriş yoxdur.
-  - **Yığcam CJK (文言)** — klassik Çin dilində ultra-yığcam üslub (`zh` lokali ilə məhdudlaşdırılır).
-- **🎯 Adaptiv kontekst-büdcəsi** _(tənzimləyici)_ — tək açıq/söndürülmüş token həddi əvəzinə, ən ucuz və ən az informasiya itkisi yaradan mühərrikləri yalnız modelin kontekst pəncərəsinə **sığmaq** üçün lazım olan həddə qədər işə salır. Siyasət: `reserve-output` (standart, modelə uyğun) · `percentage` · `absolute`. Rejim: `floor` (sığmanı zəmanət verir) · `replace-autotrigger` (açıq seçiminiz üstün sayılır) · `off` (köhnə hədd).
-- **🎛️ Sıxışdırmanın harada müəyyən edildiyi** _(üstünlük, yüksəkdən aşağıya)_ — sorğuya görə `x-omniroute-compression` başlığı › marşrutlaşdırma kombinasiyasının əvəzləməsi › aktiv adlı profil › adaptiv / avtomatik işə salma › panel standartı › off. Tətbiq olunan plan `X-OmniRoute-Compression: <mode>; source=<source>` cavab başlığında geri qaytarılır.
+- **🪄 Çıxış Üslubları** _(çıxış-ox sükanı)_ — deterministik, keş-təhlükəsiz cavab formalaşdırma təlimatlarını daxil edin; birləşdirilə bilən, hər biri `lite` / `full` / `ultra` intensivliyində. Stil əlavə etmək bir sətirli qeyd girişidir:
+  - **Tərs nəsr** — damcı doldurucu / məqalələr / hedcinq; texniki maddəni dəqiq saxlamaq.
+  - **Daha az kod** — "tənbəl böyük dev" YAGNI: ən kiçik iş dəyişikliyi, tələb olunmayan iskele yoxdur.
+  - **At quyruğu (tənbəl baş inkişaf etdirici)** — YAGNI nərdivanına qalxın, kök səbəbi düzəldin, ən kiçik iş fərqi.
+  - **Məndə ADHD var (birinci hərəkət)** — növbəti fəaliyyət istiqamətləri, nömrələnmiş addımlar, bir konkret növbəti addım, preambula yoxdur.
+  - **Terse CJK (文言)** — klassik-Çin ultra qısa üslubu ( `zh` ilə yerli dil ilə bağlıdır).
+- **🎯 Adaptiv kontekst-büdcə** _(dial)_ — bir on/off token həddi əvəzinə, ən ucuz, ən itkisiz mühərrikləri yalnız lazım olduğu qədər artırın.** modelin kontekst pəncərəsinə uyğun** . Siyasət: `reserve-output` (defolt, modeldən xəbərdar) · `percentage` · `absolute`. Rejim: `floor` (zəmanət uyğunluğu) · `replace-autotrigger` (açıq seçiminiz qalib gəlir) · `off` (miras həddi).
+- **🎛️ Sıxılmaya qərar verildiyi yer** _(üstünlük, yüksək → aşağı)_ — hər sorğu `x-omniroute-compression` başlığı › marşrutlaşdırma-kombo ləğvi › aktiv adlandırılmış profil › adaptiv / avtomatik tetikleyici › panel defolt › söndürülür. Tətbiq olunan plan `X-OmniRoute-Compression: <mode>; source=<source>` cavab başlığında əks-səda verir.
 
-Token həddi ilə avtomatik işə salın, adaptiv tənzimləyicini aktiv edin, adlı profili sabitləyin, hər sorğu üçün birdəfəlik parametr təyin edin və ya hər marşrutlaşdırma kombinasiyasına pipeline təyin edin — iş yükünə ən uyğun olan variantı seçin. Könüllü, oflayn **qiymətləndirmə harness-i** (`npm run eval:compression`) dəyişikliyi tətbiq etməzdən əvvəl sabit korpus üzərində sədaqəti qənaətlə müqayisə edərək qiymətləndirir.
+Token həddi ilə avtomatik tetikleyin, adaptiv siferblatda çevirin, adlandırılmış profili bərkidin, hər sorğu üçün birdəfəlik təyin edin və ya iş yükünə uyğun gələn hər bir marşrutlaşdırıcı kombo — üçün boru xətti təyin edin. Oflayn qoşulma** qiymətli qoşqu** (`npm run eval:compression`) siz dəyişikliyi təşviq etməzdən əvvəl sabitlənmiş korpusda sədaqətlə qənaət arasındakı fərqi qiymətləndirir.
 
 📖 [`COMPRESSION_GUIDE.md`](docs/compression/COMPRESSION_GUIDE.md) · [`RTK_COMPRESSION.md`](docs/compression/RTK_COMPRESSION.md) · [`COMPRESSION_ENGINES.md`](docs/compression/COMPRESSION_ENGINES.md)
 
@@ -1027,7 +1009,7 @@ Token həddi ilə avtomatik işə salın, adaptiv tənzimləyicini aktiv edin, a
 
 <div align="center">
 
-# ⚡ Sürətli başlanğıc
+# ⚡ Tez Başlanğıc
 
 </div>
 
@@ -1038,38 +1020,28 @@ npm install -g omniroute
 omniroute
 ```
 
-> 💡 `npm warn ERESOLVE` və ya peer-dep xəbərdarlıqları görürsünüz? [Onlar zərərsizdir](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).
-> **npm 11 və ya daha sonrakı versiyadan istifadə edirsiniz?** npm paket həyat dövrü skriptlərini icazə verilmədiyi halda bloklaya bilər. OmniRoute-un `postinstall` (`node scripts/build/postinstall.mjs`) skripti yerli runtime fayllarını hazırlamaq üçün tələb olunur. Qlobal quraşdırma zamanı npm xəbərdarlığında adı göstərilən paketlərə icazə verin. OmniRoute 3.8.55 tərəfindən bildirilən paket dəsti üçün:
+> 💡 `npm warn ERESOLVE` və ya peer-dep xəbərdarlıqlarına baxın? [Onlar zərərsizdirlər](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).** npm 11 və ya daha yenisini istifadə edirsiniz?** npm icazə verilmədiyi halda paketin həyat dövrü skriptlərini bloklaya bilər. OmniRoute's `postinstall` (`node scripts/build/postinstall.mjs`) yerli icra fayllarını hazırlamaq üçün tələb olunur. Qlobal olaraq quraşdırarkən npm xəbərdarlığında adı çəkilən paketlərə icazə verin. OmniRoute 3.8.55 tərəfindən bildirilmiş paket dəsti üçün:
 >
-> ```bash
-> npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute
-> ```
+> `bash npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute `
 >
-> Bu icazə siyahısını gələcək qlobal quraşdırmalarda yenidən istifadə etmək üçün onu bir dəfə konfiqurasiya edin, sonra adi qaydada quraşdırın:
+> Gələcək qlobal quraşdırmalar üçün bu icazəli siyahıdan yenidən istifadə etmək üçün onu bir dəfə konfiqurasiya edin, sonra normal şəkildə quraşdırın:
 >
-> ```bash
-> npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user
-> npm install -g omniroute
-> ```
+> `bash npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user npm install -g omniroute `
 >
-> Asılılıqların siyahısı buraxılışlar arasında dəyişə bilər; npm fərqli siyahı bildirərsə, həmin xəbərdarlıqda göstərilən paket adlarından istifadə edin. Paketə icazə verilməsi onun quraşdırma skriptlərinin işə salınmasına imkan verir.
-> **Gemini Web və ya başqa veb-cookie təminatçısından istifadə edirsiniz?** npm paketi
-> Playwright-ı ehtiva edir, lakin onun Chromium binar faylını ehtiva etmir. İlk veb-təminatçı sorğusunu göndərməzdən əvvəl
-> [Playwright Chromium quraşdırılması](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium)
-> qeydinə baxın.
+> Asılılıq siyahısı buraxılışlar arasında dəyişə bilər; npm başqa bir siyahı bildirirsə, həmin xəbərdarlıqdakı paket adlarından istifadə edin. Paketə icazə verilməsi onun quraşdırma skriptlərinin işləməsinə icazə verir.** Gemini Web və ya başqa veb-kuki provayderindən istifadə edirsiniz?** Npm paketinə Playwright daxildir, lakin onun Chromium binar sistemi deyil. İlk veb-provayder sorğusunu etməzdən əvvəl [Playwright Chromium quraşdırma](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium) qeydinə baxın.
 
-Panel: `http://localhost:20128` · API: `http://localhost:20128/v1`.
+Dashboard at `http://localhost:20128` · API at `http://localhost:20128/v1`.
 
-**2) Öz hesabınızdan istifadə edərək uyğun təminatçıya qoşulun**
+**2) Öz hesabınızdan istifadə edərək uyğun provayderi birləşdirin**
 
-Panel → **Təminatçılar** → mövcud şərtləri və kvotası istifadə ssenarinizə uyğun olan təminatçını seçin → API açarını əlavə edin və ya hesab prosesini tamamlayın. Pulsuz səviyyələr qeydiyyat, təsdiq və ya ödəniş üsulu tələb edə bilər. [Pulsuz səviyyələr bələdçisi](docs/getting-started/FREE-TIERS-GUIDE.md) ilə tanış olun; açarsız əlçatanlığa zəmanət verilmir və `tos: avoid` ilə işarələnmiş təminatçılar standart olaraq `auto` seçimindən xaric edilir.
+İdarə paneli →** Provayderlər** → cari şərtləri və kvota sizin istifadə vəziyyətinizə uyğun olan provayderi seçin → onun API açarını əlavə edin və ya hesab axını tamamlayın. Pulsuz səviyyələr qeydiyyat, təsdiq və ya ödəniş metodu tələb edə bilər. [Pulsuz Tiers Bələdçisini](docs/getting-started/FREE-TIERS-GUIDE.md) nəzərdən keçirin; açarsız mövcudluğa zəmanət verilmir və `tos: avoid` ilə işarələnmiş provayderlər defolt olaraq `auto` dən xaric edilir.
 
-**3) Kodlaşdırma alətinizi yönləndirin**
+**3) Kodlaşdırma alətinizi göstərin**
 
 ```txt
-Əsas URL: http://localhost:20128/v1
-API açarı:  [Panel → Son nöqtələr bölməsindən kopyalayın]
-Model:      auto            (uyğun bağlantılar arasında marşrutlaşdırır — və ya təminatçı/model seçin)
+Base URL: http://localhost:20128/v1
+API Key:  [copy from Dashboard → Endpoints]
+Model:    auto            (routes among eligible connections — or choose provider/model)
 ```
 
 **4) İşlədiyini yoxlayın**
@@ -1078,68 +1050,65 @@ Model:      auto            (uyğun bağlantılar arasında marşrutlaşdırır 
 curl http://localhost:20128/v1/models -H "Authorization: Bearer YOUR_KEY"
 ```
 
-Qoşulmuş modellərin siyahıda göstərildiyini görməlisiniz. 🎉 Bu qədər — kodlaşdırmağa başlayın, OmniRoute isə sizin üçün avtomatik marşrutlaşdırır və ehtiyat seçimə keçir.
+Siz bağlı modellərinizi siyahıda görməlisiniz. 🎉 Budur — kodlamağa başlayır və OmniRoute sizin üçün avtomatik marşrutlar və geri qayıdır.
 
-Müştəriniz fərdi başlıqlar göndərə bilmirsə, OmniRoute tokenləşdirilmiş uyğunluq ləqəblərini də təqdim edir:
+Müştəriniz fərdi başlıqlar göndərə bilmirsə, OmniRoute tokenləşdirilmiş uyğunluq ləqəblərini də ifşa edir:
 
 ```txt
-OpenAI kataloqu:   http://localhost:20128/vscode/YOUR_KEY/
-OpenAI modelləri:  http://localhost:20128/vscode/YOUR_KEY/models
-OpenAI çat:        http://localhost:20128/vscode/YOUR_KEY/chat/completions
-OpenAI responses:  http://localhost:20128/vscode/YOUR_KEY/responses
-Ollama çatı:       http://localhost:20128/vscode/YOUR_KEY/api/chat
-Ollama teqləri:    http://localhost:20128/vscode/YOUR_KEY/api/tags
+OpenAI catalog:   http://localhost:20128/vscode/YOUR_KEY/
+OpenAI models:    http://localhost:20128/vscode/YOUR_KEY/models
+OpenAI chat:      http://localhost:20128/vscode/YOUR_KEY/chat/completions
+OpenAI responses: http://localhost:20128/vscode/YOUR_KEY/responses
+Ollama chat:      http://localhost:20128/vscode/YOUR_KEY/api/chat
+Ollama tags:      http://localhost:20128/vscode/YOUR_KEY/api/tags
 ```
 
-Bunlardan yalnız `Authorization: Bearer ...` əlavə edə bilməyən müştərilər üçün istifadə edin. Başlıq autentifikasiyası hələ də üstünlük verilən rejimdir.
+Bunları yalnız `Authorization: Bearer ...` əlavə edə bilməyən müştərilər üçün istifadə edin. Başlıq doğrulaması üstünlük verilən rejim olaraq qalır.
 
 <br/>
 
-## 📦 Daha çox quraşdırma üsulu — Docker, mənbə kodu, pnpm, Arch
+## 📦 Daha çox quraşdırma metodları — Docker, mənbə, pnpm, Arch
 
 **🐳 Docker**
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-`:latest` ən yüksək **dərc edilmiş** stabil SemVer versiyasını izləyir. O, git `main` budağını izləmir. GitOps üçün `:X.Y.Z` versiyasını sabitləyin. [Docker buraxılış kanallarına](docs/guides/DOCKER_GUIDE.md#release-channels) baxın. Təsvir **`OMNIROUTE_MEMORY_MB=1024`** dəyərini sabitləyir. Bu, panel və yüngül söhbət üçün kifayətdir. **Kodlaşdırma agentləri** (Claude Code, Codex, Grok və sair-dən `POST /v1/responses`) daha böyük V8 heap-i tələb edir; əks halda iki üst-üstə düşən uzun kontekst zamanı proses təxminən 12 GiB-də `FATAL ERROR` verir. Konteyneri heap-dən daha böyük ölçüdə təyin edin (native buferlər V8-dən kənarda yerləşir):
+`:latest` ən yüksək olanı izləyir** nəşr edilmişdir** sabit SemVer. git `main` izləmir. GitOps üçün `:X.Y.Z` bağlayın. [Docker Buraxılış Kanallarına](docs/guides/DOCKER_GUIDE.md#release-channels) baxın. Şəkil sancaqları**`OMNIROUTE_MEMORY_MB=1024`** . Bu, tablosuna və yüngül söhbət üçün kifayətdir.** Kodlaşdırma agentləri** ( Claude Kodundan `POST /v1/responses`, Codex, Grok, …) iki üst-üstə düşən uzun kontekstdə ~ 12 GiB -də daha böyük V8 yığını və ya `FATAL ERROR` s prosesi lazımdır. Konteyneri yığının üstündən ölçün (doğma buferlər V8 xaricində oturur):
 
-| İş yükü                          | Heap (`-e OMNIROUTE_MEMORY_MB`) | Konteyner (`--memory`) |
-| -------------------------------- | ------------------------------- | ---------------------- |
-| Panel / yüngül söhbət            | `1024` (təsvirin standartı)     | ≥2 g                   |
-| Bir kodlaşdırma agenti           | `8192`                          | ≥10 g                  |
-| İki paralel uzun `/v1/responses` | `10240`–`12288`                 | ≥12–16 g               |
+| İş yükü                              | Yığın (`-e OMNIROUTE_MEMORY_MB`) | Konteyner (`--memory`) |
+| ------------------------------------ | -------------------------------- | ---------------------- |
+| İdarə paneli / işıqlı söhbət         | `1024` (defolt şəkil)            | ≥ 2 q                  |
+| Bir kodlaşdırma agenti               | `8192`                           | ≥ 10 q                 |
+| İki eyni vaxtda uzun `/v1/responses` | `10240`–`12288`                  | ≥ 12-16 q              |
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
   -e OMNIROUTE_MEMORY_MB=8192 --memory=10g \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-Tam cədvəl: [Docker təlimatı — işləmə zamanı RAM](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
+Tam cədvəl: [Docker Guide — runtime RAM](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
 
-> **Docker-in ilkin buraxılış kanalı:** `diegosouzapw/omniroute:next` və
-> `diegosouzapw/omniroute:next-web` cari standart `release/v*`
-> budağını izləyir. Bu dəyişkən teqlər yalnız buraxılmamış düzəlişləri sınaqdan keçirmək
-> üçün nəzərdə tutulub və **istehsal mühiti üçün dəstəklənmir**. [Docker buraxılış kanallarına](docs/guides/DOCKER_GUIDE.md#release-channels) baxın.
+> **Yayımdan əvvəl Docker kanalı:** `diegosouzapw/omniroute:next` və `diegosouzapw/omniroute:next-web` cari standart `release/v*` filialını izləyir. Bu dəyişkən teqlər yalnız buraxılmamış düzəlişləri sınamaq üçün nəzərdə tutulub** istehsal üçün dəstəklənmir** . [Docker Buraxılış Kanallarına](docs/guides/DOCKER_GUIDE.md#release-channels) baxın.
 
 **🥟 Bun**
 
-Standart `bun install` və qlobal quraşdırma (`bun install -g omniroute`) Bun runtime aşkarlanması vasitəsilə dəstəklənir:
+Standart `bun install` və qlobal quraşdırma (`bun install -g omniroute`) Bun iş vaxtının aşkarlanması vasitəsilə dəstəklənir:
 
-- **Daxili `bun:sqlite`**: OmniRoute Bun altında işləyərkən Bun-un daxili `bun:sqlite` drayverindən istifadə edir, Node.js altında isə `better-sqlite3` və ya `sql.js`-ə keçir.
-- **Dev rejimində Webpack bundler-in avtomatik seçilməsi**: İnkişaf (`bun run dev`) zamanı Bun avtomatik aşkarlanır və native V8 binding uyğunsuzluqlarının qarşısını almaq üçün Turbopack əvəzinə Webpack deaktiv edilir. İstehsal build-ləri (`bun run build`) Node-da olduğu kimi `OMNIROUTE_USE_TURBOPACK` parametrini dəqiq izləyir: standart olaraq Turbopack, Webpack ilə build etmək üçün `OMNIROUTE_USE_TURBOPACK=0` (`Dockerfile.bun` bunu `--build-arg` kimi təqdim edir).
-- **Bun üçün xüsusi Dockerfile**: Native Bun istehsal yerləşdirmələri üçün çoxmərhələli `Dockerfile.bun` (`docker build -f Dockerfile.bun -t omniroute:bun .`).
+- **Quraşdırılmış `bun:sqlite`** : OmniRoute Bun altında işləyərkən, Node.js və ya `sql.js` da `better-sqlite3` -ə qayıdarkən Bun-nin daxili `bun:sqlite` sürücüsündən istifadə edir.
+- **Dev-də avtomatik Webpack bundler seçimi** : İnkişaf (`bun run dev`) avtomatik olaraq Bun aşkarlayır və yerli V8 bağlama uyğunsuzluqlarının qarşısını almaq üçün Webpack lehinə Turbopack söndürür. İstehsal quruluşları (`bun run build`) tam olaraq Node-da olduğu kimi `OMNIROUTE_USE_TURBOPACK` izləyir: Turbopack defolt olaraq, Webpack ilə qurmaq üçün `OMNIROUTE_USE_TURBOPACK=0` (`Dockerfile.bun` onu `--build-arg` kimi göstərir).
+- **Xüsusi Bun Dockerfile** : Doğma Bun istehsal yerləşdirmələri üçün çox mərhələli `Dockerfile.bun` (`docker build -f Dockerfile.bun -t omniroute:bun .`).
 
 ```bash
-# Bun ilə quraşdırın və işə salın
+# Install and run with Bun
 bun install
 bun run dev
 ```
 
-**🛠️ Mənbə kodundan**
+**🛠️ Mənbədən**
 
 ```bash
 cp .env.example .env && npm install
@@ -1161,59 +1130,51 @@ yay -S omniroute-bin && systemctl --user enable --now omniroute.service
 **🔧 Nix (Flake)**
 
 ```bash
-# Nix flakes-dən istifadə
+# Using Nix flakes
 nix develop
 npm run dev
 
-# Və ya devbox-dan istifadə
+# Or using devbox
 devbox run npm run dev
 ```
 
-📖 [Docker təlimatı](docs/guides/DOCKER_GUIDE.md) — Compose profilləri, Caddy HTTPS, Cloudflare tunelləri.
+📖 [Docker Bələdçisi](docs/guides/DOCKER_GUIDE.md) — Profillər, Caddy HTTPS, Cloudflare tunelləri yaradın.
 
 **🦭 Podman**
 
 ```bash
-# 1. Bind-mount ediləcək məlumat qovluğunu hazırlayın
+# 1. Prepare the bind-mounted data directory
 mkdir -p data
 
-# 2. Yalnız Linux + lokal rootless Podman üçün (uzaq Podman Machine klientindən heç vaxt istifadə etməyin):
+# 2. Linux + local rootless Podman only (never a remote Podman Machine client):
 podman unshare chown 1000:1000 ./data
 
-# 3. Runtime ipucunu təyin edin, lokal Compose təsvirini build edin və başladın
+# 3. Set the runtime hint, build the local Compose image, and start
 echo "CONTAINER_HOST=podman" >> .env
 podman compose --profile base up -d --build
 ```
 
-macOS və ya Windows-da Podman uzaq Podman Machine istifadə edir: `podman unshare` əmrini keçin və [topologiyaya xas məlumat qovluğu təlimatına](contrib/podman/README.md#data-directory-permissions-by-topology) əməl edin.
+macOS və ya Windows Podman uzaqdan Podman Maşınından istifadə edir: `podman unshare` atlayın və [topologiyaya aid məlumat kataloqu təlimatlarına](contrib/podman/README.md#data-directory-permissions-by-topology) əməl edin.
 
-📖 [Podman təlimatı](contrib/podman/README.md) — Compose build-ləri, Podman Machine və
-Linux/systemd Quadlet quraşdırması.
+📖 [Podman Bələdçisi](contrib/podman/README.md) — Quraşdırma, Podman Maşın və Linux/systemd Quadlet quraşdırma.
 
-**⚡ Daha sürətli / daha yüngül quraşdırma (native build-i keçin)**
+**⚡ Daha sürətli / daha incə quraşdırma (doğma quruluşu atlayın)**
 
-Native SQLite mühərriki (`better-sqlite3`) **ixtiyari** asılılıqdır, buna görə qlobal
-quraşdırma heç vaxt mənbə kodundan kompilyasiyanı gözləmir: platformanıza/Node versiyanıza uyğun
-hazır binary olduqda ondan istifadə edir, əks halda şəffaf şəkildə yalnız JS-dən ibarət mühərrikə
-keçir (`node:sqlite` Node 22+ versiyalarında, əks halda paketə daxil edilmiş `sql.js` WASM) — build alətləri tələb olunmur.
+The native SQLite engine (`better-sqlite3`) is an **optional** dependency, so a global install never blocks on compiling from source: it uses a prebuilt binary when one matches your platform/Node, and otherwise falls back transparently to a pure-JS engine (`node:sqlite` on Node 22+, else the bundled `sql.js` WASM) — no build tools required.
 
-Post-install **native warm-up** mərhələsini tamamilə keçmək üçün (CI, başsız rejim və ya yavaş maşınlar).
-Qeyd: bu yalnız native SQLite warm-up mərhələsini (`scripts/postinstall.mjs`) keçir; binary-copy/repair hook-u (`scripts/build/postinstall.mjs`) adi qaydada işləyir:
+Quraşdırmadan sonra keçmək üçün** yerli istiləşmə** tamamilə (CI, başsız və ya yavaş maşınlar). Qeyd: bu, yalnız yerli SQLite isinmə addımını keçir (`scripts/postinstall.mjs`); binary-copy/repair çəngəl (`scripts/build/postinstall.mjs`) hələ də normal işləyir:
 
 ```bash
-OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 bunu da keçir
+OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 also skips it
 ```
 
-Ən sürətli quraşdırmalar üçün **pnpm**-ə üstünlük verin (məzmun ünvanlı saxlanc + hard link-lər — yuxarıya baxın).
-Panelsiz, başsız runtime üçün Docker `base` profilindən (yuxarıya baxın) və ya
-[Termux təlimatından](docs/guides/TERMUX_GUIDE.md) istifadə edin. CLI və veb panel eyni proses tərəfindən
-bir port üzərindən təqdim olunur, buna görə hazırda yalnız CLI üçün ayrıca paket yoxdur.
+Ən sürətli quraşdırmalar üçün üstünlük verilir** pnpm** (məzmun ünvanlı mağaza + hard links — yuxarıda bax). Panelsiz, başsız işləmə vaxtı üçün Docker `base` profilindən (yuxarıda) və ya [Termux bələdçisindən](docs/guides/TERMUX_GUIDE.md) istifadə edin. CLI və veb tablosuna eyni proses bir portda xidmət göstərir, ona görə də bu gün yalnız CLI üçün ayrıca paket yoxdur.
 
 <br/>
 
 <div align="center">
 
-# 🎬 OmniRoute fəaliyyətdə
+# 🎬 OmniRoute Fəaliyyətdə
 
 </div>
 
@@ -1309,29 +1270,29 @@ bir port üzərindən təqdim olunur, buna görə hazırda yalnız CLI üçün a
 <br/>
 <div align="center">
 
-## 🛠️ Texnologiya steki
+## 🛠️ Tech Stack
 
 </div>
 
 <table>
   <tr><th align="left">Qat</th><th align="left">Texnologiya</th></tr>
-  <tr><td nowrap><b>İşləmə mühiti</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
-  <tr><td nowrap><b>Dil</b></td><td>TypeScript 6.0 — <code>src/</code> və <code>open-sse/</code> üzrə <b>100% TypeScript</b> (v2.0-dan etibarən nüvədə sıfır <code>any</code>)</td></tr>
-  <tr><td nowrap><b>Freymvork</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
-  <tr><td nowrap><b>Verilənlər bazası</b></td><td>better-sqlite3 (SQLite, WAL jurnallaşdırması) + LowDB (JSON legacy) — 147 domen modulu, 240 miqrasiya</td></tr>
-  <tr><td nowrap><b>Yaddaş</b></td><td>SQLite FTS5 tam mətn axtarışı + int8-kəmiyyətləşdirilmiş vektor embedding-ləri, tipləşdirilmiş azalma</td></tr>
-  <tr><td nowrap><b>Sxemlər</b></td><td>Zod 4 — MCP alətləri üçün giriş/çıxış yoxlaması + API müqavilələri</td></tr>
+  <tr><td nowrap><b>İcra müddəti</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
+  <tr><td nowrap><b>Dil</b></td><td>TypeScript 6.0 — <b>100% TypeScript</b> <code>src/</code> və <code>open-sse/</code> üzrə (v2.0-dan bəri nüvədə sıfır <code>any</code> )</td></tr>
+  <tr><td nowrap><b>Çərçivə</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
+  <tr><td nowrap><b>Verilənlər bazası</b></td><td>better-sqlite3 (SQLite, WAL journaling) + LowDB (JSON legacy) — 147 domen modulu, 240 köçürmə</td></tr>
+  <tr><td nowrap><b>Yaddaş</b></td><td>SQLite FTS5 tam mətn + int8-quantized vektor əlavələri, çap edilmiş çürümə</td></tr>
+  <tr><td nowrap><b>Sxemlər</b></td><td>Zod 4 — MCP alət I/O doğrulama + API müqavilələri</td></tr>
   <tr><td nowrap><b>Protokollar</b></td><td>MCP (stdio / HTTP / SSE) + A2A v0.3 (JSON-RPC 2.0 + SSE)</td></tr>
-  <tr><td nowrap><b>Axınlaşdırma</b></td><td>Server tərəfindən göndərilən hadisələr (SSE) + WebSocket körpüsü (<code>/v1/ws</code>)</td></tr>
-  <tr><td nowrap><b>Sıxlaşdırma</b></td><td>12 mühərrikli pipeline — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
-  <tr><td nowrap><b>Autentifikasiya və təhlükəsizlik</b></td><td>OAuth 2.0 (PKCE) + JWT + API açarları + MCP əhatə dairəli autentifikasiya · saxlanılan zaman AES-256-GCM · DOMPurify</td></tr>
-  <tr><td nowrap><b>Gizlilik</b></td><td>wreq-js — JA3 / JA4 TLS fingerprint təqlidi, 3 səviyyəli proksi</td></tr>
-  <tr><td nowrap><b>Davamlılıq</b></td><td>Dövrə kəsici, eksponensial geriyə çəkilmə, anti-thundering-herd, avtomatik kombinasiyalı özünübərpa</td></tr>
-  <tr><td nowrap><b>Jurnallaşdırma</b></td><td>pino — sorğu konteksti ilə strukturlaşdırılmış JSON jurnalları</td></tr>
-  <tr><td nowrap><b>Testləşdirmə</b></td><td>Node.js test işlədicisi + Vitest — 8,400-dən çox izlənən test faylı üzrə <b>60,000-dən çox statik test deklarasiyası</b> (modul, inteqrasiya, E2E, təhlükəsizlik, ekosistem)</td></tr>
-  <tr><td nowrap><b>Platformalar</b></td><td>Masaüstü (Electron) · Android (Termux) · PWA (istənilən brauzer)</td></tr>
-  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Actions — buraxılış zamanı avtomatik npm yayımlaması + Docker Hub</td></tr>
-  <tr><td nowrap><b>Keçidlər</b></td><td><a href="https://omniroute.online">Vebsayt</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/diegosouzapw/omniroute">Docker Hub</a></td></tr>
+  <tr><td nowrap><b>Axın</b></td><td>Server tərəfindən Göndərilən Hadisələr (SSE) + WebSocket körpüsü (<code>/v1/ws</code>)</td></tr>
+  <tr><td nowrap><b>Sıxılma</b></td><td>12 mühərrikli boru kəməri — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
+  <tr><td nowrap><b>Auth &amp; təhlükəsizlik</b></td><td>OAuth 2.0 (PKCE) + JWT + API + MCP əhatəli auth · AES-256-GCM istirahətdə · DOMPurify</td></tr>
+  <tr><td nowrap><b>Gizlilik</b></td><td>wreq-js — JA3 / JA4 TLS barmaq izi təqlidi, 3 səviyyəli proksi</td></tr>
+  <tr><td nowrap><b>Dözümlülük</b></td><td>Devre açarı, eksponensial geriləmə, ildırım əleyhinə sürüsü, avtomatik kombo özünü sağaltma</td></tr>
+  <tr><td nowrap><b>Giriş</b></td><td>sorğu konteksti ilə pino — strukturlaşdırılmış JSON qeydləri</td></tr>
+  <tr><td nowrap><b>Test</b></td><td>Node.js test runner + Vitest — <b>60,000 + statik test bəyannaməsi</b> 8,400 + izlənilən test faylları arasında (vahid, inteqrasiya, E2E, təhlükəsizlik, ekosistem)</td></tr>
+  <tr><td nowrap><b>Platformalar</b></td><td>İş masası (Electron) · Android (Termux) · PWA (istənilən brauzer)</td></tr>
+  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Actions — auto npm nəşr + Docker Hub buraxılışda</td></tr>
+  <tr><td nowrap><b>Linklər</b></td><td><a href="https://omniroute.online">Veb sayt</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/cheaperinference/omniroute">Docker Hub</a></td></tr>
 </table>
 
 <div align="center">
@@ -1821,17 +1782,17 @@ OmniRoute nəhənglərin çiyinləri üzərində dayanır. O, **[9router](https:
   <tr><td nowrap><b><a href="https://github.com/steipete/CodexBar">CodexBar</a></b></td><td align="center">22,955</td><td>Grok Build kvota səthini müəyyənləşdirdi; OmniRoute daha sonra canlı wire formatını müstəqil şəkildə yoxladı və düzəltdi.</td></tr>
 </table>
 
-## 📄 Lisenziya
+## 📄 Lisenziyası
 
-MIT lisenziyası — ətraflı məlumat üçün [LICENSE](LICENSE) faylına baxın.
+MIT Lisenziyası - ətraflı məlumat üçün [LICENSE](LICENSE) baxın.
 
 ---
 
 <div align="center">
 
-**[⬆ Yuxarı qayıt](#-omniroute)** · Açıq mənbəli süni intellekt icması üçün ❤️ ilə hazırlanıb.
+**[⬆ Əvvələ qayıt](#-omniroute)** · Açıq mənbəli AI icması üçün ❤️ ilə qurulmuşdur.
 
-<sub><a href="https://github.com/diegosouzapw">Diego Souza</a> tərəfindən yaradılıb · OmniRoute v3.8.55 · Node ≥22.22.2 · MIT lisenziyası · <a href="https://omniroute.online">omniroute.online</a></sub>
+<sub>tərəfindən yaradılmışdır <a href="https://github.com/diegosouzapw">Dieqo Souza</a> · OmniRoute v3.8.55 · Node ≥ 22.22.2 · MIT Lisenziyası · <a href="https://omniroute.online">omniroute.online</a></sub>
 
 </div>
-<!-- İcma sual-cavabları üçün GitHub Discussions aktivləşdirilib -->
+<!-- GitHub Discussions enabled for community Q&A -->

@@ -460,34 +460,34 @@ rasite [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ## Docker problemos
 
-### Docker IPv6 / ryšio nustatymas iš naujo
+### Docker IPv6 / Ryšio atstatymas
 
 <a name="docker-ipv6"></a>
 
-**Požymiai:** `curl http://localhost:20128/v1/models` grąžina `curl: (56) Recv failure: Connection reset by peer`. Valdymo skydelis ir autentifikavimo nereikalaujantys galiniai taškai veikia, tačiau autentifikuojami galiniai taškai neveikia — atrodo, kad tai autentifikavimo problema, nors taip nėra.
+**Simptomai:** `curl http://localhost:20128/v1/models` grąžina `curl: (56) Recv failure: Connection reset by peer`. Prietaisų skydelis ir neautentifikuoti galiniai taškai veikia, tačiau autentifikuoti galiniai taškai sugenda — atrodo, kad yra autentifikavimo problema, bet taip nėra.
 
-**Priežastis:** `docker run -p 20128:20128` publikuoja ir per `0.0.0.0` (IPv4), ir per `::` (IPv6), tačiau procesas konteinerio viduje klausosi tik per IPv4. Pagrindiniuose kompiuteriuose, kuriuose `localhost` pirmiausia nustatomas kaip `::1`, ryšys nukreipiamas į publikuotą IPv6 prievadą, už kurio nėra klausančio proceso → ryšys nustatomas iš naujo.
+**Priežastis:** `docker run -p 20128:20128` skelbia ir `0.0.0.0` (IPv4), ir `::` (IPv6), bet procesas konteineryje klausosi tik IPv4. Kompiuteriuose, kuriuose `localhost` išsprendžiama į `::1` pirmiausia, ryšys patenka į IPv6 paskelbtą prievadą, o už jo nėra klausytojo, → ryšys nustatomas iš naujo.
 
-**Sprendimas:**
+**Pataisyti:**
 
-1. **Greita diagnostika:** paleiskite `curl -4 http://localhost:20128/v1/models`. Jei su `-4` veikia, o be jo neveikia, IPv6 susiejimas nesutampa.
-2. **Nuolatinis sprendimas:** aiškiai susiekite su IPv4, `docker run` komandoje naudodami `-p 127.0.0.1:20128:20128`:
+1. **Greita diagnostika:** Paleisti `curl -4 http://localhost:20128/v1/models`. Jei jis veikia su `-4`, bet nepavyksta be jo, turite IPv6 susiejimo neatitikimą.
+2. **Nuolatinis taisymas:** Aiškiai susiekite su IPv4 naudodami `-p 127.0.0.1:20128:20128` komandoje `docker run` :
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Tai priverstinai susieja su IPv4 ir neleidžia tarpinio serverio pasiekti per visas pagrindinio kompiuterio sąsajas.
+   Tai priverčia IPv4 susieti ir taip pat neleidžia atskleisti tarpinio serverio visose pagrindinio kompiuterio sąsajose.
 
 ---
 
-### CLI įrankis rodomas kaip neįdiegtas
+### CLI įrankis rodo neįdiegtą
 
-1. Patikrinkite vykdymo aplinkos laukus: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Nešiojamajam režimui naudokite atvaizdo paskirties objektą `runner-cli` (CLI įrankiai įtraukti)
-3. Pagrindinio kompiuterio prijungimo režimui nustatykite `CLI_EXTRA_PATHS` ir prijunkite pagrindinio kompiuterio vykdomųjų failų katalogą tik skaitymo režimu
-4. Jei `installed=true`, o `runnable=false`: vykdomasis failas rastas, tačiau jo būklės patikra nepavyko
+1. Patikrinkite vykdymo laukus: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Nešiojamajam režimui: naudokite vaizdo taikinį `runner-cli` (supakuotas CLIs)
+3. Pagrindinio kompiuterio prijungimo režimui: nustatykite `CLI_EXTRA_PATHS` ir mount host bin katalogą kaip tik skaitomą
+4. Jei `installed=true` ir `runnable=false`: dvejetainis rastas, bet nepavyko patikrinti sveikatos
 
-### Greitas vykdymo aplinkos patikrinimas
+### Greitas vykdymo laiko patvirtinimas
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

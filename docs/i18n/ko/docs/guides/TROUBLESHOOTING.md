@@ -444,28 +444,28 @@ v3.8.0 _이전_에 가져온 연결에는 연결별 클라이언트
 
 <a name="docker-ipv6"></a>
 
-**증상:** `curl http://localhost:20128/v1/models`가 `curl: (56) Recv failure: Connection reset by peer`를 반환합니다. 대시보드와 인증되지 않은 엔드포인트는 작동하지만 인증된 엔드포인트는 실패합니다. 인증 문제처럼 보이지만 실제로는 그렇지 않습니다.
+**증상:** `curl http://localhost:20128/v1/models` `curl: (56) Recv failure: Connection reset by peer` 반환합니다. 대시보드 및 인증되지 않은 엔드포인트는 작동하지만 인증된 엔드포인트는 실패합니다 — 인증 문제처럼 보이지만 그렇지 않습니다.
 
-**원인:** `docker run -p 20128:20128`은 `0.0.0.0`(IPv4)과 `::`(IPv6) 모두에 포트를 게시하지만, 컨테이너 내부 프로세스는 IPv4에서만 수신합니다. `localhost`가 `::1`로 먼저 해석되는 호스트에서는 연결이 뒤쪽에 리스너가 없는 IPv6 게시 포트로 전달되어 연결이 재설정됩니다.
+**원인:** `docker run -p 20128:20128` `0.0.0.0` (IPv4) 및 `::` (IPv6) 모두에 게시하지만 컨테이너 내부 프로세스는 IPv4 에서만 수신 대기합니다. `localhost` 먼저 `::1` 로 확인되는 호스트에서 연결은 뒤에 수신기가 없는 IPv6 게시 포트에 도달합니다. → 연결 재설정.
 
-**해결 방법:**
+**고치다:**
 
-1. **빠른 진단:** `curl -4 http://localhost:20128/v1/models`를 실행합니다. `-4`를 사용하면 작동하지만 사용하지 않으면 실패하는 경우 IPv6 바인딩 불일치가 발생한 것입니다.
-2. **영구적인 해결 방법:** `docker run` 명령에서 `-p 127.0.0.1:20128:20128`을 사용하여 IPv4에 명시적으로 바인딩합니다:
+1. **Quick diagnostic:** Run `curl -4 http://localhost:20128/v1/models`. If it works with `-4` but fails without, you have an IPv6 bind mismatch.
+2. **영구 수정:** `docker run` 명령에서 `-p 127.0.0.1:20128:20128` 사용하여 명시적으로 IPv4 에 바인딩합니다.
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   이렇게 하면 IPv4 바인딩을 강제하고 모든 호스트 인터페이스에 프록시가 노출되는 것도 방지할 수 있습니다.
+   이렇게 하면 IPv4 바인드가 강제 실행되고 모든 호스트 인터페이스에 프록시가 노출되는 것을 방지할 수 있습니다.
 
 ---
 
 ### CLI 도구가 설치되지 않은 것으로 표시됨
 
-1. 런타임 필드를 확인합니다: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. 포터블 모드: 이미지 대상 `runner-cli`를 사용합니다(번들로 제공되는 CLI)
-3. 호스트 마운트 모드: `CLI_EXTRA_PATHS`를 설정하고 호스트 bin 디렉터리를 읽기 전용으로 마운트합니다
-4. `installed=true`이고 `runnable=false`인 경우: 바이너리는 발견되었지만 상태 확인에 실패한 것입니다
+1. 런타임 필드 확인: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. 휴대용 모드의 경우: 이미지 대상 `runner-cli` 사용(번들 CLIs)
+3. 호스트 마운트 모드의 경우: `CLI_EXTRA_PATHS` 설정하고 호스트 bin 디렉토리를 읽기 전용으로 마운트합니다.
+4. `installed=true` 및 `runnable=false`: 바이너리가 발견되었지만 상태 확인에 실패한 경우
 
 ### 빠른 런타임 검증
 

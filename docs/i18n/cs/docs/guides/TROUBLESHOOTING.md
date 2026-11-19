@@ -422,36 +422,36 @@ najdete v souboru [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Problémy s Dockerem
+## Problémy Docker
 
-### Docker IPv6 / resetování připojení
+### Docker IPv6 / Reset připojení
 
 <a name="docker-ipv6"></a>
 
-**Příznaky:** `curl http://localhost:20128/v1/models` vrátí `curl: (56) Recv failure: Connection reset by peer`. Řídicí panel a koncové body bez ověřování fungují, ale ověřované koncové body selhávají — vypadá to jako problém s ověřováním, ale není tomu tak.
+**Příznaky:** `curl http://localhost:20128/v1/models` vrátí `curl: (56) Recv failure: Connection reset by peer`. Řídicí panel a neověřené koncové body fungují, ale ověřené koncové body selžou — vypadá to jako problém s autentizací, ale není.
 
-**Příčina:** `docker run -p 20128:20128` publikuje na `0.0.0.0` (IPv4) i `::` (IPv6), ale proces uvnitř kontejneru naslouchá pouze na IPv4. Na hostitelích, kde se `localhost` nejprve přeloží na `::1`, připojení směřuje na publikovaný port IPv6, za kterým není žádný naslouchající proces → připojení je resetováno.
+**Příčina:** `docker run -p 20128:20128` publikuje na `0.0.0.0` (IPv4) i `::` (IPv6), ale proces uvnitř kontejneru naslouchá pouze na IPv4. Na hostitelích, kde se `localhost` nejprve převede na `::1`, připojení přistane na publikovaném portu IPv6 bez žádného posluchače za ním → spojení resetuje.
 
-**Oprava:**
+**Opravit:**
 
-1. **Rychlá diagnostika:** Spusťte `curl -4 http://localhost:20128/v1/models`. Pokud s `-4` funguje, ale bez něj selže, dochází k nesouladu vazby IPv6.
-2. **Trvalá oprava:** Navažte port explicitně na IPv4 pomocí `-p 127.0.0.1:20128:20128` v příkazu `docker run`:
+1. **Rychlá diagnostika:** Spustit `curl -4 http://localhost:20128/v1/models`. Pokud funguje se `-4`, ale selže bez něj, máte nesoulad vazby IPv6.
+2. **Trvalá oprava:** Navázání na IPv4 explicitně pomocí `-p 127.0.0.1:20128:20128` v příkazu `docker run` :
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Tím vynutíte vazbu na IPv4 a zároveň zabráníte zpřístupnění proxy na všech rozhraních hostitele.
+   To vynutí vazbu IPv4 a také zabrání odhalení proxy na všech hostitelských rozhraních.
 
 ---
 
-### Nástroj CLI se zobrazuje jako nenainstalovaný
+### Nástroj CLI ukazuje, že není nainstalováno
 
-1. Zkontrolujte pole běhového prostředí: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Pro přenosný režim použijte cíl obrazu `runner-cli` (obsahuje nástroje CLI)
-3. Pro režim připojení hostitele nastavte `CLI_EXTRA_PATHS` a připojte adresář binárních souborů hostitele pouze pro čtení
-4. Pokud platí `installed=true` a `runnable=false`: binární soubor byl nalezen, ale neprošel kontrolou stavu
+1. Zkontrolujte pole runtime: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Pro přenosný režim: použijte cíl obrázku `runner-cli` (přibalený CLIs)
+3. Pro režim připojení hostitele: nastavte `CLI_EXTRA_PATHS` a adresář mount hostitele bin jako pouze pro čtení
+4. Pokud byly nalezeny binární soubory `installed=true` a `runnable=false`:, ale selhala kontrola stavu
 
-### Rychlé ověření běhového prostředí
+### Rychlé ověření za běhu
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

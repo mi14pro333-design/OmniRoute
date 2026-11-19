@@ -481,7 +481,7 @@ open-sse/
 
 ### 4.8 `open-sse/utils/`
 
-سلسلہ بندی کے قدیم اور فراہم کنندہ کے مددگار: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts` `awsSigV4.ts` `networkProxy.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts` `usageTracking.ts` `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
+سلسلہ بندی کے قدیم اور فراہم کنندہ کے مددگار: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts` `awsSigV4.ts` `networkProxy.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts` `requestLogger.ts` `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-مقصد کے لحاظ سے 6 ذیلی فولڈرز میں منظم ہے۔
+مقصد کے مطابق 6 ذیلی فولڈرز میں منظم۔
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`۔
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`، نیز صرف پڑھنے کے لیے PR کی نگرانی کرنے والے معاون
-  `ci-discriminate.sh` (کسی PR کی ناکام جانچوں کے سگنیچرز کو ایک حوالہ جاتی PR یا base-red مسئلے کے مقابلے میں اپنے / وراثت میں ملے /
-  نامعلوم زمروں میں تقسیم کرتا ہے) اور `audit-worktree.sh`
-  (گندی فائلیں، محفوظ سطحیں، ہٹائے گئے asserts، suppression کی تعداد، باقی رہ جانے والی
-  عارضی tsconfigs، PR head بمقابلہ مقامی HEAD — کسی کارکن کا PR قبول کیے جانے سے پہلے)۔
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`۔
-- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`۔
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`۔
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`۔
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, علاوہ صرف پڑھنے کے لیے ایک PR `ci-discriminate.sh` یا بنیادی PR مسئلے کے خلاف دستخطوں کی ناکامی کی جانچ پڑتال PR / وراثت میں / نامعلوم) اور `audit-worktree.sh` (گندی فائلیں، محفوظ سطحیں، ہٹائے گئے دعوے، دبانے کی گنتی، بچا ہوا tmp tsconfigs، PR head بمقابلہ مقامی HEAD — کسی کارکن کے PR قبول کرنے سے پہلے)۔
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

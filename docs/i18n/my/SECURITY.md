@@ -184,11 +184,11 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ## Docker လုံခြုံရေး
 
-- Production တွင် root မဟုတ်သော user ကို အသုံးပြုပါ
-- လျှို့ဝှက်တန်ဖိုးများကို read-only volume များအဖြစ် mount လုပ်ပါ
-- `.env` ဖိုင်များကို Docker image များထဲသို့ မည်သည့်အခါမျှ copy မလုပ်ပါနှင့်
-- အရေးကြီးသောဖိုင်များကို ဖယ်ထုတ်ရန် `.dockerignore` ကို အသုံးပြုပါ
-- HTTPS နောက်ကွယ်တွင် အသုံးပြုသည့်အခါ `AUTH_COOKIE_SECURE=true` ဟု သတ်မှတ်ပါ
+- ထုတ်လုပ်မှုတွင် root မဟုတ်သောအသုံးပြုသူကိုသုံးပါ။
+- ဖတ်ရှုရန်သီးသန့်အတွဲများအဖြစ် လျှို့ဝှက်ချက်များကို ထည့်သွင်းပါ။
+- `.env` ဖိုင်များကို Docker ပုံများသို့ ဘယ်တော့မှ ကော်ပီကူးပါ။
+- ထိလွယ်ရှလွယ် ဖိုင်များကို ဖယ်ထုတ်ရန် `.dockerignore` သုံးပါ။
+- HTTPS နောက်တွင် `AUTH_COOKIE_SECURE=true` သတ်မှတ်ပါ။
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

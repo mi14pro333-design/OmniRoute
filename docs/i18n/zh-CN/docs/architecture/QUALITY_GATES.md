@@ -22,7 +22,7 @@ CI和 Quality Gates 工作流程各自发出稳定的结论： `Gate / CI`和`Ga
 
 普通的PR运行快速选择。准入策略的`full-code`和`full-code-e2e`通道（E2E、集成、包工件、 Electron Smoke、 Bun SQLite、生态系统和协议客户端）仅在 Mergify 队列草稿或完整运行上运行： `gh workflow run ci.yml --ref <branch>`。
 
-每张JSON收据都标识已签出的SHA、工作流运行和尝试。 CLI拒绝checkout/event SHA不匹配。工作流测试将策略成员资格绑定到判定作业的`needs`列表，因此新的或删除的通道不会悄无声息地消失。这些收据涵盖了它们自己的工作流程，而不是发布、部署或现有咨询扫描仪的内部结构。激活分支规则中的两个检查名称是一项单独的管理更改；添加这些工作本身并不能保护分支机构。
+每张JSON收据都标识已签出的SHA、工作流程运行和尝试。 CLI拒绝checkout/event SHA不匹配。工作流测试将策略成员资格绑定到判定作业的`needs`列表，因此新的或删除的通道不会悄无声息地消失。这些收据涵盖了它们自己的工作流程，而不是发布、部署或现有咨询扫描仪的内部结构。激活分支规则中的两个检查名称是一项单独的管理更改；添加这些工作本身并不能保护分支机构。
 
 ### 合并队列
 
@@ -44,7 +44,7 @@ CLI要求`--evidence-root`验证保留的证据。文件解析为`<evidence-root
 
 使用`npm run quality:scan -- --list`或`npm run quality:scan:fast -- --list`检查选定的别名而不执行它们。运行程序调用 npm 入口点，因此其运行时（包括配置的Bun ）被保留。清单将这些配置文件之外的别名记录为单独调用的，并且在只读扫描配置文件中禁止维护命令。
 
-这些配置文件仅涵盖静态扫描。他们不证明产品测试、覆盖范围、包装、外部检查或候选者的完全发布验收。工作流准入使用链接的`config/quality/admission-policy.json`和`scripts/quality/admission-verdict.mjs`。发布观察者档案保持独立；独立检查其适用的支票和收据。完整观察者的静态命令在`config/quality/release-green-static-profile.json`中声明，包括`audit:deps`、突变测试选择和翻译检查。加载程序根据package.json和建模CI/Quality声明验证 npm 命令；它拒绝漂移，而不是将 shell 标记作为参数执行。所需的扫描仪SKIP/INCOMPLETE输出无法建立PASS。该配置文件记录其外部排除，并且不会替换托管覆盖范围、测试矩阵、包或部署证据。下面的散文清单仅供参考，并不是门实际运行的证据。
+这些配置文件仅涵盖静态扫描。他们不证明产品测试、覆盖范围、包装、外部检查或候选者的完全发布验收。工作流准入使用链接的`config/quality/admission-policy.json`和`scripts/quality/admission-verdict.mjs`。发布观察者资料保持独立；独立检查其适用的支票和收据。完整观察者的静态命令在`config/quality/release-green-static-profile.json`中声明，包括`audit:deps`、突变测试选择和翻译检查。加载程序根据package.json和建模CI/Quality声明验证 npm 命令；它拒绝漂移，而不是将 shell 标记作为参数执行。所需的扫描仪SKIP/INCOMPLETE输出无法建立PASS。该配置文件记录其外部排除，并且不会替换托管覆盖范围、测试矩阵、包或部署证据。下面的散文清单仅供参考，并不是门实际运行的证据。
 
 脚本位于`scripts/check/` （策略门）和`scripts/quality/` （棘轮引擎）下。 CI的事实来源是`.github/workflows/ci.yml`。
 
@@ -63,7 +63,7 @@ CLI要求`--evidence-root`验证保留的证据。文件解析为`<evidence-root
 
 `npm run check:forgotten-sibling-tests`作为`Fast Quality Gates`的咨询步骤运行，并重用测试影响图背后的导入解析器。对于每个更改的生产模块，当拉取请求差异中缺少候选测试时，它会报告确定性`changed module/symbol -> static consumer -> candidate sibling test`链。 Markdown 摘要和JSON结果将保留为`forgotten-sibling-tests`工作流程工件，以便在任何阻止推出之前进行校准。
 
-桶再导出和动态导入仅是分辨率诊断；他们绝不会造成阻碍性的发现。在`config/quality/forgotten-sibling-allowlist.json`中查看异常情况。每个条目必须命名消费者和候选测试，给出具体的理由，并链接GitHub问题或拉取请求。格式错误的条目无法关闭。异常无法抑制已删除的候选测试或添加`.skip`/`.todo`的 diff ；断言弱化和其他屏蔽仍然由独立阻塞的`check:test-masking`门拥有。
+桶再导出和动态导入仅用于分辨率诊断；他们绝不会造成阻碍性的发现。在`config/quality/forgotten-sibling-allowlist.json`中查看异常情况。每个条目必须命名消费者和候选测试，给出具体的理由，并链接GitHub问题或拉取请求。格式错误的条目无法关闭。异常无法抑制已删除的候选测试或添加`.skip`/`.todo`的差异；断言弱化和其他屏蔽仍然由独立阻塞的`check:test-masking`门拥有。
 
 ### 职位： `lint`
 
@@ -88,7 +88,7 @@ CLI要求`--evidence-root`验证保留的证据。文件解析为`<evidence-root
 | `check:vitest-exclusions`         | 每个Vitest排除都会命名一个跟踪问题并出现在`config/quality/vitest-exclusions.json` (#13204) 中                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 是的                                |
 | `check:file-size`                 | 源文件（ `src/`、 `open-sse/`、 `electron/`、 `bin/`中的`.ts`/`.tsx` ）保留在`cap`中，测试文件（`*.test.ts(x)`）保留在`testCap`中；冻结在`file-size-baseline.json` (`frozen` / `testFrozen`) 中的文件不得超过其记录的大小                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 是的                                |
 | `check:error-helper`              | executors/handlers中的错误响应使用`buildErrorBody()` / `sanitizeErrorMessage()` （硬规则#12）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 是的                                |
-| `check:migration-numbering`       | 迁移SQL文件按顺序编号，无间隙或重复                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | 是的                                |
+| `check:migration-numbering`       | 迁移文件名：旧的`001`–`241`系列被冻结，新文件为`YYYYMMDDHHMMSS_<description>.sql`。针对PR基础，它拒绝已删除的迁移、没有兼容性条目的重命名迁移，以及最终架构无法交换的无序或编辑的迁移                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | `check:public-creds`              | `publicCreds.ts`之外没有文字OAuth `client_id`/`client_secret`或 Firebase Web 密钥（硬规则#11）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 是的                                |
 | `check:db-rules`                  | `src/lib/db/`模块之外没有原始SQL ；没有从`localDb.ts`进口桶（硬规则#2/#5）                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 是的                                |
 | `check:known-symbols`             | 在其调度表中注册的提供程序执行程序、路由策略和转换器与磁盘上的文件—没有孤立或未声明的符号                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 是的                                |
@@ -130,16 +130,16 @@ CLI要求`--evidence-root`验证保留的证据。文件解析为`<evidence-root
 
 ### 职位： `quality-extended`
 
-混合作业，没有作业级别`continue-on-error`：通过`--ratchet`的步骤在测量回归与`quality-baseline.json`上失败。只有`check:circular-deps`和扫描仪安装步骤是建议性的（步骤级别`continue-on-error: true`）。外部扫描仪通过`gh release download`安装；当 gitleaks 不存在时， `check:secrets`会自跳过（退出 0），而`check:vuln-ratchet`、 `check:workflows`和`check:openapi-breaking`当测量缺失时会失败关闭。
+混合作业，没有作业级别`continue-on-error`：通过`--ratchet`的步骤在测量回归与`quality-baseline.json`上失败。只有`check:circular-deps`和扫描仪安装步骤是建议性的（步骤级别`continue-on-error: true`）。外部扫描仪通过`gh release download`安装；当 gitleaks 不存在时， `check:secrets`会自我跳过（退出 0），而`check:vuln-ratchet`、 `check:workflows`和`check:openapi-breaking`当缺少测量值时会失败关闭。
 
-| 脚本                     | 验证                                                                                                                                                  | 阻塞                             |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| `check:circular-deps`    | 无循环依赖性 (dpdm)                                                                                                                                   | **咨询**                         |
-| `check:bundle-size`      | 捆包尺寸不超过上限；无法测量的尺寸也会失败                                                                                                            | **使用--ratchet进行阻止**        |
-| `check:secrets`          | 如果二进制文件不存在，秘密扫描 (gitleaks) —会跳过                                                                                                     | **使用--ratchet进行阻止**        |
-| `check:vuln-ratchet`     | 依赖项漏洞（osv-scanner）不会回归—如果未测量， `--ratchet`会像INCOMPLETE一样失败（退出 2）                                                            | **使用--ratchet进行阻止**        |
-| `check:workflows`        | 工作流程 lint (actionlint + zizmor)； missing/broken扫描仪、无效报告或缺少棘轮基线会因INCOMPLETE失败。有效的结果遵循选定的strict/advisory/ratchet政策 | 需要执行； zizmor 棘轮在CI中阻塞 |
-| `check:openapi-breaking` | 针对固定事件提交的公共API合约（PR merge-base、push before、merge-group base； scheduled/manual checkout 第一个父级）；所需测量失败关闭                | **使用--ratchet进行阻止**        |
+| 脚本                     | 验证                                                                                                                                                    | 阻塞                             |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| `check:circular-deps`    | 无循环依赖性 (dpdm)                                                                                                                                     | **咨询**                         |
+| `check:bundle-size`      | 捆扎尺寸不超过上限；无法测量的尺寸也会失败                                                                                                              | **使用--ratchet进行阻止**        |
+| `check:secrets`          | 如果二进制文件不存在，秘密扫描 (gitleaks) —会跳过                                                                                                       | **使用--ratchet进行阻止**        |
+| `check:vuln-ratchet`     | 依赖项漏洞（osv-scanner）不会回归—如果未测量， `--ratchet`会像INCOMPLETE一样失败（退出 2）                                                              | **使用--ratchet进行阻止**        |
+| `check:workflows`        | 工作流程 lint (actionlint + zizmor)； missing/broken扫描仪、无效报告或缺少棘轮基线会失败，如INCOMPLETE。有效的结果遵循选定的strict/advisory/ratchet政策 | 需要执行； zizmor 棘轮在CI中阻塞 |
+| `check:openapi-breaking` | 针对固定事件提交的公共API合约（PR merge-base、push before、merge-group base； scheduled/manual checkout 第一个父级）；所需测量失败关闭                  | **使用--ratchet进行阻止**        |
 
 ### 职位： `docs-sync-strict`
 
@@ -180,7 +180,7 @@ PR功能仅编辑英文源。 `docs/i18n/<locale>/**`镜像（包括 66 个`llm.
 
 1. `--mode=pr|release`在命令行上；
 2. `OMNIROUTE_GATE_MODE`环境变量（`pr`或`release`）；
-3. 自动，来自GitHub Actions 事件：头不是`release/v*`、 `merge_group`或`omni-queue/**` → `pr`的`pull_request` ；其他一切（推送、调度、调度、发布PR `release/v* → main`、任何本地运行） → `release`。
+3. 自动，来自GitHub Actions 事件：头部不是`release/v*`、 `merge_group`或`omni-queue/**` → `pr`的`pull_request` ；其他一切（推送、调度、调度、发布PR `release/v* → main`、任何本地运行） → `release`。
 
 `check:docs-counts` (`scripts/check/check-docs-counts-sync.mjs`) 在每种模式下会失败：
 
@@ -204,12 +204,12 @@ PR功能仅编辑英文源。 `docs/i18n/<locale>/**`镜像（包括 66 个`llm.
 | 发布PR (`release/v* → main`)、推送、计划和手动运行                             | `release`                                                                                                                                                                |
 | 发布-绿色 (`scripts/quality/validate-release-green.mjs`)                       | HARD项目与`OMNIROUTE_GATE_MODE=pr`一起运行（“底座坏了吗？”）； DRIFT项`derived-refresh`运行`npm run release:refresh-derived -- --check` （严格来看，永远不会打开基红色） |
 | 发布（`/generate-release`阶段 0a 和 1；技能连接是单独的所有者批准的更改）      | `npm run release:refresh-derived`写入派生文件；发布PR自己的检查然后在`release`模式下运行                                                                                 |
-| `nightly-derived-refresh.yml` （每日，最高`release/vX.Y.Z`，在发布冻结下跳过） | `npm run release:refresh-derived -- --profile=nightly`;在差异上，它使ONE PR从`chore/derived-refresh`保持打开状态；从不合并                                               |
+| `nightly-derived-refresh.yml` （每日，最高`release/vX.Y.Z`，在释放冻结下跳过） | `npm run release:refresh-derived -- --profile=nightly`;在差异上，它使ONE PR从`chore/derived-refresh`保持打开状态；从不合并                                               |
 
 其背后的命令：
 
-- `npm run facts`每个派生数字打印为JSON (`scripts/release/facts.mjs`)。 `--key=code.mcpTools`打印一个值， `--snapshot`读取已提交的快照而不是实时树。当无法收集事实时退出2。
-- `npm run release:refresh-derived` (`scripts/release/refresh-derived.mjs`) 一次性重新计算派生文件，按以下顺序（ `--only=`的步骤 ID）： `provider-reference` (`docs/reference/PROVIDER_REFERENCE.md`)、 `facts` (快照)、 `numbers` (计数门的重写计划应用于文档，然后传送到它们的`docs/i18n/`镜像)、 `readme-diagrams`、 `skills` (生成`SKILL.md`)、 `e2e-timings` (跳过，直到树发布`syncE2eTimings`)、 `ui-keys` （删除键`en.json`并使用`--rewritten-since=<ref>` —默认`origin/main` —重新排队自上次发布以来重写的英文值）、 `llm-mirrors`和`verify-generated` （写入后，发布模式下的`check:generated-artifacts`和`check:agent-skills-sync`必须通过；在`--check`中跳过，当`--only`将其排除时；失败是退出 2）。 `changelog`步骤是选择加入的（`--with-changelog`，仅发布配置文件）。 `--profile=nightly`从不涉及版本声明。使用`-- --check` ，当任何文件发生更改或托管值需要手动编辑（列出两者）时，它不会写入任何内容并退出 1；基础设施故障时退出 2。 `--json`将结果打印为JSON。
+- `npm run facts`每个派生数字打印为JSON (`scripts/release/facts.mjs`)。 `--key=code.mcpTools`打印一个值， `--snapshot`读取已提交的快照而不是实时树。当无法收集到事实时，退出2。
+- `npm run release:refresh-derived` (`scripts/release/refresh-derived.mjs`) 一次性重新计算派生文件，按以下顺序（ `--only=`的步骤 ID）： `provider-reference` (`docs/reference/PROVIDER_REFERENCE.md`)、 `facts` (快照)、 `numbers` (计数门的重写计划应用于文档，然后传送到它们的`docs/i18n/`镜像)、 `readme-diagrams`、 `skills` (生成`SKILL.md`)、 `e2e-timings` (跳过，直到树发布`syncE2eTimings`)、 `ui-keys` （修剪键`en.json`删除，并且使用`--rewritten-since=<ref>` —默认`origin/main` —重新排队自上次发布以来重写的英文值；这些值由环境中配置的后端或`.env` （`OMNIROUTE_TRANSLATION_*`，仅读取这些键）或Google引擎在同一运行中进行转换。如果没有后端，它永远不会写入`__MISSING__`标记：发布配置文件失败，每晚跳过键，并且`--allow-untranslated`故意写入它们）， `llm-mirrors`和`verify-generated` （写入后，发布模式下的`check:generated-artifacts`和`check:agent-skills-sync`必须通过；在`--check`中跳过，当`--only`将其排除时；失败为退出 2）。 `changelog`步骤是选择加入的（`--with-changelog`，仅发布配置文件）。 `--profile=nightly`从不触及版本声明。使用`-- --check` ，当任何文件发生更改或托管值需要手动编辑（列出两者）时，它不会写入任何内容并退出 1；基础设施故障时退出 2。 `--json`将结果打印为JSON。
 - `docs/reference/derived-facts.json`是上次刷新所使用的事实的快照。只有刷新才会写它。 README SVG生成器读取它，PR-time 单元测试将提交的文档和生成的文件与它进行比较— never 与实时代码。该套件的单一实时比较是`tests/unit/check-docs-counts-sync.test.ts`中的“发布刷新关闭循环”：根据实时事实，应用于内存中的刷新重写计划不会留下任何未报告的STRICT漂移，并且重新规划不会改变任何内容。
 
 要在本地重现（本地运行默认为`release`）：
@@ -281,11 +281,11 @@ BASE_REF=origin/release/vX.Y.Z npm run i18n:check-value-drift
 
 仅在拉取请求上运行。
 
-| 脚本                   | 验证                                                                                          | 阻塞 |
-| ---------------------- | --------------------------------------------------------------------------------------------- | ---- |
-| `check:pr-test-policy` | 更改`src/`、 `open-sse/`、 `electron/`或`bin/`中的生产代码的PRs必须包含或更新测试（硬规则#8） | 是的 |
-| `check:test-masking`   | 更改的测试文件不会减少净断言计数或添加`assert.ok(true)`同义反复                               | 是的 |
-| `check:pr-evidence`    | PR主体引用了test/VPS变更证据（通过 greping PR散文—脆弱性来机械化硬规则#18 ，请参阅 Backlog）  | 是的 |
+| 脚本                   | 验证                                                                                              | 阻塞 |
+| ---------------------- | ------------------------------------------------------------------------------------------------- | ---- |
+| `check:pr-test-policy` | 更改`src/`、 `open-sse/`、 `electron/`或`bin/`中的生产代码的PRs必须包含或更新测试（硬规则#8）     | 是的 |
+| `check:test-masking`   | 更改的测试文件不会减少净断言计数或添加`assert.ok(true)`同义反复                                   | 是的 |
+| `check:pr-evidence`    | PR主体引用了test/VPS变更证据（通过 greping PR散文—脆弱化来机械化 Hard Rule #18 ，请参阅 Backlog） | 是的 |
 
 ### 职位： `test-vitest`
 
@@ -430,7 +430,9 @@ tip 上发生回归时——即多个合并的组合导致了回归，且没有�
 | `generated` | `docs/reference/derived-facts.json`; `docs/reference/PROVIDER_REFERENCE.md`;十二生成README SVGs； `skills/*/references/**`;没有自定义块的`SKILL.md`文件 | `release:refresh-derived` （事实）、 `gen:provider-reference`、 `docs:readme-diagrams`、 `generate-agent-skills.mjs --apply` |
 | `baselines` | `config/quality/e2e-timings.json`                                                                                                                       | `balance-e2e-shards.mjs --sync` (`syncE2eTimings()`)                                                                         |
 
-编写者（基线的`release/v*`、 `chore/derived-*`和`chore/bank-ratchet-*` ）除外；一个只改变一个系列及其同伴的PR也是如此（对于`generated`：生成器脚本、它们的测试、代理技能输入— `src/shared/constants/agentSkills.ts`、手写的`skills/**`文档、 `docs/openapi.yaml` —和`changelog.d/**`），例如，英雄布局更改及其重新生成的SVG，或者其测试读取重新生成的`SKILL.md`文件的技能修复。具有手写`<!-- skill:custom-start -->`块的`SKILL.md`不属于该系列：其自定义块在功能旁边保持可编辑状态。
+编写者（基线的`release/v*`、 `chore/derived-*`和`chore/bank-ratchet-*` ）除外；一个只改变一个系列及其同伴的PR也是如此（对于`generated`：生成器脚本、它们的测试、代理技能输入— `src/shared/constants/agentSkills.ts`、手写的`skills/**`文档、 `docs/openapi.yaml` —和`changelog.d/**`），例如，英雄布局与其重新生成的SVG发生变化，或者其测试读取重新生成的`SKILL.md`文件的技能修复。具有手写`<!-- skill:custom-start -->`块的`SKILL.md`不属于该系列：其自定义块在功能旁边保持可编辑状态。
+
+孤儿清理也不由家族来判断：当合并基础具有该镜像且`<doc>`不再存在于PR的头部时， PR可以删除`docs/i18n/<locale>/<doc>` ，并且可以编辑`.i18n-state.json`仅从`sources`中删除此类文档。守卫在`orphan-cleanup`下列出了这些文件。删除仍然存在的文档的镜像仍然是一种违规：没有其他管道跟踪该状态，并且`llm.txt`和`CHANGELOG.md`镜像有自己的编写器。
 
 **检查，每门模式**（`scripts/check/lib/gateMode.mjs`；助手`scripts/check/lib/derivedArtifactScope.mjs`）：
 
@@ -442,7 +444,7 @@ tip 上发生回归时——即多个合并的组合导致了回归，且没有�
 | e2e 时序完整性 (`tests/unit/balance-e2e-shards.test.ts`)                 | 每个规格都有一个条目                            | 与SVG测试相同的规则（新规范以中位权重运行）                                                                                                   |
 | `check-quality-ratchet.mjs --require-tighten`                            | 无银行改进失败（除非`_policy`）                 | 报告有改进，从未失败；回归仍然失败                                                                                                            |
 
-发布模式保留这些检查在拆分之前的判决、退出代码和消息；最多添加一行，命名解析模式（`[agent-skills-sync] mode=release (auto: local run)`）。测试会跳过 node:test 的`{ skip: releaseOnlyUnlessTouched(...) }`选项， `check:test-masking`在仅报告块中列出该选项（它既不是`.skip(`也不是`{ skip: true }`，因此它不算是硬跳过）。 `check:generated-artifacts`在可解析的基础上运行：作业`lint` (`fetch-depth: 0`)，紧接在`check:agent-skills-sync`之后。在本地， `npm run check:generated-artifacts -- --mode=pr`显示该步骤对PR判断。 `check:docs-counts`的提供者总数交叉检查（“提供者参考总数（文档与实时模块）”）是计数门的一部分，并遵循该门自己的模式。
+发布模式保留这些检查在拆分之前的判决、退出代码和消息；最多添加一行，命名解析模式（`[agent-skills-sync] mode=release (auto: local run)`）。测试会跳过 node:test 的`{ skip: releaseOnlyUnlessTouched(...) }`选项， `check:test-masking`在仅报告块中列出该选项（它既不是`.skip(`也不是`{ skip: true }`，因此它不算是硬跳过）。 `check:generated-artifacts`在可解析的基础上运行：job `lint` (`fetch-depth: 0`)，就在`check:agent-skills-sync`之后。在本地， `npm run check:generated-artifacts -- --mode=pr`显示该步骤对PR判断。 `check:docs-counts`的提供者总数交叉检查（“提供者参考总数（文档与实时模块）”）是计数门的一部分，并遵循该门自己的模式。
 
 不是在一个家庭中，是故意的：由人们决定的策略文件（`gate-manifest.json`、白名单、 `admission-policy.json`、 `provider-assets-provenance.jsonl`、 `model-lifecycle.json`）和功能PR可能必须与代码一起编辑的上限（`quality-baseline.json`指标条目、 typecheck/file-size/complexity基线、当PR修复冻结违规时由预提交ESLint运行修剪的`eslint-suppressions.json` — ）。 `src/i18n/routeNamespaces.generated.json`也会生成，但保留在PRs功能中：应用程序在运行时导入它，因此它不能等待刷新。
 

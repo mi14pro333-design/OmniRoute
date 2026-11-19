@@ -447,36 +447,36 @@ consulte [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Problemas do Docker
+## Problemas Docker
 
-### IPv6 do Docker / Reposição da Ligação
+### Docker IPv6 / Reposição de ligação
 
 <a name="docker-ipv6"></a>
 
-**Sintomas:** `curl http://localhost:20128/v1/models` devolve `curl: (56) Recv failure: Connection reset by peer`. O dashboard e os endpoints sem autenticação funcionam, mas os endpoints autenticados falham — parece um problema de autenticação, mas não é.
+**Sintomas:** `curl http://localhost:20128/v1/models` retorna `curl: (56) Recv failure: Connection reset by peer`. O painel e os endpoints não autenticados funcionam, mas os endpoints autenticados falham — parece um problema de autenticação, mas não é.
 
-**Causa:** `docker run -p 20128:20128` publica tanto em `0.0.0.0` (IPv4) como em `::` (IPv6), mas o processo dentro do contentor escuta apenas em IPv4. Em hosts onde `localhost` é resolvido primeiro para `::1`, a ligação chega à porta IPv6 publicada sem um processo de escuta por trás → reposição da ligação.
+**Causa:** `docker run -p 20128:20128` publica em `0.0.0.0` (IPv4) e `::` (IPv6), mas o processo dentro do contentor apenas escuta em IPv4. Nos hosts em que `localhost` resolve para `::1` primeiro, a ligação chega à porta publicada do IPv6 sem qualquer listener por trás da reposição da ligação →.
 
-**Correção:**
+**Corrigir:**
 
-1. **Diagnóstico rápido:** Execute `curl -4 http://localhost:20128/v1/models`. Se funcionar com `-4`, mas falhar sem essa opção, existe uma incompatibilidade na associação IPv6.
-2. **Correção permanente:** Associe explicitamente ao IPv4 utilizando `-p 127.0.0.1:20128:20128` no comando `docker run`:
+1. **Diagnóstico rápido:** Execute `curl -4 http://localhost:20128/v1/models`. Se funcionar com `-4`, mas falhar sem, terá uma incompatibilidade de ligação IPv6.
+2. **Correção permanente:** Ligue explicitamente ao IPv4 usando `-p 127.0.0.1:20128:20128` no comando `docker run` :
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Isto força a associação ao IPv4 e também evita expor o proxy em todas as interfaces do host.
+   Isto força a ligação IPv4 e também evita a exposição do proxy em todas as interfaces do host.
 
 ---
 
-### A Ferramenta CLI Aparece como Não Instalada
+### A ferramenta CLI mostra não instalado
 
-1. Verifique os campos do runtime: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Para o modo portátil: utilize o destino de imagem `runner-cli` (CLIs incluídas)
-3. Para o modo de montagem do host: defina `CLI_EXTRA_PATHS` e monte o diretório de binários do host como só de leitura
-4. Se `installed=true` e `runnable=false`: o binário foi encontrado, mas falhou na verificação de estado
+1. Verifique os campos de tempo de execução: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Para o modo portátil: utilizar o destino de imagem `runner-cli` (pacote CLIs)
+3. Para o modo de montagem de host: defina `CLI_EXTRA_PATHS` e monte o diretório bin do host como de leitura apenas
+4. Se `installed=true` e `runnable=false`: binário foi encontrado, mas falhou a verificação de integridade
 
-### Validação Rápida do Runtime
+### Validação Rápida do Tempo de Execução
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

@@ -465,30 +465,30 @@ skatiet failā [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 <a name="docker-ipv6"></a>
 
-**Simptomi:** `curl http://localhost:20128/v1/models` atgriež `curl: (56) Recv failure: Connection reset by peer`. Informācijas panelis un galapunkti, kuriem nav nepieciešama autentifikācija, darbojas, bet autentificētie galapunkti nedarbojas — šķiet, ka tā ir autentifikācijas problēma, taču tā nav.
+**Simptomi:** `curl http://localhost:20128/v1/models` atgriež `curl: (56) Recv failure: Connection reset by peer`. Informācijas panelis un neautentificēti galapunkti darbojas, taču autentificētie galapunkti neizdodas — šķiet, ka ir autentifikācijas problēma, bet tā nav.
 
-**Cēlonis:** `docker run -p 20128:20128` publicē portu gan `0.0.0.0` (IPv4), gan `::` (IPv6), bet process konteinerā klausās tikai IPv4. Resursdatoros, kuros `localhost` vispirms tiek atrisināts kā `::1`, savienojums nonāk publicētajā IPv6 portā, aiz kura nav klausītāja → savienojums tiek atiestatīts.
+**Iemesls:** `docker run -p 20128:20128` publicē gan `0.0.0.0` (IPv4), gan `::` (IPv6), bet process konteinerā klausās tikai IPv4. Uz resursdatoriem, kur `localhost` vispirms tiek atiestatīts uz `::1`, savienojums nonāk IPv6 publicētajā portā, aiz kura nav neviena klausītāja, → savienojums tiek atiestatīts.
 
-**Risinājums:**
+**Labot:**
 
-1. **Ātrā diagnostika:** Palaidiet `curl -4 http://localhost:20128/v1/models`. Ja tas darbojas ar `-4`, bet nedarbojas bez tā, pastāv IPv6 piesaistes neatbilstība.
-2. **Pastāvīgs risinājums:** Veiciet tiešu piesaisti IPv4, savā `docker run` komandā izmantojot `-p 127.0.0.1:20128:20128`:
+1. **Ātrā diagnostika:** Palaidiet `curl -4 http://localhost:20128/v1/models`. Ja tas darbojas ar `-4`, bet neizdodas bez tā, jums ir IPv6 saistīšanas neatbilstība.
+2. **Pastāvīgs labojums:** Saistieties ar IPv4, izmantojot `-p 127.0.0.1:20128:20128` savā `docker run` komandā:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Tas piespiedu kārtā izmanto IPv4 piesaisti un arī novērš starpniekservera pieejamību visās resursdatora saskarnēs.
+   Tas liek IPv4 saistīt, kā arī novērš starpniekservera pakļaušanu visās resursdatora saskarnēs.
 
 ---
 
-### CLI rīks tiek rādīts kā neinstalēts
+### CLI rīks parāda, ka nav instalēts
 
-1. Pārbaudiet izpildvides laukus: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Portatīvajam režīmam: izmantojiet attēla mērķi `runner-cli` (CLI rīki ir iekļauti)
-3. Resursdatora montēšanas režīmam: iestatiet `CLI_EXTRA_PATHS` un montējiet resursdatora bināro failu direktoriju tikai lasīšanas režīmā
-4. Ja `installed=true` un `runnable=false`: binārais fails tika atrasts, bet darbspējas pārbaude neizdevās
+1. Pārbaudiet izpildlaika laukus: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Pārnēsājamam režīmam: izmantojiet attēla mērķi `runner-cli` (komplektā CLIs)
+3. Saimniekdatora pievienošanas režīmam: iestatiet `CLI_EXTRA_PATHS` un mount host bin direktoriju kā tikai lasāmu
+4. Ja `installed=true` un `runnable=false`: tika atrasts binārs, bet neizdevās veselības pārbaude
 
-### Ātra izpildvides validācija
+### Ātra izpildlaika validācija
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

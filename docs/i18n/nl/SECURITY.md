@@ -182,13 +182,13 @@ De server weigert actief bekende zwakke waarden zoals `changeme`, `secret` of `p
 
 ---
 
-## Docker-beveiliging
+## Docker Beveiliging
 
-- Gebruik in productie een niet-rootgebruiker
-- Koppel geheimen als alleen-lezenvolumes
-- Kopieer `.env`-bestanden nooit naar Docker-images
+- Gebruik een niet-rootgebruiker in productie
+- Koppel geheimen als alleen-lezen volumes
+- Kopieer nooit `.env` bestanden naar Docker afbeeldingen
 - Gebruik `.dockerignore` om gevoelige bestanden uit te sluiten
-- Stel `AUTH_COOKIE_SECURE=true` in wanneer HTTPS wordt gebruikt
+- Stel `AUTH_COOKIE_SECURE=true` als u achter HTTPS staat
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

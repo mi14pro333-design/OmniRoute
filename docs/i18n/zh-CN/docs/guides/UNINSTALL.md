@@ -42,13 +42,13 @@ npm run uninstall:full
 
 ## 手动卸载
 
-### npm 全局安装
+### NPM全局安装
 
 ```bash
-# 移除全局包
+# Remove the global package
 npm uninstall -g omniroute
 
-# （可选）删除数据目录
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
@@ -62,51 +62,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# 停止并移除容器
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# 移除卷（删除所有数据）
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# （可选）移除镜像
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker撰写
 
 ```bash
-# 停止并移除容器
+# Stop and remove containers
 docker compose down
 
-# 同时移除卷（删除所有数据）
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Electron 桌面应用
+### Electron桌面应用程序
 
-**Windows：**
+**Windows:**
 
-- 打开 `设置 → 应用 → OmniRoute → 卸载`
-- 或从安装目录运行 NSIS 卸载程序
+- 打开`Settings → Apps → OmniRoute → Uninstall`
+- 或者从安装目录运行NSIS卸载程序
 
-**macOS：**
+**macOS:**
 
-- 将 `OmniRoute.app` 从 `/Applications` 拖入废纸篓
-- 删除数据：`rm -rf ~/Library/Application Support/omniroute`
+- 将`OmniRoute.app`从`/Applications`拖到废纸篓
+- 删除数据： `rm -rf ~/Library/Application Support/omniroute`
 
-**Linux：**
+**Linux:**
 
-- 删除 AppImage 文件
-- 删除数据：`rm -rf ~/.omniroute`
+- 删除AppImage文件
+- 删除数据： `rm -rf ~/.omniroute`
 
-### 源码安装（git clone）
+### 源安装（git克隆）
 
 ```bash
-# 删除克隆目录
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# （可选）删除数据目录
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

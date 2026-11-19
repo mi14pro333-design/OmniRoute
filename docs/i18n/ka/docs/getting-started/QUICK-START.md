@@ -12,7 +12,7 @@
 
 აირჩიეთ თქვენთვის სასურველი მეთოდი:
 
-### ვარიანტი A: npm (რეკომენდებული)
+### ვარიანტი A: npm (რეკომენდებულია)
 
 ```bash
 npm install -g omniroute
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### ვარიანტი B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` არის ყველაზე მაღალი **გამოქვეყნებული** სტაბილური SemVer. ის არ მიჰყვება git-ის `main` შტოს. GitOps-ისთვის გამოიყენეთ ფიქსირებული `diegosouzapw/omniroute:X.Y.Z`. იხილეთ [იმიჯის ტეგები / გამოშვების არხები](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` არის უმაღლესი** გამოქვეყნდა** სტაბილური SemVer. ამას აკეთებს** არა** ტრეკი git `main`. PIN `cheaperinference/omniroute:X.Y.Z` GitOps სთვის. იხილეთ [სურათის ტეგები / გამოშვების არხები](../guides/DOCKER_GUIDE.md#release-channels).
 
-### ვარიანტი C: საწყისი კოდიდან
+### ვარიანტი C: წყაროდან
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

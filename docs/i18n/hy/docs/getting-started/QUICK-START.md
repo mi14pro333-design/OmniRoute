@@ -8,25 +8,25 @@
 
 ---
 
-## Քայլ 1․ Տեղադրեք OmniRoute-ը
+## Քայլ 1. Տեղադրեք OmniRoute
 
-Ընտրեք ձեր նախընտրած եղանակը․
+Ընտրեք ձեր նախընտրած մեթոդը.
 
-### Տարբերակ A․ npm (Խորհուրդ է տրվում)
+### Տարբերակ A. npm (խորհուրդ է տրվում)
 
 ```bash
 npm install -g omniroute
 ```
 
-### Տարբերակ B․ Docker
+### Տարբերակ Բ՝ Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest`-ը ամենաբարձր **հրապարակված** կայուն SemVer-ն է։ Այն **չի** հետևում git-ի `main` ճյուղին։ GitOps-ի համար ամրագրեք `diegosouzapw/omniroute:X.Y.Z` տարբերակը։ Տե՛ս [Պատկերների պիտակներ / Թողարկման ալիքներ](../guides/DOCKER_GUIDE.md#release-channels)։
+`:latest` ամենաբարձրն է** հրապարակված** կայուն SemVer. Դա անում է** ոչ** հետեւել git `main`. Pin `cheaperinference/omniroute:X.Y.Z` համար GitOps. Տես [պատկերների պիտակներ / թողարկման ալիքներ](../guides/DOCKER_GUIDE.md#release-channels) :
 
-### Տարբերակ C․ Սկզբնական կոդից
+### Տարբերակ C. Աղբյուրից
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

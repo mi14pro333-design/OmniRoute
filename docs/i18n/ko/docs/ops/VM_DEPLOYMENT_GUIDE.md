@@ -340,11 +340,11 @@ docker start omniroute
 
 ## 6. 고급 보안
 
-### nginx를 Cloudflare IP로 제한
+### nginx를 Cloudflare IPs 로 제한
 
 ```bash
 cat > /etc/nginx/cloudflare-ips.conf << 'CF'
-# Cloudflare IPv4 범위 — 주기적으로 업데이트
+# Cloudflare IPv4 ranges — update periodically
 # https://www.cloudflare.com/ips-v4/
 set_real_ip_from 173.245.48.0/20;
 set_real_ip_from 103.21.244.0/22;
@@ -365,31 +365,31 @@ real_ip_header CF-Connecting-IP;
 CF
 ```
 
-`nginx.conf`의 `http {}` 블록 안에 다음을 추가합니다:
+`http {}` 블록 내부의 `nginx.conf` 에 다음을 추가합니다.
 
 ```nginx
 include /etc/nginx/cloudflare-ips.conf;
 ```
 
-### fail2ban 설치
+### Fail2ban 설치
 
 ```bash
 apt install -y fail2ban
 systemctl enable fail2ban
 systemctl start fail2ban
 
-# 상태 확인
+# Check status
 fail2ban-client status sshd
 ```
 
-### Docker 포트에 대한 직접 접근 차단
+### Docker 포트에 대한 직접 액세스 차단
 
 ```bash
-# 포트 20128에 대한 외부 직접 접근 방지
+# Prevent direct external access to port 20128
 iptables -I DOCKER-USER -p tcp --dport 20128 -j DROP
 iptables -I DOCKER-USER -i lo -p tcp --dport 20128 -j ACCEPT
 
-# 규칙 영구 저장
+# Persist the rules
 apt install -y iptables-persistent
 netfilter-persistent save
 ```

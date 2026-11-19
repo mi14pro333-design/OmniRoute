@@ -337,13 +337,13 @@ docker start omniroute
 
 ---
 
-## 6. 高级安全配置
+## 6. 高级安全性
 
-### 将 nginx 限制为仅允许 Cloudflare IP
+### 限制nginx为Cloudflare IPs
 
 ```bash
 cat > /etc/nginx/cloudflare-ips.conf << 'CF'
-# Cloudflare IPv4 地址范围 — 请定期更新
+# Cloudflare IPv4 ranges — update periodically
 # https://www.cloudflare.com/ips-v4/
 set_real_ip_from 173.245.48.0/20;
 set_real_ip_from 103.21.244.0/22;
@@ -364,31 +364,31 @@ real_ip_header CF-Connecting-IP;
 CF
 ```
 
-将以下内容添加到 `nginx.conf` 的 `http {}` 块中：
+将以下内容添加到`http {}`块内的`nginx.conf` ：
 
 ```nginx
 include /etc/nginx/cloudflare-ips.conf;
 ```
 
-### 安装 fail2ban
+### 安装fail2ban
 
 ```bash
 apt install -y fail2ban
 systemctl enable fail2ban
 systemctl start fail2ban
 
-# 检查状态
+# Check status
 fail2ban-client status sshd
 ```
 
-### 阻止直接访问 Docker 端口
+### 阻止直接访问Docker端口
 
 ```bash
-# 阻止外部直接访问端口 20128
+# Prevent direct external access to port 20128
 iptables -I DOCKER-USER -p tcp --dport 20128 -j DROP
 iptables -I DOCKER-USER -i lo -p tcp --dport 20128 -j ACCEPT
 
-# 持久化规则
+# Persist the rules
 apt install -y iptables-persistent
 netfilter-persistent save
 ```

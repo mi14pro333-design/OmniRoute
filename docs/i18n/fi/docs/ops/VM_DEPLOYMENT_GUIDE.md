@@ -338,13 +338,13 @@ docker start omniroute
 
 ---
 
-## 6. Edistynyt tietoturva
+## 6. Lisäsuojaus
 
-### Rajoita nginx-yhteydet Cloudflaren IP-osoitteisiin
+### Rajoita nginx muotoon Cloudflare IPs
 
 ```bash
 cat > /etc/nginx/cloudflare-ips.conf << 'CF'
-# Cloudflaren IPv4-osoitealueet — päivitä säännöllisesti
+# Cloudflare IPv4 ranges — update periodically
 # https://www.cloudflare.com/ips-v4/
 set_real_ip_from 173.245.48.0/20;
 set_real_ip_from 103.21.244.0/22;
@@ -365,7 +365,7 @@ real_ip_header CF-Connecting-IP;
 CF
 ```
 
-Lisää seuraava `nginx.conf`-tiedoston `http {}`-lohkoon:
+Lisää seuraava `nginx.conf` :aan `http {}` lohkon sisällä:
 
 ```nginx
 include /etc/nginx/cloudflare-ips.conf;
@@ -378,18 +378,18 @@ apt install -y fail2ban
 systemctl enable fail2ban
 systemctl start fail2ban
 
-# Tarkista tila
+# Check status
 fail2ban-client status sshd
 ```
 
-### Estä suora pääsy Docker-porttiin
+### Estä suora pääsy Docker porttiin
 
 ```bash
-# Estä suora ulkoinen pääsy porttiin 20128
+# Prevent direct external access to port 20128
 iptables -I DOCKER-USER -p tcp --dport 20128 -j DROP
 iptables -I DOCKER-USER -i lo -p tcp --dport 20128 -j ACCEPT
 
-# Säilytä säännöt
+# Persist the rules
 apt install -y iptables-persistent
 netfilter-persistent save
 ```

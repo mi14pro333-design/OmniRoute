@@ -72,17 +72,20 @@ onRequest: (ctx) => {
 };
 ```
 
-## Pluginkontekst (`PluginContext`)
+## Plugin-kontekst (`PluginContext`)
 
-| Felt        | Type                      | Beskrivelse                     |
-| ----------- | ------------------------- | ------------------------------- |
-| `requestId` | `string`                  | Entydig anmodningsidentifikator |
-| `model`     | `string`                  | Navn på den anmodede model      |
-| `provider`  | `string`                  | Måludbyderens ID                |
-| `body`      | `Record<string, unknown>` | Anmodningstekst                 |
-| `headers`   | `Record<string, string>`  | Anmodningsheadere               |
-| `metadata`  | `Record<string, unknown>` | Redigerbare metadata            |
-| `timestamp` | `number`                  | Tidsstempel for anmodningen     |
+| Felt         | Type                      | Beskrivelse                      |
+| ------------ | ------------------------- | -------------------------------- |
+| `requestId`  | `string`                  | Unik anmodnings-id               |
+| `model`      | `string`                  | Anmodet modelnavn                |
+| `provider`   | `string`                  | Måludbyder ID                    |
+| `body`       | `Record<string, unknown>` | Anmodningsorgan                  |
+| `headers`    | `Record<string, string>`  | Anmodningsoverskrifter (se note) |
+| `metadata`   | `Record<string, unknown>` | Foranderlig metadata             |
+| `timestamp`  | `number`                  | Anmod om tidsstempel             |
+| `apiKeyInfo` | `object` (valgfrit)       | API nøgle metadata (se note)     |
+
+Konteksten bærer aldrig klientens legitimationsoplysninger: `authorization`, `x-api-key`, `proxy-authorization` og `cookie` -overskrifterne fjernes (enhver casing), og `apiKeyInfo` beholder nøglens metadata (såsom `id`, `name` og `scopes`), men ikke nøgleværdien eller dens fingeraftryk (`redactPluginContext()` in `src/lib/plugins/hooks.ts`). Dette gælder for `onRequest`, `onResponse` og `onError`.
 
 ## Manifest (`plugin.json`)
 
@@ -140,17 +143,16 @@ Eller som simple booleske værdier (standardprioritet 100):
 
 ## Tilladelsessystem
 
-Plugins kører i en sandkassebaseret VM-kontekst. Adgang til eksterne ressourcer kræver udtrykkelige tilladelser:
+Plugins er** ikke sandkasse** . Hvert aktivt plugin kører som en separat, almindelig Node.js underordnet proces (`loadPlugin()` i `src/lib/plugins/loader.ts`) under den samme operativsystembruger som OmniRoute, uden VM kontekst og ingen Node.js tilladelsesflag. Plugin-kode kan bruge `node:fs`, `node:child_process`, `fetch` og hver anden Node.js API: den kan læse og skrive enhver fil, som OmniRoute brugeren kan (inklusive databiblioteket), køre programmer og nå netværket.
 
-| Tilladelse   | Giver adgang til                                             |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | Skrivebeskyttet `process.env`-proxy                          |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+Manifestets `requires.permissions` accepterer `network`, `file-read`, `file-write`, `env` og `exec`, men i dag har kun `env` en effekt under kørsel:
 
-Uden en tilladelse er de tilsvarende globale objekter ganske enkelt ikke tilgængelige i sandkassen.
+| Tilladelse                                   | Effekt i dag                                                                                                                                                                                                                     |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | Plugin-processen modtager også `PORT`, `HOSTNAME`, `TZ` og `TMPDIR`. Uden den modtager den kun `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` og `PLUGIN_NAME` (plus `SystemRoot` og `windir` på Windows). |
+| `network`, `file-read`, `file-write`, `exec` | Ingen. De er kun erklæringer: intet er blokeret, når de mangler.                                                                                                                                                                 |
+
+At installere et plugin er som at installere et hvilket som helst andet program på værten. Installer kun plugins, hvis kilde du har tillid til.
 
 ## Konfigurationsskema
 
@@ -194,7 +196,7 @@ Konfigurationsværdier gemmes i databasen og er tilgængelige via dashboardets k
 
 ## Eksempler
 
-### Logning af forespørgsler
+### Anmod om Logger
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -207,7 +209,7 @@ export default definePlugin({
 });
 ```
 
-### Hastighedsbegrænser
+### Satsbegrænser
 
 ```ts
 import { definePlugin, blockRequest } from "omniroute/plugins/sdk";
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // 1 minut
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);
@@ -234,7 +236,7 @@ export default definePlugin({
 });
 ```
 
-### Svartransformator
+### Respons transformer
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";

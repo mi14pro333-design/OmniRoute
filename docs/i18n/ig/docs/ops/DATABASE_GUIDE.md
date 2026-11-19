@@ -186,7 +186,7 @@ Ndepụta zuru ezu nke tebụl ihe dịka 30+ dị na `src/lib/db/migrations/`.
 
 ## Mbugharị
 
-OmniRoute na-eji** versioned, idempotent migrations** na `src/lib/db/migrations/`. Mbugharị ọ bụla bụ otu faịlụ SQL. Ụdị aha abụọ na-ebikọ ọnụ; ụdị e dekọrọ na `_omniroute_migrations` bụ prefix ọnụọgụgụ.
+OmniRoute na-eji** versioned, idempotent migrations** na `src/lib/db/migrations/`. Mbugharị ọ bụla bụ otu faịlụ SQL. Ụdị aha abụọ na-ebikọ ọnụ; ụdị e dekọrọ na `_omniroute_migrations` bụ nganiihu ọnụọgụ.
 
 ### Mbugharị aha
 
@@ -217,9 +217,9 @@ Ozugbo faịlụ mbugharị dị na ngalaba ntọhapụ ma ọ bụ `main`, ọ 
 - **Agbanwela aha ya.** Ụdị dị na `_omniroute_migrations` agakwaghị adaba na faịlụ, yabụ nchekwa data ọ bụla etinyegoro ya ga-agbakwa ya ọzọ. SQL na-enweghị ike imezigharị data ma ọ bụ kwụsị buut.
 - **Achọrọ atụmatụ dị iche?** Jiri `npm run db:new-migration` mepụta njem ọhụrụ.
 
-Ịgbanwe aha dị mma naanị maka faịlụ na-ejikọtabeghị, nke bụ ihe nrịbama ọnụ ụzọ ámá na-ezo aka. Mkpado ntọhapụ adịghị agbanwe ihe ọ bụla ebe a: ntinye ọ bụla na ngalaba `release/v*` na-ebipụta foto Docker `:next` wee na-agba ọsọ na homolog, VPS installs na Enterprise sync, ya mere, ntugharị jikọtara na-agba ọsọ na ezigbo ọdụ data tupu mkpado `vX.Y.Z` ọ bụla adị. Ọnụ ụzọ ámá na-ada nkwụsị ọ bụla nke faịlụ ntọala, akara ma ọ bụ na ọ bụghị.
+Ịgbanwe aha dị mma naanị maka faịlụ na-ejikọtabeghị, nke bụ ihe ntụnyere ọnụ ụzọ ámá na-ezo aka. Mkpado ntọhapụ adịghị agbanwe ihe ọ bụla ebe a: ntinye ọ bụla na ngalaba `release/v*` na-ebipụta foto Docker `:next` wee na-agba ọsọ na homolog, VPS installs na Enterprise sync, ya mere, ntugharị jikọtara na-agba ọsọ na ezigbo ọdụ data tupu mkpado `vX.Y.Z` ọ bụla adị. Ọnụ ụzọ ámá na-ada nkwụsị ọ bụla nke faịlụ ntọala, akara ma ọ bụ na ọ bụghị.
 
-- **Na-atụgharị mbugharị ejikọtara ọnụ.** A `git revert` nke na-ehichapụ faịlụ na-ada n'ọnụ ụzọ ámá. Debe faịlụ ma megharịa atụmatụ ya na mbugharị ọhụrụ: `npm run db:new-migration -- <description>`, ya na `DROP TABLE IF EXISTS`, `DROP INDEX IF EXISTS` na ndị ọzọ. Ebe nchekwa data emelitere na nke ọhụrụ wee jiri otu atụmatụ kwụsị.
+- **Na-atụgharị Mbugharị jikọtara ọnụ.** A `git revert` nke na-ehichapụ faịlụ na-ada n'ọnụ ụzọ ámá. Debe faịlụ ma megharịa atụmatụ ya na mbugharị ọhụrụ: `npm run db:new-migration -- <description>`, ya na `DROP TABLE IF EXISTS`, `DROP INDEX IF EXISTS` na ndị ọzọ. Ebe nchekwa data emelitere na nke ọhụrụ wee jiri otu atụmatụ kwụsị.
 - **Nke anabatara nyegharị aha: ntinye ndakọrịta yana ọdịnaya yiri ya.** Ọ bụrụ na faịlụ merged ga-ebugharị (dịka ọmụmaatụ, faịlụ abụọ jikọtara ọnụ na-ekekọrịta stampụ oge ma onye na-agba ọsọ na-akwụsị na ndakọrịta ụdị), nyegharịa aha nke ọzọ na-emetụghị SQL ya ma tinye `{ fromVersion, fromName, toVersion, toName }` na `RENAMED_MIGRATION_COMPATIBILITY` na `src/lib/db/migrationRunner/constants.ts`. Ebe nchekwa data etinyere ụdị ochie ahụ na-emegharị ahịrị `_omniroute_migrations` ha kama ịmegharị faịlụ ahụ ọzọ. Ọnụ ụzọ ámá na-adọ aka ná ntị banyere ụdị aha a ma na-agba ọsọ nlele mgbe niile na ya, ihe ọ bụla ọhụrụ timestamp: ọhụrụ installs na-etinye faịlụ n'ọkwa ọhụrụ ya, nchekwa data kwalite adịghị, ya mere, họrọ a timestamp ọhụrụ nso nke ochie. Ọnụ ụzọ ámá na-adaba aha ma ọ bụrụ na ọdịnaya gbanwere (mgbanwe atụmatụ ka na-aga na njem ọhụrụ), ma ọ bụ ọ bụrụ na faịlụ ebumnobi nke ntinye adịghị na diski.
 - **Ewegharịala aha n'ime otu timestamp.** Mgbanwe aha na-edobe stampụ oge ma gbanwee naanị nkọwa na-adaba ọnụ ụzọ ámá, yana ma ọ bụ na-enweghị ntinye. Site na ntinye nke `toVersion` nhata `fromVersion` ya, onye na-agba ọsọ na-ehichapụ ahịrị `_omniroute_migrations` ochie wee tinye faịlụ ahụ ọzọ na nchekwa data ọ bụla agbagoro ya. Na-enweghị ntinye, onye na-agba ọsọ na-egwu naanị ụdị: ọ na-awụpụ faịlụ ahụ na ọdụ data ndị ahụ (ọdịnaya ọhụrụ anaghị agba ọsọ ebe ahụ) wee dekọọ njehie renumbering na akpụkpọ ụkwụ ọ bụla. Jiri stampụ oge ọzọ gbakwunyere ntinye ndakọrịta, ma ọ bụ debe aha ahụ.
 - **Ọnụ ụzọ ámá na-enyocha na faịlụ akpọgharịrị aha anaghị agba ọsọ ọzọ.** Maka aha ọ bụla ekpuchiri ekpuchi, ọnụ ụzọ ámá na-enyefe aha faịlụ ọhụrụ na nlele mbugharị na `--must-not-apply`. Ihe nlele ahụ na-ebulite nchekwa data kwalite ya na onye na-agba ọsọ n'ezie, ma ọ bụrụ na onye na-agba ọsọ na-etinye faịlụ ahụ ọzọ (dịka ọmụmaatụ, n'ihi na ntinye ahụ nwere nsụgharị ma ọ bụ aha na-ezighị ezi, ma ọ bụ n'ihi na ntinye ederede nke ọnụ ụzọ agụ `constants.ts` dị iche na TypeScript), ọnụ ụzọ ámá na-ada na `migration renomeada rodaria de novo` ma rịọ gị ka ịlele ntinye ochie na nsụgharị ọhụrụ na aha.
@@ -253,7 +253,7 @@ Arịrịọ ịdọrọ meghere tupu mgba ọkụ ahụ ka nwere ike iburu fa�
 1. **Nyegharịa faịlụ ahụ na generator, na-edobe nkọwa ahụ.** Gbaa `npm run db:new-migration -- <same description>` ka ị nweta aha ọhụrụ, bugharịa SQL n'ime ya, ma hichapụ faịlụ `NNN_` ochie. Nkọwa ga-adịrịrị otu: ntinye ndakọrịta n'okpuru dakọtara na ya.
 2. **Tinye ntinye ndakọrịta ma ọ bụrụ na nchekwa data na-adịgide adịgide nwere nọmba ochie.** Ọ bụrụ na nchekwa data ọ bụla echekwara (homolog, a VPS, onye ntinye aka n'onwe ya) ji faịlụ `NNN_` jiri wuo PR, tinye `{ fromVersion: "<NNN>", fromName: "<description>", toVersion: "<YYYYMMDDHHMMSS>", toName: "<description>" }` na `RENAMED_MIGRATION_COMPATIBILITY` na `src/lib/db/migrationRunner/constants.ts`. Nke a bụ** achọrọ maka `237` ka `241`** : oghere ndị ahụ ugbu a na-ejide canonical `237_usage_history_calculated_cost.sql`, `238_codex_connection_fences.sql`, `239_call_logs_pending_detail_index.sql`, `240_provider_node_custom_json_config.sql` na `241_seen_models.sql`, na na-enweghị ntinye data dị otú ahụ na-amafe njem njem canonical ruo mgbe ebighị ebi ma na-agbagharị onye gbanwere ọzọ. Ọ na-arụkwa ọrụ maka oghere nke na-anọ efu, dị ka `242`, mgbe ebe a na-aga bụ akara oge. Mgbe obi abụọ adịghị ya, tinye ntinye. Ebe ị na-agbakwunye ya na nhazi ahụ adịghị mkpa: mgbe oghere ntinye ntinye ka na-ejide ahịrị na ntinye ọzọ na-apụ (dịka ọmụmaatụ `237` na-ejide ahịrị PR mgbe ahịrị `usage_history_calculated_cost` nke okenye na-echere ịkwaga n'ime `237`), onye na-agba ọsọ na-ahapụ ntinye ahụ chere ruo mgbe oghere ahụ nweere onwe ya. Naanị ezigbo esemokwu, dị ka oghere ejiri n'ahịrị enweghị mmegharị, ma ọ bụ ntinye abụọ na-agbanwe oghere, na-akwụsị buut na `Cannot reconcile ...`.
 3. **Debe SQL idem ike** (`CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `INSERT OR IGNORE`), n'ihi na mgbanwe mgbanwe nwere ike izute nchekwa data ebe atụmatụ ya dịlarị.
-4. **Bugharịa ikpe pụrụ iche nwere igodo ụdị.** Ọ bụrụ na PR gbakwunyere ikpe maka nọmba ochie ya na `isSchemaAlreadyApplied()` (`src/lib/db/migrationRunner.ts`) ma ọ bụ na `OPTIONAL_FTS5_MIGRATION_VERSIONS` (`src/lib/db/migrationRunner/constants.ts`), gbanwee igodo na akara ngosi oge ọhụrụ.
+4. **Bugharịa ikpe pụrụ iche nwere igodo ụdị.** Ọ bụrụ na PR gbakwunyere ikpe maka nọmba ochie ya na `isSchemaAlreadyApplied()` (`src/lib/db/migrationRunner.ts`) ma ọ bụ na `OPTIONAL_FTS5_MIGRATION_VERSIONS` (`src/lib/db/migrationRunner/constants.ts`), gbanwee igodo gaa na akara ngosi oge ọhụrụ.
 
 `tests/unit/db/codex-fence-migration-rename.test.ts` bụ ihe atụ na-arụ ọrụ nke ule maka mbugharị akpọgharịrị aha.
 
@@ -304,11 +304,12 @@ Jiri nkeji okwu `IF NOT EXISTS`, `IF EXISTS`, na `OR IGNORE` / `OR REPLACE` mee 
 
 ### Na-agbakwụnye Mbugharị Ọhụrụ
 
-1. **Mepụta faịlụ na generator** : `npm run db:new-migration -- <description>` (dịka ọmụmaatụ `npm run db:new-migration -- add combo priority`). Ọ na-eji oge UTC dị ugbu a na isi okwu na-ede `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql`, na-aga n'ihu otu nkeji ma ọ bụrụ na ewere akara oge ahụ, ọ dịghịkwa edegharị faịlụ. Ejila aka ghota nọmba.
+1. **Mepụta faịlụ na generator** : `npm run db:new-migration -- <description>` (dịka ọmụmaatụ `npm run db:new-migration -- add combo priority`). Ọ na-eji oge UTC dị ugbu a na isi okwu na-ede `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql`, na-aga n'ihu otu nkeji ma ọ bụrụ na ewere akara oge ahụ, ọ nweghịkwa idegharị faịlụ. Ejila aka ghota nọmba.
 2. **Jiri nchekwa DDL** : `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `ALTER TABLE ... ADD COLUMN`
 3. **Mejupụta data nke ọma** : jiri `UPDATE ... WHERE ...` jikwaa ahịrị ndị dị adị
 4. **Lelee usoro na ịkpọ aha** : `npm run test:migrations:fresh` (mbugharị niile na nchekwa data efu) na `npm run check:migration-numbering`
 5. **Nwalee na otu** : ọ dịghị mgbe ọ bụla na-agba ọsọ na-anwaleghị migrations na mmepụta
+6. **Tebụl emepụtara na koodu chọkwara mbugharị** : ma ọ bụrụ na modul na-emepụtakwa tebụl dị umengwụ (`CREATE TABLE IF NOT EXISTS`, nke a na-edebe dị ka ụzọ ọgwụgwọ onwe ya), ịkwaga ga-eji otu DDL mee ya. Ma ọ bụghị ya, nrụnye dị ọcha na nrụnye kwalitere na-ejedebe na atụmatụ dị iche iche, dabere ma ụzọ koodu ahụ na-aga. `tests/unit/db/lazy-table-migration-guard.test.ts` na-enyocha `src/` na `open-sse/` wee daa na `CREATE` umengwụ na-enweghị mbugharị (#20557). Ọmụmaatụ: `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`.
 
 Ọmụmaatụ:
 
@@ -319,7 +320,7 @@ UPDATE combos SET priority = 100 WHERE priority IS NULL;
 CREATE INDEX IF NOT EXISTS idx_combos_priority ON combos(priority);
 ```
 
-> **Mgbanwe na-adaghachi azụ-anaghị ekwekọ** (dịka ọmụmaatụ, idobe kọlụm) dị aghụghọ. OmniRoute na-akwado NOT wedata — ozugbo etinyere mbugharị, mgbanwe atụmatụ ahụ na-adịgide adịgide. Mee atụmatụ ya.
+> **Mgbanwe na-adaghachi azụ-anaghị ekwekọ** (dịka ọmụmaatụ, idobe kọlụm) dị aghụghọ. OmniRoute na-akwado NOT wedata — ozugbo etinyere mbugharị, mgbanwe schema na-adịgide adịgide. Mee atụmatụ ya.
 
 ---
 

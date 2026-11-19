@@ -10,9 +10,9 @@
 
 ## Bước 1: Cài đặt OmniRoute
 
-Chọn phương thức bạn muốn:
+Chọn phương pháp ưa thích của bạn:
 
-### Tùy chọn A: npm (Khuyến nghị)
+### Tùy chọn A: npm (Được khuyến nghị)
 
 ```bash
 npm install -g omniroute
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### Tùy chọn B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` là phiên bản SemVer ổn định **đã phát hành** cao nhất. Thẻ này **không** theo dõi nhánh git `main`. Hãy ghim `diegosouzapw/omniroute:X.Y.Z` khi sử dụng GitOps. Xem [Thẻ Image / Kênh phát hành](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` là cao nhất** được xuất bản** SemVer ổn định. Nó có** không** theo dõi git `main`. Ghim `cheaperinference/omniroute:X.Y.Z` cho GitOps. Xem [Thẻ hình ảnh / Kênh phát hành](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Tùy chọn C: Từ mã nguồn
+### Tùy chọn C: Từ nguồn
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

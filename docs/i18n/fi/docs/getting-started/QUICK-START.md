@@ -10,9 +10,9 @@
 
 ## Vaihe 1: Asenna OmniRoute
 
-Valitse haluamasi asennustapa:
+Valitse haluamasi menetelmä:
 
-### Vaihtoehto A: npm (suositeltu)
+### Vaihtoehto A: npm (suositus)
 
 ```bash
 npm install -g omniroute
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### Vaihtoehto B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` on uusin **julkaistu** vakaa SemVer-versio. Se **ei** seuraa git-haaraa `main`. Käytä GitOpsissa kiinteää tunnistetta `diegosouzapw/omniroute:X.Y.Z`. Katso [näköistiedostojen tunnisteet ja julkaisukanavat](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` on korkein** julkaistu** vakaa SemVer. Se tekee** ei** seurata git `main`. Pin `cheaperinference/omniroute:X.Y.Z` for GitOps. Katso [Kuvatunnisteet/julkaisukanavat](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Vaihtoehto C: Lähdekoodista
+### Vaihtoehto C: Lähteestä
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

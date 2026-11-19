@@ -8,25 +8,25 @@
 
 ---
 
-## Ìgbésẹ̀ 1: Fi OmniRoute Sílẹ̀
+## Igbesẹ 1: Fi OmniRoute sori ẹrọ
 
-Yan ọ̀nà tí o fẹ́:
+Yan ọna ti o fẹ:
 
-### Àṣàyàn A: npm (A Dábàá)
+### Aṣayan A: npm (Ti ṣe iṣeduro)
 
 ```bash
 npm install -g omniroute
 ```
 
-### Àṣàyàn B: Docker
+### Aṣayan B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` ni SemVer tó dúró ṣinṣin tó ga jù lọ tí a ti **tẹ̀ jáde**. Kò **tẹ̀lé** git `main`. Lo `diegosouzapw/omniroute:X.Y.Z` gẹ́gẹ́ bí ẹ̀yà pàtó fún GitOps. Wo [Àwọn Àmì Image / Àwọn Ikanni Ìtẹ̀jáde](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` ni o ga julọ** atejade** iduroṣinṣin SemVer. O ṣe** kii ṣe** orin git `main`. Pin `cheaperinference/omniroute:X.Y.Z` fun GitOps. Wo [Awọn aami Aworan / Awọn ikanni Tu silẹ](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Àṣàyàn C: Láti Source
+### Aṣayan C: Lati Orisun
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

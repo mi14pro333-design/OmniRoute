@@ -8,25 +8,25 @@
 
 ---
 
-## Hakbang 1: I-install ang OmniRoute
+## Hakbang 1: I-install OmniRoute
 
-Piliin ang paraang gusto mo:
+Piliin ang iyong gustong paraan:
 
-### Opsyon A: npm (Inirerekomenda)
+### Pagpipilian A: npm (Inirerekomenda)
 
 ```bash
 npm install -g omniroute
 ```
 
-### Opsyon B: Docker
+### Pagpipilian B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-Ang `:latest` ang pinakamataas na **na-publish** na stable na SemVer. Hindi nito sinusundan ang git `main`. I-pin ang `diegosouzapw/omniroute:X.Y.Z` para sa GitOps. Tingnan ang [Mga Image Tag / Release Channel](../guides/DOCKER_GUIDE.md#release-channels).
+ang `:latest` ang pinakamataas** inilathala** matatag SemVer. ginagawa nito** hindi** subaybayan ang git `main`. I-pin `cheaperinference/omniroute:X.Y.Z` para sa GitOps. Tingnan [ang Mga Tag ng Larawan / Mga Channel ng Paglabas](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Opsyon C: Mula sa Source
+### Pagpipilian C: Mula sa Pinagmulan
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

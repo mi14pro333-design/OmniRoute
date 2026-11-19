@@ -40,19 +40,19 @@ npm run uninstall:full
 
 ---
 
-## Χειροκίνητη Απεγκατάσταση
+## Χειροκίνητη απεγκατάσταση
 
-### Καθολική Εγκατάσταση NPM
+### NPM Global Install
 
 ```bash
-# Αφαίρεση του καθολικού πακέτου
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Προαιρετικό) Αφαίρεση καταλόγου δεδομένων
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Καθολική Εγκατάσταση pnpm
+### pnpm Καθολική εγκατάσταση
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,37 +62,39 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Διακοπή και αφαίρεση του container
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Αφαίρεση του volume (διαγράφει όλα τα δεδομένα)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Προαιρετικό) Αφαίρεση της εικόνας
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Σύνθεση
 
 ```bash
-# Διακοπή και αφαίρεση containers
+# Stop and remove containers
 docker compose down
 
-# Αφαίρεση επίσης των volumes (διαγράφει όλα τα δεδομένα)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Εφαρμογή Desktop Electron
+### Electron Desktop App
 
 **Windows:**
 
-- Ανοίξτε `Ρυθμίσεις → Εφαρμογές → OmniRoute → Απεγκατάσταση`
+- Ανοίξτε `Settings → Apps → OmniRoute → Uninstall`
 - Ή εκτελέστε το πρόγραμμα απεγκατάστασης NSIS από τον κατάλογο εγκατάστασης
 
 **macOS:**
 
-- Σύρετε το `OmniRoute.app` από τον φάκελο `/Applications` στον Κάδο Απορριμμάτων
+- Σύρετε `OmniRoute.app` από `/Applications` στον Κάδο απορριμμάτων
 - Αφαίρεση δεδομένων: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
@@ -100,13 +102,13 @@ docker compose down -v
 - Αφαιρέστε το αρχείο AppImage
 - Αφαίρεση δεδομένων: `rm -rf ~/.omniroute`
 
-### Εγκατάσταση από Πηγαίο Κώδικα (git clone)
+### Εγκατάσταση πηγής (κλώνος git)
 
 ```bash
-# Αφαίρεση του κλωνοποιημένου καταλόγου
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Προαιρετικό) Αφαίρεση καταλόγου δεδομένων
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

@@ -74,15 +74,18 @@ onRequest: (ctx) => {
 
 ## Konteks Pemalam (`PluginContext`)
 
-| Medan       | Jenis                     | Penerangan               |
-| ----------- | ------------------------- | ------------------------ |
-| `requestId` | `string`                  | Pengecam permintaan unik |
-| `model`     | `string`                  | Nama model yang diminta  |
-| `provider`  | `string`                  | ID penyedia sasaran      |
-| `body`      | `Record<string, unknown>` | Badan permintaan         |
-| `headers`   | `Record<string, string>`  | Pengepala permintaan     |
-| `metadata`  | `Record<string, unknown>` | Metadata boleh ubah      |
-| `timestamp` | `number`                  | Cap masa permintaan      |
+| Padang       | taip                      | Penerangan                      |
+| ------------ | ------------------------- | ------------------------------- |
+| `requestId`  | `string`                  | Pengecam permintaan unik        |
+| `model`      | `string`                  | Nama model yang diminta         |
+| `provider`   | `string`                  | Pembekal sasaran ID             |
+| `body`       | `Record<string, unknown>` | Badan permintaan                |
+| `headers`    | `Record<string, string>`  | Permintaan tajuk (lihat nota)   |
+| `metadata`   | `Record<string, unknown>` | Metadata boleh ubah             |
+| `timestamp`  | `number`                  | Minta cap masa                  |
+| `apiKeyInfo` | `object` (pilihan)        | metadata kunci API (lihat nota) |
+
+Konteks tidak pernah membawa bukti kelayakan pelanggan: pengepala `authorization`, `x-api-key`, `proxy-authorization` dan `cookie` dialih keluar (sebarang selongsong) dan `apiKeyInfo` menyimpan metadata kunci (seperti `id`, `name` dan `scopes`) tetapi bukan nilai kunci atau cap jarinya (`redactPluginContext()` dalam `src/lib/plugins/hooks.ts`). Ini terpakai kepada `onRequest`, `onResponse` dan `onError`.
 
 ## Manifes (`plugin.json`)
 
@@ -140,17 +143,16 @@ Atau sebagai nilai boolean ringkas (keutamaan lalai 100):
 
 ## Sistem Kebenaran
 
-Pemalam dijalankan dalam konteks VM berkotak pasir. Akses kepada sumber luaran memerlukan kebenaran yang jelas:
+Pemalam adalah** bukan kotak pasir** . Setiap pemalam aktif berjalan sebagai proses anak Node.js biasa yang berasingan (`loadPlugin()` dalam `src/lib/plugins/loader.ts`) di bawah pengguna sistem pengendalian yang sama seperti OmniRoute, tanpa konteks VM dan tiada bendera kebenaran Node.js. Kod pemalam boleh menggunakan `node:fs`, `node:child_process`, `fetch` dan setiap Node.js API yang lain : ia boleh membaca dan menulis sebarang fail yang pengguna OmniRoute boleh (termasuk direktori data), menjalankan program dan mencapai rangkaian.
 
-| Kebenaran    | Memberikan Akses                                             |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | Proksi `process.env` baca sahaja                             |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+`requires.permissions` manifes menerima `network`, `file-read`, `file-write`, `env` dan `exec`, tetapi hari ini hanya `env` mempunyai kesan pada masa jalan:
 
-Tanpa sesuatu kebenaran, global yang sepadan tidak akan tersedia dalam kotak pasir.
+| kebenaran                                    | Kesan hari ini                                                                                                                                                                                                                          |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | Proses pemalam juga menerima `PORT`, `HOSTNAME`, `TZ` dan `TMPDIR`. Tanpanya, ia hanya menerima `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` dan `PLUGIN_NAME` (tambah `SystemRoot` dan `windir` pada Windows). |
+| `network`, `file-read`, `file-write`, `exec` | tiada. Ia adalah pengisytiharan sahaja: tiada yang disekat apabila ia tiada.                                                                                                                                                            |
+
+Memasang pemalam adalah seperti memasang sebarang program lain pada hos. Pasang hanya pemalam yang sumbernya anda percayai.
 
 ## Skema Konfigurasi
 
@@ -194,7 +196,7 @@ Nilai konfigurasi disimpan secara berterusan dalam pangkalan data dan boleh diak
 
 ## Contoh
 
-### Pengelog Permintaan
+### Permintaan Logger
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -207,7 +209,7 @@ export default definePlugin({
 });
 ```
 
-### Pengehad Kadar
+### Penghad Kadar
 
 ```ts
 import { definePlugin, blockRequest } from "omniroute/plugins/sdk";
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // 1 minit
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);
@@ -234,7 +236,7 @@ export default definePlugin({
 });
 ```
 
-### Pengubah Respons
+### Pengubah Gerak Balas
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";

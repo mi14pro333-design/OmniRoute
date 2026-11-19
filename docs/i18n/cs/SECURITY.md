@@ -182,13 +182,13 @@ Server aktivně odmítá známé slabé hodnoty, jako jsou `changeme`, `secret` 
 
 ---
 
-## Zabezpečení Dockeru
+## Docker bezpečnost
 
-- V produkčním prostředí používejte uživatele bez oprávnění root
-- Připojujte tajemství jako svazky pouze pro čtení
-- Nikdy nekopírujte soubory `.env` do obrazů Dockeru
-- K vyloučení citlivých souborů používejte `.dockerignore`
-- Při provozu za HTTPS nastavte `AUTH_COOKIE_SECURE=true`
+- V produkci použijte uživatele bez oprávnění root
+- Připojte tajné klíče jako svazky pouze pro čtení
+- Nikdy nekopírujte soubory `.env` do obrázků Docker
+- Použijte `.dockerignore` k vyloučení citlivých souborů
+- Nastavte `AUTH_COOKIE_SECURE=true` za HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

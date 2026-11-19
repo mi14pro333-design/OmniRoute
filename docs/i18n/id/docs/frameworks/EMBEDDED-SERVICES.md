@@ -493,7 +493,7 @@ open-wa (`@open-wa/wa-automate`) menggerakkan instance Chromium tanpa kepala (me
 
 **kunci API :** disuntikkan saat `WA_KEY` — open-wa `WA_*` -prefixed env override memetakannya ke opsi `--key`/`-k` CLI (`dist/cli/setup.js::envArgs()`, diverifikasi terhadap paket 4.76.0 yang diinstal). Diawali `ow_` saat dibuat oleh `generateServiceApiKey()`. open-wa membaca kembali kunci dari header `key`/`api_key` HTTP (bukan `Authorization: Bearer`); `/api-docs*` secara eksplisit dikecualikan dari pemeriksaan (`setupAuthenticationLayer` di `dist/cli/server.js`), sehingga pemeriksaan kesehatan tidak memerlukan header autentikasi.
 
-**Memasangkan:** open-wa tidak resmi dan tidak terafiliasi dengan WhatsApp — nomor yang terhubung membawa risiko larangan dari deteksi otomatisasi WhatsApp sendiri. Pada permulaan pertama, kode QR berpasangan dicetak ke stdout dan muncul melalui aliran Log panel/SSE yang ada — belum ada titik akhir gambar QR khusus dalam integrasi ini.
+**Memasangkan:** open-wa tidak resmi dan tidak terafiliasi dengan WhatsApp — nomor yang terhubung membawa risiko larangan dari deteksi otomatisasi WhatsApp sendiri. Pada permulaan pertama, kode QR pasangan dicetak ke stdout dan muncul melalui aliran Log panel/SSE yang ada — belum ada titik akhir gambar QR khusus dalam integrasi ini.
 
 ---
 
@@ -555,7 +555,7 @@ Proksi ini:
 - Menghapus `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` dari respons
 - Menulis ulang respons HTML untuk memasukkan `<base href>` dan menormalkan jalur absolut (`/foo` → `/dashboard/.../embed/foo`)
 
-pemutakhiran WebSocket untuk dasbor tertanam ditangani oleh server pendamping pada port khusus (lihat `src/lib/services/embedWsProxy.ts`).
+pemutakhiran WebSocket untuk dasbor tertanam ditangani oleh server pendamping pada port khusus (lihat `src/lib/services/embedWsProxy.ts`). Setiap pemutakhiran diotorisasi sebelum terowongan terbuka, dengan aturan yang sama seperti rute penyematan HTTP : rekan harus berupa loopback tanpa header penerusan proksi terbalik, browser `Origin` harus merupakan asal dasbor (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` memperpanjang default loopback), dan pemanggil memerlukan sesi dasbor atau kunci API cakupan manajemen kecuali login dasbor dinonaktifkan.
 
 **Keamanan:** Rute proxy yang disematkan diklasifikasikan dalam `LOCAL_ONLY_API_PREFIXES` dan hanya dapat dijangkau dari loopback. Penyerang yang memperoleh JWT melalui terowongan Cloudflare/Ngrok tidak dapat melakukan proksi ke layanan tertanam.
 

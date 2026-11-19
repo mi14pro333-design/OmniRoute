@@ -420,36 +420,36 @@ OmniRoute 會自動重新整理 Token。如果問題持續發生：
 
 ---
 
-## Docker 問題
+## Docker問題
 
-### Docker IPv6／連線重設
+### Docker IPv6 / 連線重置
 
 <a name="docker-ipv6"></a>
 
-**症狀：** `curl http://localhost:20128/v1/models` 傳回 `curl: (56) Recv failure: Connection reset by peer`。儀表板和未驗證的端點可正常運作，但需要驗證的端點會失敗——看起來像是驗證問題，但實際上並不是。
+**症狀：** `curl http://localhost:20128/v1/models`返回`curl: (56) Recv failure: Connection reset by peer`。儀表板和未經身份驗證的端點可以工作，但經過身份驗證的端點失敗—它看起來像身份驗證問題，但事實並非如此。
 
-**原因：** `docker run -p 20128:20128` 會同時發佈至 `0.0.0.0`（IPv4）和 `::`（IPv6），但容器內的程序只監聽 IPv4。在 `localhost` 優先解析為 `::1` 的主機上，連線會進入已發佈的 IPv6 連接埠，但其後方沒有監聽程式 → 連線遭到重設。
+**原因：** `docker run -p 20128:20128`在`0.0.0.0` (IPv4) 和`::` (IPv6) 上發布，但容器內的程序僅偵聽IPv4 。在`localhost`首先解析為`::1`主機上，連接到達IPv6發布的端口，後面沒有偵聽器→連接重置。
 
-**修正方式：**
+**使固定：**
 
-1. **快速診斷：** 執行 `curl -4 http://localhost:20128/v1/models`。如果加上 `-4` 後可以運作，但未加時失敗，表示您遇到了 IPv6 繫結不相符的問題。
-2. **永久修正：** 在 `docker run` 命令中使用 `-p 127.0.0.1:20128:20128`，明確繫結至 IPv4：
+1. **Quick diagnostic:** Run `curl -4 http://localhost:20128/v1/models`. If it works with `-4` but fails without, you have an IPv6 bind mismatch.
+2. **永久修復：** Bind to IPv4 explicitly by using `-p 127.0.0.1:20128:20128` in your `docker run` command:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   這會強制使用 IPv4 繫結，也可避免將代理伺服器暴露於主機的所有介面上。
+   這會強制IPv4綁定，並避免在所有主機介面上暴露代理。
 
 ---
 
-### CLI 工具顯示未安裝
+### CLI工具顯示未安裝
 
-1. 檢查執行階段欄位：`curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. 若使用可攜式模式：使用映像目標 `runner-cli`（內含 CLI）
-3. 若使用主機掛載模式：設定 `CLI_EXTRA_PATHS`，並以唯讀方式掛載主機的二進位檔目錄
-4. 如果 `installed=true` 且 `runnable=false`：表示已找到二進位檔，但健康檢查失敗
+1. 檢查運行時欄位： `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. 對於便攜式模式：使用影像目標`runner-cli` （捆綁CLIs）
+3. 對於主機掛載模式：設定`CLI_EXTRA_PATHS`並掛載主機bin目錄為唯讀
+4. 如果`installed=true`和`runnable=false`：找到二進位檔案但運行狀況檢查失敗
 
-### 快速驗證執行階段
+### 快速運行時驗證
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

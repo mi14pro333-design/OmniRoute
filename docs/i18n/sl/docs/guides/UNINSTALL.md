@@ -45,14 +45,14 @@ S tem odstranite aplikacijo **in trajno izbrišete** vse podatke:
 ### Globalna namestitev NPM
 
 ```bash
-# Odstranite globalni paket
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Izbirno) Odstranite podatkovni imenik
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Globalna namestitev pnpm
+### pnpm Globalna namestitev
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,51 +62,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Ustavite in odstranite vsebnik
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Odstranite nosilec (izbriše vse podatke)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Izbirno) Odstranite sliko
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Sestavi
 
 ```bash
-# Ustavite in odstranite vsebnike
+# Stop and remove containers
 docker compose down
 
-# Odstranite tudi nosilce (izbriše vse podatke)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Namizna aplikacija Electron
+### namizna aplikacija Electron
 
 **Windows:**
 
-- Odprite `Nastavitve → Aplikacije → OmniRoute → Odstrani`
-- Ali zaženite program za odstranitev NSIS iz namestitvenega imenika
+- Odprite `Settings → Apps → OmniRoute → Uninstall`
+- Ali pa zaženite program za odstranjevanje NSIS iz namestitvenega imenika
 
 **macOS:**
 
-- Povlecite `OmniRoute.app` iz `/Applications` v Koš
-- Odstranite podatke: `rm -rf ~/Library/Application Support/omniroute`
+- Povlecite `OmniRoute.app` iz `/Applications` v koš
+- Odstrani podatke: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
 - Odstranite datoteko AppImage
-- Odstranite podatke: `rm -rf ~/.omniroute`
+- Odstrani podatke: `rm -rf ~/.omniroute`
 
-### Namestitev iz izvorne kode (git clone)
+### Izvorna namestitev (klon git)
 
 ```bash
-# Odstranite klonirani imenik
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Izbirno) Odstranite podatkovni imenik
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

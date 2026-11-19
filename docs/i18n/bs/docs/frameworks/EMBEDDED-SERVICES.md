@@ -225,7 +225,7 @@ Instalirajte 9Router iz npm-a. Kreira `DATA_DIR/services/9router/` sa svojim vla
 
 | Polje     | Tip      | Default    | Opis                                         |
 | --------- | -------- | ---------- | -------------------------------------------- |
-| `version` | `string` | `"latest"` | npm verziju oznake ili semver za instalaciju |
+| `version` | `string` | `"latest"` | npm oznaku verzije ili semver za instalaciju |
 
 **Odgovori:**
 
@@ -535,7 +535,7 @@ sing-box ima isti oblik krajnje tačke kao Mux — bez `rotate-key` rute, bez in
 | `POST` | `/api/services/singbox/auto-restart-adopted` | Uključite automatsko ponovno pokretanje za usvojeni (prethodno postojeći) proces |
 | `GET`  | `/api/services/singbox/logs`                 | SSE log tail (preko dijeljene `[name]/logs` dinamičke rute)                      |
 
-**TPROXY ožičenje:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) upisuje `config.json` i pokreće supervizor prije nego što `applyTproxy()` instalira pravila TPROXY firewall-a. Ako supervizor nedostaje ili ne uspije da dostigne `running`, on se sada evidentira na nivou greške (umjesto da tiho proguta grešku) tako da operater može reći da su TPROXY pravila primijenjena bez radnog slušatelja iza njih.
+**TPROXY ožičenje:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) upisuje `config.json` i pokreće supervizor prije nego što `applyTproxy()` instalira pravila TPROXY firewall-a. Ako supervizor nedostaje ili ne uspije doći do `running`, on se sada evidentira na nivou greške (umjesto da tiho proguta grešku) tako da operater može reći da su TPROXY pravila primijenjena bez radnog slušatelja iza njih.
 
 ---
 
@@ -555,7 +555,7 @@ Ovaj proxy:
 - Skida `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` iz odgovora
 - Prepisuje HTML odgovore da bi ubacio `<base href>` i normalizirao apsolutne staze (`/foo` → `/dashboard/.../embed/foo`)
 
-WebSocket nadogradnjom za ugrađenu kontrolnu tablu upravlja prateći server na namenskom portu (pogledajte `src/lib/services/embedWsProxy.ts`).
+WebSocket nadogradnjom za ugrađenu kontrolnu tablu upravlja prateći server na namenskom portu (pogledajte `src/lib/services/embedWsProxy.ts`). Svaka nadogradnja je autorizirana prije otvaranja tunela, uz ista pravila kao i ruta za ugrađivanje HTTP : peer mora biti loopback bez zaglavlja za prosljeđivanje obrnutog proxyja, pretraživač `Origin` mora biti izvorište kontrolne ploče (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` proširuju zadane vrijednosti povratne petlje), a pozivaocu je potrebna sesija kontrolne ploče ili ključ za prijavu bez opsega dashdboard API.
 
 **sigurnost:** Ugrađene proxy rute su klasificirane pod `LOCAL_ONLY_API_PREFIXES` i do njih se može doći samo iz povratne petlje. Napadač koji dobije JWT putem Cloudflare/Ngrok tunela ne može proxy u ugrađene usluge.
 

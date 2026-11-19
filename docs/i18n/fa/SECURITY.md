@@ -184,11 +184,11 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ## امنیت Docker
 
-- در محیط عملیاتی از کاربر غیرریشه استفاده کنید
-- اسرار را بهصورت ولومهای فقطخواندنی متصل کنید
-- هرگز فایلهای `.env` را در تصاویر Docker کپی نکنید
-- برای مستثنا کردن فایلهای حساس از `.dockerignore` استفاده کنید
-- هنگام استفاده از HTTPS، مقدار `AUTH_COOKIE_SECURE=true` را تنظیم کنید
+- از کاربر غیر ریشه در تولید استفاده کنید
+- رازها را به عنوان جلدهای فقط خواندنی سوار کنید
+- هرگز فایل های `.env` را در تصاویر Docker کپی نکنید
+- `.dockerignore` برای حذف فایل های حساس استفاده کنید
+- تنظیم `AUTH_COOKIE_SECURE=true` زمانی که پشت HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

@@ -42,17 +42,17 @@ npm run uninstall:full
 
 ## Удаление вручную
 
-### Глобальная установка через NPM
+### Глобальная установка NPM
 
 ```bash
-# Удаление глобального пакета
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Необязательно) Удаление каталога данных
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Глобальная установка через pnpm
+### Глобальная установка pnpm
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,51 +62,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Остановка и удаление контейнера
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Удаление тома (удаляет все данные)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Необязательно) Удаление образа
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Написать
 
 ```bash
-# Остановка и удаление контейнеров
+# Stop and remove containers
 docker compose down
 
-# Также удаляет тома (удаляет все данные)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Настольное приложение Electron
+### Приложение Electron для ПК
 
 **Windows:**
 
-- Откройте `Параметры → Приложения → OmniRoute → Удалить`
-- Или запустите деинсталлятор NSIS из каталога установки
+- Открыть `Settings → Apps → OmniRoute → Uninstall`
+- Или запустите программу удаления NSIS из каталога установки.
 
 **macOS:**
 
-- Перетащите `OmniRoute.app` из `/Applications` в Корзину
-- Удалите данные: `rm -rf ~/Library/Application Support/omniroute`
+- Перетащите `OmniRoute.app` из `/Applications` в корзину.
+- Удалить данные: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
-- Удалите файл AppImage
-- Удалите данные: `rm -rf ~/.omniroute`
+- Удалить файл AppImage
+- Удалить данные: `rm -rf ~/.omniroute`
 
-### Установка из исходного кода (git clone)
+### Установка исходного кода (клон git)
 
 ```bash
-# Удаление клонированного каталога
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Необязательно) Удаление каталога данных
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

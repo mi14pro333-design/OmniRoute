@@ -463,36 +463,36 @@ a [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md) dokumentumban találja.
 
 ---
 
-## Dockerrel kapcsolatos problémák
+## Docker problémák
 
-### Docker IPv6 / kapcsolat-visszaállítás
+### Docker IPv6 / Kapcsolat visszaállítása
 
 <a name="docker-ipv6"></a>
 
-**Tünetek:** A `curl http://localhost:20128/v1/models` parancs a következő hibát adja vissza: `curl: (56) Recv failure: Connection reset by peer`. Az irányítópult és a hitelesítést nem igénylő végpontok működnek, de a hitelesített végpontok nem — ez hitelesítési problémának tűnik, de nem az.
+**Tünetek:** `curl http://localhost:20128/v1/models` `curl: (56) Recv failure: Connection reset by peer` adja vissza. Az irányítópult és a nem hitelesített végpontok működnek, de a hitelesített végpontok nem működnek. — hitelesítési problémának tűnik, de nem az.
 
-**Ok:** A `docker run -p 20128:20128` mind a `0.0.0.0` (IPv4), mind a `::` (IPv6) címen közzéteszi a portot, de a konténeren belüli folyamat csak IPv4-en figyel. Azokon a gazdagépeken, ahol a `localhost` először a `::1` címre oldódik fel, a kapcsolat az IPv6-on közzétett portra érkezik, amely mögött nincs figyelő folyamat → kapcsolat-visszaállítás.
+**Ok:** `docker run -p 20128:20128` `0.0.0.0` (IPv4) és `::` (IPv6) is publikál, de a tárolón belüli folyamat csak IPv4 en figyel. Azokon a gazdagépeken, ahol `localhost` először `::1` ra oldódik fel, a kapcsolat a IPv6 közzétett porton landol, és nincs mögötte figyelő. → kapcsolat alaphelyzetbe áll.
 
 **Javítás:**
 
-1. **Gyors diagnosztika:** Futtassa a `curl -4 http://localhost:20128/v1/models` parancsot. Ha a `-4` kapcsolóval működik, nélküle viszont nem, akkor IPv6-kötési eltérés áll fenn.
-2. **Végleges javítás:** Kösse kifejezetten IPv4-hez a portot úgy, hogy a `docker run` parancsban a `-p 127.0.0.1:20128:20128` beállítást használja:
+1. **Gyors diagnosztika:** Futtassa `curl -4 http://localhost:20128/v1/models`. Ha működik `-4` vel, de nem működik anélkül, akkor a IPv6 kötési eltérése van.
+2. **Állandó javítás:** Kifejezetten kapcsolódjon IPv4 hoz a `-p 127.0.0.1:20128:20128` használatával `docker run` parancsban:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Ez kikényszeríti az IPv4-kötést, és azt is megakadályozza, hogy a proxy a gazdagép összes hálózati interfészén elérhető legyen.
+   Ez kényszeríti a IPv4 kötést, és elkerüli a proxy feltárását az összes gazdagép interfészen.
 
 ---
 
-### A CLI-eszköz nincs telepítettként megjelölve
+### CLI eszköz azt mutatja, hogy nincs telepítve
 
-1. Ellenőrizze a futtatókörnyezet mezőit: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Hordozható mód esetén használja a `runner-cli` lemezkép-célpontot (beépített CLI-k)
-3. Gazdagépről csatolt mód esetén állítsa be a `CLI_EXTRA_PATHS` értékét, és csatolja a gazdagép binárisokat tartalmazó könyvtárát csak olvashatóként
-4. Ha `installed=true` és `runnable=false`: a bináris megtalálható, de az állapotellenőrzés sikertelen volt
+1. A futásidejű mezők ellenőrzése: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Hordozható módhoz: használja `runner-cli` képcélt (csomagolt CLIs)
+3. Gazda beillesztési módhoz: állítsa be `CLI_EXTRA_PATHS` és a mount host bin könyvtárat csak olvashatóként
+4. Ha `installed=true` és `runnable=false`: binárist találtunk, de az állapotellenőrzés sikertelen
 
-### A futtatókörnyezet gyors ellenőrzése
+### Gyors futásidejű érvényesítés
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

@@ -454,36 +454,36 @@ consultez [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Problèmes liés à Docker
+## Problèmes Docker
 
-### IPv6 Docker / Réinitialisation de la connexion
+### Docker IPv6 / Réinitialisation de la connexion
 
 <a name="docker-ipv6"></a>
 
-**Symptômes :** `curl http://localhost:20128/v1/models` renvoie `curl: (56) Recv failure: Connection reset by peer`. Le tableau de bord et les points de terminaison non authentifiés fonctionnent, mais les points de terminaison authentifiés échouent — cela ressemble à un problème d'authentification, mais ce n'en est pas un.
+**Symptômes:** `curl http://localhost:20128/v1/models` renvoie `curl: (56) Recv failure: Connection reset by peer`. Le tableau de bord et les points de terminaison non authentifiés fonctionnent, mais les points de terminaison authentifiés échouent — cela ressemble à un problème d'authentification mais ce n'est pas le cas.
 
-**Cause :** `docker run -p 20128:20128` publie à la fois sur `0.0.0.0` (IPv4) et `::` (IPv6), mais le processus à l'intérieur du conteneur écoute uniquement sur IPv4. Sur les hôtes où `localhost` est d'abord résolu en `::1`, la connexion arrive sur le port IPv6 publié, sans processus à l'écoute derrière celui-ci → réinitialisation de la connexion.
+**Cause:** `docker run -p 20128:20128` publie à la fois sur `0.0.0.0` (IPv4) et `::` (IPv6), mais le processus à l'intérieur du conteneur écoute uniquement sur IPv4. Sur les hôtes où `localhost` se résout en `::1` en premier, la connexion atterrit sur le port publié IPv6 sans aucun écouteur derrière la réinitialisation de la connexion →.
 
-**Correction :**
+**Réparer:**
 
-1. **Diagnostic rapide :** Exécutez `curl -4 http://localhost:20128/v1/models`. Si cela fonctionne avec `-4`, mais échoue sans cette option, vous avez une incompatibilité de liaison IPv6.
-2. **Correction permanente :** Forcez explicitement la liaison à IPv4 en utilisant `-p 127.0.0.1:20128:20128` dans votre commande `docker run` :
+1. **Diagnostic rapide :** Exécutez `curl -4 http://localhost:20128/v1/models`. Si cela fonctionne avec `-4` mais échoue sans, vous avez une incompatibilité de liaison IPv6.
+2. **Correction permanente :** Liez-vous explicitement à IPv4 en utilisant `-p 127.0.0.1:20128:20128` dans votre commande `docker run` :
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Cela force la liaison IPv4 et évite également d'exposer le proxy sur toutes les interfaces de l'hôte.
+   Cela force la liaison IPv4 et évite également d'exposer le proxy sur toutes les interfaces hôtes.
 
 ---
 
-### L'outil CLI est indiqué comme non installé
+### L'outil CLI montre non installé
 
-1. Vérifiez les champs de l'environnement d'exécution : `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Pour le mode portable : utilisez la cible d'image `runner-cli` (CLI incluses)
-3. Pour le mode de montage de l'hôte : définissez `CLI_EXTRA_PATHS` et montez le répertoire des binaires de l'hôte en lecture seule
-4. Si `installed=true` et `runnable=false` : le binaire a été trouvé, mais le contrôle d'intégrité a échoué
+1. Vérifiez les champs d'exécution : `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Pour le mode portable : utilisez la cible d'image `runner-cli` ( CLIs fournie)
+3. Pour le mode de montage hôte : définissez `CLI_EXTRA_PATHS` et montez le répertoire bin de l'hôte en lecture seule
+4. Si `installed=true` et `runnable=false`: le binaire a été trouvé mais le contrôle de santé a échoué
 
-### Validation rapide de l'environnement d'exécution
+### Validation rapide du temps d'exécution
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

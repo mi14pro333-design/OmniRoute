@@ -42,17 +42,17 @@ Bu komut uygulamayı kaldırır **ve tüm verileri kalıcı olarak siler**:
 
 ## Manuel Kaldırma
 
-### NPM Genel Kurulumu
+### NPM Küresel Kurulum
 
 ```bash
-# Genel paketi kaldırın
+# Remove the global package
 npm uninstall -g omniroute
 
-# (İsteğe bağlı) Veri dizinini kaldırın
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### pnpm Genel Kurulumu
+### npm Küresel Kurulum
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,24 +62,26 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Konteyneri durdurun ve kaldırın
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Birimi kaldırın (tüm verileri siler)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (İsteğe bağlı) İmajı kaldırın
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Oluştur
 
 ```bash
-# Konteynerleri durdurun ve kaldırın
+# Stop and remove containers
 docker compose down
 
-# Birimleri de kaldırın (tüm verileri siler)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
@@ -87,26 +89,26 @@ docker compose down -v
 
 **Windows:**
 
-- `Ayarlar → Uygulamalar → OmniRoute → Kaldır` yolunu açın
-- Veya kurulum dizinindeki NSIS kaldırma programını çalıştırın
+- `Settings → Apps → OmniRoute → Uninstall` aç
+- Veya NSIS kaldırıcıyı kurulum dizininden çalıştırın
 
 **macOS:**
 
-- `OmniRoute.app` dosyasını `/Applications` klasöründen Çöp Sepeti'ne sürükleyin
-- Verileri kaldırın: `rm -rf ~/Library/Application Support/omniroute`
+- `OmniRoute.app` `/Applications` Çöp Kutusu'na sürükleyin
+- Verileri kaldır: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
 - AppImage dosyasını kaldırın
-- Verileri kaldırın: `rm -rf ~/.omniroute`
+- Verileri kaldır: `rm -rf ~/.omniroute`
 
-### Kaynaktan Kurulum (git clone)
+### Kaynak Kurulumu (git klonu)
 
 ```bash
-# Klonlanan dizini kaldırın
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (İsteğe bağlı) Veri dizinini kaldırın
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

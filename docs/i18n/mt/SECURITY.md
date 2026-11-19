@@ -182,13 +182,13 @@ Is-server jirrifjuta b'mod attiv valuri magħrufa bħala dgħajfa bħal `changem
 
 ---
 
-## Sigurtà ta' Docker
+## Docker Sigurtà
 
 - Uża utent mhux root fil-produzzjoni
-- Immonta s-sigrieti bħala volumi li jinqraw biss
-- Qatt tikkopja fajls `.env` f'immaġnijiet Docker
+- Immonta sigrieti bħala volumi li jinqraw biss
+- Qatt tikkopja fajls `.env` f'immaġini Docker
 - Uża `.dockerignore` biex teskludi fajls sensittivi
-- Issettja `AUTH_COOKIE_SECURE=true` meta tkun wara HTTPS
+- Issettja `AUTH_COOKIE_SECURE=true` meta wara HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

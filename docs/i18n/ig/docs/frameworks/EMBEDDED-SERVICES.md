@@ -535,7 +535,7 @@ Igbe-abụ nwere otu njedebe njedebe dị ka Mux — no `rotate-key` ụzọ, en
 | `POST` | `/api/services/singbox/auto-restart-adopted` | Gbanwee malitegharịa akpaaka maka usoro anabatara (dị adịbu). |
 | `GET`  | `/api/services/singbox/logs`                 | ọdụ ọdụ SSE (site na ụzọ ike `[name]/logs` na-ekekọrịta)      |
 
-**TPROXY :** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) na-ede `config.json` wee malite onye nlekọta tupu `applyTproxy()` etinye iwu TPROXY firewall. Ọ bụrụ na onye nlekọta na-efu ma ọ bụ daa iru `running`, ọ na-edebanye aha ugbu a na ọkwa njehie (kama iji nwayọọ loda ọdịda) ya mere onye ọrụ nwere ike ịgwa usoro TPROXY ka etinyere na-enweghị onye na-ege ntị na-arụ ọrụ n'azụ ha.
+**TPROXY :** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) na-ede `config.json` wee malite onye nlekọta tupu `applyTproxy()` etinye iwu TPROXY firewall. Ọ bụrụ na onye nlekọta na-efu ma ọ bụ daa iru `running`, ọ na-edekọ ugbu a na ọkwa njehie (kama iji nwayọọ loda ọdịda ahụ) ya mere onye ọrụ nwere ike ịgwa usoro TPROXY na-etinyere na-enweghị onye na-ege ntị na-arụ ọrụ n'azụ ha.
 
 ---
 
@@ -555,7 +555,7 @@ Nke a proxy:
 - Mwepụ `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` na nzaghachi
 - Na-edegharị nzaghachi HTML iji gbaa `<base href>` wee hazie ụzọ zuru oke (`/foo` → `/dashboard/.../embed/foo`)
 
-WebSocket nkwalite maka dashboard agbakwunyere na-ejikwa ihe nkesa ibe na ọdụ ụgbọ mmiri raara onwe ya nye (lee `src/lib/services/embedWsProxy.ts`).
+WebSocket nkwalite maka dashboard agbakwunyere na-ejikwa ihe nkesa ibe na ọdụ ụgbọ mmiri raara onwe ya nye (lee `src/lib/services/embedWsProxy.ts`). Enyere ikike nkwalite ọ bụla tupu ọwara oghere ahụ, yana otu iwu dị ka ụzọ HTTP agbakwunyere: onye ọgbọ ga-adịghachi azụ na-enweghị isi ihe ntụgharị proxy, ihe nchọgharị `Origin` ga-abụrịrị mmalite dashboard (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` gbatịa ndabara loopback), onye na-akpọ oku chọrọ nnọkọ dashboard ma ọ bụ igodo njikwa API ga-abụ nbanye dashboard.
 
 **Nchekwa:** Ụzọ proxy agbakwunyere bụ nkewa n'okpuru `LOCAL_ONLY_API_PREFIXES` na enwere ike ịnweta ya site na loopback. Onye mwakpo nke nwetara JWT site na ọwara Cloudflare/Ngrok enweghị ike onye nnọchi anya ọrụ agbakwunyere.
 

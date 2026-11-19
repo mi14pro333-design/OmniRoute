@@ -10,23 +10,23 @@
 
 ## ഘട്ടം 1: OmniRoute ഇൻസ്റ്റാൾ ചെയ്യുക
 
-നിങ്ങൾക്ക് ഇഷ്ടമുള്ള രീതി തിരഞ്ഞെടുക്കുക:
+നിങ്ങൾ ഇഷ്ടപ്പെടുന്ന രീതി തിരഞ്ഞെടുക്കുക:
 
-### ഓപ്ഷൻ A: npm (ശുപാർശ ചെയ്യുന്നത്)
+### ഓപ്ഷൻ എ: npm (ശുപാർശ ചെയ്യുന്നത്)
 
 ```bash
 npm install -g omniroute
 ```
 
-### ഓപ്ഷൻ B: Docker
+### ഓപ്ഷൻ ബി: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` എന്നത് **പ്രസിദ്ധീകരിച്ചിട്ടുള്ളതിൽ** ഏറ്റവും ഉയർന്ന സ്ഥിരതയുള്ള SemVer ആണ്. ഇത് git `main`-നെ പിന്തുടരുന്നില്ല. GitOps-നായി `diegosouzapw/omniroute:X.Y.Z` പിൻ ചെയ്യുക. [ഇമേജ് ടാഗുകൾ / റിലീസ് ചാനലുകൾ](../guides/DOCKER_GUIDE.md#release-channels) കാണുക.
+`:latest` ആണ് ഏറ്റവും ഉയർന്നത്** പ്രസിദ്ധീകരിച്ചു** സ്ഥിരതയുള്ള SemVer. അത് ചെയ്യുന്നു** അല്ല** ട്രാക്ക് git `main`. GitOps യ്ക്ക് `cheaperinference/omniroute:X.Y.Z` പിൻ ചെയ്യുക. [ഇമേജ് ടാഗുകൾ / റിലീസ് ചാനലുകൾ](../guides/DOCKER_GUIDE.md#release-channels) കാണുക .
 
-### ഓപ്ഷൻ C: സോഴ്സിൽ നിന്ന്
+### ഓപ്ഷൻ സി: ഉറവിടത്തിൽ നിന്ന്
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

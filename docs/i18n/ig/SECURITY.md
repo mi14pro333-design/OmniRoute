@@ -182,13 +182,13 @@ Sava ahụ na-ajụ ụkpụrụ ndị a maara na ha esighị ike, dịka `chang
 
 ---
 
-## Nchekwa Docker
+## Docker
 
-- Jiri onye ọrụ na-abụghị root na production
-- Tinye ihe nzuzo dịka volumes ndị a na-agụ naanị
-- Eṅomila faịlụ `.env` n'ime Docker images
-- Jiri `.dockerignore` wepụ faịlụ ndị nwere ozi nzuzo
-- Tọọ `AUTH_COOKIE_SECURE=true` mgbe HTTPS dị n'ihu ya
+- Jiri onye na-abụghị mgbọrọgwụ na mmepụta
+- Tinye ihe nzuzo dị ka mpịakọta naanị ọgụgụ
+- Detuokwala faịlụ `.env` n'ime onyonyo Docker
+- Jiri `.dockerignore` wepụ faịlụ nwere mmetụta
+- Tọọ `AUTH_COOKIE_SECURE=true` mgbe azụ HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

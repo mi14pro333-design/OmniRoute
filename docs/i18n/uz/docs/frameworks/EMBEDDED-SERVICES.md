@@ -45,7 +45,7 @@ Barcha sakkizta bir xil nazorat modeliga amal qiladi:
 - OmniRoute ularni `DATA_DIR/services/{name}/` ostida o'rnatadi ( OmniRoute o'z `package.json` dan ajratilgan)
 - OmniRoute ularni bola jarayonlari sifatida yaratadi va nazorat qiladi
 - OmniRoute vaqtinchalik API kalitini bolaning muhitiga kiritadi va uni uzilishlarsiz aylantiradi (agar mavjud bo'lsa)
-- Barcha boshqaruv yo'llari (`/api/services/*`) mavjud**LOCAL_ONLY** — faqat orqaga qaytish orqali kirish mumkin (qattiq qoida №17)
+- Barcha boshqaruv yo'llari (`/api/services/*`) mavjud**LOCAL_ONLY** — faqat orqaga qaytish orqali kirish mumkin (qattiq qoida #17)
 
 ### Asosiy qarorlar (dizayn rejasidan)
 
@@ -211,7 +211,7 @@ vaqtda faollashganda poyga holatlarining oldini oladi.
 
 ## 4. API ma'lumotnomasi
 
-`/api/services/` ostidagi barcha marshrutlar**LOCAL_ONLY** (faqat orqaga qaytish, qattiq qoida №17). Orqaga qaytarilmaydigan so'rovlar autentlik tokenidan qat'iy nazar `403 LOCAL_ONLY` oladi.
+`/api/services/` ostidagi barcha marshrutlar**LOCAL_ONLY** (faqat orqaga qaytish, qattiq qoida #17). Orqaga qaytarilmaydigan so'rovlar autentlik tokenidan qat'iy nazar `403 LOCAL_ONLY` oladi.
 
 ### 4.1 9Marshrutizatorning oxirgi nuqtalari (11 marshrut)
 
@@ -238,7 +238,7 @@ npm dan 9Routerni o'rnating. O'z `package.json` va `node_modules/` bilan `DATA_D
 | `409`  | Allaqachon o'rnatilmoqda (qulflangan)                                       |
 | `500`  | npm o'rnatish muvaffaqiyatsiz tugadi — do'stona xato uchun `message` qarang |
 
-**Eslatmalar:** `execFile('npm', [...])` — qobiqsiz, interpolyatsiyasiz (qattiq qoida # 13) foydalanadi. EACCES xatolar do'stona xabarlar sifatida paydo bo'ladi.
+**Eslatmalar:** `execFile('npm', [...])` — qobiqsiz, interpolyatsiyasiz (qattiq qoida #13) foydalanadi. EACCES xatolar do'stona xabarlar sifatida paydo bo'ladi.
 
 ---
 
@@ -369,7 +369,7 @@ Birlashtirilgan jonli + DB holatini qaytaradi, shu jumladan versiya metamaʼlumo
 
 #### `POST /api/services/9router/auto-start`
 
-Avtomatik ishga tushirish belgisini o'zgartiring. Qachon `enabled: true`, xizmat keyingi safar OmniRoute yuklanganda avtomatik ravishda ishga tushadi (agar xizmat o'rnatilgan bo'lsa).
+Avtomatik ishga tushirish belgisini o'zgartiring. Qachon `enabled: true`, xizmat keyingi safar OmniRoute yuklanganda avtomatik ravishda boshlanadi (agar xizmat o'rnatilgan bo'lsa).
 
 **So'rov organi:**
 
@@ -486,7 +486,7 @@ open-wa (`@open-wa/wa-automate`) WhatsApp Web-ni avtomatlashtirish uchun boshsiz
 | ------ | --------------------------------- | ----------------------------------------------------------- |
 | `POST` | `/api/services/openwa/install`    | Open-wa-ni npm (`@open-wa/wa-automate`) dan o'rnating       |
 | `POST` | `/api/services/openwa/start`      | 8323-portda open-wa-ni ishga tushiring (standart)           |
-| `POST` | `/api/services/openwa/stop`       | Ochiq-oydin to'xtating                                      |
+| `POST` | `/api/services/openwa/stop`       | Ochig'ini to'xtating                                        |
 | `POST` | `/api/services/openwa/restart`    | Open-wa-ni qayta ishga tushiring                            |
 | `POST` | `/api/services/openwa/update`     | Yangi versiyaga yangilang                                   |
 | `GET`  | `/api/services/openwa/status`     | Jonli + DB holati                                           |
@@ -537,13 +537,13 @@ sing-box has the same endpoint shape as Mux — no `rotate-key` route, no API ke
 | `POST` | `/api/services/singbox/auto-restart-adopted` | Qabul qilingan (oldindan mavjud) jarayon uchun avtomatik qayta ishga tushirishni yoqing |
 | `GET`  | `/api/services/singbox/logs`                 | SSE log tail (umumiy `[name]/logs` dinamik marshrut orqali)                             |
 
-**TPROXY simlari:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) `config.json` yozadi va `applyTproxy()` TPROXY xavfsizlik devori qoidalarini o‘rnatishdan oldin nazoratchini ishga tushiradi. Agar nazoratchi yo'qolgan bo'lsa yoki `running` ga erisha olmasa, u endi xatolik darajasida jurnalga kiradi (noto'g'rilikni indamay yutib yuborish o'rniga), operator TPROXY qoidalari ularning orqasida ishlaydigan tinglovchisiz qo'llanilganligini aytishi mumkin.
+**TPROXY simlari:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) `config.json` yozadi va `applyTproxy()` TPROXY xavfsizlik devori qoidalarini o‘rnatishdan oldin nazoratchini ishga tushiradi. Agar nazoratchi yo'qolgan bo'lsa yoki `running` ga erisha olmasa, u endi xatolik darajasida (noto'g'rilikni indamay yutib yuborishdan ko'ra) jurnalga kiradi, shuning uchun operator TPROXY qoidalari ularning orqasida ishlaydigan tinglovchisiz qo'llanilganligini aytishi mumkin.
 
 ---
 
 ### 4.9 Teskari proksi-server (9Router asboblar panelini o'rnatish)
 
-Boshqaruv paneli quyidagi manzilda ichki teskari proksi-server orqali 9Router web UI ni iframe ichiga joylashtiradi:
+Boshqaruv paneli 9Router web UI iframe ichiga ichki teskari proksi-server orqali joylashtiradi:
 
 ```
 GET|POST|... /dashboard/providers/services/9router/embed/[...path]
@@ -557,7 +557,7 @@ Bu proksi:
 - Javobdan `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` chiziqlari
 - `<base href>` kiritish va mutlaq yo'llarni normallashtirish uchun HTML javoblarini qayta yozadi (`/foo` → `/dashboard/.../embed/foo`)
 
-O'rnatilgan asboblar paneli uchun WebSocket yangilanishlari maxsus portdagi yordamchi server tomonidan amalga oshiriladi ( `src/lib/services/embedWsProxy.ts` ga qarang).
+O'rnatilgan asboblar paneli uchun WebSocket yangilanishlari maxsus portdagi yordamchi server tomonidan amalga oshiriladi ( `src/lib/services/embedWsProxy.ts` ga qarang). Tunnel ochilishidan oldin har bir yangilash HTTP kiritish marshruti bilan bir xil qoidalarga amal qilgan holda ruxsat etiladi: peer teskari proksi yo‘naltiruvchi sarlavhasiz orqaga qaytish bo‘lishi kerak, `Origin` brauzeri asboblar panelining kelib chiqishi bo‘lishi kerak (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` orqaga qaytarish standart sozlamalarini kengaytiradi) va qo‘ng‘iroq qiluvchiga boshqaruv paneli seansi yoki boshqaruv panelisiz API discope kerak.
 
 **Xavfsizlik:** O'rnatish proksi-marshrutlari `LOCAL_ONLY_API_PREFIXES` bo'yicha tasniflanadi va ularga faqat orqaga qaytish orqali kirish mumkin. Cloudflare/Ngrok tunnel orqali JWT olgan tajovuzkor o'rnatilgan xizmatlarga proksi-server o'tkaza olmaydi.
 

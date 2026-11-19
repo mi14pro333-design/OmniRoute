@@ -182,13 +182,13 @@ Olupin náà máa kọ àwọn iye tí a mọ̀ pé kò lágbára bíi `changeme
 
 ---
 
-## Ààbò Docker
+## Docker Aabo
 
-- Lo aṣàmúlò tí kì í ṣe root ní production
-- So àwọn àṣírí mọ́ gẹ́gẹ́ bí àwọn volume tí a lè kà nìkan
-- Má ṣe da àwọn fáìlì `.env` kọ sínú àwọn image Docker láé
-- Lo `.dockerignore` láti yọ àwọn fáìlì tó ní ìmọ̀ tó ṣe pàtàkì kúrò
-- Ṣètò `AUTH_COOKIE_SECURE=true` nígbà tí HTTPS bá wà níwájú rẹ̀
+- Lo olumulo ti kii ṣe gbongbo ni iṣelọpọ
+- Gbe awọn asiri bi awọn iwọn kika-nikan
+- Maṣe daakọ awọn faili `.env` sinu awọn aworan Docker
+- Lo `.dockerignore` lati yọkuro awọn faili ifura
+- Ṣeto `AUTH_COOKIE_SECURE=true` nigbati lẹhin HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

@@ -455,36 +455,36 @@ vaadake faili [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Dockeri probleemid
+## Docker probleemid
 
-### Dockeri IPv6 / ühenduse lähtestamine
+### Docker IPv6 / Ühenduse lähtestamine
 
 <a name="docker-ipv6"></a>
 
-**Sümptomid:** `curl http://localhost:20128/v1/models` tagastab `curl: (56) Recv failure: Connection reset by peer`. Töölaud ja autentimata lõpp-punktid töötavad, kuid autenditud lõpp-punktid ei tööta — see näib autentimisprobleemina, kuid tegelikult ei ole seda.
+**Sümptomid:** `curl http://localhost:20128/v1/models` tagastab `curl: (56) Recv failure: Connection reset by peer`. Armatuurlaud ja autentimata lõpp-punktid töötavad, kuid autentitud lõpp-punktid ebaõnnestuvad. — see näib olevat autentimisprobleem, kuid seda pole.
 
-**Põhjus:** `docker run -p 20128:20128` avaldab pordi nii aadressil `0.0.0.0` (IPv4) kui ka `::` (IPv6), kuid konteineris töötav protsess kuulab ainult IPv4 kaudu. Hostides, kus `localhost` lahendatakse esmalt aadressiks `::1`, suunatakse ühendus avaldatud IPv6-porti, mille taga pole kuulajat → ühendus lähtestatakse.
+**Põhjus:** `docker run -p 20128:20128` avaldab nii `0.0.0.0` (IPv4) kui ka `::` (IPv6), kuid konteineris olev protsess kuulab ainult IPv4. Hostides, kus `localhost` lahendab esimesena `::1`, maandub ühendus IPv6 avaldatud porti, mille taga pole kuulajat, → -ühendus lähtestatakse.
 
-**Parandus:**
+**Paranda:**
 
-1. **Kiire diagnostika:** käivitage `curl -4 http://localhost:20128/v1/models`. Kui see töötab võtmega `-4`, kuid ilma selleta mitte, on tegemist IPv6 sidumise mittevastavusega.
-2. **Püsiv parandus:** siduge port sõnaselgelt IPv4-ga, kasutades käsus `docker run` väärtust `-p 127.0.0.1:20128:20128`:
+1. **Kiire diagnostika:** Käivitage `curl -4 http://localhost:20128/v1/models`. Kui see töötab `-4` ga, kuid ebaõnnestub ilma, on teil IPv6 sidumise mittevastavus.
+2. **Püsiv parandus:** Siduge IPv4 selgesõnaliselt, kasutades `docker run` käsus `-p 127.0.0.1:20128:20128` :
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   See sunnib kasutama IPv4 sidumist ja väldib ühtlasi puhverserveri avaldamist hosti kõigil võrguliidestel.
+   See sunnib IPv4 sidumist ja väldib ka puhverserveri paljastamist kõigil hostiliidestel.
 
 ---
 
-### CLI-tööriist kuvatakse installimata olekus
+### CLI tööriist näitab, et pole installitud
 
-1. Kontrollige käituskeskkonna välju: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Portatiivse režiimi jaoks kasutage tõmmise sihtmärki `runner-cli` (kaasasolevad CLI-d)
-3. Hosti haakerežiimi jaoks määrake `CLI_EXTRA_PATHS` ja haakige hosti binaarfailide kataloog kirjutuskaitstuna
-4. Kui `installed=true` ja `runnable=false`, siis binaarfail leiti, kuid tervisekontroll ebaõnnestus
+1. Kontrollige käitusaja välju: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Kaasaskantava režiimi jaoks: kasutage pildi sihtmärki `runner-cli` (komplekteeritud CLIs)
+3. Hostiühendusrežiimi jaoks: määrake `CLI_EXTRA_PATHS` ja ühendage hosti bin kataloog kirjutuskaitstuks
+4. Kui `installed=true` ja `runnable=false`: leiti kahendkood, kuid tervisekontroll ebaõnnestus
 
-### Käituskeskkonna kiire kontroll
+### Kiire käitusaegne valideerimine
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

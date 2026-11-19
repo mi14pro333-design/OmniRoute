@@ -184,11 +184,11 @@ Sunucu, `changeme`, `secret` veya `password` gibi zayıf olduğu bilinen değerl
 
 ## Docker Güvenliği
 
-- Üretimde root olmayan bir kullanıcı kullanın
-- Gizli değerleri salt okunur birimler olarak bağlayın
-- `.env` dosyalarını asla Docker imajlarına kopyalamayın
+- Üretimde root olmayan kullanıcıyı kullan
+- Gizli dizileri salt okunur birimler olarak bağlayın
+- `.env` dosyalarını asla Docker görüntülerine kopyalamayın
 - Hassas dosyaları hariç tutmak için `.dockerignore` kullanın
-- HTTPS arkasında çalışırken `AUTH_COOKIE_SECURE=true` olarak ayarlayın
+- HTTPS arkasındayken `AUTH_COOKIE_SECURE=true` ayarlayın
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

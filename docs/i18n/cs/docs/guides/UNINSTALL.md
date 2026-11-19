@@ -42,17 +42,17 @@ Tento příkaz odebere aplikaci **a trvale vymaže** všechna data:
 
 ## Ruční odinstalace
 
-### Globální instalace pomocí NPM
+### Globální instalace NPM
 
 ```bash
-# Odebrání globálního balíčku
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Volitelné) Odebrání datového adresáře
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Globální instalace pomocí pnpm
+### Globální instalace pnpm
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,24 +62,26 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Zastavení a odebrání kontejneru
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Odebrání svazku (odstraní všechna data)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Volitelné) Odebrání obrazu
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Skládat
 
 ```bash
-# Zastavení a odebrání kontejnerů
+# Stop and remove containers
 docker compose down
 
-# Odebrání také svazků (odstraní všechna data)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
@@ -87,26 +89,26 @@ docker compose down -v
 
 **Windows:**
 
-- Otevřete `Nastavení → Aplikace → OmniRoute → Odinstalovat`
+- Otevřete `Settings → Apps → OmniRoute → Uninstall`
 - Nebo spusťte odinstalační program NSIS z instalačního adresáře
 
 **macOS:**
 
 - Přetáhněte `OmniRoute.app` z `/Applications` do koše
-- Odeberte data: `rm -rf ~/Library/Application Support/omniroute`
+- Odebrat data: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
-- Odeberte soubor AppImage
-- Odeberte data: `rm -rf ~/.omniroute`
+- Odstraňte soubor AppImage
+- Odebrat data: `rm -rf ~/.omniroute`
 
-### Instalace ze zdrojového kódu (git clone)
+### Instalace zdroje (klon git)
 
 ```bash
-# Odebrání naklonovaného adresáře
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Volitelné) Odebrání datového adresáře
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

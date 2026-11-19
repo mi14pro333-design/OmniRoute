@@ -40,19 +40,19 @@ Este comando remove a aplicação **e apaga permanentemente** todos os dados:
 
 ---
 
-## Desinstalação Manual
+## Desinstalação manual
 
-### Instalação Global com NPM
+### Instalação global NPM
 
 ```bash
-# Remover o pacote global
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Opcional) Remover o diretório de dados
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Instalação Global com pnpm
+### Instalação global pnpm
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,51 +62,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Parar e remover o contentor
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Remover o volume (elimina todos os dados)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Opcional) Remover a imagem
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Compor
 
 ```bash
-# Parar e remover os contentores
+# Stop and remove containers
 docker compose down
 
-# Remover também os volumes (elimina todos os dados)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Aplicação de Ambiente de Trabalho Electron
+### Aplicação de desktop Electron
 
 **Windows:**
 
-- Abra `Definições → Aplicações → OmniRoute → Desinstalar`
-- Em alternativa, execute o desinstalador NSIS a partir do diretório de instalação
+- Abrir `Settings → Apps → OmniRoute → Uninstall`
+- Ou execute o desinstalador NSIS no diretório de instalação
 
 **macOS:**
 
-- Arraste `OmniRoute.app` de `/Applications` para o Lixo
-- Remova os dados: `rm -rf ~/Library/Application Support/omniroute`
+- Arraste `OmniRoute.app` do `/Applications` para a Reciclagem
+- Remover dados: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
 - Remova o ficheiro AppImage
-- Remova os dados: `rm -rf ~/.omniroute`
+- Remover dados: `rm -rf ~/.omniroute`
 
-### Instalação a Partir do Código-Fonte (git clone)
+### Instalação de origem (git clone)
 
 ```bash
-# Remover o diretório clonado
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Opcional) Remover o diretório de dados
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

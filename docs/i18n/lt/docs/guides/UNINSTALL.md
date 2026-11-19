@@ -40,19 +40,19 @@ npm run uninstall:full
 
 ---
 
-## Pašalinimas rankiniu būdu
+## Rankinis pašalinimas
 
-### Visuotinis diegimas naudojant NPM
+### NPM visuotinis diegimas
 
 ```bash
-# Pašalinkite visuotinį paketą
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Pasirinktinai) Pašalinkite duomenų katalogą
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Visuotinis diegimas naudojant pnpm
+### pnpm visuotinis diegimas
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,24 +62,26 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Sustabdykite ir pašalinkite konteinerį
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Pašalinkite tomą (bus ištrinti visi duomenys)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Pasirinktinai) Pašalinkite atvaizdą
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Sukurti
 
 ```bash
-# Sustabdykite ir pašalinkite konteinerius
+# Stop and remove containers
 docker compose down
 
-# Taip pat pašalinkite tomus (bus ištrinti visi duomenys)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
@@ -87,26 +89,26 @@ docker compose down -v
 
 **Windows:**
 
-- Atidarykite `Nustatymai → Programėlės → OmniRoute → Pašalinti`
-- Arba paleiskite NSIS šalinimo programą iš diegimo katalogo
+- Atidarykite `Settings → Apps → OmniRoute → Uninstall`
+- Arba paleiskite NSIS pašalinimo programą iš diegimo katalogo
 
 **macOS:**
 
-- Nuvilkite `OmniRoute.app` iš `/Applications` į šiukšlinę
-- Pašalinkite duomenis: `rm -rf ~/Library/Application Support/omniroute`
+- Nuvilkite `OmniRoute.app` iš `/Applications` į šiukšliadėžę
+- Pašalinti duomenis: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
 - Pašalinkite AppImage failą
-- Pašalinkite duomenis: `rm -rf ~/.omniroute`
+- Pašalinti duomenis: `rm -rf ~/.omniroute`
 
-### Diegimas iš šaltinio kodo (git clone)
+### Šaltinio diegimas (git klonas)
 
 ```bash
-# Pašalinkite klonuotą katalogą
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Pasirinktinai) Pašalinkite duomenų katalogą
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

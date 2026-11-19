@@ -182,13 +182,13 @@ Strežnik aktivno zavrača znane šibke vrednosti, kot so `changeme`, `secret` a
 
 ---
 
-## Varnost Dockerja
+## Varnost Docker
 
-- V produkcijskem okolju uporabljajte uporabnika brez korenskih pravic
-- Skrivnosti priklopite kot nosilce samo za branje
-- Datotek `.env` nikoli ne kopirajte v slike Docker
+- Uporabite nekorenskega uporabnika v proizvodnji
+- Namestite skrivnosti kot nosilce samo za branje
+- Nikoli ne kopirajte datotek `.env` v slike Docker
 - Za izključitev občutljivih datotek uporabite `.dockerignore`
-- Pri uporabi HTTPS nastavite `AUTH_COOKIE_SECURE=true`
+- Nastavi `AUTH_COOKIE_SECURE=true`, ko je za HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

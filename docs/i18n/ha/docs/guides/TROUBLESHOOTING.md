@@ -442,36 +442,36 @@ duba [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Matsalolin Docker
+## Docker Matsaloli
 
-### Docker IPv6 / Sake Saita Haɗi
+### Docker IPv6 / Sake saitin Haɗin
 
 <a name="docker-ipv6"></a>
 
-**Alamomi:** `curl http://localhost:20128/v1/models` yana mayar da `curl: (56) Recv failure: Connection reset by peer`. Dashboard da endpoints marasa tantancewa suna aiki, amma endpoints masu tantancewa suna gaza — yana kama da matsalar tantancewa amma ba haka ba ne.
+**Alamomi:** `curl http://localhost:20128/v1/models` dawo `curl: (56) Recv failure: Connection reset by peer`. Dashboard da wuraren ƙarewa marasa inganci suna aiki, amma ingantattun wuraren ƙarewa sun kasa — yana kama da matsala ta inganta amma ba haka ba.
 
-**Dalili:** `docker run -p 20128:20128` yana buɗe port a kan duka `0.0.0.0` (IPv4) da `::` (IPv6), amma process da ke cikin container yana sauraro a kan IPv4 kawai. A hosts inda `localhost` ke warwarewa zuwa `::1` da farko, haɗin yana isa ga port ɗin IPv6 da aka buɗe ba tare da listener a bayansa ba → sai a sake saita haɗin.
+**Dalili:** `docker run -p 20128:20128` tana bugawa akan duka `0.0.0.0` (IPv4) da `::` (IPv6), amma tsarin cikin kwandon yana sauraron IPv4 kawai. A kan runduna inda `localhost` ya yanke shawarar zuwa `::1` da farko, haɗin gwiwa ya sauka a tashar tashar IPv6 da aka buga ba tare da wani mai saurare ba a bayanta ta sake saita haɗin →.
 
 **Gyara:**
 
-1. **Bincike mai sauri:** Gudanar da `curl -4 http://localhost:20128/v1/models`. Idan yana aiki da `-4` amma yana gaza ba tare da shi ba, kana da rashin daidaiton bind na IPv6.
-2. **Gyara na dindindin:** Yi bind zuwa IPv4 kai tsaye ta amfani da `-p 127.0.0.1:20128:20128` a cikin umarnin `docker run` naka:
+1. **Binciken gaggawa:** Run `curl -4 http://localhost:20128/v1/models`. Idan yana aiki tare da `-4` amma ya kasa ba tare da shi ba, kuna da rashin daidaituwa na IPv6 daure.
+2. **Gyaran dindindin:** Daure zuwa IPv4 a sarari ta amfani da `-p 127.0.0.1:20128:20128` a cikin umarnin `docker run` na ku:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Wannan yana tilasta bind na IPv4 kuma yana hana fallasa proxy a kan dukkan interfaces na host.
+   Wannan yana tilasta ɗaure IPv4 kuma yana guje wa fallasa wakili akan duk mu'amalar mai masaukin baki.
 
 ---
 
-### Kayan Aikin CLI Yana Nuna Ba A Shigar Da Shi Ba
+### CLI Ba a Sanya kayan aikin ba
 
-1. Duba filayen runtime: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Don yanayin portable: yi amfani da image target `runner-cli` (CLIs da aka haɗa)
-3. Don yanayin host mount: saita `CLI_EXTRA_PATHS` sannan ka mount directory na bin na host a matsayin read-only
-4. Idan `installed=true` kuma `runnable=false`: an gano binary amma ya gaza healthcheck
+1. Duba filayen lokacin aiki: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Don yanayin šaukuwa: yi amfani da `runner-cli` manufa ta hoto (wanda aka haɗa CLIs)
+3. Don yanayin hawan runduna: saita `CLI_EXTRA_PATHS` da mount host bin directory azaman karantawa kawai
+4. Idan `installed=true` da `runnable=false`: an sami binary amma ya kasa duba lafiyarsa
 
-### Tabbatar da Runtime Cikin Sauri
+### Tabbatar da Lokacin Gudu da sauri
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

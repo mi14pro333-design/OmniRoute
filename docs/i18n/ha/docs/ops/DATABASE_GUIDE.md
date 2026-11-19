@@ -197,7 +197,7 @@ OmniRoute yana amfani** sigar, ƙaura masu ƙarfi** a `src/lib/db/migrations/`. 
 
 Me yasa aka canza: tare da lambobi masu jere, layi ɗaya PRs ya zaɓi lamba ɗaya ta gaba kuma duk sai ɗaya dole ne a sake lamba kafin haɗawa. Tambarin lokaci na UTC yana ba kowane PR sigar sa.
 
-Dokokin tsarin tambarin lokaci (wanda `npm run check:migration-numbering` ya tilasta , wanda aka raba tare da janareta a cikin `scripts/check/lib/migrationNaming.mjs`):
+Dokoki don tsarin tambarin lokaci (wanda `npm run check:migration-numbering` ya tilasta , wanda aka raba tare da janareta a cikin `scripts/check/lib/migrationNaming.mjs`):
 
 - Tambarin lokaci shine ainihin UTC kwanan wata da lokaci, bai wuce `20261113000000` ba kuma bai wuce mintuna 10 ba nan gaba.
 - Bayanin shine ƙananan haruffan `snake_case` waɗanda ke farawa da harafi (`a-z`, `0-9`, `_` ɗaya tsakanin kalmomi), aƙalla haruffa 80.
@@ -259,7 +259,7 @@ Buƙatun ja da aka buɗe kafin sauyawa na iya har yanzu ɗaukar fayil na jeri ka
 
 ### Komawa zuwa Reshe Kafin Sauyawa
 
-Kada a taɓa ɗauka ko mayar da fayil ɗin `YYYYMMDDHHMMSS_` baya zuwa reshe wanda ya riga ya canza (misali tsohuwar reshen `release/v*` ). Mai gudu a wurin yana tsara sunayen fayil azaman rubutu, don haka fayil ɗin da aka rubuta lokaci zai gudana tsakanin `201_` da `202_` akan sabon ma'ajin bayanai, kuma tsohuwar ƙofar da ke wurin ba ta fahimtar prefixes mai lamba 14. A kan irin wannan reshe, rubuta canjin azaman fayil ɗin `NNN_` na gaba na reshe, idempotent, don haka babu-op lokacin da sigar zamani ta zo daga baya.
+Kada a taɓa ɗauka ko mayar da fayil ɗin `YYYYMMDDHHMMSS_` zuwa reshe wanda ya riga ya canza (misali wani tsohon reshen `release/v*` ). Mai gudu a wurin yana tsara sunayen fayil azaman rubutu, don haka fayil ɗin da aka rubuta lokaci zai gudana tsakanin `201_` da `202_` akan sabon ma'ajin bayanai, kuma tsohuwar ƙofar da ke wurin ba ta fahimtar prefixes mai lamba 14. A kan irin wannan reshe, rubuta canjin azaman fayil ɗin `NNN_` na gaba na reshe, idempotent, don haka babu-op lokacin da sigar zamani ta zo daga baya.
 
 ### Yadda Hijira ke Gudu
 
@@ -304,11 +304,12 @@ Yi amfani da `IF NOT EXISTS`, `IF EXISTS`, da `OR IGNORE` / `OR REPLACE` jumlar 
 
 ### Ƙara Sabuwar Hijira
 
-1. **Ƙirƙiri fayil ɗin tare da janareta** : `npm run db:new-migration -- <description>` (misali `npm run db:new-migration -- add combo priority`). Yana rubuta `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` tare da lokacin UTC na yanzu da maɓallin sharhi, yana matsar gaba ɗaya daƙiƙa ɗaya idan an ɗauki wannan tambarin lokaci, kuma baya sake rubuta fayil ɗin. Kar a ɗauki lamba da hannu.
+1. **Ƙirƙiri fayil ɗin tare da janareta** : `npm run db:new-migration -- <description>` (misali `npm run db:new-migration -- add combo priority`). Yana rubuta `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` tare da lokacin UTC na yanzu da taken sharhi, yana matsar gaba daƙiƙa ɗaya idan an ɗauki wannan tambarin lokaci, kuma baya sake rubuta fayil ɗin. Kar a ɗauki lamba da hannu.
 2. **Yi amfani da aminci DDL** : `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `ALTER TABLE ... ADD COLUMN`
 3. **Cika bayanai a hankali** : yi amfani da `UPDATE ... WHERE ...` don sarrafa layuka da ke akwai
 4. **Duba oda da suna** : `npm run test:migrations:fresh` (duk ƙaura akan rumbun adana bayanai) da `npm run check:migration-numbering`
 5. **Gwaji akan kwafi** : kar a taɓa gudanar da ƙaura marasa gwaji akan samarwa
+6. **Teburin da aka ƙirƙira daga lambar kuma yana buƙatar ƙaura** : idan ma'auni kuma ya ƙirƙiri tebur a kasala (`CREATE TABLE IF NOT EXISTS`, kiyaye shi azaman hanyar warkar da kai), ƙaura dole ne ya haifar da shi da DDL iri ɗaya. In ba haka ba, shigarwa mai tsabta da ingantaccen shigarwa suna ƙare tare da tsare-tsare daban-daban, dangane da ko hanyar lambar ta gudana. `tests/unit/db/lazy-table-migration-guard.test.ts` yana duba `src/` da `open-sse/` kuma ya kasa a kan malalacin `CREATE` ba tare da hijira ba (#20557). Misali: `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`.
 
 Misali:
 
@@ -319,7 +320,7 @@ UPDATE combos SET priority = 100 WHERE priority IS NULL;
 CREATE INDEX IF NOT EXISTS idx_combos_priority ON combos(priority);
 ```
 
-> **Canje-canje na baya-mara jituwa** (misali, faduwa ginshiƙai) suna da wayo. OmniRoute yana goyan bayan NOT rage darajar — da zarar an yi ƙaura, canjin tsari na dindindin. Tsara yadda ya kamata.
+> **Canje-canje na baya-marasa jituwa** (misali, faduwa ginshiƙai) suna da wayo. OmniRoute yana goyan bayan NOT rage darajar — da zarar an yi ƙaura, canjin tsari na dindindin. Tsara yadda ya kamata.
 
 ---
 

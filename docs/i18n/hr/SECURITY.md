@@ -182,13 +182,13 @@ Poslužitelj aktivno odbija poznate slabe vrijednosti poput `changeme`, `secret`
 
 ---
 
-## Sigurnost Dockera
+## Docker Sigurnost
 
-- U produkciji koristite korisnika bez ovlasti korisnika root
+- Koristite nekorijenskog korisnika u proizvodnji
 - Montirajte tajne kao volumene samo za čitanje
 - Nikada ne kopirajte `.env` datoteke u Docker slike
 - Koristite `.dockerignore` za izuzimanje osjetljivih datoteka
-- Postavite `AUTH_COOKIE_SECURE=true` kada se poslužitelj nalazi iza HTTPS-a
+- Postavite `AUTH_COOKIE_SECURE=true` kada je iza HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

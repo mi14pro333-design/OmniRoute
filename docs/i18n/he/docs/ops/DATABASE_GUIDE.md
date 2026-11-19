@@ -255,7 +255,7 @@ OmniRoute משתמש** הגירות מנוסחות וחסרות יכולת** ב-
 3. **שמור על ה- SQL אימפוטנטי** (`CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `INSERT OR IGNORE`), מכיוון שההגירה המרה עשויה לפגוש מסד נתונים שבו הסכימה שלו כבר קיימת.
 4. **העבר מקרים מיוחדים עם מפתח גרסה.** אם ה- PR הוסיף מקרה עבור המספר הישן שלו ב- `isSchemaAlreadyApplied()` (`src/lib/db/migrationRunner.ts`) או ב- `OPTIONAL_FTS5_MIGRATION_VERSIONS` (`src/lib/db/migrationRunner/constants.ts`), שנה את המפתח לחותמת הזמן החדשה.
 
-`tests/unit/db/codex-fence-migration-rename.test.ts` הוא דוגמה פועלת לבדיקה עבור הגירה עם שמות שונים.
+`tests/unit/db/codex-fence-migration-rename.test.ts` הוא דוגמה עובדת לבדיקה עבור הגירה עם שמה שונה.
 
 ### יציאות חזרה לסניפים לפני המעבר
 
@@ -286,9 +286,9 @@ export async function runMigrations(db: SqliteDatabase, migrationsDir: string) {
 }
 ```
 
-### חוסר אונות
+### אידמונטיות
 
-הגירות חייבות להיות** אימפוטנטי** — להריץ אותם פעמיים אמור להיות ללא הפעלה:
+הגירות חייבות להיות** אימפוטנטית** — להריץ אותם פעמיים אמור להיות ללא הפעלה:
 
 ```sql
 -- 004_proxy_registry.sql
@@ -309,6 +309,7 @@ CREATE TABLE IF NOT EXISTS proxy_registry (
 3. **מילוי חוזר של נתונים בזהירות** : השתמש `UPDATE ... WHERE ...` כדי לטפל בשורות קיימות
 4. **בדוק סדר ושם** : `npm run test:migrations:fresh` (כל ההגירות במסד נתונים ריק) ו- `npm run check:migration-numbering`
 5. **מבחן על עותק** : לעולם אל תפעיל העברות לא בדוקות בייצור
+6. **טבלה שנוצרה מקוד זקוקה גם להעברה** : אם מודול גם יוצר את הטבלה בעצלתיים (`CREATE TABLE IF NOT EXISTS`, שמור כנתיב לריפוי עצמי), הגירה חייבת ליצור אותו עם אותו DDL. אחרת התקנה נקייה והתקנה משודרגת יסתיימו עם סכמות שונות, תלוי אם נתיב הקוד הזה רץ. `tests/unit/db/lazy-table-migration-guard.test.ts` סורק `src/` ו- `open-sse/` ונכשל ב- `CREATE` עצלן ללא הגירה (#20557). דוגמה: `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`.
 
 דוּגמָה:
 

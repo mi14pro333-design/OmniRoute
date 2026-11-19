@@ -72,17 +72,20 @@ onRequest: (ctx) => {
 };
 ```
 
-## Contexto del plugin (`PluginContext`)
+## Contexto del complemento (`PluginContext`)
 
-| Campo       | Tipo                      | Descripción                         |
-| ----------- | ------------------------- | ----------------------------------- |
-| `requestId` | `string`                  | Identificador único de la solicitud |
-| `model`     | `string`                  | Nombre del modelo solicitado        |
-| `provider`  | `string`                  | ID del proveedor de destino         |
-| `body`      | `Record<string, unknown>` | Cuerpo de la solicitud              |
-| `headers`   | `Record<string, string>`  | Encabezados de la solicitud         |
-| `metadata`  | `Record<string, unknown>` | Metadatos modificables              |
-| `timestamp` | `number`                  | Marca de tiempo de la solicitud     |
+| Campo        | Tipo                      | Descripción                      |
+| ------------ | ------------------------- | -------------------------------- |
+| `requestId`  | `string`                  | Identificador de solicitud único |
+| `model`      | `string`                  | Nombre del modelo solicitado     |
+| `provider`   | `string`                  | Proveedor de destino ID          |
+| `body`       | `Record<string, unknown>` | Cuerpo de la solicitud           |
+| `headers`    | `Record<string, string>`  | Solicitar encabezados (ver nota) |
+| `metadata`   | `Record<string, unknown>` | Metadatos mutables               |
+| `timestamp`  | `number`                  | Solicitar marca de tiempo        |
+| `apiKeyInfo` | `object` (opcional)       | Metadatos clave API (ver nota)   |
+
+El contexto nunca lleva las credenciales del cliente: los encabezados `authorization`, `x-api-key`, `proxy-authorization` y `cookie` se eliminan (cualquier mayúscula), y `apiKeyInfo` conserva los metadatos de la clave (como `id`, `name` y `scopes`) pero no el valor de la clave ni su huella digital (`redactPluginContext()` en `src/lib/plugins/hooks.ts`). Esto se aplica a `onRequest`, `onResponse` y `onError`.
 
 ## Manifiesto (`plugin.json`)
 
@@ -140,17 +143,16 @@ O como valores booleanos simples (prioridad predeterminada: 100):
 
 ## Sistema de permisos
 
-Los plugins se ejecutan en un contexto de máquina virtual aislado. El acceso a recursos externos requiere permisos explícitos:
+Los complementos son** no en la zona de pruebas** . Cada complemento activo se ejecuta como un proceso secundario Node.js ordinario e independiente (`loadPlugin()` en `src/lib/plugins/loader.ts`) bajo el mismo usuario del sistema operativo que OmniRoute, sin contexto VM ni indicadores de permiso Node.js. El código de complemento puede usar `node:fs`, `node:child_process`, `fetch` y cualquier otro Node.js API: puede leer y escribir cualquier archivo que el usuario OmniRoute pueda (incluido el directorio de datos), ejecutar programas y acceder a la red.
 
-| Permiso      | Otorga acceso a                                              |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | Proxy de solo lectura de `process.env`                       |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+El `requires.permissions` del manifiesto acepta `network`, `file-read`, `file-write`, `env` y `exec`, pero hoy en día solo `env` tiene efecto en tiempo de ejecución:
 
-Sin un permiso, las variables globales correspondientes simplemente no están disponibles en el entorno aislado.
+| Permiso                                      | Efecto hoy                                                                                                                                                                                                                        |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | El proceso del complemento también recibe `PORT`, `HOSTNAME`, `TZ` y `TMPDIR`. Sin él, recibe solo `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` y `PLUGIN_NAME` (más `SystemRoot` y `windir` en Windows). |
+| `network`, `file-read`, `file-write`, `exec` | Ninguno. Son sólo declaraciones: no se bloquea nada cuando faltan.                                                                                                                                                                |
+
+Instalar un complemento es como instalar cualquier otro programa en el host. Instale solo complementos cuya fuente confíe.
 
 ## Esquema de configuración
 
@@ -194,7 +196,7 @@ Los valores de configuración se conservan en la base de datos y se puede accede
 
 ## Ejemplos
 
-### Registrador de solicitudes
+### Solicitar registrador
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -207,7 +209,7 @@ export default definePlugin({
 });
 ```
 
-### Limitador de solicitudes
+### Limitador de velocidad
 
 ```ts
 import { definePlugin, blockRequest } from "omniroute/plugins/sdk";
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // 1 minuto
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);
@@ -234,7 +236,7 @@ export default definePlugin({
 });
 ```
 
-### Transformador de respuestas
+### Transformador de respuesta
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";

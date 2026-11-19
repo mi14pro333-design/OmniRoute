@@ -182,13 +182,13 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ---
 
-## Docker 安全
+## Docker安全
 
-- 在生产环境中使用非 root 用户
-- 以只读卷的形式挂载密钥
-- 切勿将 `.env` 文件复制到 Docker 镜像中
-- 使用 `.dockerignore` 排除敏感文件
-- 位于 HTTPS 后方时，设置 `AUTH_COOKIE_SECURE=true`
+- 在生产中使用非 root 用户
+- 将机密安装为只读卷
+- 切勿将`.env`文件复制到Docker映像中
+- 使用`.dockerignore`排除敏感文件
+- 当HTTPS后面时设置`AUTH_COOKIE_SECURE=true`
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

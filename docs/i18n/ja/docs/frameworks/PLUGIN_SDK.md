@@ -72,17 +72,20 @@ onRequest: (ctx) => {
 };
 ```
 
-## Plugin コンテキスト（`PluginContext`）
+## プラグインコンテキスト (`PluginContext`)
 
-| フィールド  | 型                        | 説明                       |
-| ----------- | ------------------------- | -------------------------- |
-| `requestId` | `string`                  | 一意のリクエスト識別子     |
-| `model`     | `string`                  | リクエストされたモデル名   |
-| `provider`  | `string`                  | 対象プロバイダー ID        |
-| `body`      | `Record<string, unknown>` | リクエストボディ           |
-| `headers`   | `Record<string, string>`  | リクエストヘッダー         |
-| `metadata`  | `Record<string, unknown>` | 変更可能なメタデータ       |
-| `timestamp` | `number`                  | リクエストのタイムスタンプ |
+| 分野         | タイプ                    | 説明                          |
+| ------------ | ------------------------- | ----------------------------- |
+| `requestId`  | `string`                  | 一意のリクエスト識別子        |
+| `model`      | `string`                  | 要求されたモデル名            |
+| `provider`   | `string`                  | ターゲットプロバイダーID      |
+| `body`       | `Record<string, unknown>` | リクエストボディ              |
+| `headers`    | `Record<string, string>`  | リクエストヘッダー (注を参照) |
+| `metadata`   | `Record<string, unknown>` | 変更可能なメタデータ          |
+| `timestamp`  | `number`                  | リクエストのタイムスタンプ    |
+| `apiKeyInfo` | `object` (オプション)     | APIキーメタデータ (注を参照)  |
+
+コンテキストはクライアントの資格情報を持ちません。 `authorization`、 `x-api-key`、 `proxy-authorization` 、および`cookie`ヘッダーは削除され (大文字と小文字は区別されます)、 `apiKeyInfo`キーのメタデータ ( `id`、 `name` 、 `scopes`など) を保持しますが、キーの値やそのフィンガープリント ( `src/lib/plugins/hooks.ts`の`redactPluginContext()` ) は保持しません。これは、 `onRequest`、 `onResponse`および`onError`に適用されます。
 
 ## マニフェスト（`plugin.json`）
 
@@ -138,19 +141,18 @@ onRequest: (ctx) => {
 }
 ```
 
-## 権限システム
+## 許可制度
 
-プラグインはサンドボックス化された VM コンテキスト内で実行されます。外部リソースへアクセスするには、明示的な権限が必要です。
+Plugins are **not sandboxed**. Each active plugin runs as a separate, ordinary Node.js child process (`loadPlugin()` in `src/lib/plugins/loader.ts`) under the same operating-system user as OmniRoute, with no VM context and no Node.js permission flags. Plugin code can use `node:fs`, `node:child_process`, `fetch` and every other Node.js API: it can read and write any file the OmniRoute user can (including the data directory), run programs and reach the network.
 
-| 権限         | 許可される機能                                               |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | 読み取り専用の `process.env` プロキシ                        |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+マニフェストの`requires.permissions` `network`、 `file-read`、 `file-write`、 `env`および`exec`を受け入れますが、現在実行時に影響を与えるのは`env`のみです。
 
-権限がない場合、対応するグローバルはサンドボックス内で利用できません。
+| 許可                                         | 今日の影響                                                                                                                                                                                                                                                     |
+| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | プラグイン プロセスは、 `PORT`、 `HOSTNAME`、 `TZ`および`TMPDIR`も受け取ります。これがないと、 `PATH`、 `HOME`、 `USER`、 `LANG`、 `LC_ALL`、 `NODE_ENV`、 `PLUGIN_ENTRY`および`PLUGIN_NAME` (さらにWindows上の`SystemRoot`および`windir` ) のみを受信します。 |
+| `network`, `file-read`, `file-write`, `exec` | なし。これらは宣言のみです。これらが欠落していても何もブロックされません。                                                                                                                                                                                     |
+
+プラグインのインストールは、ホストに他のプログラムをインストールするのと似ています。ソースが信頼できるプラグインのみをインストールしてください。
 
 ## 設定スキーマ
 
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // 1 分
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);
@@ -234,7 +236,7 @@ export default definePlugin({
 });
 ```
 
-### レスポンストランスフォーマー
+### 応答トランスフォーマー
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";

@@ -182,13 +182,13 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ---
 
-## የDocker ደህንነት
+## Docker ደህንነት
 
-- በምርት አካባቢ non-root ተጠቃሚን ይጠቀሙ
-- ሚስጥራዊ እሴቶችን ለንባብ ብቻ እንደሚፈቀድ ቮልዩም ያገናኙ
-- `.env` ፋይሎችን ወደ Docker ምስሎች በፍጹም አይቅዱ
-- ሚስጥራዊ ፋይሎችን ለማግለል `.dockerignore`ን ይጠቀሙ
-- ከHTTPS በስተጀርባ ሲጠቀሙ `AUTH_COOKIE_SECURE=true`ን ያዘጋጁ
+- በምርት ውስጥ ስር ያልሆነ ተጠቃሚን ተጠቀም
+- ሚስጥሮችን እንደ ተነባቢ-ብቻ ጥራዞች ይጫኑ
+- `.env` ፋይሎችን ወደ Docker ምስሎች በፍጹም አትቅዳ
+- ሚስጥራዊነት ያላቸው ፋይሎችን ለማስቀረት `.dockerignore` ይጠቀሙ
+- ከ HTTPS በስተጀርባ በሚሆንበት ጊዜ `AUTH_COOKIE_SECURE=true` ያዘጋጁ
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

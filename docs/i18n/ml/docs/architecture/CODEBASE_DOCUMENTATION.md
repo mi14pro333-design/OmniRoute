@@ -406,7 +406,7 @@ open-sse/
 
 ### 4.1 `open-sse/handlers/`
 
-| ഹാൻഡ്ലർ                 | ഉദ്ദേശം                                                                                  |
+| ഹാൻഡ്ലർ                 | ഉദ്ദേശ്യം                                                                                |
 | ----------------------- | ---------------------------------------------------------------------------------------- |
 | `chatCore.ts`           | പ്രധാന ചാറ്റ് പൈപ്പ്ലൈൻ (കാഷെ, നിരക്ക് പരിധി, കോംബോ റൂട്ടിംഗ്, എക്സിക്യൂട്ടർ ഡിസ്പാച്ച്) |
 | `responsesHandler.ts`   | OpenAI പ്രതികരണങ്ങൾ API എൻട്രി പോയിൻ്റ്                                                  |
@@ -439,7 +439,7 @@ open-sse/
 - **9 അഭ്യർത്ഥന വിവർത്തകർ** (`translator/request/`): `antigravity-to-openai`, `claude-to-gemini`, `claude-to-openai`, `gemini-to-openai`, `openai-responses`, `openai-to-claude`, `openai-to-cursor`, `openai-to-gemini`, `openai-to-kiro`.
 - **9 പ്രതികരണ വിവർത്തകർ** (`translator/response/`): `claude-to-openai`, `cursor-to-openai`, `gemini-to-claude`, `gemini-to-openai`, `kiro-to-openai`, `openai-responses`, `openai-to-antigravity`, `openai-to-claude`.
 - **9 സഹായികൾ** (`translator/helpers/`): `claudeHelper`, `geminiHelper`, `geminiToolsSanitizer`, `maxTokensHelper`, `openaiHelper`, `responsesApiHelper`, `schemaCoercion`, `toolCallHelper`, കൂടാതെ സഹായ പരിശോധനകൾ.
-- **ഇമേജ് സഹായികൾ** (`translator/image/sizeMapper.ts`).
+- **ചിത്ര സഹായികൾ** (`translator/image/sizeMapper.ts`).
 - ഉയർന്ന തലം: `bootstrap.ts`, `formats.ts`, `registry.ts`, `index.ts`.
 
 ### 4.4 `open-sse/transformer/`
@@ -481,7 +481,7 @@ Provider registries (`providerRegistry.ts`, `providerModels.ts`, `providerHeader
 
 ### 4.8 `open-sse/utils/`
 
-സ്ട്രീമിംഗ് പ്രിമിറ്റീവുകളും പ്രൊവൈഡർ സഹായികളും: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts` `cursorChecksum.ts`, `cursorAgentProtobuf.ts` `sleep.ts` `cursorVersionDetector.ts` `ollamaTransform.ts` `comfyuiClient.ts` `error.ts` `kieTask.ts` `logger.ts` `bypassHandler.ts`, `aiSdkCompat.ts`, `requestLogger.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `cors.ts` `progressTracker.ts`
+സ്ട്രീമിംഗ് പ്രിമിറ്റീവുകളും പ്രൊവൈഡർ സഹായികളും: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts` `ollamaTransform.ts` `cacheControlPolicy.ts` `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts` `sleep.ts` `kieTask.ts` `error.ts` `bypassHandler.ts` `logger.ts` `aiSdkCompat.ts`, `thinkTagParser.ts`, `progressTracker.ts` `cors.ts` `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`.
 
 ---
 
@@ -568,33 +568,12 @@ bin/
 
 ഉദ്ദേശ്യമനുസരിച്ച് 6 ഉപഫോൾഡറുകളായി ക്രമീകരിച്ചിരിക്കുന്നു.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, കൂടാതെ വായന-മാത്രമായ PR നിരീക്ഷണ സഹായികളായ
-  `ci-discriminate.sh` (ഒരു റഫറൻസ് PR അല്ലെങ്കിൽ base-red issue-മായി താരതമ്യം ചെയ്ത് ഒരു PR-ലെ പരാജയപ്പെട്ട പരിശോധനകളുടെ സിഗ്നേച്ചറുകളെ സ്വന്തം / പാരമ്പര്യമായി ലഭിച്ചത് /
-  അജ്ഞാതം എന്നിങ്ങനെ തരംതിരിക്കുന്നു), `audit-worktree.sh`
-  (ഒരു പ്രവർത്തകന്റെ PR സ്വീകരിക്കുന്നതിന് മുമ്പ് — dirty ഫയലുകൾ, സംരക്ഷിത സർഫേസുകൾ, നീക്കംചെയ്ത asserts, suppression എണ്ണങ്ങൾ, ശേഷിച്ചിരിക്കുന്ന
-  താൽക്കാലിക tsconfigs, PR head-ഉം പ്രാദേശിക HEAD-ഉം തമ്മിലുള്ള താരതമ്യം).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, കൂടാതെ വായിക്കാൻ മാത്രമുള്ള PR സഹായികൾ ഒരു PR `ci-discriminate.sh` അല്ലെങ്കിൽ ബേസ്-റെഡ് പ്രശ്നം എന്നിവയ്ക്കെതിരായ സ്വന്തം / പാരമ്പര്യമായി / അജ്ഞാതമായ PR പരിശോധിക്കുക, കൂടാതെ `audit-worktree.sh` (വൃത്തികെട്ട ഫയലുകൾ, സംരക്ഷിത പ്രതലങ്ങൾ, നീക്കം ചെയ്ത ഉറപ്പുകൾ, അടിച്ചമർത്തൽ എണ്ണം, അവശേഷിക്കുന്ന tmp tsconfigs, PR head vs ലോക്കൽ HEAD — PR തൊഴിലാളി സ്വീകരിക്കുന്നതിന് മുമ്പ്).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

@@ -210,7 +210,7 @@ suka kunna a lokaci guda.
 
 ## 4. API reference
 
-Duk hanyoyin karkashin `/api/services/` sune**LOCAL_ONLY** (madogara kawai, ƙaƙƙarfan doka #17). Buƙatun waɗanda ba a dawo da dawowa ba suna karɓar `403 LOCAL_ONLY` ba tare da la'akari da alamar tauth ba.
+Duk hanyoyin karkashin `/api/services/` sune**LOCAL_ONLY** (loopback kawai, hard rule #17). Buƙatun waɗanda ba a dawo da su ba suna karɓar `403 LOCAL_ONLY` ba tare da la'akari da alamar tauth ba.
 
 ### 4.1 9 Maɓallan ƙarshen na'ura mai ba da hanya tsakanin hanyoyin sadarwa (hanyoyi 11)
 
@@ -224,7 +224,7 @@ Sanya 9Router daga npm. Ya kirkiro `DATA_DIR/services/9router/` da `package.json
 { "version": "latest" }
 ```
 
-| Filin     | Nau'in   | Tsohuwar   | Bayani                                 |
+| Filin     | Nau'in   | Default    | Bayani                                 |
 | --------- | -------- | ---------- | -------------------------------------- |
 | `version` | `string` | `"latest"` | npm version tag ko semver don shigarwa |
 
@@ -298,7 +298,7 @@ Daidai da `stop()` sai `start()` karkashin kulle aiki.
 
 #### `POST /api/services/9router/update`
 
-Yana sabunta 9Router zuwa sabon sigar npm. Idan sabis ɗin yana gudana, ana dakatar da shi da farko, npm install yana gudana (saka sabon sigar a cikin wuri), sannan an sake kunna sabis ɗin.
+Yana sabunta 9Router zuwa sabon sigar npm. Idan sabis ɗin yana gudana, an dakatar da shi da farko, npm install yana gudana (saka sabon sigar a wuri), sannan an sake kunna sabis ɗin.
 
 **Nemi jiki** (duk na zaɓi):
 
@@ -318,7 +318,7 @@ Yana sabunta 9Router zuwa sabon sigar npm. Idan sabis ɗin yana gudana, ana daka
 
 #### `POST /api/services/9router/rotate-key`
 
-Yana haifar da sabon maɓallin API don 9Router, yana ɓoye shi yayin hutawa, kuma ya sake kunna sabis ɗin (idan yana gudana) don haka yana ɗaukar sabon maɓalli daga mahallinsa. Tsohon maɓalli ya lalace nan take.
+Yana haifar da sabon maɓallin API don 9Router, yana ɓoye shi a lokacin hutawa, kuma ya sake kunna sabis ɗin (idan yana gudana) don haka ya ɗauki sabon maɓalli daga mahallinsa. Tsohon maɓalli ya lalace nan take.
 
 **Hukumar nema:** babu
 
@@ -329,13 +329,13 @@ Yana haifar da sabon maɓallin API don 9Router, yana ɓoye shi yayin hutawa, kum
 | `200`   | `{ keyRotated: true, restarted: boolean }` |
 | `500`   | Juyawa ta kasa                             |
 
-**Tsaro:** Ba a taɓa dawowa da sabon maɓalli a cikin martani ba (babu ƙwanƙwasa ƙira). An adana shi a ɓoye (AES-256-GCM) a cikin tebur `version_manager`.
+**Tsaro:** Ba a taɓa mayar da sabon maɓalli a cikin martani ba (babu ƙwanƙwasa ƙira). An adana shi a ɓoye (AES-256-GCM) a cikin tebur `version_manager`.
 
 ---
 
 #### `GET /api/services/9router/status`
 
-Yana dawo da haɗe-haɗe matsayi + DB gami da sigar metadata da samfotin maɓallin API.
+Yana dawo da haɗewar matsayin + DB mai rai gami da sigar metadata da samfotin maɓallin API.
 
 **Martani:**
 
@@ -391,10 +391,10 @@ rafin SSE na rajistan ayyukan kai tsaye daga 9Router's stdout/stderr buffer zobe
 
 **Sigar tambaya:**
 
-| Param    | Nau'in    | Tsohuwar | Bayani                                                   |
-| -------- | --------- | -------- | -------------------------------------------------------- |
-| `tail`   | `integer` | 200      | Layukan tarihi nawa ne za a fara aikawa (max 1000)       |
-| `filter` | `string`  | babu     | Tace-masa-hankali mai rahusa (babu regex — ReDoS-lafiya) |
+| Param    | Nau'in    | Default | Bayani                                                                 |
+| -------- | --------- | ------- | ---------------------------------------------------------------------- |
+| `tail`   | `integer` | 200     | Layukan tarihi nawa ne za a fara aikawa (max 1000)                     |
+| `filter` | `string`  | babu    | Matsalolin da ba za a iya mantawa da su ba (babu regex — ReDoS-lafiya) |
 
 **abubuwan da SSE faru:**
 
@@ -526,7 +526,7 @@ Akwatin waƙa yana da siffar ƙarshen ƙarshen mux — babu hanyar `rotate-key`,
 
 | Hanya  | Hanya                                        | Bayani                                                                            |
 | ------ | -------------------------------------------- | --------------------------------------------------------------------------------- |
-| `POST` | `/api/services/singbox/install`              | Zazzage + tabbatar da sakin akwatin waƙa da aka liƙa                              |
+| `POST` | `/api/services/singbox/install`              | Zazzage + tabbatar da sakin akwatin waƙa                                          |
 | `POST` | `/api/services/singbox/start`                | Akwatin waƙa (`sing-box run -c config.json`)                                      |
 | `POST` | `/api/services/singbox/stop`                 | Dakatar da akwatin waƙa                                                           |
 | `POST` | `/api/services/singbox/restart`              | Sake kunna akwatin waƙa                                                           |
@@ -536,7 +536,7 @@ Akwatin waƙa yana da siffar ƙarshen ƙarshen mux — babu hanyar `rotate-key`,
 | `POST` | `/api/services/singbox/auto-restart-adopted` | Juya sake kunnawa ta atomatik don tsarin da aka ɗauka (wanda ya riga ya kasance). |
 | `GET`  | `/api/services/singbox/logs`                 | wutsiya log ɗin SSE (ta hanyar haɗin `[name]/logs` mai ƙarfi)                     |
 
-**waya TPROXY :** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) ya rubuta `config.json` kuma ya fara mai kulawa kafin `applyTproxy()` ya sanya ka'idojin tacewar zaɓi TPROXY. Idan mai kulawa ya ɓace ko ya kasa isa `running`, yanzu yana yin rajista a matakin kuskure (maimakon yin shiru ya haɗiye gazawar) don haka ma'aikaci zai iya gaya wa an yi amfani da dokokin TPROXY ba tare da mai sauraren aiki a bayansu ba.
+**waya TPROXY :** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) ya rubuta `config.json` kuma ya fara mai kulawa kafin `applyTproxy()` ya sanya ka'idojin tacewar zaɓi TPROXY. Idan mai kulawa ya ɓace ko ya kasa isa `running`, yanzu yana yin rajista a matakin kuskure (maimakon yin shiru ya haɗiye gazawar) don haka ma'aikaci zai iya gaya wa dokokin TPROXY an yi amfani da su ba tare da mai sauraren aiki a bayansu ba.
 
 ---
 
@@ -556,7 +556,7 @@ Wannan wakili:
 - Yanke `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` daga amsawa
 - Yana sake rubuta martanin HTML don allurar `<base href>` kuma ya daidaita cikakkun hanyoyi (`/foo` → `/dashboard/.../embed/foo`)
 
-Ɗaukaka WebSocket don dashboard ɗin da aka haɗa ana sarrafa su ta hanyar uwar garken aboki akan tashar da aka keɓe (duba `src/lib/services/embedWsProxy.ts`).
+Ɗaukaka WebSocket don dashboard ɗin da aka haɗa ana sarrafa su ta hanyar uwar garken aboki akan tashar da aka keɓe (duba `src/lib/services/embedWsProxy.ts`). Ana ba da izini kowane haɓakawa kafin buɗe rami, tare da ƙa'idodi iri ɗaya da hanyar haɗin HTTP : dole ne ɗan'uwan ya zama madauki ba tare da wani madaidaicin turawa na baya ba, `Origin` mai bincike dole ne ya zama asalin dashboard (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` ya tsawaita madaidaicin madauki), kuma mai kiran yana buƙatar zaman dashboard ko maɓallin API mai sarrafa kansa sai dai idan ba za a iya shigar da dashboard ba.
 
 **Tsaro:** Hannun hanyoyin wakili an rarraba su ƙarƙashin `LOCAL_ONLY_API_PREFIXES` kuma ana iya samun su daga madauki. Maharin da ya sami JWT ta hanyar ramin Cloudflare/Ngrok ba zai iya zama wakili a cikin ayyukan da aka haɗa ba.
 

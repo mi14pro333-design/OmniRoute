@@ -455,34 +455,34 @@ OmniRoute מרענן אסימונים באופן אוטומטי. אם הבעיו
 
 ## בעיות Docker
 
-### IPv6 / איפוס חיבור ב־Docker
+### Docker IPv6 / איפוס חיבור
 
 <a name="docker-ipv6"></a>
 
-**תסמינים:** `curl http://localhost:20128/v1/models` מחזיר `curl: (56) Recv failure: Connection reset by peer`. לוח הבקרה ונקודות קצה שאינן דורשות אימות פועלים, אך נקודות קצה מאומתות נכשלות — הדבר נראה כמו בעיית אימות, אך אינו כזה.
+**תסמינים:** `curl http://localhost:20128/v1/models` מחזיר `curl: (56) Recv failure: Connection reset by peer`. לוח מחוונים ונקודות קצה לא מאומתות פועלות, אבל נקודות קצה מאומתות נכשלות — זה נראה כמו בעיית אימות אבל לא.
 
-**סיבה:** הפקודה `docker run -p 20128:20128` מפרסמת הן ב־`0.0.0.0`‏ (IPv4) והן ב־`::`‏ (IPv6), אך התהליך בתוך הקונטיינר מאזין ל־IPv4 בלבד. במארחים שבהם `localhost` נפתר תחילה ל־`::1`, החיבור מגיע ליציאת IPv6 שפורסמה, אך אין מאחוריה מאזין ← החיבור מאופס.
+**לִגרוֹם:** `docker run -p 20128:20128` מפרסם גם ב- `0.0.0.0` (IPv4) וגם `::` (IPv6), אבל התהליך בתוך הקונטיינר מאזין ב- IPv4 בלבד. במארחים שבהם `localhost` פותרת את `::1` תחילה, החיבור נוחת על היציאה → IPv6 שפורסמה ללא מאזין מאחוריו.
 
-**תיקון:**
+**לִקְבּוֹעַ:**
 
-1. **אבחון מהיר:** הריצו `curl -4 http://localhost:20128/v1/models`. אם הפקודה פועלת עם `-4` אך נכשלת בלעדיו, קיימת אי־התאמה באיגוד IPv6.
-2. **תיקון קבוע:** אגדו במפורש ל־IPv4 באמצעות `-p 127.0.0.1:20128:20128` בפקודת `docker run`:
+1. **אבחון מהיר:** רץ `curl -4 http://localhost:20128/v1/models`. אם זה עובד עם `-4` אבל נכשל בלי, יש לך אי-התאמה של IPv6 bind.
+2. **תיקון קבוע:** התחבר ל- IPv4 במפורש באמצעות `-p 127.0.0.1:20128:20128` בפקודה `docker run` שלך:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   פעולה זו כופה איגוד ל־IPv4 וגם מונעת את חשיפת הפרוקסי בכל ממשקי המארח.
+   זה מאלץ את ה- IPv4 bind וגם נמנע מחשיפת ה-proxy בכל ממשקי המארח.
 
 ---
 
-### כלי CLI מוצג כלא מותקן
+### כלי CLI מציג לא מותקן
 
-1. בדקו את שדות זמן הריצה: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. למצב נייד: השתמשו ביעד התמונה `runner-cli` (כלי CLI כלולים)
-3. למצב עיגון מהמארח: הגדירו את `CLI_EXTRA_PATHS` ועגנו את ספריית הקבצים הבינאריים של המארח לקריאה בלבד
-4. אם `installed=true` ו־`runnable=false`: הקובץ הבינארי נמצא, אך בדיקת התקינות נכשלה
+1. בדוק שדות זמן ריצה: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. עבור מצב נייד: השתמש ב-image target `runner-cli` (חבילה CLIs)
+3. עבור מצב הרכבה מארח: הגדר `CLI_EXTRA_PATHS` ואת ספריית ה-host bin כקריאה בלבד
+4. אם `installed=true` ו- `runnable=false`: בינארי נמצא אך נכשל בבדיקת הבריאות
 
-### אימות מהיר של זמן הריצה
+### אימות זמן ריצה מהיר
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

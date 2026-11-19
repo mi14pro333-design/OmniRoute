@@ -209,13 +209,13 @@
 
 ## 4. API संदर्भ
 
-`/api/services/` अंतर्गत सर्व मार्ग आहेत**LOCAL_ONLY** (फक्त लूपबॅक, कठोर नियम #17). नॉन-लूपबॅक विनंत्या प्रमाणीकरण टोकनची पर्वा न करता `403 LOCAL_ONLY` प्राप्त करतात.
+`/api/services/` अंतर्गत सर्व मार्ग आहेत**LOCAL_ONLY** (फक्त लूपबॅक, कठोर नियम #17). नॉन-लूपबॅक विनंत्या ऑथ टोकनची पर्वा न करता `403 LOCAL_ONLY` प्राप्त करतात.
 
 ### 4.1 9 राउटर एंडपॉइंट्स (11 मार्ग)
 
 #### `POST /api/services/9router/install`
 
-एनपीएम वरून 9 राउटर स्थापित करा. स्वतःचे `package.json` आणि `node_modules/` सह `DATA_DIR/services/9router/` तयार करते. OmniRoute च्या स्वतःच्या विभागाशी विरोध करत नाही.
+npm वरून 9 राउटर स्थापित करा. स्वतःचे `package.json` आणि `node_modules/` सह `DATA_DIR/services/9router/` तयार करते. OmniRoute च्या स्वतःच्या विभागाशी विरोध करत नाही.
 
 **विनंती शरीर** (सर्व पर्यायी):
 
@@ -367,7 +367,7 @@
 
 #### `POST /api/services/9router/auto-start`
 
-स्वयं-प्रारंभ ध्वज टॉगल करा. जेव्हा `enabled: true`, पुढच्या वेळी OmniRoute बूट झाल्यावर सेवा आपोआप सुरू होते (जर सेवा स्थापित केली असेल).
+स्वयं-प्रारंभ ध्वज टॉगल करा. `enabled: true` झाल्यावर, पुढच्या वेळी OmniRoute बूट झाल्यावर (सेवा स्थापित केली असल्यास) सेवा आपोआप सुरू होते.
 
 **विनंती मुख्य भाग:**
 
@@ -476,7 +476,7 @@ Mux ला API पृष्ठभागावर CLIProxyAPI — no `rotate-key`
 
 इतर सेवांप्रमाणेच जीवनचक्र आकार (`install`, `start`, `stop`, `restart`, `update`, `status`, `auto-start`, `auto-restart-adopted`) तसेच `admin/` अंतर्गत टोकन-गेट केलेले OAuth कंट्रोल प्लेन : `admin/accounts`, `admin/import-from-omniroute`, `admin/login-start`( मागे `DARIO_ADMIN_TOKEN` `admin/login-complete`
 
-### 4.6 ओपन-वा एंडपॉइंट्स (7 मार्ग)
+### 4.6 ओपन-वा एंडपॉइंट (7 मार्ग)
 
 open-wa (`@open-wa/wa-automate`) WhatsApp वेब स्वयंचलित करण्यासाठी हेडलेस क्रोमियम उदाहरण (पपेटियर मार्गे) चालवते. हे Mux प्रमाणेच एंडपॉइंट आकार वापरते (अद्याप `rotate-key` मार्ग नाही). हे लाइफसायकल-व्यवस्थापित आहे फक्त — हे रूटिंग लक्ष्य नाही, लेयर 4 executor/provider एंट्री नाही.
 
@@ -555,7 +555,7 @@ GET|POST|... /dashboard/providers/services/9router/embed/[...path]
 - प्रतिसादातून `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` पट्ट्या
 - `<base href>` इंजेक्ट करण्यासाठी आणि निरपेक्ष मार्ग सामान्य करण्यासाठी HTML प्रतिसाद पुन्हा लिहितो (`/foo` → `/dashboard/.../embed/foo`)
 
-एम्बेडेड डॅशबोर्डसाठीWebSocket अपग्रेड्स एका समर्पित पोर्टवर सहचर सर्व्हरद्वारे हाताळले जातात ( `src/lib/services/embedWsProxy.ts` पहा).
+एम्बेडेड डॅशबोर्डसाठीWebSocket अपग्रेड्स एका समर्पित पोर्टवर सहचर सर्व्हरद्वारे हाताळले जातात ( `src/lib/services/embedWsProxy.ts` पहा). बोगदा उघडण्यापूर्वी प्रत्येक अपग्रेडला HTTP एम्बेड मार्गाच्या समान नियमांसह अधिकृत केले जाते: पीअर रिव्हर्स-प्रॉक्सी फॉरवर्डिंग हेडरशिवाय लूपबॅक असणे आवश्यक आहे, ब्राउझर `Origin` डॅशबोर्ड मूळ असणे आवश्यक आहे (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` लूपबॅक डीफॉल्ट्स विस्तारित करते), आणि कॉलरला डॅशबोर्ड disscope रहित disscope loggin सत्र किंवा unscoop API की कॉलरची आवश्यकता आहे.
 
 **सुरक्षा:** एम्बेड प्रॉक्सी मार्ग `LOCAL_ONLY_API_PREFIXES` अंतर्गत वर्गीकृत केले आहेत आणि फक्त लूपबॅकवरून पोहोचू शकतात. जो आक्रमणकर्ता Cloudflare/Ngrok बोगद्याद्वारे JWT मिळवतो तो एम्बेडेड सेवांमध्ये प्रॉक्सी करू शकत नाही.
 

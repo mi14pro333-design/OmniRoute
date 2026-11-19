@@ -8,25 +8,25 @@
 
 ---
 
-## 1-qadam: OmniRoute’ni oʻrnatish
+## 1-qadam: OmniRoute o'rnating
 
-Oʻzingizga maʼqul usulni tanlang:
+O'zingiz yoqtirgan usulni tanlang:
 
-### A variant: npm (Tavsiya etiladi)
+### Variant A: npm (Tavsiya etiladi)
 
 ```bash
 npm install -g omniroute
 ```
 
-### B variant: Docker
+### Variant B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` — **eʼlon qilingan** eng yuqori barqaror SemVer versiyasi. U git’dagi `main` tarmogʻini kuzatmaydi. GitOps uchun `diegosouzapw/omniroute:X.Y.Z` versiyasini aniq belgilang. [Tasvir teglari / Reliz kanallari](../guides/DOCKER_GUIDE.md#release-channels) boʻlimiga qarang.
+`:latest` eng yuqori hisoblanadi** nashr etilgan** barqaror SemVer. Bu qiladi** emas** git `main` ni kuzatib boring. GitOps uchun `cheaperinference/omniroute:X.Y.Z` belgilang. [Rasm teglari / Chiqarish kanallariga](../guides/DOCKER_GUIDE.md#release-channels) qarang.
 
-### C variant: Manba kodidan
+### Variant C: Manbadan
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

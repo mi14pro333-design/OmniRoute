@@ -521,7 +521,7 @@ LLMLingua is een `@atjsh/llmlingua-2` met snelle compressie-zijspanverpakking (e
 
 ### 4.8 sing-box-eindpunten (8 routes)
 
-sing-box heeft dezelfde eindpuntvorm als Mux — geen `rotate-key` route, geen API -sleutelinjectie (`needsApiKey: false` in `bootstrap.ts`). Het wordt uitsluitend door de levenscyclus beheerd: nooit een routing/LLM provider. `install()` downloadt de officiële GitHub release binary (`SagerNet/sing-box`) voor de vastgezette versie (`SINGBOX_PINNED_VERSION` in `src/lib/services/installers/singbox.ts`) en verifieert de SHA256 aan de hand van een controlesom die in hetzelfde bestand is ingebakken voordat deze ooit naar schijf — wordt geschreven. Elke andere gevraagde versie wordt afgewezen.
+sing-box heeft dezelfde eindpuntvorm als Mux — geen `rotate-key` route, geen API -sleutelinjectie (`needsApiKey: false` in `bootstrap.ts`). Het wordt uitsluitend door de levenscyclus beheerd: nooit een routing/LLM provider. `install()` downloadt de officiële GitHub release binary (`SagerNet/sing-box`) voor de vastgezette versie (`SINGBOX_PINNED_VERSION` in `src/lib/services/installers/singbox.ts`) en verifieert de SHA256 aan de hand van een controlesom die in hetzelfde bestand is ingebakken voordat deze ooit naar schijf — wordt geschreven. Elke andere aangevraagde versie wordt afgewezen.
 
 | Methode | Pad                                          | Beschrijving                                                                          |
 | ------- | -------------------------------------------- | ------------------------------------------------------------------------------------- |
@@ -555,7 +555,7 @@ Deze proxy:
 - Verwijdert `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` uit het antwoord
 - Herschrijft HTML reacties om `<base href>` te injecteren en absolute paden te normaliseren (`/foo` → `/dashboard/.../embed/foo`)
 
-WebSocket upgrades voor het ingebedde dashboard worden afgehandeld door een begeleidende server op een speciale poort (zie `src/lib/services/embedWsProxy.ts`).
+WebSocket upgrades voor het ingebedde dashboard worden afgehandeld door een begeleidende server op een speciale poort (zie `src/lib/services/embedWsProxy.ts`). Elke upgrade wordt geautoriseerd voordat de tunnel wordt geopend, met dezelfde regels als de HTTP insluitingsroute: de peer moet loopback zijn zonder reverse-proxy forwarding header, een browser `Origin` moet een dashboardoorsprong zijn (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` breidt de loopback-standaardinstellingen uit), en de beller heeft een dashboardsessie of een API -sleutel voor managementbereik nodig, tenzij inloggen op het dashboard is uitgeschakeld.
 
 **Beveiliging:** De embed proxy-routes zijn geclassificeerd onder `LOCAL_ONLY_API_PREFIXES` en zijn alleen bereikbaar via loopback. Een aanvaller die via een Cloudflare/Ngrok tunnel een JWT verkrijgt, kan geen toegang krijgen tot ingebedde services.
 

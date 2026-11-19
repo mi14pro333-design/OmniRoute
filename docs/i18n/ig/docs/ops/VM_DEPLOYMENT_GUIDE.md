@@ -338,13 +338,13 @@ docker start omniroute
 
 ---
 
-## 6. Nchekwa Dị Elu
+## 6. Nchekwa dị elu
 
-### Machibido nginx naanị na IP Cloudflare
+### Machibido nginx na Cloudflare IPs
 
 ```bash
 cat > /etc/nginx/cloudflare-ips.conf << 'CF'
-# Oke adreesị IPv4 Cloudflare — na-emelite ha oge ụfọdụ
+# Cloudflare IPv4 ranges — update periodically
 # https://www.cloudflare.com/ips-v4/
 set_real_ip_from 173.245.48.0/20;
 set_real_ip_from 103.21.244.0/22;
@@ -365,7 +365,7 @@ real_ip_header CF-Connecting-IP;
 CF
 ```
 
-Tinye ihe ndị a na `nginx.conf` n'ime ngọngọ `http {}`:
+Tinye ihe ndị a na `nginx.conf` n'ime ngọngọ `http {}` :
 
 ```nginx
 include /etc/nginx/cloudflare-ips.conf;
@@ -378,18 +378,18 @@ apt install -y fail2ban
 systemctl enable fail2ban
 systemctl start fail2ban
 
-# Lelee ọnọdụ
+# Check status
 fail2ban-client status sshd
 ```
 
-### Gbochie nnweta ozugbo na port Docker
+### Gbochie ịbanye ozugbo na ọdụ ụgbọ mmiri Docker
 
 ```bash
-# Gbochie nnweta ozugbo site n'èzí na port 20128
+# Prevent direct external access to port 20128
 iptables -I DOCKER-USER -p tcp --dport 20128 -j DROP
 iptables -I DOCKER-USER -i lo -p tcp --dport 20128 -j ACCEPT
 
-# Mee ka iwu ndị ahụ dịgide
+# Persist the rules
 apt install -y iptables-persistent
 netfilter-persistent save
 ```

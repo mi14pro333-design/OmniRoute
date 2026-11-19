@@ -440,7 +440,7 @@ Den delade `GET /api/services/{name}/logs` ändpunkten (se §4.1) fungerar för 
 
 ### 4.3 Mux-ändpunkter (8 rutter)
 
-Mux har samma ändpunktsform som CLIProxyAPI — ingen `rotate-key` -rutt i API ytan (bärartoken genereras på samma sätt som 9Routers via `getOrCreateApiKey("mux")` och injiceras via `MUX_SERVER_AUTH_TOKEN` env var, men det finns ingen dedikerad rotationsändpunkt ännu). Mux är enbart livscykelhanterad: till skillnad från 9Router har den ingen Layer 4-exekutor och är aldrig registrerad som en routingleverantör.
+Mux har samma ändpunktsform som CLIProxyAPI — ingen `rotate-key` rutt i API ytan (bärartoken genereras på samma sätt som 9Routers via `getOrCreateApiKey("mux")` och injiceras via `MUX_SERVER_AUTH_TOKEN` env var, men det finns ingen dedikerad rotationsändpunkt ännu). Mux är enbart livscykelhanterad: till skillnad från 9Router har den ingen Layer 4-exekutor och är aldrig registrerad som en routingleverantör.
 
 | Metod  | Väg                            | Beskrivning                           |
 | ------ | ------------------------------ | ------------------------------------- |
@@ -479,7 +479,7 @@ Samma livscykelform som de andra tjänsterna (`install`, `start`, `stop`, `resta
 
 ### 4.6 öppna slutpunkter (7 rutter)
 
-open-wa (`@open-wa/wa-automate`) driver en huvudlös Chromium-instans (via Puppeteer) för att automatisera WhatsApp Web. Den använder samma slutpunktsform som Mux (ingen `rotate-key` rutt ännu). Det är livscykelhanterat endast — inte ett routingmål, ingen Layer 4 executor/provider -post.
+open-wa (`@open-wa/wa-automate`) driver en huvudlös Chromium-instans (via Puppeteer) för att automatisera WhatsApp Web. Den använder samma slutpunktsform som Mux (ingen `rotate-key` rutt ännu). Den är livscykelhanterad endast — inte ett routingmål, ingen Layer 4 executor/provider -post.
 
 | Metod  | Väg                               | Beskrivning                                          |
 | ------ | --------------------------------- | ---------------------------------------------------- |
@@ -524,17 +524,17 @@ LLMLingua är en prompt-kompression sidovagns-inpackning `@atjsh/llmlingua-2` (r
 
 sing-box har samma slutpunktsform som Mux — ingen `rotate-key` rutt, ingen API -nyckelinjektion (`needsApiKey: false` i `bootstrap.ts`). Det är endast livscykelhanterat: aldrig en routing/LLM leverantör. `install()` laddar ner den officiella GitHub -releasebinären (`SagerNet/sing-box`) för den fästa versionen (`SINGBOX_PINNED_VERSION` i `src/lib/services/installers/singbox.ts`) och verifierar dess SHA256 mot en kontrollsumma inbakad i samma fil innan den någonsin skrivs till disk — någon annan begärd version avvisas.
 
-| Metod  | Väg                                          | Beskrivning                                                 |
-| ------ | -------------------------------------------- | ----------------------------------------------------------- |
-| `POST` | `/api/services/singbox/install`              | Ladda ner + verifiera den fästa sing-box-versionen          |
-| `POST` | `/api/services/singbox/start`                | Starta sing-box (`sing-box run -c config.json`)             |
-| `POST` | `/api/services/singbox/stop`                 | Sluta sjunga-box                                            |
-| `POST` | `/api/services/singbox/restart`              | Starta om sing-box                                          |
-| `POST` | `/api/services/singbox/update`               | Re-verify/reinstall den nålade releasen                     |
-| `GET`  | `/api/services/singbox/status`               | Live + DB status                                            |
-| `POST` | `/api/services/singbox/auto-start`           | Växla automatisk start                                      |
-| `POST` | `/api/services/singbox/auto-restart-adopted` | Växla automatisk omstart för en antagen (befintlig) process |
-| `GET`  | `/api/services/singbox/logs`                 | SSE log tail (via delad `[name]/logs` dynamisk rutt)        |
+| Metod  | Väg                                          | Beskrivning                                                       |
+| ------ | -------------------------------------------- | ----------------------------------------------------------------- |
+| `POST` | `/api/services/singbox/install`              | Ladda ner + verifiera den fästa sing-box-versionen                |
+| `POST` | `/api/services/singbox/start`                | Starta sing-box (`sing-box run -c config.json`)                   |
+| `POST` | `/api/services/singbox/stop`                 | Sluta sjunga-box                                                  |
+| `POST` | `/api/services/singbox/restart`              | Starta om sing-box                                                |
+| `POST` | `/api/services/singbox/update`               | Re-verify/reinstall den nålade releasen                           |
+| `GET`  | `/api/services/singbox/status`               | Live + DB status                                                  |
+| `POST` | `/api/services/singbox/auto-start`           | Växla automatisk start                                            |
+| `POST` | `/api/services/singbox/auto-restart-adopted` | Växla automatisk omstart för en antagen (pre-existerande) process |
+| `GET`  | `/api/services/singbox/logs`                 | SSE log tail (via delad `[name]/logs` dynamisk rutt)              |
 
 **TPROXY ledningar:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) skriver `config.json` och startar övervakaren innan `applyTproxy()` installerar TPROXY -brandväggsreglerna. Om handledaren saknas eller inte når `running` loggar den nu på felnivå (istället för att tyst svälja felet) så att en operatör kan se att TPROXY reglerna tillämpades utan en fungerande lyssnare bakom dem.
 
@@ -556,7 +556,7 @@ Denna proxy:
 - Tar bort `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` från svaret
 - Skriver om HTML svar för att injicera `<base href>` och normalisera absoluta banor (`/foo` → `/dashboard/.../embed/foo`)
 
-WebSocket uppgraderingar för den inbäddade instrumentpanelen hanteras av en medföljande server på en dedikerad port (se `src/lib/services/embedWsProxy.ts`).
+WebSocket uppgraderingar för den inbäddade instrumentpanelen hanteras av en medföljande server på en dedikerad port (se `src/lib/services/embedWsProxy.ts`). Varje uppgradering är auktoriserad innan tunneln öppnas, med samma regler som HTTP -inbäddningsvägen: peer måste vara loopback utan omvänd proxy-vidarebefordranhuvud, en webbläsares `Origin` måste vara ett instrumentpanelsursprung (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` extend the loopback defaults), och den som ringer behöver en instrumentpanelsession eller en API -nyckel i managementomfattning om inte instrumentpanelen kan avaktiveras.
 
 **Säkerhet:** De inbäddade proxyvägarna klassificeras under `LOCAL_ONLY_API_PREFIXES` och kan endast nås från loopback. En angripare som skaffar en JWT via en Cloudflare/Ngrok tunnel kan inte proxy till inbäddade tjänster.
 
@@ -853,64 +853,44 @@ OmniRoutes standardport 20128.
 
 ---
 
-## 8. Vanliga frågor
+## 8. FAQ
 
-**F: Kan jag exponera slutpunkterna för de inbäddade tjänsterna för klienter utanför loopback?**
+**F: Kan jag exponera slutpunkterna för de inbäddade tjänsterna för klienter utan loopback?**
 
-Nej. LOCAL_ONLY-nivån är avsiktlig (strikt regel nr 17). Rutter som kan köra
-`npm install` eller starta `node`-processer får inte vara åtkomliga från trafik
-utanför loopback, eftersom en läckt JWT via en tunnel (Cloudflare, Ngrok, Tailscale)
-annars skulle möjliggöra godtycklig processstart. Det finns inget undantag för
-`/api/services/` — till skillnad från `/api/mcp/` är den exkluderad från listan över
-undantag för hanteringsbehörighet. Se `docs/security/ROUTE_GUARD_TIERS.md`.
+Nej. LOCAL_ONLY -nivån är avsiktlig (hård regel #17). Rutter som kan anropa `npm install` eller skapa `node` -processer får inte vara tillgängliga från icke-loopback-trafik, eftersom en läckt JWT via en tunnel (Cloudflare, Ngrok, Tailscale) annars skulle tillåta godtycklig process spawning. Det finns ingen opt-out-utskärning för `/api/services/` — till skillnad från `/api/mcp/`, den är utesluten från listan över hantera-omfång. Se `docs/security/ROUTE_GUARD_TIERS.md`.
 
 ---
 
-**F: Kommer 9Router och CLIProxyAPI att vara tillgängliga i produktions-/molndistributioner?**
+**F: Kommer 9Router och CLIProxyAPI att vara tillgängliga i production/cloud distributioner?**
 
-Ja. Båda tjänsterna följer samma lokalt orienterade modell som OmniRoute. De körs
-på samma dator och kommunicerar via loopback. Med ”produktion” avses här den VPS
-eller lokala server där OmniRoute är distribuerat, inte en extern molnleverantör.
+Ja. Båda tjänsterna följer samma lokal-först-modell som OmniRoute själv. De körs på samma maskin och kommunicerar via loopback. "Produktion" betyder här VPS eller lokala server där OmniRoute är utplacerad, inte en fjärrmolnleverantör.
 
 ---
 
-**F: Hur felsöker jag övervakaren?**
+**F: Hur felsöker jag handledaren?**
 
-1. Följ SSE-loggströmmen: `curl -N http://localhost:20128/api/services/9router/logs`.
-2. Kontrollera de strukturerade loggarna i OmniRoutes pino-utdata, filtrerade efter
-   namnrymden `service:supervisor`.
-3. Inspektera databasraden: `sqlite3 ~/.omniroute/omniroute.db "SELECT * FROM version_manager WHERE tool='9router'"`.
-4. Använd `GET /api/services/9router/status` för att se aktuellt körningstillstånd, PID, hälsa
-   och `lastError` i ett enda anrop.
+1. Ta efter SSE -loggströmmen: `curl -N http://localhost:20128/api/services/9router/logs`.
+2. Kontrollera strukturerade loggar i OmniRoute pino-utgång filtrerade av `service:supervisor` namnutrymmet.
+3. Inspektera DB raden: `sqlite3 ~/.omniroute/omniroute.db "SELECT * FROM version_manager WHERE tool='9router'"`.
+4. Använd `GET /api/services/9router/status` för att se aktuellt livetillstånd, PID, hälsa och `lastError` i ett samtal.
 
 ---
 
-**F: Övervakaren visar `health: "degraded"` eller `health: "unknown"`, men tillståndet är `"running"`. Är det ett problem?**
+**F: Handledaren visar `health: "degraded"` eller `health: "unknown"` men tillståndet är `"running"`. Är det ett problem?**
 
-`"degraded"` innebär att hälsokontrollen returnerade ett svar som inte var 200. `"unknown"` innebär att ingen
-kontroll har slutförts ännu (kapplöpning med den första avläsningen). Båda är tillfälliga under uppstart.
-Om hälsan förblir `"degraded"` i mer än `healthIntervalMs * 3` ms efter
-`"running"` körs den inbäddade tjänsten, men dess HTTP-API svarar inte. Kontrollera
-om porten är korrekt i statussvaret och om tjänsten faktiskt
-lyssnar på den porten.
+`"degraded"` betyder att hälsoproben returnerade ett non-200 -svar. `"unknown"` betyder att ingen sond har slutförts ännu (lopp med första omröstningen). Båda är övergående under uppstart. Om hälsan förblir `"degraded"` i mer än `healthIntervalMs * 3` ms efter `"running"` körs den inbäddade tjänsten men dess HTTP API svarar inte. Kontrollera om porten är korrekt i statussvaret och om tjänsten faktiskt lyssnar på den porten.
 
 ---
 
-**F: Kan jag ändra API-nyckeln för 9Router utan en fullständig omstart?**
+**F: Kan jag ändra 9Router API nyckeln utan en fullständig omstart?**
 
-Nej. API-nyckeln skickas till 9Router via en miljövariabel när processen startas.
-Miljövariabler kan inte ändras i en process som körs. `POST .../rotate-key`
-stoppar och startar automatiskt om tjänsten för att tillämpa den nya nyckeln. Nyckelrotationen
-träder i kraft inom tjänstens `stopTimeoutMs` (standardvärde 15 s) plus dess uppstartstid.
+Nej. API nyckeln skickas till 9Router via en miljövariabel vid spawn-tid. Miljövariabler kan inte ändras i en pågående process. `POST .../rotate-key` stoppar automatiskt och startar om tjänsten för att tillämpa den nya nyckeln. Nyckelrotationen träder i kraft inom tjänstens `stopTimeoutMs` (standard 15 s) plus dess starttid.
 
 ---
 
-**F: Vilken är ringbuffertens gräns och vad händer när den blir full?**
+**F: Vad är ringbuffertgränsen och vad händer när den fylls?**
 
-Varje tjänst har en dedikerad ringbuffert på 5 MB. När bufferten är full tas de äldsta
-loggraderna bort för att ge plats åt nya. SSE-händelsen `snapshot` returnerar
-de senaste raderna inom gränsen `tail`. Loggar sparas inte på disk om inte
-`logsBufferPath` har angetts i databasraden.
+Varje tjänst har en dedikerad 5 MB ringbuffert. När bufferten är full vräks de äldsta stocklinjerna för att ge plats åt nya. SSE `snapshot` händelsen returnerar de senaste raderna inom `tail` gränsen. Loggar finns inte kvar på disken om inte `logsBufferPath` är inställt i DB raden.
 
 ---
 

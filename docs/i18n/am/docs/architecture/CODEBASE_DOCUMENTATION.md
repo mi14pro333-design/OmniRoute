@@ -481,7 +481,7 @@ Provider registries (`providerRegistry.ts`, `providerModels.ts`, `providerHeader
 
 ### 4.8 `open-sse/utils/`
 
-የዥረት `thinkTagParser.ts` `kieTask.ts` `cursorAgentProtobuf.ts` ረዳቶች `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts` `ollamaTransform.ts` `proxyDispatcher.ts` `sleep.ts` `tlsClient.ts` `networkProxy.ts` `awsSigV4.ts` `cacheControlPolicy.ts` `error.ts` `cursorChecksum.ts` `requestLogger.ts` `cursorVersionDetector.ts` `comfyuiClient.ts` `progressTracker.ts` `bypassHandler.ts` `cors.ts` `aiSdkCompat.ts` `logger.ts` `urlSanitize.ts` `usageTracking.ts`
+የዥረት `thinkTagParser.ts` `aiSdkCompat.ts` `cursorVersionDetector.ts` ረዳቶች `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts` `sleep.ts` `sseHeartbeat.ts`, `proxyFetch.ts` `ollamaTransform.ts` `tlsClient.ts` `awsSigV4.ts` `networkProxy.ts` `proxyDispatcher.ts` `cacheControlPolicy.ts` `cursorAgentProtobuf.ts` `logger.ts` `comfyuiClient.ts` `progressTracker.ts` `kieTask.ts` `bypassHandler.ts` `cors.ts` `urlSanitize.ts` `error.ts` `usageTracking.ts` `requestLogger.ts`
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-እንደ ዓላማቸው በ6 ንዑስ አቃፊዎች የተደራጁ ናቸው።
+በዓላማ በ6 ንዑስ አቃፊዎች ተደራጅቷል።
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`፣ በተጨማሪም ለንባብ ብቻ የሆኑ የPR ክትትል አጋዥ መሣሪያዎች፦
-  `ci-discriminate.sh` (የአንድን PR ያልተሳኩ ፍተሻዎች ፊርማዎች ከማጣቀሻ PR ወይም ከbase-red ችግር ጋር በማነጻጸር የራሱ / የወረሳቸው /
-  ያልታወቁ ብሎ ይመድባል) እና `audit-worktree.sh`
-  (የተቀየሩ ፋይሎች፣ የተጠበቁ የኮድ ክፍሎች፣ የተወገዱ asserts፣ የማፈኛ ብዛቶች፣ የቀሩ
-  ጊዜያዊ tsconfigs፣ የPR head ከአካባቢያዊ HEAD ጋር — የሠራተኛው PR ተቀባይነት ከማግኘቱ በፊት)።
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, ሲደመር ተነባቢ-ብቻ PR ሞግዚት ረዳቶች `ci-discriminate.sh` (የ PR አለመሳካትን ይለያሉ ወይም ያልታወቀን PR ላይ ይመርምሩ) ቤዝ-ቀይ ጉዳይ) እና `audit-worktree.sh` (ቆሻሻ ፋይሎች፣ የተጠበቁ ንጣፎች፣ የተወገዱ ማረጋገጫዎች፣ የጭቆና ቆጠራዎች፣ የተረፈ tmp tsconfigs፣ PR head vs local HEAD — የሰራተኛ PR ከመቀበሉ በፊት)።
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

@@ -182,13 +182,13 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ---
 
-## Docker-ի անվտանգություն
+## Docker Security
 
-- Արտադրական միջավայրում օգտագործեք ոչ արտոնյալ օգտատեր
-- Գաղտնիքները միացրեք որպես միայն կարդալու հատորներ
+- Արտադրության մեջ օգտագործեք ոչ արմատային օգտվող
+- Տեղադրեք գաղտնիքները որպես միայն կարդալու հատորներ
 - Երբեք մի պատճենեք `.env` ֆայլերը Docker պատկերների մեջ
-- Օգտագործեք `.dockerignore`՝ զգայուն ֆայլերը բացառելու համար
-- HTTPS-ի հետևում աշխատելիս սահմանեք `AUTH_COOKIE_SECURE=true`
+- Օգտագործեք `.dockerignore` զգայուն ֆայլերը բացառելու համար
+- Սահմանել `AUTH_COOKIE_SECURE=true`, երբ ետեւում HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

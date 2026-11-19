@@ -421,7 +421,7 @@ open-sse/
 | `search.ts`             | Ọchụchọ webụ                                                                     |
 | `sseParser.ts`          | SSE ihe omume                                                                    |
 | `usageExtractor.ts`     | Wepụ ọnụ ọgụgụ token na iyi dị n'elu                                             |
-| `responseSanitizer.ts`  | Mkpọtụ ndị na-eweta mgbawa                                                       |
+| `responseSanitizer.ts`  | Mkpọtụ nke ndị na-eweta mgbawa                                                   |
 | `responseTranslator.ts` | Gluu n'etiti nzaghachi onye na-eweta na oyi akwa ntụgharị                        |
 
 ### 4.2 `open-sse/executors/`
@@ -481,7 +481,7 @@ Provider registries (`providerRegistry.ts`, `providerModels.ts`, `providerHeader
 
 ### 4.8 `open-sse/utils/`
 
-`usageTracking.ts` `cacheControlPolicy.ts` `cursorVersionDetector.ts` `networkProxy.ts` maka mgbasa `thinkTagParser.ts` na ndị na- `kieTask.ts` aka: `stream.ts`, `streamHandler.ts` `awsSigV4.ts` `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts` `sleep.ts` `sseHeartbeat.ts` `proxyFetch.ts` `proxyDispatcher.ts` `tlsClient.ts` `requestLogger.ts` `cursorChecksum.ts` `progressTracker.ts` `cursorAgentProtobuf.ts` `comfyuiClient.ts` `cors.ts` `bypassHandler.ts` `error.ts` `aiSdkCompat.ts` `ollamaTransform.ts` `urlSanitize.ts` `logger.ts`
+`requestLogger.ts` `cacheControlPolicy.ts` `kieTask.ts` `tlsClient.ts` maka mgbasa `urlSanitize.ts` na ndị na- `bypassHandler.ts` aka: `stream.ts` `logger.ts` `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts` `ollamaTransform.ts` `streamReadiness.ts` `proxyDispatcher.ts` `proxyFetch.ts` `sseHeartbeat.ts` `networkProxy.ts` `awsSigV4.ts` `cursorVersionDetector.ts` `cursorAgentProtobuf.ts` `progressTracker.ts` `comfyuiClient.ts` `cors.ts` `aiSdkCompat.ts` `error.ts` `thinkTagParser.ts` `sleep.ts` `usageTracking.ts`.
 
 ---
 
@@ -566,35 +566,14 @@ Iwu ndị a na-ejikarị:
 
 ## 8. `scripts/`
 
-A haziri ya n'ime folda nta 6 dịka ebumnuche ha si dị.
+A haziri n'ime folda nchekwa 6 site na ebumnuche.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, tinyere ngwa enyemaka ndị a na-eji naanị agụ maka ilekọta PR:
-  `ci-discriminate.sh` (na-ekewa akara nyocha dara ada nke PR n'ime nke ya / nke o ketara /
-  nke a na-amaghị, site n'iji PR ntụaka ma ọ bụ nsogbu base-red tụnyere ya) na `audit-worktree.sh`
-  (faịlụ ndị agbanwere, akụkụ ndị e chebere, asserts ndị ewepụrụ, ọnụ ọgụgụ suppressions, tsconfigs
-  nwa oge ndị fọdụrụ, isi PR ma e jiri ya tụnyere HEAD lokálụ — tupu a nabata PR nke onye ọrụ).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, gbakwunyere ndị na-agụ naanị PR ndị na-elekọta nwa `ci-discriminate.sh` (ụdị PR na-adịghị mma ma ọ bụ akara aka zq nke a na-amaghị / na-elele PR nke onwe ya. Okwu na-acha ọbara ọbara) na `audit-worktree.sh` (faịlụ ruru unyi, ebe echedoro, ihe ndị ewepụrụ, ọnụ ọgụgụ nkwụsị, tmp tsconfigs hapụrụ, isi PR vs local HEAD — tupu anabata PR onye ọrụ).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

@@ -415,36 +415,36 @@ OmniRoute 会自动刷新令牌。如果问题仍然存在：
 
 ---
 
-## Docker 问题
+## Docker问题
 
 ### Docker IPv6 / 连接重置
 
 <a name="docker-ipv6"></a>
 
-**症状：** `curl http://localhost:20128/v1/models` 返回 `curl: (56) Recv failure: Connection reset by peer`。仪表板和无需身份验证的端点可以正常工作，但需要身份验证的端点会失败——这看起来像身份验证问题，但实际上并不是。
+**症状：** `curl http://localhost:20128/v1/models`返回`curl: (56) Recv failure: Connection reset by peer`。仪表板和未经身份验证的端点可以工作，但经过身份验证的端点失败—它看起来像身份验证问题，但事实并非如此。
 
-**原因：** `docker run -p 20128:20128` 会同时发布到 `0.0.0.0`（IPv4）和 `::`（IPv6），但容器内的进程仅监听 IPv4。在 `localhost` 优先解析为 `::1` 的主机上，连接会到达已发布的 IPv6 端口，但其后没有监听器 → 连接被重置。
+**原因：** `docker run -p 20128:20128`在`0.0.0.0` (IPv4) 和`::` (IPv6) 上发布，但容器内的进程仅侦听IPv4 。在`localhost`首先解析为`::1`主机上，连接到达IPv6发布的端口，后面没有侦听器→连接重置。
 
-**修复方法：**
+**使固定：**
 
-1. **快速诊断：** 运行 `curl -4 http://localhost:20128/v1/models`。如果添加 `-4` 后可以正常工作，而不添加时失败，则存在 IPv6 绑定不匹配的问题。
-2. **永久修复：** 在 `docker run` 命令中使用 `-p 127.0.0.1:20128:20128`，显式绑定到 IPv4：
+1. **Quick diagnostic:** Run `curl -4 http://localhost:20128/v1/models`. If it works with `-4` but fails without, you have an IPv6 bind mismatch.
+2. **永久修复：**通过在`docker run`命令中使用`-p 127.0.0.1:20128:20128`显式绑定到IPv4 ：
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   这会强制使用 IPv4 绑定，同时避免将代理暴露在主机的所有网络接口上。
+   这会强制IPv4绑定，并避免在所有主机接口上暴露代理。
 
 ---
 
-### CLI 工具显示未安装
+### CLI工具显示未安装
 
-1. 检查运行时字段：`curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. 对于便携模式：使用镜像目标 `runner-cli`（内置 CLI）
-3. 对于主机挂载模式：设置 `CLI_EXTRA_PATHS`，并以只读方式挂载主机的二进制文件目录
-4. 如果 `installed=true` 且 `runnable=false`：已找到二进制文件，但健康检查失败
+1. 检查运行时字段： `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. 对于便携式模式：使用图像目标`runner-cli` （捆绑CLIs）
+3. 对于主机挂载模式：设置`CLI_EXTRA_PATHS`并挂载主机bin目录为只读
+4. 如果`installed=true`和`runnable=false`：找到二进制文件但运行状况检查失败
 
-### 快速验证运行时
+### 快速运行时验证
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

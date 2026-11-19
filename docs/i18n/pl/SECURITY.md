@@ -182,13 +182,13 @@ Serwer aktywnie odrzuca znane słabe wartości, takie jak `changeme`, `secret` l
 
 ---
 
-## Bezpieczeństwo Dockera
+## Docker Bezpieczeństwo
 
-- W środowisku produkcyjnym używaj użytkownika innego niż root
-- Montuj sekrety jako woluminy tylko do odczytu
-- Nigdy nie kopiuj plików `.env` do obrazów Dockera
-- Używaj `.dockerignore`, aby wykluczać pliki zawierające dane wrażliwe
-- Ustaw `AUTH_COOKIE_SECURE=true`, gdy aplikacja działa za HTTPS
+- Użyj użytkownika innego niż root w środowisku produkcyjnym
+- Montuj wpisy tajne jako woluminy tylko do odczytu
+- Nigdy nie kopiuj plików `.env` do obrazów Docker
+- Użyj `.dockerignore`, aby wykluczyć wrażliwe pliki
+- Ustaw `AUTH_COOKIE_SECURE=true`, gdy znajdujesz się za HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

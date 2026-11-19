@@ -447,36 +447,36 @@ v3.8.0 より_前_にインポートされた接続には、接続ごとのク�
 
 ---
 
-## Docker の問題
+## Docker問題
 
-### Docker の IPv6 / 接続リセット
+### Docker IPv6 / 接続のリセット
 
 <a name="docker-ipv6"></a>
 
-**症状：** `curl http://localhost:20128/v1/models` を実行すると、`curl: (56) Recv failure: Connection reset by peer` が返されます。ダッシュボードと認証不要のエンドポイントは動作しますが、認証が必要なエンドポイントは失敗します。認証の問題に見えますが、実際にはそうではありません。
+**症状：** `curl http://localhost:20128/v1/models` `curl: (56) Recv failure: Connection reset by peer`を返します。ダッシュボードと未認証のエンドポイントは機能しますが、認証されたエンドポイントは失敗します—これは認証の問題のように見えますが、そうではありません。
 
-**原因：** `docker run -p 20128:20128` は `0.0.0.0`（IPv4）と `::`（IPv6）の両方でポートを公開しますが、コンテナ内のプロセスは IPv4 でのみリッスンしています。`localhost` が最初に `::1` へ解決されるホストでは、接続先がバックエンドのリスナーが存在しない IPv6 の公開ポートになるため、接続がリセットされます。
+**原因：** `docker run -p 20128:20128` `0.0.0.0` (IPv4) と`::` (IPv6) の両方でパブリッシュしますが、コンテナー内のプロセスはIPv4でのみリッスンします。 `localhost`最初に`::1`に解決されるホストでは、接続はIPv6公開ポートに到達し、その背後にリスナーが存在せず、 →接続がリセットされます。
 
-**修正方法：**
+**修理：**
 
-1. **簡易診断：** `curl -4 http://localhost:20128/v1/models` を実行します。`-4` を指定すると動作し、指定しないと失敗する場合は、IPv6 のバインド不一致が発生しています。
-2. **恒久的な修正：** `docker run` コマンドで `-p 127.0.0.1:20128:20128` を使用し、明示的に IPv4 へバインドします：
+1. **Quick diagnostic:** Run `curl -4 http://localhost:20128/v1/models`. If it works with `-4` but fails without, you have an IPv6 bind mismatch.
+2. **恒久的な修正:** `docker run`コマンドで`-p 127.0.0.1:20128:20128`を使用して、 IPv4に明示的にバインドします。
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   これにより IPv4 へのバインドが強制され、ホストのすべてのインターフェースでプロキシが公開されることも防げます。
+   これにより、 IPv4バインドが強制され、すべてのホスト インターフェイスでプロキシが公開されることも回避されます。
 
 ---
 
-### CLI ツールが未インストールと表示される
+### CLIツールがインストールされていないと表示される
 
-1. ランタイムフィールドを確認します：`curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. ポータブルモードの場合：イメージターゲット `runner-cli`（CLI 同梱）を使用します
-3. ホストマウントモードの場合：`CLI_EXTRA_PATHS` を設定し、ホストの bin ディレクトリを読み取り専用でマウントします
-4. `installed=true` かつ `runnable=false` の場合：バイナリは検出されましたが、ヘルスチェックに失敗しています
+1. 実行時フィールドを確認します: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. ポータブル モードの場合: イメージ ターゲット`runner-cli` (バンドルされたCLIs) を使用します。
+3. ホスト マウント モードの場合: `CLI_EXTRA_PATHS`を設定し、ホストの bin ディレクトリを読み取り専用としてマウントします。
+4. `installed=true`および`runnable=false`の場合: バイナリは見つかったがヘルスチェックに失敗した
 
-### ランタイムの簡易検証
+### クイックランタイム検証
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

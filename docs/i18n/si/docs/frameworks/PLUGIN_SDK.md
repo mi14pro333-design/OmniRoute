@@ -72,17 +72,20 @@ onRequest: (ctx) => {
 };
 ```
 
-## Plugin සන්දර්භය (`PluginContext`)
+## ප්ලගින සන්දර්භය (`PluginContext`)
 
-| ක්ෂේත්රය    | වර්ගය                     | විස්තරය                  |
-| ----------- | ------------------------- | ------------------------ |
-| `requestId` | `string`                  | අනන්ය ඉල්ලීම් හඳුනාගැනීම |
-| `model`     | `string`                  | ඉල්ලා ඇති model නාමය     |
-| `provider`  | `string`                  | ඉලක්කගත provider ID      |
-| `body`      | `Record<string, unknown>` | ඉල්ලීම් අන්තර්ගතය        |
-| `headers`   | `Record<string, string>`  | ඉල්ලීම් ශීර්ෂක           |
-| `metadata`  | `Record<string, unknown>` | වෙනස් කළ හැකි පාරදත්ත    |
-| `timestamp` | `number`                  | ඉල්ලීමේ කාල මුද්රාව      |
+| ක්ෂේත්රය     | ටයිප් කරන්න               | විස්තරය                        |
+| ------------ | ------------------------- | ------------------------------ |
+| `requestId`  | `string`                  | අද්විතීය ඉල්ලීම් හඳුනාගැනීම    |
+| `model`      | `string`                  | ඉල්ලූ මාදිලියේ නම              |
+| `provider`   | `string`                  | ඉලක්ක සපයන්නා ID               |
+| `body`       | `Record<string, unknown>` | ශරීරය ඉල්ලන්න                  |
+| `headers`    | `Record<string, string>`  | ඉල්ලීම් ශීර්ෂ (සටහන බලන්න)     |
+| `metadata`   | `Record<string, unknown>` | විකෘති පාරදත්ත                 |
+| `timestamp`  | `number`                  | කාල මුද්‍රාව ඉල්ලන්න           |
+| `apiKeyInfo` | `object` (විකල්ප)         | API යතුරු පාරදත්ත (සටහන බලන්න) |
+
+සන්දර්භය කිසිවිටක සේවාලාභියාගේ අක්තපත්‍ර රැගෙන නොයයි: `authorization`, `x-api-key`, `proxy-authorization` සහ `cookie` ශීර්ෂ ඉවත් කරනු ලැබේ (ඕනෑම ආවරණයක්), සහ `apiKeyInfo` යතුරේ පාර-දත්ත ( `id`, `name` සහ `scopes` වැනි) තබා ගනී නමුත් ප්‍රධාන අගය හෝ එහි ඇඟිලි සලකුණ `src/lib/plugins/hooks.ts` `redactPluginContext()` තුළ නොවේ. මෙය `onRequest`, `onResponse` සහ `onError` සඳහා අදාළ වේ.
 
 ## Manifest (`plugin.json`)
 
@@ -140,17 +143,16 @@ Hooks ප්රමුඛතාවක් සමඟ වින්යාස කළ �
 
 ## අවසර පද්ධතිය
 
-ප්ලගීන වැලිපෙට්ටිගත VM සන්දර්භයක් තුළ ක්රියාත්මක වේ. බාහිර සම්පත් වෙත ප්රවේශ වීමට පැහැදිලි අවසර අවශ්ය වේ:
+ප්ලගීන වේ** වැලි පෙට්ටිය දමා නැත** . සෑම සක්‍රිය ප්ලගිනයක්ම වෙනම සාමාන්‍ය Node.js ළමා ක්‍රියාවලියක් ලෙස ක්‍රියා කරයි ( `src/lib/plugins/loader.ts` හි`loadPlugin()` ) OmniRoute ලෙස එකම මෙහෙයුම් පද්ධති පරිශීලකයෙකු යටතේ, VM සන්දර්භය සහ Node.js අවසර ධජ නොමැතිව. ප්ලගින කේතයට `node:fs`, `node:child_process`, `fetch` සහ අනෙකුත් සෑම Node.js API භාවිතා කළ හැක : එය OmniRoute පරිශීලකයාට (දත්ත නාමාවලිය ඇතුළුව), වැඩසටහන් ක්‍රියාත්මක කර ජාලයට ළඟා විය හැකි ඕනෑම ගොනුවක් කියවීමට සහ ලිවීමට හැකිය.
 
-| අවසරය        | ලබා දෙන දෑ                                                   |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | කියවීමට පමණක් හැකි `process.env` ප්රොක්සිය                   |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+මැනිෆෙස්ටයේ `requires.permissions` `network`, `file-read`, `file-write`, `env` සහ `exec` පිළිගනී, නමුත් අද `env` පමණක් ධාවන වේලාවේදී බලපෑමක් ඇති කරයි:
 
-අවසරයක් නොමැති විට, ඊට අදාළ ගෝලීය අංග වැලිපෙට්ටිය තුළ සරලවම ලබා ගත නොහැක.
+| අවසරය                                        | අද බලපෑම                                                                                                                                                                                                                                 |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | ප්ලගින ක්‍රියාවලියට `PORT`, `HOSTNAME`, `TZ` සහ `TMPDIR` ද ලැබේ. එසේ නොමැතිව එයට ලැබෙන්නේ `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` සහ `PLUGIN_NAME` ( Windows මත `SystemRoot` සහ `windir` එකතු කිරීම ) පමණි. |
+| `network`, `file-read`, `file-write`, `exec` | කිසිවක් නැත. ඒවා ප්‍රකාශයන් පමණි: ඒවා අතුරුදහන් වූ විට කිසිවක් අවහිර නොවේ.                                                                                                                                                               |
+
+ප්ලගිනයක් ස්ථාපනය කිරීම සත්කාරකයේ වෙනත් ඕනෑම වැඩසටහනක් ස්ථාපනය කිරීම වැනි ය. ඔබ විශ්වාස කරන ප්ලගීන පමණක් ස්ථාපනය කරන්න.
 
 ## වින්යාස යෝජනා ක්රමය
 
@@ -194,7 +196,7 @@ Hooks ප්රමුඛතාවක් සමඟ වින්යාස කළ �
 
 ## උදාහරණ
 
-### ඉල්ලීම් සටහන්කරු
+### ලොගර් ඉල්ලන්න
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -207,7 +209,7 @@ export default definePlugin({
 });
 ```
 
-### අනුපාත සීමාකරු
+### අනුපාත සීමාව
 
 ```ts
 import { definePlugin, blockRequest } from "omniroute/plugins/sdk";
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // මිනිත්තු 1
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);
@@ -234,7 +236,7 @@ export default definePlugin({
 });
 ```
 
-### ප්රතිචාර පරිවර්තකය
+### ප්‍රතිචාර ට්‍රාන්ස්ෆෝමරය
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";

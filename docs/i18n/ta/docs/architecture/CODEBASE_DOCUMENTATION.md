@@ -450,27 +450,27 @@ open-sse/
 
 சிறப்பம்சங்கள் ( `open-sse/services/` இன் கீழ் முழு பட்டியல்):
 
-| கவலை                   | கோப்புகள்                                                                                                                                                                                                                                                |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| காம்போ ரூட்டிங்        | `combo.ts` (22 உத்திகள்), `comboConfig.ts`, `comboMetrics.ts`, `comboManifestMetrics.ts`, `comboAgentMiddleware.ts`                                                                                                                                      |
-| ஆட்டோ காம்போ இயந்திரம் | `autoCombo/` — `engine.ts`, `scoring.ts`, `taskFitness.ts`, `virtualFactory.ts`, `modePacks.ts`, `autoPrefix.ts`, `persistence.ts`, `providerDiversity.ts`, `providerRegistryAccessor.ts`, `routerStrategy.ts`, `selfHealing.ts`, `index.ts`             |
-| மீள்தன்மை              | `accountFallback.ts` (கூல்டவுன் + lockout), `errorClassifier.ts`, `requestRejectedStreak.ts`, `emergencyFallback.ts`, `rateLimitManager.ts`, `rateLimitSemaphore.ts`, `accountSemaphore.ts`, `accountSelector.ts`                                        |
-| ஒதுக்கீடுகள்           | `quotaMonitor.ts`, `quotaPreflight.ts`, `bailianQuotaFetcher.ts`, `codexQuotaFetcher.ts`, `deepseekQuotaFetcher.ts`, `openrouterQuotaFetcher.ts`, `openrouterFreeWindow.ts`, `llmgatewayQuotaFetcher.ts`, `crofUsageFetcher.ts`, `antigravityCredits.ts` |
-| கேச்சிங்               | `reasoningCache.ts`, `searchCache.ts`, `signatureCache.ts`, `requestDedup.ts`                                                                                                                                                                            |
-| ரூட்டிங் நுண்ணறிவு     | `intentClassifier.ts`, `taskAwareRouter.ts`, `backgroundTaskDetector.ts`, `volumeDetector.ts`, `wildcardRouter.ts`, `workflowFSM.ts`, `specificityDetector.ts`, `specificityRules.ts`, `specificityTypes.ts`                                             |
-| மாதிரி கையாளுதல்       | `modelCapabilities.ts`, `modelDeprecation.ts`, `modelFamilyFallback.ts`, `modelStrip.ts`, `model.ts`, `provider.ts`, `providerRequestDefaults.ts`, `providerCostData.ts`, `payloadRules.ts`                                                              |
-| சுருக்கம்              | `compression/` — முழு சுருக்க இயந்திர வயரிங்                                                                                                                                                                                                             |
-| டோக்கன் + அமர்வு       | `tokenRefresh.ts`, `sessionManager.ts`, `apiKeyRotator.ts`, `contextManager.ts`, `contextHandoff.ts`, `systemPrompt.ts`, `roleNormalizer.ts`, `responsesInputSanitizer.ts`, `toolSchemaSanitizer.ts`, `toolLimitDetector.ts`, `thinkingBudget.ts`        |
-| அடுக்கு / மேனிஃபெஸ்ட்  | `tierResolver.ts`, `tierConfig.ts`, `tierDefaults.json`, `tierTypes.ts`, `manifestAdapter.ts`                                                                                                                                                            |
-| IP / நெட்வொர்க்        | `ipFilter.ts`, `webSearchFallback.ts`                                                                                                                                                                                                                    |
-| தொகுதிகள்              | `batchProcessor.ts`                                                                                                                                                                                                                                      |
-| பயன்பாடு               | `usage.ts`                                                                                                                                                                                                                                               |
+| கவலை                     | கோப்புகள்                                                                                                                                                                                                                                                |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| காம்போ ரூட்டிங்          | `combo.ts` (22 உத்திகள்), `comboConfig.ts`, `comboMetrics.ts`, `comboManifestMetrics.ts`, `comboAgentMiddleware.ts`                                                                                                                                      |
+| ஆட்டோ காம்போ இயந்திரம்   | `autoCombo/` — `engine.ts`, `scoring.ts`, `taskFitness.ts`, `virtualFactory.ts`, `modePacks.ts`, `autoPrefix.ts`, `persistence.ts`, `providerDiversity.ts`, `providerRegistryAccessor.ts`, `routerStrategy.ts`, `selfHealing.ts`, `index.ts`             |
+| மீள்தன்மை                | `accountFallback.ts` (கூல்டவுன் + lockout), `errorClassifier.ts`, `requestRejectedStreak.ts`, `emergencyFallback.ts`, `rateLimitManager.ts`, `rateLimitSemaphore.ts`, `accountSemaphore.ts`, `accountSelector.ts`                                        |
+| ஒதுக்கீடுகள்             | `quotaMonitor.ts`, `quotaPreflight.ts`, `bailianQuotaFetcher.ts`, `codexQuotaFetcher.ts`, `deepseekQuotaFetcher.ts`, `openrouterQuotaFetcher.ts`, `openrouterFreeWindow.ts`, `llmgatewayQuotaFetcher.ts`, `crofUsageFetcher.ts`, `antigravityCredits.ts` |
+| கேச்சிங்                 | `reasoningCache.ts`, `searchCache.ts`, `signatureCache.ts`, `requestDedup.ts`                                                                                                                                                                            |
+| ரூட்டிங் நுண்ணறிவு       | `intentClassifier.ts`, `taskAwareRouter.ts`, `backgroundTaskDetector.ts`, `volumeDetector.ts`, `wildcardRouter.ts`, `workflowFSM.ts`, `specificityDetector.ts`, `specificityRules.ts`, `specificityTypes.ts`                                             |
+| மாதிரி கையாளுதல்         | `modelCapabilities.ts`, `modelDeprecation.ts`, `modelFamilyFallback.ts`, `modelStrip.ts`, `model.ts`, `provider.ts`, `providerRequestDefaults.ts`, `providerCostData.ts`, `payloadRules.ts`                                                              |
+| சுருக்கம்                | `compression/` — முழு சுருக்க இயந்திர வயரிங்                                                                                                                                                                                                             |
+| டோக்கன் + அமர்வு         | `tokenRefresh.ts`, `sessionManager.ts`, `apiKeyRotator.ts`, `contextManager.ts`, `contextHandoff.ts`, `systemPrompt.ts`, `roleNormalizer.ts`, `responsesInputSanitizer.ts`, `toolSchemaSanitizer.ts`, `toolLimitDetector.ts`, `thinkingBudget.ts`        |
+| அடுக்கு / வெளிப்படையானது | `tierResolver.ts`, `tierConfig.ts`, `tierDefaults.json`, `tierTypes.ts`, `manifestAdapter.ts`                                                                                                                                                            |
+| IP / நெட்வொர்க்          | `ipFilter.ts`, `webSearchFallback.ts`                                                                                                                                                                                                                    |
+| தொகுதிகள்                | `batchProcessor.ts`                                                                                                                                                                                                                                      |
+| பயன்பாடு                 | `usage.ts`                                                                                                                                                                                                                                               |
 
 ### 4.6 `open-sse/mcp-server/`
 
 - **110 தனிப்பட்ட கருவிகள்** `server.ts` இல் கம்பி ( `schemas/tools.ts` + நினைவகம், திறன்கள், கிட்ஹப்-திறன்கள், பூல், கேமிஃபிகேஷன், செருகுநிரல், Notion, Obsidian, லோக்கல்-கார்பஸ் மற்றும் சுருக்க தொகுதிகள் — யூனியன் `countUniqueMcpTools` ஆல் கணக்கிடப்பட்ட 45 நியமனங்கள்).
 - **3 போக்குவரத்து** : stdio, HTTP ஸ்ட்ரீமபிள், SSE.
-- **33 நோக்கங்கள்** `src/shared/constants/mcpScopes.ts` இல் இயக்க நேர — அடிப்படை பட்டியலில் செயல்படுத்தப்பட்டது, முழு தொகுப்பு என்பது ஒவ்வொரு கருவி தொகுதியாலும் அறிவிக்கப்பட்ட ஸ்கோப்களின் ஒன்றியமாகும்.
+- **33 நோக்கங்கள்** `src/shared/constants/mcpScopes.ts` இல் இயங்கும் — அடிப்படை பட்டியலில் செயல்படுத்தப்பட்டது, முழு தொகுப்பு என்பது ஒவ்வொரு கருவி தொகுதியாலும் அறிவிக்கப்பட்ட ஸ்கோப்களின் ஒன்றியமாகும்.
 - தணிக்கை அட்டவணை: `mcp_tool_audit` ( `audit.ts` ஆல் மக்கள் தொகை கொண்டது).
 - கோப்புகள்: `server.ts`, `index.ts`, `httpTransport.ts`, `audit.ts`, `scopeEnforcement.ts`, `runtimeHeartbeat.ts`, `descriptionCompressor.ts`, `schemas/{tools, a2a, audit, index}.ts`, `tools/{advancedTools, compressionTools, memoryTools, skillTools}.ts`, மேலும் `__tests__/` இன் கீழ் சோதனைகள்.
 - முழு கருவி அட்டவணைக்கு [MCP-SERVER.md](../frameworks/MCP-SERVER.md) பார்க்கவும்.
@@ -481,7 +481,7 @@ open-sse/
 
 ### 4.8 `open-sse/utils/`
 
-ஸ்ட்ரீமிங் பழமையானவர்கள் மற்றும் வழங்குநர் உதவியாளர்கள்: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `progressTracker.ts` `error.ts` `cors.ts` `logger.ts` `requestLogger.ts`, `sleep.ts` `ollamaTransform.ts`
+ஸ்ட்ரீமிங் பழமையானவர்கள் மற்றும் வழங்குநர் உதவியாளர்கள்: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts` `ollamaTransform.ts` `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts` `logger.ts` `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `cors.ts` `error.ts` `progressTracker.ts`, `sleep.ts`.
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-நோக்கத்தின் அடிப்படையில் 6 துணைக் கோப்புறைகளாக ஒழுங்கமைக்கப்பட்டுள்ளது.
+நோக்கத்தின்படி 6 துணை கோப்புறைகளாக ஒழுங்கமைக்கப்பட்டது.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, மேலும் படிக்க மட்டும் அனுமதிக்கப்பட்ட PR கண்காணிப்பு உதவிக் கருவிகளான
-  `ci-discriminate.sh` (ஒரு PR-இன் தோல்வியுற்ற சோதனைகளின் கையொப்பங்களை, ஒரு மேற்கோள் PR அல்லது base-red சிக்கலுடன் ஒப்பிட்டு, சொந்தமானவை / மரபாகப் பெறப்பட்டவை /
-  அறியப்படாதவை என வகைப்படுத்துகிறது) மற்றும் `audit-worktree.sh`
-  (அழுக்கான கோப்புகள், பாதுகாக்கப்பட்ட பகுதிகள், அகற்றப்பட்ட assert-கள், தவிர்ப்பு எண்ணிக்கைகள், எஞ்சியுள்ள
-  தற்காலிக tsconfig-கள், PR head மற்றும் உள்ளூர் HEAD இடையிலான ஒப்பீடு — ஒரு பணியாளரின் PR ஏற்கப்படுவதற்கு முன்).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, மேலும் படிக்க மட்டுமேயான PR தோல்வி-ஒரு குறிப்பு `ci-discriminate.sh` அல்லது அடிப்படை- PR பிரச்சினைக்கு எதிராக சொந்த / மரபுரிமை / தெரியாத PR சரிபார்க்கவும்) மற்றும் `audit-worktree.sh` (அழுக்கு கோப்புகள், பாதுகாக்கப்பட்ட மேற்பரப்புகள், அகற்றப்பட்ட உறுதிமொழிகள், அடக்குதல் எண்ணிக்கைகள், எஞ்சியிருக்கும் tmp tsconfigs, PR head vs உள்ளூர் HEAD — தொழிலாளி PR முன்).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

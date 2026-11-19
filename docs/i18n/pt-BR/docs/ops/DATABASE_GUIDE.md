@@ -304,11 +304,12 @@ Use as cláusulas `IF NOT EXISTS`, `IF EXISTS` e `OR IGNORE` / `OR REPLACE` libe
 
 ### Adicionando uma nova migração
 
-1. **Crie o arquivo com o gerador** : `npm run db:new-migration -- <description>` (por exemplo `npm run db:new-migration -- add combo priority`). Ele grava `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` com a hora UTC atual e um cabeçalho de comentário, avança um segundo se esse carimbo de data e hora for obtido e nunca sobrescreve um arquivo. Não escolha um número manualmente.
+1. **Crie o arquivo com o gerador** : `npm run db:new-migration -- <description>` (por exemplo `npm run db:new-migration -- add combo priority`). Ele grava `src/lib/db/migrations/<YYYYMMDDHHMMSS>_<description>.sql` com o horário UTC atual e um cabeçalho de comentário, avança um segundo se esse carimbo de data e hora for obtido e nunca sobrescreve um arquivo. Não escolha um número manualmente.
 2. **Use DDL seguro** : `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, `ALTER TABLE ... ADD COLUMN`
 3. **Preencha os dados com cuidado** : use `UPDATE ... WHERE ...` para lidar com linhas existentes
 4. **Verifique a ordem e a nomenclatura** : `npm run test:migrations:fresh` (todas as migrações em um banco de dados vazio) e `npm run check:migration-numbering`
 5. **Teste em uma cópia** : nunca execute migrações não testadas em produção
+6. **Uma tabela criada a partir de código também precisa de migração** : se um módulo também cria a tabela preguiçosamente (`CREATE TABLE IF NOT EXISTS`, mantida como um caminho de autocorreção), uma migração deve criá-la com o mesmo DDL. Caso contrário, uma instalação limpa e uma instalação atualizada resultarão em esquemas diferentes, dependendo se o caminho do código foi executado. `tests/unit/db/lazy-table-migration-guard.test.ts` verifica `src/` e `open-sse/` e falha em um `CREATE` preguiçoso sem migração (#20557). Exemplo: `src/lib/db/migrations/20261118120853_compression_run_telemetry.sql`.
 
 Exemplo:
 

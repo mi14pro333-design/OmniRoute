@@ -212,7 +212,7 @@
 
 ## 4. API მითითება
 
-ყველა მარშრუტი `/api/services/` ქვეშ არის**LOCAL_ONLY** (მხოლოდ loopback, მკაცრი წესი #17). Non-loopback მოთხოვნები იღებენ `403 LOCAL_ONLY` ავტორიზაციის ნიშნის მიუხედავად.
+ყველა მარშრუტი `/api/services/` ქვეშ არის**LOCAL_ONLY** (მხოლოდ loopback, მყარი წესი #17). Non-loopback-ის მოთხოვნები იღებენ `403 LOCAL_ONLY` ავტორიზაციის ნიშნის მიუხედავად.
 
 ### 4.1 9 როუტერის ბოლო წერტილები (11 მარშრუტი)
 
@@ -487,14 +487,14 @@ open-wa (`@open-wa/wa-automate`) მართავს უთავო Chromium 
 | ------ | --------------------------------- | ----------------------------------------------------------------- |
 | `POST` | `/api/services/openwa/install`    | დააინსტალირეთ open-wa npm-დან (`@open-wa/wa-automate`)            |
 | `POST` | `/api/services/openwa/start`      | დაწყება open-wa პორტზე 8323 (ნაგულისხმევი)                        |
-| `POST` | `/api/services/openwa/stop`       | შეწყვიტე გახსნა                                                   |
+| `POST` | `/api/services/openwa/stop`       | შეაჩერე გახსნა                                                    |
 | `POST` | `/api/services/openwa/restart`    | გადატვირთეთ open-wa                                               |
 | `POST` | `/api/services/openwa/update`     | განაახლეთ ახალ ვერსიაზე                                           |
 | `GET`  | `/api/services/openwa/status`     | ცოცხალი + DB სტატუსი                                              |
 | `POST` | `/api/services/openwa/auto-start` | ავტომატური დაწყების გადართვა                                      |
 | `GET`  | `/api/services/openwa/logs`       | SSE ჟურნალის კუდი (გაზიარებული `[name]/logs` დინამიური მარშრუტით) |
 
-**API გასაღები:** შეყვანილი, როგორც `WA_KEY` — open-wa-ის ზოგადი `WA_*` -prefixed env გადაფარავს მას `--key`/`-k` CLI ვარიანტზე (`dist/cli/setup.js::envArgs()`, დამოწმებული დაინსტალირებული 4.76.0 პაკეტის მიხედვით). `generateServiceApiKey()` მიერ გენერირებული პრეფიქსით `ow_`. open-wa კითხულობს კლავიშს `key`/`api_key` HTTP სათაურიდან (არა `Authorization: Bearer`); `/api-docs*` აშკარად გათავისუფლებულია შემოწმებისგან (`setupAuthenticationLayer` in `dist/cli/server.js`), ამიტომ ჯანმრთელობის ზონდს არ სჭირდება ავტორიზაციის სათაური.
+**API გასაღები:** შეყვანილი, როგორც `WA_KEY` — open-wa-ის ზოგადი `WA_*` -prefixed env გადაფარავს მას `--key`/`-k` CLI ვარიანტზე (`dist/cli/setup.js::envArgs()`, დამოწმებული დაინსტალირებული 4.76.0 პაკეტის მიხედვით). `generateServiceApiKey()` მიერ გენერირებული პრეფიქსით `ow_`. open-wa კითხულობს კლავიშს `key`/`api_key` HTTP სათაურიდან (არა `Authorization: Bearer`); `/api-docs*` ცალსახად გათავისუფლებულია შემოწმებისგან (`setupAuthenticationLayer` in `dist/cli/server.js`), ასე რომ ჯანმრთელობის ზონდს არ სჭირდება ავტორიზაციის სათაური.
 
 **დაწყვილება:** open-wa არაოფიციალურია და არ არის დაკავშირებული WhatsApp — თან, დაკავშირებული ნომერი შეიცავს WhatsApp ის საკუთარი ავტომატიზაციის გამოვლენის აკრძალვის რისკს. პირველი დაწყებისას, დაწყვილების QR კოდი იბეჭდება stdout-ზე და გამოჩნდება არსებული Logs panel/SSE ნაკადის მეშვეობით — ამ ინტეგრაციაში ჯერ არ არის გამოყოფილი QR გამოსახულების საბოლოო წერტილი.
 
@@ -518,18 +518,18 @@ LLMLingua არის სწრაფი შეკუმშვის გვე�
 
 **გვერდითი მანქანის კონტრაქტი:** სერვერის სკრიპტი ავლენს `GET /health` (მყისიერი — არ ელოდება მოდელს) და `POST /compress` (`{ text, rate }` → `{ text, compressed, ratio }`). მოდელი ზარმაცად იტვირთება პირველ `/compress` ზარზე.
 
-**შეკუმშვის გაყვანილობა:** `open-sse/services/compression/engines/llmlingua/index.ts` ს `httpSidecarBackend` უწოდებს `LLMLINGUA_BASE_URL` (ნაგულისხმევი `http://127.0.0.1:20135`) და იღებს მხოლოდ გვერდითი კარის პასუხს, როდესაც ის მკაცრად მოკლეა, ვიდრე შეყვანა; ნებისმიერი წარუმატებლობა (არ გაშვებული, დროის ამოწურვა, უპასუხისმგებლო ოპერაციების გარეშე) ბრუნდება პროცესის პროცესში მყოფი მუშა-თრედის უკანა ნაწილზე (`./worker.ts`).
+**შეკუმშვის გაყვანილობა:** `open-sse/services/compression/engines/llmlingua/index.ts` ს `httpSidecarBackend` უწოდებს `LLMLINGUA_BASE_URL` (ნაგულისხმევი `http://127.0.0.1:20135`) და იღებს მხოლოდ გვერდითი კარის პასუხს, როდესაც ის მკაცრად მოკლეა, ვიდრე შეყვანა; ნებისმიერი წარუმატებლობა (არ გაშვება, დროის ამოწურვა, უპასუხისმგებლობა) უბრუნდება პროცესის მუშა-თრედის უკანა ნაწილს (`./worker.ts`).
 
 ---
 
 ### 4.8 sing-box endpoints (8 მარშრუტი)
 
-sing-box აქვს იგივე ბოლო წერტილის ფორმა, როგორც Mux — no `rotate-key` მარშრუტი, არ API გასაღების ინექცია (`needsApiKey: false` in `bootstrap.ts`). ის იმართება მხოლოდ სასიცოცხლო ციკლით: არასოდეს არის routing/LLM პროვაიდერი. `install()` ჩამოტვირთავს ოფიციალურ GitHub გამოშვების ორობითს (`SagerNet/sing-box`) დამაგრებული ვერსიისთვის (`SINGBOX_PINNED_VERSION` in `src/lib/services/installers/singbox.ts`) და ამოწმებს მის SHA256 იმავე ფაილში გამომცხვარ საკონტროლო ჯამთან შედარებით, სანამ მას დისკზე დაწერს — ნებისმიერი სხვა მოთხოვნილი ვერსია უარყოფილი იქნება.
+sing-box აქვს იგივე ბოლო წერტილის ფორმა, როგორც Mux — no `rotate-key` მარშრუტი, არ API გასაღების ინექცია (`needsApiKey: false` in `bootstrap.ts`). ის მხოლოდ სასიცოცხლო ციკლით იმართება: არასოდეს არის routing/LLM პროვაიდერი. `install()` ჩამოტვირთავს ოფიციალურ GitHub გამოშვების ორობითს (`SagerNet/sing-box`) დამაგრებული ვერსიისთვის (`SINGBOX_PINNED_VERSION` in `src/lib/services/installers/singbox.ts`) და ამოწმებს მის SHA256 იმავე ფაილში გამომცხვარ საკონტროლო ჯამთან შედარებით, სანამ მას დისკზე დაწერს — ნებისმიერი სხვა მოთხოვნილი ვერსია უარყოფილი იქნება.
 
 | მეთოდი | ბილიკი                                       | აღწერა                                                                    |
 | ------ | -------------------------------------------- | ------------------------------------------------------------------------- |
 | `POST` | `/api/services/singbox/install`              | ჩამოტვირთეთ + დაადასტურეთ ჩამაგრებული sing-box გამოშვება                  |
-| `POST` | `/api/services/singbox/start`                | დაიწყე სინგ-ბოქსი (`sing-box run -c config.json`)                         |
+| `POST` | `/api/services/singbox/start`                | დაიწყეთ სინგ-ბოქსი (`sing-box run -c config.json`)                        |
 | `POST` | `/api/services/singbox/stop`                 | Stop Sing-box                                                             |
 | `POST` | `/api/services/singbox/restart`              | გადატვირთეთ sing-box                                                      |
 | `POST` | `/api/services/singbox/update`               | Re-verify/reinstall დამაგრებული გამოშვება                                 |
@@ -544,7 +544,7 @@ sing-box აქვს იგივე ბოლო წერტილის ფ�
 
 ### 4.9 უკუ პროქსი (9 როუტერის დაფის ჩაშენება)
 
-საინფორმაციო დაფა ათავსებს 9Router web UI ს iframe-ში შიდა საპირისპირო პროქსის მეშვეობით:
+დაფა ათავსებს 9Router web UI ს iframe-ში შიდა საპირისპირო პროქსის მეშვეობით:
 
 ```
 GET|POST|... /dashboard/providers/services/9router/embed/[...path]
@@ -558,9 +558,9 @@ GET|POST|... /dashboard/providers/services/9router/embed/[...path]
 - ზოლები `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` პასუხიდან
 - ხელახლა წერს HTML პასუხებს `<base href>` ინექციისთვის და აბსოლუტური ბილიკების ნორმალიზებისთვის (`/foo` → `/dashboard/.../embed/foo`)
 
-ჩაშენებული საინფორმაციო დაფის WebSocket განახლებებს ამუშავებს კომპანიონი სერვერი სპეციალურ პორტზე (იხ. `src/lib/services/embedWsProxy.ts`).
+ჩაშენებული დაფის WebSocket განახლებებს ამუშავებს კომპანიონი სერვერი სპეციალურ პორტზე (იხ. `src/lib/services/embedWsProxy.ts`). ყოველი განახლება ნებადართულია გვირაბის გახსნამდე, იგივე წესებით, როგორც HTTP ჩაშენებული მარშრუტი: თანატოლი უნდა იყოს loopback უკუპროქსის გადამისამართების სათაურის გარეშე, ბრაუზერი `Origin` უნდა იყოს დაფის საწყისი (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` გააფართოვოს loopback ნაგულისხმევი), და აბონენტს სჭირდება დაფის სესია ან მენეჯმენტის დისკოპის გარეშე API კლავიატურა.
 
-**უსაფრთხოება:** ჩაშენებული პროქსი მარშრუტები კლასიფიცირებულია `LOCAL_ONLY_API_PREFIXES` ქვეშ და მისი მიღწევა შესაძლებელია მხოლოდ loopback-დან. თავდამსხმელი, რომელიც იძენს JWT Cloudflare/Ngrok გვირაბის მეშვეობით, ვერ შეძლებს ჩაშენებულ სერვისებში პროქსი.
+**უსაფრთხოება:** ჩაშენებული პროქსი მარშრუტები კლასიფიცირებულია `LOCAL_ONLY_API_PREFIXES` ქვეშ და მისი მიღწევა შესაძლებელია მხოლოდ loopback-დან. თავდამსხმელი, რომელიც იძენს JWT Cloudflare/Ngrok გვირაბის მეშვეობით, არ შეუძლია ჩაშენებული სერვისების პროქსი.
 
 ---
 

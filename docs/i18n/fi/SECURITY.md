@@ -182,13 +182,13 @@ Palvelin hylkää aktiivisesti tunnetusti heikot arvot, kuten `changeme`, `secre
 
 ---
 
-## Docker-tietoturva
+## Docker turvallisuus
 
-- Käytä tuotannossa muuta kuin root-käyttäjää
-- Liitä salaisuudet vain luku -taltioina
-- Älä koskaan kopioi `.env`-tiedostoja Docker-levykuviin
-- Sulje arkaluonteiset tiedostot pois käyttämällä `.dockerignore`-tiedostoa
-- Aseta `AUTH_COOKIE_SECURE=true`, kun palvelin on HTTPS-yhteyden takana
+- Käytä tuotannossa ei-root-käyttäjää
+- Kiinnitä salaisuudet vain luku -asetuksiksi
+- Älä koskaan kopioi `.env` tiedostoja Docker -kuviin
+- Käytä `.dockerignore` arkaluonteisten tiedostojen poissulkemiseen
+- Aseta `AUTH_COOKIE_SECURE=true` kun olet HTTPS takana
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

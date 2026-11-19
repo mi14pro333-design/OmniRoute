@@ -456,32 +456,32 @@ lihat [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ## Masalah Docker
 
-### IPv6 Docker / Koneksi Direset
+### Docker IPv6 / Reset Koneksi
 
 <a name="docker-ipv6"></a>
 
-**Gejala:** `curl http://localhost:20128/v1/models` menghasilkan `curl: (56) Recv failure: Connection reset by peer`. Dasbor dan endpoint tanpa autentikasi berfungsi, tetapi endpoint terautentikasi gagal — ini terlihat seperti masalah autentikasi, padahal bukan.
+**Gejala:** `curl http://localhost:20128/v1/models` mengembalikan `curl: (56) Recv failure: Connection reset by peer`. Dasbor dan titik akhir yang tidak diautentikasi berfungsi, tetapi titik akhir yang diautentikasi gagal — sepertinya ada masalah autentikasi padahal sebenarnya tidak.
 
-**Penyebab:** `docker run -p 20128:20128` memublikasikan pada `0.0.0.0` (IPv4) dan `::` (IPv6), tetapi proses di dalam kontainer hanya mendengarkan pada IPv4. Pada host tempat `localhost` di-resolve ke `::1` terlebih dahulu, koneksi masuk ke port IPv6 yang dipublikasikan tanpa listener di belakangnya → koneksi direset.
+**Menyebabkan:** `docker run -p 20128:20128` menerbitkan di `0.0.0.0` (IPv4) dan `::` (IPv6), tetapi proses di dalam wadah hanya mendengarkan di IPv4. Pada host di mana `localhost` memutuskan untuk `::1` terlebih dahulu, koneksi mendarat di port IPv6 yang diterbitkan tanpa pendengar di belakangnya → connection reset.
 
-**Perbaikan:**
+**Memperbaiki:**
 
-1. **Diagnostik cepat:** Jalankan `curl -4 http://localhost:20128/v1/models`. Jika berfungsi dengan `-4` tetapi gagal tanpanya, terdapat ketidakcocokan binding IPv6.
-2. **Perbaikan permanen:** Bind ke IPv4 secara eksplisit dengan menggunakan `-p 127.0.0.1:20128:20128` dalam perintah `docker run` Anda:
+1. **Diagnostik cepat:** Jalankan `curl -4 http://localhost:20128/v1/models`. Jika berfungsi dengan `-4` tetapi gagal tanpanya, Anda mengalami ketidakcocokan pengikatan IPv6.
+2. **Perbaikan permanen:** Ikat ke IPv4 secara eksplisit dengan menggunakan `-p 127.0.0.1:20128:20128` dalam perintah `docker run` Anda:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Ini memaksa binding IPv4 dan juga mencegah proxy terekspos pada semua antarmuka host.
+   Hal ini memaksa pengikatan IPv4 dan juga menghindari pemaparan proxy pada semua antarmuka host.
 
 ---
 
-### Alat CLI Ditampilkan sebagai Belum Terinstal
+### CLI Tool Show Tidak Diinstal
 
 1. Periksa bidang runtime: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Untuk mode portabel: gunakan target image `runner-cli` (CLI sudah disertakan)
-3. Untuk mode mount host: atur `CLI_EXTRA_PATHS` dan mount direktori bin host sebagai hanya-baca
-4. Jika `installed=true` dan `runnable=false`: biner ditemukan tetapi gagal dalam pemeriksaan kondisi
+2. Untuk mode portabel: gunakan target gambar `runner-cli` (dibundel CLIs)
+3. Untuk mode pemasangan host: atur `CLI_EXTRA_PATHS` dan pasang direktori host bin sebagai hanya-baca
+4. Jika `installed=true` dan `runnable=false`: biner ditemukan tetapi pemeriksaan kesehatan gagal
 
 ### Validasi Runtime Cepat
 

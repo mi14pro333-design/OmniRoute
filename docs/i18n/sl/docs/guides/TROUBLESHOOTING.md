@@ -453,36 +453,36 @@ glejte [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Težave z Dockerjem
+## Težave Docker
 
 ### Docker IPv6 / Ponastavitev povezave
 
 <a name="docker-ipv6"></a>
 
-**Simptomi:** `curl http://localhost:20128/v1/models` vrne `curl: (56) Recv failure: Connection reset by peer`. Nadzorna plošča in končne točke brez preverjanja pristnosti delujejo, končne točke s preverjanjem pristnosti pa ne — videti je kot težava s preverjanjem pristnosti, vendar ni.
+**Simptomi:** `curl http://localhost:20128/v1/models` vrne `curl: (56) Recv failure: Connection reset by peer`. Nadzorna plošča in nepreverjene končne točke delujejo, vendar preverjene končne točke ne delujejo — Videti je kot težava pri preverjanju pristnosti, vendar ni.
 
-**Vzrok:** `docker run -p 20128:20128` objavi vrata tako na `0.0.0.0` (IPv4) kot na `::` (IPv6), vendar proces v vsebniku posluša samo prek IPv4. Na gostiteljih, kjer se `localhost` najprej razreši v `::1`, povezava prispe na objavljena vrata IPv6, za katerimi ni poslušalca → povezava se ponastavi.
+**vzrok:** `docker run -p 20128:20128` objavlja `0.0.0.0` (IPv4) in `::` (IPv6), vendar proces znotraj vsebnika posluša samo IPv4. Na gostiteljih, kjer se `localhost` najprej razreši na `::1`, povezava pristane na objavljenih vratih IPv6 brez poslušalca za njim. Ponastavitev povezave →.
 
 **Popravek:**
 
-1. **Hitra diagnostika:** Zaženite `curl -4 http://localhost:20128/v1/models`. Če z možnostjo `-4` deluje, brez nje pa ne, imate neujemanje vezave IPv6.
-2. **Trajni popravek:** Izrecno izvedite vezavo na IPv4 tako, da v ukazu `docker run` uporabite `-p 127.0.0.1:20128:20128`:
+1. **Hitra diagnostika:** Zaženite `curl -4 http://localhost:20128/v1/models`. Če deluje z `-4`, brez pa ne uspe, imate neujemanje povezovanja IPv6.
+2. **Trajni popravek:** Izrecno se povežite z IPv4 z uporabo `-p 127.0.0.1:20128:20128` v ukazu `docker run` :
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   To vsili vezavo IPv4 in hkrati prepreči izpostavitev posredniškega strežnika na vseh vmesnikih gostitelja.
+   To prisili povezovanje IPv4 in se tudi izogne izpostavljanju proxyja na vseh gostiteljskih vmesnikih.
 
 ---
 
-### Orodje CLI je prikazano kot nenameščeno
+### Orodje CLI prikazuje Ni nameščeno
 
 1. Preverite polja izvajalnega okolja: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Za prenosni način uporabite cilj slike `runner-cli` (vključena orodja CLI)
-3. Za način priklopa z gostitelja nastavite `CLI_EXTRA_PATHS` in priklopite gostiteljev imenik z izvršljivimi datotekami samo za branje
-4. Če velja `installed=true` in `runnable=false`: izvršljiva datoteka je bila najdena, vendar preverjanje stanja ni uspelo
+2. Za prenosni način: uporabite ciljno sliko `runner-cli` (v paketu CLIs)
+3. Za način vpetja gostitelja: nastavite `CLI_EXTRA_PATHS` in imenik bin gostitelja nastavite kot samo za branje
+4. Če `installed=true` in `runnable=false`: binary je bil najden, vendar ni uspel preveriti stanja
 
-### Hitro preverjanje izvajalnega okolja
+### Hitro preverjanje izvajalnega časa
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

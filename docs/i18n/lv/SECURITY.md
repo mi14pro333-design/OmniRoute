@@ -182,13 +182,13 @@ Serveris aktīvi noraida zināmas vājas vērtības, piemēram, `changeme`, `sec
 
 ---
 
-## Docker drošība
+## Docker Drošība
 
-- Produkcijas vidē izmantojiet lietotāju bez root privilēģijām
-- Piemontējiet noslēpumus kā tikai lasāmus sējumus
+- Ražošanā izmantojiet lietotāju, kas nav saknes lietotājs
+- Pievienojiet noslēpumus kā tikai lasāmus sējumus
 - Nekad nekopējiet `.env` failus Docker attēlos
 - Izmantojiet `.dockerignore`, lai izslēgtu sensitīvus failus
-- Iestatiet `AUTH_COOKIE_SECURE=true`, ja tiek izmantots HTTPS
+- Iestatīt `AUTH_COOKIE_SECURE=true`, kad atrodas aiz HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

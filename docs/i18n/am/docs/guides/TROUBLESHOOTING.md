@@ -422,36 +422,36 @@ OmniRoute ቶከኖችን በራስ-ሰር ያድሳል። ችግሮቹ ከቀ�
 
 ---
 
-## የDocker ችግሮች
+## Docker ጉዳዮች
 
-### የDocker IPv6 / የግንኙነት ዳግም መጀመር
+### Docker IPv6 / የግንኙነት ዳግም ማስጀመር
 
 <a name="docker-ipv6"></a>
 
-**ምልክቶች፦** `curl http://localhost:20128/v1/models` ትዕዛዙ `curl: (56) Recv failure: Connection reset by peer` ይመልሳል። Dashboardውና ማረጋገጫ የማይጠይቁ endpoints ይሰራሉ፣ ነገር ግን ማረጋገጫ የሚጠይቁ endpoints አይሰሩም — የማረጋገጫ ችግር ይመስላል፣ ግን አይደለም።
+**ምልክቶች፡-** `curl http://localhost:20128/v1/models` ይመልሳል `curl: (56) Recv failure: Connection reset by peer`. ዳሽቦርድ እና ያልተረጋገጡ የመጨረሻ ነጥቦች ይሰራሉ፣ ግን የተረጋገጡ የመጨረሻ ነጥቦች አልተሳኩም — የማረጋገጫ ችግር ይመስላል ግን ግን አይደለም።
 
-**ምክንያት፦** `docker run -p 20128:20128` በሁለቱም `0.0.0.0` (IPv4) እና `::` (IPv6) ላይ ያትማል፣ ነገር ግን containerው ውስጥ ያለው process በIPv4 ላይ ብቻ ያዳምጣል። `localhost` መጀመሪያ ወደ `::1` በሚፈታባቸው hosts ላይ፣ ግንኙነቱ ከኋላው listener በሌለበት የታተመው IPv6 port ላይ ይደርሳል → ግንኙነቱ ዳግም ይጀመራል።
+**ምክንያት፡** `docker run -p 20128:20128` በሁለቱም `0.0.0.0` (IPv4) እና `::` (IPv6) ላይ ያትማል ነገር ግን በመያዣው ውስጥ ያለው ሂደት በ IPv4 ላይ ብቻ ያዳምጣል። `localhost` መጀመሪያ ወደ `::1` በሚወስንባቸው አስተናጋጆች ላይ፣ ግንኙነቱ በ IPv6 የታተመ ወደብ ላይ ያረፈ ሲሆን ከጀርባው ምንም አድማጭ የለም → ግንኙነት ዳግም አስጀምር።
 
-**መፍትሔ፦**
+**አስተካክል፡**
 
-1. **ፈጣን ምርመራ፦** `curl -4 http://localhost:20128/v1/models` ያስኪዱ። ከ`-4` ጋር የሚሰራ ነገር ግን ያለሱ የማይሰራ ከሆነ፣ የIPv6 bind አለመዛመድ አለብዎት።
-2. **ቋሚ መፍትሔ፦** በ`docker run` ትዕዛዝዎ ውስጥ `-p 127.0.0.1:20128:20128` በመጠቀም IPv4ን በግልጽ bind ያድርጉ፦
+1. **ፈጣን ምርመራ;** `curl -4 http://localhost:20128/v1/models` አሂድ . በ `-4` የሚሰራ ነገር ግን ያለሱ ካልተሳካ፣ የ IPv6 bind አለመዛመድ አለብዎት።
+2. **ቋሚ ጥገና;** በ `docker run` ትእዛዝዎ `-p 127.0.0.1:20128:20128` በመጠቀም በግልፅ ወደ IPv4 እሰር
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   ይህ IPv4 bindን ያስገድዳል፣ እንዲሁም proxyው በሁሉም የhost interfaces ላይ እንዳይጋለጥ ያደርጋል።
+   ይህ IPv4 እንዲተሳሰር ያስገድዳል እና እንዲሁም በሁሉም የአስተናጋጅ በይነገጽ ፕሮክሲውን ከማጋለጥ ይቆጠባል።
 
 ---
 
-### የCLI መሣሪያው እንዳልተጫነ ያሳያል
+### CLI መሳሪያ አልተጫነም።
 
-1. የruntime fieldsን ይፈትሹ፦ `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. ለportable mode፦ የimage target `runner-cli`ን ይጠቀሙ (CLIዎችን አካትቶ የያዘ)
-3. ለhost mount mode፦ `CLI_EXTRA_PATHS`ን ያዘጋጁ እና የhost bin directoryን ለንባብ ብቻ እንዲሆን mount ያድርጉ
-4. `installed=true` እና `runnable=false` ከሆነ፦ binaryው ተገኝቷል፣ ግን healthcheckን ማለፍ አልቻለም
+1. የማስኬጃ ቦታዎችን ያረጋግጡ `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. ለተንቀሳቃሽ ሁነታ፡ የምስል ኢላማ `runner-cli` (የተጠቃለለ CLIs) ተጠቀም
+3. ለአስተናጋጅ ተራራ ሁነታ `CLI_EXTRA_PATHS` ያዘጋጁ እና የአስተናጋጅ ቢን ማውጫን እንደ ተነባቢ-ብቻ ይጫኑ
+4. `installed=true` እና `runnable=false` ከሆነ: ሁለትዮሽ ተገኝቷል ነገር ግን የጤና ምርመራ አልተሳካም
 
-### ፈጣን የRuntime ማረጋገጫ
+### ፈጣን የሩጫ ጊዜ ማረጋገጫ
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

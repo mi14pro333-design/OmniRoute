@@ -420,36 +420,36 @@ hãy xem [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Sự cố Docker
+## vấn đề về Docker
 
-### Docker IPv6 / Đặt lại kết nối
+### Docker IPv6 / Thiết lập lại kết nối
 
 <a name="docker-ipv6"></a>
 
-**Triệu chứng:** `curl http://localhost:20128/v1/models` trả về `curl: (56) Recv failure: Connection reset by peer`. Dashboard và các endpoint không yêu cầu xác thực vẫn hoạt động, nhưng các endpoint yêu cầu xác thực lại thất bại — trông giống như vấn đề xác thực nhưng thực tế không phải vậy.
+**Triệu chứng:** `curl http://localhost:20128/v1/models` trả về `curl: (56) Recv failure: Connection reset by peer`. Trang tổng quan và điểm cuối chưa được xác thực hoạt động nhưng điểm cuối được xác thực không thành công — Có vẻ như có sự cố xác thực nhưng thực tế không phải vậy.
 
-**Nguyên nhân:** `docker run -p 20128:20128` công khai cổng trên cả `0.0.0.0` (IPv4) và `::` (IPv6), nhưng tiến trình bên trong container chỉ lắng nghe trên IPv4. Trên các máy chủ mà `localhost` được phân giải thành `::1` trước, kết nối sẽ đi đến cổng IPv6 đã công khai nhưng không có trình lắng nghe phía sau → kết nối bị đặt lại.
+**Gây ra:** `docker run -p 20128:20128` xuất bản trên cả `0.0.0.0` (IPv4) và `::` (IPv6), nhưng quy trình bên trong vùng chứa chỉ lắng nghe trên IPv4. Trên các máy chủ nơi `localhost` phân giải thành `::1` trước tiên, kết nối sẽ đến cổng được xuất bản IPv6 mà không có trình nghe nào đằng sau nó được thiết lập lại kết nối →.
 
-**Cách khắc phục:**
+**Sửa chữa:**
 
-1. **Chẩn đoán nhanh:** Chạy `curl -4 http://localhost:20128/v1/models`. Nếu hoạt động với `-4` nhưng thất bại khi không có tùy chọn này, bạn đang gặp lỗi không khớp liên kết IPv6.
-2. **Cách khắc phục lâu dài:** Liên kết rõ ràng với IPv4 bằng cách sử dụng `-p 127.0.0.1:20128:20128` trong lệnh `docker run`:
+1. **Chẩn đoán nhanh:** Chạy `curl -4 http://localhost:20128/v1/models`. Nếu nó hoạt động với `-4` nhưng không thành công thì bạn có liên kết IPv6 khớp.
+2. **Sửa chữa vĩnh viễn:** Liên kết với IPv4 một cách rõ ràng bằng cách sử dụng `-p 127.0.0.1:20128:20128` trong lệnh `docker run` của bạn:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Điều này buộc liên kết IPv4 và cũng tránh công khai proxy trên tất cả các giao diện mạng của máy chủ.
+   Điều này buộc IPv4 liên kết và cũng tránh để lộ proxy trên tất cả các giao diện máy chủ.
 
 ---
 
 ### Công cụ CLI hiển thị chưa được cài đặt
 
-1. Kiểm tra các trường runtime: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Đối với chế độ di động: sử dụng image target `runner-cli` (tích hợp sẵn các CLI)
-3. Đối với chế độ mount từ máy chủ: đặt `CLI_EXTRA_PATHS` và mount thư mục bin của máy chủ ở chế độ chỉ đọc
-4. Nếu `installed=true` và `runnable=false`: tệp nhị phân đã được tìm thấy nhưng không vượt qua được kiểm tra tình trạng hoạt động
+1. Kiểm tra các trường thời gian chạy: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Đối với chế độ di động: sử dụng mục tiêu hình ảnh `runner-cli` ( CLIs đi kèm)
+3. Đối với chế độ gắn máy chủ: đặt `CLI_EXTRA_PATHS` và gắn thư mục bin máy chủ ở chế độ chỉ đọc
+4. Nếu `installed=true` và `runnable=false`: tìm thấy nhị phân nhưng kiểm tra sức khỏe không thành công
 
-### Xác thực nhanh Runtime
+### Xác thực thời gian chạy nhanh
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

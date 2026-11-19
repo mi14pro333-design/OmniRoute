@@ -451,36 +451,36 @@ wo [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Àwọn Ìṣòro Docker
+## Docker awon oran
 
-### Docker IPv6 / Àtúnṣètò Ìsopọ̀
+### Docker IPv6 / Asopọmọra Tun
 
 <a name="docker-ipv6"></a>
 
-**Àwọn àmì:** `curl http://localhost:20128/v1/models` dá `curl: (56) Recv failure: Connection reset by peer` padà. Dashboard àti àwọn endpoint tí kò nílò ìfàṣẹsí ń ṣiṣẹ́, ṣùgbọ́n àwọn endpoint tí ó nílò ìfàṣẹsí ń kùnà — ó dà bí ìṣòro ìfàṣẹsí, ṣùgbọ́n kì í ṣe bẹ́ẹ̀.
+**Awọn aami aisan:** `curl http://localhost:20128/v1/models` pada `curl: (56) Recv failure: Connection reset by peer`. Dasibodu ati awọn aaye ipari ti ko ni ijẹrisi ṣiṣẹ, ṣugbọn awọn aaye ipari ti o jẹri kuna — o dabi iṣoro auth ṣugbọn kii ṣe.
 
-**Ìdí:** `docker run -p 20128:20128` ń ṣe àtẹ̀jáde lórí `0.0.0.0` (IPv4) àti `::` (IPv6), ṣùgbọ́n process inú container ń tẹ́tí sí IPv4 nìkan. Lórí àwọn host níbi tí `localhost` ti kọ́kọ́ resolve sí `::1`, ìsopọ̀ náà yóò dé sí port IPv6 tí a tẹ̀jáde láìsí listener lẹ́yìn rẹ̀ → ìsopọ̀ yóò túnṣe.
+**Nitori:** `docker run -p 20128:20128` ṣe atẹjade lori mejeeji `0.0.0.0` (IPv4) ati `::` (IPv6), ṣugbọn ilana inu apoti naa ngbọ lori IPv4 nikan. Lori awọn ogun nibiti `localhost` pinnu lati `::1` ni akọkọ, asopọ naa de lori ibudo IPv6 ti a tẹjade laisi olutẹtisi lẹhin rẹ atunto asopọ →.
 
-**Àtúnṣe:**
+**Ṣe atunṣe:**
 
-1. **Àyẹ̀wò kíákíá:** Ṣiṣe `curl -4 http://localhost:20128/v1/models`. Tí ó bá ṣiṣẹ́ pẹ̀lú `-4` ṣùgbọ́n tí ó kùnà láìsí i, ìwọ ní àìbáramu bind IPv6.
-2. **Àtúnṣe títí láé:** Ṣe bind sí IPv4 ní tààrà nípa lílo `-p 127.0.0.1:20128:20128` nínú àṣẹ `docker run` rẹ:
+1. **Ṣiṣe ayẹwo kiakia:** Ṣiṣe `curl -4 http://localhost:20128/v1/models`. Ti o ba ṣiṣẹ pẹlu `-4` ṣugbọn kuna laisi, o ni aiṣedeede dipọ IPv6.
+2. **Atunṣe to yẹ:** Di mọ IPv4 ni gbangba nipa lilo `-p 127.0.0.1:20128:20128` ninu aṣẹ `docker run` rẹ:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Èyí ń fi agbára mú bind IPv4, ó sì tún ń dènà fífi proxy hàn lórí gbogbo interface host.
+   Eyi fi agbara mu asopọ IPv4 ati tun yago fun ṣiṣafihan aṣoju lori gbogbo awọn atọkun agbalejo.
 
 ---
 
-### Irinṣẹ́ CLI Ṣàfihàn Pé A Kò Fi Sórí Ẹ̀rọ
+### Awọn Fihan Ọpa CLI Ko Fi sori ẹrọ
 
-1. Ṣàyẹ̀wò àwọn field runtime: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Fún mode portable: lo target image `runner-cli` (àwọn CLI wà nínú rẹ̀)
-3. Fún mode mount host: ṣètò `CLI_EXTRA_PATHS`, kí o sì mount directory bin host gẹ́gẹ́ bí read-only
-4. Tí `installed=true` àti `runnable=false`: a rí binary náà, ṣùgbọ́n ó kùnà healthcheck
+1. Ṣayẹwo awọn aaye akoko ṣiṣe: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Fun ipo gbigbe: lo ibi-afẹde aworan `runner-cli` (sopọ CLIs)
+3. Fun ipo igbega agbalejo: ṣeto `CLI_EXTRA_PATHS` ati mount host bin directory bi kika-nikan
+4. Ti `installed=true` ati `runnable=false`: alakomeji ni a rii ṣugbọn ṣiṣe ayẹwo ilera kuna
 
-### Ìfọwọ́sí Runtime Kíákíá
+### Awọn ọna asiko isise afọwọsi
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

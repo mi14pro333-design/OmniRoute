@@ -504,7 +504,7 @@ LLMLingua ialah `@atjsh/llmlingua-2` pembalut kereta sisi mampatan segera (model
 | Kaedah | Laluan                                         | Penerangan                                                                  |
 | ------ | ---------------------------------------------- | --------------------------------------------------------------------------- |
 | `POST` | `/api/services/llmlingua/install`              | npm-pasang `@atjsh/llmlingua-2` + rakan sebaya, tulis skrip pelayan sidecar |
-| `POST` | `/api/services/llmlingua/start`                | Mulakan kereta sampingan pada port 20135 (lalai)                            |
+| `POST` | `/api/services/llmlingua/start`                | Mulakan kereta sisi pada port 20135 (lalai)                                 |
 | `POST` | `/api/services/llmlingua/stop`                 | Hentikan kereta sampingan                                                   |
 | `POST` | `/api/services/llmlingua/restart`              | Mulakan semula kereta sampingan                                             |
 | `POST` | `/api/services/llmlingua/update`               | Kemas kini kepada versi pakej yang lebih baharu                             |
@@ -555,7 +555,7 @@ Proksi ini:
 - Keluarkan `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` daripada respons
 - Menulis semula respons HTML untuk menyuntik `<base href>` dan menormalkan laluan mutlak (`/foo` → `/dashboard/.../embed/foo`)
 
-peningkatan WebSocket untuk papan pemuka terbenam dikendalikan oleh pelayan pendamping pada port khusus (lihat `src/lib/services/embedWsProxy.ts`).
+peningkatan WebSocket untuk papan pemuka terbenam dikendalikan oleh pelayan pendamping pada port khusus (lihat `src/lib/services/embedWsProxy.ts`). Setiap peningkatan dibenarkan sebelum terowong dibuka, dengan peraturan yang sama seperti laluan benam HTTP : rakan setara mestilah gelung balik tanpa pengepala pemajuan proksi terbalik, `Origin` penyemak imbas mestilah asal papan pemuka (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` lanjutkan lalai gelung balik), dan pemanggil memerlukan sesi papan pemuka atau kunci API skop pengurusan melainkan log masuk papan pemuka dilumpuhkan.
 
 **Keselamatan:** Laluan proksi benam diklasifikasikan di bawah `LOCAL_ONLY_API_PREFIXES` dan hanya boleh dicapai dari gelung balik. Penyerang yang memperoleh JWT melalui terowong Cloudflare/Ngrok tidak boleh proksi ke perkhidmatan terbenam.
 

@@ -340,11 +340,11 @@ docker start omniroute
 
 ## 6. الأمان المتقدم
 
-### تقييد nginx بعناوين IP الخاصة بـ Cloudflare
+### تقييد nginx على Cloudflare IPs
 
 ```bash
 cat > /etc/nginx/cloudflare-ips.conf << 'CF'
-# نطاقات IPv4 الخاصة بـ Cloudflare — حدّثها دوريًا
+# Cloudflare IPv4 ranges — update periodically
 # https://www.cloudflare.com/ips-v4/
 set_real_ip_from 173.245.48.0/20;
 set_real_ip_from 103.21.244.0/22;
@@ -365,31 +365,31 @@ real_ip_header CF-Connecting-IP;
 CF
 ```
 
-أضف ما يلي إلى `nginx.conf` داخل كتلة `http {}`:
+أضف ما يلي إلى `nginx.conf` داخل كتلة `http {}` :
 
 ```nginx
 include /etc/nginx/cloudflare-ips.conf;
 ```
 
-### تثبيت fail2ban
+### قم بتثبيت Fail2ban
 
 ```bash
 apt install -y fail2ban
 systemctl enable fail2ban
 systemctl start fail2ban
 
-# التحقق من الحالة
+# Check status
 fail2ban-client status sshd
 ```
 
-### حظر الوصول المباشر إلى منفذ Docker
+### منع الوصول المباشر إلى ميناء Docker
 
 ```bash
-# منع الوصول الخارجي المباشر إلى المنفذ 20128
+# Prevent direct external access to port 20128
 iptables -I DOCKER-USER -p tcp --dport 20128 -j DROP
 iptables -I DOCKER-USER -i lo -p tcp --dport 20128 -j ACCEPT
 
-# حفظ القواعد بشكل دائم
+# Persist the rules
 apt install -y iptables-persistent
 netfilter-persistent save
 ```

@@ -67,23 +67,23 @@
 
 <br/>
 
-## 📈 Gateway განაგრძობს ზრდას
+## 📈 კარიბჭე აგრძელებს ზრდას
 
 <div align="center">
 
-|                                    |         v3.8.50          | **v3.8.51** |      `v3.8.55+`       |
-| ---------------------------------- | :----------------------: | :---------: | :-------------------: |
-| 🌐 პროვაიდერები                    |           352            |   **358**   |          394          |
-| 🧠 ჩატის უნიკალური მოდელის ID-ები  |           1320           |  **1374**   |         1491          |
-| 🖼️ მოდალობების ხიდი                | 🆕 ხედვა + აუდიო + ვიდეო |      ✓      |           ✓           |
-| 📡 Radar-ის უფასო კატალოგი         | 🆕 ნებაყოფლობითი ჩართვა  |      ✓      |           ✓           |
-| ⚖️ კვოტის გათვალისწინებით დაგეგმვა |      🆕 Quota-Share      |      ✓      |           ✓           |
-| 📊 კვოტის ტელემეტრია               |     🆕 რეალურ დროში      |      ✓      |           ✓           |
-| 🧰 ჰედლეს რეჟიმი                   |            —             |      —      | 🆕 `serve --headless` |
-| 🛤️ LTS rail ინფრასტრუქტურა         |            —             |      —      | 🆕 გამოშვების არხები  |
-| 🔎 მოდელების აღმოჩენის API         |            —             |      —      | 🆕 `/v1/models/query` |
+|                               |          v3.8.50          | **v3.8.51** |      `v3.8.55+`       |
+| ----------------------------- | :-----------------------: | :---------: | :-------------------: |
+| 🌐 პროვაიდერები               |            352            |   **358**   |          394          |
+| 🧠 უნიკალური ჩატის მოდელი IDs |           1320            |  **1374**   |         1491          |
+| 🖼️ მოდალობის ხიდი             | 🆕 vision + აუდიო + ვიდეო |      ✓      |           ✓           |
+| 📡 Radar უფასო კატალოგი       |         🆕 ჩართვა         |      ✓      |           ✓           |
+| ⚖️ Quota-aware დაგეგმვა       |      🆕 Quota-Share       |      ✓      |           ✓           |
+| 📊 Quota ტელემეტრია           |    🆕 პირდაპირ ეთერში     |      ✓      |           ✓           |
+| 🧰 უთავო რეჟიმი               |             —             |      —      | 🆕 `serve --headless` |
+| 🛤️ LTS სარკინიგზო ინფრა       |             —             |      —      | 🆕 გამოშვების არხები  |
+| 🔎 მოდელის აღმოჩენა API       |             —             |      —      | 🆕 `/v1/models/query` |
 
-**→ [სამოქმედო გეგმა](ROADMAP.md) — `v3.9.0 LTS`-ისკენ სარკინიგზო ლიანდაგზე**
+**→ [საგზაო რუკა](ROADMAP.md) — რკინიგზაზე `v3.9.0 LTS` მდე მიმავალი**
 
 </div>
 
@@ -91,54 +91,49 @@
 
 ## 🧩 ხელმისაწვდომია
 
-[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)
-![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)
-[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)
-![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
+[![npm ვერსია](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm) ](https://www.npmjs.com/package/omniroute) ![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm) [![Docker Hub](https://img.shields.io/docker/v/cheaperinference/omniroute?label=Docker%20Hub&logo=docker&color=2496ED) ](https://hub.docker.com/r/cheaperinference/omniroute) [![ლიცენზია: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square) ](LICENSE) ![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED) ![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
 
 <table>
   <tr>
     <td align="right"><b>🚀 დაწყება</b></td>
     <td align="center"><a href="#-quick-start">🚀 სწრაფი დაწყება</a></td>
-    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 ინსტალაცია</a></td>
-    <td align="center"><a href="#first-run">🆓 პროვაიდერთან დაკავშირება</a></td>
+    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 დააინსტალირეთ</a></td>
+    <td align="center"><a href="#first-run">🆓 დააკავშირეთ პროვაიდერი</a></td>
   </tr>
   <tr>
-    <td align="right"><b>💡 გაცნობა</b></td>
+    <td align="right"><b>💡 ისწავლე</b></td>
     <td align="center"><a href="#-the-promise">💥 დაპირება</a></td>
     <td align="center"><a href="#-why-omniroute">🤔 რატომ OmniRoute</a></td>
-    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 რა განასხვავებს</a></td>
+    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 რა გამოარჩევს</a></td>
   </tr>
   <tr>
-    <td align="right"><b>⚙️ შესაძლებლობები</b></td>
-    <td align="center"><a href="#-combos--the-flagship">🎯 კომბინაციები</a></td>
+    <td align="right"><b>⚙️ მახასიათებლები</b></td>
+    <td align="center"><a href="#-combos--the-flagship">🎯 Combos</a></td>
     <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 პროვაიდერები</a></td>
-    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI და MCP</a></td>
+    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI &amp; MCP</a></td>
   </tr>
   <tr>
     <td align="right"></td>
     <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ შეკუმშვა</a></td>
-    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ სად მუშაობს</a></td>
+    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ სად გადის</a></td>
     <td align="center"><a href="#-private--local-first">🔒 პირადი</a></td>
   </tr>
   <tr>
-    <td align="right"><b>👀 იხილეთ</b></td>
+    <td align="right"><b>👀 ნახე</b></td>
     <td align="center"><a href="#-omniroute-in-action">🎬 მოქმედებაში</a></td>
     <td align="center"><a href="#-whats-new">✨ რა არის ახალი</a></td>
-    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 თავსებადი CLI-ები</a></td>
+    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 თავსებადი CLIs</a></td>
   </tr>
   <tr>
     <td align="right"><b>💚 მხარდაჭერა</b></td>
     <td align="center"><a href="#-support-omniroute">💚 მხარდაჭერა / შემოწირულობა</a></td>
-    <td align="center"><a href="#-community--help">💬 საზოგადოება</a></td>
+    <td align="center"><a href="#-community--help">💬 თემი</a></td>
     <td align="center"><a href="#-sponsors">💖 სპონსორები</a></td>
   </tr>
   <tr>
     <td align="right"><b>📦 პროექტი</b></td>
-    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ ტექნოლოგიური სტეკი</a></td>
-    <td align="center"><a href="#-documentation">📖 დოკუმენტაცია</a></td>
+    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ Tech Stack</a></td>
+    <td align="center"><a href="#-documentation">📖 Docs</a></td>
     <td align="center"><a href="#-1000-contributors">👥 კონტრიბუტორები</a></td>
   </tr>
 </table>
@@ -148,73 +143,73 @@
 <div align="center">
   <b>🌐 67 ენაზე</b>
   <br/><br/>
-  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="ინგლისური (en)" title="ინგლისური (en)"></a>
-  <a href="docs/i18n/pt-BR/README.md"><img src="docs/assets/flags/br.svg" width="30" alt="პორტუგალიური — ბრაზილია (pt-BR)" title="პორტუგალიური — ბრაზილია (pt-BR)"></a>
-  <a href="docs/i18n/pt/README.md"><img src="docs/assets/flags/pt.svg" width="30" alt="პორტუგალიური (pt)" title="პორტუგალიური (pt)"></a>
-  <a href="docs/i18n/es/README.md"><img src="docs/assets/flags/es.svg" width="30" alt="ესპანური (es)" title="ესპანური (es)"></a>
-  <a href="docs/i18n/fr/README.md"><img src="docs/assets/flags/fr.svg" width="30" alt="ფრანგული (fr)" title="ფრანგული (fr)"></a>
-  <a href="docs/i18n/it/README.md"><img src="docs/assets/flags/it.svg" width="30" alt="იტალიური (it)" title="იტალიური (it)"></a>
-  <a href="docs/i18n/de/README.md"><img src="docs/assets/flags/de.svg" width="30" alt="გერმანული (de)" title="გერმანული (de)"></a>
-  <a href="docs/i18n/nl/README.md"><img src="docs/assets/flags/nl.svg" width="30" alt="ნიდერლანდური (nl)" title="ნიდერლანდური (nl)"></a>
-  <a href="docs/i18n/ru/README.md"><img src="docs/assets/flags/ru.svg" width="30" alt="რუსული (ru)" title="რუსული (ru)"></a>
-  <a href="docs/i18n/uk-UA/README.md"><img src="docs/assets/flags/ua.svg" width="30" alt="უკრაინული (uk-UA)" title="უკრაინული (uk-UA)"></a>
-  <a href="docs/i18n/pl/README.md"><img src="docs/assets/flags/pl.svg" width="30" alt="პოლონური (pl)" title="პოლონური (pl)"></a>
-  <a href="docs/i18n/cs/README.md"><img src="docs/assets/flags/cz.svg" width="30" alt="ჩეხური (cs)" title="ჩეხური (cs)"></a>
-  <a href="docs/i18n/sk/README.md"><img src="docs/assets/flags/sk.svg" width="30" alt="სლოვაკური (sk)" title="სლოვაკური (sk)"></a>
-  <a href="docs/i18n/ro/README.md"><img src="docs/assets/flags/ro.svg" width="30" alt="რუმინული (ro)" title="რუმინული (ro)"></a>
-  <a href="docs/i18n/hu/README.md"><img src="docs/assets/flags/hu.svg" width="30" alt="უნგრული (hu)" title="უნგრული (hu)"></a>
-  <a href="docs/i18n/bg/README.md"><img src="docs/assets/flags/bg.svg" width="30" alt="ბულგარული (bg)" title="ბულგარული (bg)"></a>
-  <a href="docs/i18n/da/README.md"><img src="docs/assets/flags/dk.svg" width="30" alt="დანიური (da)" title="დანიური (da)"></a>
-  <a href="docs/i18n/fi/README.md"><img src="docs/assets/flags/fi.svg" width="30" alt="ფინური (fi)" title="ფინური (fi)"></a>
-  <a href="docs/i18n/no/README.md"><img src="docs/assets/flags/no.svg" width="30" alt="ნორვეგიული (no)" title="ნორვეგიული (no)"></a>
-  <a href="docs/i18n/sv/README.md"><img src="docs/assets/flags/se.svg" width="30" alt="შვედური (sv)" title="შვედური (sv)"></a>
-  <a href="docs/i18n/zh-CN/README.md"><img src="docs/assets/flags/cn.svg" width="30" alt="ჩინური — გამარტივებული (zh-CN)" title="ჩინური — გამარტივებული (zh-CN)"></a>
-  <a href="docs/i18n/zh-TW/README.md"><img src="docs/assets/flags/tw.svg" width="30" alt="ჩინური — ტრადიციული (zh-TW)" title="ჩინური — ტრადიციული (zh-TW)"></a>
-  <a href="docs/i18n/ja/README.md"><img src="docs/assets/flags/jp.svg" width="30" alt="იაპონური (ja)" title="იაპონური (ja)"></a>
-  <a href="docs/i18n/ko/README.md"><img src="docs/assets/flags/kr.svg" width="30" alt="კორეული (ko)" title="კორეული (ko)"></a>
-  <a href="docs/i18n/th/README.md"><img src="docs/assets/flags/th.svg" width="30" alt="ტაიური (th)" title="ტაიური (th)"></a>
-  <a href="docs/i18n/vi/README.md"><img src="docs/assets/flags/vn.svg" width="30" alt="ვიეტნამური (vi)" title="ვიეტნამური (vi)"></a>
-  <a href="docs/i18n/id/README.md"><img src="docs/assets/flags/id.svg" width="30" alt="ინდონეზიური (id)" title="ინდონეზიური (id)"></a>
-  <a href="docs/i18n/ms/README.md"><img src="docs/assets/flags/my.svg" width="30" alt="მალაიური (ms)" title="მალაიური (ms)"></a>
-  <a href="docs/i18n/phi/README.md"><img src="docs/assets/flags/ph.svg" width="30" alt="ფილიპინური (phi)" title="ფილიპინური (phi)"></a>
-  <a href="docs/i18n/hi/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ჰინდი (hi)" title="ჰინდი (hi)"></a>
-  <a href="docs/i18n/gu/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="გუჯარათი (gu)" title="გუჯარათი (gu)"></a>
-  <a href="docs/i18n/mr/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="მარათჰი (mr)" title="მარათჰი (mr)"></a>
-  <a href="docs/i18n/ta/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ტამილური (ta)" title="ტამილური (ta)"></a>
-  <a href="docs/i18n/te/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ტელუგუ (te)" title="ტელუგუ (te)"></a>
-  <a href="docs/i18n/bn/README.md"><img src="docs/assets/flags/bd.svg" width="30" alt="ბენგალური (bn)" title="ბენგალური (bn)"></a>
-  <a href="docs/i18n/ur/README.md"><img src="docs/assets/flags/pk.svg" width="30" alt="ურდუ (ur)" title="ურდუ (ur)"></a>
-  <a href="docs/i18n/fa/README.md"><img src="docs/assets/flags/ir.svg" width="30" alt="სპარსული (fa)" title="სპარსული (fa)"></a>
-  <a href="docs/i18n/ar/README.md"><img src="docs/assets/flags/sa.svg" width="30" alt="არაბული (ar)" title="არაბული (ar)"></a>
-  <a href="docs/i18n/he/README.md"><img src="docs/assets/flags/il.svg" width="30" alt="ებრაული (he)" title="ებრაული (he)"></a>
-  <a href="docs/i18n/tr/README.md"><img src="docs/assets/flags/tr.svg" width="30" alt="თურქული (tr)" title="თურქული (tr)"></a>
-  <a href="docs/i18n/az/README.md"><img src="docs/assets/flags/az.svg" width="30" alt="აზერბაიჯანული (az)" title="აზერბაიჯანული (az)"></a>
-  <a href="docs/i18n/sw/README.md"><img src="docs/assets/flags/tz.svg" width="30" alt="სუაჰილი (sw)" title="სუაჰილი (sw)"></a>
-  <a href="docs/i18n/el/README.md"><img src="docs/assets/flags/gr.svg" width="30" alt="ბერძნული (el)" title="ბერძნული (el)"></a>
-  <a href="docs/i18n/hr/README.md"><img src="docs/assets/flags/hr.svg" width="30" alt="ხორვატული (hr)" title="ხორვატული (hr)"></a>
-  <a href="docs/i18n/sr/README.md"><img src="docs/assets/flags/rs.svg" width="30" alt="სერბული (sr)" title="სერბული (sr)"></a>
-  <a href="docs/i18n/lt/README.md"><img src="docs/assets/flags/lt.svg" width="30" alt="ლიტვური (lt)" title="ლიტვური (lt)"></a>
-  <a href="docs/i18n/et/README.md"><img src="docs/assets/flags/ee.svg" width="30" alt="ესტონური (et)" title="ესტონური (et)"></a>
-  <a href="docs/i18n/lv/README.md"><img src="docs/assets/flags/lv.svg" width="30" alt="ლატვიური (lv)" title="ლატვიური (lv)"></a>
-  <a href="docs/i18n/sl/README.md"><img src="docs/assets/flags/si.svg" width="30" alt="სლოვენური (sl)" title="სლოვენური (sl)"></a>
-  <a href="docs/i18n/mt/README.md"><img src="docs/assets/flags/mt.svg" width="30" alt="მალტური (mt)" title="მალტური (mt)"></a>
-  <a href="docs/i18n/ga/README.md"><img src="docs/assets/flags/ie.svg" width="30" alt="ირლანდიური (ga)" title="ირლანდიური (ga)"></a>
-  <a href="docs/i18n/kn/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="კანადა (kn)" title="კანადა (kn)"></a>
-  <a href="docs/i18n/ml/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="მალაიალამი (ml)" title="მალაიალამი (ml)"></a>
-  <a href="docs/i18n/or/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ორია (or)" title="ორია (or)"></a>
-  <a href="docs/i18n/pa/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="პენჯაბური (pa)" title="პენჯაბური (pa)"></a>
-  <a href="docs/i18n/ne/README.md"><img src="docs/assets/flags/np.svg" width="30" alt="ნეპალური (ne)" title="ნეპალური (ne)"></a>
-  <a href="docs/i18n/si/README.md"><img src="docs/assets/flags/lk.svg" width="30" alt="სინჰალური (si)" title="სინჰალური (si)"></a>
-  <a href="docs/i18n/my/README.md"><img src="docs/assets/flags/mm.svg" width="30" alt="ბირმული (my)" title="ბირმული (my)"></a>
-  <a href="docs/i18n/km/README.md"><img src="docs/assets/flags/kh.svg" width="30" alt="ქმერული (km)" title="ქმერული (km)"></a>
-  <a href="docs/i18n/ha/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="ჰაუსა (ha)" title="ჰაუსა (ha)"></a>
-  <a href="docs/i18n/yo/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="იორუბა (yo)" title="იორუბა (yo)"></a>
-  <a href="docs/i18n/ig/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="იგბო (ig)" title="იგბო (ig)"></a>
-  <a href="docs/i18n/am/README.md"><img src="docs/assets/flags/et.svg" width="30" alt="ამჰარული (am)" title="ამჰარული (am)"></a>
-  <a href="docs/i18n/uz/README.md"><img src="docs/assets/flags/uz.svg" width="30" alt="უზბეკური (uz)" title="უზბეკური (uz)"></a>
+  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="English (en)" title="English (en)"></a>
+  <a href="docs/i18n/pt-BR/README.md"><img src="docs/assets/flags/br.svg" width="30" alt="Português — Brasil (pt-BR)" title="Português — Brasil (pt-BR)"></a>
+  <a href="docs/i18n/pt/README.md"><img src="docs/assets/flags/pt.svg" width="30" alt="Português (pt)" title="Português (pt)"></a>
+  <a href="docs/i18n/es/README.md"><img src="docs/assets/flags/es.svg" width="30" alt="Español (es)" title="Español (es)"></a>
+  <a href="docs/i18n/fr/README.md"><img src="docs/assets/flags/fr.svg" width="30" alt="Français (fr)" title="Français (fr)"></a>
+  <a href="docs/i18n/it/README.md"><img src="docs/assets/flags/it.svg" width="30" alt="Italiano (it)" title="Italiano (it)"></a>
+  <a href="docs/i18n/de/README.md"><img src="docs/assets/flags/de.svg" width="30" alt="Deutsch (de)" title="Deutsch (de)"></a>
+  <a href="docs/i18n/nl/README.md"><img src="docs/assets/flags/nl.svg" width="30" alt="Nederlands (nl)" title="Nederlands (nl)"></a>
+  <a href="docs/i18n/ru/README.md"><img src="docs/assets/flags/ru.svg" width="30" alt="Русский (ru)" title="Русский (ru)"></a>
+  <a href="docs/i18n/uk-UA/README.md"><img src="docs/assets/flags/ua.svg" width="30" alt="Українська (uk-UA)" title="Українська (uk-UA)"></a>
+  <a href="docs/i18n/pl/README.md"><img src="docs/assets/flags/pl.svg" width="30" alt="Polski (pl)" title="Polski (pl)"></a>
+  <a href="docs/i18n/cs/README.md"><img src="docs/assets/flags/cz.svg" width="30" alt="Čeština (cs)" title="Čeština (cs)"></a>
+  <a href="docs/i18n/sk/README.md"><img src="docs/assets/flags/sk.svg" width="30" alt="Slovenčina (sk)" title="Slovenčina (sk)"></a>
+  <a href="docs/i18n/ro/README.md"><img src="docs/assets/flags/ro.svg" width="30" alt="Română (ro)" title="Română (ro)"></a>
+  <a href="docs/i18n/hu/README.md"><img src="docs/assets/flags/hu.svg" width="30" alt="Magyar (hu)" title="Magyar (hu)"></a>
+  <a href="docs/i18n/bg/README.md"><img src="docs/assets/flags/bg.svg" width="30" alt="Български (bg)" title="Български (bg)"></a>
+  <a href="docs/i18n/da/README.md"><img src="docs/assets/flags/dk.svg" width="30" alt="Dansk (da)" title="Dansk (da)"></a>
+  <a href="docs/i18n/fi/README.md"><img src="docs/assets/flags/fi.svg" width="30" alt="Suomi (fi)" title="Suomi (fi)"></a>
+  <a href="docs/i18n/no/README.md"><img src="docs/assets/flags/no.svg" width="30" alt="Norsk (no)" title="Norsk (no)"></a>
+  <a href="docs/i18n/sv/README.md"><img src="docs/assets/flags/se.svg" width="30" alt="Svenska (sv)" title="Svenska (sv)"></a>
+  <a href="docs/i18n/zh-CN/README.md"><img src="docs/assets/flags/cn.svg" width="30" alt="中文 — 简体 (zh-CN)" title="中文 — 简体 (zh-CN)"></a>
+  <a href="docs/i18n/zh-TW/README.md"><img src="docs/assets/flags/tw.svg" width="30" alt="中文 — 繁體 (zh-TW)" title="中文 — 繁體 (zh-TW)"></a>
+  <a href="docs/i18n/ja/README.md"><img src="docs/assets/flags/jp.svg" width="30" alt="日本語 (ja)" title="日本語 (ja)"></a>
+  <a href="docs/i18n/ko/README.md"><img src="docs/assets/flags/kr.svg" width="30" alt="한국어 (ko)" title="한국어 (ko)"></a>
+  <a href="docs/i18n/th/README.md"><img src="docs/assets/flags/th.svg" width="30" alt="ไทย (th)" title="ไทย (th)"></a>
+  <a href="docs/i18n/vi/README.md"><img src="docs/assets/flags/vn.svg" width="30" alt="Tiếng Việt (vi)" title="Tiếng Việt (vi)"></a>
+  <a href="docs/i18n/id/README.md"><img src="docs/assets/flags/id.svg" width="30" alt="Bahasa Indonesia (id)" title="Bahasa Indonesia (id)"></a>
+  <a href="docs/i18n/ms/README.md"><img src="docs/assets/flags/my.svg" width="30" alt="Bahasa Melayu (ms)" title="Bahasa Melayu (ms)"></a>
+  <a href="docs/i18n/phi/README.md"><img src="docs/assets/flags/ph.svg" width="30" alt="Filipino (phi)" title="Filipino (phi)"></a>
+  <a href="docs/i18n/hi/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="हिन्दी (hi)" title="हिन्दी (hi)"></a>
+  <a href="docs/i18n/gu/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ગુજરાતી (gu)" title="ગુજરાતી (gu)"></a>
+  <a href="docs/i18n/mr/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="मराठी (mr)" title="मराठी (mr)"></a>
+  <a href="docs/i18n/ta/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="தமிழ் (ta)" title="தமிழ் (ta)"></a>
+  <a href="docs/i18n/te/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="తెలుగు (te)" title="తెలుగు (te)"></a>
+  <a href="docs/i18n/bn/README.md"><img src="docs/assets/flags/bd.svg" width="30" alt="বাংলা (bn)" title="বাংলা (bn)"></a>
+  <a href="docs/i18n/ur/README.md"><img src="docs/assets/flags/pk.svg" width="30" alt="اردو (ur)" title="اردو (ur)"></a>
+  <a href="docs/i18n/fa/README.md"><img src="docs/assets/flags/ir.svg" width="30" alt="فارسی (fa)" title="فارسی (fa)"></a>
+  <a href="docs/i18n/ar/README.md"><img src="docs/assets/flags/sa.svg" width="30" alt="العربية (ar)" title="العربية (ar)"></a>
+  <a href="docs/i18n/he/README.md"><img src="docs/assets/flags/il.svg" width="30" alt="עברית (he)" title="עברית (he)"></a>
+  <a href="docs/i18n/tr/README.md"><img src="docs/assets/flags/tr.svg" width="30" alt="Türkçe (tr)" title="Türkçe (tr)"></a>
+  <a href="docs/i18n/az/README.md"><img src="docs/assets/flags/az.svg" width="30" alt="Azərbaycan (az)" title="Azərbaycan (az)"></a>
+  <a href="docs/i18n/sw/README.md"><img src="docs/assets/flags/tz.svg" width="30" alt="Kiswahili (sw)" title="Kiswahili (sw)"></a>
+  <a href="docs/i18n/el/README.md"><img src="docs/assets/flags/gr.svg" width="30" alt="Ελληνικά (el)" title="Ελληνικά (el)"></a>
+  <a href="docs/i18n/hr/README.md"><img src="docs/assets/flags/hr.svg" width="30" alt="Hrvatski (hr)" title="Hrvatski (hr)"></a>
+  <a href="docs/i18n/sr/README.md"><img src="docs/assets/flags/rs.svg" width="30" alt="Српски (sr)" title="Српски (sr)"></a>
+  <a href="docs/i18n/lt/README.md"><img src="docs/assets/flags/lt.svg" width="30" alt="Lietuvių (lt)" title="Lietuvių (lt)"></a>
+  <a href="docs/i18n/et/README.md"><img src="docs/assets/flags/ee.svg" width="30" alt="Eesti (et)" title="Eesti (et)"></a>
+  <a href="docs/i18n/lv/README.md"><img src="docs/assets/flags/lv.svg" width="30" alt="Latviešu (lv)" title="Latviešu (lv)"></a>
+  <a href="docs/i18n/sl/README.md"><img src="docs/assets/flags/si.svg" width="30" alt="Slovenščina (sl)" title="Slovenščina (sl)"></a>
+  <a href="docs/i18n/mt/README.md"><img src="docs/assets/flags/mt.svg" width="30" alt="Malti (mt)" title="Malti (mt)"></a>
+  <a href="docs/i18n/ga/README.md"><img src="docs/assets/flags/ie.svg" width="30" alt="Gaeilge (ga)" title="Gaeilge (ga)"></a>
+  <a href="docs/i18n/kn/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ಕನ್ನಡ (kn)" title="ಕನ್ನಡ (kn)"></a>
+  <a href="docs/i18n/ml/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="മലയാളം (ml)" title="മലയാളം (ml)"></a>
+  <a href="docs/i18n/or/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ଓଡ଼ିଆ (or)" title="ଓଡ଼ିଆ (or)"></a>
+  <a href="docs/i18n/pa/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ਪੰਜਾਬੀ (pa)" title="ਪੰਜਾਬੀ (pa)"></a>
+  <a href="docs/i18n/ne/README.md"><img src="docs/assets/flags/np.svg" width="30" alt="नेपाली (ne)" title="नेपाली (ne)"></a>
+  <a href="docs/i18n/si/README.md"><img src="docs/assets/flags/lk.svg" width="30" alt="සිංහල (si)" title="සිංහල (si)"></a>
+  <a href="docs/i18n/my/README.md"><img src="docs/assets/flags/mm.svg" width="30" alt="မြန်မာ (my)" title="မြန်မာ (my)"></a>
+  <a href="docs/i18n/km/README.md"><img src="docs/assets/flags/kh.svg" width="30" alt="ខ្មែរ (km)" title="ខ្មែរ (km)"></a>
+  <a href="docs/i18n/ha/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Hausa (ha)" title="Hausa (ha)"></a>
+  <a href="docs/i18n/yo/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Yorùbá (yo)" title="Yorùbá (yo)"></a>
+  <a href="docs/i18n/ig/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Igbo (ig)" title="Igbo (ig)"></a>
+  <a href="docs/i18n/am/README.md"><img src="docs/assets/flags/et.svg" width="30" alt="አማርኛ (am)" title="አማርኛ (am)"></a>
+  <a href="docs/i18n/uz/README.md"><img src="docs/assets/flags/uz.svg" width="30" alt="Oʻzbekcha (uz)" title="Oʻzbekcha (uz)"></a>
   <a href="docs/i18n/ka/README.md"><img src="docs/assets/flags/ge.svg" width="30" alt="ქართული (ka)" title="ქართული (ka)"></a>
-  <a href="docs/i18n/hy/README.md"><img src="docs/assets/flags/am.svg" width="30" alt="სომხური (hy)" title="სომხური (hy)"></a>
-  <a href="docs/i18n/bs/README.md"><img src="docs/assets/flags/ba.svg" width="30" alt="ბოსნიური (bs)" title="ბოსნიური (bs)"></a>
+  <a href="docs/i18n/hy/README.md"><img src="docs/assets/flags/am.svg" width="30" alt="Հայերեն (hy)" title="Հայերեն (hy)"></a>
+  <a href="docs/i18n/bs/README.md"><img src="docs/assets/flags/ba.svg" width="30" alt="Bosanski (bs)" title="Bosanski (bs)"></a>
 </div>
 
 <br/>
@@ -590,35 +585,35 @@ Radar-ში მონაწილეობა ნებაყოფლობი
 
 </div>
 
-> უახლესი მნიშვნელოვანი სიახლეები **v3.8.20 → v3.8.55** ვერსიებს შორის. სრული ისტორია იხილეთ [`CHANGELOG.md`](CHANGELOG.md)-ში.
+> ბოლოდროინდელი მაჩვენებლები** v3.8.20 → v3.8.55** . სრული ისტორია [`CHANGELOG.md`](CHANGELOG.md) ში.
 
-- **⚖️ `quota-weighted` მარშრუტიზაცია** — კომბინირებული სტრატეგიების მე-20 ვარიანტი გამოფიტულ ანგარიშებს გამოტოვებს, შემდეგ კი დანარჩენებს შორის არჩევანს აკეთებს დარჩენილი კვოტისა და მიმდინარე მოთხოვნების დატვირთვის შეფარდების პროპორციულად, ხოლო არსებულ საუბრებს იმავე ანგარიშებზე ამაგრებს. → [ავტომატური კომბინაცია](docs/routing/AUTO-COMBO.md)
-- **🧰 Headless რეჟიმი** — `omniroute serve --headless` (ან `OMNIROUTE_HEADLESS=1`) ამუშავებს მხოლოდ `/v1/*` პროქსის ძრავას და თიშავს დაფასა და მხოლოდ დაფისთვის განკუთვნილ ქვესისტემებს. → [Headless რეჟიმი](docs/guides/HEADLESS.md)
-- **🔎 მოდელების აღმოჩენა** — `/v1/models` ფილტრავს შესაძლებლობის, კონტექსტის, ტიპისა და ტექსტის მიხედვით, ხოლო `POST /v1/models/query` აბრუნებს მოკლე, დეტერმინისტულ კანდიდატთა სიას იმავე გასაღების დონის ხილვადობით. → [API-ის ცნობარი](docs/reference/API_REFERENCE.md)
-- **🔑 თითოეული გასაღებისთვის მარშრუტიზაციის კონტროლი** — API-გასაღები მიამაგრეთ ერთ მოდელზე ან კომბინაციაზე `forcedModel`-ის გამოყენებით და ატომურად დაამატეთ ან წაშალეთ გასაღების მოდელები და კომბინაციები (`/api/keys/{id}/access`). → [API-ის ცნობარი](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
-- **🛡️ PII-ის უფრო დეტალური კონტროლი** — ტიპების მიხედვით არჩევა, მაქსიმუმ 20 ვალიდირებული მორგებული დაფარვის ნიმუში და ტიპების მიხედვით აღმოჩენის მრიცხველები; თავად დაფარვა კვლავ სურვილისამებრ ირთვება. → [დამცავი წესები](docs/security/GUARDRAILS.md)
-- **🌍 67 ენა** — დაფა, დოკუმენტაციის სარკეები და CLI, ხოლო `npm run i18n:add-locale` ერთი ბრძანებით ამატებს ენას ყველგან. → [i18n-ის სახელმძღვანელო](docs/guides/I18N.md)
-- **🎛️ OmniConductor** — შემომავალი A2A დელეგირება თქვენი აგენტების ფლოტისთვის, Conductor-ის უნარები Agent Card-ზე და დაფის პანელი Faro-ს push-to-talk ხმოვანი ჩატით. → [A2A სერვერი](docs/frameworks/A2A-SERVER.md)
-- **🛂 ადაპტური დაშვება და გადატვირთვისგან დაცვა** — მძიმე ჩატის მოთხოვნები რიგში თავსდება 503-ით დასრულების ნაცვლად, თითოეული კავშირისთვის RPM-ის მოძრავი ლიზინგების ატომური მართვით. → [მედეგობის სახელმძღვანელო](docs/architecture/RESILIENCE_GUIDE.md)
-- **🗂️ `/v1/models`-ის კანონიკური დალაგება** — თითოეულ პროვაიდერზე ერთი უწყვეტი, პროვაიდერის მიხედვით დაჯგუფებული ბლოკი (კომბინაციები პირველ ადგილზე), სტაბილურად ყველა კატალოგის წყაროში. → [API-ის ცნობარი](docs/reference/API_REFERENCE.md)
-- **🗜️ შეკუმშვის გამაგრება** — ნაგულისხმევად ჩართული გაფართოებისგან დამცავი მექანიზმი, Caveman-ის პაკეტები DE / FR / JA-სა და ჩინურისთვის (wényán), RTK-ფილტრები Gradle-ისა და .NET-ისთვის. → [შეკუმშვა](docs/compression/COMPRESSION_ENGINES.md)
-- **💸 ბრტყელი ტარიფის რეალისტური ღირებულება** — სააბონენტო / კოდირების გეგმის პროვაიდერების ღირებულების ანალიტიკაში მითითებულია **$0**; ბიუჯეტი, კვოტა და მარშრუტიზაცია შეფასებას კვლავ ახორციელებს. → [API-ის ცნობარი](docs/reference/API_REFERENCE.md)
-- **⚖️ Quota-Share მარშრუტიზაცია** — საერთო ანგარიშის კვოტას სამართლიანად ანაწილებს გაერთიანებულ გასაღებებს შორის და რესურსებს ეფექტიანად იყენებს: უმოქმედო ნაწილები დროებით გადაეცემა სხვებს. → [მედეგობის სახელმძღვანელო](docs/architecture/RESILIENCE_GUIDE.md)
-- **🤖 CLI/აგენტის ერთბრძანებიანი დაყენება** — რეგისტრირებულია 15 `setup-*` ბრძანება; `omniroute run` უშვებს 7 CLI-ს (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI); `omniroute configure` მხარს უჭერს 11 სამიზნეს ინტერაქტიული პროვაიდერისა და მოდელის ამრჩევით და თითოეული კონტექსტისთვის რჩეულებით. → [CLI ინტეგრაციები](docs/guides/CLI-INTEGRATIONS.md)
-- **🛰️ დისტანციური რეჟიმი** — მართეთ დისტანციური OmniRoute შეზღუდული მოქმედების ტოკენებით (`connect` / `contexts` / `tokens`) და გამოიყენეთ `antigravity` OAuth დამხმარე VPS-ზე დასაყენებლად. → [დისტანციური რეჟიმი](docs/guides/REMOTE-MODE.md)
-- **🧭 უფრო ჭკვიანი ავტომატური მარშრუტიზაცია** — `auto/<category>:<tier>` კომბინაციები, **Fusion** (მოდელების პანელი + მსაჯი), ამოცანაზე მორგებული მარშრუტიზაცია და თითოეული მოთხოვნისთვის მოდელის / რეჟიმის / USD-ბიუჯეტის გადაფარვა. → [ავტომატური კომბინაცია](docs/routing/AUTO-COMBO.md)
-- **🗜️ მოდულური შეკუმშვა** — 12 კომბინირებადი ძრავა და Compression Studios: LLMLingua-2, ორსაფეხურიანი Ultra, omniglyph, თითოეული ნაბიჯის სიზუსტის კარიბჭე, GCF v3.2 და გადაადგილებით დალაგების რედაქტორი. → [შეკუმშვა](docs/compression/COMPRESSION_ENGINES.md)
-- **🕵️ გამჭვირვალე MITM-გაშიფვრა (TPROXY)** — ისეთი CLI-ების ტრაფიკის დაჭერა, რომლებიც პროქსის გარემოს ცვლადებს უგულებელყოფენ, თითოეული SNI-სთვის CA-ითა და სანდო საცავის ინსტალერით. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
-- **💸 ღირებულების ტელემეტრია ყველგან** — `X-OmniRoute-*` ღირებულების/გამოყენების ჰედერები ყველა endpoint-ზე, ქეშის HIT-ით მიღებული დანაზოგის ჰედერი და თითოეული გასაღებისთვის USD ხარჯვის კვოტები. → [API-ის ცნობარი](docs/reference/API_REFERENCE.md)
-- **🧠 თქვენ მიერ კონტროლირებადი მეხსიერება** — ნაგულისხმევად გამორთულია; სურვილისამებრ ჩასართავი int8 ვექტორული კვანტიზაცია და ტიპზე დამოკიდებული შესუსტება, თითოეული მოთხოვნისთვის `x-omniroute-no-memory`. → [მეხსიერება](docs/frameworks/MEMORY.md)
-- **🛡️ უსაფრთხოება** — prompt injection-ისგან დამცავი მექანიზმი ყველა LLM მარშრუტზე (red-team-ის ტესტების ნაკრებით), სურვილისამებრ ჩასართავი ავტორიზაციის მონაცემების დაფარვა (ორივე მიმართულებით გაჟონილი API-გასაღებების/საიდუმლოებების წაშლა), უფასო DuckDuckGo ვებძიება, როგორც უკანასკნელი საშუალება, და სურვილისამებრ OIDC-ით შესვლის ბარიერი დაფისთვის (პაროლით შესვლა ყოველთვის ხელმისაწვდომი რჩება). → [დამცავი წესები](docs/security/GUARDRAILS.md)
-- **🖼️ ახალი endpoint-ები** — `/v1/ocr` (Mistral OCR) და `/v1/audio/translations` (Whisper-ის სტილის) ავსებს მედიასთან დაკავშირებულ შესაძლებლობებს. → [API-ის ცნობარი](docs/reference/API_REFERENCE.md)
-- **🎨 სურათების / ვიდეოს / აუდიოს გენერაცია** — მედიისთვის ერთი API: xAI Grok Imagine და Novita AI-ის ვიდეო, ComfyUI, Magnific, Adobe Firefly, Segmind და ხმოვანი პროვაიდერები, მათ შორის ElevenLabs. → [API-ის ცნობარი](docs/reference/API_REFERENCE.md)
-- **🌍 განთავსება და ოპერაციები** — reverse-proxy-ის `basePath`, ბრაუზერის ენის ავტომატური აღმოჩენა, თითოეული გასაღების მოწყობილობის თვალყურის დევნება, root-ის გარეშე MITM-ის ნდობა და zh-TW ლოკალიზაცია. → [გარემო](docs/reference/ENVIRONMENT.md)
-- **🤝 მეტი პროვაიდერი და აგენტი** — ღრუბლოვანი აგენტები (Codex Cloud, Cursor, Devin, Jules), Grok Build (xAI) ბრაუზერითა და OAuth-ით შესვლით, Ollama-ს სრულფასოვანი ბარათი, Claude Opus 5 და Sonnet 5, Kimi-ს ოფიციალური პარტნიორობა (Code/Web/Moonshot), Zed, Requesty, SenseNova, Yuanbao, Agnes AI… და განახლებული **394-პროვაიდერიანი კატალოგი**. → [პროვაიდერები](docs/reference/PROVIDER_REFERENCE.md)
-- **📡 მარშრუტიზაციის გამჭვირვალობა** — ყოველ პასუხს ახლავს `X-OmniRoute-Decision` ჰედერი, რომელიც მიუთითებს მის მომწოდებელ სტრატეგიასა და დაყოვნებას; ახალი `cache-optimized` კომბინირებული სტრატეგია და Auto-Combo-ის `cacheAffinity` ფაქტორი განმეორებით მოთხოვნებს აბრუნებს იმ კავშირთან, რომელიც ქეშირებულ პრეფიქსს ფლობს; მხოლოდ წაკითხვადი `/v1/auto-combo/{channel}/candidates` endpoint ავლენს `auto/*` არხის კანდიდატთა აქტუალურ ნაკრებს. → [ავტომატური კომბინაცია](docs/routing/AUTO-COMBO.md)
-- **⚡ ლოკალური წარმადობა და ინფრასტრუქტურა** — ლოკალური Redis-ის გაშვება ერთი დაწკაპუნებით, Cloudflare Workers / Deno Deploy-ის relay-ის დეployერები, Bifrost და Mux — ზედამხედველობის ქვეშ მყოფი ჩაშენებული სერვისები. → [ჩაშენებული სერვისები](docs/frameworks/EMBEDDED-SERVICES.md)
-- **🧩 ასევე კომპლექტში** — პლაგინების ფრეიმვორკი და მარკეტფლეისი, Omni/Agent/GitHub-ის უნარების ფრეიმვორკები, Obsidian vault-ის ინტეგრაცია (22 MCP ინსტრუმენტი), OpenAI-თან თავსებადი Batch და Files API-ები, სემანტიკური პასუხების ქეში, გეიმიფიკაცია ლიდერბორდებით, ACP აგენტების აღმოჩენა (15 ჩაშენებული აგენტი), ჟურნალების დაგეგმილი ექსპორტი BigQuery-ში, `auto/chaos` პარალელური მრავალმოდელური fan-out, Telegram ბოტის ხიდი, აპში ჩაშენებული ვერსიების მენეჯერი და LMArena-ELO-ის უფასო პროვაიდერების რეიტინგები. → [დოკუმენტაცია](docs/README.md)
+- **⚖️ `quota-weighted` მარშრუტიზაცია** — მე-20 კომბინირებული სტრატეგია გამოტოვებს ამოწურულ ანგარიშებს, შემდეგ ანაწილებს დანარჩენებს შორის ÷ დარჩენილი კვოტის პროპორციულად ფრენის დროს და ინახავს არსებულ საუბრებს მიმაგრებული. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **🧰 უთავო რეჟიმი** — `omniroute serve --headless` (ან `OMNIROUTE_HEADLESS=1`) მუშაობს მხოლოდ `/v1/*` proxy ძრავით, დაფის და მხოლოდ დაფის ქვესისტემებით გამორთული. → [უთავო რეჟიმი](docs/guides/HEADLESS.md)
+- **🔎 მოდელის აღმოჩენა** — `/v1/models` ფილტრავს შესაძლებლობების, კონტექსტის, სახის და ტექსტის მიხედვით და `POST /v1/models/query` აბრუნებს მოკლე დეტერმინისტულ მოკლე სიას თითო გასაღების იგივე ხილვადობით. → [API მითითება](docs/reference/API_REFERENCE.md)
+- **🔑 თითო გასაღების მარშრუტიზაციის კონტროლი** — ჩაამაგრეთ API გასაღები ერთ მოდელზე ან კომბინირებულზე `forcedModel` ით და დაამატეთ ან ამოიღეთ გასაღების მოდელები და კომბინაციები ატომურად (`/api/keys/{id}/access`). → [API მითითება](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
+- **🛡️ უფრო დახვეწილი PII კონტროლი** — თითო ტიპის შერჩევა, 20-მდე დადასტურებული საბაჟო ნიღბის ნიმუში და თითო ტიპის გამოვლენის მრიცხველი; შენიღბვა თავისთავად რჩება არჩევანში. → [მცველები](docs/security/GUARDRAILS.md)
+- **🌍 67 ენა** — დაფა, docs mirrors და CLI, `npm run i18n:add-locale` ით ამატებს ენას ყველგან ერთი ბრძანებით. → [i18n გზამკვლევი](docs/guides/I18N.md)
+- **🎛️ OmniConductor** — შემომავალი A2A დელეგაცია თქვენს აგენტურ ფლოტში, დირიჟორის უნარები აგენტის ბარათზე და დაფის პანელი Faro Push-to-Talk ხმოვანი ჩატით. → [A2A სერვერი](docs/frameworks/A2A-SERVER.md)
+- **🛂 ადაპტური დაშვებისა და გადატვირთვისაგან დაცვა** — მძიმეწონიანი ჩატი ითხოვს რიგს 503ing-ის ნაცვლად, ატომური RPM მოძრავი იჯარით თითო კავშირზე. → [გამძლეობის სახელმძღვანელო](docs/architecture/RESILIENCE_GUIDE.md)
+- **🗂️ კანონიკური `/v1/models` შეკვეთა** — ერთი მომიჯნავე პროვაიდერის მიერ დაჯგუფებული ბლოკი თითო პროვაიდერზე (პირველი ჩამაგრებული კომბინაციები), სტაბილური ყველა კატალოგის წყაროში. → [API მითითება](docs/reference/API_REFERENCE.md)
+- **🗜️ შეკუმშვის გამკვრივება** — ნაგულისხმევად ჩართული ინფლაციის მცველი, Caveman პაკეტები DE / FR / JA + ჩინური (wényán), RTK ფილტრები Gradle-სთვის და .NET. → [შეკუმშვა](docs/compression/COMPRESSION_ENGINES.md)
+- **💸 პატიოსანი უცვლელი ღირებულება** წაიკითხეს — გამოწერის / კოდირების გეგმის პროვაიდერები** $0** ხარჯების ანალიტიკაში; ბიუჯეტი, კვოტა და მარშრუტი განაგრძეთ შეფასებას. → [API მითითება](docs/reference/API_REFERENCE.md)
+- **⚖️ Quota-გაზიარების მარშრუტიზაცია** — ანაწილებს საერთო ანგარიშის კვოტას საკმაოდ გაერთიანებულ გასაღებებზე, რაც მუშაობს ისე, რომ უმოქმედო ფრაგმენტები გაცემულია. → [გამძლეობის სახელმძღვანელო](docs/architecture/RESILIENCE_GUIDE.md)
+- **🤖 ერთი ბრძანება CLI/agent დაყენება** — 15 რეგისტრირებული `setup-*` ბრძანება; `omniroute run` უშვებს 7 CLIs (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI); `omniroute configure` მხარს უჭერს 11 სამიზნეს ინტერაქტიული პროვაიდერის + მოდელის ამომრჩეველთან და თითო კონტექსტის ფავორიტებთან. → [CLI ინტეგრაციები](docs/guides/CLI-INTEGRATIONS.md)
+- **🛰️ დისტანციური რეჟიმი** — მართეთ დისტანციური OmniRoute მასშტაბური ნიშნებით (`connect` / `contexts` / `tokens`) + ან `antigravity` OAuth დამხმარე VPS ინსტალაციისთვის. → [დისტანციური რეჟიმი](docs/guides/REMOTE-MODE.md)
+- **🧭 უფრო ჭკვიანი ავტომატური მარშრუტიზაცია** — `auto/<category>:<tier>` კომბინაციები,** შერწყმა** (მოდელის პანელი + მოსამართლე), ამოცანების გაცნობიერებული მარშრუტიზაცია, თითო მოთხოვნის მოდელი / რეჟიმი / აშშ დოლარის ბიუჯეტის გადაჭარბება. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **🗜️ დასამაგრებელი შეკუმშვა** — 12 კომპოზირებადი ძრავა + შეკუმშვის სტუდიები: LLMLingua-2, ორსაფეხურიანი Ultra, omniglyph, თითო ნაბიჯის ერთგულების კარიბჭე, GCF v3.2, გადაადგილების რედაქტორი. → [შეკუმშვა](docs/compression/COMPRESSION_ENGINES.md)
+- **🕵️ გამჭვირვალე MITM გაშიფვრა (TPROXY)** — აიღეთ CLIs, რომელიც უგულებელყოფს proxy env vars-ს, per-SNI CA + trust-store ინსტალერით. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
+- **💸 ფასიანი ტელემეტრია ყველგან** — `X-OmniRoute-*` cost/usage სათაურები ყველა ბოლო წერტილზე, cache-HIT შემნახველი სათაური, თითო გასაღები USD ხარჯვის კვოტები. → [API მითითება](docs/reference/API_REFERENCE.md)
+- **🧠 მეხსიერება თქვენ აკონტროლებთ** — გამორთულია ნაგულისხმევად, ჩართეთ int8 ვექტორული კვანტიზაცია + აკრეფილი decay, თითო მოთხოვნა `x-omniroute-no-memory`. → [მეხსიერება](docs/frameworks/MEMORY.md)
+- **🛡️ უსაფრთხოება** — სწრაფი ინექციის დამცავი ყველა LLM მარშრუტზე (წითელი გუნდის კომპლექტი), რწმუნებათა სიგელების დამცავი დამცავი რგოლი (გაჟღენთილი API keys/secrets ორივე მიმართულებით), უფასო DuckDuckGo ბოლო კურორტის ვებ ძიება და არჩევითი OIDC შესვლის კარი დაფაზე (პაროლით შესვლა ყოველთვის ხელმისაწვდომი რჩება). → [დაცვა](docs/security/GUARDRAILS.md)
+- **🖼️ ახალი ბოლო წერტილები** — `/v1/ocr` (Mistral OCR) და `/v1/audio/translations` (ჩურჩულის სტილში) ამრგვალებენ მედიის ზედაპირს. → [API მითითება](docs/reference/API_REFERENCE.md)
+- **🎨 გამოსახულების / ვიდეო / აუდიო გენერაცია** — ერთი API მედიისთვის: xAI Grok Imagine & Novita AI ვიდეო, ComfyUI, Magnific, Adobe Firefly, Segmind და მეტყველების პროვაიდერები, როგორიცაა ElevenLabs. → [API მითითება](docs/reference/API_REFERENCE.md)
+- **🌍 განლაგება და ოპერაციები** — საპირისპირო პროქსი `basePath`, ბრაუზერის ენაზე ავტომატური ამოცნობა, თითო კლავიშის მოწყობილობის თვალყურის დევნება, Root-ის გარეშე MITM ნდობა, zh-TW ლოკალიზაცია. → [გარემო](docs/reference/ENVIRONMENT.md)
+- **🤝 More providers & agents** — cloud agents (Codex Cloud, Cursor, Devin, Jules), Grok Build (xAI) with browser + OAuth login, Ollama first-class card, Claude Opus 5 & Sonnet 5, Kimi official partnership (Code/Web/Moonshot), Zed, Requesty, SenseNova, Yuanbao, Agnes AI… and a refreshed **394-provider catalog**. → [Providers](docs/reference/PROVIDER_REFERENCE.md)
+- **📡 მარშრუტის გამჭვირვალობა** — ყოველი პასუხი შეიცავს `X-OmniRoute-Decision` სათაურს, რომელიც ასახელებს strategy/provider/latency, რომელიც მას ემსახურებოდა, ახალი `cache-optimized` კომბინირებული სტრატეგია + Auto-Combo `cacheAffinity` ფაქტორის მარშრუტის გამეორება ითხოვს დაბრუნებას ქეშირებული პრეფიქსის შემცველ კავშირთან, და მხოლოდ წაკითხვადი `/v1/auto-combo/{channel}/candidates` ბოლო წერტილი გამოავლენს `auto/*` არხის ცოცხალი კანდიდატის აუზს. → [ავტომატური კომბო](docs/routing/AUTO-COMBO.md)
+- **⚡ ლოკალური შესრულება და ინფრა** — ერთი დაწკაპუნებით ადგილობრივი Redis, Cloudflare Workers / Deno Deploy სარელეო დეველოპერები, Bifrost & Mux, როგორც ზედამხედველობითი ჩაშენებული სერვისები. → [ჩაშენებული სერვისები](docs/frameworks/EMBEDDED-SERVICES.md)
+- **🧩 ასევე ყუთში** — დანამატის ჩარჩო + ბაზარი, Omni/Agent/GitHub უნარების ჩარჩოები, Obsidian vault ინტეგრაცია (22 MCP ინსტრუმენტი), OpenAI-თან თავსებადი Batch & Files APIs, სემანტიკური პასუხების ქეში, გემიფიკაცია ლიდერბორდებით, ACP აგენტის აღმოჩენა (15 ჩაშენებული აგენტი), Telegram ჟურნალის ექსპორტი BigQuery `auto/chaos` para-fan. bridge, აპლიკაციის შიდა ვერსიის მენეჯერი და LMARena-ELO უფასო პროვაიდერის რეიტინგი. → [Docs](docs/README.md)
 
 <br/>
 
@@ -767,93 +762,80 @@ omniroute configure codex          # ასევე: claude opencode qwen aider
 
 <div align="center">
 
-## 🖥️ სად მუშაობს OmniRoute — ყველგან
+## 🖥️ სად OmniRoute გადის — სადმე
 
 </div>
 
-> იგივე აპი, თქვენს მოწყობილობაზე, თქვენი წესებით. გლობალური npm-ინსტალაციიდან დაწყებული, Termux-ის საშუალებით **თქვენს ტელეფონზე** გაშვებით დამთავრებული.
+> იგივე აპლიკაცია, თქვენი მანქანა, თქვენი წესები. გლობალური npm ინსტალაციისგან** თქვენი ტელეფონი** Termux-ის საშუალებით.
 
 <table>
-  <tr><th align="left">პლატფორმა</th><th align="left">ინსტალაცია</th><th align="left">მთავარი უპირატესობები</th></tr>
-  <tr><td align="left" nowrap>📦 <b>npm (გლობალური)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">ერთი ბრძანება, ნებისმიერი ოპერაციული სისტემა</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Bun (გლობალური)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">იგივე რეესტრის tarball, უფრო სწრაფი ინსტალაციები</td></tr>
-  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … diegosouzapw/omniroute</code></td><td align="left">მრავალარქიტექტურული <b>AMD64 + ARM64</b></td></tr>
-  <tr><td align="left" nowrap>🖥️ <b>დესკტოპი (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">ნატიური ფანჯარა + სისტემური ტრეი — <b>Windows / macOS / Linux</b></td></tr>
-  <tr><td align="left" nowrap>🎩 <b>მენიუს ზოლი (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">სერვერის მონიტორინგი და ავტომატური განახლებები — <b>macOS</b></td></tr>
-  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>ნატიური <code>arm64</code></td><td align="left">Raspberry Pi, ARM სერვერები, Apple Silicon</td></tr>
-  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">მუშაობს <b>თქვენს ტელეფონზე</b>, 24/7, root-ის გარეშე</td></tr>
-  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"მთავარ ეკრანზე დამატება"</td><td align="left">სრულეკრანიანი, ოფლაინ, ბრაუზერიდან დასაინსტალირებელი</td></tr>
-  <tr><td align="left" nowrap>🧩 <b>OpenCode-ის პლაგინი</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">OpenCode-თან ნატიური ინტეგრაცია</td></tr>
-  <tr><td align="left" nowrap>🤖 <b>VS Code Copilot Chat</b></td><td align="left" nowrap>დააინსტალირეთ <b>OmniCopilot</b> გაფართოება</td><td align="left">OmniRoute-ის ყველა მოდელი ნატიურ Copilot Chat-ის ამომრჩეველში — სტაბილური და Insiders ვერსიები</td></tr>
-  <tr><td align="left" nowrap>🛠️ <b>საწყისი კოდიდან</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">მოარგეთ, შეიტანეთ წვლილი</td></tr>
+  <tr><th align="left">პლატფორმა</th><th align="left">დააინსტალირეთ</th><th align="left">მაჩვენებლები</th></tr>
+  <tr><td align="left" nowrap>📦 <b>npm (გლობალური)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">ერთი ბრძანება, ნებისმიერი OS</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Bun (გლობალური)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">იგივე რეესტრის tarball, უფრო სწრაფი ინსტალაცია</td></tr>
+  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … cheaperinference/omniroute</code></td><td align="left">მრავალთაღოვანი <b>AMD64 + ARM64</b></td></tr>
+  <tr><td align="left" nowrap>🖥️ <b>სამუშაო მაგიდა (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">მშობლიური window + სისტემის უჯრა — <b>Windows / macOS / Linux</b></td></tr>
+  <tr><td align="left" nowrap>🎩 <b>მენიუ-ბარი (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">ზედამხედველობს &amp; ავტომატური განახლება სერვერის — <b>macOS</b></td></tr>
+  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>მშობლიური <code>arm64</code></td><td align="left">Raspberry Pi, ARM სერვერები, Apple Silicon</td></tr>
+  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">ეშვება <b>თქვენს ტელეფონზე</b>, 24/7, ფესვი არ არის</td></tr>
+  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"საწყის ეკრანზე დამატება"</td><td align="left">სრული ეკრანი, ხაზგარეშე, ინსტალაცია ბრაუზერიდან</td></tr>
+  <tr><td align="left" nowrap>🧩 <b>OpenCode მოდული</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">მშობლიური OpenCode ინტეგრაცია</td></tr>
+  <tr><td align="left" nowrap>🤖 <b>VS კოდი Copilot ჩატი</b></td><td align="left" nowrap>დააინსტალირეთ <b>OmniCopilot</b> გაფართოება</td><td align="left">ყველა OmniRoute მოდელი მშობლიურ Copilot ჩეთის ამომრჩეველში — სტაბილური &amp; Insiders</td></tr>
+  <tr><td align="left" nowrap>🛠️ <b>წყაროდან</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">გატეხეთ, წვლილი შეიტანეთ</td></tr>
 </table>
 
-<sub>📖 [Docker-ის სახელმძღვანელო](docs/guides/DOCKER_GUIDE.md) · [დესკტოპი](electron/README.md) · [მენიუს ზოლის ტრეი](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
+<sub>📖 [Docker გზამკვლევი](docs/guides/DOCKER_GUIDE.md) · [სამუშაო მაგიდა](electron/README.md) · [მენიუს ზოლის უჯრა](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
 
 <br/>
 
 <div align="center">
 
-### 🧩 ახალი: OmniRoute VS Code-ის ნატიურ Copilot Chat-ში
+### 🧩 ახალი: OmniRoute VS კოდის მშობლიურ Copilot ჩატში
 
 </div>
 
-> არანაირი ახალი გვერდითი ზოლი და ახალი ჩატის ინტერფეისი — ყველა მოდელი, რომელსაც OmniRoute აწვდის, პირდაპირ გამოჩნდება
-> **Copilot Chat-ის მოდელების ამომრჩეველში, რომელსაც უკვე იყენებთ**. VS Code 1.122-იდან მოყოლებული, პროვაიდერის მოდელები მუშაობს
-> GitHub-ში შესვლის ან Copilot-ის გამოწერის გარეშე — აგენტური რეჟიმი, ხელსაწყოების გამოძახება და ხედვა,
-> უფასოდ.
+> არცერთი ახალი გვერდითი ზოლი, არც ახალი ჩატი UI — ყველა მოდელი, OmniRoute ემსახურება, პირდაპირ გამოჩნდება**Copilot ჩატის მოდელის ამომრჩევი, რომელსაც უკვე იყენებთ** . VS Code 1.122-დან მოყოლებული, პროვაიდერის მოდელები მუშაობს GitHub შესვლის ან Copilot გამოწერის — აგენტის რეჟიმის, ხელსაწყოების დარეკვისა და ხედვის გარეშე, უფასოდ.
 
-დააინსტალირეთ **[OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)** გაფართოება, მიუთითეთ ის
-OmniRoute-ის სერვერზე (ნაგულისხმევია `localhost:20128`), შემდეგ გახსენით Copilot Chat → მოდელების ამომრჩეველი
-→ **მოდელების მართვა…** → **OmniRoute**.
+დააინსტალირეთ** [OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)** გაფართოება, მიუთითეთ ის თქვენს OmniRoute სერვერზე (ნაგულისხმევად არის `localhost:20128`), შემდეგ გახსენით Copilot Chat → model picker →** მოდელების მართვა…** →**OmniRoute** .
 
 <table>
   <tr><th align="left">მაღაზია</th><th align="left">ბმული</th><th align="left">მუშაობს</th></tr>
-  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">ინსტალაცია →</a></td><td align="left">VS Code — სტაბილური და Insiders ვერსიები</td></tr>
-  <tr><td align="left" nowrap>🔓 <b>Open VSX Registry</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">ინსტალაცია →</a></td><td align="left">Cursor, Windsurf, VSCodium, Theia, code-server, Gitpod, Antigravity, Kiro…</td></tr>
+  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">დააინსტალირეთ →</a></td><td align="left">VS კოდი — სტაბილური &amp; ინსაიდერები</td></tr>
+  <tr><td align="left" nowrap>🔓 <b>გახსენით VSX რეესტრი</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">დააინსტალირეთ →</a></td><td align="left">Cursor, Windsurf, VSCodium, თეია, კოდი სერვერი, Gitpod, Antigravity, Kiro…</td></tr>
 </table>
 
-რედაქტორის შიგნიდან: გახსენით **Extensions** ხედი, მოძებნეთ **"OmniRoute"**, დააწკაპუნეთ **Install**-ზე
-— ორივე მაღაზიაში ერთნაირად მუშაობს. კოდი, საკითხები და გამოქვეყნების სახელმძღვანელო განთავსებულია
-[diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)-ში.
+რედაქტორის შიგნიდან: გახსენით** გაფართოებები** ნახვა, ძიება** "OmniRoute"** , დააწკაპუნეთ** დააინსტალირეთ** — მუშაობს ერთნაირად ორივე მაღაზიაში. წყარო, საკითხები და საგამომცემლო სახელმძღვანელო პირდაპირ ეთერში [diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot) ზე.
 
-<sub>📖 [VS Code Copilot Chat-ის სახელმძღვანელო](docs/guides/VSCODE-COPILOT.md) — დაყენება, რას აჩვენებს ამომრჩეველი, დაფა ჩანართში, პრობლემების აღმოფხვრა</sub>
+<sub>📖 [VS კოდი Copilot ჩეთის გზამკვლევი](docs/guides/VSCODE-COPILOT.md) — დაყენება, ამომრჩეველი აჩვენებს, დაფა-ჩანართში, პრობლემების მოგვარება</sub>
 
 <br/>
 
 <div align="center">
 
-### 🎩 ახალი: OmniRouteTray — თქვენი კარიბჭე, რომელიც მენიუს ზოლში ცხოვრობს
+### 🎩 ახალი: OmniRouteTray — თქვენი კარიბჭე, რომელიც ცხოვრობს მენიუს ზოლში
 
 </div>
 
-> `omniroute serve` ყველაზე ბედნიერია, როცა ის ყოველთვის ჩართულია. **[OmniRouteTray](https://github.com/zoispag/omniroute-tray)**
-> ამას macOS-ისთვის აქცევს მენიუს ზოლის ისეთ აპად, რომელსაც ერთხელ დააყენებთ და დაივიწყებთ: ის რთავს სერვერს, ცოცხლად ტოვებს მას
-> გადატვირთვების შემდეგაც, აახლებს ადგილზე და თქვენი მიმდინარე ტოკენების ბიუჯეტს ერთი დაწკაპუნებით ხელმისაწვდომს ხდის — **არანაირი
-> ღია ტერმინალის ფანჯარა და არანაირი `npm install -g omniroute`, რომლის ზედამხედველობაც დაგჭირდებათ.**
+> `omniroute serve` ყველაზე ბედნიერია, როცა ის ყოველთვის ჩართულია.** [OmniRouteTray](https://github.com/zoispag/omniroute-tray)** აქცევს მას მენიუს ზოლის დაყენების და დავიწყების აპად macOS სთვის: ის იწყებს სერვერს, ინარჩუნებს მას ცოცხლად გადატვირთვისას, განაახლებს მას ადგილზე და აყენებს თქვენს ცოცხალი ტოკენის ბიუჯეტს ერთი დაწკაპუნებით —** არც ერთი ტერმინალის ფანჯარა არ დარჩა ღია, არც `npm install -g omniroute`.**
 
-შექმნილია [Tauri v2](https://v2.tauri.app/)-ით (Rust-ის ბირთვი, რომლის ზომაც დამრგვალების შეცდომას უტოლდება), მას მოჰყვება
-საკუთარი ხელმოწერილი Node 24-ის runtime და მართავს აპის კუთვნილ OmniRoute-ის ინსტალაციას, ამიტომ ის არასდროს ეწინააღმდეგება თქვენს
-გლობალურ `node`/`bun`-ს. ის **აზიარებს თქვენს არსებულ `~/.omniroute/` კონფიგურაციასა და მონაცემთა ბაზას** — ასე რომ,
-ეს იგივე OmniRoute-ია, რომელსაც უკვე იყენებთ, უბრალოდ ქუდით. 🎩
+აგებულია [Tauri v2-](https://v2.tauri.app/) ით (Rust ბირთვი დამრგვალების შეცდომის ზომით), ის აგზავნის საკუთარ ხელმოწერილ Node 24-ის გაშვებას და მართავს აპლიკაციის საკუთრებაში არსებულ OmniRoute ინსტალაციას, ასე რომ, არასოდეს შეებრძოლება თქვენს გლობალურ `node`/`bun`. ის** იზიარებს თქვენს არსებულ `~/.omniroute/` კონფიგურაციას და მონაცემთა ბაზას** — ასე რომ იგივე OmniRoute თქვენ უკვე დარბიხართ, მხოლოდ ქუდით. 🎩
 
 <table>
-  <tr><th align="left">რას აკეთებს</th><th align="left">როგორ</th></tr>
-  <tr><td align="left" nowrap>🟢 <b>სერვერს ზედამხედველობს</b></td><td align="left">უშვებს <code>omniroute serve</code>-ს და დუბლირების ნაცვლად იყენებს უკვე გაშვებულ ინსტანციას</td></tr>
-  <tr><td align="left" nowrap>📊 <b>გამოყენების მიმდინარე სურათი</b></td><td align="left">პროვაიდერის კვოტის ზოლები, Claude-ის სესიის/კვირის ლიმიტები განულებამდე ათვლით, 30-დღიანი ხარჯების დეტალური განაწილება</td></tr>
-  <tr><td align="left" nowrap>🔄 <b>ავტომატურად ახლდება ადგილზე</b></td><td align="left">დადგმული ინსტალაცია, ატომური ჩანაცვლება, წარუმატებლობის შემთხვევაში დაბრუნება — ყოველთვის უახლეს რელიზზე</td></tr>
-  <tr><td align="left" nowrap>🚀 <b>შესვლა სისტემაში — ავტომატური გაშვება</b></td><td align="left">სისტემაში შესვლისას არჩევითი გაშვება; მხოლოდ სისტემის უჯრაში, dock-ის ხატის გარეშე</td></tr>
-  <tr><td align="left" nowrap>🩺 <b>დიაგნოსტიკა და ჟურნალები</b></td><td align="left">დიაგნოსტიკა ერთი დაწკაპუნებით და სერვერის ჟურნალებზე წვდომა</td></tr>
+  <tr><th align="left">რასაც აკეთებს</th><th align="left">როგორ</th></tr>
+  <tr><td align="left" nowrap>🟢 <b>ზედამხედველობს სერვერს</b></td><td align="left">წარმოქმნის <code>omniroute serve</code>, იღებს უკვე გაშვებულ ინსტანციას მისი დუბლირების ნაცვლად</td></tr>
+  <tr><td align="left" nowrap>📊 <b>ცოცხალი გამოყენება ერთი შეხედვით</b></td><td align="left">პროვაიდერის კვოტის ზოლები, Claude session/weekly ლიმიტები გადატვირთვის ათვლის გამოთვლებით, 30-დღიანი ხარჯების ავარია</td></tr>
+  <tr><td align="left" nowrap>🔄 <b>ავტომატური განახლებები ადგილზეა</b></td><td align="left">ეტაპობრივი ინსტალაცია, ატომური გაცვლა, უკმარისობის დაბრუნება — ყოველთვის უახლეს გამოშვებაზე</td></tr>
+  <tr><td align="left" nowrap>🚀 <b>დაიწყეთ შესვლაზე</b></td><td align="left">არჩევითი გაშვება შესვლისას; მხოლოდ უჯრაზე, დოკის ხატულა არ არის</td></tr>
+  <tr><td align="left" nowrap>🩺 <b>ექიმი &amp; ჟურნალები</b></td><td align="left">ერთი დაწკაპუნებით დიაგნოსტიკა და სერვერის ჟურნალის წვდომა</td></tr>
 </table>
 
 ```sh
 brew install --cask zoispag/tap/omniroute-tray
 ```
 
-<sub>ჩამოტვირთვა გირჩევნიათ? უახლესი <code>.dmg</code> ფაილი აიღეთ
-<a href="https://github.com/zoispag/omniroute-tray/releases">რელიზების</a> გვერდიდან. წყარო, საკითხები და build-ის
-დოკუმენტაცია ხელმისაწვდომია აქ: <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a>.
-<br/>💛 სათემო პროექტი <a href="https://github.com/zoispag">@zoispag</a>-ისგან — არ არის OmniRoute-ის ოფიციალური რელიზი.</sub>
+<sub>გსურთ ჩამოტვირთვა? აიღეთ უახლესი <code>.dmg</code> დან
+<a href="https://github.com/zoispag/omniroute-tray/releases">რელიზები</a>. წყარო, საკითხები და აშენება
+დოკუმენტები ცხოვრობენ <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a> ში.
+<br/>💛 საზოგადოების პროექტი მიერ <a href="https://github.com/zoispag">@zoispag</a> — არ არის OmniRoute ოფიციალური გამოცემა.</sub>
 
 <br/>
 
@@ -936,15 +918,15 @@ claude mcp add --transport http omniroute http://localhost:20128/api/mcp/stream 
 
 <div align="center">
 
-## 🗜️ ტოკენების 15–95%-ით დაზოგვა — ავტომატურად
+## 🗜️ დაზოგე 15–95% ჟეტონები — ავტომატურად
 
 </div>
 
-### 📖 როგორ მუშაობს — pipeline, არქიტექტურა და დაზოგვის მათემატიკა
+### 📖 როგორ მუშაობს — მილსადენი, არქიტექტურა და შემნახველი მათემატიკა
 
-<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute-ის compression pipeline: 10,000-ტოკენიანი კლიენტის მოთხოვნა გადის 12 კომპოზირებად engine-ზე — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra და OmniGlyph — და დოკუმენტირებულ, ერთმანეთზე მიბმულ მაგალითში პროვაიდერამდე დაახლოებით 1,080 ტოკენით აღწევს. სტრუქტურირებული კონტენტი დაცულია preservation guard-ებითა და თითოეული ნაბიჯის fidelity gate-ებით; lossless ან experimental რეჟიმებმა შეიძლება გარდაქმნან შესაბამისი კონტენტი."/>
+<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute compression pipeline: an illustrative 10,000-token client request passes through 12 composable engines — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra and OmniGlyph — and can reach the provider at about 1,080 tokens in the documented stacked example. Structured content is protected by preservation guards and per-step fidelity gates; explicit lossy or experimental modes may transform eligible content."/>
 
-ნაგულისხმევი stacked კომბინაცია ამუშავებს `RTK → Caveman`-ს. როდესაც ორივე ერთსა და იმავე tool/context payload-ზე მოქმედებს, დაზოგვა კუმულაციურად იზრდება:
+ნაგულისხმევი დაწყობილი კომბინაცია მუშაობს `RTK → Caveman`. როდესაც ორივე მოქმედებს ერთსა და იმავე tool/context დატვირთვაზე, შემნახველი ნაერთი:
 
 ```txt
 combined = 1 − (1 − RTK) × (1 − Caveman_input)
@@ -952,74 +934,74 @@ average  = 1 − (1 − 0.80) × (1 − 0.46) = 89.2%
 range    = 78.4 – 94.6%
 ```
 
-კოდის ბლოკები, URL-ები, JSON და სტრუქტურირებული მონაცემები **ყოველთვის დაცულია** preservation engine-ის მიერ.
+კოდის ბლოკები, URLs, JSON და სტრუქტურირებული მონაცემებია** ყოველთვის დაცული** დამცავი ძრავით.
 
-> **რატომ უნდა გამოიყენოთ ბევრი ტოკენი, როცა საქმეს ცოტა ტოკენიც ართმევს თავს?** ყოველი მოთხოვნა **გამჭვირვალედ** გადის OmniRoute-ის compression pipeline-ში — კლიენტში ცვლილებები საჭირო არ არის. ახლა ეს არის **12 კომპოზირებადი engine-ის stack**, რომლებიც რიგრიგობით მუშაობენ და თითოეული routing combo-ს მიხედვით თავისუფლად კომბინირდება — [RTK](https://github.com/rtk-ai/rtk)-ის, [Caveman](https://github.com/JuliusBrussee/caveman)-ის (⭐ 90K+), [LLMLingua-2](https://github.com/microsoft/LLMLingua)-ისა და [Troglodita](https://github.com/leninejunior/troglodita)-ს (PT-BR) იდეებზე დაყრდნობით.
+> **რატომ გამოვიყენოთ ბევრი ჟეტონი, როდესაც რამდენიმე ჟეტონი აკეთებს ხრიკს?** ყველა მოთხოვნა გადის OmniRoute ს შეკუმშვის მილსადენზე** გამჭვირვალედ** — კლიენტი არ იცვლება. ახლა არის ა** 12 კომპოზიტური ძრავის დასტა** რომელიც მუშაობს თანმიმდევრობით და აერთიანებს და ემთხვევა თითო მარშრუტიზაციის კომბინაციურ — ნაგებობას [RTK](https://github.com/rtk-ai/rtk), [Caveman-ის](https://github.com/JuliusBrussee/caveman) (⭐ 90K +), [LLMLingua-2](https://github.com/microsoft/LLMLingua) და [Troglodita-ს](https://github.com/leninejunior/troglodita) (PT-BR) იდეებზე.
 
-### 🧱 12-engine-იანი stack
+### 🧱 12 ძრავიანი დასტა
 
-Engine-ები pipeline-ის თანმიმდევრობით მუშაობს; თითოეულის ჩართვა/გამორთვა და კონფიგურაცია combo-ს მიხედვით დამოუკიდებლად არის შესაძლებელი:
-
-<table>
-  <tr><th align="center">#</th><th align="left">Engine</th><th align="left">რას აკეთებს</th></tr>
-  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Session-Dedup</b></td><td align="left">შლის turn-ებს შორის განმეორებულ კონტენტს (content-addressed, cross-turn)</td></tr>
-  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">დიდ ბლოკებს retrieve marker-ების უკან არქივში ათავსებს და საჭიროებისას იღებს</td></tr>
-  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">Whitespace-ისა და image-URL-ების შემცირება (დაბალი latency-ის მქონე საბაზისო ვარიანტი)</td></tr>
-  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">Tool-result-ების ჭკვიანური გაფილტვრა, dedup და truncation (command-aware)</td></tr>
-  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Responses Tool Output</b></td><td align="left">Lossless-first JSON + შეზღუდული diagnostic compression shell/patch/search/build შედეგებისთვის (Responses API)</td></tr>
-  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Headroom</b></td><td align="left">JSON მასივების lossless tabular compaction (~30%) vendored <b>GCF</b> codec-ის მეშვეობით</td></tr>
-  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Relevance</b></td><td align="left">ბოლო user query-სთან მიმართებით წინადადებების extractive scoring</td></tr>
-  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Caveman</b></td><td align="left">წესებზე დაფუძნებული prose compression (output-ზე ~65–75%)</td></tr>
-  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Aggressive</b></td><td align="left">ძველი turn-ების შეჯამება + progressive aging</td></tr>
-  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">ML semantic pruning MobileBERT ONNX-ის მეშვეობით — code-safe, async</td></tr>
-  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ultra</b></td><td align="left">ევრისტიკულ token pruning-ს არჩევითი small-model (SLM) tier-ით</td></tr>
-  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">ექსპერიმენტული context-as-image encoding, რომელიც გამოიყენება პირდაპირ Anthropic wire-ზე გაზომილი Claude Fable 5-ისთვის; GPT 5.6 transformers provider receipts-ის მოლოდინში fail-closed რჩება. compression-ის ოთხი profile (ნაგულისხმევად aggressive, balanced, coding-safe, passthrough) (ყველაზე აგრესიული; opt-in)</td></tr>
-</table>
-
-კოდის ბლოკები, URL-ები და სტრუქტურირებული მონაცემები **ყოველთვის შენარჩუნებულია** byte-perfect-ად. **One-click preset-ები** engine-ებს აერთიანებს:
+ძრავები მუშაობს მილსადენის თანმიმდევრობით; თითოეული დამოუკიდებლად გადართვადი და კონფიგურირებადია თითო კომბინაციით:
 
 <table>
-  <tr><th align="left">რეჟიმი</th><th align="left">დაზოგვა</th><th align="left">საუკეთესო გამოყენება</th></tr>
-  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~15%</td><td align="left">ყოველთვის ჩართული უსაფრთხო ნაგულისხმევი ვარიანტი</td></tr>
-  <tr><td align="left" nowrap>🪨 <b>Standard (Caveman)</b></td><td align="left" nowrap>~30%</td><td align="left">ყოველდღიური კოდირება</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Aggressive</b></td><td align="left" nowrap>~50%</td><td align="left">ხანგრძლივი, tool-ებით დატვირთული სესიები</td></tr>
-  <tr><td align="left" nowrap>🔥 <b>Ultra</b></td><td align="left" nowrap>~75%</td><td align="left">მაქსიმალური დაზოგვა</td></tr>
-  <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>60–90%</td><td align="left">Shell/test/build/git output</td></tr>
-  <tr><td align="left" nowrap>🔗 <b>Stacked (RTK → Caveman)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">შერეული prompt-ები + tool log-ები</td></tr>
+  <tr><th align="center">#</th><th align="left">ძრავი</th><th align="left">რასაც აკეთებს</th></tr>
+  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>სხდომა-გადაწყვეტა</b></td><td align="left">ტოვებს კონტენტს, რომელიც განმეორდება მონაცვლეობით (კონტენტის მისამართით, ჯვარედინი შემობრუნება)</td></tr>
+  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">არქივები დიდი ბლოკების მიღმა მარკერების მიღმა, მოთხოვნილი</td></tr>
+  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>ლაით</b></td><td align="left">Whitespace + image-URL-ის ამოჭრა (დაყოვნება-მსუბუქი საბაზისო ხაზი)</td></tr>
+  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">გონივრული ხელსაწყოების შედეგების ფილტრაცია, ამოღება და შეკვეცა (ბრძანების ცოდნა)</td></tr>
+  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Responses Tool Output</b></td><td align="left">უზარმაზარ-პირველი JSON + შეზღუდული დიაგნოსტიკური შეკუმშვა shell/patch/search/build გამოსავლებისთვის (Responses API)</td></tr>
+  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>სათავე ოთახი</b></td><td align="left">JSON მასივების უდანაკარგო ტაბულური დატკეპნა (~ 30%) გამყიდველის მეშვეობით <b>GCF</b> კოდეკი</td></tr>
+  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>შესაბამისობა</b></td><td align="left">ამონაწერი წინადადების ქულები მომხმარებლის ბოლო შეკითხვაზე</td></tr>
+  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Caveman</b></td><td align="left">წესებზე დაფუძნებული პროზის შეკუმშვა (~ 65–75% გამომავალზე)</td></tr>
+  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>აგრესიული</b></td><td align="left">შეჯამება + პროგრესული დაბერების ძველი მონაცვლეობით</td></tr>
+  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">ML სემანტიკური მორთვა MobileBERT ONNX — კოდით უსაფრთხო, ასინქრონული გზით</td></tr>
+  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>ულტრა</b></td><td align="left">ევრისტიკული ტოკენის გასხვლა სურვილისამებრ მცირე მოდელის (SLM) იარუსით</td></tr>
+  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">ექსპერიმენტული კონტექსტი, როგორც სურათის კოდირება გაზომილი Claude Fable 5-ისთვის პირდაპირ Anthropic მავთულზე; GPT 5.6 ტრანსფორმატორები რჩება დახურული პროვაიდერის ქვითრების მოლოდინში. შეკუმშვის ოთხი პროფილი (აგრესიული ნაგულისხმევი, დაბალანსებული, კოდირებისთვის უსაფრთხო, გავლა) (ყველაზე აგრესიული; ჩართვა)</td></tr>
 </table>
 
-**რეალური მაგალითი — Standard რეჟიმი:**
+კოდის ბლოკები, URLs და სტრუქტურირებული მონაცემებია** ყოველთვის შენახული** ბაიტი-სრულყოფილი.** წინასწარ დაყენებული ერთი დაწკაპუნებით** შეუთავსეთ ძრავები:
 
-> **მანამდე (69 ტოკენი):** _"თქვენი React კომპონენტის ხელახლა რენდერინგის მიზეზი, სავარაუდოდ, ის არის, რომ ყოველი render cycle-ის დროს ახალ object reference-ს ქმნით. როდესაც inline object-ს prop-ის სახით გადასცემთ, React-ის shallow comparison მას ყოველ ჯერზე განსხვავებულ object-ად აღიქვამს, რაც ხელახალ რენდერინგს იწვევს. გირჩევთ, object-ის memoize-სთვის useMemo გამოიყენოთ."_
+<table>
+  <tr><th align="left">რეჟიმი</th><th align="left">დანაზოგი</th><th align="left">საუკეთესო ამისთვის</th></tr>
+  <tr><td align="left" nowrap>🪶 <b>ლაით</b></td><td align="left" nowrap>~15%</td><td align="left">ყოველთვის ჩართული უსაფრთხო ნაგულისხმევი</td></tr>
+  <tr><td align="left" nowrap>🪨 <b>სტანდარტული (Caveman)</b></td><td align="left" nowrap>~30%</td><td align="left">ყოველდღიური კოდირება</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>აგრესიული</b></td><td align="left" nowrap>~50%</td><td align="left">ხელსაწყო-მძიმე სესიები</td></tr>
+  <tr><td align="left" nowrap>🔥 <b>ულტრა</b></td><td align="left" nowrap>~75%</td><td align="left">მაქსიმალური დანაზოგი</td></tr>
+  <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>60–90%</td><td align="left">Shell/test/build/git გამომავალი</td></tr>
+  <tr><td align="left" nowrap>🔗 <b>დაწყობილი (RTK → Caveman)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">შერეული მოთხოვნა + ინსტრუმენტის ჟურნალები</td></tr>
+</table>
+
+**რეალური მაგალითი — სტანდარტული რეჟიმი:**
+
+> **ადრე (69 ჟეტონი):** _"თქვენი React კომპონენტის ხელახალი რენდერის მიზეზი არის ის, რომ თქვენ ქმნით ახალ ობიექტს მითითებას რენდერის თითოეულ ციკლზე. როდესაც თქვენ გადასცემთ ხაზოვან ობიექტს საყრდენად, React ის ზედაპირული შედარება ყოველ ჯერზე ხედავს მას, როგორც სხვა ობიექტს, რაც იწვევს ხელახლა რენდერს. მე გირჩევთ გამოიყენოთ useMemo ობიექტის დასამახსოვრებლად."_
 >
-> **შემდეგ (19 ტოკენი):** _"ყოველ render-ზე ახალი object ref. Inline object prop = ახალი ref = ხელახალი რენდერი. მოათავსეთ useMemo-ში."_
+> **შემდეგ (19 ჟეტონი):** _"ახალი ობიექტი ასახავს თითოეულ რენდერს. Inline ობიექტის prop = ახალი ref = ხელახალი რენდერი. შეფუთვა useMemo."_
 >
-> **იგივე პასუხი. 72%-ით ნაკლები ტოკენი. სიზუსტის ნულოვანი დანაკარგი.** ✅
+> **იგივე პასუხი. 72%-ით ნაკლები ჟეტონები. ნულოვანი სიზუსტის დაკარგვა.** ✅
 
 **PT-BR მაგალითი — [Troglodita](https://github.com/leninejunior/troglodita) რეჟიმი:**
 
-> **მანამდე (42 ტოკენი):** _"პრობლემა ისაა, რომ კომპონენტი ხელახლა რენდერდება, რადგან რენდერის თითოეულ ციკლში ობიექტის ახალი რეფერენსი იქმნება. გირჩევდით useMemo-ის გამოყენებას."_
+> **ანტესი (42 ჟეტონი):** _"O problema é que o componente está re-renderizando porque uma nova referência de objeto está sendo criada em cada ciclo de renderização. Eu recomendaria usar useMemo."_
 >
-> **შემდეგ (12 ტოკენი):** _"ხელახალი რენდერი: ახალი ref ყოველ ციკლში (ინლაინ-ობიექტი თავიდან იქმნება). გამოიყენეთ `useMemo`."_
+> **დეპოისი (12 ჟეტონი):** _"ხელახლა რენდერი: ref nova cada ciclo (objeto inline recriado). Usar `useMemo`."_
 >
-> **იგივე პასუხი. ~70%-ით ნაკლები ტოკენი. ტექნიკური სიზუსტე შენარჩუნებულია.** ✅
+> **მესმის პასუხი. ~ 70% menos ჟეტონები. Precisão Técnica intacta.** ✅
 
 <br/>
 
-### 🎚️ ძრავებს მიღმა — გამოსავლის სტილები, ადაპტური რეგულატორი და მოთხოვნის მიხედვით კონტროლი
+### 🎚️ ძრავების გარდა — გამომავალი სტილის, ადაპტური ციფერბლატი და თითო მოთხოვნის კონტროლი
 
-ზემოთ აღწერილი 12 ძრავა ამცირებს იმას, რაც **შედის**. კიდევ სამი ფენა განსაზღვრავს **როგორ**, **როდის** და რა გამოდის:
+ზემოთ 12 ძრავა იკუმშება რასაც მიდის** in** . კიდევ სამი ფენის ფორმა** როგორ** ,** როცა** და რაც მოდის** გარეთ** :
 
-- **🪄 გამოსავლის სტილები** _(გამოსავლის ღერძის მართვა)_ — ამატებს დეტერმინისტულ, ქეშისთვის უსაფრთხო ინსტრუქციებს პასუხის ფორმირებისთვის; მათი კომბინირება შესაძლებელია, თითოეული კი ხელმისაწვდომია `lite` / `full` / `ultra` ინტენსივობით. სტილის დამატება რეესტრში ერთხაზიანი ჩანაწერით ხდება:
-  - **მოკლე პროზა** — ამოიღეთ შემავსებელი სიტყვები / არტიკლები / მერყევი ფორმულირებები; ტექნიკური შინაარსი ზუსტად შეინარჩუნეთ.
-  - **ნაკლები კოდი** — „ზარმაცი senior dev“-ის YAGNI: უმცირესი მოქმედი ცვლილება, მოუთხოვნელი საყრდენი კოდის გარეშე.
-  - **კუდი (ზარმაცი senior dev)** — მიჰყევით YAGNI-ის საფეხურებს, გამოასწორეთ ძირეული მიზეზი, შეიტანეთ უმცირესი მოქმედი diff.
-  - **ADHD მაქვს (ქმედება უპირველესად)** — შემდეგი ქმედება პირველივე ადგილზეა, ნაბიჯები დანომრილია, ერთი კონკრეტული შემდეგი ნაბიჯი, შესავლის გარეშე.
-  - **მოკლე CJK (文言)** — კლასიკური ჩინურის ულტრამოკლე სტილი (ლოკალით შეზღუდული `zh`-ზე).
-- **🎯 ადაპტური კონტექსტის ბიუჯეტი** _(რეგულატორი)_ — ერთი ჩართული/გამორთული ტოკენის ზღვრის ნაცვლად, ყველაზე იაფი და ნაკლებად დამაკარგვინებელი ძრავები მხოლოდ იმდენად ძლიერდება, რამდენიც საჭიროა, რათა მოთავსდეს მოდელის კონტექსტის ფანჯარაში. პოლიტიკა: `reserve-output` (ნაგულისხმევი, მოდელზე მორგებული) · `percentage` · `absolute`. რეჟიმი: `floor` (მოთავსების გარანტია) · `replace-autotrigger` (თქვენი აშკარა არჩევანი იმარჯვებს) · `off` (ძველი ზღვარი).
-- **🎛️ სად წყდება შეკუმშვის გადაწყვეტილება** _(პრიორიტეტი, მაღალი → დაბალი)_ — თითოეული მოთხოვნის `x-omniroute-compression` ჰედერი › routing-combo-ის გადაფარვა › აქტიური სახელდებული პროფილი › adaptive / auto-trigger › პანელის ნაგულისხმევი მნიშვნელობა › off. გამოყენებული გეგმა პასუხში ბრუნდება `X-OmniRoute-Compression: <mode>; source=<source>` ჰედერის სახით.
+- **🪄 გამომავალი სტილები** _(გამომავალი ღერძის გამაძლიერებელი)_ — შეჰყავს დეტერმინისტული, ქეში-უსაფრთხო პასუხის ფორმირების ინსტრუქციები; კომბინირებადი, თითოეული `lite` / `full` / `ultra` ინტენსივობით. სტილის დამატება არის ერთსტრიქონიანი რეესტრის ჩანაწერი:
+  - **მოკლე პროზა** — წვეთოვანი შემავსებელი / სტატიები / ჰეჯინგი; ზუსტი ტექნიკური ნივთის შენარჩუნება.
+  - **ნაკლები კოდი** — "ზარმაცი უფროსი დეველოვი" YAGNI: ყველაზე მცირე სამუშაო ცვლილება, არამოთხოვნილი ხარაჩოები.
+  - **Ponytail (ზარმაცი უფროსი დეველოპერი)** — აწიეთ YAGNI კიბეზე, დააფიქსირეთ ძირეული მიზეზი, ყველაზე მცირე სამუშაო განსხვავება.
+  - **მე მაქვს ADHD (მოქმედება-პირველი)** — შემდეგი ქმედება იწვევს, ნაბიჯები დანომრილია, ერთი კონკრეტული შემდეგი ნაბიჯი, პრეამბულა არ არის.
+  - **Terse CJK (文言)** — კლასიკურ-ჩინური ულტრა მკაფიო სტილი (ადგილობრივი შეზღუდვა `zh` მდე).
+- **🎯 ადაპტური კონტექსტი-ბიუჯეტი** _(აკრიფეთ)_ — ერთი on/off ნიშნის ზღურბლის ნაცვლად, გააფართოვეთ ყველაზე იაფფასიანი, ყველაზე უზარმაზარი ძრავები მხოლოდ იმდენად, რამდენადაც საჭიროა** შეესაბამება მოდელის კონტექსტურ ფანჯარას** . პოლიტიკა: `reserve-output` (ნაგულისხმევი, მოდელის ცოდნა) · `percentage` · `absolute`. რეჟიმი: `floor` (გარანტიის მორგება) · `replace-autotrigger` (თქვენი აშკარა არჩევანი იმარჯვებს) · `off` (მემკვიდრეობის ბარიერი).
+- **🎛️ სად არის გადაწყვეტილი შეკუმშვა** _(პრეცედენცია, მაღალი → დაბალი)_ — მოთხოვნით `x-omniroute-compression` სათაური › მარშრუტიზაციის კომბინირებული გადაფარვა › აქტიური დასახელებული პროფილი › ადაპტაციური / ავტოტრიგერი › პანელის ნაგულისხმევი › გამორთულია. გამოყენებული გეგმა ეხმიანება `X-OmniRoute-Compression: <mode>; source=<source>` პასუხის სათაურში.
 
-ჩართეთ ავტომატური ტრიგერი ტოკენების ზღვრის მიხედვით, გადართეთ ადაპტური რეგულატორი, მიამაგრეთ სახელდებული პროფილი, დააყენეთ ერთჯერადი მნიშვნელობა მოთხოვნისთვის ან მიანიჭეთ pipeline თითოეულ routing combo-ს — იმის მიხედვით, რაც სამუშაო დატვირთვას შეესაბამება. არჩევითი ოფლაინ **შეფასების ჰარნესი** (`npm run eval:compression`) აფასებს სიზუსტესა და დაზოგვას ფიქსირებულ კორპუსზე, სანამ ცვლილებას გაავრცელებთ.
+ავტომატური ჩართვა სიმბოლური ზღურბლით, გადაატრიალეთ ადაპტირებადი ციფერბლატი, დაამაგრეთ დასახელებული პროფილი, დააყენეთ ერთჯერადი მოთხოვნა, ან მიანიშნეთ მილსადენი მარშრუტიზაციის კომბინაციით — რომელიც შეესაბამება სამუშაო დატვირთვას. ოფლაინში ჩართვა** შეფასების აღკაზმულობა** (`npm run eval:compression`) აფასებს ერთგულებას დაზოგვის წინააღმდეგ მიმაგრებულ კორპუსზე, სანამ ცვლილებას შეუწყობთ ხელს.
 
 📖 [`COMPRESSION_GUIDE.md`](docs/compression/COMPRESSION_GUIDE.md) · [`RTK_COMPRESSION.md`](docs/compression/RTK_COMPRESSION.md) · [`COMPRESSION_ENGINES.md`](docs/compression/COMPRESSION_ENGINES.md)
 
@@ -1031,40 +1013,30 @@ Engine-ები pipeline-ის თანმიმდევრობით მ�
 
 </div>
 
-**1) ინსტალაცია და გაშვება**
+**1) დააინსტალირეთ და გაუშვით**
 
 ```bash
 npm install -g omniroute
 omniroute
 ```
 
-> 💡 ხედავთ `npm warn ERESOLVE`-ს ან peer-dep გაფრთხილებებს? [ისინი უვნებელია](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).
-> **იყენებთ npm 11-ს ან უფრო ახალ ვერსიას?** npm-მა შესაძლოა დაბლოკოს პაკეტის lifecycle სკრიპტები, თუ ისინი დაშვებული არ არის. OmniRoute-ის `postinstall` (`node scripts/build/postinstall.mjs`) საჭიროა მისი native runtime ფაილების მოსამზადებლად. გლობალურად ინსტალაციისას დაუშვით npm-ის გაფრთხილებაში დასახელებული პაკეტები. OmniRoute 3.8.55-ის მიერ მოხსენებული პაკეტებისთვის:
+> 💡 იხილეთ `npm warn ERESOLVE` ან peer-dep გაფრთხილებები? [ისინი უვნებელია](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).** იყენებთ npm 11 ან უფრო გვიან?** npm შეიძლება დაბლოკოს პაკეტის სასიცოცხლო ციკლის სკრიპტები, თუ ისინი არ არის დაშვებული. OmniRoute ის `postinstall` (`node scripts/build/postinstall.mjs`) საჭიროა მისი ძირითადი გაშვების ფაილების მოსამზადებლად. დაუშვით npm-ის გაფრთხილებაში დასახელებული პაკეტები გლობალურად ინსტალაციისას. OmniRoute 3.8.55-ის მიერ მოხსენებული პაკეტისთვის:
 >
-> ```bash
-> npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute
-> ```
+> `bash npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute `
 >
-> ამ allowlist-ის მომავალ გლობალურ ინსტალაციებზე ხელახლა გამოსაყენებლად, ერთხელ დააკონფიგურირეთ და შემდეგ ჩვეულებრივად დააინსტალირეთ:
+> ამ ნებადართული სიის ხელახლა გამოსაყენებლად მომავალი გლობალური ინსტალაციებისთვის, დააკონფიგურირეთ ერთხელ, შემდეგ დააინსტალირეთ ნორმალურად:
 >
-> ```bash
-> npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user
-> npm install -g omniroute
-> ```
+> `bash npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user npm install -g omniroute `
 >
-> დამოკიდებულებების სია რელიზებს შორის შეიძლება შეიცვალოს; თუ npm სხვა სიას გამოიტანს, გამოიყენეთ იმ გაფრთხილებაში მითითებული პაკეტების სახელები. პაკეტის დაშვება მის install სკრიპტებს გაშვების უფლებას აძლევს.
-> **იყენებთ Gemini Web-ს ან ვებ-ქუქიების სხვა პროვაიდერს?** npm პაკეტში შედის
-> Playwright, თუმცა მისი Chromium ბინარული ფაილი — არა. პირველი web-provider მოთხოვნის შესრულებამდე გაეცანით
-> [Playwright Chromium-ის დაყენების](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium)
-> შენიშვნას.
+> დამოკიდებულების სია შეიძლება შეიცვალოს გამოშვებებს შორის; თუ npm იტყობინება სხვა სიას, გამოიყენეთ პაკეტის სახელები ამ გაფრთხილებიდან. პაკეტის დაშვება იძლევა მისი ინსტალაციის სკრიპტების გაშვებას.** იყენებთ Gemini Web-ს ან სხვა ვებ ქუქიების პროვაიდერს?** npm პაკეტში შედის Playwright, მაგრამ არა მისი Chromium ორობითი. იხილეთ [Playwright Chromium-ის დაყენების](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium) შენიშვნა ვებ-პროვაიდერის პირველ მოთხოვნამდე.
 
-Dashboard ხელმისაწვდომია `http://localhost:20128`-ზე · API — `http://localhost:20128/v1`-ზე.
+დაფა `http://localhost:20128` ზე · API at `http://localhost:20128/v1`.
 
-**2) შესაბამისი პროვაიდერის დაკავშირება საკუთარი ანგარიშით**
+**2) დააკავშირეთ შესაბამისი პროვაიდერი თქვენი საკუთარი ანგარიშის გამოყენებით**
 
-Dashboard → **Providers** → აირჩიეთ პროვაიდერი, რომლის მიმდინარე პირობები და კვოტა თქვენს გამოყენების შემთხვევას შეესაბამება → დაამატეთ მისი API key ან გაიარეთ მისი ანგარიშის პროცესი. უფასო ტარიფებმა შეიძლება მოითხოვოს რეგისტრაცია, დამტკიცება ან გადახდის მეთოდი. გაეცანით [Free Tiers Guide-ს](docs/getting-started/FREE-TIERS-GUIDE.md); keyless ხელმისაწვდომობა გარანტირებული არ არის, ხოლო `tos: avoid` ნიშნით მონიშნული პროვაიდერები ნაგულისხმევად `auto`-დან გამორიცხულია.
+დაფა →** პროვაიდერები** → აირჩიეთ პროვაიდერი, რომლის ამჟამინდელი პირობები და კვოტა შეესაბამება თქვენს გამოყენებას → დაამატეთ მისი API გასაღები ან დაასრულეთ მისი ანგარიშის ნაკადი. უფასო საფეხურებმა შეიძლება მოითხოვონ რეგისტრაცია, დამტკიცება ან გადახდის მეთოდი. გადახედეთ [უფასო საფეხურების სახელმძღვანელოს](docs/getting-started/FREE-TIERS-GUIDE.md) ; გასაღების ხელმისაწვდომობა არ არის გარანტირებული და პროვაიდერები, რომლებიც მონიშნულია `tos: avoid` ნაგულისხმევად გამოირიცხება `auto` დან.
 
-**3) თქვენი კოდირების ხელსაწყოს მითითება**
+**3) მიუთითეთ თქვენი კოდირების ინსტრუმენტი**
 
 ```txt
 Base URL: http://localhost:20128/v1
@@ -1072,15 +1044,15 @@ API Key:  [copy from Dashboard → Endpoints]
 Model:    auto            (routes among eligible connections — or choose provider/model)
 ```
 
-**4) მუშაობის შემოწმება**
+**4) დარწმუნდით, რომ მუშაობს**
 
 ```bash
 curl http://localhost:20128/v1/models -H "Authorization: Bearer YOUR_KEY"
 ```
 
-უნდა დაინახოთ თქვენი დაკავშირებული მოდელების სია. 🎉 სულ ეს არის — დაიწყეთ კოდირება, ხოლო OmniRoute ავტომატურად შეარჩევს მარშრუტს და საჭიროების შემთხვევაში გადაერთვება ალტერნატივაზე.
+თქვენ უნდა ნახოთ თქვენი დაკავშირებული მოდელები ჩამოთვლილი. 🎉 ესე იგი — იწყებს კოდირებას და OmniRoute ავტომატურ მარშრუტებს და აბრუნებს შენთვის.
 
-თუ თქვენს კლიენტს მორგებული ჰედერების გაგზავნა არ შეუძლია, OmniRoute ასევე გთავაზობთ ტოკენიზებულ თავსებადობის ალაიასებს:
+თუ თქვენს კლიენტს არ შეუძლია გამოაგზავნოს მორგებული სათაურები, OmniRoute ასევე ავლენს ტოკენიზებულ თავსებადობის ალიასებს:
 
 ```txt
 OpenAI catalog:   http://localhost:20128/vscode/YOUR_KEY/
@@ -1091,51 +1063,47 @@ Ollama chat:      http://localhost:20128/vscode/YOUR_KEY/api/chat
 Ollama tags:      http://localhost:20128/vscode/YOUR_KEY/api/tags
 ```
 
-გამოიყენეთ ისინი მხოლოდ იმ კლიენტებისთვის, რომლებსაც `Authorization: Bearer ...`-ის მიმაგრება არ შეუძლიათ. ჰედერზე დაფუძნებული ავტორიზაცია კვლავ სასურველი რეჟიმია.
+გამოიყენეთ ეს მხოლოდ კლიენტებისთვის, რომლებსაც არ შეუძლიათ `Authorization: Bearer ...` მიმაგრება. Header auth რჩება სასურველ რეჟიმში.
 
 <br/>
 
-## 📦 ინსტალაციის დამატებითი მეთოდები — Docker, წყაროდან, pnpm, Arch
+## 📦 სხვა ინსტალაციის მეთოდები — Docker, წყარო, pnpm, Arch
 
 **🐳 Docker**
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-`:latest` მიჰყვება გამოქვეყნებულ სტაბილურ SemVer-ვერსიებს შორის უმაღლესს. ის არ მიჰყვება git `main`-ს. GitOps-ისთვის გამოიყენეთ `:X.Y.Z`. იხილეთ [Docker-ის რელიზების არხები](docs/guides/DOCKER_GUIDE.md#release-channels). იმიჯში ფიქსირებულია **`OMNIROUTE_MEMORY_MB=1024`**. ეს საკმარისია დეშბორდისა და მსუბუქი ჩატისთვის. **კოდის აგენტებს** (`POST /v1/responses` Claude Code-დან, Codex-დან, Grok-დან, …) სჭირდებათ მნიშვნელოვნად დიდი V8 heap, წინააღმდეგ შემთხვევაში პროცესი ორი ურთიერთგადაფარული გრძელი კონტექსტის დროს დაახლოებით 12 GiB-ზე `FATAL ERROR`-ით სრულდება. კონტეინერის ზომა heap-ზე მეტი უნდა იყოს (native ბუფერები V8-ის ფარგლებს გარეთ ინახება):
+`:latest` მიჰყვება უმაღლესს** გამოქვეყნდა** სტაბილური SemVer. ის არ აკონტროლებს git `main`. PIN `:X.Y.Z` GitOps სთვის. იხილეთ [Docker გამოშვების არხები](docs/guides/DOCKER_GUIDE.md#release-channels). გამოსახულების ქინძისთავები**`OMNIROUTE_MEMORY_MB=1024`** . ეს საკმარისია დაფის და მსუბუქი ჩეთისთვის.** კოდირების აგენტები** (`POST /v1/responses` Claude Code-დან, Codex, Grok,…) გვჭირდება ბევრად უფრო დიდი V8 გროვა ან პროცესი `FATAL ERROR` s ~ 12 GiB ორი გადახურვის გრძელი კონტექსტის ქვეშ. კონტეინერის ზომა გროვის ზემოთ (მშობლიური ბუფერები დევს V8-ის გარეთ):
 
-| დატვირთვა                            | Heap (`-e OMNIROUTE_MEMORY_MB`) | კონტეინერი (`--memory`) |
-| ------------------------------------ | ------------------------------- | ----------------------- |
-| დეშბორდი / მსუბუქი ჩატი              | `1024` (იმიჯის ნაგულისხმევი)    | ≥2 g                    |
-| ერთი კოდის აგენტი                    | `8192`                          | ≥10 g                   |
-| ორი ერთდროული გრძელი `/v1/responses` | `10240`–`12288`                 | ≥12–16 g                |
+| დატვირთვა                            | გროვა (`-e OMNIROUTE_MEMORY_MB`) | კონტეინერი (`--memory`) |
+| ------------------------------------ | -------------------------------- | ----------------------- |
+| დაფა / მსუბუქი ჩატი                  | `1024` (სურათის ნაგულისხმევი)    | ≥ 2 გ                   |
+| ერთი კოდირების აგენტი                | `8192`                           | ≥ 10 გრ                 |
+| ორი ერთდროული გრძელი `/v1/responses` | `10240`–`12288`                  | ≥ 12–16 გ               |
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
   -e OMNIROUTE_MEMORY_MB=8192 --memory=10g \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-სრული ცხრილი: [Docker-ის სახელმძღვანელო — RAM-ის გამოყენება გაშვებისას](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
+სრული ცხრილი: [Docker გზამკვლევი — გაშვების RAM](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
 
-> **Docker-ის წინასწარი რელიზების არხი:** `diegosouzapw/omniroute:next` და
-> `diegosouzapw/omniroute:next-web` მიჰყვება მიმდინარე ნაგულისხმევ `release/v*`
-> ბრანჩს. ეს ცვალებადი ტეგები განკუთვნილია მხოლოდ გამოუქვეყნებელი შესწორებების
-> ტესტირებისთვის და **არ არის მხარდაჭერილი production გარემოში**. იხილეთ
-> [Docker-ის რელიზების არხები](docs/guides/DOCKER_GUIDE.md#release-channels).
+> **წინასწარი გამოშვება Docker არხი:** `diegosouzapw/omniroute:next` და `diegosouzapw/omniroute:next-web` მიჰყვება მიმდინარე ნაგულისხმევი `release/v*` ფილიალს. ეს ცვალებადი ტეგები განკუთვნილია მხოლოდ გამოუქვეყნებელი შესწორებების შესამოწმებლად და არის** არ არის მხარდაჭერილი წარმოებისთვის** . იხილეთ [Docker გამოშვების არხები](docs/guides/DOCKER_GUIDE.md#release-channels).
 
 **🥟 Bun**
 
-სტანდარტული `bun install` და გლობალური ინსტალაცია (`bun install -g omniroute`) მხარდაჭერილია Bun runtime-ის აღმოჩენის მეშვეობით:
+სტანდარტული `bun install` და გლობალური ინსტალაცია (`bun install -g omniroute`) მხარდაჭერილია Bun გაშვების გამოვლენის საშუალებით:
 
-- **ჩაშენებული `bun:sqlite`**: OmniRoute Bun-ის ქვეშ გაშვებისას იყენებს Bun-ის ჩაშენებულ `bun:sqlite` დრაივერს, ხოლო Node.js-ზე ან `sql.js`-ზე მუშაობისას გადადის `better-sqlite3`-ზე.
-- **Webpack bundler-ის ავტომატური არჩევა dev რეჟიმში**: Development (`bun run dev`) ავტომატურად ამოიცნობს Bun-ს და Turbopack-ს თიშავს Webpack-ის სასარგებლოდ, რათა თავიდან აიცილოს native V8 binding-ებთან შეუთავსებლობა. Production build-ები (`bun run build`) ზუსტად მიჰყვება `OMNIROUTE_USE_TURBOPACK`-ს, როგორც Node-ზე: ნაგულისხმევად გამოიყენება Turbopack, ხოლო `OMNIROUTE_USE_TURBOPACK=0` გამოიყენება Webpack-ით ასაწყობად (`Dockerfile.bun` მას `--build-arg`-ად ავრცელებს).
-- **გამოყოფილი Bun Dockerfile**: მრავალეტაპიანი `Dockerfile.bun` native Bun production deployment-ებისთვის (`docker build -f Dockerfile.bun -t omniroute:bun .`).
+- **ჩაშენებული `bun:sqlite`** : OmniRoute იყენებს Bun ის ჩაშენებულ `bun:sqlite` დრაივერს Bun ზე გაშვებისას, Node.js ზე ან `sql.js` ზე ისევ `better-sqlite3` ზე გადადის.
+- **ავტომატური Webpack bundler შერჩევა dev** : განვითარება (`bun run dev`) ავტომატურად ამოიცნობს Bun და გამორთავს Turbopack Webpack-ის სასარგებლოდ, რათა თავიდან აიცილოს მშობლიური V8 სავალდებულო შეუთავსებლობა. წარმოების build-ები (`bun run build`) მიჰყვება `OMNIROUTE_USE_TURBOPACK` ზუსტად ისე, როგორც Node-ზე: Turbopack ნაგულისხმევად, `OMNIROUTE_USE_TURBOPACK=0` აშენება Webpack-ით (`Dockerfile.bun` ავლენს მას, როგორც `--build-arg`).
+- **გამოყოფილი Bun Dockerfile** : მრავალსაფეხურიანი `Dockerfile.bun` მშობლიური Bun წარმოების განლაგებისთვის (`docker build -f Dockerfile.bun -t omniroute:bun .`).
 
 ```bash
-# Bun-ით ინსტალაცია და გაშვება
+# Install and run with Bun
 bun install
 bun run dev
 ```
@@ -1159,56 +1127,48 @@ pnpm add -g omniroute@latest --allow-build=better-sqlite3 --allow-build=@swc/cor
 yay -S omniroute-bin && systemctl --user enable --now omniroute.service
 ```
 
-**🔧 Nix (Flake)**
+**🔧 Nix (ფანტელი)**
 
 ```bash
-# Nix flakes-ის გამოყენება
+# Using Nix flakes
 nix develop
 npm run dev
 
-# ან devbox-ის გამოყენება
+# Or using devbox
 devbox run npm run dev
 ```
 
-📖 [Docker-ის სახელმძღვანელო](docs/guides/DOCKER_GUIDE.md) — Compose-ის პროფილები, Caddy HTTPS, Cloudflare-ის გვირაბები.
+📖 [Docker გზამკვლევი](docs/guides/DOCKER_GUIDE.md) — პროფილების შედგენა, Caddy HTTPS, Cloudflare გვირაბები.
 
-**🦭 Podman**
+**🦭 პოდმანი**
 
 ```bash
-# 1. bind-mounted მონაცემთა დირექტორიის მომზადება
+# 1. Prepare the bind-mounted data directory
 mkdir -p data
 
-# 2. მხოლოდ Linux + ლოკალური rootless Podman (არასდროს დისტანციური Podman Machine კლიენტი):
+# 2. Linux + local rootless Podman only (never a remote Podman Machine client):
 podman unshare chown 1000:1000 ./data
 
-# 3. runtime hint-ის დაყენება, ლოკალური Compose იმიჯის აგება და გაშვება
+# 3. Set the runtime hint, build the local Compose image, and start
 echo "CONTAINER_HOST=podman" >> .env
 podman compose --profile base up -d --build
 ```
 
-macOS-ზე ან Windows-ზე Podman იყენებს დისტანციურ Podman Machine-ს: გამოტოვეთ
-`podman unshare` და მიჰყევით [ტოპოლოგიისთვის სპეციფიკურ მონაცემთა დირექტორიის მითითებებს](contrib/podman/README.md#data-directory-permissions-by-topology).
+macOS ზე ან Windows ზე, Podman იყენებს დისტანციურ Podman Machine-ს: გამოტოვეთ `podman unshare` და მიჰყევით [ტოპოლოგიის სპეციფიკურ მონაცემთა დირექტორიას მითითებებს](contrib/podman/README.md#data-directory-permissions-by-topology).
 
-📖 [Podman-ის სახელმძღვანელო](contrib/podman/README.md) — Compose-ის build-ები, Podman Machine და
-Linux/systemd Quadlet-ის დაყენება.
+📖 [Podman Guide](contrib/podman/README.md) — Compose builds, Podman Machine და Linux/systemd Quadlet-ის დაყენება.
 
-**⚡ უფრო სწრაფი / მსუბუქი ინსტალაცია (native build-ის გამოტოვება)**
+**⚡ უფრო სწრაფი / უფრო მყუდრო ინსტალაცია (გამოტოვეთ მშობლიური ვერსია)**
 
-native SQLite engine (`better-sqlite3`) არის **არასავალდებულო** დამოკიდებულება, ამიტომ გლობალური
-ინსტალაცია არასდროს ფერხდება source-კოდიდან კომპილაციის გამო: ის იყენებს prebuilt binary-ს, როდესაც
-ის თქვენს პლატფორმასა და Node-ს შეესაბამება, ხოლო სხვა შემთხვევაში გამჭვირვალედ გადადის pure-JS engine-ზე
-(Node 22+-ზე `node:sqlite`, წინააღმდეგ შემთხვევაში ჩაშენებული `sql.js` WASM) — build tools არ არის საჭირო.
+მშობლიური SQLite ძრავა (`better-sqlite3`) არის an** სურვილისამებრ** დამოკიდებულება, ამიტომ გლობალური ინსტალაცია არასოდეს ბლოკავს წყაროდან კომპილაციას: ის იყენებს წინასწარ აშენებულ ორობითს, როდესაც ის ემთხვევა თქვენს platform/Node, და სხვაგვარად, გამჭვირვალედ გადადის სუფთა JS ძრავზე (`node:sqlite` Node 22 + ზე, წინააღმდეგ შემთხვევაში შეფუთული `sql.js` WASM) — არ არის საჭირო კონსტრუქციის ინსტრუმენტები.
 
-post-install **native warm-up**-ის სრულად გამოსატოვებლად (CI, headless რეჟიმი ან ნელი კომპიუტერები).
-შენიშვნა: ეს მხოლოდ native SQLite warm-up-ის ეტაპს (`scripts/postinstall.mjs`) გამოტოვებს; binary-copy/repair hook (`scripts/build/postinstall.mjs`) ჩვეულებრივ მაინც გაეშვება:
+ინსტალაციის შემდგომი გამოტოვებისთვის** მშობლიური დათბობა** მთლიანად (CI, უთავო, ან ნელი მანქანები). შენიშვნა: ეს გამოტოვებს მხოლოდ მშობლიურ SQLite გახურების საფეხურს (`scripts/postinstall.mjs`); binary-copy/repair hook (`scripts/build/postinstall.mjs`) ისევ ნორმალურად მუშაობს:
 
 ```bash
-OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 ასევე გამოტოვებს მას
+OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 also skips it
 ```
 
-ყველაზე სწრაფი ინსტალაციისთვის უპირატესობა მიანიჭეთ **pnpm**-ს (content-addressed store + hard links — იხილეთ ზემოთ).
-დეშბორდის გარეშე, headless runtime-ისთვის გამოიყენეთ Docker-ის `base` პროფილი (ზემოთ) ან
-[Termux-ის სახელმძღვანელო](docs/guides/TERMUX_GUIDE.md). CLI-სა და ვებ-დეშბორდს ერთი და იგივე პროცესი ემსახურება ერთ პორტზე, ამიტომ დღეს ცალკე CLI-only პაკეტი არ არსებობს.
+უსწრაფესი ინსტალაციისთვის სასურველია** pnpm** (შინაარსის მისამართის მაღაზია + მყარი ბმულები — იხილეთ ზემოთ). დაფის გარეშე, უთავო მუშაობისთვის გამოიყენეთ Docker `base` პროფილი (ზემოთ) ან [Termux სახელმძღვანელო](docs/guides/TERMUX_GUIDE.md). CLI და ვებ დაფა ემსახურება ერთი და იგივე პროცესით ერთ პორტზე, ამიტომ დღეს არ არსებობს ცალკე CLI პაკეტი.
 
 <br/>
 
@@ -1310,29 +1270,29 @@ OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 ასევე �
 <br/>
 <div align="center">
 
-## 🛠️ ტექნოლოგიური სტეკი
+## 🛠️ Tech Stack
 
 </div>
 
 <table>
-  <tr><th align="left">ფენა</th><th align="left">ტექნოლოგია</th></tr>
-  <tr><td nowrap><b>გაშვების გარემო</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
-  <tr><td nowrap><b>ენა</b></td><td>TypeScript 6.0 — <b>100% TypeScript</b> <code>src/</code>-სა და <code>open-sse/</code>-ში (v2.0-დან ბირთვში ნულოვანი <code>any</code>)</td></tr>
-  <tr><td nowrap><b>ფრეიმვორკი</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
-  <tr><td nowrap><b>მონაცემთა ბაზა</b></td><td>better-sqlite3 (SQLite, WAL journaling) + LowDB (JSON legacy) — 147 დომენური მოდული, 240 მიგრაცია</td></tr>
-  <tr><td nowrap><b>მეხსიერება</b></td><td>SQLite FTS5 სრული ტექსტის ძიება + int8-quantized ვექტორული ემბედინგები, ტიპიზებული დეკეი</td></tr>
-  <tr><td nowrap><b>სქემები</b></td><td>Zod 4 — MCP ხელსაწყოების I/O ვალიდაცია + API კონტრაქტები</td></tr>
+  <tr><th align="left">ფენა</th><th align="left">ტექნიკა</th></tr>
+  <tr><td nowrap><b>გაშვების დრო</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
+  <tr><td nowrap><b>ენა</b></td><td>TypeScript 6.0 — <b>100% TypeScript</b> <code>src/</code> და <code>open-sse/</code> ში (ნული <code>any</code> ბირთვში v2.0-დან)</td></tr>
+  <tr><td nowrap><b>ჩარჩო</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
+  <tr><td nowrap><b>მონაცემთა ბაზა</b></td><td>better-sqlite3 (SQLite, WAL journaling) + LowDB (JSON legacy) — 147 დომენის მოდული, 240 მიგრაცია</td></tr>
+  <tr><td nowrap><b>მეხსიერება</b></td><td>SQLite FTS5 სრული ტექსტი + int8-quantized ვექტორული ჩაშენებები, აკრეფილი დაშლა</td></tr>
+  <tr><td nowrap><b>სქემები</b></td><td>Zod 4 — MCP ინსტრუმენტი I/O დადასტურება + API კონტრაქტები</td></tr>
   <tr><td nowrap><b>პროტოკოლები</b></td><td>MCP (stdio / HTTP / SSE) + A2A v0.3 (JSON-RPC 2.0 + SSE)</td></tr>
-  <tr><td nowrap><b>სტრიმინგი</b></td><td>Server-Sent Events (SSE) + WebSocket ხიდი (<code>/v1/ws</code>)</td></tr>
-  <tr><td nowrap><b>კომპრესია</b></td><td>12-ძრავიანი pipeline — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
-  <tr><td nowrap><b>ავტორიზაცია &amp; უსაფრთხოება</b></td><td>OAuth 2.0 (PKCE) + JWT + API Keys + MCP scoped auth · AES-256-GCM დასვენებულ მდგომარეობაში · DOMPurify</td></tr>
-  <tr><td nowrap><b>ფარულობა</b></td><td>wreq-js — JA3 / JA4 TLS fingerprint impersonation, 3-დონიანი პროქსი</td></tr>
-  <tr><td nowrap><b>მედეგობა</b></td><td>ამომრთველი, ექსპონენციური backoff, anti-thundering-herd, auto-combo თვითაღდგენა</td></tr>
-  <tr><td nowrap><b>ლოგირება</b></td><td>pino — სტრუქტურირებული JSON ლოგები მოთხოვნის კონტექსტით</td></tr>
-  <tr><td nowrap><b>ტესტირება</b></td><td>Node.js test runner + Vitest — <b>60,000+ სტატიკური ტესტის დეკლარაცია</b> 8,400+ თვალყურის დევნებად სატესტო ფაილში (unit, integration, E2E, security, ecosystem)</td></tr>
-  <tr><td nowrap><b>პლატფორმები</b></td><td>დესკტოპი (Electron) · Android (Termux) · PWA (ნებისმიერი ბრაუზერი)</td></tr>
-  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Actions — ავტომატური npm publish + Docker Hub რელიზისას</td></tr>
-  <tr><td nowrap><b>ბმულები</b></td><td><a href="https://omniroute.online">ვებსაიტი</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/diegosouzapw/omniroute">Docker Hub</a></td></tr>
+  <tr><td nowrap><b>სტრიმინგი</b></td><td>სერვერის გაგზავნილი ღონისძიებები (SSE) + WebSocket bridge (<code>/v1/ws</code>)</td></tr>
+  <tr><td nowrap><b>შეკუმშვა</b></td><td>12-ძრავიანი მილსადენი — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
+  <tr><td nowrap><b>Auth &amp; უსაფრთხოება</b></td><td>OAuth 2.0 (PKCE) + JWT + API კლავიშები + MCP scoped auth · AES-256-GCM დასვენების დროს · DOMPurify</td></tr>
+  <tr><td nowrap><b>სტელსი</b></td><td>wreq-js — JA3 / JA4 TLS თითის ანაბეჭდის იმიტაცია, 3 დონის პროქსი</td></tr>
+  <tr><td nowrap><b>გამძლეობა</b></td><td>ამომრთველი, ექსპონენციალური უკან დახევა, ჭექა-ქუხილის საწინააღმდეგო ნახირი, ავტომატური კომბინირებული თვითგანკურნება</td></tr>
+  <tr><td nowrap><b>ხე-ტყე</b></td><td>pino — სტრუქტურირებული JSON ჟურნალები მოთხოვნის კონტექსტით</td></tr>
+  <tr><td nowrap><b>ტესტირება</b></td><td>Node.js ტესტის მორბენალი + Vitest — <b>60,000 + სტატიკური ტესტის დეკლარაცია</b> 8400 + თვალთვალის სატესტო ფაილში (ერთეული, ინტეგრაცია, E2E, უსაფრთხოება, ეკოსისტემა)</td></tr>
+  <tr><td nowrap><b>პლატფორმები</b></td><td>სამუშაო მაგიდა (Electron) · Android (Termux) · PWA (ნებისმიერი ბრაუზერი)</td></tr>
+  <tr><td nowrap><b>CI/CD</b></td><td>GitHub მოქმედებები — auto npm გამოაქვეყნებს + Docker Hub გამოშვებისას</td></tr>
+  <tr><td nowrap><b>ბმულები</b></td><td><a href="https://omniroute.online">საიტი</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/cheaperinference/omniroute">Docker Hub</a></td></tr>
 </table>
 
 <div align="center">
@@ -1824,15 +1784,15 @@ OmniRoute გიგანტების მხრებზე დგას. ი
 
 ## 📄 ლიცენზია
 
-MIT ლიცენზია — დეტალებისთვის იხილეთ [LICENSE](LICENSE).
+MIT ლიცენზია - იხილეთ [LICENSE](LICENSE) დეტალებისთვის.
 
 ---
 
 <div align="center">
 
-**[⬆ თავში დაბრუნება](#-omniroute)** · შექმნილია ❤️-ით ღია კოდის AI-საზოგადოებისთვის.
+**[⬆ თავში დაბრუნება](#-omniroute)** · აშენებულია ❤️ ით ღია კოდის AI საზოგადოებისთვის.
 
-<sub>შექმნა <a href="https://github.com/diegosouzapw">Diego Souza</a>-მ · OmniRoute v3.8.55 · Node ≥22.22.2 · MIT ლიცენზია · <a href="https://omniroute.online">omniroute.online</a></sub>
+<sub>შექმნილია <a href="https://github.com/diegosouzapw">დიეგო სოუზა</a> · OmniRoute v3.8.55 · Node ≥ 22.22.2 · MIT ლიცენზია · <a href="https://omniroute.online">omniroute.online</a></sub>
 
 </div>
-<!-- GitHub Discussions ჩართულია საზოგადოების კითხვებისა და პასუხებისთვის -->
+<!-- GitHub Discussions enabled for community Q&A -->

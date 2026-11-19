@@ -40,19 +40,19 @@ Ez eltávolítja az alkalmazást, **és véglegesen törli** az összes adatot:
 
 ---
 
-## Manuális eltávolítás
+## Kézi eltávolítás
 
-### Globális NPM-telepítés
+### NPM globális telepítés
 
 ```bash
-# A globális csomag eltávolítása
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Opcionális) Az adatkönyvtár eltávolítása
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Globális pnpm-telepítés
+### pnpm globális telepítés
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,24 +62,26 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# A konténer leállítása és eltávolítása
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# A kötet eltávolítása (minden adatot töröl)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Opcionális) A lemezkép eltávolítása
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
 ### Docker Compose
 
 ```bash
-# A konténerek leállítása és eltávolítása
+# Stop and remove containers
 docker compose down
 
-# A kötetek eltávolítása is (minden adatot töröl)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
@@ -87,26 +89,26 @@ docker compose down -v
 
 **Windows:**
 
-- Nyissa meg a `Beállítások → Alkalmazások → OmniRoute → Eltávolítás` menüpontot
-- Vagy futtassa az NSIS eltávolítót a telepítési könyvtárból
+- Nyissa meg `Settings → Apps → OmniRoute → Uninstall`
+- Vagy futtassa a NSIS eltávolító programot a telepítési könyvtárból
 
 **macOS:**
 
-- Húzza az `OmniRoute.app` alkalmazást az `/Applications` mappából a Kukába
+- Húzza `OmniRoute.app` `/Applications` mappából a Kukába
 - Adatok eltávolítása: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
-- Távolítsa el az AppImage-fájlt
+- Távolítsa el a AppImage fájlt
 - Adatok eltávolítása: `rm -rf ~/.omniroute`
 
-### Forráskódból történő telepítés (git clone)
+### Forrás telepítése (git klón)
 
 ```bash
-# A klónozott könyvtár eltávolítása
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Opcionális) Az adatkönyvtár eltávolítása
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

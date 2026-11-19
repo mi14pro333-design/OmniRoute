@@ -462,36 +462,36 @@ ovat tiedostossa [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Docker-ongelmat
+## Docker ongelmat
 
-### Dockerin IPv6 / yhteyden nollautuminen
+### Docker IPv6 / Yhteyden nollaus
 
 <a name="docker-ipv6"></a>
 
-**Oireet:** `curl http://localhost:20128/v1/models` palauttaa virheen `curl: (56) Recv failure: Connection reset by peer`. Hallintapaneeli ja todentamattomat päätepisteet toimivat, mutta todennetut päätepisteet eivät — tämä vaikuttaa todennusongelmalta, mutta ei ole sellainen.
+**Oireet:** `curl http://localhost:20128/v1/models` palauttaa `curl: (56) Recv failure: Connection reset by peer`. Kojelauta ja todentamattomat päätepisteet toimivat, mutta todennetut päätepisteet epäonnistuvat. — näyttää todennusongelmalta, mutta ei sitä ole.
 
-**Syy:** `docker run -p 20128:20128` julkaisee portin sekä osoitteessa `0.0.0.0` (IPv4) että `::` (IPv6), mutta säilön sisällä oleva prosessi kuuntelee vain IPv4-yhteyksiä. Isännissä, joissa `localhost` selvitetään ensin osoitteeksi `::1`, yhteys päätyy julkaistuun IPv6-porttiin, jonka takana ei ole kuuntelijaa → yhteys nollautuu.
+**Aiheuttaa:** `docker run -p 20128:20128` julkaisee sekä `0.0.0.0` (IPv4) että `::` (IPv6), mutta säilön sisällä oleva prosessi kuuntelee vain IPv4. Isännissä, joissa `localhost` ratkaisee ensin `::1`, yhteys laskeutuu IPv6 julkaistuun porttiin ilman kuuntelijaa sen takana → -yhteys nollautuu.
 
-**Korjaus:**
+**Korjata:**
 
-1. **Nopea vianmääritys:** Suorita `curl -4 http://localhost:20128/v1/models`. Jos se toimii valitsimella `-4` mutta ei ilman sitä, IPv6-sidonta ei vastaa kuunteluasetusta.
-2. **Pysyvä korjaus:** Sido nimenomaisesti IPv4-osoitteeseen käyttämällä `docker run` -komennossa asetusta `-p 127.0.0.1:20128:20128`:
+1. **Nopea diagnoosi:** Aja `curl -4 http://localhost:20128/v1/models`. Jos se toimii `-4` kanssa, mutta epäonnistuu ilman, sinulla on IPv6 -sidosvirhe.
+2. **Pysyvä korjaus:** Sitoudu IPv4 eksplisiittisesti käyttämällä `-p 127.0.0.1:20128:20128` `docker run` -komennossasi:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Tämä pakottaa IPv4-sidonnan ja estää samalla välityspalvelimen paljastamisen kaikissa isännän verkkoliitännöissä.
+   Tämä pakottaa IPv4 -sidoksen ja välttää myös välityspalvelimen paljastamisen kaikissa isäntäliitännöissä.
 
 ---
 
-### CLI-työkalu näkyy asentamattomana
+### CLI Tool Shows Ei asennettu
 
-1. Tarkista suoritusympäristön kentät: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Kannettavassa tilassa: käytä näköistiedoston kohdetta `runner-cli` (CLI-työkalut sisältyvät siihen)
-3. Isäntäliitostilassa: aseta `CLI_EXTRA_PATHS` ja liitä isännän binäärihakemisto vain luku -tilassa
-4. Jos `installed=true` ja `runnable=false`: binääri löytyi, mutta kuntotarkistus epäonnistui
+1. Tarkista suoritusaikakentät: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Kannettava tila: käytä kuvakohdetta `runner-cli` (pakkattu CLIs)
+3. Isäntäliitostila: aseta `CLI_EXTRA_PATHS` ja mount host bin -hakemisto vain luku -muotoiseksi
+4. Jos `installed=true` ja `runnable=false`: binääri löydettiin, mutta terveystarkastus epäonnistui
 
-### Suoritusympäristön nopea validointi
+### Nopea ajonaikainen validointi
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

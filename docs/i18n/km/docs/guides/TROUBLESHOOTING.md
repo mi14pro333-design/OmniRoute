@@ -452,36 +452,36 @@ Connection ដែលបាន import _មុន_ v3.8.0 មិនមានកា
 
 ---
 
-## បញ្ហា Docker
+## Docker បញ្ហា
 
-### Docker IPv6 / ការតភ្ជាប់ត្រូវបានកំណត់ឡើងវិញ
+### Docker IPv6 / កំណត់ការតភ្ជាប់ឡើងវិញ
 
 <a name="docker-ipv6"></a>
 
-**រោគសញ្ញា៖** `curl http://localhost:20128/v1/models` ត្រឡប់ `curl: (56) Recv failure: Connection reset by peer`។ Dashboard និង endpoint ដែលមិនតម្រូវឱ្យផ្ទៀងផ្ទាត់អត្តសញ្ញាណដំណើរការធម្មតា ប៉ុន្តែ endpoint ដែលតម្រូវឱ្យផ្ទៀងផ្ទាត់អត្តសញ្ញាណបរាជ័យ — វាមើលទៅដូចជាបញ្ហា auth ប៉ុន្តែតាមពិតមិនមែនទេ។
+**រោគសញ្ញា៖** `curl http://localhost:20128/v1/models` ត្រឡប់ `curl: (56) Recv failure: Connection reset by peer`។ ផ្ទាំងគ្រប់គ្រង និងចំណុចបញ្ចប់ដែលមិនបានផ្ទៀងផ្ទាត់ដំណើរការ ប៉ុន្តែចំណុចបញ្ចប់ដែលផ្ទៀងផ្ទាត់ភាពត្រឹមត្រូវបរាជ័យ — វាមើលទៅដូចជាបញ្ហាការផ្ទៀងផ្ទាត់ ប៉ុន្តែមិនមែនទេ។
 
-**មូលហេតុ៖** `docker run -p 20128:20128` បើកផ្សាយលើទាំង `0.0.0.0` (IPv4) និង `::` (IPv6) ប៉ុន្តែ process នៅខាងក្នុង container ស្ដាប់តែលើ IPv4 ប៉ុណ្ណោះ។ នៅលើ host ដែល `localhost` resolve ទៅ `::1` ជាមុន ការតភ្ជាប់នឹងទៅដល់ port IPv6 ដែលបានបើកផ្សាយ ដោយគ្មាន listener នៅពីក្រោយវា → ការតភ្ជាប់ត្រូវបានកំណត់ឡើងវិញ។
+**មូលហេតុ៖** `docker run -p 20128:20128` បោះពុម្ពលើទាំង `0.0.0.0` (IPv4) និង `::` (IPv6) ប៉ុន្តែដំណើរការនៅខាងក្នុងកុងតឺន័រស្តាប់តែនៅលើ IPv4 ប៉ុណ្ណោះ។ នៅលើម៉ាស៊ីនដែល `localhost` ដោះស្រាយទៅ `::1` ដំបូង ការតភ្ជាប់នឹងទៅដល់ច្រកដែលបានបោះពុម្ព IPv6 ដោយគ្មានអ្នកស្តាប់នៅពីក្រោយវាកំណត់ការតភ្ជាប់ → ឡើងវិញ។
 
-**ដំណោះស្រាយ៖**
+**ជួសជុល៖**
 
-1. **ការធ្វើរោគវិនិច្ឆ័យរហ័ស៖** ដំណើរការ `curl -4 http://localhost:20128/v1/models`។ ប្រសិនបើវាដំណើរការជាមួយ `-4` ប៉ុន្តែបរាជ័យបើគ្មានវា នោះអ្នកមាន bind មិនត្រូវគ្នារវាង IPv6។
-2. **ដំណោះស្រាយអចិន្ត្រៃយ៍៖** Bind ទៅ IPv4 ជាក់លាក់ដោយប្រើ `-p 127.0.0.1:20128:20128` នៅក្នុង command `docker run` របស់អ្នក៖
+1. **ការធ្វើរោគវិនិច្ឆ័យរហ័ស៖** រត់ `curl -4 http://localhost:20128/v1/models`។ ប្រសិនបើវាដំណើរការជាមួយ `-4` ប៉ុន្តែបរាជ័យដោយគ្មាន អ្នកមាន IPv6 bind មិនត្រូវគ្នា។
+2. **ការជួសជុលអចិន្រ្តៃយ៍៖** ភ្ជាប់ទៅ IPv4 យ៉ាងច្បាស់ដោយប្រើ `-p 127.0.0.1:20128:20128` នៅក្នុងពាក្យបញ្ជា `docker run` របស់អ្នក៖
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   វាបង្ខំឱ្យ bind ទៅ IPv4 ហើយក៏ជៀសវាងការបង្ហាញ proxy នៅលើ interface ទាំងអស់របស់ host ផងដែរ។
+   នេះបង្ខំ IPv4 bind ហើយក៏ជៀសវាងការបង្ហាញប្រូកស៊ីនៅលើចំណុចប្រទាក់ម៉ាស៊ីនទាំងអស់។
 
 ---
 
-### ឧបករណ៍ CLI បង្ហាញថាមិនបានដំឡើង
+### CLI ឧបករណ៍បង្ហាញថាមិនត្រូវបានដំឡើងទេ។
 
-1. ពិនិត្យមើល field របស់ runtime៖ `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. សម្រាប់ portable mode៖ ប្រើ image target `runner-cli` (មាន CLI ភ្ជាប់មកជាមួយ)
-3. សម្រាប់ host mount mode៖ កំណត់ `CLI_EXTRA_PATHS` ហើយ mount directory bin របស់ host ជា read-only
-4. ប្រសិនបើ `installed=true` និង `runnable=false`៖ បានរកឃើញ binary ប៉ុន្តែវាបរាជ័យក្នុងការត្រួតពិនិត្យសុខភាព
+1. ពិនិត្យវាលម៉ោងរត់៖ `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. សម្រាប់របៀបចល័ត៖ ប្រើរូបភាពគោលដៅ `runner-cli` (ជាកញ្ចប់ CLIs)
+3. សម្រាប់របៀបម៉ោនម៉ាស៊ីន៖ កំណត់ `CLI_EXTRA_PATHS` និង mount host bin directory ជាបានតែអានប៉ុណ្ណោះ។
+4. ប្រសិនបើ `installed=true` និង `runnable=false`: ប្រព័ន្ធគោលពីរត្រូវបានរកឃើញ ប៉ុន្តែបានបរាជ័យក្នុងការត្រួតពិនិត្យសុខភាព
 
-### ការផ្ទៀងផ្ទាត់ Runtime រហ័ស
+### សុពលភាពនៃពេលវេលាដំណើរការរហ័ស
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

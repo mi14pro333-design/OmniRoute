@@ -182,13 +182,13 @@ El servidor rechaza activamente valores débiles conocidos como `changeme`, `sec
 
 ---
 
-## Seguridad de Docker
+## Seguridad Docker
 
-- Utilice un usuario que no sea root en producción
-- Monte los secretos como volúmenes de solo lectura
-- Nunca copie archivos `.env` en imágenes de Docker
+- Utilice un usuario no root en producción
+- Montar secretos como volúmenes de solo lectura
+- Nunca copie archivos `.env` en imágenes Docker
 - Utilice `.dockerignore` para excluir archivos confidenciales
-- Establezca `AUTH_COOKIE_SECURE=true` cuando esté detrás de HTTPS
+- Establecer `AUTH_COOKIE_SECURE=true` cuando esté detrás HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

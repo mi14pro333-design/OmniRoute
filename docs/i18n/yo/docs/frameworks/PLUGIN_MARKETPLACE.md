@@ -87,34 +87,31 @@ padà sí àkójọ ìpilẹ̀ṣẹ̀.
 
 ## REST API
 
-Gbogbo endpoint nílò ìfàṣẹsí ìṣàkóso (`requireManagementAuth`) **àti pé** wọ́n
-wà fún loopback nìkan — `/api/plugins` àti `/api/plugins/` wà nínú àtòjọ
-`LOCAL_ONLY_API_PREFIXES` (`src/server/authz/routeGuard.ts`).
+Gbogbo awọn aaye ipari nilo ijẹrisi iṣakoso (`requireManagementAuth`)** ati** jẹ loopback-nikan — `/api/plugins` ati `/api/plugins/` ti wa ni akojọ si ni `LOCAL_ONLY_API_PREFIXES` (`src/server/authz/routeGuard.ts`).
 
-| Endpoint                         | Ọ̀nà    | Àpèjúwe                                                         |
-| -------------------------------- | ------ | --------------------------------------------------------------- |
-| `/api/plugins`                   | GET    | Ṣe àtòjọ àwọn plugin tí a ti fi sílẹ̀ (àsẹ̀ `?status=` jẹ́ àṣàyàn) |
-| `/api/plugins`                   | POST   | Fi plugin kan sílẹ̀ láti path agbègbè pípé                       |
-| `/api/plugins/scan`              | POST   | Ṣàyẹ̀wò àpò-ọ̀nà plugin kí o sì forúkọsílẹ̀ àwọn plugin tuntun     |
-| `/api/plugins/marketplace`       | GET    | Ṣe àtòjọ àwọn àkọsílẹ̀ katalogi ọjà                              |
-| `/api/plugins/[name]`            | GET    | Gba àwọn àlàyé plugin tí a ti fi sílẹ̀                           |
-| `/api/plugins/[name]`            | DELETE | Yọ plugin kan kúrò                                              |
-| `/api/plugins/[name]/activate`   | POST   | Mú ṣiṣẹ́ (kó wọlé + forúkọsílẹ̀ àwọn hook)                        |
-| `/api/plugins/[name]/deactivate` | POST   | Mú kúrò ní iṣẹ́ (ṣe `onDeactivate`, yọ ìforúkọsílẹ̀ àwọn hook)    |
-| `/api/plugins/[name]/config`     | GET    | Gba config plugin + schema config                               |
-| `/api/plugins/[name]/config`     | PUT    | Ṣe ìmúdójúìwọ̀n config plugin (tí a fìdí rẹ̀ múlẹ̀ pẹ̀lú schema)    |
+| Opin ipari                       | Ọna    | Apejuwe                                                        |
+| -------------------------------- | ------ | -------------------------------------------------------------- |
+| `/api/plugins`                   | GET    | Ṣe atokọ awọn afikun ti a fi sori ẹrọ (àlẹmọ `?status=` yiyan) |
+| `/api/plugins`                   | POST   | Fi ohun itanna sori ẹrọ lati itọsọna awọn orisun itanna        |
+| `/api/plugins/scan`              | POST   | Ṣe ayẹwo iwe ilana itanna ati forukọsilẹ awọn afikun tuntun    |
+| `/api/plugins/marketplace`       | GET    | Ṣe atokọ awọn titẹ sii katalogi ibi ọja                        |
+| `/api/plugins/[name]`            | GET    | Gba awọn alaye itanna ti a fi sori ẹrọ                         |
+| `/api/plugins/[name]`            | DELETE | Yọ ohun itanna kan kuro                                        |
+| `/api/plugins/[name]/activate`   | POST   | Mu ṣiṣẹ (firù awọn ìkọ iforukọsilẹ + )                         |
+| `/api/plugins/[name]/deactivate` | POST   | Muu ma ṣiṣẹ ( `onDeactivate` ina, awọn ìkọ ti ko forukọsilẹ)   |
+| `/api/plugins/[name]/config`     | GET    | Gba eto itanna atunto + atunto atunto                          |
+| `/api/plugins/[name]/config`     | PUT    | Ṣe imudojuiwọn atunto ohun itanna (ti a fọwọsi lodi si ero)    |
 
-Àlẹ̀mọ́ `status` fún `GET /api/plugins` gba ọ̀kan lára
-`installed` / `active` / `inactive` / `error`. Iye tí kò tọ́ máa dá `400` padà.
+Ajọ `GET /api/plugins` `status` gba ọkan ninu `installed` / `active` / `inactive` / `error`. Iye aiṣedeede da `400` pada.
 
-### Ṣe àtòjọ àwọn plugin tí a ti fi sílẹ̀
+### Akojọ awọn afikun ti a fi sori ẹrọ
 
 ```bash
 curl http://localhost:20128/api/plugins \
   -H "Cookie: auth_token=..."
 ```
 
-### Fi sílẹ̀ láti path agbègbè kan
+### Fi sori ẹrọ lati ọna agbegbe kan
 
 ```bash
 curl -X POST http://localhost:20128/api/plugins \
@@ -123,19 +120,18 @@ curl -X POST http://localhost:20128/api/plugins \
   -d '{ "path": "/absolute/path/to/my-plugin" }'
 ```
 
-`path` gbọ́dọ̀ jẹ́ **pípé**, kò sì gbọdọ̀ ní àwọn apá ìrìnàjò `..` tàbí
-null bytes (Zod ló ń fipá mú èyí). Àpò-ọ̀nà orísun gbọ́dọ̀ ní
-`plugin.json` tó péye (tàbí kí ó jẹ́ àpò-ọ̀nà òbí rẹ̀). Nígbà àṣeyọrí, ìdáhùn náà jẹ́ `201` pẹ̀lú
-ìlà plugin tí a fi sílẹ̀.
+`path` gbọdọ jẹ ẹya** pipe** ona to a liana** inu awọn orisun itanna liana** : `plugin-sources` lẹgbẹẹ gbongbo itanna, nitorina `~/.omniroute/plugin-sources/` nipasẹ aiyipada, tabi `<parent of OMNIROUTE_PLUGINS_DIR>/plugin-sources/` nigbati a ṣeto oniyipada naa (`getPluginSourcesDir()` ni `src/lib/plugins/installSource.ts`). Daakọ tabi oniye ohun itanna nibẹ akọkọ. A kọ fifi sori ẹrọ pẹlu `400` nigbati ọna naa ni `..` tabi baiti asan kan, wa ni ita itọsọna yẹn, pinnu ni ita rẹ nipasẹ ọna asopọ kan, ni aami ọna asopọ ti ibi-afẹde rẹ wa ni ita rẹ, tabi nigbati itọsọna naa ko si. Itọsọna orisun gbọdọ ni `plugin.json` to wulo (tabi jẹ obi ti ọkan). Lori aṣeyọri idahun jẹ `201` pẹlu ọna itanna ti a fi sii.
 
-### Ṣàwárí nínú ọjà
+Ko dabi awọn ipa-ọna itanna miiran, ọkan yii nilo ijẹrisi iṣakoso (akoko dasibodu kan tabi bọtini API ti iṣakoso-scoped) paapaa nigbati iwọle ba jẹ alaabo (`requireLogin=false`): fifi koodu kii ṣe iṣe iṣe ailorukọ rara.
+
+### Lọ kiri lori ọja naa
 
 ```bash
 curl http://localhost:20128/api/plugins/marketplace \
   -H "Cookie: auth_token=..."
 ```
 
-### Ṣe ìmúdójúìwọ̀n config plugin
+### Ṣe imudojuiwọn atunto itanna
 
 ```bash
 curl -X PUT http://localhost:20128/api/plugins/my-plugin/config \
@@ -144,10 +140,7 @@ curl -X PUT http://localhost:20128/api/plugins/my-plugin/config \
   -d '{ "config": { "level": "debug", "maxItems": 100 } }'
 ```
 
-`PUT .../config` ń fìdí iye kọ̀ọ̀kan tí a pèsè múlẹ̀ pẹ̀lú
-`configSchema` plugin náà (tí a kéde nínú manifest): àwọn field `number` ń tẹ̀lé `min`/`max`,
-àwọn field `select` gbọ́dọ̀ bá `enum` tí a kéde mu. Àwọn key tí kò sí nínú schema
-ni a gba láàyè láti kọjá.
+`PUT .../config` fọwọsi iye kọọkan ti a pese lodi si `configSchema` ohun itanna (ti a kede ninu ifihan): awọn aaye `number` ọlá `min`/`max`, awọn aaye `select` gbọdọ baramu `enum` ti a kede. Awọn bọtini ti ko wa ninu eto naa gba laaye nipasẹ.
 
 ## Ìṣètò
 
@@ -202,84 +195,60 @@ Tab "Marketplace" lórí dashboard ń fi field kan hàn fún URL yìí (tí a t�
 > kí o tó gbára lé e — path **kíkà** (`getSettings()` →
 > `listMarketplacePlugins()`) máa ń tẹ̀lé key náà lẹ́yìn tí ó bá ti wà nínú ibi ìpamọ́ settings.
 
-## Ààbò
+## Aabo
 
-### Ìpele ipa-ọ̀nà — loopback nìkan
+### Ipa ọna — loopback nikan
 
-Àwọn plugin ń ṣiṣẹ́ kóòdù nínú àwọn child process tí a ṣẹ̀dá, nítorí náà gbogbo ojú-ìṣàmúlò `/api/plugins`
-ni a pín sí `LOCAL_ONLY` (Ìpele 1). Ìfipámú loopback máa ń ṣiṣẹ́
-láìsí àídájú **ṣáájú** àyẹ̀wò ìfàṣẹsí èyíkéyìí, nítorí náà, kódà bí token ìṣàkóso kan bá tú jáde tí ó sì dé
-ẹ̀rọ náà nípasẹ̀ tunnel, kò lè fi plugin sílẹ̀, mú un ṣiṣẹ́, tàbí yọ ọ́ kúrò.
-Wo [`docs/security/ROUTE_GUARD_TIERS.md`](../security/ROUTE_GUARD_TIERS.md) àti
-Àwọn Òfin Líle #15 / #17.
+Awọn afikun ṣiṣẹ koodu ni awọn ilana ọmọ ti o ni itọpa, nitorinaa gbogbo dada `/api/plugins` jẹ ipin `LOCAL_ONLY` (Ipele 1). Loopback imuse nṣiṣẹ lainidi** ṣaaju ki o to** ṣayẹwo eyikeyi auth, nitorinaa ami iṣakoso ti jo de apoti lori oju eefin kan ko le fi sii, mu ṣiṣẹ, tabi aifi si ẹrọ itanna kan. Wo [`docs/security/ROUTE_GUARD_TIERS.md`](../security/ROUTE_GUARD_TIERS.md) ati Awọn ofin Lile #15 / #17.
 
-### Olùṣọ́ SSRF fún ìforúkọsílẹ̀ marketplace
+### Oja iforukọsilẹ SSRF oluso
 
-URL ìforúkọsílẹ̀ àdáni jẹ́ àtúnṣe tí olùkọlù lè ní ipa lórí, nítorí náà ṣáájú
-kí `listMarketplacePlugins()` tó gba a wá, ó máa ń fi í kọjá àwọn ipele méjì:
+Iforukọsilẹ aṣa URL jẹ atunto ti o ni ipa ti ikọlu, nitorinaa ṣaaju gbigba `listMarketplacePlugins()` o ṣiṣẹ nipasẹ awọn ipele meji:
 
 1. **`isSafeMarketplaceUrl(url)`** (`src/lib/plugins/marketplace.ts`):
-   - Kọ ohunkóhun tí kì í ṣe `http:` / `https:`.
-   - Kọ àwọn host private/loopback/link-local/ULA tí a kọ ní tààrà (IPv4 **àti** IPv6,
-     pẹ̀lú IPv4-mapped) nípasẹ̀ `isPrivateHost` àṣẹ́ṣe
-     (`src/shared/network/outboundUrlGuard.ts`).
-   - Yanjú àwọn àkọsílẹ̀ `A` **àti** `AAAA` méjèèjì, ó sì kọ URL náà bí **èyíkéyìí** lára àwọn
-     àdírẹ́sì tí a yanjú bá jẹ́ private — èyí ń dí ọ̀nà àbáyọ public-hostname → private-IP.
-   - **Ó kọ̀ láìfàyè gba**: ìkùnà ìyànjú DNS máa ń jẹ́ kí a kọ URL náà.
-2. **`safeOutboundFetch(url, { guard: "public-only", timeoutMs: 5000 })`**
-   (`src/shared/network/safeOutboundFetch.ts`): tún lo olùṣọ́ URL public-only
-   ní àkókò gbígbà, ó sì **dí àwọn àtúndarí lọ́nà** (kò sí ìyípadà public → private `30x`
-   ).
+   - Kọ ohunkohun ti kii ṣe `http:` / `https:`.
+   - Kọ awọn agbalejo private/loopback/link-local/ULA gangan (IPv4** ati** IPv6, pẹlu IPv4-mapped) nipasẹ canonical `isPrivateHost` (`src/shared/network/outboundUrlGuard.ts`).
+   - Awọn ipinnu** mejeeji** `A` ati `AAAA` igbasilẹ ati kọ ti o ba ti** eyikeyi** adirẹsi ti o yanju jẹ — ikọkọ tilekun orukọ-olugbalegbe gbogbogbo → ikọkọ-IP fori.
+   - **Ikuna ni pipade** : ikuna ipinnu DNS kan kọ URL.
+2. **`safeOutboundFetch(url, { guard: "public-only", timeoutMs: 5000 })`** (`src/shared/network/safeOutboundFetch.ts`): tun-ṣiṣẹ ni gbangba-nikan URL oluso ni akoko bu ati** ohun amorindun àtúnjúwe** (ko si → ikọkọ `30x` pivot).
 
-URL tí ó kùnà ní èyíkéyìí lára àwọn ipele náà kò ní dá ìbéèrè náà dúró — marketplace
-máa ń padà sí ìforúkọsílẹ̀ seed tí a fi sínú rẹ̀, ó sì máa ń ṣe àkọsílẹ̀ ìkìlọ̀.
+A URL ti o kuna boya Layer ko ni fa fifalẹ ibeere — aaye ọja ni idakẹjẹ ṣubu pada si iforukọsilẹ irugbin ti a ṣe sinu ati ṣe igbasilẹ ikilọ kan.
 
-> A mú olùṣọ́ yìí le sí i nínú PR #3774 ní pàtó láti yanjú A + AAAA àti láti lo
-> `isPrivateHost` àṣẹ́ṣe dípò àyẹ̀wò IPv4-nìkan.
+> Ẹṣọ yii ni lile ni PR #3774 pataki lati yanju A + AAAA ati lo `isPrivateHost` canonical dipo ayẹwo IPv4-only.
 
-### Ìyàsọ́tọ̀ ìṣiṣẹ́ plugin
+### Pilogi ipinya ipaniyan
 
-- **Ìyàsọ́tọ̀ process** — `loadPlugin()` (`src/lib/plugins/loader.ts`) máa ń ṣẹ̀dá
-  plugin kọ̀ọ̀kan nínú child process Node.js ọ̀tọ̀, ó sì ń bá a sọ̀rọ̀ nípasẹ̀ IPC.
-  Àwọn ìpè hook ní àkókò ìdúró tó pọ̀jù pẹ̀lú ìmúlọ́kànle `SIGTERM` → `SIGKILL`.
-- **Àtòjọ ìyọ̀ǹda Env** — child náà gba àwọn environment variable tó wà nínú àtòjọ ìyọ̀ǹda
-  nìkan; a máa ń fún un ní àkójọpọ̀ tó gbòòrò sí i nígbà tí manifest bá béèrè àṣẹ
-  `env` nìkan.
-- **Ìdènà path** — ìfisílẹ̀/ìgbéga/ìyọkúrò máa ń jẹ́rìí pé directory plugin
-  àti `manifest.main` yanjú **láàárín** root plugin tí a ń ṣàkóso
-  ṣáájú ẹ̀dà èyíkéyìí tàbí ìparẹ́ onípele (èyí ń dáàbò bo lòdì sí àwọn path DB tí a ti fọwọ́ bà
-  àti ìrìn-àjò `../` nínú `manifest.main`). Ìmúṣiṣẹ́ máa ń yanjú àwọn symlink nípasẹ̀
-  `realpath`, ó sì kọ̀ láti kó entry point tí ó jáde kúrò nínú directory
-  plugin.
-- **Integrity pin àṣàyàn** — manifest kan lè kéde field `integrity`
-  (`sha256-<base64>`, fọ́ọ̀mù SRI). Nígbà tí ó bá wà, loader máa ń ṣàyẹ̀wò hash
-  fáìlì ìbẹ̀rẹ̀ ní àkókò ìkó, ó sì kọ̀ láti mú un ṣiṣẹ́ bí wọn kò bá bára mu. Ó jẹ́
-  ìṣàwárí ìfọwọ́bà àṣàyàn, **kì í ṣe** ààlà ààbò — ìtọ́sọ́nà loopback-nìkan
-  àti àwòṣe àṣẹ ni àwọn ààlà gidi.
+> **Awọn afikun kii ṣe apoti iyanrin.** Ọmọ naa jẹ ilana Node.js lasan ti n ṣiṣẹ bi olumulo OmniRoute, laisi ipo VM ko si awọn asia igbanilaaye Node.js, nitorinaa koodu itanna le ka ati kọ faili eyikeyi ti olumulo le, ṣiṣe awọn eto ati de nẹtiwọki. `requires.permissions` nikan pinnu iru awọn oniyipada ayika ti ọmọ gba; awọn igbanilaaye miiran ko ni ipa. Fi sori ẹrọ awọn afikun nikan ti o gbẹkẹle. Aala ilana ni isalẹ ni awọn ipadanu ati awọn idorikodo; kì í ṣe ààlà ààbò.
 
-## Manifest (`plugin.json`)
+- **Iyapa ilana** — `loadPlugin()` (`src/lib/plugins/loader.ts`) fa ohun itanna kọọkan sinu ilana ọmọ Node.js lọtọ ati ibaraẹnisọrọ lori IPC. Awọn ipe kio ni akoko idaduro pẹlu `SIGTERM` → `SIGKILL` escalation.
+- **Env iyọọda akojọ** — ọmọ gba nikan ohun idasilẹ ṣeto ti ayika oniyipada; Eto ti o gbooro ni a funni nikan nigbati ifihan ba beere fun igbanilaaye `env`.
+- **Fi sori ẹrọ akoonu orisun** — `POST /api/plugins` nikan ka lati inu itọsọna awọn orisun itanna (wo "Fi sori ẹrọ lati ọna agbegbe kan"): ọna naa jẹ ilana ofin pẹlu `realpath`, gbọdọ duro ni muna inu itọsọna yẹn, ati pe igi orisun kan ti o gbe aami asopọ ti o salọ o ti kọ ṣaaju ki o to daakọ ohunkohun.
+- **Itọju ọna** — install/upgrade/uninstall sọ pe ilana itanna ati ipinnu `manifest.main`** laarin** gbongbo itanna ti a ṣakoso ṣaaju eyikeyi ẹda tabi piparẹ loorekoore (awọn oluṣọ lodi si awọn ọna DB ti o bajẹ ati gbigbe `../` ni `manifest.main`). Imuṣiṣẹ ṣe ipinnu awọn aami asopọ nipasẹ `realpath` ati kọ lati ṣaja aaye titẹsi kan ti o salọ ilana itanna.
+- **PIN iṣotitọ iyan** — farahan le sọ aaye `integrity` (`sha256-<base64>`, ọna kika SRI ) kan. Nigbati o ba wa, agberu naa jẹri hash faili iwọle ni akoko fifuye ati kọ lati muu ṣiṣẹ lori aiṣedeede. O jẹ ṣiṣawari-iwa-ifọwọyi,** kii ṣe** aala aabo: ko ṣe idinwo ohun ti ohun itanna ti kojọpọ le ṣe.
+- **Ko si awọn iwe-ẹri alabara ni awọn kio** — ọrọ-ọrọ ti o kọja si `onRequest`, `onResponse` ati `onError` ti yọkuro `authorization`, `x-api-key`, `proxy-authorization` ati awọn akọle `cookie`, ati pe igbasilẹ bọtini API ko ni iye bọtini (`redactPluginContext()` ni `src/lib/plugins/hooks.ts`).
 
-`PluginManifestSchema` (`src/lib/plugins/manifest.ts`) ló ń fọwọ́sí i:
+## Ifihan (`plugin.json`)
 
-| Field              | Irú       | Àlàyé                                                        |
-| ------------------ | --------- | ------------------------------------------------------------ |
-| `name`             | string    | Dandan; kebab-case (`^[a-z0-9-]+$`), àmì 1–100               |
-| `version`          | string    | Dandan; semver (`MAJOR.MINOR.PATCH`)                         |
-| `description`      | string?   | ≤ àmì 500                                                    |
-| `author`           | string?   | ≤ àmì 200                                                    |
-| `license`          | string?   | Aiyipada rẹ̀ ni `MIT`                                         |
-| `main`             | string?   | Fáìlì ìbẹ̀rẹ̀; aiyipada rẹ̀ ni `index.js`                       |
-| `source`           | enum?     | `local` \| `marketplace` (aiyipada rẹ̀ ni `local`)            |
-| `tags`             | string[]? | Àwọn tag ìṣàwárí                                             |
-| `requires`         | object?   | `{ omniroute?, permissions[] }`                              |
-| `hooks`            | object?   | Àwọn Boolean tó ń kéde àwọn hook tí plugin náà ṣe            |
-| `skills`           | object[]? | Àwọn ìtumọ̀ skill àṣàyàn                                      |
-| `enabledByDefault` | boolean?  | Mú ṣiṣẹ́ fúnra rẹ̀ nígbà ìfisílẹ̀                               |
-| `configSchema`     | object?   | Map àwọn field config (`string`/`number`/`boolean`/`select`) |
-| `integrity`        | string?   | Pin fáìlì ìbẹ̀rẹ̀ `sha256-<base64>` àṣàyàn                     |
+Ti fọwọsi nipasẹ `PluginManifestSchema` (`src/lib/plugins/manifest.ts`):
 
-A máa ń mú àwọn àṣẹ láti inú enum
-`network` / `file-read` / `file-write` / `env` / `exec`.
+| Aaye               | Iru      | Awọn akọsilẹ                                                     |
+| ------------------ | -------- | ---------------------------------------------------------------- |
+| `name`             | okun     | Ti a beere; kebab-case (`^[a-z0-9-]+$`), 1-100 chars             |
+| `version`          | okun     | Ti a beere; semver (`MAJOR.MINOR.PATCH`)                         |
+| `description`      | okun?    | ≤ 500 chars                                                      |
+| `author`           | okun?    | ≤ 200 chars                                                      |
+| `license`          | okun?    | Awọn aiyipada si `MIT`                                           |
+| `main`             | okun?    | Faili ti nwọle; awọn aṣiṣe si `index.js`                         |
+| `source`           | enum?    | `local` \| `marketplace` (aiyipada si `local`)                   |
+| `tags`             | okun[]?  | Wa afi                                                           |
+| `requires`         | ohun?    | `{ omniroute?, permissions[] }`                                  |
+| `hooks`            | ohun?    | Booleans ti n kede eyi ti o ṣe awọn imuse ohun itanna naa        |
+| `skills`           | nkan[]?  | Iyan olorijori itumo                                             |
+| `enabledByDefault` | boolian? | Muu ṣiṣẹ laifọwọyi lori fifi sori ẹrọ                            |
+| `configSchema`     | ohun?    | Maapu ti awọn aaye atunto (`string`/`number`/`boolean`/`select`) |
+| `integrity`        | okun?    | Iyan `sha256-<base64>` pin-faili titẹsi                          |
+
+Awọn igbanilaaye wa lati enum `network` / `file-read` / `file-write` / `env` / `exec`. `env` nikan ni o ni ipa asiko-ṣiṣe (agbegbe diẹ ti o tobi ju-ayipada akojọ iyọọda fun ọmọde); awọn miiran jẹ awọn ikede ati pe ko fi agbara mu.
 
 ## Ìṣàn Ìgbésí-ayé
 

@@ -40,19 +40,19 @@ Týmto sa odstráni aplikácia **a natrvalo vymažú** všetky údaje:
 
 ---
 
-## Manuálna odinštalácia
+## Manuálne odinštalovanie
 
-### Globálna inštalácia cez NPM
+### Globálna inštalácia NPM
 
 ```bash
-# Odstránenie globálneho balíka
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Voliteľné) Odstránenie dátového adresára
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Globálna inštalácia cez pnpm
+### Globálna inštalácia pnpm
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,51 +62,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Zastavenie a odstránenie kontajnera
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Odstránenie zväzku (vymaže všetky údaje)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Voliteľné) Odstránenie obrazu
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Komponovať
 
 ```bash
-# Zastavenie a odstránenie kontajnerov
+# Stop and remove containers
 docker compose down
 
-# Odstránenie aj zväzkov (vymaže všetky údaje)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Desktopová aplikácia Electron
+### Electron Desktop App
 
 **Windows:**
 
-- Otvorte `Nastavenia → Aplikácie → OmniRoute → Odinštalovať`
+- Otvorte `Settings → Apps → OmniRoute → Uninstall`
 - Alebo spustite odinštalačný program NSIS z inštalačného adresára
 
 **macOS:**
 
-- Presuňte `OmniRoute.app` z adresára `/Applications` do Koša
-- Odstráňte údaje: `rm -rf ~/Library/Application Support/omniroute`
+- Presuňte `OmniRoute.app` z `/Applications` do koša
+- Odstrániť údaje: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
 - Odstráňte súbor AppImage
-- Odstráňte údaje: `rm -rf ~/.omniroute`
+- Odstrániť údaje: `rm -rf ~/.omniroute`
 
-### Inštalácia zo zdrojového kódu (git clone)
+### Inštalácia zdroja (klon git)
 
 ```bash
-# Odstránenie klonovaného adresára
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Voliteľné) Odstránenie dátového adresára
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

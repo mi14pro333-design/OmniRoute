@@ -209,7 +209,7 @@ condițiile de cursă atunci când, de exemplu, pornirea automată și un buton 
 
 ## 4. referinta API
 
-Toate rutele sub `/api/services/` sunt**LOCAL_ONLY** (doar loopback, regula grea #17). Solicitările non-loopback primesc `403 LOCAL_ONLY` indiferent de simbolul de autentificare.
+Toate rutele sub `/api/services/` sunt**LOCAL_ONLY** (numai loopback, regulă grea #17). Solicitările non-loopback primesc `403 LOCAL_ONLY` indiferent de simbolul de autentificare.
 
 ### 4.1 9 Puncte finale ale routerului (11 rute)
 
@@ -236,7 +236,7 @@ Instalați 9Router de la npm. Creează `DATA_DIR/services/9router/` cu propriile
 | `409` | Se instalează deja (blocarea menținută)                           |
 | `500` | Instalarea npm a eșuat — vezi `message` pentru eroare prietenoasă |
 
-**Note:** Utilizează `execFile('npm', [...])` — no shell, no interpolation (regula grea #13). Erorile EACCES apar ca mesaje prietenoase.
+**Note:** Utilizează `execFile('npm', [...])` — no shell, no interpolation (regulă grea #13). Erorile EACCES apar ca mesaje prietenoase.
 
 ---
 
@@ -493,7 +493,7 @@ open-wa (`@open-wa/wa-automate`) conduce o instanță Chromium fără cap (prin 
 
 **cheie API :** injectat ca `WA_KEY` — override generic `WA_*` -prefixed env open-wa îl mapează pe opțiunea `--key`/`-k` CLI (`dist/cli/setup.js::envArgs()`, verificat față de pachetul 4.76.0 instalat). Prefixul `ow_` când este generat de `generateServiceApiKey()`. open-wa citește cheia înapoi dintr-un antet `key`/`api_key` HTTP (nu `Authorization: Bearer`); `/api-docs*` este exceptat în mod explicit de la verificare (`setupAuthenticationLayer` în `dist/cli/server.js`), deci sonda de sănătate nu are nevoie de antet de autentificare.
 
-**Împerechere:** open-wa este neoficial și neafiliat cu WhatsApp — numărul conectat implică un risc de interzicere din cauza detectării automate a WhatsApp. La prima pornire, codul QR de asociere este tipărit în stdout și este afișat prin fluxul Logs panel/SSE — existent, nu există încă un punct final dedicat imaginii QR în această integrare.
+**Asociere:** open-wa este neoficial și neafiliat cu WhatsApp — numărul conectat implică un risc de interzicere din cauza detectării automate a WhatsApp. La prima pornire, codul QR de asociere este tipărit în stdout și este afișat prin fluxul Logs panel/SSE — existent, nu există încă un punct final dedicat imaginii QR în această integrare.
 
 ---
 
@@ -535,7 +535,7 @@ sing-box are aceeași formă de punct final ca Mux — no `rotate-key` route, ni
 | `POST` | `/api/services/singbox/auto-restart-adopted` | Comutați repornirea automată pentru un proces adoptat (preexistent). |
 | `GET`  | `/api/services/singbox/logs`                 | SSE log tail (prin ruta dinamică `[name]/logs` partajată)            |
 
-**cablare TPROXY :** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) scrie `config.json` și pornește supervizorul înainte ca `applyTproxy()` să instaleze regulile firewall TPROXY. Dacă supervizorul lipsește sau nu reușește să ajungă la `running`, acum se înregistrează la nivel de eroare (în loc să înghită eșecul în tăcere), astfel încât un operator să poată spune că regulile TPROXY au fost aplicate fără un ascultător care funcționează în spatele lor.
+**cablare TPROXY :** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) scrie `config.json` și pornește supervizorul înainte ca `applyTproxy()` să instaleze regulile firewall TPROXY. Dacă supervizorul lipsește sau nu reușește să ajungă la `running`, acum se înregistrează la nivel de eroare (în loc să înghită eșecul în tăcere), astfel încât un operator să poată spune că regulile TPROXY au fost aplicate fără un ascultător funcțional în spatele lor.
 
 ---
 
@@ -555,7 +555,7 @@ Acest proxy:
 - Strigă `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` din răspuns
 - Rescrie răspunsurile HTML pentru a injecta `<base href>` și a normaliza căile absolute (`/foo` → `/dashboard/.../embed/foo`)
 
-Upgrade-urile WebSocket pentru tabloul de bord încorporat sunt gestionate de un server însoțitor pe un port dedicat (vezi `src/lib/services/embedWsProxy.ts`).
+Upgrade-urile WebSocket pentru tabloul de bord încorporat sunt gestionate de un server însoțitor pe un port dedicat (vezi `src/lib/services/embedWsProxy.ts`). Fiecare actualizare este autorizată înainte de deschiderea tunelului, cu aceleași reguli ca și ruta de încorporare HTTP : peer-ul trebuie să fie loopback fără antet de redirecționare reverse-proxy, un browser `Origin` trebuie să fie o origine a tabloului de bord (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` extind valorile implicite de loopback), iar apelantul are nevoie de o sesiune de tablou de bord sau de o cheie de conectare API fără domeniul de administrare.
 
 **Securitate:** Rutele proxy încorporate sunt clasificate în `LOCAL_ONLY_API_PREFIXES` și pot fi accesate numai din loopback. Un atacator care obține un JWT printr-un tunel Cloudflare/Ngrok nu poate folosi proxy în serviciile încorporate.
 
@@ -850,65 +850,44 @@ portul implicit 20128 al OmniRoute.
 
 ---
 
-## 8. Întrebări frecvente
+## 8. FAQ
 
-**Î: Pot expune endpoint-urile serviciilor încorporate clienților non-loopback?**
+**Î: Pot expune punctele finale de servicii încorporate la clienți non-loopback?**
 
-Nu. Nivelul LOCAL_ONLY este intenționat (regula strictă nr. 17). Rutele care pot invoca
-`npm install` sau pot porni procese `node` nu trebuie să fie accesibile traficului
-non-loopback, deoarece un JWT divulgat printr-un tunel (Cloudflare, Ngrok, Tailscale)
-ar permite altfel pornirea arbitrară a proceselor. Nu există nicio excepție opțională
-pentru `/api/services/` — spre deosebire de `/api/mcp/`, acesta este exclus din lista
-de ocolire pentru domeniul de acces manage. Consultați `docs/security/ROUTE_GUARD_TIERS.md`.
+Nu. Nivelul LOCAL_ONLY este intenționat (regulă grea #17). Rutele care pot invoca `npm install` sau genera procese `node` nu trebuie să fie accesibile din traficul non-loopback, deoarece un JWT scurs printr-un tunel (Cloudflare, Ngrok, Tailscale) ar permite, altfel, generarea arbitrară a procesului. Nu există o excludere pentru `/api/services/` — spre deosebire de `/api/mcp/`, acesta este exclus din lista de ocolire a domeniului de administrare. Vezi `docs/security/ROUTE_GUARD_TIERS.md`.
 
 ---
 
-**Î: Vor fi disponibile 9Router și CLIProxyAPI în implementările de producție/cloud?**
+**Î: Vor fi disponibile 9Router și CLIProxyAPI în implementările production/cloud ?**
 
-Da. Ambele servicii urmează același model local-first ca OmniRoute. Acestea rulează
-pe aceeași mașină și comunică prin loopback. „Producție” înseamnă aici VPS-ul sau
-serverul local pe care este implementat OmniRoute, nu un furnizor cloud la distanță.
+Da. Ambele servicii urmează același model local ca și OmniRoute în sine. Ele rulează pe aceeași mașină și comunică prin loopback. „Producție” înseamnă aici VPS sau serverul local pe care este implementat OmniRoute, nu un furnizor de cloud la distanță.
 
 ---
 
 **Î: Cum depanez supervizorul?**
 
-1. Urmăriți fluxul de jurnale SSE: `curl -N http://localhost:20128/api/services/9router/logs`.
-2. Verificați jurnalele structurate din ieșirea pino a OmniRoute, filtrate după
-   spațiul de nume `service:supervisor`.
-3. Inspectați rândul din baza de date: `sqlite3 ~/.omniroute/omniroute.db "SELECT * FROM version_manager WHERE tool='9router'"`.
-4. Utilizați `GET /api/services/9router/status` pentru a vedea într-un singur apel starea curentă în timp real, PID-ul, starea de sănătate
-   și `lastError`.
+1. Închideți fluxul de jurnal SSE : `curl -N http://localhost:20128/api/services/9router/logs`.
+2. Verificați jurnalele structurate în ieșirea pino a lui OmniRoute, filtrate de spațiul de nume `service:supervisor`.
+3. Inspectați rândul DB : `sqlite3 ~/.omniroute/omniroute.db "SELECT * FROM version_manager WHERE tool='9router'"`.
+4. Utilizați `GET /api/services/9router/status` pentru a vedea starea curentă, PID, sănătate și `lastError` într-un singur apel.
 
 ---
 
-**Î: Supervizorul afișează `health: "degraded"` sau `health: "unknown"`, dar starea este `"running"`. Este o problemă?**
+**Î: Supervizorul arată `health: "degraded"` sau `health: "unknown"`, dar starea este `"running"`. Este o problemă?**
 
-`"degraded"` înseamnă că verificarea stării de sănătate a returnat un răspuns diferit de 200. `"unknown"` înseamnă că nicio
-verificare nu s-a încheiat încă (condiție de cursă cu prima interogare). Ambele sunt tranzitorii în timpul pornirii.
-Dacă starea de sănătate rămâne `"degraded"` mai mult de `healthIntervalMs * 3` ms după
-`"running"`, serviciul încorporat rulează, dar API-ul său HTTP nu răspunde. Verificați
-dacă portul este corect în răspunsul de stare și dacă serviciul ascultă efectiv
-pe acel port.
+`"degraded"` înseamnă că sonda de sănătate a returnat un răspuns non-200. `"unknown"` înseamnă că nicio sondă nu a fost finalizată încă (cursa cu primul sondaj). Ambele sunt tranzitorii în timpul pornirii. Dacă starea de sănătate rămâne `"degraded"` mai mult de `healthIntervalMs * 3` ms după `"running"`, serviciul încorporat rulează, dar HTTP API său nu răspunde. Verificați dacă portul este corect în răspunsul de stare și dacă serviciul ascultă de fapt pe acel port.
 
 ---
 
-**Î: Pot schimba cheia API 9Router fără o repornire completă?**
+**Î: Pot schimba cheia 9Router API fără o repornire completă?**
 
-Nu. Cheia API este transmisă către 9Router printr-o variabilă de mediu în momentul pornirii procesului.
-Variabilele de mediu nu pot fi modificate într-un proces aflat în execuție. `POST .../rotate-key`
-oprește și repornește automat serviciul pentru a aplica noua cheie. Rotația cheii
-intră în vigoare în limita valorii `stopTimeoutMs` a serviciului (implicit 15 s), plus timpul său
-de pornire.
+Nu. Cheia API este transmisă către 9Router printr-o variabilă de mediu la momentul apariției. Variabilele de mediu nu pot fi modificate într-un proces care rulează. `POST .../rotate-key` oprește automat și repornește serviciul pentru a aplica noua cheie. Rotirea tastei are efect în `stopTimeoutMs` al serviciului (implicit 15 s) plus timpul de pornire al acestuia.
 
 ---
 
-**Î: Care este limita bufferului circular și ce se întâmplă când acesta se umple?**
+**Î: Care este limita tamponului inel și ce se întâmplă când se umple?**
 
-Fiecare serviciu are un buffer circular dedicat de 5 MB. Când bufferul este plin, cele mai vechi
-linii de jurnal sunt eliminate pentru a face loc celor noi. Evenimentul SSE `snapshot` returnează
-cele mai recente linii în limita `tail`. Jurnalele nu sunt păstrate pe disc decât dacă
-`logsBufferPath` este setat în rândul din baza de date.
+Fiecare serviciu are un buffer de apel dedicat de 5 MB. Când tamponul este plin, cele mai vechi linii de jurnal sunt evacuate pentru a face loc pentru altele noi. Evenimentul SSE `snapshot` returnează cele mai recente linii în limita `tail`. Jurnalele nu sunt păstrate pe disc decât dacă `logsBufferPath` este setat în rândul DB.
 
 ---
 

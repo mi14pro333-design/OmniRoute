@@ -40,17 +40,17 @@ Baineann sé seo an feidhmchlár **agus scriosann sé go buan** gach sonra:
 
 ## Díshuiteáil Láimhe
 
-### Suiteáil Ghlobhal NPM
+### NPM Suiteáil Domhanda
 
 ```bash
-# Bain an pacáiste globál
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Roghach) Bain an comhadlann sonraí
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Suiteáil Ghlobhal pnpm
+### Suiteáil domhanda pnpm
 
 ```bash
 pnpm uninstall -g omniroute
@@ -60,51 +60,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Stad agus bain an coimeádán
-docker stop omnirairoute
+# Stop and remove the container
+docker stop omniroute
 docker rm omniroute
 
-# Bain an imleabhar (scriosann sé gach sonra)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Roghach) Bain an íomhá
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Cum
 
 ```bash
-# Stad agus bain coimeádáin
+# Stop and remove containers
 docker compose down
 
-# Bain imleabhar freisin (scriosann sé gach sonra)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Feidhmchlár Deisce Electron
+### Electron App Deisce
 
 **Windows:**
 
-- Oscail `Socrúcháin → Aipeanna → OmniRoute → Díshuiteáil`
-- Nó rith an suiteálaí NSIS ón eolaire suiteála
+- Oscail `Settings → Apps → OmniRoute → Uninstall`
+- Nó rith an díshuiteálaí NSIS ón eolaire suiteála
 
 **macOS:**
 
-- Tarraing `OmniRoute.app` ó `/Applications` go dtí an Bruscair
+- Tarraing `OmniRoute.app` ó `/Applications` go dtí an Bruscar
 - Bain sonraí: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
-- Bain an comhad ImageApp
+- Bain an comhad AppImage
 - Bain sonraí: `rm -rf ~/.omniroute`
 
-### Suiteáil ón bhFoinse (git clone)
+### Suiteáil Foinse (git clon)
 
 ```bash
-# Bain an eolaire clónáilte
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Roghach) Bain an comhadlann sonraí
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

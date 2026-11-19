@@ -72,17 +72,20 @@ onRequest: (ctx) => {
 };
 ```
 
-## Contexto do plugin (`PluginContext`)
+## Contexto do plug-in (`PluginContext`)
 
-| Campo       | Tipo                      | Descrição                              |
-| ----------- | ------------------------- | -------------------------------------- |
-| `requestId` | `string`                  | Identificador exclusivo da solicitação |
-| `model`     | `string`                  | Nome do modelo solicitado              |
-| `provider`  | `string`                  | ID do provedor de destino              |
-| `body`      | `Record<string, unknown>` | Corpo da solicitação                   |
-| `headers`   | `Record<string, string>`  | Cabeçalhos da solicitação              |
-| `metadata`  | `Record<string, unknown>` | Metadados mutáveis                     |
-| `timestamp` | `number`                  | Timestamp da solicitação               |
+| Campo        | Tipo                      | Descrição                              |
+| ------------ | ------------------------- | -------------------------------------- |
+| `requestId`  | `string`                  | Identificador de solicitação exclusivo |
+| `model`      | `string`                  | Nome do modelo solicitado              |
+| `provider`   | `string`                  | Provedor de destino ID                 |
+| `body`       | `Record<string, unknown>` | Solicitar corpo                        |
+| `headers`    | `Record<string, string>`  | Solicitar cabeçalhos (ver nota)        |
+| `metadata`   | `Record<string, unknown>` | Metadados mutáveis                     |
+| `timestamp`  | `number`                  | Solicitar carimbo de data/hora         |
+| `apiKeyInfo` | `object` (opcional)       | Metadados da chave API (ver nota)      |
+
+O contexto nunca carrega as credenciais do cliente: os cabeçalhos `authorization`, `x-api-key`, `proxy-authorization` e `cookie` são removidos (qualquer caixa) e `apiKeyInfo` mantém os metadados da chave (como `id`, `name` e `scopes`), mas não o valor da chave ou sua impressão digital (`redactPluginContext()` em `src/lib/plugins/hooks.ts`). Isso se aplica a `onRequest`, `onResponse` e `onError`.
 
 ## Manifesto (`plugin.json`)
 
@@ -138,19 +141,18 @@ Ou como valores booleanos simples (prioridade padrão 100):
 }
 ```
 
-## Sistema de Permissões
+## Sistema de permissão
 
-Os plugins são executados em um contexto de VM isolado. O acesso a recursos externos exige permissões explícitas:
+Plug-ins são** não em sandbox** . Cada plug-in ativo é executado como um processo filho Node.js comum e separado (`loadPlugin()` em `src/lib/plugins/loader.ts`) sob o mesmo usuário do sistema operacional que OmniRoute, sem contexto VM e sem sinalizadores de permissão Node.js. O código do plug-in pode usar `node:fs`, `node:child_process`, `fetch` e todos os outros Node.js API: ele pode ler e gravar qualquer arquivo que o usuário OmniRoute puder (incluindo o diretório de dados), executar programas e acessar a rede.
 
-| Permissão    | Concede acesso a                                             |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | Proxy somente leitura de `process.env`                       |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+O `requires.permissions` do manifesto aceita `network`, `file-read`, `file-write`, `env` e `exec`, mas hoje apenas `env` tem efeito em tempo de execução:
 
-Sem uma permissão, os globais correspondentes simplesmente não ficam disponíveis no ambiente isolado.
+| Permissão                                    | Efeito hoje                                                                                                                                                                                                                    |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `env`                                        | O processo do plugin também recebe `PORT`, `HOSTNAME`, `TZ` e `TMPDIR`. Sem ele, recebe apenas `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` e `PLUGIN_NAME` (mais `SystemRoot` e `windir` em Windows). |
+| `network`, `file-read`, `file-write`, `exec` | Nenhum. São apenas declarações: nada é bloqueado quando faltam.                                                                                                                                                                |
+
+Instalar um plugin é como instalar qualquer outro programa no host. Instale apenas plug-ins cuja fonte você confia.
 
 ## Esquema de Configuração
 

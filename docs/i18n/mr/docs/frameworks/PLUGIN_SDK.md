@@ -4,7 +4,7 @@
 
 ---
 
-## त्वरित प्रारंभ
+## क्विक स्टार्ट
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -74,15 +74,18 @@ onRequest: (ctx) => {
 
 ## प्लगइन संदर्भ (`PluginContext`)
 
-| फील्ड       | प्रकार                    | वर्णन                       |
-| ----------- | ------------------------- | --------------------------- |
-| `requestId` | `string`                  | विनंतीचा अद्वितीय ओळखकर्ता  |
-| `model`     | `string`                  | विनंती केलेल्या मॉडेलचे नाव |
-| `provider`  | `string`                  | लक्ष्य प्रोव्हायडर ID       |
-| `body`      | `Record<string, unknown>` | विनंतीची बॉडी               |
-| `headers`   | `Record<string, string>`  | विनंतीचे हेडर्स             |
-| `metadata`  | `Record<string, unknown>` | बदलता येणारा मेटाडेटा       |
-| `timestamp` | `number`                  | विनंतीचा टाइमस्टॅम्प        |
+| फील्ड        | प्रकार                    | वर्णन                             |
+| ------------ | ------------------------- | --------------------------------- |
+| `requestId`  | `string`                  | अद्वितीय विनंती ओळखकर्ता          |
+| `model`      | `string`                  | मॉडेल नावाची विनंती केली          |
+| `provider`   | `string`                  | लक्ष्य प्रदाता ID                 |
+| `body`       | `Record<string, unknown>` | विनंती शरीर                       |
+| `headers`    | `Record<string, string>`  | शीर्षलेखांची विनंती करा (टीप पहा) |
+| `metadata`   | `Record<string, unknown>` | बदलण्यायोग्य मेटाडेटा             |
+| `timestamp`  | `number`                  | टाइमस्टॅम्पची विनंती करा          |
+| `apiKeyInfo` | `object` (पर्यायी)        | API की मेटाडेटा (टीप पहा)         |
+
+संदर्भ कधीही क्लायंटची क्रेडेन्शियल ठेवत नाही: `authorization`, `x-api-key`, `proxy-authorization` आणि `cookie` शीर्षलेख काढून टाकले जातात (कोणतेही आवरण), आणि `apiKeyInfo` कीचा मेटाडेटा (जसे की `id`, `name` आणि `scopes`) ठेवते परंतु की मूल्य किंवा त्याचे फिंगरप्रिंट (`redactPluginContext()` ) ठेवत `src/lib/plugins/hooks.ts`. हे `onRequest`, `onResponse` आणि `onError` वर लागू होते.
 
 ## मॅनिफेस्ट (`plugin.json`)
 
@@ -140,17 +143,16 @@ onRequest: (ctx) => {
 
 ## परवानगी प्रणाली
 
-प्लगइन सँडबॉक्स केलेल्या VM संदर्भात चालतात. बाह्य संसाधनांमध्ये प्रवेश करण्यासाठी स्पष्ट परवानग्या आवश्यक आहेत:
+प्लगइन्स आहेत** सँडबॉक्स केलेले नाही** . प्रत्येक सक्रिय प्लगइन एक स्वतंत्र, सामान्य Node.js चाइल्ड प्रोसेस ( `src/lib/plugins/loader.ts` मध्ये`loadPlugin()` ) OmniRoute सारख्या ऑपरेटिंग-सिस्टम वापरकर्त्याच्या अंतर्गत चालते, कोणतेही VM संदर्भ आणि कोणतेही Node.js परवानगी ध्वज नाही. प्लगइन कोड `node:fs`, `node:child_process`, `fetch` आणि इतर प्रत्येक Node.js API वापरू शकतो: तो OmniRoute वापरकर्ता (डेटा निर्देशिकेसह) कोणतीही फाईल वाचू आणि लिहू शकतो, प्रोग्राम चालवू शकतो आणि नेटवर्कपर्यंत पोहोचू शकतो.
 
-| परवानगी      | प्रदान केलेला प्रवेश                                         |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | केवळ-वाचनीय `process.env` प्रॉक्सी                           |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+मॅनिफेस्टचा `requires.permissions` `network`, `file-read`, `file-write`, `env` आणि `exec` स्वीकारतो, परंतु आज रनटाइमवर फक्त `env` प्रभाव आहे:
 
-परवानगी नसल्यास, संबंधित ग्लोबल्स सँडबॉक्समध्ये उपलब्ध नसतात.
+| परवानगी                                      | आज प्रभाव                                                                                                                                                                                                                                         |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | प्लगइन प्रक्रियेला `PORT`, `HOSTNAME`, `TZ` आणि `TMPDIR` देखील प्राप्त होते. त्याशिवाय, ते फक्त `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` आणि `PLUGIN_NAME` (अधिक Windows वर `SystemRoot` आणि `windir` ) प्राप्त करते. |
+| `network`, `file-read`, `file-write`, `exec` | काहीही नाही. ते फक्त घोषणा आहेत: ते गहाळ असताना काहीही अवरोधित केलेले नाही.                                                                                                                                                                       |
+
+प्लगइन स्थापित करणे हे होस्टवर इतर कोणताही प्रोग्राम स्थापित करण्यासारखे आहे. तुम्हाला विश्वास असल्याचे स्त्रोत केवळ प्लगइन स्थापित करा.
 
 ## कॉन्फिग स्कीमा
 
@@ -194,7 +196,7 @@ onRequest: (ctx) => {
 
 ## उदाहरणे
 
-### विनंती लॉगर
+### लॉगरची विनंती करा
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -207,7 +209,7 @@ export default definePlugin({
 });
 ```
 
-### दर मर्यादक
+### रेट लिमिटर
 
 ```ts
 import { definePlugin, blockRequest } from "omniroute/plugins/sdk";
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // 1 मिनिट
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);

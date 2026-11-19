@@ -182,13 +182,13 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ---
 
-## Docker безбедност
+## Docker Сецурити
 
-- Користите корисника који није root у продукцији
-- Монтирајте тајне као волумене само за читање
-- Никада не копирајте `.env` датотеке у Docker слике
-- Користите `.dockerignore` да бисте изузели осетљиве датотеке
-- Подесите `AUTH_COOKIE_SECURE=true` када се сервер налази иза HTTPS-а
+- Користите не-роот корисника у производњи
+- Монтирајте тајне као томове само за читање
+- Никада немојте копирати `.env` датотеке у Docker слике
+- Користите `.dockerignore` да бисте искључили осетљиве датотеке
+- Подесите `AUTH_COOKIE_SECURE=true` када је иза HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

@@ -72,17 +72,20 @@ onRequest: (ctx) => {
 };
 ```
 
-## Plugin సందర్భం (`PluginContext`)
+## ప్లగిన్ సందర్భం (`PluginContext`)
 
-| ఫీల్డ్      | రకం                       | వివరణ                         |
-| ----------- | ------------------------- | ----------------------------- |
-| `requestId` | `string`                  | ప్రత్యేక అభ్యర్థన ఐడెంటిఫైయర్ |
-| `model`     | `string`                  | అభ్యర్థించిన మోడల్ పేరు       |
-| `provider`  | `string`                  | లక్ష్య ప్రొవైడర్ ID           |
-| `body`      | `Record<string, unknown>` | అభ్యర్థన బాడీ                 |
-| `headers`   | `Record<string, string>`  | అభ్యర్థన హెడర్లు              |
-| `metadata`  | `Record<string, unknown>` | మార్చగల మెటాడేటా              |
-| `timestamp` | `number`                  | అభ్యర్థన టైమ్స్టాంప్          |
+| ఫీల్డ్       | టైప్ చేయండి               | వివరణ                             |
+| ------------ | ------------------------- | --------------------------------- |
+| `requestId`  | `string`                  | ప్రత్యేక అభ్యర్థన ఐడెంటిఫైయర్     |
+| `model`      | `string`                  | మోడల్ పేరు అభ్యర్థించబడింది       |
+| `provider`   | `string`                  | టార్గెట్ ప్రొవైడర్ ID             |
+| `body`       | `Record<string, unknown>` | శరీరాన్ని అభ్యర్థించండి           |
+| `headers`    | `Record<string, string>`  | అభ్యర్థన శీర్షికలు (గమనిక చూడండి) |
+| `metadata`   | `Record<string, unknown>` | మార్చగల మెటాడేటా                  |
+| `timestamp`  | `number`                  | సమయముద్రను అభ్యర్థించండి          |
+| `apiKeyInfo` | `object` (ఐచ్ఛికం)        | API కీ మెటాడేటా (గమనిక చూడండి)    |
+
+సందర్భం ఎప్పుడూ క్లయింట్ యొక్క ఆధారాలను కలిగి ఉండదు: `authorization`, `x-api-key`, `proxy-authorization` మరియు `cookie` హెడర్లు తీసివేయబడతాయి (ఏదైనా కేసింగ్), మరియు `apiKeyInfo` కీ యొక్క మెటాడేటాను ( `id`, `name` మరియు `scopes` వంటివి) ఉంచుతుంది కానీ కీ విలువ లేదా దాని వేలిముద్ర కాదు (`redactPluginContext()` `src/lib/plugins/hooks.ts`). ఇది `onRequest`, `onResponse` మరియు `onError` లకు వర్తిస్తుంది.
 
 ## మానిఫెస్ట్ (`plugin.json`)
 
@@ -140,17 +143,16 @@ onRequest: (ctx) => {
 
 ## అనుమతి వ్యవస్థ
 
-ప్లగిన్లు శాండ్బాక్స్ చేయబడిన VM సందర్భంలో అమలవుతాయి. బాహ్య వనరులకు యాక్సెస్ చేయడానికి స్పష్టమైన అనుమతులు అవసరం:
+ప్లగిన్లు ఉన్నాయి** శాండ్బాక్స్ లేదు** . ప్రతి యాక్టివ్ ప్లగ్ఇన్ VM సందర్భం మరియు Node.js అనుమతి ఫ్లాగ్లు లేకుండా OmniRoute వలె అదే ఆపరేటింగ్-సిస్టమ్ వినియోగదారు క్రింద ప్రత్యేక, సాధారణ Node.js చైల్డ్ ప్రాసెస్ ( `src/lib/plugins/loader.ts` లో`loadPlugin()` ) వలె నడుస్తుంది. ప్లగిన్ కోడ్ `node:fs`, `node:child_process`, `fetch` మరియు ప్రతి ఇతర Node.js API ఉపయోగించవచ్చు: ఇది OmniRoute వినియోగదారు (డేటా డైరెక్టరీతో సహా) చేయగలిగిన ఏదైనా ఫైల్ను చదవగలదు మరియు వ్రాయగలదు, ప్రోగ్రామ్లను అమలు చేసి నెట్వర్క్కు చేరుకుంటుంది.
 
-| అనుమతి       | మంజూరు చేసే యాక్సెస్                                         |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | చదవడానికి మాత్రమే అనుమతించే `process.env` ప్రాక్సీ           |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+మానిఫెస్ట్ యొక్క `requires.permissions` `network`, `file-read`, `file-write`, `env` మరియు `exec` అంగీకరిస్తుంది, కానీ నేడు రన్టైమ్లో `env` మాత్రమే ప్రభావం చూపుతుంది:
 
-అనుమతి లేకపోతే, సంబంధిత గ్లోబల్లు శాండ్బాక్స్లో అందుబాటులో ఉండవు.
+| అనుమతి                                       | ఈరోజు ప్రభావం                                                                                                                                                                                                                            |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | The plugin process also receives `PORT`, `HOSTNAME`, `TZ` and `TMPDIR`. Without it, it receives only `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` and `PLUGIN_NAME` (plus `SystemRoot` and `windir` on Windows). |
+| `network`, `file-read`, `file-write`, `exec` | ఏదీ లేదు. అవి డిక్లరేషన్లు మాత్రమే: అవి తప్పిపోయినప్పుడు ఏదీ నిరోధించబడదు.                                                                                                                                                               |
+
+ప్లగిన్ను ఇన్స్టాల్ చేయడం అనేది హోస్ట్లో ఏదైనా ఇతర ప్రోగ్రామ్ను ఇన్స్టాల్ చేయడం లాంటిది. మీరు విశ్వసించే ప్లగిన్లను మాత్రమే ఇన్స్టాల్ చేయండి.
 
 ## కాన్ఫిగ్ స్కీమా
 
@@ -194,7 +196,7 @@ onRequest: (ctx) => {
 
 ## ఉదాహరణలు
 
-### అభ్యర్థన లాగర్
+### రిక్వెస్ట్ లాగర్
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -207,7 +209,7 @@ export default definePlugin({
 });
 ```
 
-### రేట్ లిమిటర్
+### రేటు పరిమితి
 
 ```ts
 import { definePlugin, blockRequest } from "omniroute/plugins/sdk";
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // 1 నిమిషం
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);

@@ -85,34 +85,31 @@ logib `listMarketplacePlugins()` hoiatuse ja kasutab algloendit.
 
 ## REST API
 
-Kõik lõpp-punktid nõuavad halduse autentimist (`requireManagementAuth`) **ja** on
-juurdepääsetavad ainult loopback-liidese kaudu — `/api/plugins` ja `/api/plugins/` on loetletud
-muutujas `LOCAL_ONLY_API_PREFIXES` (`src/server/authz/routeGuard.ts`).
+Kõik lõpp-punktid nõuavad haldamise autentimist (`requireManagementAuth`)** ja** on ainult loopback — `/api/plugins` ja `/api/plugins/` on loetletud `LOCAL_ONLY_API_PREFIXES` (`src/server/authz/routeGuard.ts`).
 
-| Lõpp-punkt                       | Meetod | Kirjeldus                                                                         |
-| -------------------------------- | ------ | --------------------------------------------------------------------------------- |
-| `/api/plugins`                   | GET    | Installitud pluginate loend (valikuline filter `?status=`)                        |
-| `/api/plugins`                   | POST   | Plugina installimine absoluutselt kohalikult teelt                                |
-| `/api/plugins/scan`              | POST   | Pluginate kataloogi skannimine ja uute pluginate registreerimine                  |
-| `/api/plugins/marketplace`       | GET    | Turuplatsi kataloogikirjete loend                                                 |
-| `/api/plugins/[name]`            | GET    | Installitud plugina üksikasjade hankimine                                         |
-| `/api/plugins/[name]`            | DELETE | Plugina desinstallimine                                                           |
-| `/api/plugins/[name]/activate`   | POST   | Aktiveerimine (laadimine + hook'ide registreerimine)                              |
-| `/api/plugins/[name]/deactivate` | POST   | Inaktiveerimine (`onDeactivate` käivitamine, hook'ide registreeringu tühistamine) |
-| `/api/plugins/[name]/config`     | GET    | Plugina konfiguratsiooni + konfiguratsiooniskeemi hankimine                       |
-| `/api/plugins/[name]/config`     | PUT    | Plugina konfiguratsiooni uuendamine (skeemi alusel valideeritud)                  |
+| Lõpp-punkt                       | meetod | Kirjeldus                                                                        |
+| -------------------------------- | ------ | -------------------------------------------------------------------------------- |
+| `/api/plugins`                   | GET    | Loetlege installitud pistikprogrammid (valikuline `?status=` filter)             |
+| `/api/plugins`                   | POST   | Installige pistikprogrammi allikate kataloogist                                  |
+| `/api/plugins/scan`              | POST   | Kontrollige pistikprogrammide kataloogi ja registreerige uued pluginad           |
+| `/api/plugins/marketplace`       | GET    | Loetlege turuplatsi kataloogi kirjed                                             |
+| `/api/plugins/[name]`            | GET    | Hankige installitud pistikprogrammi üksikasjad                                   |
+| `/api/plugins/[name]`            | DELETE | Desinstallige pistikprogramm                                                     |
+| `/api/plugins/[name]/activate`   | POST   | Aktiveeri (laadige + registrikonksud)                                            |
+| `/api/plugins/[name]/deactivate` | POST   | Deaktiveerimine (tulekahju `onDeactivate`, konksude registreerimisest loobumine) |
+| `/api/plugins/[name]/config`     | GET    | Hankige pistikprogrammi konfiguratsioon + konfiguratsiooniskeem                  |
+| `/api/plugins/[name]/config`     | PUT    | Värskenda pistikprogrammi konfiguratsiooni (valideeritud skeemi alusel)          |
 
-Päringu `GET /api/plugins` filter `status` aktsepteerib üht järgmistest väärtustest:
-`installed` / `active` / `inactive` / `error`. Sobimatu väärtus tagastab `400`.
+Filter `GET /api/plugins` `status` aktsepteerib ühte järgmistest: `installed` / `active` / `inactive` / `error`. Kehtetu väärtus tagastab `400`.
 
-### Installitud pluginate loend
+### Loetlege installitud pistikprogrammid
 
 ```bash
 curl http://localhost:20128/api/plugins \
   -H "Cookie: auth_token=..."
 ```
 
-### Installimine kohalikult teelt
+### Installige kohalikult teelt
 
 ```bash
 curl -X POST http://localhost:20128/api/plugins \
@@ -121,19 +118,18 @@ curl -X POST http://localhost:20128/api/plugins \
   -d '{ "path": "/absolute/path/to/my-plugin" }'
 ```
 
-`path` peab olema **absoluutne** ega tohi sisaldada `..` läbimissegmente ega
-nullbaite (seda jõustab Zod). Lähtekataloog peab sisaldama kehtivat faili
-`plugin.json` (või olema sellise kataloogi ülemkataloog). Õnnestumise korral on vastuse kood `201` ja
-vastus sisaldab installitud plugina kirjet.
+`path` peab olema an** absoluutne** tee kataloogi** plugina allikate kataloogis** : `plugin-sources` pistikprogrammi juure kõrval, seega vaikimisi `~/.omniroute/plugin-sources/` või `<parent of OMNIROUTE_PLUGINS_DIR>/plugin-sources/`, kui see muutuja on määratud (`getPluginSourcesDir()` in `src/lib/plugins/installSource.ts`). Esmalt kopeerige või kloonige plugin sinna. Paigaldamisest keeldutakse `400`, kui tee sisaldab `..` või nullbaiti, asub väljaspool seda kataloogi, lahendatakse sellest väljaspool sümlingi kaudu, sisaldab sümbollinki, mille sihtmärk on sellest väljaspool, või kui kataloogi pole olemas. Lähtekataloog peab sisaldama kehtivat `plugin.json` (või olema selle emakataloog). Edu korral on vastuseks installitud pistikprogrammi rea `201`.
 
-### Turuplatsi sirvimine
+Erinevalt teistest pistikprogrammide marsruutidest nõuab see haldusmandaati (armatuurlaua seanss või hallatava ulatusega API võti) isegi siis, kui sisselogimine on keelatud (`requireLogin=false`): koodi installimine ei ole kunagi anonüümne toiming.
+
+### Sirvige turgu
 
 ```bash
 curl http://localhost:20128/api/plugins/marketplace \
   -H "Cookie: auth_token=..."
 ```
 
-### Plugina konfiguratsiooni uuendamine
+### Värskenda pistikprogrammi konfiguratsiooni
 
 ```bash
 curl -X PUT http://localhost:20128/api/plugins/my-plugin/config \
@@ -142,10 +138,7 @@ curl -X PUT http://localhost:20128/api/plugins/my-plugin/config \
   -d '{ "config": { "level": "debug", "maxItems": 100 } }'
 ```
 
-`PUT .../config` valideerib iga esitatud väärtuse plugina
-`configSchema` alusel (deklareeritud manifestis): väljad `number` arvestavad piiridega `min`/`max`,
-väljad `select` peavad vastama deklareeritud väärtusele `enum`. Skeemis puuduvad võtmed
-on lubatud.
+`PUT .../config` kontrollib iga antud väärtust pistikprogrammi `configSchema` suhtes (mis on deklareeritud manifestis): `number` väljad austavad `min`/`max`, `select` väljad peavad ühtima deklareeritud `enum`. Skeemis puuduvad võtmed on lubatud.
 
 ## Konfiguratsioon
 
@@ -203,87 +196,58 @@ Töölaua vahekaart „Turuplats” sisaldab selle URL-i välja (loetakse tagasi
 
 ## Turvalisus
 
-### Marsruudi tase — ainult loopback
+### Ainult marsruudi tasandi — loopback
 
-Pluginad käivitavad koodi loodud alamprotsessides, mistõttu kogu `/api/plugins`
-pind on liigitatud `LOCAL_ONLY`-tasemele (1. tase). Loopback-piirang rakendub
-tingimusteta **enne** mis tahes autentimiskontrolli, nii et tunneli kaudu
-masinasse jõudnud lekkinud haldusluba ei saa ikkagi pluginat installida,
-aktiveerida ega desinstallida. Vt
-[`docs/security/ROUTE_GUARD_TIERS.md`](../security/ROUTE_GUARD_TIERS.md) ja
-rangeid reegleid nr 15 / 17.
+Pluginad käivitavad loodud alamprotsessides koodi, seega klassifitseeritakse kogu `/api/plugins` pind `LOCAL_ONLY` (Tier 1). Loopback jõustamine töötab tingimusteta** enne** mis tahes autentimiskontrolli, nii et lekkinud haldusmärk, mis jõuab kasti üle tunneli, ei saa ikkagi pistikprogrammi installida, aktiveerida ega desinstallida. Vt [`docs/security/ROUTE_GUARD_TIERS.md`](../security/ROUTE_GUARD_TIERS.md) ja kõvad reeglid #15 / #17.
 
-### Turuplatsi registri SSRF-kaitse
+### Turu registri SSRF valvur
 
-Kohandatud registri URL on ründaja poolt mõjutatav konfiguratsioon, mistõttu
-enne selle laadimist töötleb `listMarketplacePlugins()` seda kahes etapis:
+Kohandatud registri URL konfiguratsioon on ründaja poolt mõjutatav, nii et enne selle toomist käivitab `listMarketplacePlugins()` selle läbi kahe kihi:
 
 1. **`isSafeMarketplaceUrl(url)`** (`src/lib/plugins/marketplace.ts`):
    - Lükkab tagasi kõik, mis ei ole `http:` / `https:`.
-   - Lükkab kanoonilise `isPrivateHost`-i
-     (`src/shared/network/outboundUrlGuard.ts`) abil tagasi otsesõnalised
-     privaatsed/loopback/link-local/ULA-hostid (nii IPv4 **kui ka** IPv6,
-     sealhulgas IPv4-aadressiks vastendatud aadressid).
-   - Lahendab **nii** `A`- kui ka `AAAA`-kirjed ja lükkab URL-i tagasi, kui
-     **mõni** lahendatud aadress on privaatne — sulgedes avaliku hostinime →
-     privaatse IP-aadressi möödapääsu.
-   - **Tõrke korral keelab**: DNS-i lahendamise nurjumisel lükatakse URL tagasi.
-2. **`safeOutboundFetch(url, { guard: "public-only", timeoutMs: 5000 })`**
-   (`src/shared/network/safeOutboundFetch.ts`): rakendab laadimise ajal uuesti
-   ainult avalikke aadresse lubava URL-i kaitse ja **blokeerib ümbersuunamised**
-   (avalikult → privaatsele aadressile viiv `30x`-pööre pole võimalik).
+   - Lükkab tagasi sõnasõnalised private/loopback/link-local/ULA hostid (IPv4** ja** IPv6, sealhulgas IPv4-mapped) kanoonilise `isPrivateHost` (`src/shared/network/outboundUrlGuard.ts`) kaudu.
+   - Lahendab** mõlemad** `A` ja `AAAA` salvestavad ja lükkavad tagasi, kui** ükskõik milline** lahendatud aadress on privaatne —, mis sulgeb avaliku hostinime → privaat-IP ümbersõidu.
+   - **Ebaõnnestunud sulgemine** : DNS eraldusvõime tõrge lükkab URL tagasi.
+2. **`safeOutboundFetch(url, { guard: "public-only", timeoutMs: 5000 })`** (`src/shared/network/safeOutboundFetch.ts`): rakendab toomise ajal uuesti ainult avaliku URL kaitse** blokeerib ümbersuunamised** (avalikku → privaatset `30x` pivotit pole).
 
-Kui URL ei läbi kumbagi etappi, ei katkestata päringut — turuplats kasutab
-vaikimisi sisseehitatud algregistrit ja logib hoiatuse.
+Kummagi kihi ebaõnnestunud URL ei katkesta taotlust. — turg langeb vaikselt tagasi sisseehitatud seemneregistrisse ja logib hoiatuse.
 
-> Seda kaitset tugevdati PR-is #3774 konkreetselt selleks, et lahendada nii
-> A- kui ka AAAA-kirjeid ning kasutada ainult IPv4 kontrolli asemel kanoonilist
-> `isPrivateHost`-i.
+> Seda kaitset tugevdati PR #3774 spetsiaalselt A + AAAA lahendamiseks ja IPv4-only -kontrolli asemel kanoonilise `isPrivateHost` kasutamiseks.
 
-### Plugina käivitamise isolatsioon
+### Plugina täitmise isoleerimine
 
-- **Protsessiisolatsioon** — `loadPlugin()` (`src/lib/plugins/loader.ts`) käivitab
-  iga plugina eraldi Node.js-i alamprotsessis ja suhtleb sellega IPC kaudu.
-  Hook'ide kutsetel on ajalõpp koos `SIGTERM` → `SIGKILL` eskalatsiooniga.
-- **Keskkonnamuutujate lubatud loend** — alamprotsess saab ainult lubatud
-  loendis olevad keskkonnamuutujad; laiem komplekt antakse ainult siis, kui
-  manifest taotleb õigust `env`.
-- **Tee piiramine** — installimine/uuendamine/desinstallimine kontrollib enne
-  mis tahes kopeerimist või rekursiivset kustutamist, et plugina kataloog ja
-  `manifest.main` lahenduksid hallatava pluginate juurkataloogi **sees**
-  (kaitseb muudetud andmebaasiteede ja `../`-läbimise eest failis
-  `manifest.main`). Aktiveerimisel lahendatakse sümbollingid `realpath`-i abil
-  ja keeldutakse laadimast sisenemispunkti, mis väljub plugina kataloogist.
-- **Valikuline tervikluse fikseerimine** — manifest võib deklareerida välja
-  `integrity` (`sha256-<base64>`, SRI-vorming). Kui see on olemas, kontrollib
-  laadija laadimise ajal sisenemisfaili räsi ja keeldub mittevastavuse korral
-  aktiveerimisest. See on valikuline omavoliliste muudatuste tuvastamine,
-  **mitte** turvapiir — tegelikud piirid on ainult loopback'i kaudu
-  marsruutimine ja õiguste mudel.
+> **Pluginad ei ole liivakastis.** Laps on tavaline Node.js protsess, mis töötab OmniRoute kasutajana, ilma VM konteksti ja Node.js -lubadeta, seega saab pistikprogrammi kood lugeda ja kirjutada mis tahes faile, mida kasutaja saab, käivitada programme ja jõuda võrku. `requires.permissions` otsustab ainult, millised keskkonnamuutujad laps saab; teisi õigusi ei jõustata. Installige ainult usaldusväärsed pistikprogrammid. Allpool olev protsessipiir sisaldab kokkujooksmisi ja hangumist; see ei ole turvapiir.
+
+- **Protsessi isoleerimine** — `loadPlugin()` (`src/lib/plugins/loader.ts`) loob iga pistikprogrammi eraldi Node.js alamprotsessina ja suhtleb IPC kaudu. Konkskõnedel on ajalõpp koos `SIGTERM` → `SIGKILL` eskalatsiooniga.
+- **Env lubade loend** — laps saab ainult lubatud keskkonnamuutujate komplekti; laiem komplekt antakse ainult siis, kui manifest nõuab `env` luba.
+- **Installige allika kaitse** — `POST /api/plugins` loeb ainult pistikprogrammi allikate kataloogist (vt "Installi kohalikult teelt"): tee kanoniseeritakse `realpath`, see peab jääma rangelt sellesse kataloogi ja lähtepuust, mis kannab sümboli linki, mis sellest välja pääseb, keeldutakse enne kui midagi kopeeritakse.
+- **Tee piiramine** — install/upgrade/uninstall kinnitab, et pistikprogrammide kataloog ja `manifest.main` lahendavad** sees** hallatava pistikprogrammi juur enne mis tahes kopeerimist või rekursiivset kustutamist (kaitseb rikutud DB teede ja `../` läbipääsu eest `manifest.main` is). Aktiveerimine lahendab sümbollingid `realpath` kaudu ja keeldub laadimast sisenemispunkti, mis väljub pistikprogrammide kataloogist.
+- **Valikuline terviklikkuse tihvt** — manifest võib deklareerida välja `integrity` (`sha256-<base64>`, SRI vorming). Kui see on olemas, kontrollib laadija sisestusfaili räsi laadimise ajal ja keeldub mittevastavuse korral aktiveerimast. See on lubatav võltsimise tuvastamine,** mitte** turvapiir: see ei piira seda, mida laaditud pistikprogramm saab teha.
+- **Konksus pole kliendi mandaate** — `onRequest`, `onResponse` ja `onError` edastatud kontekstist on eemaldatud päised `authorization`, `x-api-key`, `proxy-authorization` ja `cookie` ning API võtmekirje ei kanna võtmeväärtust (`redactPluginContext()` in `src/lib/plugins/hooks.ts`).
 
 ## Manifest (`plugin.json`)
 
-Valideerib `PluginManifestSchema` (`src/lib/plugins/manifest.ts`):
+Kinnitanud `PluginManifestSchema` (`src/lib/plugins/manifest.ts`):
 
-| Väli               | Tüüp      | Märkused                                                             |
-| ------------------ | --------- | -------------------------------------------------------------------- |
-| `name`             | string    | Kohustuslik; kebab-case (`^[a-z0-9-]+$`), 1–100 märki                |
-| `version`          | string    | Kohustuslik; semver (`MAJOR.MINOR.PATCH`)                            |
-| `description`      | string?   | ≤ 500 märki                                                          |
-| `author`           | string?   | ≤ 200 märki                                                          |
-| `license`          | string?   | Vaikeväärtus on `MIT`                                                |
-| `main`             | string?   | Sisenemisfail; vaikeväärtus on `index.js`                            |
-| `source`           | enum?     | `local` \| `marketplace` (vaikeväärtus on `local`)                   |
-| `tags`             | string[]? | Otsingusildid                                                        |
-| `requires`         | object?   | `{ omniroute?, permissions[] }`                                      |
-| `hooks`            | object?   | Tõeväärtused, mis näitavad, milliseid hook'e plugin rakendab         |
-| `skills`           | object[]? | Valikulised oskuste definitsioonid                                   |
-| `enabledByDefault` | boolean?  | Automaatne aktiveerimine installimisel                               |
-| `configSchema`     | object?   | Konfiguratsiooniväljade kaart (`string`/`number`/`boolean`/`select`) |
-| `integrity`        | string?   | Valikuline sisenemisfaili `sha256-<base64>` fikseering               |
+| Väli               | Tüüp        | Märkmed                                                                   |
+| ------------------ | ----------- | ------------------------------------------------------------------------- |
+| `name`             | string      | Nõutav; kebabikarp (`^[a-z0-9-]+$`), 1–100 tähemärki                      |
+| `version`          | string      | Nõutav; semver (`MAJOR.MINOR.PATCH`)                                      |
+| `description`      | string?     | ≤ 500 tähemärki                                                           |
+| `author`           | string?     | ≤ 200 tähemärki                                                           |
+| `license`          | string?     | Vaikimisi `MIT`                                                           |
+| `main`             | string?     | sisestusfail; vaikimisi `index.js`                                        |
+| `source`           | enum?       | `local` \| `marketplace` (vaikimisi `local`)                              |
+| `tags`             | string[]?   | Otsi silte                                                                |
+| `requires`         | objekt?     | `{ omniroute?, permissions[] }`                                           |
+| `hooks`            | objekt?     | Booleanid, mis deklareerivad, millised konksud pistikprogrammi rakendavad |
+| `skills`           | objekt[]?   | Valikulised oskuste määratlused                                           |
+| `enabledByDefault` | tõeväärtus? | Automaatne aktiveerimine installimisel                                    |
+| `configSchema`     | objekt?     | Konfiguratsiooniväljade kaart (`string`/`number`/`boolean`/`select`)      |
+| `integrity`        | string?     | Valikuline `sha256-<base64>` sisestusfaili tihvt                          |
 
-Õigused pärinevad enum'ist
-`network` / `file-read` / `file-write` / `env` / `exec`.
+Õigused saadakse loendist `network` / `file-read` / `file-write` / `env` / `exec`. Ainult `env` on käitusaegne efekt (lapse jaoks veidi suurem keskkonnamuutuja lubade loend); teised on deklaratsioonid ja neid ei täideta.
 
 ## Elutsükli voog
 

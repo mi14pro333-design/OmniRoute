@@ -452,36 +452,36 @@ v3.8.0 ට _පෙර_ ආයාත කළ සම්බන්ධතාවල එ
 
 ---
 
-## Docker ගැටලු
+## Docker ගැටළු
 
-### Docker IPv6 / සම්බන්ධතාව යළි පිහිටුවීම
+### Docker IPv6 / සම්බන්ධතා යළි පිහිටුවීම
 
 <a name="docker-ipv6"></a>
 
-**ලක්ෂණ:** `curl http://localhost:20128/v1/models` මඟින් `curl: (56) Recv failure: Connection reset by peer` ආපසු ලබා දෙයි. Dashboard එක සහ සත්යාපනය අවශ්ය නොවන endpoints ක්රියා කරන නමුත් සත්යාපිත endpoints අසාර්ථක වේ — මෙය සත්යාපන ගැටලුවක් මෙන් පෙනුණත් එසේ නොවේ.
+**රෝග ලක්ෂණ:** `curl http://localhost:20128/v1/models` `curl: (56) Recv failure: Connection reset by peer` ආපසු ලබා දෙයි. උපකරණ පුවරුව සහ සත්‍යාපනය නොකළ අන්ත ලක්ෂ්‍ය ක්‍රියා කරයි, නමුත් සත්‍යාපිත අන්ත ලක්ෂ්‍ය අසමත් වේ — එය සත්‍යාපන ගැටලුවක් සේ පෙනෙන නමුත් එසේ නොවේ.
 
-**හේතුව:** `docker run -p 20128:20128` මඟින් `0.0.0.0` (IPv4) සහ `::` (IPv6) යන දෙකෙහිම පළ කරන නමුත් container එක තුළ ඇති process එක සවන් දෙන්නේ IPv4 මත පමණි. `localhost` පළමුව `::1` වෙත resolve වන hosts මත, සම්බන්ධතාවය පිටුපස listener එකක් නොමැති IPv6 published port එකට යොමු වේ → සම්බන්ධතාව යළි පිහිටුවේ.
+**හේතුව:** `docker run -p 20128:20128` `0.0.0.0` (IPv4) සහ `::` (IPv6) යන දෙකෙහිම ප්‍රකාශනය කරයි, නමුත් බහාලුම් ඇතුළත ක්‍රියාවලිය සවන් දෙන්නේ IPv4 මත පමණි. `localhost` ප්‍රථමයෙන් `::1` ලෙස නිරාකරණය වන ධාරක මත, → සම්බන්ධතා යළි පිහිටුවීම පිටුපස සවන්දෙන්නෙකු නොමැතිව සම්බන්ධතාවය IPv6 ප්‍රකාශිත වරායට ගොඩබසිනු ඇත.
 
-**විසඳුම:**
+**නිවැරදි කරන්න:**
 
-1. **ඉක්මන් රෝග විනිශ්චය:** `curl -4 http://localhost:20128/v1/models` ධාවනය කරන්න. එය `-4` සමඟ ක්රියා කරන නමුත් එය නොමැතිව අසාර්ථක වන්නේ නම්, ඔබට IPv6 bind නොගැළපීමක් ඇත.
-2. **ස්ථිර විසඳුම:** ඔබගේ `docker run` විධානයේ `-p 127.0.0.1:20128:20128` භාවිතයෙන් IPv4 වෙත පැහැදිලිව bind කරන්න:
+1. **ඉක්මන් රෝග විනිශ්චය:** `curl -4 http://localhost:20128/v1/models` ධාවනය කරන්න. එය `-4` සමඟ ක්‍රියා කරන නමුත් එය නොමැතිව අසාර්ථක වුවහොත්, ඔබට IPv6 බන්ධන නොගැලපීමක් ඇත.
+2. **ස්ථිර නිවැරදි කිරීම:** ඔබේ `docker run` විධානය තුළ `-p 127.0.0.1:20128:20128` භාවිතා කිරීමෙන් පැහැදිලිවම IPv4 වෙත බැඳෙන්න:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   මෙය IPv4 bind කිරීම බලගන්වන අතර සියලුම host interfaces මත proxy එක නිරාවරණය වීමද වළක්වයි.
+   මෙය IPv4 බන්ධනයට බල කරන අතර සියලුම ධාරක අතුරුමුහුණත් මත ප්‍රොක්සි නිරාවරණය වීම වළක්වයි.
 
 ---
 
-### CLI Tool එක ස්ථාපනය කර නොමැති බව පෙන්වයි
+### CLI මෙවලම් සංදර්ශන ස්ථාපනය කර නැත
 
-1. runtime fields පරීක්ෂා කරන්න: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. portable mode සඳහා: `runner-cli` image target එක භාවිත කරන්න (CLIs සමඟ ඇතුළත් කර ඇත)
-3. host mount mode සඳහා: `CLI_EXTRA_PATHS` සකසා host bin directory එක read-only ලෙස mount කරන්න
-4. `installed=true` සහ `runnable=false` නම්: binary එක හමු වූ නමුත් healthcheck එක අසාර්ථක වී ඇත
+1. ධාවන කාල ක්ෂේත්‍ර පරීක්ෂා කරන්න: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. අතේ ගෙන යා හැකි මාදිලිය සඳහා: රූප ඉලක්ක `runner-cli` භාවිතා කරන්න (bundled CLIs)
+3. ධාරක මවුන්ට් මාදිලිය සඳහා: `CLI_EXTRA_PATHS` සහ මවුන්ට් සත්කාරක බින් නාමාවලිය කියවීමට පමණක් ලෙස සකසන්න
+4. `installed=true` සහ `runnable=false` නම් : ද්විමය සොයා ගත් නමුත් සෞඛ්‍ය පරීක්ෂාව අසාර්ථක විය
 
-### ඉක්මන් Runtime වලංගුකරණය
+### ඉක්මන් ධාවන කාල වලංගුකරණය
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

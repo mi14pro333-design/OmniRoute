@@ -184,11 +184,11 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ## Docker ආරක්ෂාව
 
-- නිෂ්පාදන පරිසරයේදී root නොවන පරිශීලකයෙකු භාවිත කරන්න
-- රහස් කියවීමට පමණක් හැකි වෙළුම් ලෙස සවිකරන්න
-- `.env` ගොනු කිසිවිටෙක Docker images තුළට පිටපත් නොකරන්න
-- සංවේදී ගොනු බැහැර කිරීමට `.dockerignore` භාවිත කරන්න
-- HTTPS පසුපස ක්රියාත්මක වන විට `AUTH_COOKIE_SECURE=true` ලෙස සකසන්න
+- නිෂ්පාදනයේදී root නොවන පරිශීලක භාවිතා කරන්න
+- කියවීමට පමණක් වෙළුම් ලෙස රහස් සවි කරන්න
+- කිසි විටෙකත් `.env` ගොනු Docker රූපවලට පිටපත් නොකරන්න
+- සංවේදී ගොනු බැහැර කිරීමට `.dockerignore` භාවිතා කරන්න
+- HTTPS පිටුපස ඇති විට `AUTH_COOKIE_SECURE=true` සකසන්න
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

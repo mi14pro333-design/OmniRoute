@@ -182,13 +182,13 @@ Server `changeme`, `secret` yoki `password` kabi zaifligi ma’lum qiymatlarni f
 
 ---
 
-## Docker xavfsizligi
+## Docker Xavfsizlik
 
-- Ishlab chiqarish muhitida root bo‘lmagan foydalanuvchidan foydalaning
-- Maxfiy ma’lumotlarni faqat o‘qish uchun mo‘ljallangan jildlar sifatida ulang
-- `.env` fayllarini hech qachon Docker obrazlariga nusxalamang
-- Maxfiy fayllarni istisno qilish uchun `.dockerignore` dan foydalaning
-- HTTPS ortida ishlaganda `AUTH_COOKIE_SECURE=true` ni o‘rnating
+- Ishlab chiqarishda root bo'lmagan foydalanuvchidan foydalaning
+- Sirlarni faqat oʻqish uchun jildlar sifatida oʻrnating
+- Hech qachon `.env` fayllarini Docker rasmlariga nusxalamang
+- Nozik fayllarni istisno qilish uchun `.dockerignore` foydalaning
+- HTTPS orqasida `AUTH_COOKIE_SECURE=true` o'rnating
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

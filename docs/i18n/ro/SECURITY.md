@@ -182,13 +182,13 @@ Serverul respinge în mod activ valorile cunoscute ca fiind nesigure, precum `ch
 
 ---
 
-## Securitatea Docker
+## Docker Securitate
 
-- Folosiți un utilizator non-root în producție
-- Montați secretele ca volume doar în citire
-- Nu copiați niciodată fișierele `.env` în imaginile Docker
-- Folosiți `.dockerignore` pentru a exclude fișierele sensibile
-- Setați `AUTH_COOKIE_SECURE=true` atunci când serverul este accesat prin HTTPS
+- Utilizați utilizator non-root în producție
+- Montați secrete ca volume numai pentru citire
+- Nu copiați niciodată fișierele `.env` în imagini Docker
+- Utilizați `.dockerignore` pentru a exclude fișierele sensibile
+- Setați `AUTH_COOKIE_SECURE=true` când este în spatele HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

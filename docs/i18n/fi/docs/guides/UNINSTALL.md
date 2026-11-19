@@ -42,17 +42,17 @@ Tämä poistaa sovelluksen **ja hävittää pysyvästi** kaikki tiedot:
 
 ## Manuaalinen asennuksen poisto
 
-### Globaali NPM-asennus
+### NPM Global Install
 
 ```bash
-# Poista globaali paketti
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Valinnainen) Poista datahakemisto
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Globaali pnpm-asennus
+### pnpm yleinen asennus
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,51 +62,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Pysäytä ja poista säilö
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Poista taltio (poistaa kaikki tiedot)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Valinnainen) Poista levykuva
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Kirjoita
 
 ```bash
-# Pysäytä ja poista säilöt
+# Stop and remove containers
 docker compose down
 
-# Poista myös taltiot (poistaa kaikki tiedot)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Electron-työpöytäsovellus
+### Electron Desktop App
 
 **Windows:**
 
-- Avaa `Asetukset → Sovellukset → OmniRoute → Poista asennus`
-- Tai suorita NSIS-asennuksenpoisto-ohjelma asennushakemistosta
+- Avaa `Settings → Apps → OmniRoute → Uninstall`
+- Tai suorita NSIS asennuksen poisto -ohjelma asennushakemistosta
 
 **macOS:**
 
-- Vedä `OmniRoute.app` hakemistosta `/Applications` roskakoriin
+- Vedä `OmniRoute.app` `/Applications` :stä roskakoriin
 - Poista tiedot: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
-- Poista AppImage-tiedosto
+- Poista AppImage tiedosto
 - Poista tiedot: `rm -rf ~/.omniroute`
 
-### Lähdekoodista tehty asennus (git clone)
+### Lähdeasennus (git-klooni)
 
 ```bash
-# Poista kloonattu hakemisto
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Valinnainen) Poista datahakemisto
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

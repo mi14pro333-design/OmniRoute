@@ -428,7 +428,7 @@ open-sse/
 
 170 ଟପ୍-ଲେଭଲ୍ ଏକଜେକ୍ୟୁଟର ମଡ୍ୟୁଲ୍ (`*.ts` ମାଇନସ୍ `base.ts`, `index.ts` ଏବଂ — ଗଣନା `npm run check:docs-counts` ମାପଗୁଡିକ ପରୀକ୍ଷା କରେ)। ପ୍ରତ୍ୟେକ ଏକଜେକ୍ୟୁଟର ଶ୍ରେଣୀ `BaseExecutor` (`base.ts`) କୁ ସିଧାସଳଖ କିମ୍ବା `DefaultExecutor` କିମ୍ବା ଅନ୍ୟ ଏକଜେକ୍ୟୁଟର ମାଧ୍ୟମରେ ବିସ୍ତାର କରେ। ଅବଶିଷ୍ଟ ମଡ୍ୟୁଲଗୁଡ଼ିକ ହେଉଛି ପ୍ରତି-ପ୍ରଦାନକାରୀ ସହାୟକକାରୀ (ଟୁଲ୍ ସ୍କିମା, fetch/TTS ଆଡାପ୍ଟର, କ୍ୱିକ୍ ହ୍ୟାଣ୍ଡେଲର୍)। କାର୍ଯ୍ୟନିର୍ବାହୀମାନେ ଅନ୍ତର୍ଭୁକ୍ତ:
 
-`antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex` `index.ts` `commandCode`, `cursor`, `default`, `devin-cli`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder`, `vertex`, `muse-spark-web`, `devin-desktop`, Plus `claudeIdentity.ts`
+`antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder`, `vertex`, `devin-desktop`, plus `claudeIdentity.ts` (ସହଭାଗୀ ପରିଚୟ ସହାୟକ) ଏବଂ `index.ts`
 
 > ଟିପନ୍ତୁ: ଏଠାରେ ତାଲିକାଭୁକ୍ତ ପ୍ରଦାନକାରୀମାନେ ଜେନେରିକ୍ OpenAI- ସୁସଙ୍ଗତ ନିର୍ବାହକ ବ୍ୟବହାର କରି `default.ts` ଦ୍ୱାରା ପରିବେଷଣ କରାଯାଏ। ପୂର୍ଣ୍ଣ ପ୍ରଦାନକାରୀ ତାଲିକା (394 ପ୍ରଦାନକାରୀ) `src/shared/constants/providers.ts` ରେ ରୁହନ୍ତି।
 
@@ -481,7 +481,7 @@ Provider registries (`providerRegistry.ts`, `providerModels.ts`, `providerHeader
 
 ### 4.8 `open-sse/utils/`
 
-ଷ୍ଟ୍ରିମିଂ ପ୍ରାଥମିକତା ଏବଂ ପ୍ରଦାନକାରୀ ସହାୟକକାରୀ: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts` `sleep.ts` `cacheControlPolicy.ts` `ollamaTransform.ts` `cursorChecksum.ts`, `cursorAgentProtobuf.ts` `progressTracker.ts` `cursorVersionDetector.ts` `error.ts` `comfyuiClient.ts`, `kieTask.ts` `requestLogger.ts` `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts` `cors.ts` `logger.ts` `urlSanitize.ts`, `usageTracking.ts`
+ଷ୍ଟ୍ରିମିଂ ପ୍ରାଥମିକ ଏବଂ ପ୍ରଦାନକାରୀ ସହାୟକକାରୀ: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts` `requestLogger.ts` `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts` `ollamaTransform.ts` `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts` `progressTracker.ts` `aiSdkCompat.ts` `cors.ts` `thinkTagParser.ts` `error.ts` `urlSanitize.ts` `logger.ts` `sleep.ts` `usageTracking.ts`
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-ଉଦ୍ଦେଶ୍ୟ ଅନୁଯାୟୀ 6ଟି ଉପଫୋଲ୍ଡର୍ରେ ସଂଗଠିତ।
+ଉଦ୍ଦେଶ୍ୟ ଅନୁଯାୟୀ sub ଟି ସବଫୋଲ୍ଡରରେ ସଂଗଠିତ।
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`।
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, ଏବଂ କେବଳ-ପଠନୀୟ PR ତଦାରଖ ସହାୟକଗୁଡ଼ିକ
-  `ci-discriminate.sh` (ଏକ ରେଫରେନ୍ସ PR କିମ୍ବା base-red ସମସ୍ୟା ସହ ତୁଳନା କରି ଏକ PRର ବିଫଳ-ଯାଞ୍ଚ ସ୍ୱାକ୍ଷରଗୁଡ଼ିକୁ ନିଜସ୍ୱ / ଉତ୍ତରାଧିକାରରେ ପ୍ରାପ୍ତ /
-  ଅଜଣା ଭାବେ ବର୍ଗୀକୃତ କରେ) ଏବଂ `audit-worktree.sh`
-  (ପରିବର୍ତ୍ତିତ ଫାଇଲ୍, ସୁରକ୍ଷିତ ପୃଷ୍ଠତଳ, ଅପସାରିତ ଆସର୍ଟ, ଦମନ ଗଣନା, ବଳକା
-  ଅସ୍ଥାୟୀ tsconfigଗୁଡ଼ିକ, ସ୍ଥାନୀୟ HEAD ସହ PR headର ତୁଳନା — ଜଣେ କର୍ମୀଙ୍କ PR ଗ୍ରହଣ କରାଯିବା ପୂର୍ବରୁ)।
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`।
-- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`।
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`।
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`।
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `v1-ws-bridge.mjs` `responses-ws-proxy.mjs` `run-next.mjs` `run-next-playwright.mjs` `healthcheck.mjs` `run-ecosystem-tests.mjs` `standalone-server-ws.mjs` ଅବଶିଷ୍ଟ PR `system-info.mjs` `run-standalone.mjs` `ci-discriminate.sh` `run-protocol-clients-tests.mjs` `run-playwright-tests.mjs` HEAD PR PR `sync-env.mjs` `audit-worktree.sh` — PR ପୂର୍ବରୁ PR `smoke-electron-packaged.mjs`
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

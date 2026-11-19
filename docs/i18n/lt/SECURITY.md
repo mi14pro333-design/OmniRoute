@@ -182,13 +182,13 @@ Serveris aktyviai atmeta žinomas silpnas reikšmes, tokias kaip `changeme`, `se
 
 ---
 
-## Docker sauga
+## Docker Security
 
-- Produkcinėje aplinkoje naudokite ne `root` naudotoją
-- Prijunkite slaptas reikšmes kaip tik skaitomus tomus
-- Niekada nekopijuokite `.env` failų į Docker atvaizdus
-- Naudokite `.dockerignore`, kad neįtrauktumėte neskelbtinų failų
-- Kai naudojamas HTTPS, nustatykite `AUTH_COOKIE_SECURE=true`
+- Gamyboje naudokite ne root naudotoją
+- Įdėkite paslaptis kaip tik skaitomus tomus
+- Niekada nekopijuokite `.env` failų į Docker vaizdus
+- Naudokite `.dockerignore` kad neįtrauktumėte jautrių failų
+- Nustatyti `AUTH_COOKIE_SECURE=true` kai yra už HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

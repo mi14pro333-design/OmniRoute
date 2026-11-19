@@ -455,36 +455,36 @@ Raadpleeg voor volledige details en stapsgewijze instructies voor het naast elka
 
 ---
 
-## Docker-problemen
+## Docker problemen
 
-### Docker IPv6 / Verbinding opnieuw ingesteld
+### Docker IPv6 / Verbinding opnieuw instellen
 
 <a name="docker-ipv6"></a>
 
-**Symptomen:** `curl http://localhost:20128/v1/models` retourneert `curl: (56) Recv failure: Connection reset by peer`. Het dashboard en niet-geverifieerde eindpunten werken, maar geverifieerde eindpunten mislukken — het lijkt op een authenticatieprobleem, maar dat is het niet.
+**Symptomen:** `curl http://localhost:20128/v1/models` retourneert `curl: (56) Recv failure: Connection reset by peer`. Dashboard en niet-geverifieerde eindpunten werken, maar geverifieerde eindpunten mislukken — Het lijkt op een auth-probleem, maar dat is het niet.
 
-**Oorzaak:** `docker run -p 20128:20128` publiceert op zowel `0.0.0.0` (IPv4) als `::` (IPv6), maar het proces in de container luistert alleen op IPv4. Op hosts waar `localhost` eerst naar `::1` wordt omgezet, komt de verbinding terecht op de gepubliceerde IPv6-poort zonder achterliggende listener → verbinding opnieuw ingesteld.
+**Oorzaak:** `docker run -p 20128:20128` publiceert op zowel `0.0.0.0` (IPv4) als `::` (IPv6), maar het proces in de container luistert alleen op IPv4. Op hosts waar `localhost` eerst naar `::1` oplost, komt de verbinding terecht op de door IPv6 gepubliceerde poort zonder dat er een luisteraar achter zit. → -verbindingsreset.
 
-**Oplossing:**
+**Repareren:**
 
-1. **Snelle diagnose:** Voer `curl -4 http://localhost:20128/v1/models` uit. Als dit met `-4` werkt, maar zonder niet, is er sprake van een niet-overeenkomende IPv6-binding.
-2. **Permanente oplossing:** Bind expliciet aan IPv4 door `-p 127.0.0.1:20128:20128` te gebruiken in uw `docker run`-opdracht:
+1. **Snelle diagnose:** Voer `curl -4 http://localhost:20128/v1/models` uit. Als het met `-4` werkt, maar zonder mislukt, heb je een IPv6 bindingsmismatch.
+2. **Permanente oplossing:** Bind expliciet aan IPv4 door `-p 127.0.0.1:20128:20128` te gebruiken in uw `docker run` opdracht:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Dit dwingt de IPv4-binding af en voorkomt ook dat de proxy op alle hostinterfaces wordt blootgesteld.
+   Dit forceert de IPv4 binding en voorkomt ook dat de proxy op alle hostinterfaces wordt blootgesteld.
 
 ---
 
-### CLI-hulpmiddel wordt als niet geïnstalleerd weergegeven
+### CLI Tool geeft aan dat het niet is geïnstalleerd
 
-1. Controleer de runtimevelden: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Voor de draagbare modus: gebruik imagedoel `runner-cli` (meegeleverde CLI's)
-3. Voor de hostkoppelingsmodus: stel `CLI_EXTRA_PATHS` in en koppel de bin-directory van de host als alleen-lezen
-4. Als `installed=true` en `runnable=false`: het binaire bestand is gevonden, maar de statuscontrole is mislukt
+1. Controleer runtime-velden: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Voor draagbare modus: gebruik afbeeldingsdoel `runner-cli` (gebundelde CLIs)
+3. Voor host-mountmodus: stel `CLI_EXTRA_PATHS` en mount host bin-map in als alleen-lezen
+4. Als `installed=true` en `runnable=false`: binair bestand is gevonden, maar de gezondheidscontrole is mislukt
 
-### Snelle runtimevalidatie
+### Snelle runtime-validatie
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

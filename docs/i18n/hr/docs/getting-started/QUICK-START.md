@@ -8,9 +8,9 @@
 
 ---
 
-## 1. korak: Instalirajte OmniRoute
+## Korak 1: Instalirajte OmniRoute
 
-Odaberite željeni način:
+Odaberite željenu metodu:
 
 ### Opcija A: npm (preporučeno)
 
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### Opcija B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` je najviša **objavljena** stabilna SemVer verzija. Ne prati git granu `main`. Za GitOps fiksirajte verziju s `diegosouzapw/omniroute:X.Y.Z`. Pogledajte [Oznake slika / kanali izdanja](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` je najviši** objavljeno** stabilan SemVer. To čini** ne** pratiti git `main`. Prikvači `cheaperinference/omniroute:X.Y.Z` za GitOps. Pogledajte [Oznake slika / Kanali izdanja](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Opcija C: Iz izvornog koda
+### Opcija C: Iz izvora
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

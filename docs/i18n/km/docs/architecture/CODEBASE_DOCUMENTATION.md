@@ -386,7 +386,7 @@ server/
 
 ## 4. `open-sse/` — កន្លែងធ្វើការរបស់ម៉ាស៊ីនស្ទ្រីម
 
-ញែកកន្លែងធ្វើការ npm ចេញជា `@omniroute/open-sse`។ ជាម្ចាស់ដំណើរការសំណើ ប្រតិបត្តិករ អ្នកបកប្រែ សេវាកម្ម ប្លែង និងម៉ាស៊ីនមេ MCP ។
+ញែកកន្លែងធ្វើការ npm ចេញជា `@omniroute/open-sse`។ ជាម្ចាស់ដំណើរការសំណើ អ្នកប្រតិបត្តិ អ្នកបកប្រែ សេវាកម្ម ប្លែង និងម៉ាស៊ីនមេ MCP ។
 
 ```
 open-sse/
@@ -426,7 +426,7 @@ open-sse/
 
 ### 4.2 `open-sse/executors/`
 
-ម៉ូឌុលប្រតិបត្តិកម្រិតកំពូលចំនួន 170 (`*.ts` ដក `base.ts`, `index.ts` និងការធ្វើតេស្ត — វិធានការ `npm run check:docs-counts` រាប់) ។ រាល់ថ្នាក់ប្រតិបត្តិករពង្រីក `BaseExecutor` (`base.ts`) ដោយផ្ទាល់ ឬតាមរយៈ `DefaultExecutor` ឬប្រតិបត្តិករផ្សេងទៀត; ម៉ូឌុលដែលនៅសេសសល់គឺជាអ្នកជំនួយពីអ្នកផ្តល់សេវា (គ្រោងការណ៍ឧបករណ៍, អាដាប់ទ័រ fetch/TTS, ឧបករណ៍ដោះស្រាយ quirk) ។ អ្នកប្រតិបត្តិរួមមានៈ
+170 ម៉ូឌុលប្រតិបត្តិកម្រិតកំពូល (`*.ts` ដក `base.ts`, `index.ts` និងការធ្វើតេស្ត — វិធានការ `npm run check:docs-counts` រាប់) ។ រាល់ថ្នាក់ប្រតិបត្តិករពង្រីក `BaseExecutor` (`base.ts`) ដោយផ្ទាល់ ឬតាមរយៈ `DefaultExecutor` ឬប្រតិបត្តិករផ្សេងទៀត; ម៉ូឌុលដែលនៅសេសសល់គឺជាអ្នកជំនួយពីអ្នកផ្តល់សេវា (គ្រោងការណ៍ឧបករណ៍, អាដាប់ទ័រ fetch/TTS, ឧបករណ៍ដោះស្រាយ quirk) ។ អ្នកប្រតិបត្តិរួមមានៈ
 
 `antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder`, `vertex`, `claudeIdentity.ts` () និងចែករំលែក `devin-desktop` `index.ts`
 
@@ -481,7 +481,7 @@ open-sse/
 
 ### 4.8 `open-sse/utils/`
 
-ការស្ទ្រីមបុព្វបទ និងអ្នកផ្តល់ជំនួយ៖ `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts` `usageTracking.ts` `progressTracker.ts` `error.ts` `cors.ts` `logger.ts` `requestLogger.ts`, `sleep.ts` `ollamaTransform.ts`
+ការស្ទ្រីមបុព្វបទ និងអ្នកផ្តល់ជំនួយ៖ `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts` `ollamaTransform.ts` `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts` `logger.ts` `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts` `requestLogger.ts` `progressTracker.ts`, `error.ts`, `sleep.ts` `cors.ts`
 
 ---
 
@@ -566,35 +566,14 @@ Command ដែលប្រើជាទូទៅ៖
 
 ## 8. `scripts/`
 
-ត្រូវបានរៀបចំជា 6 ថតរងតាមគោលបំណង។
+រៀបចំជា 6 ថតរងតាមគោលបំណង។
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`។
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs` ព្រមទាំងឧបករណ៍ជំនួយសម្រាប់តាមដាន PR ដែលអាចអានបានតែប៉ុណ្ណោះ
-  `ci-discriminate.sh` (បែងចែកហត្ថលេខានៃការត្រួតពិនិត្យដែលបរាជ័យរបស់ PR ទៅជា របស់ខ្លួន / ទទួលមរតក /
-  មិនស្គាល់ ដោយប្រៀបធៀបនឹង PR យោង ឬបញ្ហា base-red) និង `audit-worktree.sh`
-  (ឯកសារដែលបានកែប្រែមិនទាន់រក្សាទុក, ផ្នែកដែលបានការពារ, assert ដែលបានលុប, ចំនួនការទប់ស្កាត់, tsconfig បណ្ដោះអាសន្ន
-  ដែលនៅសេសសល់, ក្បាល PR ធៀបនឹង HEAD មូលដ្ឋាន — មុនពេល PR របស់ worker ត្រូវបានទទួលយក)។
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`។
-- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`។
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`។
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`។
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, បូកនឹងអ្នកជំនួយការមើលកូន PR បានតែអាន `ci-discriminate.sh` (តម្រៀប a PR's សញ្ញាប្រឆាំងនឹងការបរាជ័យ / PR ដែលមិនស្គាល់ បញ្ហាមូលដ្ឋាន-ក្រហម) និង `audit-worktree.sh` (ឯកសារកខ្វក់ ផ្ទៃដែលត្រូវបានការពារ ការអះអាងដែលបានដកចេញ ការទប់ស្កាត់ចំនួនសំណល់ tmp tsconfigs ក្បាល PR ទល់នឹង HEAD — មូលដ្ឋាន មុនពេល PR របស់កម្មករត្រូវបានទទួលយក)។
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

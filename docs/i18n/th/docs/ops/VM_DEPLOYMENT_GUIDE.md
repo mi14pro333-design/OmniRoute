@@ -338,13 +338,13 @@ docker start omniroute
 
 ---
 
-## 6. การรักษาความปลอดภัยขั้นสูง
+## 6. ความปลอดภัยขั้นสูง
 
-### จำกัด nginx ให้เข้าถึงได้จาก IP ของ Cloudflare เท่านั้น
+### จำกัด nginx ไว้ที่ Cloudflare IPs
 
 ```bash
 cat > /etc/nginx/cloudflare-ips.conf << 'CF'
-# ช่วง IPv4 ของ Cloudflare — อัปเดตเป็นระยะ
+# Cloudflare IPv4 ranges — update periodically
 # https://www.cloudflare.com/ips-v4/
 set_real_ip_from 173.245.48.0/20;
 set_real_ip_from 103.21.244.0/22;
@@ -365,31 +365,31 @@ real_ip_header CF-Connecting-IP;
 CF
 ```
 
-เพิ่มข้อความต่อไปนี้ลงใน `nginx.conf` ภายในบล็อก `http {}`:
+เพิ่มสิ่งต่อไปนี้ใน `nginx.conf` ภายในบล็อก `http {}` :
 
 ```nginx
 include /etc/nginx/cloudflare-ips.conf;
 ```
 
-### ติดตั้ง fail2ban
+### ติดตั้ง Fail2ban
 
 ```bash
 apt install -y fail2ban
 systemctl enable fail2ban
 systemctl start fail2ban
 
-# ตรวจสอบสถานะ
+# Check status
 fail2ban-client status sshd
 ```
 
 ### บล็อกการเข้าถึงพอร์ต Docker โดยตรง
 
 ```bash
-# ป้องกันการเข้าถึงพอร์ต 20128 โดยตรงจากภายนอก
+# Prevent direct external access to port 20128
 iptables -I DOCKER-USER -p tcp --dport 20128 -j DROP
 iptables -I DOCKER-USER -i lo -p tcp --dport 20128 -j ACCEPT
 
-# ทำให้กฎคงอยู่ถาวร
+# Persist the rules
 apt install -y iptables-persistent
 netfilter-persistent save
 ```

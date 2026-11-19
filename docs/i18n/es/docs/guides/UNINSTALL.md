@@ -42,17 +42,17 @@ Esto elimina la aplicación **y borra permanentemente** todos los datos:
 
 ## Desinstalación manual
 
-### Instalación global con NPM
+### Instalación global NPM
 
 ```bash
-# Eliminar el paquete global
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Opcional) Eliminar el directorio de datos
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Instalación global con pnpm
+### Instalación global de pnpm
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,24 +62,26 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Detener y eliminar el contenedor
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Eliminar el volumen (elimina todos los datos)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Opcional) Eliminar la imagen
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker componer
 
 ```bash
-# Detener y eliminar los contenedores
+# Stop and remove containers
 docker compose down
 
-# Eliminar también los volúmenes (elimina todos los datos)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
@@ -87,26 +89,26 @@ docker compose down -v
 
 **Windows:**
 
-- Abra `Configuración → Aplicaciones → OmniRoute → Desinstalar`
+- abrir `Settings → Apps → OmniRoute → Uninstall`
 - O ejecute el desinstalador NSIS desde el directorio de instalación
 
 **macOS:**
 
 - Arrastre `OmniRoute.app` desde `/Applications` a la Papelera
-- Elimine los datos: `rm -rf ~/Library/Application Support/omniroute`
+- Eliminar datos: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
-- Elimine el archivo AppImage
-- Elimine los datos: `rm -rf ~/.omniroute`
+- Eliminar el archivo AppImage
+- Eliminar datos: `rm -rf ~/.omniroute`
 
-### Instalación desde el código fuente (git clone)
+### Instalación de código fuente (clon de git)
 
 ```bash
-# Eliminar el directorio clonado
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Opcional) Eliminar el directorio de datos
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

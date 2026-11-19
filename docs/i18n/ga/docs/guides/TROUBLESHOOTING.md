@@ -453,36 +453,36 @@ féach [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Fadhbanna Docker
+## Docker Saincheisteanna
 
-### IPv6 Docker / Athshocrú Ceangail
+### Docker IPv6 / Athshocraigh Ceangal
 
 <a name="docker-ipv6"></a>
 
-**Siomptóim:** Tugann `curl http://localhost:20128/v1/models` an toradh `curl: (56) Recv failure: Connection reset by peer`. Oibríonn an deais agus na críochphointí gan fhíordheimhniú, ach teipeann ar na críochphointí fíordheimhnithe — is cosúil gur fadhb fíordheimhnithe í ach ní hea.
+**Comharthaí:** Filleann `curl http://localhost:20128/v1/models` `curl: (56) Recv failure: Connection reset by peer`. Oibríonn painéal agus críochphointí neamhfhíordheimhnithe, ach teipeann ar chríochphointí fíordheimhnithe — is cosúil gur fadhb an údair é ach níl.
 
-**Cúis:** Foilsíonn `docker run -p 20128:20128` ar `0.0.0.0` (IPv4) agus `::` (IPv6) araon, ach ní éisteann an próiseas laistigh den choimeádán ach ar IPv4. Ar óstaigh ina réitítear `localhost` go `::1` ar dtús, sroicheann an ceangal an port foilsithe IPv6 gan aon éisteoir taobh thiar de → athshocraítear an ceangal.
+**Cúis:** Foilsíonn `docker run -p 20128:20128` ar `0.0.0.0` (IPv4) agus `::` (IPv6) araon, ach éisteann an próiseas taobh istigh den choimeádán ar IPv4 amháin. Ar óstach nuair a shocraíonn `localhost` `::1` ar dtús, tagann an nasc i dtír ar an gcalafort foilsithe IPv6 gan éisteoir ar bith taobh thiar de athshocrú nasc →.
 
-**Réiteach:**
+**Deisigh:**
 
-1. **Diagnóis thapa:** Rith `curl -4 http://localhost:20128/v1/models`. Má oibríonn sé le `-4` ach má theipeann air gan é, tá neamhréir cheangailte IPv6 agat.
-2. **Réiteach buan:** Ceangail le IPv4 go sainráite trí `-p 127.0.0.1:20128:20128` a úsáid i do ordú `docker run`:
+1. **Diagnóiseach tapa:** Rith `curl -4 http://localhost:20128/v1/models`. Má oibríonn sé le `-4` ach má theipeann air sin, tá neamhréir ceangal IPv6 agat.
+2. **Socrú buan:** Ceangail le IPv4 go sainráite trí úsáid a bhaint as `-p 127.0.0.1:20128:20128` i d'ordú `docker run` :
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Cuireann sé seo an ceangal IPv4 i bhfeidhm agus seachnaíonn sé freisin an seachfhreastalaí a nochtadh ar chomhéadain uile an óstaigh.
+   Cothaíonn sé seo an ceangal IPv4 agus seachnaíonn sé an seachfhreastalaí a nochtadh ar gach comhéadain óstaigh.
 
 ---
 
-### Taispeánann an Uirlis CLI Nach bhfuil Sí Suiteáilte
+### CLI Taispeáin Uirlisí Gan Suiteáil
 
-1. Seiceáil réimsí na timpeallachta rite: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Don mhód iniompartha: úsáid sprioc na híomhá `runner-cli` (CLIanna cuachta)
-3. Don mhód gléasta óstaigh: socraigh `CLI_EXTRA_PATHS` agus gléas eolaire dénártha an óstaigh mar inléite amháin
-4. Má tá `installed=true` agus `runnable=false`: aimsíodh an comhad dénártha ach theip air sa tseiceáil sláinte
+1. Seiceáil réimsí ama rite: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Le haghaidh mód iniompartha: bain úsáid as sprioc íomhá `runner-cli` ( CLIs cuachta)
+3. Maidir le modh mount óstach: socraigh `CLI_EXTRA_PATHS` agus mount eolaire araid an óstaigh mar inléite amháin
+4. Má aimsíodh `installed=true` agus `runnable=false`: dénártha ach níor éirigh leis an seiceáil sláinte
 
-### Bailíochtú Tapa na Timpeallachta Rite
+### Bailíochtú Thapa Am Rite
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

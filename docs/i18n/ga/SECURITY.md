@@ -182,13 +182,13 @@ Diúltaíonn an freastalaí go gníomhach do luachanna aitheanta laga amhail `ch
 
 ---
 
-## Slándáil Docker
+## Docker Slándáil
 
-- Úsáid úsáideoir neamhfhréimhe sa táirgeadh
-- Feistigh rúin mar imleabhair inléite amháin
-- Ná cóipeáil comhaid `.env` isteach in íomhánna Docker riamh
-- Úsáid `.dockerignore` chun comhaid íogaire a eisiamh
-- Socraigh `AUTH_COOKIE_SECURE=true` agus HTTPS in úsáid
+- Úsáid úsáideoir neamhfhréamh i dtáirgeadh
+- Íosluchtaigh rúin mar imleabhair inléite amháin
+- Ná cóipeáil comhaid `.env` in íomhánna Docker riamh
+- Bain úsáid `.dockerignore` chun comhaid íogaire a eisiamh
+- Socraigh `AUTH_COOKIE_SECURE=true` agus tú taobh thiar de HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

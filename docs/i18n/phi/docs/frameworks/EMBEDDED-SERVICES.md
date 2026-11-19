@@ -236,7 +236,7 @@ I-install ang 9Router mula sa npm. Lumilikha `DATA_DIR/services/9router/` gamit 
 | `409`    | Naka-install na (nakahawak sa lock)                                         |
 | `500`    | Nabigo ang pag-install ng npm — tingnan `message` para sa friendly na error |
 
-**Mga Tala:** Gumagamit ng `execFile('npm', [...])` — na walang shell, walang interpolation (hard rule #13). Ang mga EACCES error ay lumalabas bilang mga friendly na mensahe.
+**Mga Tala:** Gumagamit `execFile('npm', [...])` — walang shell, walang interpolation (hard rule #13). Ang mga EACCES error ay lumalabas bilang mga friendly na mensahe.
 
 ---
 
@@ -491,13 +491,13 @@ ang open-wa (`@open-wa/wa-automate`) ay nagtutulak ng walang ulong Chromium inst
 | `POST`     | `/api/services/openwa/auto-start` | I-toggle ang auto-start                                                    |
 | `GET`      | `/api/services/openwa/logs`       | SSE log tail (sa pamamagitan ng ibinahaging `[name]/logs` dynamic na ruta) |
 
-**API key:** na-injected bilang `WA_KEY` — open-wa's generic `WA_*` -prefixed env override imapa ito sa `--key`/`-k` CLI na opsyon (`dist/cli/setup.js::envArgs()`, na-verify laban sa naka-install na 4.76.0 package). Naka-prefix ang `ow_` kapag nabuo ng `generateServiceApiKey()`. binasa ng open-wa ang susi pabalik mula sa isang `key`/`api_key` HTTP header (hindi `Authorization: Bearer`); `/api-docs*` ay tahasang exempted sa tseke (`setupAuthenticationLayer` in `dist/cli/server.js`), kaya ang health probe ay hindi nangangailangan ng auth header.
+**API key:** na-injected bilang `WA_KEY` — open-wa's generic `WA_*` -prefixed env override imapa ito sa `--key`/`-k` CLI na opsyon (`dist/cli/setup.js::envArgs()`, na-verify laban sa naka-install na 4.76.0 package). Nilagyan ng prefix ang `ow_` kapag nabuo ng `generateServiceApiKey()`. binasa ng open-wa ang susi pabalik mula sa isang `key`/`api_key` HTTP header (hindi `Authorization: Bearer`); `/api-docs*` ay tahasang exempted sa tseke (`setupAuthenticationLayer` in `dist/cli/server.js`), kaya ang health probe ay hindi nangangailangan ng auth header.
 
 **Pagpares:** open-wa ay hindi opisyal at hindi nauugnay sa WhatsApp — ang konektadong numero ay nagdadala ng panganib sa pagbabawal mula sa sariling automation detection ng WhatsApp. Sa unang pagsisimula, ang pagpapares QR code ay naka-print sa stdout at lumalabas sa pamamagitan ng umiiral na Logs panel/SSE stream — wala pang nakalaang QR-image na endpoint sa pagsasamang ito.
 
 ---
 
-### 4.7 LLMLingua endpoints (8 ruta)
+### 4.7 LLMLingua endpoint (8 ruta)
 
 LLMLingua ay isang prompt-compression sidecar wrapping `@atjsh/llmlingua-2` (real ONNX token-classification model, na na-download mula sa Hugging Face sa unang `/compress` call). Ginagamit nito ang parehong hugis ng endpoint gaya ng Bifrost (walang API key — `needsApiKey: false`, hindi ito kailanman humahawak ng mga kredensyal).
 
@@ -535,7 +535,7 @@ Ang sing-box ay may parehong hugis ng endpoint gaya ng Mux — no `rotate-key` n
 | `POST`     | `/api/services/singbox/auto-restart-adopted` | I-toggle ang auto-restart para sa isang pinagtibay (pre-existing) na proseso |
 | `GET`      | `/api/services/singbox/logs`                 | SSE log tail (sa pamamagitan ng ibinahaging `[name]/logs` dynamic na ruta)   |
 
-**TPROXY wiring:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) ay nagsusulat ng `config.json` at sinimulan ang superbisor bago i-install ng `applyTproxy()` ang mga panuntunan ng TPROXY firewall. Kung nawawala o nabigo ang superbisor na maabot `running`, nagla-log ito ngayon sa antas ng error (sa halip na tahimik na nilamon ang pagkabigo) upang masabi ng operator na ang mga panuntunan TPROXY ay inilapat nang walang gumaganang tagapakinig sa likod nila.
+**TPROXY mga kable:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) ay nagsusulat ng `config.json` at sinimulan ang superbisor bago i-install ng `applyTproxy()` ang mga panuntunan ng TPROXY firewall. Kung nawawala o nabigo ang superbisor na maabot `running`, nagla-log ito ngayon sa antas ng error (sa halip na tahimik na nilamon ang pagkabigo) upang masabi ng operator na ang mga panuntunan TPROXY ay inilapat nang walang gumaganang tagapakinig sa likod nila.
 
 ---
 
@@ -555,7 +555,7 @@ Ang proxy na ito:
 - Tinatanggal ang `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` mula sa tugon
 - Isinulat muli ang mga tugon HTML upang mag-inject `<base href>` at gawing normal ang mga ganap na landas (`/foo` → `/dashboard/.../embed/foo`)
 
-Ang mga pag-upgrade WebSocket para sa naka-embed na dashboard ay pinangangasiwaan ng isang kasamang server sa isang nakalaang port (tingnan `src/lib/services/embedWsProxy.ts`).
+Ang mga pag-upgrade WebSocket para sa naka-embed na dashboard ay pinangangasiwaan ng isang kasamang server sa isang nakalaang port (tingnan `src/lib/services/embedWsProxy.ts`). Ang bawat pag-upgrade ay pinapahintulutan bago magbukas ang tunnel, na may parehong mga panuntunan tulad ng HTTP embed na ruta: ang peer ay dapat na loopback na walang reverse-proxy forwarding header, ang isang browser `Origin` ay dapat na isang dashboard na pinanggalingan (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` extend ang loopback defaults), at ang tumatawag ay nangangailangan ng isang dashboard session o isang management-scope API key maliban kung ang dashboard login ay hindi pinagana.
 
 **Seguridad:** Ang mga naka-embed na proxy na ruta ay inuri sa ilalim ng `LOCAL_ONLY_API_PREFIXES` at maaari lamang maabot mula sa loopback. Ang isang attacker na nakakakuha ng JWT sa pamamagitan ng Cloudflare/Ngrok tunnel ay hindi maaaring mag-proxy sa mga naka-embed na serbisyo.
 

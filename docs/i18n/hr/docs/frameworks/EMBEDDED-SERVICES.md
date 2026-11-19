@@ -209,7 +209,7 @@ uvjeti utrke kada se, primjerice, automatsko pokretanje i gumb u korisničkom su
 
 ## 4. API referenca
 
-Sve rute pod `/api/services/` su**LOCAL_ONLY** (samo povratna petlja, tvrdo pravilo #17). Zahtjevi bez povratne petlje primaju `403 LOCAL_ONLY` bez obzira na token autentifikacije.
+Sve rute pod `/api/services/` su**LOCAL_ONLY** (samo povratna petlja, tvrdo pravilo #17). Zahtjevi bez povratne petlje primaju `403 LOCAL_ONLY` bez obzira na autentifikacijski token.
 
 ### 4.1 9 krajnjih točaka usmjerivača (11 ruta)
 
@@ -244,7 +244,7 @@ Instalirajte 9Router iz npm-a. Stvara `DATA_DIR/services/9router/` s vlastitim `
 
 Pokrenite 9Router. Registrira nadzornika ako već nije registriran, zatim poziva `supervisor.start()`. Idempotentan kad već radi.
 
-**Tijelo zahtjeva:** nijedan
+**Tijelo zahtjeva:** nikakav
 
 **Odgovori:**
 
@@ -274,7 +274,7 @@ Pokrenite 9Router. Registrira nadzornika ako već nije registriran, zatim poziva
 
 Graciozno zaustavite 9Router. Šalje SIGTERM, čeka 15 s, zatim SIGKILL ako je još živ. Idempotentan kad je već zaustavljen.
 
-**Tijelo zahtjeva:** nijedan
+**Tijelo zahtjeva:** nikakav
 
 **Odgovori:**
 
@@ -287,9 +287,9 @@ Graciozno zaustavite 9Router. Šalje SIGTERM, čeka 15 s, zatim SIGKILL ako je j
 
 #### `POST /api/services/9router/restart`
 
-Ekvivalent `stop()` zatim `start()` pod radnom bravom.
+Ekvivalentno `stop()` zatim `start()` pod radnom bravom.
 
-**Tijelo zahtjeva:** nijedan
+**Tijelo zahtjeva:** nikakav
 
 **Odgovori:** isto kao `start` (vraća konačni `ServiceStatus`).
 
@@ -319,7 +319,7 @@ Ažurira 9Router na noviju verziju npm-a. Ako je usluga pokrenuta, prvo se zaust
 
 Generira novi API ključ za 9Router, šifrira ga dok miruje i ponovno pokreće uslugu (ako je pokrenuta) tako da preuzima novi ključ iz svog okruženja. Stari ključ se odmah poništava.
 
-**Tijelo zahtjeva:** nijedan
+**Tijelo zahtjeva:** nikakav
 
 **Odgovori:**
 
@@ -393,7 +393,7 @@ SSE tok dnevnih zapisa uživo iz 9Routerovog stdout/stderr međuspremnika prsten
 | Param    | Tip       | Zadano  | Opis                                                                                      |
 | -------- | --------- | ------- | ----------------------------------------------------------------------------------------- |
 | `tail`   | `integer` | 200     | Koliko povijesnih redaka prvo poslati (maks. 1000)                                        |
-| `filter` | `string`  | nijedan | Filter podniza koji ne razlikuje velika i mala slova (bez regularnog izraza — ReDoS-safe) |
+| `filter` | `string`  | nikakav | Filter podniza koji ne razlikuje velika i mala slova (bez regularnog izraza — ReDoS-safe) |
 
 **SSE događaji:**
 
@@ -483,7 +483,7 @@ open-wa (`@open-wa/wa-automate`) pokreće Chromium instancu bez glave (putem Pup
 | metoda | Put                               | Opis                                                         |
 | ------ | --------------------------------- | ------------------------------------------------------------ |
 | `POST` | `/api/services/openwa/install`    | Instalirajte open-wa iz npm-a (`@open-wa/wa-automate`)       |
-| `POST` | `/api/services/openwa/start`      | Pokreni open-wa na portu 8323 (zadano)                       |
+| `POST` | `/api/services/openwa/start`      | Pokreni open-wa na priključku 8323 (zadano)                  |
 | `POST` | `/api/services/openwa/stop`       | Stop open-wa                                                 |
 | `POST` | `/api/services/openwa/restart`    | Ponovno pokrenite open-wa                                    |
 | `POST` | `/api/services/openwa/update`     | Ažurirajte na noviju verziju                                 |
@@ -519,7 +519,7 @@ LLMLingua je prompt-compression sidecar wrapping `@atjsh/llmlingua-2` (stvarni O
 
 ---
 
-### 4.8 sing-box krajnje točke (8 ruta)
+### 4.8 krajnje točke kutije za pjevanje (8 ruta)
 
 sing-box ima isti oblik krajnje točke kao Mux — bez `rotate-key` rute, bez ubacivanja API ključa (`needsApiKey: false` u `bootstrap.ts`). Njime se upravlja samo životnim ciklusom: nikad routing/LLM pružatelj. `install()` preuzima službenu binarnu verziju GitHub izdanja (`SagerNet/sing-box`) za prikvačenu verziju (`SINGBOX_PINNED_VERSION` u `src/lib/services/installers/singbox.ts`) i provjerava svoj SHA256 u odnosu na kontrolni zbroj u istoj datoteci prije nego što je ikada zapiše na disk — bilo koja druga zahtijevana verzija je odbijena.
 
@@ -535,7 +535,7 @@ sing-box ima isti oblik krajnje točke kao Mux — bez `rotate-key` rute, bez ub
 | `POST` | `/api/services/singbox/auto-restart-adopted` | Uključi/isključi automatsko ponovno pokretanje za usvojeni (već postojeći) proces |
 | `GET`  | `/api/services/singbox/logs`                 | SSE log tail (preko zajedničke `[name]/logs` dinamičke rute)                      |
 
-**TPROXY ožičenje:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) piše `config.json` i pokreće nadzornika prije nego što `applyTproxy()` instalira pravila vatrozida TPROXY. Ako nadglednik nedostaje ili ne uspije doći do `running`, sada se zapisuje na razini pogreške (umjesto da tiho proguta neuspjeh) tako da operater može reći da su TPROXY pravila primijenjena bez radnog slušača iza njih.
+**TPROXY ožičenje:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) piše `config.json` i pokreće supervizor prije nego što `applyTproxy()` instalira pravila vatrozida TPROXY. Ako nadzornik nedostaje ili ne uspije dosegnuti `running`, sada se zapisuje na razini pogreške (umjesto da tiho proguta grešku) tako da operater može reći da su TPROXY pravila primijenjena bez radnog slušača iza njih.
 
 ---
 
@@ -555,7 +555,7 @@ Ovaj proxy:
 - Uklanja `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` iz odgovora
 - Prepisuje HTML odgovore da ubaci `<base href>` i normalizira apsolutne putanje (`/foo` → `/dashboard/.../embed/foo`)
 
-WebSocket nadogradnjama za ugrađenu nadzornu ploču upravlja prateći poslužitelj na namjenskom priključku (pogledajte `src/lib/services/embedWsProxy.ts`).
+WebSocket nadogradnjama za ugrađenu nadzornu ploču upravlja prateći poslužitelj na namjenskom priključku (pogledajte `src/lib/services/embedWsProxy.ts`). Svaka nadogradnja je autorizirana prije otvaranja tunela, s istim pravilima kao i ruta za ugradnju HTTP : peer mora biti u povratnoj petlji bez zaglavlja prosljeđivanja obrnutog proxyja, `Origin` preglednika mora biti izvor nadzorne ploče (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` proširuju zadane postavke povratne petlje), a pozivatelj treba sesiju nadzorne ploče ili API ključ za opseg upravljanja osim ako je prijava na nadzornu ploču onemogućena.
 
 **Sigurnost:** Ugrađene proxy rute klasificirane su pod `LOCAL_ONLY_API_PREFIXES` i do njih se može doći samo iz povratne petlje. Napadač koji dobije JWT preko Cloudflare/Ngrok tunela ne može proxy u ugrađene usluge.
 

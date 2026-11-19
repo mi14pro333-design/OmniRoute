@@ -274,7 +274,7 @@ npm-dən 9Router quraşdırın. Öz `package.json` və `node_modules/` ilə `DAT
 
 #### `POST /api/services/9router/stop`
 
-9Router-i nəzakətlə dayandırın. SIGTERM göndərir, 15 s gözləyir, sonra sağdırsa SIGKILL. Artıq dayandırıldıqda idempotent.
+9Router-i nəzakətlə dayandırın. Göndər SIGTERM, 15 s gözləyir, sonra sağdırsa SIGKILL. Artıq dayandırıldıqda idempotent.
 
 **Sorğu orqanı:** heç biri
 
@@ -537,7 +537,7 @@ sing-box Mux — no `rotate-key` route, API key inyeksiya (`needsApiKey: false` 
 | `POST` | `/api/services/singbox/auto-restart-adopted` | Qəbul edilmiş (əvvəlcədən mövcud) proses üçün avtomatik yenidən işə salın |
 | `GET`  | `/api/services/singbox/logs`                 | SSE log quyruğu (paylaşılan `[name]/logs` dinamik marşrutu ilə)           |
 
-**TPROXY naqilləri:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) `config.json` yazır və `applyTproxy()` TPROXY firewall qaydalarını quraşdırmadan əvvəl nəzarətçini işə salır. Nəzarətçi yoxdursa və ya `running` çata bilmirsə, o, indi xəta səviyyəsində qeyd edir (uğursuzluğu səssizcə udmaq əvəzinə) beləliklə, operator arxalarında işləyən dinləyici olmadan TPROXY qaydalarının tətbiq olunduğunu söyləyə bilər.
+**TPROXY naqilləri:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) `config.json` yazır və `applyTproxy()` TPROXY firewall qaydalarını quraşdırmadan əvvəl nəzarətçini işə salır. Nəzarətçi yoxdursa və ya `running` çata bilmirsə, o, indi xəta səviyyəsində qeyd edir (uğursuzluğu səssizcə udmaq əvəzinə) beləliklə, operator TPROXY qaydalarının arxasında işləyən dinləyici olmadan tətbiq edildiyini söyləyə bilər.
 
 ---
 
@@ -557,9 +557,9 @@ Bu proxy:
 - Cavabdan `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` zolaqları
 - `<base href>` yeritmək və mütləq yolları normallaşdırmaq üçün HTML cavablarını yenidən yazır (`/foo` → `/dashboard/.../embed/foo`)
 
-Daxil edilmiş idarə paneli üçün WebSocket təkmilləşdirmələri xüsusi portdakı köməkçi server tərəfindən idarə olunur (bax: `src/lib/services/embedWsProxy.ts`).
+Daxil edilmiş idarə paneli üçün WebSocket təkmilləşdirmələri xüsusi bir portdakı köməkçi server tərəfindən idarə olunur (bax: `src/lib/services/embedWsProxy.ts`). Tunel açılmazdan əvvəl hər təkmilləşdirməyə HTTP yerləşdirmə marşrutu ilə eyni qaydalarla icazə verilir: peer reverse-proxy yönləndirmə başlığı olmadan geri dönmə olmalıdır, brauzer `Origin` tablosuna mənşəli olmalıdır (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` geri dönmə defoltlarını genişləndirir) və zəng edənin idarə paneli sessiyasına ehtiyacı var və ya idarəetmə-scopesız API disable.
 
-**Təhlükəsizlik:** Yerləşdirmə proksi marşrutları `LOCAL_ONLY_API_PREFIXES` altında təsnif edilir və yalnız geri dönmədən əldə edilə bilər. Cloudflare/Ngrok tuneli vasitəsilə JWT əldə edən təcavüzkar daxili xidmətlərə proxy edə bilməz.
+**Təhlükəsizlik:** Yerləşdirmə proksi marşrutları `LOCAL_ONLY_API_PREFIXES` altında təsnif edilir və yalnız geri dönmədən əldə edilə bilər. Cloudflare/Ngrok tuneli vasitəsilə JWT əldə edən təcavüzkar daxili xidmətlərə proksi edə bilməz.
 
 ---
 

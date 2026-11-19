@@ -74,15 +74,18 @@ onRequest: (ctx) => {
 
 ## Contextul pluginului (`PluginContext`)
 
-| Câmp        | Tip                       | Descriere                     |
-| ----------- | ------------------------- | ----------------------------- |
-| `requestId` | `string`                  | Identificator unic al cererii |
-| `model`     | `string`                  | Numele modelului solicitat    |
-| `provider`  | `string`                  | ID-ul furnizorului țintă      |
-| `body`      | `Record<string, unknown>` | Corpul cererii                |
-| `headers`   | `Record<string, string>`  | Anteturile cererii            |
-| `metadata`  | `Record<string, unknown>` | Metadate modificabile         |
-| `timestamp` | `number`                  | Marcajul temporal al cererii  |
+| Domeniu      | Tip                       | Descriere                        |
+| ------------ | ------------------------- | -------------------------------- |
+| `requestId`  | `string`                  | Identificator unic al cererii    |
+| `model`      | `string`                  | Numele modelului solicitat       |
+| `provider`   | `string`                  | Furnizorul țintă ID              |
+| `body`       | `Record<string, unknown>` | Corpul cererii                   |
+| `headers`    | `Record<string, string>`  | Antetele cererii (vezi nota)     |
+| `metadata`   | `Record<string, unknown>` | Metadate modificabile            |
+| `timestamp`  | `number`                  | Solicitați marca temporală       |
+| `apiKeyInfo` | `object` (opțional)       | metadatele cheii API (vezi nota) |
+
+Contextul nu poartă niciodată acreditările clientului: anteturile `authorization`, `x-api-key`, `proxy-authorization` și `cookie` sunt eliminate (orice carcasă), iar `apiKeyInfo` păstrează metadatele cheii (cum ar fi `id`, `name` și `scopes`), dar nu și valoarea cheii sau amprenta acesteia (`redactPluginContext()` în `src/lib/plugins/hooks.ts`). Acest lucru se aplică pentru `onRequest`, `onResponse` și `onError`.
 
 ## Manifest (`plugin.json`)
 
@@ -138,19 +141,18 @@ Sau ca valori booleene simple (prioritate implicită 100):
 }
 ```
 
-## Sistemul de permisiuni
+## Sistem de permisiuni
 
-Pluginurile rulează într-un context VM izolat. Accesul la resurse externe necesită permisiuni explicite:
+Pluginurile sunt** nu cu nisip** . Fiecare plugin activ rulează ca un proces copil Node.js separat, obișnuit (`loadPlugin()` în `src/lib/plugins/loader.ts`) sub același utilizator de sistem de operare ca OmniRoute, fără context VM și fără steaguri de permisiune Node.js. Codul de plugin poate folosi `node:fs`, `node:child_process`, `fetch` și orice alt Node.js API: poate citi și scrie orice fișier pe care utilizatorul OmniRoute îl poate (inclusiv directorul de date), rula programe și poate ajunge în rețea.
 
-| Permisiune   | Oferă acces la                                               |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | Proxy `process.env` doar în citire                           |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+`requires.permissions` al manifestului acceptă `network`, `file-read`, `file-write`, `env` și `exec`, dar astăzi doar `env` are efect în timpul execuției:
 
-Fără o permisiune, variabilele globale corespunzătoare pur și simplu nu sunt disponibile în mediul izolat.
+| Permisiune                                   | Efect astăzi                                                                                                                                                                                                                             |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | Procesul de plugin primește, de asemenea, `PORT`, `HOSTNAME`, `TZ` și `TMPDIR`. Fără el, primește doar `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` și `PLUGIN_NAME` (plus `SystemRoot` și `windir` pe Windows). |
+| `network`, `file-read`, `file-write`, `exec` | Nici unul. Sunt doar declarații: nimic nu este blocat atunci când lipsesc.                                                                                                                                                               |
+
+Instalarea unui plugin este ca și instalarea oricărui alt program pe gazdă. Instalați numai pluginuri în a căror sursă aveți încredere.
 
 ## Schema de configurare
 

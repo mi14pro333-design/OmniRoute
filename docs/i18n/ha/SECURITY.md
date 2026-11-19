@@ -182,13 +182,13 @@ Uwar garken tana ƙin sanannun ƙimomi marasa ƙarfi kamar `changeme`, `secret`,
 
 ---
 
-## Tsaron Docker
+## Docker Security
 
-- Yi amfani da mai amfani wanda ba root ba a yanayin samarwa
-- Haɗa sirrika a matsayin volumes na karantawa kawai
-- Kada a taɓa kwafe fayilolin `.env` cikin hotunan Docker
-- Yi amfani da `.dockerignore` don ware fayiloli masu muhimmanci
-- Saita `AUTH_COOKIE_SECURE=true` idan ana amfani da HTTPS
+- Yi amfani da mai amfani mara tushe a samarwa
+- Haɗa sirrin azaman kundin karantawa kawai
+- Kada a taɓa kwafin fayilolin `.env` cikin hotuna Docker
+- Yi amfani da `.dockerignore` don ware fayiloli masu mahimmanci
+- Saita `AUTH_COOKIE_SECURE=true` a bayan HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

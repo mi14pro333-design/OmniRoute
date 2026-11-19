@@ -10,9 +10,9 @@
 
 ## Pass 1: Installa OmniRoute
 
-Agħżel il-metodu li tippreferi:
+Agħżel il-metodu preferut tiegħek:
 
-### Għażla A: npm (Rakkomandata)
+### Għażla A: npm (Rakkomandat)
 
 ```bash
 npm install -g omniroute
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### Għażla B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` hija l-ogħla verżjoni SemVer stabbli **ppubblikata**. Din **ma** ssegwix il-fergħa `main` ta' git. Uża `diegosouzapw/omniroute:X.Y.Z` bħala verżjoni fissa għal GitOps. Ara [Tags tal-Immaġni / Kanali tar-Rilaxx](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` hija l-oghla** ippubblikata** stabbli SemVer. Jagħmel** le** track git `main`. Pin `cheaperinference/omniroute:X.Y.Z` għal GitOps. Ara [Tikketti tal-Immaġni/Kanali ta' Rilaxx](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Għażla C: Mill-Kodiċi Sors
+### Għażla Ċ: Mis-Sors
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

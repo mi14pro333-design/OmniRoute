@@ -4,7 +4,7 @@
 
 ---
 
-## ദ്രുതാരംഭം
+## ദ്രുത ആരംഭം
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -72,17 +72,20 @@ onRequest: (ctx) => {
 };
 ```
 
-## Plugin Context (`PluginContext`)
+## പ്ലഗിൻ സന്ദർഭം (`PluginContext`)
 
-| ഫീൽഡ്       | തരം                       | വിവരണം                       |
-| ----------- | ------------------------- | ---------------------------- |
-| `requestId` | `string`                  | തനതായ അഭ്യർത്ഥനാ ഐഡന്റിഫയർ   |
-| `model`     | `string`                  | അഭ്യർത്ഥിച്ച model-ന്റെ പേര് |
-| `provider`  | `string`                  | ലക്ഷ്യ provider ID           |
-| `body`      | `Record<string, unknown>` | അഭ്യർത്ഥനയുടെ body           |
-| `headers`   | `Record<string, string>`  | അഭ്യർത്ഥനയുടെ headers        |
-| `metadata`  | `Record<string, unknown>` | മാറ്റാവുന്ന metadata         |
-| `timestamp` | `number`                  | അഭ്യർത്ഥനയുടെ timestamp      |
+| ഫീൽഡ്        | ടൈപ്പ് ചെയ്യുക            | വിവരണം                                  |
+| ------------ | ------------------------- | --------------------------------------- |
+| `requestId`  | `string`                  | അദ്വിതീയ അഭ്യർത്ഥന ഐഡൻ്റിഫയർ            |
+| `model`      | `string`                  | മോഡലിൻ്റെ പേര് അഭ്യർത്ഥിച്ചു            |
+| `provider`   | `string`                  | ടാർഗെറ്റ് പ്രൊവൈഡർ ID                   |
+| `body`       | `Record<string, unknown>` | ശരീരം അഭ്യർത്ഥിക്കുക                    |
+| `headers`    | `Record<string, string>`  | അഭ്യർത്ഥന തലക്കെട്ടുകൾ (കുറിപ്പ് കാണുക) |
+| `metadata`   | `Record<string, unknown>` | മാറ്റാവുന്ന മെറ്റാഡാറ്റ                 |
+| `timestamp`  | `number`                  | ടൈംസ്റ്റാമ്പ് അഭ്യർത്ഥിക്കുക            |
+| `apiKeyInfo` | `object` (ഓപ്ഷണൽ)         | API കീ മെറ്റാഡാറ്റ (കുറിപ്പ് കാണുക)     |
+
+സന്ദർഭം ഒരിക്കലും ക്ലയൻ്റിൻ്റെ ക്രെഡൻഷ്യലുകൾ വഹിക്കുന്നില്ല: `authorization`, `x-api-key`, `proxy-authorization`, `cookie` തലക്കെട്ടുകൾ നീക്കം ചെയ്യപ്പെടും (ഏതെങ്കിലും കേസിംഗ്), കൂടാതെ `apiKeyInfo` കീയുടെ മെറ്റാഡാറ്റ ( `id`, `name`, `scopes` പോലുള്ളവ) സൂക്ഷിക്കുന്നു, പക്ഷേ കീ മൂല്യമോ അതിൻ്റെ വിരലടയാളമോ അല്ല `src/lib/plugins/hooks.ts` `redactPluginContext()`. ഇത് `onRequest`, `onResponse`, `onError` എന്നിവയ്ക്ക് ബാധകമാണ്.
 
 ## മാനിഫെസ്റ്റ് (`plugin.json`)
 
@@ -140,17 +143,16 @@ Hooks-ന് മുൻഗണന ക്രമീകരിക്കാം (കു�
 
 ## അനുമതി സംവിധാനം
 
-പ്ലഗിനുകൾ സാൻഡ്ബോക്സ് ചെയ്ത VM സന്ദർഭത്തിലാണ് പ്രവർത്തിക്കുന്നത്. ബാഹ്യ വിഭവങ്ങളിലേക്കുള്ള ആക്സസിന് വ്യക്തമായ അനുമതികൾ ആവശ്യമാണ്:
+പ്ലഗിനുകൾ ആകുന്നു** സാൻഡ്ബോക്സ് ചെയ്തിട്ടില്ല** . ഓരോ സജീവ പ്ലഗിനും ഒരു പ്രത്യേക, സാധാരണ Node.js ചൈൽഡ് പ്രോസസായി ( `src/lib/plugins/loader.ts` ൽ `loadPlugin()` ) പ്രവർത്തിക്കുന്നു, OmniRoute അതേ ഓപ്പറേറ്റിംഗ് സിസ്റ്റം ഉപയോക്താവിന് കീഴിൽ, VM സന്ദർഭവും Node.js അനുമതി ഫ്ലാഗുകളും ഇല്ലാതെ. പ്ലഗിൻ കോഡിന് `node:fs`, `node:child_process`, `fetch` എന്നിവയും മറ്റെല്ലാ Node.js API ഉം ഉപയോഗിക്കാം: OmniRoute ഉപയോക്താവിന് (ഡാറ്റ ഡയറക്ടറി ഉൾപ്പെടെ) പ്രോഗ്രാമുകൾ പ്രവർത്തിപ്പിക്കാനും നെറ്റ്വർക്കിൽ എത്തിച്ചേരാനും കഴിയുന്ന ഏത് ഫയലും ഇതിന് വായിക്കാനും എഴുതാനും കഴിയും.
 
-| അനുമതി       | അനുവദിക്കുന്നത്                                              |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | റീഡ്-ഒൺലി `process.env` പ്രോക്സി                             |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+മാനിഫെസ്റ്റിൻ്റെ `requires.permissions` `network`, `file-read`, `file-write`, `env`, `exec` എന്നിവ സ്വീകരിക്കുന്നു, എന്നാൽ ഇന്ന് റൺടൈമിൽ `env` മാത്രമേ ഫലമുള്ളൂ:
 
-ഒരു അനുമതിയില്ലെങ്കിൽ, അതുമായി ബന്ധപ്പെട്ട ഗ്ലോബലുകൾ സാൻഡ്ബോക്സിൽ ലഭ്യമാകില്ല.
+| അനുമതി                                       | ഇന്ന് പ്രാബല്യത്തിൽ                                                                                                                                                                                                                      |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | The plugin process also receives `PORT`, `HOSTNAME`, `TZ` and `TMPDIR`. Without it, it receives only `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` and `PLUGIN_NAME` (plus `SystemRoot` and `windir` on Windows). |
+| `network`, `file-read`, `file-write`, `exec` | ഒന്നുമില്ല. അവ പ്രഖ്യാപനങ്ങൾ മാത്രമാണ്: അവ കാണാതാകുമ്പോൾ ഒന്നും തടയപ്പെടുന്നില്ല.                                                                                                                                                        |
+
+ഹോസ്റ്റിൽ മറ്റേതെങ്കിലും പ്രോഗ്രാം ഇൻസ്റ്റാൾ ചെയ്യുന്നത് പോലെയാണ് ഒരു പ്ലഗിൻ ഇൻസ്റ്റാൾ ചെയ്യുന്നത്. നിങ്ങൾ വിശ്വസിക്കുന്ന ഉറവിടം മാത്രം ഇൻസ്റ്റാൾ ചെയ്യുക.
 
 ## കോൺഫിഗ് സ്കീമ
 
@@ -194,7 +196,7 @@ Hooks-ന് മുൻഗണന ക്രമീകരിക്കാം (കു�
 
 ## ഉദാഹരണങ്ങൾ
 
-### റിക്വസ്റ്റ് ലോഗർ
+### ലോഗർ അഭ്യർത്ഥിക്കുക
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -207,7 +209,7 @@ export default definePlugin({
 });
 ```
 
-### നിരക്ക് നിയന്ത്രണം
+### നിരക്ക് പരിധി
 
 ```ts
 import { definePlugin, blockRequest } from "omniroute/plugins/sdk";
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // 1 മിനിറ്റ്
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);
@@ -234,7 +236,7 @@ export default definePlugin({
 });
 ```
 
-### റെസ്പോൺസ് ട്രാൻസ്ഫോർമർ
+### പ്രതികരണ ട്രാൻസ്ഫോർമർ
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";

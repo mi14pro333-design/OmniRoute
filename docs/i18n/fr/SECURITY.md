@@ -182,13 +182,13 @@ Le serveur rejette activement les valeurs notoirement faibles telles que `change
 
 ---
 
-## Sécurité de Docker
+## Docker sécurité
 
-- Utiliser un utilisateur non-root en production
+- Utiliser un utilisateur non root en production
 - Monter les secrets en tant que volumes en lecture seule
-- Ne jamais copier de fichiers `.env` dans les images Docker
-- Utiliser `.dockerignore` pour exclure les fichiers sensibles
-- Définir `AUTH_COOKIE_SECURE=true` lorsque le serveur se trouve derrière HTTPS
+- Ne copiez jamais de fichiers `.env` dans des images Docker
+- Utilisez `.dockerignore` pour exclure les fichiers sensibles
+- Définir `AUTH_COOKIE_SECURE=true` derrière HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

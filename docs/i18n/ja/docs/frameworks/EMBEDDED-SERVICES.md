@@ -209,7 +209,7 @@
 
 ## APIリファレンス
 
-`/api/services/`のすべてのルートは次のとおりです。**LOCAL_ONLY** (ループバックのみ、厳格なルール #17)。非ループバック リクエストは、認証トークンに関係なく`403 LOCAL_ONLY`を受け取ります。
+`/api/services/`のすべてのルートは次のとおりです。**LOCAL_ONLY** (ループバックのみ、ハード ルール#17)。非ループバック要求は、認証トークンに関係なく`403 LOCAL_ONLY`を受け取ります。
 
 ### 4.1 9Routerエンドポイント（11ルート）
 
@@ -236,7 +236,7 @@ npmから9Routerをインストールします。独自の`package.json`およ�
 | `409` | すでにインストールされています (ロックが保持されています)                              |
 | `500` | npm インストールに失敗しました—フレンドリーなエラーについては`message`参照してください |
 
-**注:** `execFile('npm', [...])` —を使用し、シェルも補間も使用しません (厳しい規則 #13)。 EACCESエラーはわかりやすいメッセージとして表示されます。
+**注:** `execFile('npm', [...])` —シェルも補間も使用しません (厳密な規則#13)。 EACCESエラーはわかりやすいメッセージとして表示されます。
 
 ---
 
@@ -535,13 +535,13 @@ sing-box は、Mux —と同じエンドポイント形状を持ち、 `rotate-k
 | `POST` | `/api/services/singbox/auto-restart-adopted` | 採用された（既存の）プロセスの自動再起動を切り替えます            |
 | `GET`  | `/api/services/singbox/logs`                 | SSEログテール (共有`[name]/logs`動的ルート経由)                   |
 
-**TPROXY配線:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) は、 `config.json`を書き込み、 `applyTproxy()` TPROXYファイアウォール ルールをインストールする前にスーパーバイザを起動します。スーパーバイザが見つからない場合、または`running`に到達できない場合、(失敗を黙って飲み込むのではなく) エラー レベルでログに記録されるようになりました。これにより、オペレータは、背後で動作するリスナーなしでTPROXYルールが適用されたことを知ることができます。
+**TPROXY配線:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) は、 `config.json`を書き込み、 `applyTproxy()` TPROXYファイアウォール ルールをインストールする前にスーパーバイザを起動します。スーパーバイザが見つからない場合、または`running`に到達できない場合、(失敗を黙って飲み込むのではなく) エラー レベルでログに記録されるようになりました。そのため、オペレータは、背後で動作しているリスナーなしでTPROXYルールが適用されたことを知ることができます。
 
 ---
 
 ### 4.9 リバースプロキシ (9Router ダッシュボード埋め込み)
 
-ダッシュボードは、次の場所にある内部リバース プロキシを介して iframe 内に 9Router Web UIを埋め込みます。
+ダッシュボードは、次の内部リバース プロキシを介して iframe 内に 9Router Web UIを埋め込みます。
 
 ```
 GET|POST|... /dashboard/providers/services/9router/embed/[...path]
@@ -555,7 +555,7 @@ GET|POST|... /dashboard/providers/services/9router/embed/[...path]
 - 応答から`set-cookie`、 `content-security-policy`、 `x-frame-options`、 `cross-origin-*`を除去します。
 - HTML応答を書き換えて`<base href>`を挿入し、絶対パスを正規化します (`/foo` → `/dashboard/.../embed/foo`)
 
-組み込みダッシュボードのWebSocketアップグレードは、専用ポート上のコンパニオン サーバーによって処理されます ( `src/lib/services/embedWsProxy.ts`参照)。
+組み込みダッシュボードのWebSocketアップグレードは、専用ポート上のコンパニオン サーバーによって処理されます ( `src/lib/services/embedWsProxy.ts`参照)。すべてのアップグレードはトンネルが開く前に承認され、 HTTP埋め込みルートと同じルールが適用されます。ピアはリバース プロキシ転送ヘッダーのないループバックである必要があり、ブラウザー`Origin`はダッシュボード起点 (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS`ループバックのデフォルトを拡張) である必要があり、ダッシュボード ログインが無効になっていない限り、呼び出し元にはダッシュボード セッションまたは管理スコープのAPIキーが必要です。
 
 **安全：**埋め込みプロキシ ルートは`LOCAL_ONLY_API_PREFIXES`に分類され、ループバックからのみ到達できます。 Cloudflare/Ngrokトンネル経由でJWTを取得した攻撃者は、組み込みサービスにプロキシすることはできません。
 

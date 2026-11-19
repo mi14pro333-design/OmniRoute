@@ -430,7 +430,7 @@ open-sse/
 
 `antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder`, `vertex` `devin-desktop` প্লাস `claudeIdentity.ts` (শেয়ারড আইডেন্টিটি হেল্পার) এবং `index.ts` (রেজিস্ট্রি)।
 
-> দ্রষ্টব্য: এখানে তালিকাভুক্ত নয় এমন প্রদানকারীরা জেনেরিক OpenAI- সামঞ্জস্যপূর্ণ নির্বাহক ব্যবহার করে `default.ts` দ্বারা পরিবেশিত হয়। সম্পূর্ণ প্রদানকারীর ক্যাটালগ (৩৯৪ প্রদানকারী) `src/shared/constants/providers.ts` এ থাকে।
+> দ্রষ্টব্য: এখানে তালিকাভুক্ত নয় এমন প্রদানকারীরা জেনেরিক OpenAI- সামঞ্জস্যপূর্ণ নির্বাহক ব্যবহার করে `default.ts` দ্বারা পরিবেশিত হয়। সম্পূর্ণ প্রদানকারীর ক্যাটালগ (394 প্রদানকারী) `src/shared/constants/providers.ts` এ থাকে।
 
 ### 4.3 `open-sse/translator/`
 
@@ -470,7 +470,7 @@ open-sse/
 
 - **110টি অনন্য টুল** `server.ts` তে তারযুক্ত ( `schemas/tools.ts` + মেমরিতে 45 ক্যানোনিকাল, দক্ষতা, গিটহাব-স্কিল, পুল, গ্যামিফিকেশন, প্লাগইন, Notion, Obsidian, স্থানীয়-কর্পাস এবং কম্প্রেশন মডিউল — ইউনিয়ন `countUniqueMcpTools` দ্বারা গণনা করা হয়েছে)।
 - **3টি পরিবহন** : stdio, HTTP স্ট্রিমেবল, SSE।
-- **33 স্কোপ** `src/shared/constants/mcpScopes.ts` এ রানটাইম — বেস তালিকায় প্রয়োগ করা হয়, পূর্ণ সেট হল প্রতিটি টুল মডিউল দ্বারা ঘোষিত স্কোপের মিলন।
+- **33 স্কোপ** `src/shared/constants/mcpScopes.ts` এ রানটাইম — বেস লিস্টে প্রয়োগ করা হয়, পূর্ণ সেট হল প্রতিটি টুল মডিউল দ্বারা ঘোষিত স্কোপের মিলন।
 - অডিট টেবিল: `mcp_tool_audit` ( `audit.ts` দ্বারা জনবহুল)।
 - ফাইল: `server.ts`, `index.ts`, `httpTransport.ts`, `audit.ts`, `scopeEnforcement.ts`, `runtimeHeartbeat.ts`, `descriptionCompressor.ts`, `schemas/{tools, a2a, audit, index}.ts`, `tools/{advancedTools, compressionTools, memoryTools, skillTools}.ts`, প্লাস `__tests__/` এর অধীনে পরীক্ষা।
 - সম্পূর্ণ টুল ক্যাটালগের জন্য [MCP-SERVER.md](../frameworks/MCP-SERVER.md) দেখুন।
@@ -481,7 +481,7 @@ open-sse/
 
 ### 4.8 `open-sse/utils/`
 
-স্ট্রিমিং আদিম এবং প্রদানকারী সহায়ক: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts` `ollamaTransform.ts` `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `progressTracker.ts`, `cors.ts` `logger.ts` `error.ts` `requestLogger.ts`, `sleep.ts`
+স্ট্রিমিং আদিম এবং প্রদানকারী সহায়ক: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts` `ollamaTransform.ts` `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts` `progressTracker.ts` `usageTracking.ts`, `requestLogger.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-উদ্দেশ্য অনুযায়ী 6টি সাবফোল্ডারে সংগঠিত।
+উদ্দেশ্য অনুসারে 6টি সাবফোল্ডারে সংগঠিত।
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`।
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, এবং শুধুমাত্র পঠনযোগ্য PR তদারকি সহায়ক
-  `ci-discriminate.sh` (একটি রেফারেন্স PR বা base-red ইস্যুর সঙ্গে তুলনা করে কোনো PR-এর ব্যর্থ চেকের স্বাক্ষরগুলোকে নিজস্ব / উত্তরাধিকারসূত্রে প্রাপ্ত /
-  অজানা হিসেবে শ্রেণিবদ্ধ করে) এবং `audit-worktree.sh`
-  (পরিবর্তিত ফাইল, সুরক্ষিত সারফেস, অপসারিত assert, suppression-এর সংখ্যা, অবশিষ্ট
-  অস্থায়ী tsconfig, PR head বনাম স্থানীয় HEAD — কোনো কর্মীর PR গ্রহণের আগে)।
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`।
-- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`।
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`।
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`।
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, প্লাস শুধুমাত্র পড়ার জন্য একটি রেফারেন্স PR বা বেস-রেড ইস্যুর বিরুদ্ধে স্বাক্ষরগুলি নিজের/উত্তরাধিকারসূত্রে পাওয়া PR অজানা) PR `ci-discriminate.sh` (নোংরা ফাইল, সুরক্ষিত সারফেস, অপসারণ করা দাবী, দমন সংখ্যা, অবশিষ্ট tmp tsconfigs, PR head বনাম স্থানীয় HEAD — একজন কর্মী PR গৃহীত হওয়ার আগে) `audit-worktree.sh`
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

@@ -10,23 +10,23 @@
 
 ## الخطوة 1: تثبيت OmniRoute
 
-اختر الطريقة التي تفضّلها:
+اختر طريقتك المفضلة:
 
-### الخيار A: npm (موصى به)
+### الخيار أ: npm (مستحسن)
 
 ```bash
 npm install -g omniroute
 ```
 
-### الخيار B: Docker
+### الخيار ب: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-يمثّل الوسم `:latest` أعلى إصدار SemVer مستقر **منشور**. وهو **لا** يتتبع فرع git المسمى `main`. ثبّت الإصدار على `diegosouzapw/omniroute:X.Y.Z` عند استخدام GitOps. راجع [وسوم الصور / قنوات الإصدار](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` هو الأعلى** نشرت** SemVer مستقر. إنه كذلك** لا** تتبع بوابة `main`. دبوس `cheaperinference/omniroute:X.Y.Z` ل GitOps. راجع [علامات الصور / قنوات الإصدار](../guides/DOCKER_GUIDE.md#release-channels).
 
-### الخيار C: من المصدر
+### الخيار ج: من المصدر
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

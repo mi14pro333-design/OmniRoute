@@ -182,13 +182,13 @@ Server aktivno odbija poznate nesigurne vrijednosti kao što su `changeme`, `sec
 
 ---
 
-## Sigurnost Dockera
+## Docker Security
 
-- Koristite korisnika koji nije root u produkciji
-- Montirajte tajne kao volumene samo za čitanje
-- Nikada ne kopirajte `.env` datoteke u Docker slike
-- Koristite `.dockerignore` da biste isključili osjetljive datoteke
-- Postavite `AUTH_COOKIE_SECURE=true` kada se aplikacija nalazi iza HTTPS-a
+- Koristite ne-root korisnika u proizvodnji
+- Montirajte tajne kao sveske samo za čitanje
+- Nikada nemojte kopirati `.env` datoteke u Docker slike
+- Koristite `.dockerignore` da isključite osjetljive datoteke
+- Postavite `AUTH_COOKIE_SECURE=true` kada je iza HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

@@ -8,11 +8,11 @@
 
 ---
 
-## 1. samm: installi OmniRoute
+## 1. samm: installige OmniRoute
 
-Vali eelistatud meetod:
+Valige eelistatud meetod:
 
-### Variant A: npm (soovitatav)
+### Valik A: npm (soovitatav)
 
 ```bash
 npm install -g omniroute
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### Variant B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` viitab uusimale **avaldatud** stabiilsele SemVer-versioonile. See **ei** järgi giti haru `main`. GitOpsi jaoks fikseeri versioon kujul `diegosouzapw/omniroute:X.Y.Z`. Vaata jaotist [Tõmmise sildid / väljalaskekanalid](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` on kõrgeim** avaldatud** stabiilne SemVer. On küll** mitte** jälgi git `main`. Kinnitage `cheaperinference/omniroute:X.Y.Z` GitOps jaoks. Vt [Pildisildid / Väljalaskekanalid](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Variant C: lähtekoodist
+### Valik C: allikast
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

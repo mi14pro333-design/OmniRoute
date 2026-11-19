@@ -87,27 +87,24 @@ advarsel og falder tilbage til basislisten.
 
 ## REST API
 
-Alle slutpunkter kræver administrationsgodkendelse (`requireManagementAuth`) **og** er
-kun tilgængelige via loopback — `/api/plugins` og `/api/plugins/` er angivet i
-`LOCAL_ONLY_API_PREFIXES` (`src/server/authz/routeGuard.ts`).
+Alle slutpunkter kræver administrationsgodkendelse (`requireManagementAuth`)** og** er loopback-only — `/api/plugins` og `/api/plugins/` er angivet i `LOCAL_ONLY_API_PREFIXES` (`src/server/authz/routeGuard.ts`).
 
 | Slutpunkt                        | Metode | Beskrivelse                                                  |
 | -------------------------------- | ------ | ------------------------------------------------------------ |
-| `/api/plugins`                   | GET    | Vis installerede plugins (valgfrit `?status=`-filter)        |
-| `/api/plugins`                   | POST   | Installer et plugin fra en absolut lokal sti                 |
-| `/api/plugins/scan`              | POST   | Scan pluginmappen, og registrer nye plugins                  |
-| `/api/plugins/marketplace`       | GET    | Vis poster i markedspladskataloget                           |
-| `/api/plugins/[name]`            | GET    | Hent oplysninger om et installeret plugin                    |
+| `/api/plugins`                   | GET    | Liste over installerede plugins (valgfrit `?status=` filter) |
+| `/api/plugins`                   | POST   | Installer et plugin fra plugin-kildebiblioteket              |
+| `/api/plugins/scan`              | POST   | Scan plugin-biblioteket og registrer nye plugins             |
+| `/api/plugins/marketplace`       | GET    | Liste markedspladskatalogposter                              |
+| `/api/plugins/[name]`            | GET    | Få installeret plugin detaljer                               |
 | `/api/plugins/[name]`            | DELETE | Afinstaller et plugin                                        |
-| `/api/plugins/[name]/activate`   | POST   | Aktivér (indlæs + registrer hooks)                           |
-| `/api/plugins/[name]/deactivate` | POST   | Deaktivér (udløs `onDeactivate`, afregistrer hooks)          |
-| `/api/plugins/[name]/config`     | GET    | Hent plugin-konfiguration + konfigurationsskema              |
-| `/api/plugins/[name]/config`     | PUT    | Opdater plugin-konfiguration (valideret i forhold til skema) |
+| `/api/plugins/[name]/activate`   | POST   | Aktiver (indlæs + registerkroge)                             |
+| `/api/plugins/[name]/deactivate` | POST   | Deaktiver (fire `onDeactivate`, afregistrer kroge)           |
+| `/api/plugins/[name]/config`     | GET    | Hent plugin config + config skema                            |
+| `/api/plugins/[name]/config`     | PUT    | Opdater plugin-konfiguration (valideret mod skema)           |
 
-`status`-filteret for `GET /api/plugins` accepterer én af
-`installed` / `active` / `inactive` / `error`. En ugyldig værdi returnerer `400`.
+`GET /api/plugins` `status` filteret accepterer en af `installed` / `active` / `inactive` / `error`. En ugyldig værdi returnerer `400`.
 
-### Vis installerede plugins
+### Liste over installerede plugins
 
 ```bash
 curl http://localhost:20128/api/plugins \
@@ -123,10 +120,9 @@ curl -X POST http://localhost:20128/api/plugins \
   -d '{ "path": "/absolute/path/to/my-plugin" }'
 ```
 
-`path` skal være **absolut** og må ikke indeholde `..`-gennemløbssegmenter eller
-nullbytes (håndhævet af Zod). Kildemappen skal indeholde en gyldig
-`plugin.json` (eller være overordnet mappe til en sådan). Ved succes er svaret `201` med
-rækken for det installerede plugin.
+`path` skal være en** absolut** stien til en mappe** inde i plugin-kildebiblioteket** : `plugin-sources` ved siden af plugin-roden, så `~/.omniroute/plugin-sources/` som standard, eller `<parent of OMNIROUTE_PLUGINS_DIR>/plugin-sources/` når denne variabel er indstillet (`getPluginSourcesDir()` i `src/lib/plugins/installSource.ts`). Kopier eller klon plugin'et der først. Installationen afvises med `400`, når stien indeholder `..` eller en null-byte, ligger uden for den mappe, løses uden for den gennem et symlink, indeholder et symlink, hvis mål er uden for det, eller når biblioteket ikke eksisterer. Kildebiblioteket skal indeholde en gyldig `plugin.json` (eller være forælder til en). Ved succes er svaret `201` med den installerede plugin-række.
+
+I modsætning til de andre plugin-ruter kræver denne administrationslegitimationsoplysninger (en dashboard-session eller en API -nøgle med administrationsomfang), selv når login er deaktiveret (`requireLogin=false`): installation af kode er aldrig en anonym handling.
 
 ### Gennemse markedspladsen
 
@@ -144,10 +140,7 @@ curl -X PUT http://localhost:20128/api/plugins/my-plugin/config \
   -d '{ "config": { "level": "debug", "maxItems": 100 } }'
 ```
 
-`PUT .../config` validerer hver angivet værdi i forhold til pluginets
-`configSchema` (erklæret i manifestet): Felter af typen `number` overholder `min`/`max`,
-og felter af typen `select` skal matche den erklærede `enum`. Nøgler, der ikke findes i skemaet,
-tillades.
+`PUT .../config` validerer hver angivne værdi mod plugin's `configSchema` (erklæret i manifestet): `number` -felter respekterer `min`/`max`, `select` -felter skal matche de erklærede `enum`. Nøgler, der ikke er til stede i skemaet, tillades igennem.
 
 ## Konfiguration
 
@@ -206,86 +199,58 @@ Dashboardets fane "Markedsplads" indeholder et felt til denne URL (læses tilbag
 
 ## Sikkerhed
 
-### Ruteniveau — kun loopback
+### Rute tier — loopback kun
 
-Plugins kører kode i underordnede processer, så hele `/api/plugins`-fladen er
-klassificeret som `LOCAL_ONLY` (niveau 1). Håndhævelse af loopback udføres
-ubetinget **før** ethvert godkendelsestjek, så et lækket administrationstoken,
-der når maskinen gennem en tunnel, stadig ikke kan installere, aktivere eller
-afinstallere et plugin. Se
-[`docs/security/ROUTE_GUARD_TIERS.md`](../security/ROUTE_GUARD_TIERS.md) og
-hårde regler nr. 15 / 17.
+Plugins udfører kode i affødte underordnede processer, så hele `/api/plugins` overfladen er klassificeret `LOCAL_ONLY` (Tier 1). Loopback-håndhævelse kører ubetinget** før** enhver godkendelseskontrol, så et lækket administrationstoken, der når boksen over en tunnel, kan stadig ikke installere, aktivere eller afinstallere et plugin. Se [`docs/security/ROUTE_GUARD_TIERS.md`](../security/ROUTE_GUARD_TIERS.md) og hårde regler #15 / #17.
 
-### SSRF-beskyttelse for markedspladsens register
+### Markedsplads registry SSRF guard
 
-En brugerdefineret register-URL er konfiguration, som kan påvirkes af en angriber,
-så før den hentes, sender `listMarketplacePlugins()` den gennem to lag:
+En brugerdefineret registreringsdatabase URL er en konfiguration, der kan påvirkes af angribere, så før den hentes, kører `listMarketplacePlugins()` den gennem to lag:
 
 1. **`isSafeMarketplaceUrl(url)`** (`src/lib/plugins/marketplace.ts`):
    - Afviser alt, der ikke er `http:` / `https:`.
-   - Afviser bogstavelige private værter, loopback-værter, link-local-værter og
-     ULA-værter (IPv4 **og** IPv6, inklusive IPv4-mappede adresser) via den
-     kanoniske `isPrivateHost`
-     (`src/shared/network/outboundUrlGuard.ts`).
-   - Slår **både** `A`- og `AAAA`-poster op og afviser, hvis **nogen** funden
-     adresse er privat — hvilket lukker omgåelsen offentligt værtsnavn →
-     privat IP-adresse.
-   - **Fejler lukket**: En fejl i DNS-opslag medfører, at URL'en afvises.
-2. **`safeOutboundFetch(url, { guard: "public-only", timeoutMs: 5000 })`**
-   (`src/shared/network/safeOutboundFetch.ts`): anvender URL-beskyttelsen, der
-   kun tillader offentlige adresser, igen på hentetidspunktet og **blokerer
-   omdirigeringer** (ingen offentlig → privat `30x`-pivotering).
+   - Afviser bogstavelige private/loopback/link-local/ULA værter (IPv4** og** IPv6, inklusive IPv4-mapped) via den kanoniske `isPrivateHost` (`src/shared/network/outboundUrlGuard.ts`).
+   - Løser** begge** `A` og `AAAA` optager og afviser if** enhver** løst adresse er privat — lukker det offentlige værtsnavn → private-IP bypass.
+   - **Mislykkes lukket** : en DNS -opløsningsfejl afviser URL.
+2. **`safeOutboundFetch(url, { guard: "public-only", timeoutMs: 5000 })`** (`src/shared/network/safeOutboundFetch.ts`): genbruger den offentlige-kun URL vagt på hentetidspunkt og** blokerer omdirigeringer** (ingen offentlig → privat `30x` pivot).
 
-En URL, der ikke består et af lagene, afbryder ikke anmodningen — markedspladsen
-falder automatisk tilbage til det indbyggede startregister og logger en advarsel.
+En URL, der fejler et af lagene, afbryder ikke anmodningen — markedspladsen falder lydløst tilbage til det indbyggede seed-register og logger en advarsel.
 
-> Denne beskyttelse blev styrket i PR #3774 specifikt for at slå A + AAAA op og
-> bruge den kanoniske `isPrivateHost` i stedet for et tjek, der kun understøtter
-> IPv4.
+> Denne vagt blev hærdet i PR #3774 specifikt for at løse A + AAAA og bruge den kanoniske `isPrivateHost` i stedet for en IPv4-only check.
 
-### Isolation af pluginudførelse
+### Isolering af plugin-udførelse
 
-- **Procesisolation** — `loadPlugin()` (`src/lib/plugins/loader.ts`) starter
-  hvert plugin i en separat underordnet Node.js-proces og kommunikerer via IPC.
-  Hook-kald har en timeout med eskalering fra `SIGTERM` → `SIGKILL`.
-- **Tilladelsesliste for miljøvariabler** — den underordnede proces modtager kun
-  et tilladt sæt miljøvariabler; det bredere sæt tildeles kun, når manifestet
-  anmoder om tilladelsen `env`.
-- **Stiindeslutning** — installation/opgradering/afinstallation kontrollerer, at
-  pluginmappen og `manifest.main` fortolkes som værende **inden for** den
-  administrerede pluginrod før enhver kopiering eller rekursiv sletning
-  (beskytter mod manipulerede databasestier og `../`-traversering i
-  `manifest.main`). Ved aktivering opløses symbolske links via `realpath`, og et
-  indgangspunkt, der slipper ud af pluginmappen, nægtes indlæsning.
-- **Valgfri integritetsbinding** — et manifest kan angive et `integrity`-felt
-  (`sha256-<base64>`, SRI-format). Når feltet er angivet, kontrollerer indlæseren
-  indgangsfilens hash ved indlæsning og nægter aktivering ved uoverensstemmelse.
-  Det er valgfri registrering af manipulation, **ikke** en sikkerhedsgrænse —
-  routing begrænset til loopback og tilladelsesmodellen er de egentlige grænser.
+> **Plugins er ikke sandboxed.** Barnet er en almindelig Node.js proces, der kører som OmniRoute brugeren, uden VM kontekst og ingen Node.js tilladelsesflag, så plugin-kode kan læse og skrive enhver fil, som brugeren kan, køre programmer og nå netværket. `requires.permissions` bestemmer kun hvilke miljøvariabler barnet modtager; de andre tilladelser håndhæves ikke. Installer kun plugins, du har tillid til. Procesgrænsen nedenfor indeholder nedbrud og hænger; det er ikke en sikkerhedsgrænse.
+
+- **Proces isolation** — `loadPlugin()` (`src/lib/plugins/loader.ts`) afføder hvert plugin i en separat Node.js underordnet proces og kommunikerer over IPC. Hook-opkald har en timeout med `SIGTERM` → `SIGKILL` eskalering.
+- **Env tilladelsesliste** — barnet modtager kun et godkendt sæt af miljøvariabler; det bredere sæt gives kun, når manifestet anmoder om `env` tilladelsen.
+- **Installer kildeindeslutning** — `POST /api/plugins` læser kun fra plugin-kildebiblioteket (se "Installer fra en lokal sti"): stien kanoniseres med `realpath`, skal forblive strengt inde i den mappe, og et kildetræ med et symbolsk link, der undslipper det, afvises før noget kopieres.
+- **Indeslutning af stien** — install/upgrade/uninstall hævder, at plugin-mappen og `manifest.main` løser sig** inden for** det administrerede plugin-rod før enhver kopi eller rekursiv sletning (beskytter mod manipulerede DB -stier og `../` -gennemgang i `manifest.main`). Aktivering løser symbollinks via `realpath` og nægter at indlæse et indgangspunkt, der undslipper plugin-mappen.
+- **Valgfri integritetsstift** — et manifest kan erklære et `integrity` (`sha256-<base64>`, SRI format) felt. Når den er til stede, verificerer loaderen indgangsfilens hash ved indlæsningstidspunktet og nægter at aktivere ved mismatch. Det er opt-in sabotage-detektion,** ikke** en sikkerhedsgrænse: det begrænser ikke, hvad et indlæst plugin kan gøre.
+- **Ingen klientoplysninger i kroge** — konteksten sendt til `onRequest`, `onResponse` og `onError` har `authorization`, `x-api-key`, `proxy-authorization` og `cookie` overskrifterne fjernet, og API -nøgleposten har ingen nøgleværdi (`redactPluginContext()` i `src/lib/plugins/hooks.ts`).
 
 ## Manifest (`plugin.json`)
 
-Valideres af `PluginManifestSchema` (`src/lib/plugins/manifest.ts`):
+Valideret af `PluginManifestSchema` (`src/lib/plugins/manifest.ts`):
 
-| Felt               | Type      | Bemærkninger                                                          |
+| Felt               | Type      | Noter                                                                 |
 | ------------------ | --------- | --------------------------------------------------------------------- |
-| `name`             | string    | Påkrævet; kebab-case (`^[a-z0-9-]+$`), 1–100 tegn                     |
-| `version`          | string    | Påkrævet; semver (`MAJOR.MINOR.PATCH`)                                |
-| `description`      | string?   | ≤ 500 tegn                                                            |
-| `author`           | string?   | ≤ 200 tegn                                                            |
-| `license`          | string?   | Standardværdien er `MIT`                                              |
-| `main`             | string?   | Indgangsfil; standardværdien er `index.js`                            |
-| `source`           | enum?     | `local` \| `marketplace` (standardværdien er `local`)                 |
-| `tags`             | string[]? | Søgetags                                                              |
-| `requires`         | object?   | `{ omniroute?, permissions[] }`                                       |
-| `hooks`            | object?   | Booleske værdier, der angiver, hvilke hooks pluginet implementerer    |
-| `skills`           | object[]? | Valgfrie færdighedsdefinitioner                                       |
-| `enabledByDefault` | boolean?  | Aktivér automatisk ved installation                                   |
-| `configSchema`     | object?   | Kort over konfigurationsfelter (`string`/`number`/`boolean`/`select`) |
-| `integrity`        | string?   | Valgfri `sha256-<base64>`-binding af indgangsfilen                    |
+| `name`             | snor      | Påkrævet; kebab-etui (`^[a-z0-9-]+$`), 1-100 tegn                     |
+| `version`          | snor      | Påkrævet; semver (`MAJOR.MINOR.PATCH`)                                |
+| `description`      | snor?     | ≤ 500 tegn                                                            |
+| `author`           | snor?     | ≤ 200 tegn                                                            |
+| `license`          | snor?     | Standard er `MIT`                                                     |
+| `main`             | snor?     | Indtastningsfil; standard til `index.js`                              |
+| `source`           | enum?     | `local` \| `marketplace` (standard til `local`)                       |
+| `tags`             | snor[]?   | Søg tags                                                              |
+| `requires`         | objekt?   | `{ omniroute?, permissions[] }`                                       |
+| `hooks`            | objekt?   | Booleans erklærer, hvilke kroge plugin'et implementerer               |
+| `skills`           | objekt[]? | Valgfri færdighedsdefinitioner                                        |
+| `enabledByDefault` | boolesk?  | Automatisk aktivering ved installation                                |
+| `configSchema`     | objekt?   | Kort over konfigurationsfelter (`string`/`number`/`boolean`/`select`) |
+| `integrity`        | snor?     | Valgfri `sha256-<base64>` entry-fil pin                               |
 
-Tilladelser hentes fra enum-værdierne
-`network` / `file-read` / `file-write` / `env` / `exec`.
+Tilladelser er hentet fra enum `network` / `file-read` / `file-write` / `env` / `exec`. Kun `env` har en runtime-effekt (en lidt større miljøvariabel tilladelsesliste for barnet); de andre er erklæringer og håndhæves ikke.
 
 ## Livscyklusflow
 

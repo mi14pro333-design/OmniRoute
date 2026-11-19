@@ -8,11 +8,11 @@
 
 ---
 
-## ステップ 1: OmniRoute をインストールする
+## ステップ 1: OmniRouteをインストールする
 
-お好みの方法を選択してください。
+好みの方法を選択してください:
 
-### オプション A: npm（推奨）
+### オプション A: npm (推奨)
 
 ```bash
 npm install -g omniroute
@@ -21,10 +21,10 @@ npm install -g omniroute
 ### オプション B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` は、**公開済み**の安定版 SemVer のうち最新のものを指します。git の `main` には追従しません。GitOps では `diegosouzapw/omniroute:X.Y.Z` のようにバージョンを固定してください。[イメージタグ／リリースチャンネル](../guides/DOCKER_GUIDE.md#release-channels)を参照してください。
+`:latest`が一番高い**出版された**安定したSemVer。それはあります**ない**git `main`をトラックします。 `cheaperinference/omniroute:X.Y.Z` GitOpsにピン留めします。 [「イメージ タグ/リリース チャネル」](../guides/DOCKER_GUIDE.md#release-channels)を参照してください。
 
 ### オプション C: ソースから
 

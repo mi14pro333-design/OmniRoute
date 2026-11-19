@@ -420,13 +420,13 @@ open-sse/
 | `moderations.ts`        | Moderálás                                                                                     |
 | `search.ts`             | Webes keresés                                                                                 |
 | `sseParser.ts`          | SSE eseményelemző                                                                             |
-| `usageExtractor.ts`     | Húzza ki a tokenszámlálást az upstream adatfolyamokból                                        |
+| `usageExtractor.ts`     | Húzza ki a token számlálását az upstream adatfolyamokból                                      |
 | `responseSanitizer.ts`  | Szalagszolgáltató-specifikus zaj                                                              |
 | `responseTranslator.ts` | Ragasztó a szolgáltatói válasz és a fordítói réteg között                                     |
 
 ### 4.2 `open-sse/executors/`
 
-170 legfelső szintű végrehajtó modul (`*.ts` mínusz `base.ts`, `index.ts` és tesztek — a count `npm run check:docs-counts` mérőszámok). Minden végrehajtó osztály kiterjeszti `BaseExecutor` (`base.ts`), közvetlenül vagy `DefaultExecutor` vagy egy másik végrehajtón keresztül; a többi modul szolgáltatónkénti segítők (eszközsémák, fetch/TTS adapterek, quirk-kezelők). A végrehajtók közé tartozik:
+170 legfelső szintű végrehajtó modul (`*.ts` mínusz `base.ts`, `index.ts` és tesztek — a count `npm run check:docs-counts` intézkedések). Minden végrehajtó osztály kiterjeszti `BaseExecutor` (`base.ts`), közvetlenül vagy `DefaultExecutor` vagy egy másik végrehajtón keresztül; a többi modul szolgáltatónkénti segítők (eszközsémák, fetch/TTS adapterek, quirk-kezelők). A végrehajtók közé tartozik:
 
 `antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex` `vertex` `commandCode` `cursor` `default` `devin-cli` `muse-spark-web` `nlpcloud` `opencode` `perplexity-web` `petals` `pollinations` `qoder` `devin-desktop` `claudeIdentity.ts` ) `index.ts`
 
@@ -471,7 +471,7 @@ Fénypontok (a teljes lista `open-sse/services/` alatt):
 - **110 egyedi eszköz** vezetékes `server.ts` -ban (45 kanonikus `schemas/tools.ts` -ben + memória, készségek, GitHub-készségek, pool, gamification, plugin, Notion, Obsidian, helyi korpusz és tömörítési modulok — unió `countUniqueMcpTools`-vel számolva).
 - **3 szállítás** : stdio, HTTP streamelhető, SSE.
 - **33 távcső** futásidejű — alaplistában érvényesítve `src/shared/constants/mcpScopes.ts` ben, a teljes készlet az egyes eszközmodulok által deklarált hatókörök egyesítése.
-- Ellenőrzési táblázat: `mcp_tool_audit` ( `audit.ts` népesíti be).
+- Audit tábla: `mcp_tool_audit` ( `audit.ts` népesíti be).
 - Fájlok: `server.ts`, `index.ts`, `httpTransport.ts`, `audit.ts`, `scopeEnforcement.ts`, `runtimeHeartbeat.ts`, `descriptionCompressor.ts`, `schemas/{tools, a2a, audit, index}.ts`, `tools/{advancedTools, compressionTools, memoryTools, skillTools}.ts`, plusz tesztek a `__tests__/` alatt.
 - A teljes szerszámkatalógusért lásd [MCP-SERVER.md](../frameworks/MCP-SERVER.md).
 
@@ -481,7 +481,7 @@ Szolgáltatói nyilvántartások (`providerRegistry.ts`, `providerModels.ts`, `p
 
 ### 4.8 `open-sse/utils/`
 
-Streaming primitívek és szolgáltató segítők: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts` `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `requestLogger.ts`, `usageTracking.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
+Streaming primitívek és szolgáltató segítők: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts` `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `progressTracker.ts`, `usageTracking.ts`, `requestLogger.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
 
 ---
 
@@ -566,37 +566,14 @@ Gyakori parancsok:
 
 ## 8. `scripts/`
 
-Rendeltetés szerint 6 almappába rendezve.
+Cél szerint 6 almappába rendezve.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, valamint a csak olvasható, PR-felügyeletet segítő eszközök:
-  `ci-discriminate.sh` (egy PR sikertelen ellenőrzéseinek szignatúráit saját /
-  örökölt / ismeretlen kategóriákba sorolja egy referencia-PR-hez vagy az alapon
-  fennálló hibát leíró jegyhez viszonyítva) és `audit-worktree.sh`
-  (módosított fájlok, védett felületek, eltávolított ellenőrző állítások,
-  elnyomások száma, hátramaradt ideiglenes tsconfigok, a PR fejének összevetése
-  a helyi HEAD-del — mielőtt egy közreműködő PR-jét elfogadják).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** a a saját / öröklött `smoke-electron-packaged.mjs` ismeretlen aláírások ellenőrzése a `run-next.mjs` `standalone-server-ws.mjs` a base- PR problémával szemben PR és `ci-discriminate.sh` ( `run-next-playwright.mjs` `run-standalone.mjs`, `v1-ws-bridge.mjs` `responses-ws-proxy.mjs`, `run-ecosystem-tests.mjs` `run-playwright-tests.mjs`, letiltási `sync-env.mjs`, maradék PR `run-protocol-clients-tests.mjs` `audit-worktree.sh` `healthcheck.mjs` PR `system-info.mjs` — mielőtt a dolgozó — PR HEAD ).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

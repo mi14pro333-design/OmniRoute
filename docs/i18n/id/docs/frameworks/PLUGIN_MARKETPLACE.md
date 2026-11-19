@@ -86,34 +86,31 @@ menggunakan daftar seed.
 
 ## REST API
 
-Semua endpoint memerlukan autentikasi manajemen (`requireManagementAuth`) **dan**
-hanya dapat diakses melalui loopback — `/api/plugins` dan `/api/plugins/` tercantum
-dalam `LOCAL_ONLY_API_PREFIXES` (`src/server/authz/routeGuard.ts`).
+Semua titik akhir memerlukan autentikasi manajemen (`requireManagementAuth`)** Dan** adalah — `/api/plugins` dan `/api/plugins/` khusus loopback yang terdaftar di `LOCAL_ONLY_API_PREFIXES` (`src/server/authz/routeGuard.ts`).
 
-| Endpoint                         | Metode | Deskripsi                                                           |
-| -------------------------------- | ------ | ------------------------------------------------------------------- |
-| `/api/plugins`                   | GET    | Mencantumkan plugin yang terinstal (filter `?status=` opsional)     |
-| `/api/plugins`                   | POST   | Menginstal plugin dari path lokal absolut                           |
-| `/api/plugins/scan`              | POST   | Memindai direktori plugin dan mendaftarkan plugin baru              |
-| `/api/plugins/marketplace`       | GET    | Mencantumkan entri katalog marketplace                              |
-| `/api/plugins/[name]`            | GET    | Mendapatkan detail plugin yang terinstal                            |
-| `/api/plugins/[name]`            | DELETE | Menghapus instalasi plugin                                          |
-| `/api/plugins/[name]/activate`   | POST   | Mengaktifkan (memuat + mendaftarkan hook)                           |
-| `/api/plugins/[name]/deactivate` | POST   | Menonaktifkan (memicu `onDeactivate`, membatalkan pendaftaran hook) |
-| `/api/plugins/[name]/config`     | GET    | Mendapatkan konfigurasi plugin + skema konfigurasi                  |
-| `/api/plugins/[name]/config`     | PUT    | Memperbarui konfigurasi plugin (divalidasi terhadap skema)          |
+| Titik akhir                      | Metode | Keterangan                                                  |
+| -------------------------------- | ------ | ----------------------------------------------------------- |
+| `/api/plugins`                   | GET    | Daftar plugin yang diinstal (filter `?status=` opsional)    |
+| `/api/plugins`                   | POST   | Instal plugin dari direktori sumber plugin                  |
+| `/api/plugins/scan`              | POST   | Pindai direktori plugin dan daftarkan plugin baru           |
+| `/api/plugins/marketplace`       | GET    | Daftar entri katalog pasar                                  |
+| `/api/plugins/[name]`            | GET    | Dapatkan detail plugin yang diinstal                        |
+| `/api/plugins/[name]`            | DELETE | Copot pemasangan plugin                                     |
+| `/api/plugins/[name]/activate`   | POST   | Aktifkan (muat kait register + )                            |
+| `/api/plugins/[name]/deactivate` | POST   | Nonaktifkan (api `onDeactivate`, batalkan pendaftaran kait) |
+| `/api/plugins/[name]/config`     | GET    | Dapatkan skema konfigurasi plugin config +                  |
+| `/api/plugins/[name]/config`     | PUT    | Perbarui konfigurasi plugin (divalidasi berdasarkan skema)  |
 
-Filter `status` untuk `GET /api/plugins` menerima salah satu dari
-`installed` / `active` / `inactive` / `error`. Nilai yang tidak valid akan menghasilkan `400`.
+Filter `GET /api/plugins` `status` menerima salah satu dari `installed` / `active` / `inactive` / `error`. Nilai yang tidak valid akan mengembalikan `400`.
 
-### Mencantumkan plugin yang terinstal
+### Daftar plugin yang diinstal
 
 ```bash
 curl http://localhost:20128/api/plugins \
   -H "Cookie: auth_token=..."
 ```
 
-### Menginstal dari path lokal
+### Instal dari jalur lokal
 
 ```bash
 curl -X POST http://localhost:20128/api/plugins \
@@ -122,19 +119,18 @@ curl -X POST http://localhost:20128/api/plugins \
   -d '{ "path": "/absolute/path/to/my-plugin" }'
 ```
 
-`path` harus **absolut** dan tidak boleh berisi segmen traversal `..` atau
-byte null (diberlakukan oleh Zod). Direktori sumber harus berisi
-`plugin.json` yang valid (atau merupakan induk dari direktori yang memuatnya). Jika berhasil, responsnya adalah `201` dengan
-baris plugin yang terinstal.
+The `path` must be an **absolute** path to a directory **inside the plugin sources directory**: `plugin-sources` next to the plugin root, so `~/.omniroute/plugin-sources/` by default, or `<parent of OMNIROUTE_PLUGINS_DIR>/plugin-sources/` when that variable is set (`getPluginSourcesDir()` in `src/lib/plugins/installSource.ts`). Copy or clone the plugin there first. The install is refused with `400` when the path contains `..` or a null byte, lies outside that directory, resolves outside it through a symlink, contains a symlink whose target is outside it, or when the directory does not exist. The source directory must contain a valid `plugin.json` (or be a parent of one). On success the response is `201` with the installed plugin row.
 
-### Menjelajahi marketplace
+Berbeda dengan rute plugin lainnya, rute plugin ini memerlukan kredensial manajemen (sesi dasbor atau kunci API cakupan pengelolaan) bahkan ketika login dinonaktifkan (`requireLogin=false`): memasang kode tidak pernah merupakan tindakan anonim.
+
+### Jelajahi pasar
 
 ```bash
 curl http://localhost:20128/api/plugins/marketplace \
   -H "Cookie: auth_token=..."
 ```
 
-### Memperbarui konfigurasi plugin
+### Perbarui konfigurasi plugin
 
 ```bash
 curl -X PUT http://localhost:20128/api/plugins/my-plugin/config \
@@ -143,10 +139,7 @@ curl -X PUT http://localhost:20128/api/plugins/my-plugin/config \
   -d '{ "config": { "level": "debug", "maxItems": 100 } }'
 ```
 
-`PUT .../config` memvalidasi setiap nilai yang diberikan terhadap
-`configSchema` plugin (dideklarasikan dalam manifes): bidang `number` mematuhi `min`/`max`,
-bidang `select` harus cocok dengan `enum` yang dideklarasikan. Kunci yang tidak ada dalam skema
-tetap diizinkan.
+`PUT .../config` memvalidasi setiap nilai yang diberikan terhadap `configSchema` plugin (dideklarasikan dalam manifes): bidang `number` menghormati `min`/`max`, bidang `select` harus cocok dengan `enum` yang dideklarasikan. Kunci yang tidak ada dalam skema diperbolehkan masuk.
 
 ## Konfigurasi
 
@@ -205,84 +198,58 @@ Tab "Marketplace" di dasbor menyediakan bidang untuk URL ini (dibaca kembali dar
 
 ## Keamanan
 
-### Tingkat rute — hanya loopback
+### Hanya loopback — tingkat rute
 
-Plugin mengeksekusi kode dalam proses anak yang dibuat, sehingga seluruh permukaan
-`/api/plugins` diklasifikasikan sebagai `LOCAL_ONLY` (Tingkat 1). Penegakan loopback
-dijalankan tanpa syarat **sebelum** pemeriksaan autentikasi apa pun, sehingga token
-manajemen yang bocor dan mencapai mesin melalui tunnel tetap tidak dapat menginstal,
-mengaktifkan, atau menghapus instalasi plugin. Lihat
-[`docs/security/ROUTE_GUARD_TIERS.md`](../security/ROUTE_GUARD_TIERS.md) dan
-Aturan Ketat #15 / #17.
+Plugin mengeksekusi kode dalam proses anak yang dihasilkan, sehingga seluruh permukaan `/api/plugins` diklasifikasikan `LOCAL_ONLY` (Tingkat 1). Penegakan loopback berjalan tanpa syarat** sebelum** pemeriksaan autentikasi apa pun, sehingga token manajemen yang bocor mencapai kotak di atas terowongan masih tidak dapat memasang, mengaktifkan, atau menghapus instalasi plugin. Lihat [`docs/security/ROUTE_GUARD_TIERS.md`](../security/ROUTE_GUARD_TIERS.md) dan Aturan Keras #15 / #17.
 
-### Perlindungan SSRF registri marketplace
+### Penjaga SSRF registri pasar
 
-URL registri khusus merupakan konfigurasi yang dapat dipengaruhi penyerang, sehingga
-sebelum mengambilnya, `listMarketplacePlugins()` memprosesnya melalui dua lapisan:
+Registri khusus URL adalah konfigurasi yang dapat dipengaruhi oleh penyerang, jadi sebelum mengambilnya, `listMarketplacePlugins()` menjalankannya melalui dua lapisan:
 
 1. **`isSafeMarketplaceUrl(url)`** (`src/lib/plugins/marketplace.ts`):
-   - Menolak apa pun yang bukan `http:` / `https:`.
-   - Menolak host privat/loopback/link-local/ULA literal (IPv4 **dan** IPv6,
-     termasuk yang dipetakan ke IPv4) melalui `isPrivateHost` kanonis
-     (`src/shared/network/outboundUrlGuard.ts`).
-   - Me-resolve **kedua** record `A` dan `AAAA`, serta menolak jika **ada**
-     alamat hasil resolusi yang bersifat privat — menutup bypass nama host publik
-     → alamat IP privat.
-   - **Gagal secara tertutup**: kegagalan resolusi DNS menyebabkan URL ditolak.
-2. **`safeOutboundFetch(url, { guard: "public-only", timeoutMs: 5000 })`**
-   (`src/shared/network/safeOutboundFetch.ts`): menerapkan ulang perlindungan URL
-   khusus-publik saat pengambilan dan **memblokir pengalihan** (tidak ada pivot
-   publik → privat melalui `30x`).
+   - Menolak apapun yang bukan `http:` / `https:`.
+   - Menolak host private/loopback/link-local/ULA literal (IPv4** Dan** IPv6, termasuk IPv4-mapped) melalui `isPrivateHost` kanonik (`src/shared/network/outboundUrlGuard.ts`).
+   - Terselesaikan** keduanya** `A` dan `AAAA` mencatat dan menolak jika** setiap** alamat yang diselesaikan adalah — pribadi yang menutup bypass IP pribadi → nama host publik.
+   - **Gagal ditutup** : kegagalan resolusi DNS menolak URL.
+2. **`safeOutboundFetch(url, { guard: "public-only", timeoutMs: 5000 })`** (`src/shared/network/safeOutboundFetch.ts`): menerapkan kembali URL guard khusus publik pada waktu pengambilan dan** memblokir pengalihan** (tidak ada pivot `30x` pribadi → publik).
 
-URL yang gagal pada salah satu lapisan tidak membatalkan permintaan — marketplace
-secara diam-diam kembali menggunakan registri bawaan awal dan mencatat peringatan.
+URL yang gagal pada kedua lapisan tidak membatalkan permintaan — pasar secara diam-diam kembali ke registri benih bawaan dan mencatat peringatan.
 
-> Perlindungan ini diperkuat dalam PR #3774 secara khusus untuk me-resolve A + AAAA
-> dan menggunakan `isPrivateHost` kanonis alih-alih pemeriksaan khusus IPv4.
+> Penjaga ini diperkuat di PR #3774 khusus untuk menyelesaikan A + AAAA dan menggunakan `isPrivateHost` kanonik alih-alih pemeriksaan IPv4-only.
 
 ### Isolasi eksekusi plugin
 
-- **Isolasi proses** — `loadPlugin()` (`src/lib/plugins/loader.ts`) menjalankan
-  setiap plugin dalam proses anak Node.js yang terpisah dan berkomunikasi melalui
-  IPC. Pemanggilan hook memiliki batas waktu dengan eskalasi `SIGTERM` → `SIGKILL`.
-- **Daftar izin variabel lingkungan** — proses anak hanya menerima kumpulan
-  variabel lingkungan yang diizinkan; kumpulan yang lebih luas hanya diberikan
-  ketika manifes meminta izin `env`.
-- **Pembatasan jalur** — proses instalasi/peningkatan/penghapusan instalasi
-  memastikan bahwa direktori plugin dan `manifest.main` di-resolve **di dalam**
-  root plugin terkelola sebelum penyalinan atau penghapusan rekursif apa pun
-  (melindungi dari jalur DB yang dimanipulasi dan traversal `../` dalam
-  `manifest.main`). Aktivasi me-resolve symlink melalui `realpath` dan menolak
-  memuat titik masuk yang keluar dari direktori plugin.
-- **Pin integritas opsional** — manifes dapat mendeklarasikan kolom `integrity`
-  (`sha256-<base64>`, format SRI). Jika tersedia, loader memverifikasi hash file
-  entri pada waktu pemuatan dan menolak aktivasi jika tidak cocok. Ini merupakan
-  deteksi manipulasi yang bersifat opsional, **bukan** batas keamanan — perutean
-  khusus-loopback dan model izin adalah batas yang sesungguhnya.
+> **Plugin tidak di-sandbox.** Anak tersebut adalah proses Node.js biasa yang berjalan sebagai pengguna OmniRoute, tanpa konteks VM dan tanpa tanda izin Node.js, sehingga kode plugin dapat membaca dan menulis file apa pun yang dapat dilakukan pengguna, menjalankan program, dan menjangkau jaringan. `requires.permissions` hanya memutuskan variabel lingkungan mana yang diterima anak; izin lainnya tidak diterapkan. Instal hanya plugin yang Anda percayai. Batas proses di bawah ini berisi crash dan hang; itu bukan batas keamanan.
+
+- **Isolasi proses** — `loadPlugin()` (`src/lib/plugins/loader.ts`) memunculkan setiap plugin dalam proses anak Node.js yang terpisah dan berkomunikasi melalui IPC. Panggilan hook memiliki batas waktu dengan eskalasi `SIGTERM` → `SIGKILL`.
+- **Daftar yang diizinkan** — anak hanya menerima serangkaian variabel lingkungan yang diizinkan; kumpulan yang lebih luas hanya diberikan ketika manifes meminta izin `env`.
+- **Instal penahanan sumber** — `POST /api/plugins` hanya membaca dari direktori sumber plugin (lihat "Instal dari jalur lokal"): jalur tersebut dikanonikalisasi dengan `realpath`, harus tetap berada di dalam direktori itu, dan pohon sumber yang membawa symlink yang lolos darinya akan ditolak sebelum apa pun disalin.
+- **Penahanan jalur** — install/upgrade/uninstall menegaskan bahwa direktori plugin dan `manifest.main` menyelesaikannya** di dalam** root plugin yang dikelola sebelum penyalinan atau penghapusan rekursif (menjaga terhadap jalur DB yang dirusak dan traversal `../` di `manifest.main`). Aktivasi menyelesaikan symlink melalui `realpath` dan menolak memuat titik masuk yang keluar dari direktori plugin.
+- **Pin integritas opsional** — manifes dapat mendeklarasikan bidang `integrity` (`sha256-<base64>`, SRI format). Saat ini, pemuat memverifikasi hash file entri pada waktu buka dan menolak untuk mengaktifkan jika tidak cocok. Ini adalah deteksi kerusakan opt-in,** bukan** batas keamanan: tidak membatasi apa yang dapat dilakukan oleh plugin yang dimuat.
+- **Tidak ada kredensial klien di hook** — konteks yang diteruskan ke `onRequest`, `onResponse` dan `onError` memiliki header `authorization`, `x-api-key`, `proxy-authorization` dan `cookie` yang dihapus, dan catatan kunci API tidak membawa nilai kunci (`redactPluginContext()` di `src/lib/plugins/hooks.ts`).
 
 ## Manifes (`plugin.json`)
 
 Divalidasi oleh `PluginManifestSchema` (`src/lib/plugins/manifest.ts`):
 
-| Kolom              | Tipe      | Catatan                                                       |
-| ------------------ | --------- | ------------------------------------------------------------- |
-| `name`             | string    | Wajib; kebab-case (`^[a-z0-9-]+$`), 1–100 karakter            |
-| `version`          | string    | Wajib; semver (`MAJOR.MINOR.PATCH`)                           |
-| `description`      | string?   | ≤ 500 karakter                                                |
-| `author`           | string?   | ≤ 200 karakter                                                |
-| `license`          | string?   | Nilai default `MIT`                                           |
-| `main`             | string?   | File entri; nilai default `index.js`                          |
-| `source`           | enum?     | `local` \| `marketplace` (nilai default `local`)              |
-| `tags`             | string[]? | Tag pencarian                                                 |
-| `requires`         | object?   | `{ omniroute?, permissions[] }`                               |
-| `hooks`            | object?   | Boolean yang menyatakan hook yang diimplementasikan plugin    |
-| `skills`           | object[]? | Definisi keterampilan opsional                                |
-| `enabledByDefault` | boolean?  | Aktifkan otomatis saat instalasi                              |
-| `configSchema`     | object?   | Peta kolom konfigurasi (`string`/`number`/`boolean`/`select`) |
-| `integrity`        | string?   | Pin file entri `sha256-<base64>` opsional                     |
+| Bidang             | Jenis        | Catatan                                                              |
+| ------------------ | ------------ | -------------------------------------------------------------------- |
+| `name`             | rangkaian    | Diperlukan; kotak kebab (`^[a-z0-9-]+$`), 1–100 karakter             |
+| `version`          | rangkaian    | Diperlukan; semver (`MAJOR.MINOR.PATCH`)                             |
+| `description`      | rangkaian?   | ≤ 500 karakter                                                       |
+| `author`           | rangkaian?   | ≤ 200 karakter                                                       |
+| `license`          | rangkaian?   | Defaultnya adalah `MIT`                                              |
+| `main`             | rangkaian?   | berkas entri; defaultnya adalah `index.js`                           |
+| `source`           | enum?        | `local` \| `marketplace` (default pada `local`)                      |
+| `tags`             | rangkaian[]? | Tag pencarian                                                        |
+| `requires`         | obyek?       | `{ omniroute?, permissions[] }`                                      |
+| `hooks`            | obyek?       | Boolean mendeklarasikan hook mana yang diimplementasikan oleh plugin |
+| `skills`           | obyek[]?     | Definisi keterampilan opsional                                       |
+| `enabledByDefault` | boolean?     | Aktifkan otomatis saat instalasi                                     |
+| `configSchema`     | obyek?       | Peta bidang konfigurasi (`string`/`number`/`boolean`/`select`)       |
+| `integrity`        | rangkaian?   | Pin file entri `sha256-<base64>` opsional                            |
 
-Izin berasal dari enum
-`network` / `file-read` / `file-write` / `env` / `exec`.
+Izin diambil dari enum `network` / `file-read` / `file-write` / `env` / `exec`. Hanya `env` yang memiliki efek runtime (daftar variabel lingkungan yang diizinkan sedikit lebih besar untuk turunan); yang lainnya adalah deklarasi dan tidak dilaksanakan.
 
 ## Alur Siklus Hidup
 

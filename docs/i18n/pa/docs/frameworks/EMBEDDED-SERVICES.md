@@ -137,23 +137,23 @@
 
 ### ਮੁੱਖ ਸਰੋਤ ਫਾਈਲਾਂ
 
-| ਫਾਈਲ                                        | ਭੂਮਿਕਾ                                        |
-| ------------------------------------------- | --------------------------------------------- |
-| `src/lib/services/ServiceSupervisor.ts`     | ਕੋਰ ਕਲਾਸ: ਜੀਵਨ ਚੱਕਰ, ਲਾਕ, ਸਿਹਤ, ਰਿੰਗ ਬਫਰ      |
-| `src/lib/services/bootstrap.ts`             | ਪ੍ਰਕਿਰਿਆ-ਪੱਧਰ ਦੀ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਅਤੇ ਆਟੋ-ਸਟਾਰਟ    |
-| `src/lib/services/registry.ts`              | ਸਿੰਗਲਟਨ ਨਕਸ਼ਾ `tool → supervisor`             |
-| `src/lib/services/apiKey.ts`                | ਕੁੰਜੀ ਪੀੜ੍ਹੀ, AES-256-GCM ਏਨਕ੍ਰਿਪਸ਼ਨ 'ਤੇ-ਆਰਾਮ |
-| `src/lib/services/modelSync.ts`             | ਪੀਰੀਅਡਿਕ ਮਾਡਲ ਸਿੰਕ (5 ਮਿੰਟ) + ਆਨ-ਡਿਮਾਂਡ       |
-| `src/lib/services/ringBuffer.ts`            | SSE ਸਬਸਕ੍ਰਾਈਬ ਦੇ ਨਾਲ 5 MB ਸਰਕੂਲਰ ਲੌਗ ਬਫਰ      |
-| `src/lib/services/healthCheck.ts`           | HTTP ਸਿਹਤ ਜਾਂਚ (ਸੰਰਚਨਾਯੋਗ ਅੰਤਰਾਲ)             |
-| `src/lib/services/installers/ninerouter.ts` | 9 ਰਾਊਟਰ ਲਈ npm install/update/uninstall       |
-| `src/lib/services/installers/cliproxy.ts`   | CLIProxyAPI ਲਈ npm install/update/uninstall   |
-| `src/lib/services/installers/mux.ts`        | Mux ਲਈ npm install/update/uninstall           |
-| `src/lib/services/installers/openwa.ts`     | ਓਪਨ-ਵਾ ਲਈ npm install/update/uninstall        |
-| `src/lib/services/installers/llmlingua.ts`  | LLMLingua ਲਈ npm install/update/uninstall     |
-| `src/app/api/services/9router/_lib.ts`      | `getOrInitSupervisor()` ਸਹਾਇਕ                 |
-| `src/app/api/services/[name]/logs/route.ts` | ਸ਼ੇਅਰਡ SSE ਲੌਗਸ ਐਂਡਪੁਆਇੰਟ                     |
-| `open-sse/executors/ninerouter.ts`          | ਪ੍ਰੋਵਾਈਡਰ ਐਗਜ਼ੀਕਿਊਟਰ (ਲੇਅਰ 4)                 |
+| ਫਾਈਲ                                        | ਭੂਮਿਕਾ                                       |
+| ------------------------------------------- | -------------------------------------------- |
+| `src/lib/services/ServiceSupervisor.ts`     | ਕੋਰ ਕਲਾਸ: ਜੀਵਨ ਚੱਕਰ, ਲਾਕ, ਸਿਹਤ, ਰਿੰਗ ਬਫਰ     |
+| `src/lib/services/bootstrap.ts`             | ਪ੍ਰਕਿਰਿਆ-ਪੱਧਰ ਦੀ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਅਤੇ ਆਟੋ-ਸਟਾਰਟ   |
+| `src/lib/services/registry.ts`              | ਸਿੰਗਲਟਨ ਨਕਸ਼ਾ `tool → supervisor`            |
+| `src/lib/services/apiKey.ts`                | ਕੁੰਜੀ ਪੀੜ੍ਹੀ, AES-256-GCM ਏਨਕ੍ਰਿਪਸ਼ਨ ਤੇ ਆਰਾਮ |
+| `src/lib/services/modelSync.ts`             | ਪੀਰੀਅਡਿਕ ਮਾਡਲ ਸਿੰਕ (5 ਮਿੰਟ) + ਆਨ-ਡਿਮਾਂਡ      |
+| `src/lib/services/ringBuffer.ts`            | SSE ਸਬਸਕ੍ਰਾਈਬ ਦੇ ਨਾਲ 5 MB ਸਰਕੂਲਰ ਲੌਗ ਬਫਰ     |
+| `src/lib/services/healthCheck.ts`           | HTTP ਹੈਲਥ ਪੜਤਾਲ (ਸੰਰਚਨਾਯੋਗ ਅੰਤਰਾਲ)           |
+| `src/lib/services/installers/ninerouter.ts` | 9 ਰਾਊਟਰ ਲਈ npm install/update/uninstall      |
+| `src/lib/services/installers/cliproxy.ts`   | CLIProxyAPI ਲਈ npm install/update/uninstall  |
+| `src/lib/services/installers/mux.ts`        | Mux ਲਈ npm install/update/uninstall          |
+| `src/lib/services/installers/openwa.ts`     | ਓਪਨ-ਵਾ ਲਈ npm install/update/uninstall       |
+| `src/lib/services/installers/llmlingua.ts`  | LLMLingua ਲਈ npm install/update/uninstall    |
+| `src/app/api/services/9router/_lib.ts`      | `getOrInitSupervisor()` ਸਹਾਇਕ                |
+| `src/app/api/services/[name]/logs/route.ts` | ਸ਼ੇਅਰਡ SSE ਲੌਗਸ ਐਂਡਪੁਆਇੰਟ                    |
+| `open-sse/executors/ninerouter.ts`          | ਪ੍ਰੋਵਾਈਡਰ ਐਗਜ਼ੀਕਿਊਟਰ (ਲੇਅਰ 4)                |
 
 ---
 
@@ -242,7 +242,7 @@ npm ਤੋਂ 9 ਰਾਊਟਰ ਇੰਸਟਾਲ ਕਰੋ। ਆਪਣੇ ਖ
 
 #### `POST /api/services/9router/start`
 
-9 ਰਾਊਟਰ ਸ਼ੁਰੂ ਕਰੋ। ਇੱਕ ਸੁਪਰਵਾਈਜ਼ਰ ਨੂੰ ਰਜਿਸਟਰ ਕਰਦਾ ਹੈ ਜੇਕਰ ਪਹਿਲਾਂ ਤੋਂ ਰਜਿਸਟਰ ਨਹੀਂ ਹੈ, ਤਾਂ `supervisor.start()` ਕਾਲ ਕਰਦਾ ਹੈ। ਪਹਿਲਾਂ ਤੋਂ ਹੀ ਚੱਲ ਰਹੇ ਹੋਣ 'ਤੇ ਅਕਲਮੰਦ।
+9 ਰਾਊਟਰ ਸ਼ੁਰੂ ਕਰੋ। ਇੱਕ ਸੁਪਰਵਾਈਜ਼ਰ ਨੂੰ ਰਜਿਸਟਰ ਕਰਦਾ ਹੈ ਜੇਕਰ ਪਹਿਲਾਂ ਤੋਂ ਰਜਿਸਟਰ ਨਹੀਂ ਹੈ, ਤਾਂ `supervisor.start()` ਕਾਲ ਕਰਦਾ ਹੈ। ਜਦੋਂ ਪਹਿਲਾਂ ਹੀ ਚੱਲ ਰਿਹਾ ਹੋਵੇ ਤਾਂ ਅਕਲਮੰਦ।
 
 **ਬੇਨਤੀ ਬਾਡੀ:** ਕੋਈ ਨਹੀਂ
 
@@ -272,7 +272,7 @@ npm ਤੋਂ 9 ਰਾਊਟਰ ਇੰਸਟਾਲ ਕਰੋ। ਆਪਣੇ ਖ
 
 #### `POST /api/services/9router/stop`
 
-ਕਿਰਪਾ ਨਾਲ 9 ਰਾਊਟਰ ਨੂੰ ਰੋਕੋ। SIGTERM ਭੇਜਦਾ ਹੈ, 15 s ਉਡੀਕ ਕਰਦਾ ਹੈ, ਫਿਰ SIGKILL ਜੇ ਅਜੇ ਵੀ ਜ਼ਿੰਦਾ ਹੈ। ਪਹਿਲਾਂ ਹੀ ਰੋਕੇ ਜਾਣ 'ਤੇ ਅਕਲਮੰਦ।
+ਕਿਰਪਾ ਨਾਲ 9 ਰਾਊਟਰ ਨੂੰ ਰੋਕੋ। SIGTERM ਭੇਜਦਾ ਹੈ, 15 s ਉਡੀਕ ਕਰਦਾ ਹੈ, ਫਿਰ SIGKILL ਜੇ ਅਜੇ ਵੀ ਜ਼ਿੰਦਾ ਹੈ। ਪਹਿਲਾਂ ਹੀ ਬੰਦ ਕੀਤੇ ਜਾਣ 'ਤੇ ਅਕਲਮੰਦ।
 
 **ਬੇਨਤੀ ਬਾਡੀ:** ਕੋਈ ਨਹੀਂ
 
@@ -328,7 +328,7 @@ npm ਤੋਂ 9 ਰਾਊਟਰ ਇੰਸਟਾਲ ਕਰੋ। ਆਪਣੇ ਖ
 | `200` | `{ keyRotated: true, restarted: boolean }` |
 | `500` | ਰੋਟੇਸ਼ਨ ਅਸਫਲ                               |
 
-**ਸੁਰੱਖਿਆ:** ਜਵਾਬ ਵਿੱਚ ਨਵੀਂ ਕੁੰਜੀ ਕਦੇ ਵਾਪਸ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ (ਕੋਈ ਪ੍ਰਮਾਣ ਪੱਤਰ ਲੀਕ ਨਹੀਂ)। ਇਹ `version_manager` ਟੇਬਲ ਵਿੱਚ ਐਨਕ੍ਰਿਪਟਡ (AES-256-GCM) ਸਟੋਰ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।
+**ਸੁਰੱਖਿਆ:** ਜਵਾਬ ਵਿੱਚ ਨਵੀਂ ਕੁੰਜੀ ਕਦੇ ਵਾਪਸ ਨਹੀਂ ਕੀਤੀ ਜਾਂਦੀ (ਕੋਈ ਪ੍ਰਮਾਣ ਪੱਤਰ ਲੀਕ ਨਹੀਂ)। ਇਸ ਨੂੰ `version_manager` ਟੇਬਲ ਵਿੱਚ ਐਨਕ੍ਰਿਪਟਡ (AES-256-GCM) ਸਟੋਰ ਕੀਤਾ ਜਾਂਦਾ ਹੈ।
 
 ---
 
@@ -421,14 +421,14 @@ npm ਤੋਂ 9 ਰਾਊਟਰ ਇੰਸਟਾਲ ਕਰੋ। ਆਪਣੇ ਖ
 
 ### 4.2 CLIProxyAPI ਅੰਤਮ ਬਿੰਦੂ (10 ਰਸਤੇ)
 
-CLIProxyAPI ਕੋਲ 9Router ਮਾਇਨਸ `rotate-key`, ਪਲੱਸ `accounts`, `provider-expose` ਅਤੇ `auto-restart-adopted` ਵਰਗੀ ਅੰਤਮ ਬਿੰਦੂ ਦੀ ਸ਼ਕਲ ਹੈ। ਇਹ ਹੁਣ ਸਪੌਨ (`needsApiKey: true` API ਮਾਡਲ ਸਿੰਕ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ `bootstrap.ts`); `status` ਵਿੱਚ ਘੱਟ ਖੇਤਰ ਸ਼ਾਮਲ ਹਨ।
+CLIProxyAPI ਕੋਲ 9Router ਮਾਇਨਸ `rotate-key`, ਪਲੱਸ `accounts`, `provider-expose` ਅਤੇ `auto-restart-adopted` ਵਾਂਗ ਹੀ ਅੰਤਮ ਬਿੰਦੂ ਆਕਾਰ ਹੈ। ਇਹ ਹੁਣ ਸਪੌਨ (`needsApiKey: true` API ਮਾਡਲ ਸਿੰਕ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ `bootstrap.ts`); `status` ਵਿੱਚ ਘੱਟ ਖੇਤਰ ਸ਼ਾਮਲ ਹਨ।
 
 | ਵਿਧੀ   | ਮਾਰਗ                                | ਵਰਣਨ                                      |
 | ------ | ----------------------------------- | ----------------------------------------- |
 | `POST` | `/api/services/cliproxy/install`    | npm ਤੋਂ CLIProxyAPI ਇੰਸਟਾਲ ਕਰੋ            |
 | `POST` | `/api/services/cliproxy/start`      | CLIProxyAPI ਸ਼ੁਰੂ ਕਰੋ                     |
 | `POST` | `/api/services/cliproxy/stop`       | CLIProxyAPI ਬੰਦ ਕਰੋ                       |
-| `POST` | `/api/services/cliproxy/restart`    | CLIProxyAPI ਰੀਸਟਾਰਟ ਕਰੋ                   |
+| `POST` | `/api/services/cliproxy/restart`    | CLIProxyAPI ਨੂੰ ਰੀਸਟਾਰਟ ਕਰੋ               |
 | `POST` | `/api/services/cliproxy/update`     | ਨਵੇਂ ਸੰਸਕਰਣ ਲਈ ਅੱਪਡੇਟ ਕਰੋ                 |
 | `GET`  | `/api/services/cliproxy/status`     | ਲਾਈਵ + DB ਸਥਿਤੀ (ਕੋਈ `apiKeyMasked` ਨਹੀਂ) |
 | `POST` | `/api/services/cliproxy/auto-start` | ਆਟੋ-ਸਟਾਰਟ ਨੂੰ ਟੌਗਲ ਕਰੋ                    |
@@ -455,7 +455,7 @@ Mux ਦੀ API ਸਤਹ ਵਿੱਚ CLIProxyAPI — no `rotate-key` ਰੂਟ 
 
 ### 4.4 ਬਿਫਰੌਸਟ ਐਂਡਪੁਆਇੰਟ (8 ਰਸਤੇ)
 
-Bifrost ਇੱਕ Go AI-ਗੇਟਵੇਅ ਰੀਲੇਅ ਬੈਕਐਂਡ (`@maximhq/bifrost`) ਹੈ। ਇਹ ਉਸੇ ਅੰਤਮ ਬਿੰਦੂ ਆਕਾਰ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ ਜਿਵੇਂ ਕਿ CLIProxyAPI (ਕੋਈ `rotate-key` — Bifrost `-app-dir` ਅਧੀਨ `config.json` ਵਿੱਚ ਆਪਣੀਆਂ ਪ੍ਰਦਾਤਾ ਕੁੰਜੀਆਂ ਦਾ ਪ੍ਰਬੰਧਨ ਨਹੀਂ ਕਰਦਾ)।
+Bifrost ਇੱਕ Go AI-ਗੇਟਵੇ ਰਿਲੇਅ ਬੈਕਐਂਡ (`@maximhq/bifrost`) ਹੈ। ਇਹ ਉਸੇ ਅੰਤਮ ਬਿੰਦੂ ਆਕਾਰ ਦੀ ਵਰਤੋਂ ਕਰਦਾ ਹੈ ਜਿਵੇਂ ਕਿ CLIProxyAPI (ਕੋਈ `rotate-key` — Bifrost `-app-dir` ਅਧੀਨ `config.json` ਵਿੱਚ ਆਪਣੀਆਂ ਪ੍ਰਦਾਤਾ ਕੁੰਜੀਆਂ ਦਾ ਪ੍ਰਬੰਧਨ ਨਹੀਂ ਕਰਦਾ)।
 
 | ਵਿਧੀ   | ਮਾਰਗ                               | ਵਰਣਨ                                                 |
 | ------ | ---------------------------------- | ---------------------------------------------------- |
@@ -521,15 +521,15 @@ LLMLingua ਇੱਕ ਪ੍ਰੋਂਪਟ-ਕੰਪਰੈਸ਼ਨ ਸਾਈਡ�
 
 ### 4.8 ਸਿੰਗ-ਬਾਕਸ ਅੰਤਮ ਬਿੰਦੂ (8 ਰਸਤੇ)
 
-sing-box ਵਿੱਚ Mux — no `rotate-key` ਰੂਟ, ਨੋ API ਕੀ ਇੰਜੈਕਸ਼ਨ ( `bootstrap.ts` ਵਿੱਚ `needsApiKey: false` ) ਦੇ ਰੂਪ ਵਿੱਚ ਉਹੀ ਅੰਤਮ ਬਿੰਦੂ ਹੈ। ਇਹ ਕੇਵਲ ਜੀਵਨ-ਚੱਕਰ-ਪ੍ਰਬੰਧਿਤ ਹੈ: ਕਦੇ ਵੀ routing/LLM ਪ੍ਰਦਾਤਾ ਨਹੀਂ। `install()` ਪਿੰਨ ਕੀਤੇ ਸੰਸਕਰਣ ( `src/lib/services/installers/singbox.ts` ਵਿੱਚ `SINGBOX_PINNED_VERSION` ) ਲਈ ਅਧਿਕਾਰਤ GitHub ਰੀਲੀਜ਼ ਬਾਇਨਰੀ (`SagerNet/sing-box`) ਨੂੰ ਡਾਉਨਲੋਡ ਕਰਦਾ ਹੈ ਅਤੇ — ਡਿਸਕ 'ਤੇ ਲਿਖਣ ਤੋਂ ਪਹਿਲਾਂ ਕਿਸੇ ਹੋਰ ਬੇਨਤੀ ਕੀਤੇ ਸੰਸਕਰਣ ਨੂੰ ਰੱਦ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਉਸੇ ਫਾਈਲ ਵਿੱਚ ਬੇਕ ਕੀਤੇ ਚੈੱਕਸਮ ਦੇ ਵਿਰੁੱਧ ਇਸਦੇ SHA256 ਦੀ ਪੁਸ਼ਟੀ ਕਰਦਾ ਹੈ।
+sing-box ਵਿੱਚ Mux — no `rotate-key` ਰੂਟ, ਨੋ API ਕੁੰਜੀ ਇੰਜੈਕਸ਼ਨ ( `bootstrap.ts` ਵਿੱਚ `needsApiKey: false` ) ਵਰਗੀ ਅੰਤਮ ਬਿੰਦੂ ਦੀ ਸ਼ਕਲ ਹੈ। ਇਹ ਕੇਵਲ ਜੀਵਨ-ਚੱਕਰ-ਪ੍ਰਬੰਧਿਤ ਹੈ: ਕਦੇ ਵੀ routing/LLM ਪ੍ਰਦਾਤਾ ਨਹੀਂ। `install()` ਪਿੰਨ ਕੀਤੇ ਸੰਸਕਰਣ ( `src/lib/services/installers/singbox.ts` ਵਿੱਚ `SINGBOX_PINNED_VERSION` ) ਲਈ ਅਧਿਕਾਰਤ GitHub ਰੀਲੀਜ਼ ਬਾਇਨਰੀ (`SagerNet/sing-box`) ਨੂੰ ਡਾਉਨਲੋਡ ਕਰਦਾ ਹੈ ਅਤੇ — ਡਿਸਕ 'ਤੇ ਲਿਖਣ ਤੋਂ ਪਹਿਲਾਂ ਕਿਸੇ ਹੋਰ ਬੇਨਤੀ ਕੀਤੇ ਸੰਸਕਰਣ ਨੂੰ ਰੱਦ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਉਸੇ ਫਾਈਲ ਵਿੱਚ ਬੇਕ ਕੀਤੇ ਚੈੱਕਸਮ ਦੇ ਵਿਰੁੱਧ ਇਸਦੇ SHA256 ਦੀ ਪੁਸ਼ਟੀ ਕਰਦਾ ਹੈ।
 
 | ਵਿਧੀ   | ਮਾਰਗ                                         | ਵਰਣਨ                                                             |
 | ------ | -------------------------------------------- | ---------------------------------------------------------------- |
-| `POST` | `/api/services/singbox/install`              | + ਡਾਊਨਲੋਡ ਕਰੋ ਪਿੰਨ ਕੀਤੇ ਸਿੰਗ-ਬਾਕਸ ਰੀਲੀਜ਼ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ           |
+| `POST` | `/api/services/singbox/install`              | + ਡਾਊਨਲੋਡ ਕਰੋ ਪਿੰਨ ਕੀਤੇ ਸਿੰਗ-ਬਾਕਸ ਰਿਲੀਜ਼ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ           |
 | `POST` | `/api/services/singbox/start`                | ਸਿੰਗ-ਬਾਕਸ ਸ਼ੁਰੂ ਕਰੋ (`sing-box run -c config.json`)              |
 | `POST` | `/api/services/singbox/stop`                 | ਗਾਇਨ-ਬਾਕਸ ਬੰਦ ਕਰੋ                                                |
 | `POST` | `/api/services/singbox/restart`              | ਸਿੰਗ-ਬਾਕਸ ਨੂੰ ਮੁੜ-ਚਾਲੂ ਕਰੋ                                       |
-| `POST` | `/api/services/singbox/update`               | Re-verify/reinstall ਪਿੰਨਡ ਰੀਲੀਜ਼                                 |
+| `POST` | `/api/services/singbox/update`               | Re-verify/reinstall ਪਿੰਨ ਕੀਤੀ ਰਿਲੀਜ਼                             |
 | `GET`  | `/api/services/singbox/status`               | ਲਾਈਵ + DB ਸਥਿਤੀ                                                  |
 | `POST` | `/api/services/singbox/auto-start`           | ਆਟੋ-ਸਟਾਰਟ ਨੂੰ ਟੌਗਲ ਕਰੋ                                           |
 | `POST` | `/api/services/singbox/auto-restart-adopted` | ਅਪਣਾਈ ਗਈ (ਪਹਿਲਾਂ ਤੋਂ ਮੌਜੂਦ) ਪ੍ਰਕਿਰਿਆ ਲਈ ਆਟੋ-ਰੀਸਟਾਰਟ ਨੂੰ ਟੌਗਲ ਕਰੋ |
@@ -553,9 +553,9 @@ GET|POST|... /dashboard/providers/services/9router/embed/[...path]
 - ਸਟ੍ਰਿਪ ਇਨਕਮਿੰਗ `cookie` ਅਤੇ `authorization` ਹੈਡਰ ( OmniRoute ਸੈਸ਼ਨ ਦਾ ਕੋਈ ਲੀਕ ਨਹੀਂ)
 - 9Router ਪ੍ਰਮਾਣਿਕਤਾ ਲਈ `Authorization: Bearer {apiKey}` ਇੰਜੈਕਟ ਕਰਦਾ ਹੈ
 - ਜਵਾਬ ਤੋਂ `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` ਦੀਆਂ ਪੱਟੀਆਂ
-- `<base href>` ਨੂੰ ਇੰਜੈਕਟ ਕਰਨ ਅਤੇ ਪੂਰਨ ਮਾਰਗਾਂ ਨੂੰ ਆਮ ਬਣਾਉਣ ਲਈ HTML ਜਵਾਬਾਂ ਨੂੰ ਦੁਬਾਰਾ ਲਿਖਦਾ ਹੈ (`/foo` → `/dashboard/.../embed/foo`)
+- `<base href>` ਨੂੰ ਇੰਜੈਕਟ ਕਰਨ ਅਤੇ ਪੂਰਨ ਮਾਰਗਾਂ ਨੂੰ ਆਮ ਬਣਾਉਣ ਲਈ HTML ਜਵਾਬਾਂ ਨੂੰ ਮੁੜ ਲਿਖਦਾ ਹੈ (`/foo` → `/dashboard/.../embed/foo`)
 
-ਏਮਬੈਡਡ ਡੈਸ਼ਬੋਰਡ ਲਈ WebSocket ਅੱਪਗਰੇਡਾਂ ਨੂੰ ਇੱਕ ਸਮਰਪਿਤ ਪੋਰਟ ਉੱਤੇ ਇੱਕ ਸਾਥੀ ਸਰਵਰ ਦੁਆਰਾ ਸੰਭਾਲਿਆ ਜਾਂਦਾ ਹੈ (ਵੇਖੋ `src/lib/services/embedWsProxy.ts`)।
+ਏਮਬੈਡਡ ਡੈਸ਼ਬੋਰਡ ਲਈ WebSocket ਅੱਪਗਰੇਡਾਂ ਨੂੰ ਇੱਕ ਸਮਰਪਿਤ ਪੋਰਟ ਉੱਤੇ ਇੱਕ ਸਾਥੀ ਸਰਵਰ ਦੁਆਰਾ ਸੰਭਾਲਿਆ ਜਾਂਦਾ ਹੈ (ਵੇਖੋ `src/lib/services/embedWsProxy.ts`)। ਸੁਰੰਗ ਦੇ ਖੁੱਲ੍ਹਣ ਤੋਂ ਪਹਿਲਾਂ ਹਰੇਕ ਅੱਪਗਰੇਡ ਨੂੰ ਅਧਿਕਾਰਿਤ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, HTTP ਏਮਬੇਡ ਰੂਟ ਦੇ ਸਮਾਨ ਨਿਯਮਾਂ ਦੇ ਨਾਲ: ਪੀਅਰ ਨੂੰ ਬਿਨਾਂ ਰਿਵਰਸ-ਪ੍ਰਾਕਸੀ ਫਾਰਵਰਡਿੰਗ ਹੈਡਰ ਦੇ ਲੂਪਬੈਕ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ, ਇੱਕ ਬ੍ਰਾਊਜ਼ਰ `Origin` ਇੱਕ ਡੈਸ਼ਬੋਰਡ ਮੂਲ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` ਲੂਪਬੈਕ ਡਿਫੌਲਟ ਦਾ ਵਿਸਤਾਰ ਕਰਦਾ ਹੈ), ਅਤੇ ਕਾਲਰ ਨੂੰ ਇੱਕ ਡੈਸ਼ਬੋਰਡ ਡਿਸਕੋਪ-ਰਹਿਤ ਲੌਪਬੈਕ ਸ਼ੈਸ਼ਨ ਜਾਂ ਅਨਸਕੋਪ API ਕੀ-ਬੋਰਡ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ।
 
 **ਸੁਰੱਖਿਆ:** ਏਮਬੇਡ ਪ੍ਰੌਕਸੀ ਰੂਟਾਂ ਨੂੰ `LOCAL_ONLY_API_PREFIXES` ਦੇ ਅਧੀਨ ਸ਼੍ਰੇਣੀਬੱਧ ਕੀਤਾ ਗਿਆ ਹੈ ਅਤੇ ਸਿਰਫ ਲੂਪਬੈਕ ਤੋਂ ਪਹੁੰਚਿਆ ਜਾ ਸਕਦਾ ਹੈ। ਇੱਕ ਹਮਲਾਵਰ ਜੋ ਇੱਕ Cloudflare/Ngrok ਸੁਰੰਗ ਦੁਆਰਾ ਇੱਕ JWT ਪ੍ਰਾਪਤ ਕਰਦਾ ਹੈ, ਏਮਬੈਡਡ ਸੇਵਾਵਾਂ ਵਿੱਚ ਪ੍ਰੌਕਸੀ ਨਹੀਂ ਕਰ ਸਕਦਾ ਹੈ।
 

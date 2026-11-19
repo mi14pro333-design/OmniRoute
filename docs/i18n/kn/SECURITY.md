@@ -184,11 +184,11 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ## Docker ಭದ್ರತೆ
 
-- ಪ್ರೊಡಕ್ಷನ್ನಲ್ಲಿ root ಅಲ್ಲದ ಬಳಕೆದಾರರನ್ನು ಬಳಸಿ
-- ರಹಸ್ಯಗಳನ್ನು ಓದಲು-ಮಾತ್ರದ ವಾಲ್ಯೂಮ್ಗಳಾಗಿ ಮೌಂಟ್ ಮಾಡಿ
-- `.env` ಫೈಲ್ಗಳನ್ನು ಎಂದಿಗೂ Docker ಇಮೇಜ್ಗಳಿಗೆ ನಕಲಿಸಬೇಡಿ
+- ಉತ್ಪಾದನೆಯಲ್ಲಿ ರೂಟ್ ಅಲ್ಲದ ಬಳಕೆದಾರರನ್ನು ಬಳಸಿ
+- ರಹಸ್ಯಗಳನ್ನು ಓದಲು-ಮಾತ್ರ ಸಂಪುಟಗಳಾಗಿ ಮೌಂಟ್ ಮಾಡಿ
+- `.env` ಫೈಲ್ಗಳನ್ನು ಎಂದಿಗೂ Docker ಚಿತ್ರಗಳಿಗೆ ನಕಲಿಸಬೇಡಿ
 - ಸೂಕ್ಷ್ಮ ಫೈಲ್ಗಳನ್ನು ಹೊರಗಿಡಲು `.dockerignore` ಬಳಸಿ
-- HTTPS ಹಿಂದೆ ಬಳಸುವಾಗ `AUTH_COOKIE_SECURE=true` ಹೊಂದಿಸಿ
+- HTTPS ಹಿಂದೆ ಇದ್ದಾಗ `AUTH_COOKIE_SECURE=true` ಹೊಂದಿಸಿ
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

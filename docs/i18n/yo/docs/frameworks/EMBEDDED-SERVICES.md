@@ -209,7 +209,7 @@ spawn kan ṣoṣo; ẹni tó pè lẹ́ẹ̀kejì yóò dúró, yóò sì dá i
 
 ## 4. API itọkasi
 
-Gbogbo awọn ipa ọna labẹ `/api/services/` wa**LOCAL_ONLY** (loopback nikan, ofin lile # 17). Awọn ibeere ti kii ṣe loopback gba `403 LOCAL_ONLY` laibikita aami auth.
+Gbogbo awọn ipa ọna labẹ `/api/services/` wa**LOCAL_ONLY** (loopback nikan, ofin lile #17). Awọn ibeere ti kii ṣe loopback gba `403 LOCAL_ONLY` laibikita ami auth.
 
 ### 4.1 9 Awọn aaye ipari olulana (awọn ipa-ọna 11)
 
@@ -236,7 +236,7 @@ Fi sori ẹrọ 9Router lati npm. Ṣẹda `DATA_DIR/services/9router/` pẹlu `
 | `409` | Ti nfi sori ẹrọ tẹlẹ (titiipa tiipa)                   |
 | `500` | npm fi sori ẹrọ kuna — wo `message` fun aṣiṣe ọrẹ      |
 
-**Awọn akọsilẹ:** Nlo `execFile('npm', [...])` — ko si ikarahun, ko si interpolation (ofin lile #13). awọn aṣiṣe EACCES ti wa ni oju bi awọn ifiranṣẹ ọrẹ.
+**Awọn akọsilẹ:** `execFile('npm', [...])` — ko si ikarahun, ko si interpolation (ofin lile #13). awọn aṣiṣe EACCES ti farahan bi awọn ifiranṣẹ ọrẹ.
 
 ---
 
@@ -555,7 +555,7 @@ Aṣoju yii:
 - Awọn ṣiṣan `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` lati idahun
 - Tun awọn idahun HTML si abẹrẹ `<base href>` ati ṣe deede awọn ipa ọna pipe (`/foo` → `/dashboard/.../embed/foo`)
 
-awọn iṣagbega WebSocket fun dasibodu ifibọ ni a mu nipasẹ olupin ẹlẹgbẹ kan lori ibudo iyasọtọ (wo `src/lib/services/embedWsProxy.ts`).
+awọn iṣagbega WebSocket fun dasibodu ifibọ ni a mu nipasẹ olupin ẹlẹgbẹ kan lori ibudo iyasọtọ (wo `src/lib/services/embedWsProxy.ts`). Gbogbo igbesoke ni a fun ni aṣẹ ṣaaju ki oju eefin naa ṣii, pẹlu awọn ofin kanna bi ọna ifibọ HTTP : ẹlẹgbẹ gbọdọ jẹ loopback laisi akọsori itusilẹ-aṣoju, aṣawakiri `Origin` kan gbọdọ jẹ ipilẹṣẹ dasibodu kan (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` fa awọn aiyipada loopback fa), ati pe olupe naa nilo igba dasibodu kan tabi bọtini API iṣakoso- dopin kan ayafi ti iwọle dasibodu.
 
 **Aabo:** Awọn ipa-ọna aṣoju ti a fiwe si jẹ tito lẹtọ labẹ `LOCAL_ONLY_API_PREFIXES` ati pe o le de ọdọ lati loopback nikan. Olukọni ti o gba JWT nipasẹ oju eefin Cloudflare/Ngrok ko le ṣe aṣoju sinu awọn iṣẹ ifibọ.
 

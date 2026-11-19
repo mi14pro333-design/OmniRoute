@@ -42,17 +42,17 @@ Hiermee wordt de applicatie verwijderd en worden **alle gegevens permanent gewis
 
 ## Handmatig verwijderen
 
-### Wereldwijde NPM-installatie
+### NPM Global Install
 
 ```bash
-# Verwijder het globale pakket
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Optioneel) Verwijder de gegevensmap
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Wereldwijde pnpm-installatie
+### pnpm Global Install
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,51 +62,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Stop en verwijder de container
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Verwijder het volume (hiermee worden alle gegevens verwijderd)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Optioneel) Verwijder de image
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Componeren
 
 ```bash
-# Stop en verwijder containers
+# Stop and remove containers
 docker compose down
 
-# Verwijder ook volumes (hiermee worden alle gegevens verwijderd)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Electron-desktopapp
+### Electron Desktop-app
 
 **Windows:**
 
-- Open `Instellingen → Apps → OmniRoute → Verwijderen`
-- Of voer het NSIS-verwijderprogramma uit vanuit de installatiemap
+- Open `Settings → Apps → OmniRoute → Uninstall`
+- Of voer het NSIS verwijderingsprogramma uit vanuit de installatiemap
 
 **macOS:**
 
-- Sleep `OmniRoute.app` van `/Applications` naar de prullenmand
-- Verwijder gegevens: `rm -rf ~/Library/Application Support/omniroute`
+- Sleep `OmniRoute.app` van `/Applications` naar de prullenbak
+- Gegevens verwijderen: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
-- Verwijder het AppImage-bestand
-- Verwijder gegevens: `rm -rf ~/.omniroute`
+- Verwijder het AppImage bestand
+- Gegevens verwijderen: `rm -rf ~/.omniroute`
 
-### Installatie vanuit de broncode (git clone)
+### Broninstallatie (git-kloon)
 
 ```bash
-# Verwijder de gekloonde map
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Optioneel) Verwijder de gegevensmap
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

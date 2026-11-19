@@ -448,36 +448,36 @@ tingnan ang [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Mga Isyu sa Docker
+## Docker Mga Isyu
 
-### Docker IPv6 / Pag-reset ng Koneksyon
+### Docker IPv6 / I-reset ang Koneksyon
 
 <a name="docker-ipv6"></a>
 
-**Mga Sintomas:** Nagbabalik ang `curl http://localhost:20128/v1/models` ng `curl: (56) Recv failure: Connection reset by peer`. Gumagana ang dashboard at mga endpoint na hindi nangangailangan ng authentication, ngunit pumapalya ang mga authenticated endpoint — mukhang problema ito sa authentication ngunit hindi.
+**Sintomas:** ibinabalik ng `curl http://localhost:20128/v1/models` `curl: (56) Recv failure: Connection reset by peer`. Gumagana ang dashboard at hindi na-authenticate na mga endpoint, ngunit nabigo ang mga na-authenticate na endpoint — mukhang isang problema sa pagpapatunay ngunit hindi.
 
-**Sanhi:** Nagpa-publish ang `docker run -p 20128:20128` sa parehong `0.0.0.0` (IPv4) at `::` (IPv6), ngunit sa IPv4 lamang nakikinig ang process sa loob ng container. Sa mga host kung saan unang nagre-resolve ang `localhost` sa `::1`, napupunta ang koneksyon sa naka-publish na IPv6 port na walang listener sa likod nito → nare-reset ang koneksyon.
+**Dahilan:** `docker run -p 20128:20128` ay naglalathala sa parehong `0.0.0.0` (IPv4) at `::` (IPv6), ngunit ang proseso sa loob ng container ay nakikinig lamang sa IPv4. Sa mga host kung saan `localhost` ay nagre-resolve muna sa `::1`, ang koneksyon ay dumarating sa IPv6 na na-publish na port na walang tagapakinig sa likod nito → connection reset.
 
-**Ayos:**
+**Ayusin:**
 
-1. **Mabilisang diagnostic:** Patakbuhin ang `curl -4 http://localhost:20128/v1/models`. Kung gumagana ito gamit ang `-4` ngunit pumapalya kapag wala iyon, mayroon kang IPv6 bind mismatch.
-2. **Permanenteng ayos:** Tahasang mag-bind sa IPv4 sa pamamagitan ng paggamit ng `-p 127.0.0.1:20128:20128` sa iyong `docker run` command:
+1. **Mabilis na diagnostic:** Patakbuhin `curl -4 http://localhost:20128/v1/models`. Kung gumagana ito sa `-4` ngunit nabigo nang wala, mayroon kang IPv6 bind mismatch.
+2. **Permanenteng pag-aayos:** Ibigkis sa IPv4 nang tahasan sa pamamagitan ng paggamit `-p 127.0.0.1:20128:20128` sa iyong `docker run` command:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Pinipilit nito ang IPv4 bind at iniiwasan din nitong ilantad ang proxy sa lahat ng interface ng host.
+   Pinipilit nito ang IPv4 bind at iniiwasan din na ilantad ang proxy sa lahat ng interface ng host.
 
 ---
 
-### Ipinapakita ng CLI Tool na Hindi Ito Naka-install
+### CLI Tool Shows Hindi Naka-install
 
-1. Suriin ang mga runtime field: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Para sa portable mode: gamitin ang image target na `runner-cli` (may kasamang mga CLI)
-3. Para sa host mount mode: itakda ang `CLI_EXTRA_PATHS` at i-mount ang host bin directory bilang read-only
-4. Kung `installed=true` at `runnable=false`: nakita ang binary ngunit pumalya ito sa healthcheck
+1. Suriin ang mga field ng runtime: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Para sa portable mode: gamitin ang target ng imahe `runner-cli` (naka-bundle na CLIs)
+3. Para sa host mount mode: itakda ang `CLI_EXTRA_PATHS` at mount host bin directory bilang read-only
+4. Kung nakita `installed=true` at `runnable=false`: binary ngunit nabigo ang pagsusuri sa kalusugan
 
-### Mabilisang Pag-validate ng Runtime
+### Mabilis na Runtime Validation
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

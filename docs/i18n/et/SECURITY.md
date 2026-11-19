@@ -182,13 +182,13 @@ Server lükkab aktiivselt tagasi teadaolevalt nõrgad väärtused, nagu `changem
 
 ---
 
-## Dockeri turvalisus
+## Docker Turvalisus
 
-- Kasutage tootmiskeskkonnas mitte-root-kasutajat
-- Haakige saladused kirjutuskaitstud andmekandjatena
-- Ärge kunagi kopeerige `.env`-faile Dockeri tõmmistesse
-- Kasutage tundlike failide välistamiseks faili `.dockerignore`
-- HTTPS-i taga töötades määrake `AUTH_COOKIE_SECURE=true`
+- Kasutage tootmises mitte-juurkasutajat
+- Ühendage saladused kirjutuskaitstud köitena
+- Ärge kunagi kopeerige `.env` faile Docker -piltideks
+- Tundlike failide välistamiseks kasutage `.dockerignore`
+- Määra `AUTH_COOKIE_SECURE=true`, kui on HTTPS taga
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

@@ -211,7 +211,7 @@
 
 ## 4. API सन्दर्भ
 
-`/api/services/` अन्तर्गत सबै मार्गहरू छन्**LOCAL_ONLY** (लुपब्याक मात्र, कडा नियम #17)। गैर-लूपब्याक अनुरोधहरूले प्रमाणिकरण टोकनको पर्वाह नगरी `403 LOCAL_ONLY` प्राप्त गर्दछ।
+`/api/services/` अन्तर्गत सबै मार्गहरू छन्**LOCAL_ONLY** (लूपब्याक मात्र, कडा नियम #17)। गैर-लूपब्याक अनुरोधहरूले प्रमाणीकरण टोकनको पर्वाह नगरी `403 LOCAL_ONLY` प्राप्त गर्दछ।
 
 ### ४.१ ९ राउटर अन्तिम बिन्दुहरू (११ मार्गहरू)
 
@@ -433,7 +433,7 @@ CLIProxyAPI सँग 9Router माइनस `rotate-key`, plus `accounts`, `pr
 | `POST` | `/api/services/cliproxy/restart`    | CLIProxyAPI पुन: सुरु गर्नुहोस्        |
 | `POST` | `/api/services/cliproxy/update`     | नयाँ संस्करणमा अद्यावधिक गर्नुहोस्     |
 | `GET`  | `/api/services/cliproxy/status`     | लाइभ + DB स्थिति ( `apiKeyMasked` छैन) |
-| `POST` | `/api/services/cliproxy/auto-start` | स्वतः सुरु हुने टगल गर्नुहोस्          |
+| `POST` | `/api/services/cliproxy/auto-start` | स्वत: सुरु टगल गर्नुहोस्               |
 
 साझा `GET /api/services/{name}/logs` अन्त्य बिन्दु (हेर्नुहोस् §4.1) सबै चार सेवाहरूको लागि `[name]` गतिशील खण्ड प्रयोग गरेर काम गर्दछ।
 
@@ -451,7 +451,7 @@ Mux को API सतहमा CLIProxyAPI — no `rotate-key` मार्ग �
 | `POST` | `/api/services/mux/restart`    | Mux पुन: सुरु गर्नुहोस्                     |
 | `POST` | `/api/services/mux/update`     | नयाँ npm संस्करणमा अद्यावधिक गर्नुहोस्      |
 | `GET`  | `/api/services/mux/status`     | लाइभ + DB स्थिति                            |
-| `POST` | `/api/services/mux/auto-start` | स्वतः सुरु हुने टगल गर्नुहोस्               |
+| `POST` | `/api/services/mux/auto-start` | स्वत: सुरु टगल गर्नुहोस्                    |
 
 ---
 
@@ -467,7 +467,7 @@ Bifrost एक Go AI-गेटवे रिले ब्याकएन्ड (`
 | `POST` | `/api/services/bifrost/restart`    | Bifrost पुन: सुरु गर्नुहोस्                            |
 | `POST` | `/api/services/bifrost/update`     | नयाँ संस्करणमा अद्यावधिक गर्नुहोस्                     |
 | `GET`  | `/api/services/bifrost/status`     | लाइभ + DB स्थिति                                       |
-| `POST` | `/api/services/bifrost/auto-start` | स्वतः सुरु हुने टगल गर्नुहोस्                          |
+| `POST` | `/api/services/bifrost/auto-start` | स्वत: सुरु टगल गर्नुहोस्                               |
 | `GET`  | `/api/services/bifrost/logs`       | SSE लग टेल (साझा `[name]/logs` गतिशील मार्ग मार्फत)    |
 
 **रूटिङ तार:** जब `BIFROST_BASE_URL` सेट गरिएको छैन र निरीक्षण गरिएको Bifrost उदाहरण चलिरहेको छ, `getBifrostRoutingConfig()` ( `routingBackend.ts` मा) ले स्वचालित रूपमा `http://127.0.0.1:{port}` रिले आधार URL रूपमा प्रयोग गर्दछ। स्पष्ट `BIFROST_BASE_URL` env ले सधैं प्राथमिकता लिन्छ।
@@ -490,10 +490,10 @@ open-wa (`@open-wa/wa-automate`) ले WhatsApp वेबलाई स्वच
 | `POST` | `/api/services/openwa/restart`    | ओपन-वा पुन: सुरु गर्नुहोस्                                 |
 | `POST` | `/api/services/openwa/update`     | नयाँ संस्करणमा अद्यावधिक गर्नुहोस्                         |
 | `GET`  | `/api/services/openwa/status`     | लाइभ + DB स्थिति                                           |
-| `POST` | `/api/services/openwa/auto-start` | स्वतः सुरु हुने टगल गर्नुहोस्                              |
+| `POST` | `/api/services/openwa/auto-start` | स्वत: सुरु टगल गर्नुहोस्                                   |
 | `GET`  | `/api/services/openwa/logs`       | SSE लग टेल (साझा `[name]/logs` गतिशील मार्ग मार्फत)        |
 
-**API कुञ्जी:** `WA_KEY` — ओपन-वाको जेनेरिक `WA_*` -prefixed env ओभरराइडको रूपमा इन्जेक्ट गरिएकोले यसलाई `--key`/`-k` CLI विकल्प (`dist/cli/setup.js::envArgs()`, स्थापित 4.76.0 प्याकेज विरुद्ध प्रमाणित) मा नक्सा बनाउँछ। `generateServiceApiKey()` द्वारा उत्पन्न गर्दा उपसर्ग `ow_` । open-wa ले `key`/`api_key` HTTP हेडरबाट कुञ्जी फिर्ता पढ्छ ( `Authorization: Bearer` होइन); `/api-docs*` चेकबाट स्पष्ट रूपमा छुट दिइएको छ (`setupAuthenticationLayer` मा `dist/cli/server.js`), त्यसैले स्वास्थ्य जाँचलाई कुनै प्रमाणीकरण हेडर आवश्यक पर्दैन।
+**API कुञ्जी:** `WA_KEY` — ओपन-वाको जेनेरिक `WA_*` -prefixed env ओभरराइडको रूपमा इन्जेक्ट गरिएकोले यसलाई `--key`/`-k` CLI विकल्प (`dist/cli/setup.js::envArgs()`, स्थापित 4.76.0 प्याकेज विरुद्ध प्रमाणित) मा नक्सा बनाउँछ। `generateServiceApiKey()` द्वारा उत्पन्न गर्दा उपसर्ग `ow_` । open-wa ले `key`/`api_key` HTTP हेडरबाट कुञ्जी फिर्ता पढ्छ ( `Authorization: Bearer` होइन); `/api-docs*` चेकबाट स्पष्ट रूपमा छुट दिइएको छ ( `dist/cli/server.js` मा`setupAuthenticationLayer` ), त्यसैले स्वास्थ्य जाँचलाई कुनै प्रमाणीकरण हेडरको आवश्यकता पर्दैन।
 
 **जोडा बनाउँदै:** open-wa अनौपचारिक छ र WhatsApp — सँग असंबद्ध छ र जडान गरिएको नम्बरले WhatsApp को आफ्नै स्वचालन पत्ता लगाउन प्रतिबन्ध जोखिम बोक्छ। पहिलो सुरुमा, पेरिङ QR कोड stdout मा छापिएको छ र अवस्थित Logs panel/SSE स्ट्रिम — मार्फत देखा परेको छ त्यहाँ यस एकीकरणमा अझै कुनै समर्पित QR-छवि अन्तिम बिन्दु छैन।
 
@@ -511,7 +511,7 @@ LLMLingua एक प्रोम्प्ट-कम्प्रेसन सा�
 | `POST` | `/api/services/llmlingua/restart`              | साइडकार पुन: सुरु गर्नुहोस्                                                               |
 | `POST` | `/api/services/llmlingua/update`               | नयाँ प्याकेज संस्करणमा अद्यावधिक गर्नुहोस्                                                |
 | `GET`  | `/api/services/llmlingua/status`               | लाइभ + DB स्थिति                                                                          |
-| `POST` | `/api/services/llmlingua/auto-start`           | स्वतः सुरु हुने टगल गर्नुहोस्                                                             |
+| `POST` | `/api/services/llmlingua/auto-start`           | स्वत: सुरु टगल गर्नुहोस्                                                                  |
 | `POST` | `/api/services/llmlingua/auto-restart-adopted` | अपनाइएको (पूर्व-अवस्थित) उदाहरणको स्वतः पुन: सुरु गर्न टगल गर्नुहोस्                      |
 | `GET`  | `/api/services/llmlingua/logs`                 | SSE लग टेल (साझा `[name]/logs` गतिशील मार्ग मार्फत)                                       |
 
@@ -533,7 +533,7 @@ sing-box मा Mux — no `rotate-key` मार्ग, API कुञ्जी 
 | `POST` | `/api/services/singbox/restart`              | गायन-बक्स पुन: सुरु गर्नुहोस्                                                |
 | `POST` | `/api/services/singbox/update`               | Re-verify/reinstall पिन गरिएको रिलीज                                         |
 | `GET`  | `/api/services/singbox/status`               | लाइभ + DB स्थिति                                                             |
-| `POST` | `/api/services/singbox/auto-start`           | स्वतः सुरु हुने टगल गर्नुहोस्                                                |
+| `POST` | `/api/services/singbox/auto-start`           | स्वत: सुरु टगल गर्नुहोस्                                                     |
 | `POST` | `/api/services/singbox/auto-restart-adopted` | अपनाइएको (पूर्व-अवस्थित) प्रक्रियाको लागि स्वतः पुन: सुरु गर्न टगल गर्नुहोस् |
 | `GET`  | `/api/services/singbox/logs`                 | SSE लग टेल (साझा `[name]/logs` गतिशील मार्ग मार्फत)                          |
 
@@ -557,7 +557,7 @@ GET|POST|... /dashboard/providers/services/9router/embed/[...path]
 - स्ट्रिपहरू `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` प्रतिक्रियाबाट
 - `<base href>` इन्जेक्सन गर्न र निरपेक्ष मार्गहरू सामान्य बनाउन HTML प्रतिक्रियाहरू पुन: लेख्छ (`/foo` → `/dashboard/.../embed/foo`)
 
-एम्बेडेड ड्यासबोर्डका लागिWebSocket अपग्रेडहरू एक समर्पित पोर्टमा साथी सर्भरद्वारा ह्यान्डल गरिन्छ ( `src/lib/services/embedWsProxy.ts` हेर्नुहोस्)।
+एम्बेडेड ड्यासबोर्डका लागिWebSocket अपग्रेडहरू एक समर्पित पोर्टमा साथी सर्भरद्वारा ह्यान्डल गरिन्छ ( `src/lib/services/embedWsProxy.ts` हेर्नुहोस्)। सुरुङ खोल्नु अघि प्रत्येक स्तरवृद्धिलाई HTTP इम्बेड मार्गको समान नियमहरूका साथ अधिकार दिइएको छ: पियर कुनै रिभर्स-प्रोक्सी फर्वार्डिङ हेडर बिना लुपब्याक हुनुपर्छ, ब्राउजर `Origin` ड्यासबोर्ड मूल हुनुपर्छ (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` लुपब्याक पूर्वनिर्धारितहरू विस्तार गर्दछ), र कलरलाई ड्यासबोर्ड ड्यासबोर्ड discop रहित loshboard सत्र वा अनस्कप API loggin गर्न मिल्छ।
 
 **सुरक्षा:** इम्बेड प्रोक्सी मार्गहरू `LOCAL_ONLY_API_PREFIXES` अन्तर्गत वर्गीकृत छन् र लुपब्याकबाट मात्र पुग्न सकिन्छ। Cloudflare/Ngrok सुरुङ मार्फत JWT प्राप्त गर्ने आक्रमणकारीले इम्बेडेड सेवाहरूमा प्रोक्सी गर्न सक्दैन।
 

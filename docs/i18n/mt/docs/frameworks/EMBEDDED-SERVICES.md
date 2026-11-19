@@ -272,7 +272,7 @@ Ibda 9Router. Jirreġistra superviżur jekk mhux diġà reġistrat, imbagħad i�
 
 #### `POST /api/services/9router/stop`
 
-Waqqaf 9Router bil-grazzja. Jibgħat SIGTERM, jistenna 15 s, imbagħad SIGKILL jekk għadu ħaj. Idempotenti meta diġà twaqqaf.
+Waqqaf 9Router bil-grazzja. Jibgħat SIGTERM, jistenna 15 s, imbagħad SIGKILL jekk għadu ħaj. Idempottenti meta diġà twaqqaf.
 
 **Korp tat-talba:** xejn
 
@@ -513,7 +513,7 @@ LLMLingua huwa tgeżwir ta 'sidecar b'kompressjoni fil-pront `@atjsh/llmlingua-2
 | `POST` | `/api/services/llmlingua/auto-restart-adopted` | Aqleb il-bidu mill-ġdid awtomatiku ta' istanza adottata (preeżistenti).         |
 | `GET`  | `/api/services/llmlingua/logs`                 | SSE log tail (permezz ta' rotta dinamika `[name]/logs` kondiviża)               |
 
-**Kuntratt sidecar:** l-iskrittura tas-server jesponi `GET /health` ( — instantanju ma jistenniex fuq il-mudell) u `POST /compress` (`{ text, rate }` → `{ text, compressed, ratio }`). Il-mudell jgħabbi għażżien fuq l-ewwel sejħa `/compress`.
+**Kuntratt sidecar:** l-iskrittura tas-server jesponi `GET /health` ( — instantanju ma jistenniex fuq il-mudell) u `POST /compress` (`{ text, rate }` → `{ text, compressed, ratio }`). Il-mudell jgħabbi bil-għażżen fuq l-ewwel sejħa `/compress`.
 
 **Wajer tal-kompressjoni:** `open-sse/services/compression/engines/llmlingua/index.ts`'s `httpSidecarBackend` isejjaħ `LLMLINGUA_BASE_URL` (default `http://127.0.0.1:20135`) u jaċċetta biss ir-rispons tas-sidecar meta jkun strettament iqsar mill-input; kwalunkwe falliment (mhux qed jaħdem, timeout, rispons no-op) jaqa' lura għall-backend worker-thread fil-proċess (`./worker.ts`).
 
@@ -555,7 +555,7 @@ Dan il-prokura:
 - Strixxi `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` mir-risposta
 - Jikteb mill-ġdid tweġibiet HTML biex jinjetta `<base href>` u jinnormalizza mogħdijiet assoluti (`/foo` → `/dashboard/.../embed/foo`)
 
-L-aġġornamenti ta'WebSocket għad-dashboard inkorporat huma mmaniġġjati minn server anëillari fuq port iddedikat (ara `src/lib/services/embedWsProxy.ts`).
+L-aġġornamenti ta'WebSocket għad-dashboard inkorporat huma mmaniġġjati minn server anëillari fuq port iddedikat (ara `src/lib/services/embedWsProxy.ts`). Kull titjib huwa awtorizzat qabel tiftaħ il-mina, bl-istess regoli bħar-rotta HTTP embed: il-peer għandu jkun loopback mingħajr l-ebda header reverse-proxy forwarding, browser `Origin` għandu jkun oriġini dashboard (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` jestendu l-loopback defaults), u min iċempel jeħtieġ sessjoni dashboard jew ġestjoni mingħajr skop API key login dashboard.
 
 **Sigurtà:** Ir-rotot proxy embed huma kklassifikati taħt `LOCAL_ONLY_API_PREFIXES` u jistgħu jintlaħqu biss minn loopback. Attakkant li jikseb JWT permezz ta' mina Cloudflare/Ngrok ma jistax proxy f'servizzi inkorporati.
 

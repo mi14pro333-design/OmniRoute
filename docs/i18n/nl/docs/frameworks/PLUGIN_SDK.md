@@ -4,7 +4,7 @@
 
 ---
 
-## Snel aan de slag
+## Snel beginnen
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -74,15 +74,18 @@ onRequest: (ctx) => {
 
 ## Plugincontext (`PluginContext`)
 
-| Veld        | Type                      | Beschrijving                    |
-| ----------- | ------------------------- | ------------------------------- |
-| `requestId` | `string`                  | Unieke aanvraag-ID              |
-| `model`     | `string`                  | Naam van het aangevraagde model |
-| `provider`  | `string`                  | ID van de doelprovider          |
-| `body`      | `Record<string, unknown>` | Aanvraagbody                    |
-| `headers`   | `Record<string, string>`  | Aanvraagheaders                 |
-| `metadata`  | `Record<string, unknown>` | Wijzigbare metadata             |
-| `timestamp` | `number`                  | Tijdstempel van de aanvraag     |
+| Veld         | Type                      | Beschrijving                            |
+| ------------ | ------------------------- | --------------------------------------- |
+| `requestId`  | `string`                  | Unieke aanvraag-ID                      |
+| `model`      | `string`                  | Gevraagde modelnaam                     |
+| `provider`   | `string`                  | Doelaanbieder ID                        |
+| `body`       | `Record<string, unknown>` | Lichaam aanvragen                       |
+| `headers`    | `Record<string, string>`  | Verzoekheaders (zie opmerking)          |
+| `metadata`   | `Record<string, unknown>` | Veranderlijke metagegevens              |
+| `timestamp`  | `number`                  | Tijdstempel aanvragen                   |
+| `apiKeyInfo` | `object` (optioneel)      | API sleutelmetagegevens (zie opmerking) |
+
+De context bevat nooit de inloggegevens van de client: de `authorization`, `x-api-key`, `proxy-authorization` en `cookie` headers worden verwijderd (elke hoofdletter) en `apiKeyInfo` behoudt de metagegevens van de sleutel (zoals `id`, `name` en `scopes`) maar niet de sleutelwaarde of de vingerafdruk ervan (`redactPluginContext()` in `src/lib/plugins/hooks.ts`). Dit geldt voor `onRequest`, `onResponse` en `onError`.
 
 ## Manifest (`plugin.json`)
 
@@ -138,19 +141,18 @@ Of als eenvoudige booleaanse waarden (standaardprioriteit 100):
 }
 ```
 
-## Machtigingssysteem
+## Toestemmingssysteem
 
-Plugins worden uitgevoerd in een sandbox-VM-context. Toegang tot externe bronnen vereist expliciete machtigingen:
+Plug-ins zijn** niet in de sandbox** . Elke actieve plug-in wordt uitgevoerd als een afzonderlijk, gewoon Node.js onderliggend proces (`loadPlugin()` in `src/lib/plugins/loader.ts`) onder dezelfde besturingssysteemgebruiker als OmniRoute, zonder VM context en zonder Node.js -machtigingsvlaggen. Plug-incode kan `node:fs`, `node:child_process`, `fetch` en elke andere Node.js API gebruiken: het kan elk bestand lezen en schrijven dat de OmniRoute gebruiker kan (inclusief de gegevensmap), programma's uitvoeren en het netwerk bereiken.
 
-| Machtiging   | Verleent toegang tot                                         |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | Alleen-lezenproxy voor `process.env`                         |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+De `requires.permissions` van het manifest accepteert `network`, `file-read`, `file-write`, `env` en `exec`, maar vandaag heeft alleen `env` effect tijdens runtime:
 
-Zonder een machtiging zijn de bijbehorende globale variabelen simpelweg niet beschikbaar in de sandbox.
+| Toestemming                                  | Effect vandaag                                                                                                                                                                                                                        |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | Het plug-inproces ontvangt ook `PORT`, `HOSTNAME`, `TZ` en `TMPDIR`. Zonder dit ontvangt het alleen `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` en `PLUGIN_NAME` (plus `SystemRoot` en `windir` op Windows). |
+| `network`, `file-read`, `file-write`, `exec` | Geen. Het zijn slechts aangiften: niets wordt geblokkeerd als ze ontbreken.                                                                                                                                                           |
+
+Het installeren van een plug-in is hetzelfde als het installeren van elk ander programma op de host. Installeer alleen plug-ins waarvan u de bron vertrouwt.
 
 ## Configuratieschema
 
@@ -194,7 +196,7 @@ Configuratiewaarden worden opgeslagen in de database en zijn toegankelijk via de
 
 ## Voorbeelden
 
-### Verzoeklogger
+### Logger aanvragen
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -207,7 +209,7 @@ export default definePlugin({
 });
 ```
 
-### Frequentiebegrenzer
+### Tariefbegrenzer
 
 ```ts
 import { definePlugin, blockRequest } from "omniroute/plugins/sdk";
@@ -218,9 +220,9 @@ export default definePlugin({
   name: "rate-limiter",
   priority: 10,
   onRequest: async (ctx) => {
-    const key = ctx.headers["x-api-key"] || "anonymous";
+    const key = ctx.apiKeyInfo?.id || "anonymous";
     const now = Date.now();
-    const window = 60000; // 1 minuut
+    const window = 60000; // 1 minute
     const maxRequests = 100;
 
     const timestamps = (requests.get(key) || []).filter((t) => t > now - window);
@@ -234,7 +236,7 @@ export default definePlugin({
 });
 ```
 
-### Responstransformator
+### Reactietransformator
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";

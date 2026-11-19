@@ -460,36 +460,36 @@ finns i [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Docker-problem
+## Docker frågor
 
-### Docker IPv6/återställd anslutning
+### Docker IPv6 / Anslutningsåterställning
 
 <a name="docker-ipv6"></a>
 
-**Symptom:** `curl http://localhost:20128/v1/models` returnerar `curl: (56) Recv failure: Connection reset by peer`. Kontrollpanelen och oautentiserade slutpunkter fungerar, men autentiserade slutpunkter misslyckas – det ser ut som ett autentiseringsproblem, men är inte det.
+**Symtom:** `curl http://localhost:20128/v1/models` returnerar `curl: (56) Recv failure: Connection reset by peer`. Dashboard och oautentiserade slutpunkter fungerar, men autentiserade slutpunkter misslyckas — det ser ut som ett autentiseringsproblem men är det inte.
 
-**Orsak:** `docker run -p 20128:20128` publicerar på både `0.0.0.0` (IPv4) och `::` (IPv6), men processen i containern lyssnar endast på IPv4. På värdar där `localhost` först matchas mot `::1` hamnar anslutningen på den publicerade IPv6-porten utan någon bakomliggande lyssnare → anslutningen återställs.
+**Orsaka:** `docker run -p 20128:20128` publicerar på både `0.0.0.0` (IPv4) och `::` (IPv6), men processen inuti behållaren lyssnar endast på IPv4. På värdar där `localhost` löser sig till `::1` först, landar anslutningen på den publicerade IPv6 porten utan någon lyssnare bakom sig. → -anslutningen återställs.
 
-**Åtgärd:**
+**Fixera:**
 
-1. **Snabbdiagnostik:** Kör `curl -4 http://localhost:20128/v1/models`. Om det fungerar med `-4` men misslyckas utan, har du en konflikt i IPv6-bindningen.
-2. **Permanent åtgärd:** Bind uttryckligen till IPv4 genom att använda `-p 127.0.0.1:20128:20128` i ditt `docker run`-kommando:
+1. **Snabb diagnostik:** Kör `curl -4 http://localhost:20128/v1/models`. Om det fungerar med `-4` men misslyckas utan, har du en IPv6 bindningsfelmatchning.
+2. **Permanent fix:** Bind till IPv4 uttryckligen genom att använda `-p 127.0.0.1:20128:20128` i ditt `docker run` kommando:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Detta tvingar fram IPv4-bindning och förhindrar dessutom att proxyn exponeras på värdens alla nätverksgränssnitt.
+   Detta tvingar fram IPv4 bindningen och undviker även att exponera proxyn på alla värdgränssnitt.
 
 ---
 
-### CLI-verktyget visas som ej installerat
+### CLI -verktyget visar inte installerat
 
-1. Kontrollera exekveringsmiljöns fält: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. För portabelt läge: använd avbildningsmålet `runner-cli` (CLI-verktyg ingår)
-3. För värdmonteringsläge: ange `CLI_EXTRA_PATHS` och montera värdens binärkatalog skrivskyddad
-4. Om `installed=true` och `runnable=false`: binärfilen hittades men hälsokontrollen misslyckades
+1. Kontrollera körtidsfält: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. För portabelt läge: använd bildmål `runner-cli` (buntad CLIs)
+3. För värdmonteringsläge: ställ in `CLI_EXTRA_PATHS` och montera host bin-katalogen som skrivskyddad
+4. Om `installed=true` och `runnable=false`: binär hittades men misslyckades med hälsokontrollen
 
-### Snabb validering av exekveringsmiljön
+### Snabb körtidsvalidering
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

@@ -4,7 +4,7 @@
 
 ---
 
-## Bidu Rapidu
+## Bidu malajr
 
 ```ts
 import { definePlugin } from "omniroute/plugins/sdk";
@@ -72,17 +72,20 @@ onRequest: (ctx) => {
 };
 ```
 
-## Kuntest tal-Plugin (`PluginContext`)
+## Plugin Context (`PluginContext`)
 
-| Kamp        | Tip                       | Deskrizzjoni                    |
-| ----------- | ------------------------- | ------------------------------- |
-| `requestId` | `string`                  | Identifikatur uniku tat-talba   |
-| `model`     | `string`                  | Isem tal-mudell mitlub          |
-| `provider`  | `string`                  | ID tal-fornitur fil-mira        |
-| `body`      | `Record<string, unknown>` | Korp tat-talba                  |
-| `headers`   | `Record<string, string>`  | Headers tat-talba               |
-| `metadata`  | `Record<string, unknown>` | Metadata li tista' tiġi mibdula |
-| `timestamp` | `number`                  | Timestamp tat-talba             |
+| Qasam        | Tip                          | Deskrizzjoni                          |
+| ------------ | ---------------------------- | ------------------------------------- |
+| `requestId`  | `string`                     | Identifikatur uniku tat-talba         |
+| `model`      | `string`                     | Isem tal-mudell mitlub                |
+| `provider`   | `string`                     | Target provider ID                    |
+| `body`       | `Record<string, unknown>`    | Korp talba                            |
+| `headers`    | `Record<string, string>`     | Intestaturi tat-talba (ara n-nota)    |
+| `metadata`   | `Record<string, unknown>`    | Metadata mutevoli                     |
+| `timestamp`  | `number`                     | Itlob it-timbru taż-żmien             |
+| `apiKeyInfo` | `object` (mhux obbligatorju) | metadata taċ-ċavetta API (ara n-nota) |
+
+Il-kuntest qatt ma jġorr il-kredenzjali tal-klijent: l-intestaturi `authorization`, `x-api-key`, `proxy-authorization` u `cookie` jitneħħew (kwalunkwe casing), u `apiKeyInfo` iżomm il-metadejta taċ-ċavetta (bħal `id`, `name` u `scopes`) iżda mhux il-valur taċ-ċavetta jew il-marki tas-swaba tagħha (`redactPluginContext()` in `src/lib/plugins/hooks.ts`). Dan japplika għal `onRequest`, `onResponse` u `onError`.
 
 ## Manifest (`plugin.json`)
 
@@ -138,19 +141,18 @@ Jew bħala valuri boolean sempliċi (prijorità predefinita 100):
 }
 ```
 
-## Sistema tal-Permessi
+## Sistema ta' Permess
 
-Il-plugins jaħdmu f’kuntest ta’ VM iżolat. L-aċċess għal riżorsi esterni jeħtieġ permessi espliċiti:
+Plugins huma** mhux sandboxed** . Kull plugin attiv jaħdem bħala proċess Node.js child separat u ordinarju (`loadPlugin()` `src/lib/plugins/loader.ts`) taħt l-istess utent tas-sistema operattiva bħal OmniRoute, mingħajr l-ebda kuntest VM u l-ebda bnadar ta 'permess Node.js. Il-kodiċi tal-plugin jista 'juża `node:fs`, `node:child_process`, `fetch` u kull Node.js API ieħor : jista' jaqra u jikteb kwalunkwe fajl li l-utent OmniRoute jista '(inkluż id-direttorju tad-dejta), iħaddem programmi u jilħaq in-netwerk.
 
-| Permess      | Jagħti aċċess għal                                           |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | Proxy ta’ `process.env` li jinqara biss                      |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+`requires.permissions` tal-manifest jaċċetta `network`, `file-read`, `file-write`, `env` u `exec`, iżda llum `env` biss għandu effett waqt ir-runtime:
 
-Mingħajr permess, il-globals korrispondenti sempliċement ma jkunux disponibbli fis-sandbox.
+| Permess                                      | Effett illum                                                                                                                                                                                                                                  |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | Il-proċess tal-plugin jirċievi wkoll `PORT`, `HOSTNAME`, `TZ` u `TMPDIR`. Mingħajrha, tirċievi biss `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` and `PLUGIN_NAME` (flimkien ma `SystemRoot` u `windir` fuq Windows). |
+| `network`, `file-read`, `file-write`, `exec` | Xejn. Huma dikjarazzjonijiet biss: xejn ma jkun imblukkat meta jkunu neqsin.                                                                                                                                                                  |
+
+L-installazzjoni ta 'plugin hija bħall-installazzjoni ta' kwalunkwe programm ieħor fuq il-host. Installa biss plugins li s-sors tagħhom tafda.
 
 ## Skema tal-Konfigurazzjoni
 

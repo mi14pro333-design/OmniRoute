@@ -67,23 +67,23 @@
 
 <br/>
 
-## 📈 Gateway kasvaa jatkuvasti
+## 📈 Gateway jatkaa kasvuaan
 
 <div align="center">
 
-|                                     |        v3.8.50         | **v3.8.51** |      `v3.8.55+`       |
-| ----------------------------------- | :--------------------: | :---------: | :-------------------: |
-| 🌐 Palveluntarjoajat                |          352           |   **358**   |          394          |
-| 🧠 Yksilölliset chat-mallitunnukset |          1320          |  **1374**   |         1491          |
-| 🖼️ Modaliteettisilta                | 🆕 näkö + ääni + video |      ✓      |           ✓           |
-| 📡 Radarin ilmaisluettelo           |  🆕 käyttöön otettava  |      ✓      |           ✓           |
-| ⚖️ Kiintiöt huomioiva ajoitus       |     🆕 Quota-Share     |      ✓      |           ✓           |
-| 📊 Kiintiötelemetria                |   🆕 reaaliaikainen    |      ✓      |           ✓           |
-| 🧰 Headless-tila                    |           —            |      —      | 🆕 `serve --headless` |
-| 🛤️ LTS-julkaisuinfrastruktuuri      |           —            |      —      |  🆕 julkaisukanavat   |
-| 🔎 Mallien etsintä-API              |           —            |      —      | 🆕 `/v1/models/query` |
+|                                  |          v3.8.50          | **v3.8.51** |      `v3.8.55+`       |
+| -------------------------------- | :-----------------------: | :---------: | :-------------------: |
+| 🌐 Providers                     |            352            |   **358**   |          394          |
+| 🧠 Ainutlaatuinen chat-malli IDs |           1320            |  **1374**   |         1491          |
+| 🖼️ Modality Bridge               | 🆕 vision + audio + video |      ✓      |           ✓           |
+| 📡 Radar ilmainen luettelo       |         🆕 opt-in         |      ✓      |           ✓           |
+| ⚖️ Kiintiötietoinen aikataulutus |      🆕 Quota-Share       |      ✓      |           ✓           |
+| 📊 Quota telemetria              |         🆕 livenä         |      ✓      |           ✓           |
+| 🧰 Headless-tila                 |             —             |      —      | 🆕 `serve --headless` |
+| 🛤️ LTS rail infra                |             —             |      —      |  🆕 julkaisukanavat   |
+| 🔎 Mallin löytäminen API         |             —             |      —      | 🆕 `/v1/models/query` |
 
-**→ [Roadmap](ROADMAP.md) — kulkemassa kohti `v3.9.0 LTS` -julkaisua**
+**→ [Roadmap](ROADMAP.md) — ratsastaa raiteella `v3.9.0 LTS`:hen**
 
 </div>
 
@@ -91,55 +91,50 @@
 
 ## 🧩 Saatavilla
 
-[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)
-![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)
-[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)
-![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
+[![npm-versio](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm) ](https://www.npmjs.com/package/omniroute) ![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm) [![Docker Hub](https://img.shields.io/docker/v/cheaperinference/omniroute?label=Docker%20Hub&logo=docker&color=2496ED) ](https://hub.docker.com/r/cheaperinference/omniroute) [![Lisenssi: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square) ](LICENSE) ![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED) ![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
 
 <table>
   <tr>
     <td align="right"><b>🚀 Aloita</b></td>
-    <td align="center"><a href="#-quick-start">🚀 Pika-aloitus</a></td>
+    <td align="center"><a href="#-quick-start">🚀 Quick Start</a></td>
     <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 Asenna</a></td>
     <td align="center"><a href="#first-run">🆓 Yhdistä palveluntarjoaja</a></td>
   </tr>
   <tr>
     <td align="right"><b>💡 Opi</b></td>
-    <td align="center"><a href="#-the-promise">💥 Lupaus</a></td>
+    <td align="center"><a href="#-the-promise">💥 The Promise</a></td>
     <td align="center"><a href="#-why-omniroute">🤔 Miksi OmniRoute</a></td>
-    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 Mikä erottaa sen muista</a></td>
+    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 Mikä erottaa</a></td>
   </tr>
   <tr>
-    <td align="right"><b>⚙️ Ominaisuudet</b></td>
-    <td align="center"><a href="#-combos--the-flagship">🎯 Yhdistelmät</a></td>
-    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 Palveluntarjoajat</a></td>
-    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI ja MCP</a></td>
+    <td align="right"><b>⚙️ ominaisuudet</b></td>
+    <td align="center"><a href="#-combos--the-flagship">🎯 yhdistelmät</a></td>
+    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 Providers</a></td>
+    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI &amp; MCP</a></td>
   </tr>
   <tr>
     <td align="right"></td>
-    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ Pakkaus</a></td>
-    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ Missä se toimii</a></td>
+    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ Kompressio</a></td>
+    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ Missä se juoksee</a></td>
     <td align="center"><a href="#-private--local-first">🔒 Yksityinen</a></td>
   </tr>
   <tr>
-    <td align="right"><b>👀 Katso</b></td>
-    <td align="center"><a href="#-omniroute-in-action">🎬 Käytännössä</a></td>
+    <td align="right"><b>👀 Katso se</b></td>
+    <td align="center"><a href="#-omniroute-in-action">🎬 toiminnassa</a></td>
     <td align="center"><a href="#-whats-new">✨ Mitä uutta</a></td>
-    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 Yhteensopivat CLI:t</a></td>
+    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 Yhteensopiva CLIs</a></td>
   </tr>
   <tr>
-    <td align="right"><b>💚 Tue</b></td>
+    <td align="right"><b>💚 tuki</b></td>
     <td align="center"><a href="#-support-omniroute">💚 Tue / Lahjoita</a></td>
-    <td align="center"><a href="#-community--help">💬 Yhteisö</a></td>
-    <td align="center"><a href="#-sponsors">💖 Tukijat</a></td>
+    <td align="center"><a href="#-community--help">💬 yhteisö</a></td>
+    <td align="center"><a href="#-sponsors">💖 Sponsorit</a></td>
   </tr>
   <tr>
-    <td align="right"><b>📦 Projekti</b></td>
-    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ Teknologiapino</a></td>
-    <td align="center"><a href="#-documentation">📖 Dokumentaatio</a></td>
-    <td align="center"><a href="#-1000-contributors">👥 Osallistujat</a></td>
+    <td align="right"><b>📦 projekti</b></td>
+    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ Tech Stack</a></td>
+    <td align="center"><a href="#-documentation">📖 Docs</a></td>
+    <td align="center"><a href="#-1000-contributors">👥 Avustajat</a></td>
   </tr>
 </table>
 
@@ -599,35 +594,35 @@ nykyisestä luettelosta on osoitteessa **[radar.omniroute.online/planos](https:/
 
 </div>
 
-> Viimeaikaiset kohokohdat välillä **v3.8.20 → v3.8.55**. Koko historia tiedostossa [`CHANGELOG.md`](CHANGELOG.md).
+> Viimeaikaiset kohokohdat kohteesta** v3.8.20 → v3.8.55** . Täysi historia [`CHANGELOG.md`](CHANGELOG.md) :ssä.
 
-- **⚖️ `quota-weighted` -reititys** — 20. yhdistelmästrategia ohittaa loppuun käytetyt tilit ja arpoo sen jälkeen jäljellä olevien joukosta suhteessa jäljellä olevaan kiintiöön ÷ käynnissä olevien pyyntöjen määrään pitäen olemassa olevat keskustelut kiinnitettyinä. → [Automaattiset yhdistelmät](docs/routing/AUTO-COMBO.md)
-- **🧰 Päätön tila** — `omniroute serve --headless` (tai `OMNIROUTE_HEADLESS=1`) suorittaa vain `/v1/*`-välityspalvelukoneiston ja poistaa käytöstä hallintapaneelin sekä vain hallintapaneelille tarkoitetut alijärjestelmät. → [Päätön tila](docs/guides/HEADLESS.md)
-- **🔎 Mallien etsintä** — `/v1/models` suodattaa ominaisuuden, kontekstin, tyypin ja tekstin perusteella, ja `POST /v1/models/query` palauttaa lyhyen deterministisen esivalinnan samalla avainkohtaisella näkyvyydellä. → [API-viite](docs/reference/API_REFERENCE.md)
-- **🔑 Avainkohtainen reitityksen hallinta** — kiinnitä API-avain yhteen malliin tai yhdistelmään asetuksella `forcedModel` ja lisää tai poista avaimen malleja ja yhdistelmiä atomisesti (`/api/keys/{id}/access`). → [API-viite](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
-- **🛡️ Tarkemmat henkilötietojen hallinta-asetukset** — tyyppikohtainen valinta, enintään 20 vahvistettua mukautettua peitekuviota ja tyyppikohtaiset tunnistuslaskurit; peittäminen on edelleen valinnaista. → [Suojaukset](docs/security/GUARDRAILS.md)
-- **🌍 67 kieltä** — hallintapaneeli, dokumentaation peilit ja CLI; `npm run i18n:add-locale` lisää kielen kaikkialle yhdellä komennolla. → [i18n-opas](docs/guides/I18N.md)
-- **🎛️ OmniConductor** — saapuva A2A-delegointi agenttijoukkoosi, Conductor-taidot Agent Cardissa sekä hallintapaneelin Faro push-to-talk -äänikeskustelu. → [A2A-palvelin](docs/frameworks/A2A-SERVER.md)
-- **🛂 Mukautuva hyväksyntä ja ylikuormitussuojaus** — raskaat chat-pyynnöt joutuvat jonoon 503-virheen sijaan, ja yhteyskohtaiset RPM-liisaukset käsitellään atomisesti rullaavana ikkunana. → [Vikasietoisuusopas](docs/architecture/RESILIENCE_GUIDE.md)
-- **🗂️ Kanoninen `/v1/models`-järjestys** — yksi yhtenäinen palveluntarjoajan mukaan ryhmitelty lohko palveluntarjoajaa kohden (yhdistelmät ensin), vakaana kaikissa luettelolähteissä. → [API-viite](docs/reference/API_REFERENCE.md)
-- **🗜️ Pakkaamisen vahvistaminen** — oletusarvoisesti käytössä oleva paisuntavartija, Caveman-paketit kielille DE / FR / JA sekä kiinalle (wényán), RTK-suodattimet Gradlelle ja .NET:lle. → [Pakkaaminen](docs/compression/COMPRESSION_ENGINES.md)
-- **💸 Rehelliset kiinteähintaiset kustannukset** — tilaus- ja coding-plan-palveluntarjoajien kustannusanalytiikka näyttää **$0**; budjetti, kiintiö ja reititys jatkavat arviointia. → [API-viite](docs/reference/API_REFERENCE.md)
-- **⚖️ Quota-Share-reititys** — jakaa jaetun tilin kiintiön tasapuolisesti koottujen avainten kesken ja lainaa käyttämättömät osuudet muille, jotta kapasiteetti hyödynnetään tehokkaasti. → [Vikasietoisuusopas](docs/architecture/RESILIENCE_GUIDE.md)
-- **🤖 CLI:n ja agentin käyttöönotto yhdellä komennolla** — 15 rekisteröityä `setup-*`-komentoa; `omniroute run` käynnistää 7 CLI:tä (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI); `omniroute configure` tukee 11 kohdetta interaktiivisella palveluntarjoajan ja mallin valitsimella sekä kontekstikohtaisilla suosikeilla. → [CLI-integraatiot](docs/guides/CLI-INTEGRATIONS.md)
-- **🛰️ Etätila** — ohjaa etäkäytössä olevaa OmniRoutea rajatuilla tunnuksilla (`connect` / `contexts` / `tokens`) sekä `antigravity` OAuth-apuohjelmalla VPS-asennuksia varten. → [Etätila](docs/guides/REMOTE-MODE.md)
-- **🧭 Älykkäämpi automaattinen reititys** — `auto/<category>:<tier>`-yhdistelmät, **Fusion** (mallipaneeli + arvioija), tehtävätietoinen reititys sekä pyyntökohtaiset mallin, tilan ja USD-budjetin ohitukset. → [Automaattiset yhdistelmät](docs/routing/AUTO-COMBO.md)
-- **🗜️ Liitettävä pakkaaminen** — 12 yhdisteltävää moottoria ja Compression Studios: LLMLingua-2, kaksitasoinen Ultra, omniglyph, vaihekohtainen tarkkuusportti, GCF v3.2 ja vedä ja järjestä -editori. → [Pakkaaminen](docs/compression/COMPRESSION_ENGINES.md)
-- **🕵️ Läpinäkyvä MITM-purku (TPROXY)** — kaappaa liikenteen myös CLI-ohjelmista, jotka ohittavat välityspalvelimen ympäristömuuttujat, sekä asentaa SNI-kohtaisen CA:n ja luottamusvaraston. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
-- **💸 Kustannusten telemetria kaikkialla** — `X-OmniRoute-*`-kustannus- ja käyttöotsakkeet kaikissa päätepisteissä, välimuistiosuman säästöotsake ja avainkohtaiset USD-kulutuskiintiöt. → [API-viite](docs/reference/API_REFERENCE.md)
-- **🧠 Hallittava muisti** — oletusarvoisesti käytöstä poistettu, valinnaisesti käyttöön otettava int8-vektorikvantisointi ja tyypitetty vaimeneminen sekä pyyntökohtainen `x-omniroute-no-memory`. → [Muisti](docs/frameworks/MEMORY.md)
-- **🛡️ Tietoturva** — prompt-injektioiden suojaus jokaisella LLM-reitillä (red team -testikokoelma), valinnainen tunnistetietojen peittosuojaus (poistaa vuotaneet API-avaimet ja salaisuudet molempiin suuntiin), maksuton DuckDuckGo-verkkohaun viimeinen varakeino sekä valinnainen OIDC-kirjautumisportti hallintapaneelille (salasanakirjautuminen on aina käytettävissä). → [Suojaukset](docs/security/GUARDRAILS.md)
-- **🖼️ Uudet päätepisteet** — `/v1/ocr` (Mistral OCR) ja `/v1/audio/translations` (Whisper-tyylinen) täydentävät median käsittelyrajapinnan. → [API-viite](docs/reference/API_REFERENCE.md)
-- **🎨 Kuvien, videoiden ja äänen generointi** — yksi media-API: xAI Grok Imagine ja Novita AI -video, ComfyUI, Magnific, Adobe Firefly, Segmind sekä puhepalveluntarjoajat, kuten ElevenLabs. → [API-viite](docs/reference/API_REFERENCE.md)
-- **🌍 Käyttöönotto ja ylläpito** — käänteisen välityspalvelimen `basePath`, selaimen kielen automaattinen tunnistus, avainkohtainen laitteiden seuranta, pääkäyttäjättömän MITM:n luottamus ja zh-TW-lokalisointi. → [Ympäristö](docs/reference/ENVIRONMENT.md)
-- **🤝 Lisää palveluntarjoajia ja agentteja** — pilviagentit (Codex Cloud, Cursor, Devin, Jules), Grok Build (xAI) selaimella ja OAuth-kirjautumisella, Ollaman ensiluokkainen kortti, Claude Opus 5 ja Sonnet 5, Kimin virallinen kumppanuus (Code/Web/Moonshot), Zed, Requesty, SenseNova, Yuanbao, Agnes AI… sekä uudistettu **394 palveluntarjoajan luettelo**. → [Palveluntarjoajat](docs/reference/PROVIDER_REFERENCE.md)
-- **📡 Reitityksen läpinäkyvyys** — jokainen vastaus sisältää `X-OmniRoute-Decision`-otsakkeen, joka ilmoittaa sen palvelleen strategian, palveluntarjoajan ja viiveen; uusi `cache-optimized`-yhdistelmästrategia sekä Auto-Combosin `cacheAffinity`-tekijä ohjaavat toistuvat pyynnöt takaisin yhteydelle, jolla välimuistissa oleva etuliite sijaitsee; ja vain lukuun tarkoitettu `/v1/auto-combo/{channel}/candidates`-päätepiste näyttää `auto/*`-kanavan reaaliaikaisen ehdokasjoukon. → [Automaattiset yhdistelmät](docs/routing/AUTO-COMBO.md)
-- **⚡ Paikallinen suorituskyky ja infrastruktuuri** — yhden napsautuksen paikallinen Redis, Cloudflare Workers- / Deno Deploy -välityspalvelinten käyttöönotot, Bifrost ja Mux valvottuina upotettuina palveluina. → [Upotetut palvelut](docs/frameworks/EMBEDDED-SERVICES.md)
-- **🧩 Myös mukana** — laajennuskehys ja markkinapaikka, Omni/Agent/GitHub-taitokehykset, Obsidian-holvin integrointi (22 MCP-työkalua), OpenAI-yhteensopivat Batch- ja Files-ohjelmointirajapinnat, semanttinen vastausvälimuisti, pelillistäminen tulostauluineen, ACP-agenttien etsintä (15 sisäänrakennettua agenttia), ajastettu lokien vienti BigQueryyn, `auto/chaos`-rinnakkainen usean mallin hajautus, Telegram-bottisilta, sovelluksen sisäinen versionhallinta ja LMArena-ELO:n ilmaisten palveluntarjoajien sijoitukset. → [Dokumentaatio](docs/README.md)
+- **⚖️ `quota-weighted` -reititys** — 20. yhdistelmästrategia ohittaa loppuun kuluneet tilit ja arvontaa sitten muiden kesken suhteessa jäljellä olevaan kiintiöön ÷ lennon aikana, jolloin olemassa olevat keskustelut pidetään kiinnitettyinä. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **🧰 Headless-tila** — `omniroute serve --headless` (tai `OMNIROUTE_HEADLESS=1`) käyttää vain `/v1/*` -välityspalvelinta kojelaudan ja vain kojelaudan alijärjestelmien ollessa pois päältä. → [päätön tila](docs/guides/HEADLESS.md)
+- **🔎 Mallin löytö** — `/v1/models` suodattaa ominaisuuden, kontekstin, lajin ja tekstin mukaan, ja `POST /v1/models/query` palauttaa lyhyen deterministisen luettelon, jolla on sama näkyvyys avainkohtaisesti. → [API Viite](docs/reference/API_REFERENCE.md)
+- **🔑 Avainkohtainen reititysohjaus** — kiinnitä API -avain yhteen malliin tai yhdistelmään `forcedModel` llä ja lisää tai poista avaimen malleja ja komboja atomeittain (`/api/keys/{id}/access`). → [API Viite](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
+- **🛡️ Hienommat PII -ohjaimet** — tyyppikohtainen valinta, jopa 20 vahvistettua mukautettua peitekuvioita ja tyyppikohtaisia tunnistuslaskuria; itse maskaaminen jää valinnaiseksi. → [suojakaiteet](docs/security/GUARDRAILS.md)
+- **🌍 67 kieltä** — koontinäyttö, docs-peilit ja CLI, `npm run i18n:add-locale` lisää kielen kaikkialle yhdessä komennossa. → [i18n opas](docs/guides/I18N.md)
+- **🎛️ OmniConductor** — saapuva A2A delegaatio agenttilaivastollesi, agenttikortilla olevat kapellimestaritaidot ja kojelautapaneeli, jossa on Faron push-to-talk-äänikeskustelu. → [A2A palvelin](docs/frameworks/A2A-SERVER.md)
+- **🛂 Mukautuva sisäänpääsy ja ylikuormitussuoja** — raskaansarjan chat pyytää jonoa 503ingin sijaan, ja RPM n jatkuvat vuokrasopimukset yhteyttä kohti. → [Resilience Guide](docs/architecture/RESILIENCE_GUIDE.md)
+- **🗂️ Canonical `/v1/models` tilaus** — yksi peräkkäinen tarjoajaryhmittymä lohko per toimittaja (kombot kiinnitetty ensin), vakaa kaikissa luettelolähteissä. → [API Viite](docs/reference/API_REFERENCE.md)
+- **🗜️ Puristuskarkaisu** — oletusarvoinen täyttösuoja, Caveman-paketit DE / FR / JA + Chinese (wényán), RTK suodattimet Gradle & .NET. → [pakkaus](docs/compression/COMPRESSION_ENGINES.md)
+- **💸 Rehellinen kiinteähintainen hinta** — tilauksen / koodaussuunnitelman tarjoajat lukevat** 0 dollaria** kustannusanalytiikassa; budjetti, kiintiö ja reititys arvioivat jatkuvasti. → [API Viite](docs/reference/API_REFERENCE.md)
+- **⚖️ Quota-Share reititys** — jakoi jaetun tilin kiintiön reilusti yhdistetyille avaimille, mikä säästää työtä, joten käyttämättömät osat lainataan. → [Resilience Guide](docs/architecture/RESILIENCE_GUIDE.md)
+- **🤖 Yhden komennon CLI/agent asetukset** — 15 rekisteröityä `setup-*` -komentoa; `omniroute run` käynnistää 7 CLIs (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI); `omniroute configure` tukee 11 kohdetta interaktiivisella palveluntarjoajan +-mallivalitsimella ja kontekstikohtaisilla suosikeilla. → [CLI -integraatiot](docs/guides/CLI-INTEGRATIONS.md)
+- **🛰️ Kaukosäädintila** — ajaa etä- OmniRoute, jossa on laajennetut tunnukset (`connect` / `contexts` / `tokens`) + ja `antigravity` OAuth -apuohjelma VPS -asennuksiin. → [Remote Mode](docs/guides/REMOTE-MODE.md)
+- **🧭 Älykkäämpi automaattinen reititys** — `auto/<category>:<tier>` yhdistelmät,** Fuusio** (mallipaneelin + tuomari), tehtävätietoinen reititys, pyyntökohtainen malli / tila / USD-budjetin ohitukset. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **🗜️ Kytkettävä pakkaus** — 12 komposoitavaa moottoria + Compression Studios: LLMLingua-2, kaksitasoinen Ultra, omniglyfi, askelkohtainen tarkkuusportti, GCF v3.2, vedä uudelleenjärjestyseditori. → [pakkaus](docs/compression/COMPRESSION_ENGINES.md)
+- **🕵️ läpinäkyvä MITM salauksen purku (TPROXY)** — kaappaus CLIs, jotka ohittavat välityspalvelimen env vars, SNI-kohtaisella CA + -luottamuskaupan asennusohjelmalla. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
+- **💸 Kustannustelemetria kaikkialla** — `X-OmniRoute-*` cost/usage otsikot jokaisessa päätepisteessä, välimuisti-HIT-säästöotsikko, avainkohtaiset USD -kulutuskiintiöt. → [API Viite](docs/reference/API_REFERENCE.md)
+- **🧠 Muisti, jota hallitset** — pois päältä oletuksena, opt-in int8 vektorikvantisointi + kirjoitettu vaimeneminen, pyyntökohtainen `x-omniroute-no-memory`. → [Muisti](docs/frameworks/MEMORY.md)
+- **🛡️ turvallisuus** — pikaruiskutussuoja jokaisella LLM reitillä (punainen tiimipaketti), valinnainen valtuustietojen peittävä suojakaide (reduktoi vuotaneen API keys/secrets molempiin suuntiin), ilmainen DuckDuckGo -viimeinen verkkohaku ja valinnainen OIDC -kirjautumisportti kojelautaan (salasana on aina käytettävissä). → [suojakaiteet](docs/security/GUARDRAILS.md)
+- **🖼️ Uudet päätepisteet** — `/v1/ocr` (Mistral OCR) ja `/v1/audio/translations` (Whisper-tyyli) pyöristävät materiaalin pintaa. → [API Viite](docs/reference/API_REFERENCE.md)
+- **🎨 Kuvan / videon / äänen sukupolvi** — one API medialle: xAI Grok Imagine & Novita AI video, ComfyUI, Magnific, Adobe Firefly, Segmind ja puheentarjoajat, kuten ElevenLabs. → [API Viite](docs/reference/API_REFERENCE.md)
+- **🌍 Käyttöönotto ja ops** — käänteinen välityspalvelin `basePath`, selainkielen automaattinen tunnistus, avaimenkohtainen laiteseuranta, juureton MITM luottamus, zh-TW-lokalisointi. → [Ympäristö](docs/reference/ENVIRONMENT.md)
+- **🤝 Lisää palveluntarjoajia ja edustajia** — -pilviagentit (Codex Cloud, Cursor, Devin, Jules), Grok Build (xAI) selaimella + OAuth -sisäänkirjautumisella, Ollama ensiluokkainen kortti, Claude Opus 5 & Sonnet 5, Kimi virallinen kumppanuus, (Code/Web/Moonshot,z, AIZedSenseNova virkistynyt** 394-toimittajan luettelo** . → [palveluntarjoajat](docs/reference/PROVIDER_REFERENCE.md)
+- **📡 Reitityksen läpinäkyvyys** — jokainen vastaus sisältää `X-OmniRoute-Decision` otsikon, joka nimeää sitä palvelevan strategy/provider/latency, uuden `cache-optimized` -yhdistelmästrategian + Auto-Combo `cacheAffinity` -tekijän toistopyynnöt takaisin yhteyteen, joka sisältää välimuistin etuliitettä, ja vain luku -tilassa oleva `/v1/auto-combo/{channel}/candidates` päätepiste paljastaa `auto/*` -kanavan live-ehdokasjoukon. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **⚡ Paikallinen suorituskyky ja infra** — yhdellä napsautuksella paikallinen Redis, Cloudflare Workers / Deno Deploy -välitteiset käyttöönottimet, Bifrost & Mux valvotuina sulautetuina palveluina. → [sulautetut palvelut](docs/frameworks/EMBEDDED-SERVICES.md)
+- **🧩 Myös laatikossa** — -laajennuskehys + markkinapaikka, Omni/Agent/GitHub -taitojen puitteet, Obsidian -holvin integrointi (22 MCP työkalua), OpenAI-yhteensopiva Batch & Files APIs, semanttinen vastausvälimuisti, pelillistäminen tulostaulukoilla, ACP agenttien etsintä ( BigQuery sisäänrakennettua agenttia), ajoitettu lokivienti, `auto/chaos` -out useaan Telegram bot Bridge, sovelluksen sisäinen versionhallinta ja LMArena-ELO ilmaisten palveluntarjoajien sijoitukset. → [Docs](docs/README.md)
 
 <br/>
 
@@ -777,93 +772,80 @@ komentorivihistoriastasi. → [CLI-integraatiot](docs/guides/CLI-INTEGRATIONS.md
 
 <div align="center">
 
-## 🖥️ Missä OmniRoute toimii — kaikkialla
+## 🖥️ Missä OmniRoute toimii — missä tahansa
 
 </div>
 
-> Sama sovellus, oma koneesi, omat sääntösi. Globaalista npm-asennuksesta aina **puhelimeesi** Termuxin kautta.
+> Sama sovellus, koneesi, sinun säännöt. Globaalista npm-asennuksesta** puhelimesi** Termuxin kautta.
 
 <table>
-  <tr><th align="left">Alusta</th><th align="left">Asennus</th><th align="left">Kohokohdat</th></tr>
-  <tr><td align="left" nowrap>📦 <b>npm (globaali)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">Yksi komento, mikä tahansa käyttöjärjestelmä</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Bun (globaali)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">Sama rekisterin tarball, nopeammat asennukset</td></tr>
-  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … diegosouzapw/omniroute</code></td><td align="left">Usean arkkitehtuurin tuki: <b>AMD64 + ARM64</b></td></tr>
-  <tr><td align="left" nowrap>🖥️ <b>Työpöytä (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">Natiivi ikkuna + ilmoitusalue — <b>Windows / macOS / Linux</b></td></tr>
-  <tr><td align="left" nowrap>🎩 <b>Valikkorivi (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">Valvoo palvelinta ja päivittää sen automaattisesti — <b>macOS</b></td></tr>
-  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>natiivi <code>arm64</code></td><td align="left">Raspberry Pi, ARM-palvelimet, Apple Silicon</td></tr>
-  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">Toimii <b>puhelimessasi</b>, 24/7, ilman pääkäyttäjän oikeuksia</td></tr>
-  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"Lisää aloitusnäyttöön"</td><td align="left">Koko näytön tila, offline-käyttö, asennettavissa selaimesta</td></tr>
-  <tr><td align="left" nowrap>🧩 <b>OpenCode-laajennus</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">Natiivi OpenCode-integraatio</td></tr>
-  <tr><td align="left" nowrap>🤖 <b>VS Code Copilot Chat</b></td><td align="left" nowrap>asenna <b>OmniCopilot</b>-laajennus</td><td align="left">Jokainen OmniRoute-malli natiivissa Copilot Chat -mallivalitsimessa — vakaa versio ja Insiders</td></tr>
-  <tr><td align="left" nowrap>🛠️ <b>Lähdekoodista</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">Muokkaa sitä ja osallistu kehitykseen</td></tr>
+  <tr><th align="left">Alusta</th><th align="left">Asentaa</th><th align="left">Kohokohdat</th></tr>
+  <tr><td align="left" nowrap>📦 <b>npm (maailmanlaajuinen)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">Yksi komento, mikä tahansa OS</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Bun (maailmanlaajuinen)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">Sama rekisteritarball, nopeammat asennukset</td></tr>
+  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … cheaperinference/omniroute</code></td><td align="left">Monikaari <b>AMD64 + ARM64</b></td></tr>
+  <tr><td align="left" nowrap>🖥️ <b>pöytäkone (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">Alkuperäinen ikkuna + system tray — <b>Windows / macOS / Linux</b></td></tr>
+  <tr><td align="left" nowrap>🎩 <b>Valikkopalkki (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">Valvoo &amp; päivittää automaattisesti palvelimen — <b>macOS</b></td></tr>
+  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>syntyperäinen <code>arm64</code></td><td align="left">Raspberry Pi, ARM palvelimet, Apple Silicon</td></tr>
+  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">Juoksee <b>puhelimessasi</b>, 24/7, ei juuria</td></tr>
+  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"Lisää aloitusnäyttöön"</td><td align="left">Koko näyttö, offline-tilassa, asennettavissa selaimesta</td></tr>
+  <tr><td align="left" nowrap>🧩 <b>OpenCode -laajennus</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">Alkuperäinen OpenCode integraatio</td></tr>
+  <tr><td align="left" nowrap>🤖 <b>VS Code Copilot Chat</b></td><td align="left" nowrap>asentaa <b>OmniCopilot</b> laajennus</td><td align="left">Jokainen OmniRoute malli alkuperäisessä Copilot -keskusteluvalitsin — vakaa &amp; sisäpiiriläiset</td></tr>
+  <tr><td align="left" nowrap>🛠️ <b>Lähteestä</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">Hakkeroi, osallistu</td></tr>
 </table>
 
-<sub>📖 [Docker-opas](docs/guides/DOCKER_GUIDE.md) · [Työpöytä](electron/README.md) · [Valikkorivin ilmoitusalue](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
+<sub>📖 [Docker Guide](docs/guides/DOCKER_GUIDE.md) · [Työpöytä](electron/README.md) · [Valikkopalkin tarjotin](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
 
 <br/>
 
 <div align="center">
 
-### 🧩 Uutta: OmniRoute suoraan VS Coden natiiviin Copilot Chatiin
+### 🧩 Uutta: OmniRoute VS Coden alkuperäisessä Copilot chatissa
 
 </div>
 
-> Ei uutta sivupalkkia eikä uutta keskustelukäyttöliittymää — jokainen OmniRouten tarjoama malli näkyy suoraan
-> **jo käyttämässäsi Copilot Chat -mallivalitsimessa**. VS Code 1.122:sta lähtien palveluntarjoajien mallit toimivat
-> ilman GitHub-kirjautumista tai Copilot-tilausta — agenttitila, työkalukutsut ja näkökyky, kaikki
-> ilmaiseksi.
+> Ei uutta sivupalkkia, ei uutta keskustelua UI — jokainen OmniRoute malli, jota palvelee, näkyy suoraan**Copilot Chat-mallinvalitsin, jota käytät jo** . VS Code 1.122:sta lähtien palveluntarjoajan mallit toimivat ilman GitHub sisäänkirjautumista tai Copilot -tilausta — agenttitilaa, työkalukutsuja ja visiota ilmaiseksi.
 
-Asenna **[OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)**-laajennus, osoita se
-OmniRoute-palvelimeesi (oletusarvo on `localhost:20128`) ja avaa Copilot Chat → mallivalitsin
-→ **Hallitse malleja…** → **OmniRoute**.
+Asenna** [OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)** laajennus, osoita se OmniRoute -palvelimellesi (oletus on `localhost:20128`) ja avaa sitten Copilot Chat → mallivalitsin →** Hallinnoi malleja…** →**OmniRoute** .
 
 <table>
-  <tr><th align="left">Kauppa</th><th align="left">Linkki</th><th align="left">Toimii seuraavien kanssa</th></tr>
-  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">Asenna →</a></td><td align="left">VS Code — vakaa versio ja Insiders</td></tr>
-  <tr><td align="left" nowrap>🔓 <b>Open VSX Registry</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">Asenna →</a></td><td align="left">Cursor, Windsurf, VSCodium, Theia, code-server, Gitpod, Antigravity, Kiro…</td></tr>
+  <tr><th align="left">Store</th><th align="left">Linkki</th><th align="left">Toimii kanssa</th></tr>
+  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">Asenna →</a></td><td align="left">VS Code — vakaa &amp; Sisäpiiriläiset</td></tr>
+  <tr><td align="left" nowrap>🔓 <b>Avaa VSX rekisteri</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">Asenna →</a></td><td align="left">Cursor, Windsurf, VSCodium, Theia, koodipalvelin, Gitpod, Antigravity, Kiro…</td></tr>
 </table>
 
-Avaa editorissa **Laajennukset**-näkymä, hae **"OmniRoute"** ja napsauta **Asenna**
-— toimii samalla tavalla molemmissa kaupoissa. Lähdekoodi, ongelmat ja julkaisuohjeet ovat osoitteessa
-[diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot).
+Editorin sisältä: avaa** Laajennukset** katsoa, etsiä** "OmniRoute"** , napsauta** Asentaa** — toimii samalla tavalla molemmissa myymälöissä. Lähde, numerot ja julkaisun runbook livenä osoitteessa [diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot).
 
-<sub>📖 [VS Code Copilot Chat -opas](docs/guides/VSCODE-COPILOT.md) — käyttöönotto, mallivalitsimen sisältö, hallintapaneeli välilehdessä, vianmääritys</sub>
+<sub>📖 [VS Koodi Copilot Chat-opas](docs/guides/VSCODE-COPILOT.md) — asetukset, mitä valitsin näyttää, kojelauta välilehdellä, vianetsintä</sub>
 
 <br/>
 
 <div align="center">
 
-### 🎩 Uutta: OmniRouteTray — yhdyskäytäväsi valikkorivillä
+### 🎩 Uutta: OmniRouteTray — yhdyskäytäväsi, joka asuu valikkopalkissa
 
 </div>
 
-> `omniroute serve` toimii parhaiten aina päällä ollessaan. **[OmniRouteTray](https://github.com/zoispag/omniroute-tray)**
-> tekee siitä macOS:lle tarkoitetun valikkorivisovelluksen, joka toimii ilman jatkuvaa ylläpitoa: se käynnistää palvelimen, pitää sen käynnissä
-> uudelleenkäynnistysten yli, päivittää sen suoraan paikallaan ja tuo reaaliaikaisen token-budjettisi yhden napsautuksen päähän — **ei
-> auki jätettyä pääteikkunaa eikä `npm install -g omniroute` -komentoa jatkuvasti valvottavaksi.**
+> `omniroute serve` on onnellisin, kun se on aina päällä.** [OmniRouteTray](https://github.com/zoispag/omniroute-tray)** muuttaa sen macOS määritä ja unohda -valikkopalkkisovellukseksi: se käynnistää palvelimen, pitää sen hengissä uudelleenkäynnistysten ajan, päivittää sen ja asettaa live-tunnusbudjettisi yhden napsautuksen päähän —** pääteikkunaa ei jätetä auki, ei `npm install -g omniroute`.**
 
-[Tauri v2](https://v2.tauri.app/) -tekniikalla rakennettu (Rust-ydin, joka on kooltaan pyöristysvirheen luokkaa), se sisältää
-oman allekirjoitetun Node 24 -suoritusaikansa ja hallinnoi sovelluksen omaa OmniRoute-asennusta, joten se ei koskaan kilpaile
-globaalin `node`/`bun`-asennuksesi kanssa. Se **jakaa olemassa olevan `~/.omniroute/`-määrityksen ja tietokannan** — joten
-kyseessä on sama OmniRoute, jota jo käytät, nyt vain hattu päässä. 🎩
+Rakennettu [Tauri v2:](https://v2.tauri.app/) lla (pyöristysvirheen kokoinen Rust-ydin), se lähettää oman allekirjoitetun Node 24 -ajonaikaisena ja hallitsee sovelluksen omistamaa OmniRoute -asennusta, joten se ei koskaan taistele globaalia `node`/`bun` tä vastaan. Se** jakaa olemassa olevan `~/.omniroute/` -kokoonpanosi ja tietokantasi** — joten se on sama OmniRoute, jota jo juoksit, vain hattu päässä. 🎩
 
 <table>
   <tr><th align="left">Mitä se tekee</th><th align="left">Miten</th></tr>
-  <tr><td align="left" nowrap>🟢 <b>Valvoo palvelinta</b></td><td align="left">Käynnistää <code>omniroute serve</code> -komennon ja ottaa jo käynnissä olevan instanssin hallintaansa sen sijaan, että loisi uuden</td></tr>
-  <tr><td align="left" nowrap>📊 <b>Käytön reaaliaikainen yleiskatsaus</b></td><td align="left">Palveluntarjoajien kiintiöpalkit, Clauden istunto- ja viikkorajoitukset nollauslaskureineen sekä 30 päivän kustannuserittely</td></tr>
-  <tr><td align="left" nowrap>🔄 <b>Päivittää automaattisesti paikallaan</b></td><td align="left">Vaiheistettu asennus, atominen vaihto ja palautus virheen sattuessa — aina uusin julkaisu käytössä</td></tr>
-  <tr><td align="left" nowrap>🚀 <b>Käynnistyy kirjautumisen yhteydessä</b></td><td align="left">Valinnainen käynnistys kirjautumisen yhteydessä; toimii vain ilmoitusalueella, ei Dock-kuvaketta</td></tr>
-  <tr><td align="left" nowrap>🩺 <b>Vianmääritys ja lokit</b></td><td align="left">Yhden napsautuksen diagnostiikka ja pääsy palvelimen lokeihin</td></tr>
+  <tr><td align="left" nowrap>🟢 <b>Valvoo palvelinta</b></td><td align="left">Syntyy <code>omniroute serve</code>, ottaa käyttöön jo käynnissä olevan ilmentymän kopioimisen sijaan</td></tr>
+  <tr><td align="left" nowrap>📊 <b>Reaaliaikainen käyttö yhdellä silmäyksellä</b></td><td align="left">Palveluntarjoajan kiintiöpalkit, Claude session/weekly -rajoitukset nollattuilla lähtölaskeilla, 30 päivän kustannuserittely</td></tr>
+  <tr><td align="left" nowrap>🔄 <b>Automaattiset päivitykset paikallaan</b></td><td align="left">Vaiheittainen asennus, atomin vaihto, palautus epäonnistuessa — aina uusimmassa versiossa</td></tr>
+  <tr><td align="left" nowrap>🚀 <b>Aloita kirjautumalla</b></td><td align="left">Valinnainen käynnistäminen sisäänkirjautumisen yhteydessä; vain lokero, ei telakointikuvaketta</td></tr>
+  <tr><td align="left" nowrap>🩺 <b>Doctor &amp; lokit</b></td><td align="left">Yhden napsautuksen diagnostiikka ja palvelinlokin käyttö</td></tr>
 </table>
 
 ```sh
 brew install --cask zoispag/tap/omniroute-tray
 ```
 
-<sub>Haluatko mieluummin ladata sen? Hanki uusin <code>.dmg</code>-tiedosto
-<a href="https://github.com/zoispag/omniroute-tray/releases">Julkaisut</a>-sivulta. Lähdekoodi, ongelmat ja koontia
-koskevat ohjeet löytyvät osoitteesta <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a>.
-<br/>💛 Yhteisöprojekti, jonka tekijä on <a href="https://github.com/zoispag">@zoispag</a> — ei virallinen OmniRoute-julkaisu.</sub>
+<sub>Haluatko ladata mieluummin? Nappaa uusin <code>.dmg</code> osoitteesta
+<a href="https://github.com/zoispag/omniroute-tray/releases">Julkaisut</a>. Lähde, ongelmat ja rakenne
+docs livenä osoitteessa <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a>.
+<br/>💛 Yhteisöprojekti <a href="https://github.com/zoispag">@zoispag</a> — ei ole virallinen OmniRoute julkaisu.</sub>
 
 <br/>
 
@@ -946,15 +928,15 @@ claude mcp add --transport http omniroute http://localhost:20128/api/mcp/stream 
 
 <div align="center">
 
-## 🗜️ Säästä 15–95 % tokeneita — automaattisesti
+## 🗜️ Säästä 15–95 % Tokeneita — Automaattisesti
 
 </div>
 
-### 📖 Näin se toimii — putki, arkkitehtuuri ja säästölaskelmat
+### 📖 Kuinka se toimii — putkisto, arkkitehtuuri ja säästömatematiikka
 
-<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute-pakkausputki: havainnollistava 10 000 tokenin asiakaspyyntö kulkee 12 yhdisteltävän moottorin — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra ja OmniGlyph — läpi, ja voi saavuttaa palveluntarjoajan noin 1 080 tokenilla dokumentoidussa pinotussa esimerkissä. Rakenteinen sisältö suojataan säilytyssuojilla ja vaihekohtaisilla tarkkuusporteilla; eksplisiittiset häviölliset tai kokeelliset tilat voivat muuntaa soveltuvaa sisältöä."/>
+<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute compression pipeline: an illustrative 10,000-token client request passes through 12 composable engines — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra and OmniGlyph — and can reach the provider at about 1,080 tokens in the documented stacked example. Structured content is protected by preservation guards and per-step fidelity gates; explicit lossy or experimental modes may transform eligible content."/>
 
-Oletusarvoinen pinottu yhdistelmä suorittaa `RTK → Caveman`. Kun molemmat toimivat samaan työkalu-/kontekstihyötykuormaan, säästöt kumuloituvat:
+Pinottu oletusyhdistelmä ajaa `RTK → Caveman`. Kun molemmat toimivat samalla tool/context -hyötykuormalla, säästöyhdiste:
 
 ```txt
 combined = 1 − (1 − RTK) × (1 − Caveman_input)
@@ -962,74 +944,74 @@ average  = 1 − (1 − 0.80) × (1 − 0.46) = 89.2%
 range    = 78.4 – 94.6%
 ```
 
-Koodilohkot, URL-osoitteet, JSON ja rakenteiset tiedot ovat **aina suojattuja** säilytysmoottorilla.
+Koodilohkot, URLs, JSON ja strukturoitu data ovat** aina suojattu** säilytysmoottorilla.
 
-> **Miksi käyttää paljon tokeneita, kun vähemmälläkin pärjää?** Jokainen pyyntö kulkee OmniRouten pakkausputken läpi **läpinäkyvästi** — asiakasmuutoksia ei tarvita. Se on nyt **12 yhdisteltävän moottorin pino**, jotka suoritetaan järjestyksessä ja joita voidaan yhdistellä reititysyhdistelmän mukaan — pohjautuen [RTK](https://github.com/rtk-ai/rtk)-, [Caveman](https://github.com/JuliusBrussee/caveman)- (⭐ 90K+), [LLMLingua-2](https://github.com/microsoft/LLMLingua)- ja [Troglodita](https://github.com/leninejunior/troglodita)-projekteissa (PT-BR) esitettyihin ideoihin.
+> **Miksi käyttää monia tokeneita, kun harvat rahakkeet tekevät tempun?** Jokainen pyyntö kulkee OmniRoute pakkausputken kautta** läpinäkyvästi** — ei asiakasmuutoksia. Se on nyt a** pino 12 komposoitavaa moottoria** jotka toimivat järjestyksessä ja yhdistelevät reititysyhdistelmää — joka perustuu [RTK](https://github.com/rtk-ai/rtk), [Cavemanin](https://github.com/JuliusBrussee/caveman) (⭐ 90K +), [LLMLingua-2](https://github.com/microsoft/LLMLingua) ja [Trogloditan](https://github.com/leninejunior/troglodita) (PT-BR) ideoihin.
 
-### 🧱 12 moottorin pino
+### 🧱 12-moottorinen pino
 
-Moottorit suoritetaan putken järjestyksessä; jokainen voidaan ottaa käyttöön tai poistaa käytöstä itsenäisesti ja määrittää yhdistelmäkohtaisesti:
-
-<table>
-  <tr><th align="center">#</th><th align="left">Moottori</th><th align="left">Toiminto</th></tr>
-  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Session-Dedup</b></td><td align="left">Poistaa vuorojen välillä toistetun sisällön (sisältöosoitteinen, vuorojen välinen)</td></tr>
-  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">Arkistoi suuret lohkot noutomerkkien taakse ja hakee ne tarvittaessa</td></tr>
-  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">Välilyöntien ja kuvan URL-osoitteiden karsiminen (kevyt viiveen suhteen)</td></tr>
-  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">Älykäs työkalutulosten suodatus, duplikointi ja lyhentäminen (komennot huomioiva)</td></tr>
-  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Responses Tool Output</b></td><td align="left">Häviötön ensisijainen JSON + rajattu diagnostiikan pakkaus komentotulosteille, korjaustiedostoille, hauille ja koontitulosteille (Responses API)</td></tr>
-  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Headroom</b></td><td align="left">JSON-taulukoiden häviötön tiivistys (~30 %) toimittajan mukana toimitetun <b>GCF</b>-koodekin avulla</td></tr>
-  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Relevance</b></td><td align="left">Lauseiden ekstraktiivinen pisteytys viimeisimmän käyttäjäkyselyn perusteella</td></tr>
-  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Caveman</b></td><td align="left">Sääntöpohjainen proosan pakkaus (~65–75 % tulosteesta)</td></tr>
-  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Aggressive</b></td><td align="left">Yhteenveto + vanhojen vuorojen asteittainen vanhentaminen</td></tr>
-  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">ML-pohjainen semanttinen karsinta MobileBERT ONNX:n avulla — kooditurvallinen, asynkroninen</td></tr>
-  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ultra</b></td><td align="left">Heuristinen tokenien karsinta valinnaisella pienen mallin (SLM) tasolla</td></tr>
-  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">Kokeellinen kontekstin kuvaksi koodaaminen mitattua Claude Fable 5:tä varten suorassa Anthropic-yhteydessä; GPT 5.6 -muuntajat pysyvät vikasuljettuina palveluntarjoajan kuittauksia odotettaessa. Neljä pakkausprofiilia (aggressiivinen oletus, tasapainotettu, kooditurvallinen, läpivienti) (aggressiivisin; erikseen käyttöön otettava)</td></tr>
-</table>
-
-Koodilohkot, URL-osoitteet ja rakenteiset tiedot säilytetään **aina** tavu tavalta täydellisinä. **Yhden napsautuksen esiasetukset** yhdistävät moottorit:
+Moottorit toimivat putkistojärjestyksessä; jokainen on erikseen vaihdettavissa ja konfiguroitavissa yhdistelmää kohti:
 
 <table>
-  <tr><th align="left">Tila</th><th align="left">Säästöt</th><th align="left">Sopii parhaiten</th></tr>
-  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~15 %</td><td align="left">Aina käytössä oleva turvallinen oletus</td></tr>
-  <tr><td align="left" nowrap>🪨 <b>Standard (Caveman)</b></td><td align="left" nowrap>~30 %</td><td align="left">Päivittäinen koodaus</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Aggressive</b></td><td align="left" nowrap>~50 %</td><td align="left">Pitkät, työkaluvaltaiset istunnot</td></tr>
-  <tr><td align="left" nowrap>🔥 <b>Ultra</b></td><td align="left" nowrap>~75 %</td><td align="left">Maksimaaliset säästöt</td></tr>
-  <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>60–90 %</td><td align="left">Shell-/testi-/koonti-/git-tulosteet</td></tr>
-  <tr><td align="left" nowrap>🔗 <b>Stacked (RTK → Caveman)</b></td><td align="left" nowrap><b>78–95 %</b></td><td align="left">Sekalaiset kehotteet + työkalulokit</td></tr>
+  <tr><th align="center">#</th><th align="left">Moottori</th><th align="left">Mitä se tekee</th></tr>
+  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Istunto-Dedup</b></td><td align="left">Pudottaa sisällön toistuvasti käännöksissä (sisällön mukaan osoitettu, poikkikäännös)</td></tr>
+  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">Arkistoi suuret lohkot hakumerkkien taakse, noudetaan pyynnöstä</td></tr>
+  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">Tyhjennys + kuvan ja URL-osoitteen leikkaus (latenssin valon perusviiva)</td></tr>
+  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">Älykäs työkalutulosten suodatus, poisto ja katkaisu (komennot tunteva)</td></tr>
+  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Vastaustyökalun tulos</b></td><td align="left">Häviötön ensimmäinen JSON + -rajoitettu diagnostinen pakkaus shell/patch/search/build ulostuloille (vastaukset API)</td></tr>
+  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Pääntila</b></td><td align="left">Häviötön JSON -taulukoiden tiivistys (~ 30 %) myyjän kautta <b>GCF</b> koodekki</td></tr>
+  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Relevanssi</b></td><td align="left">Poimittava lauseen pisteytys viimeiseen käyttäjän kyselyyn</td></tr>
+  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Luolaihminen</b></td><td align="left">Sääntöihin perustuva proosan pakkaus (~ 65–75 % lähdöstä)</td></tr>
+  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Aggressiivinen</b></td><td align="left">Yhteenveto + vanhojen käänteiden progressiivinen ikääntyminen</td></tr>
+  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">ML semanttinen karsiminen MobileBERT kautta ONNX — code-safe, async</td></tr>
+  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ultra</b></td><td align="left">Heuristinen merkkien karsiminen valinnaisella pienmallitasolla (SLM).</td></tr>
+  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">Kokeellinen konteksti-kuvakoodaus mitatulle Claude Fable 5:lle suorassa Anthropic johdossa; GPT 5.6 -muuntajat pysyvät virhesuljettuina odottamassa toimittajan kuitteja. Neljä pakkausprofiilia (aggressiivinen oletus, tasapainotettu, koodausturvallinen, läpivienti) (aggressiivisin; opt-in)</td></tr>
 </table>
 
-**Todellinen esimerkki — Standard-tila:**
+Koodilohkot, URLs ja strukturoitu data ovat** aina säilynyt** tavu-täydellinen.** Esiasetukset yhdellä napsautuksella** yhdistä moottorit:
 
-> **Ennen (69 tokenia):** _"Syy siihen, että React-komponenttisi renderöityy uudelleen, on todennäköisesti se, että luot uuden objekti\-viitteen jokaisella renderöintikierroksella. Kun välität inline-objektin propina, Reactin pinnallinen vertailu näkee sen joka kerta eri objektina, mikä käynnistää uudelleenrenderöinnin. Suosittelen käyttämään useMemoa objektin memoisoimiseen."_
->
-> **Jälkeen (19 tokenia):** _"Uusi objektiviite jokaisella renderöinnillä. Inline-objektiproppi = uusi viite = uudelleenrenderöinti. Käär i useMemo-funktioon."_
->
-> **Sama vastaus. 72 % vähemmän tokeneita. Ei tarkkuuden menetystä.** ✅
+<table>
+  <tr><th align="left">tila</th><th align="left">Säästöjä</th><th align="left">Parasta varten</th></tr>
+  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~15%</td><td align="left">Aina päällä turvallinen oletus</td></tr>
+  <tr><td align="left" nowrap>🪨 <b>Standard (Cuveman)</b></td><td align="left" nowrap>~30%</td><td align="left">Päivittäinen koodaus</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Aggressiivinen</b></td><td align="left" nowrap>~50%</td><td align="left">Pitkät, työkaluja vaativat istunnot</td></tr>
+  <tr><td align="left" nowrap>🔥 <b>Ultra</b></td><td align="left" nowrap>~75%</td><td align="left">Maksimi säästöt</td></tr>
+  <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>60–90%</td><td align="left">Shell/test/build/git lähtö</td></tr>
+  <tr><td align="left" nowrap>🔗 <b>Pinottu (RTK → Caveman)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">Sekalaiset kehotteet + työkalulokit</td></tr>
+</table>
 
-**PT-BR-esimerkki — [Troglodita](https://github.com/leninejunior/troglodita)-tila:**
+**Todellinen esimerkki — Standard -tilasta:**
 
-> **Ennen (42 tokenia):** _"Ongelma on, että komponentti renderöidään uudelleen, koska jokaisella renderöintikierroksella luodaan uusi objekti­viittaus. Suosittelisin käyttämään useMemoa."_
+> **Ennen (69 merkkiä):** _"Syy, miksi React -komponenttisi hahmonnetaan uudelleen, johtuu todennäköisesti siitä, että luot uuden objektiviittauksen jokaisessa renderöintijaksossa. Kun ohitat rivinomaisen objektin ehdotuksena, React:n matala vertailu näkee sen joka kerta eri objektina, mikä laukaisee uudelleen renderöinnin. Suosittelen käyttämään useMemo objektin muistiin tallentamiseen."_
 >
-> **Jälkeen (12 tokenia):** _"Uudelleenrenderöinti: uusi viittaus joka kierroksella (sisäkkäinen objekti luodaan uudelleen). Käytä `useMemo`."_
+> **Jälkeen (19 merkkiä):** _"Uusi objekti viittaus jokaiseen renderöintiin. Inline objektin ehdotus = uusi viite = uudelleenrenderöiminen. Kääri useMemo ksi."_
 >
-> **Sama vastaus. ~70 % vähemmän tokeneita. Tekninen tarkkuus säilyy ennallaan.** ✅
+> **Sama vastaus. 72 % vähemmän tokeneita. Tarkkuushäviö nolla.** ✅
+
+**PT-BR esimerkki — [Troglodita-](https://github.com/leninejunior/troglodita) tilasta:**
+
+> **Antes (42 merkkiä):** _"O problem é que o componente está re-renderizando porque uma nova referência de objeto está sendo criada em cada ciclo de renderização. Eu recomendaria usar useMemo."_
+>
+> **Talletus (12 merkkiä):** _"Rennöi uudelleen: ref nova cada ciclo (objeto inline recriado). Usar `useMemo`."_
+>
+> **Mesma resposta. ~ 70% menos-merkkejä. Precisão técnica intacta.** ✅
 
 <br/>
 
-### 🎚️ Moottoreiden lisäksi — tulostyylit, mukautuva säädin ja pyyntökohtainen hallinta
+### 🎚️ Moottoreiden — lähtötyylien lisäksi mukautuva valitsin ja pyyntökohtainen ohjaus
 
-Yllä olevat 12 moottoria pienentävät sitä, mitä menee **sisään**. Kolme lisäkerrosta muotoilee **miten**, **milloin** ja mitä tulee **ulos**:
+Yllä olevat 12 moottoria kutistavat mitä menee** sisään** . Kolme kerrosta lisää muotoa** miten** ,** kun** ja mitä tulee** ulos** :
 
-- **🪄 Tulostyylit** _(tulosteen ohjaus)_ — lisäävät deterministisiä ja välimuistiturvallisia vastausten muotoiluohjeita; tyylejä voi yhdistellä, ja jokaisella on voimakkuustasot `lite` / `full` / `ultra`. Tyylin lisääminen vaatii yhden rivin rekisterimerkinnän:
-  - **Tiivis proosa** — poista täytesanat / artikkelit / epäröinti; säilytä tekninen sisältö täsmällisenä.
-  - **Vähemmän koodia** — ”laiska seniorikehittäjä” YAGNI: pienin toimiva muutos, ei pyytämätöntä rakennustyötä.
-  - **Poninhäntä (laiska seniorikehittäjä)** — kiipeä YAGNI-tikkaita, korjaa perimmäinen syy, tee pienin toimiva diff.
-  - **Minulla on ADHD (toiminta ensin)** — seuraava toimenpide ensin, vaiheet numeroituina, yksi konkreettinen seuraava askel, ei alustusta.
-  - **Tiivis CJK (文言)** — erittäin tiivis klassisen kiinan tyyli (rajoitettu localeen `zh`).
-- **🎯 Mukautuva kontekstibudjetti** _(säädin)_ — yhden käytössä/pois käytöstä -tokenikynnyksen sijaan käytetään halvimpia ja vähiten tietoa hukkaavia moottoreita vain niin pitkälle kuin tarvitaan, jotta sisältö **mahtuu mallin konteksti-ikkunaan**. Käytäntö: `reserve-output` (oletus, mallikohtainen) · `percentage` · `absolute`. Tila: `floor` (takaa mahtumisen) · `replace-autotrigger` (oma nimenomainen valintasi voittaa) · `off` (vanha kynnys).
-- **🎛️ Missä pakkaamisesta päätetään** _(ensisijaisuus, korkea → matala)_ — pyyntökohtainen `x-omniroute-compression`-otsake › reititysyhdistelmän ohitus › aktiivinen nimetty profiili › mukautuva / automaattinen käynnistin › paneelin oletus › pois käytöstä. Käytetty suunnitelma palautetaan `X-OmniRoute-Compression: <mode>; source=<source>`-vastausotsakkeessa.
+- **🪄 Output Styles** _(output-axis steering)_ — injektio deterministiset, välimuistia suojaavat vasteen muotoiluohjeet; yhdistettävissä, kukin `lite` / `full` / `ultra` -intensiteetillä. Tyylin lisääminen on yksirivinen rekisterimerkintä:
+  - **Tiukkaa proosaa** — drop filler / artikkelit / suojaus; pitää tekninen sisältö täsmällisenä.
+  - **Vähemmän koodia** — "laiska vanhempi kehittäjä" YAGNI: pienin toimiva muutos, ei pyytämättömiä rakennustelineitä.
+  - **poninhäntä (laiska vanhempi kehittäjä)** — kiivetä YAGNI tikkaita, korjata perimmäinen syy, pienin toimiva ero.
+  - **Minulla on ADHD (toiminta ensin)** — seuraavan toiminnan johdot, vaiheet numeroidut, yksi konkreettinen seuraava vaihe, ei johdantoa.
+  - **Terse CJK (文言)** — klassinen-kiinalainen erittäin suppea tyyli (paikallinen `zh`).
+- **🎯 Mukautuva kontekstibudjetti** _(valitsin)_ — yhden on/off -tunnuksen kynnysarvon sijasta korota halvimmat, häviöttömät moottorit vain niin pitkälle kuin on tarpeen** sopii mallin konteksti-ikkunaan** . Käytäntö: `reserve-output` (oletus, mallitietoinen) · `percentage` · `absolute`. Tila: `floor` (takuu istuvuus) · `replace-autotrigger` (selkeä valintasi voittaa) · `off` (vanha kynnys).
+- **🎛️ Missä pakkaus päätetään** _(predence, high → low)_ — per-pyyntö `x-omniroute-compression` header › reititysyhdistelmän ohitus › aktiivinen nimetty profiili › mukautuva / automaattinen laukaisu › paneelin oletus › pois päältä. Sovellettu suunnitelma kaikuu takaisin `X-OmniRoute-Compression: <mode>; source=<source>` -vastauksen otsikossa.
 
-Käynnistä automaattisesti tokenikynnyksen perusteella, ota mukautuva säädin käyttöön, kiinnitä nimetty profiili, määritä kertaluonteinen pyyntökohtainen asetus tai määritä putki kullekin reititysyhdistelmälle — valitse työkuormaan sopivin vaihtoehto. Valinnainen offline-**arviointikehys** (`npm run eval:compression`) pisteyttää uskollisuuden suhteessa säästöihin kiinteällä aineistolla ennen muutoksen julkaisemista.
+Automaattinen liipaisu tunnuksen kynnyksen mukaan, käännä mukautuva valitsin, kiinnitä nimetty profiili, aseta kertaluonteinen pyyntöä kohti tai määritä liukuhihna reititystä kohti — sen mukaan, mikä sopii työkuormaan. Osallistuminen offline-tilassa** eval valjaat** (`npm run eval:compression`) saa pisteet kiinnitetyssä korpuksessa uskollisuudesta vs. säästöihin ennen muutoksen edistämistä.
 
 📖 [`COMPRESSION_GUIDE.md`](docs/compression/COMPRESSION_GUIDE.md) · [`RTK_COMPRESSION.md`](docs/compression/RTK_COMPRESSION.md) · [`COMPRESSION_ENGINES.md`](docs/compression/COMPRESSION_ENGINES.md)
 
@@ -1037,7 +1019,7 @@ Käynnistä automaattisesti tokenikynnyksen perusteella, ota mukautuva säädin 
 
 <div align="center">
 
-# ⚡ Pika-aloitus
+# ⚡ Quick Start
 
 </div>
 
@@ -1048,33 +1030,23 @@ npm install -g omniroute
 omniroute
 ```
 
-> 💡 Näetkö `npm warn ERESOLVE`- tai peer-riippuvuuksien varoituksia? [Ne ovat harmittomia](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).
-> **Käytätkö versiota npm 11 tai uudempaa?** npm saattaa estää pakettien elinkaarikomentosarjat, ellei niitä sallita. OmniRouten `postinstall` (`node scripts/build/postinstall.mjs`) tarvitaan sen natiivien runtime-tiedostojen valmistelemiseen. Salli npm:n varoituksessa nimetyt paketit asentaessasi paketteja globaalisti. OmniRoute 3.8.55:n ilmoittamalle pakettijoukolle:
+> 💡 Näetkö `npm warn ERESOLVE` tai vertaisvaroitukset? [Ne ovat vaarattomia](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).** Käytätkö npm 11 tai uudempaa?** npm voi estää paketin elinkaaren komentosarjoja, elleivät ne ole sallittuja. OmniRoute:n `postinstall` (`node scripts/build/postinstall.mjs`) tarvitaan valmistelemaan alkuperäiset ajonaikaiset tiedostonsa. Salli npm:n varoituksessa nimetyt paketit, kun asennat maailmanlaajuisesti. OmniRoute 3.8.55:n ilmoittama pakettisarja:
 >
-> ```bash
-> npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute
-> ```
+> `bash npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute `
 >
-> Jos haluat käyttää tätä sallittujen pakettien luetteloa tulevissa globaaleissa asennuksissa, määritä se kerran ja asenna sen jälkeen normaalisti:
+> Jos haluat käyttää tätä sallittua luetteloa tulevissa yleisissä asennuksissa, määritä se kerran ja asenna sitten normaalisti:
 >
-> ```bash
-> npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user
-> npm install -g omniroute
-> ```
+> `bash npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user npm install -g omniroute `
 >
-> Riippuvuusluettelo voi muuttua julkaisujen välillä; jos npm ilmoittaa eri luettelon, käytä kyseisessä varoituksessa mainittuja pakettien nimiä. Paketin salliminen antaa sen asennuskomentosarjoille luvan suorittaa.
-> **Käytätkö Gemini Webiä tai muuta verkkoselainevästeitä käyttävää palveluntarjoajaa?** npm-paketti sisältää
-> Playwrightin, mutta ei sen Chromium-binaaria. Tutustu
-> [Playwright Chromiumin asennusohjeeseen](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium)
-> ennen ensimmäistä verkkopalveluntarjoajan pyyntöä.
+> Riippuvuusluettelo voi vaihdella julkaisujen välillä; Jos npm ilmoittaa toisen luettelon, käytä varoituksen pakettien nimiä. Paketin salliminen sallii sen asennuskomentosarjojen suorittamisen.** Käytätkö Gemini Webiä tai muuta verkkoevästeiden tarjoajaa?** Npm-paketti sisältää Playwright, mutta ei sen Chromium-binaaria. Katso [Playwright Chromium -asetushuomautus](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium) ennen kuin teet ensimmäisen verkkopalveluntarjoajan pyynnön.
 
-Kojelauta osoitteessa `http://localhost:20128` · API osoitteessa `http://localhost:20128/v1`.
+Kojelauta osoitteessa `http://localhost:20128` · API at `http://localhost:20128/v1`.
 
-**2) Yhdistä soveltuva palveluntarjoaja omalla tililläsi**
+**2) Yhdistä kelvollinen palveluntarjoaja käyttämällä omaa tiliäsi**
 
-Kojelauta → **Palveluntarjoajat** → valitse käyttötarkoitukseesi sopiva palveluntarjoaja, jonka nykyiset ehdot ja kiintiö vastaavat tarpeitasi → lisää sen API-avain tai suorita sen tilin käyttöönottovaiheet. Ilmaiset käyttöoikeustasot saattavat edellyttää rekisteröitymistä, hyväksyntää tai maksutapaa. Tutustu [Ilmaisten käyttöoikeustasojen oppaaseen](docs/getting-started/FREE-TIERS-GUIDE.md); avaimeton saatavuus ei ole taattua, ja palveluntarjoajat, joiden merkintä on `tos: avoid`, jätetään oletusarvoisesti `auto`-valinnan ulkopuolelle.
+Kojelauta →** Palveluntarjoajat** → valitse palveluntarjoaja, jonka nykyiset ehdot ja kiintiö sopivat käyttötapaukseesi. → lisää API -avaimensa tai viimeistele tilikulkunsa. Ilmaiset tasot voivat edellyttää rekisteröitymistä, hyväksyntää tai maksutapaa. Tarkista [Free Tiers -opas](docs/getting-started/FREE-TIERS-GUIDE.md) ; avaimetonta saatavuutta ei taata, ja `tos: avoid` -merkityt palveluntarjoajat suljetaan oletuksena pois `auto`.
 
-**3) Osoita koodityökalusi palveluun**
+**3) Osoita koodaustyökaluasi**
 
 ```txt
 Base URL: http://localhost:20128/v1
@@ -1082,15 +1054,15 @@ API Key:  [copy from Dashboard → Endpoints]
 Model:    auto            (routes among eligible connections — or choose provider/model)
 ```
 
-**4) Varmista toiminta**
+**4) Varmista, että se toimii**
 
 ```bash
 curl http://localhost:20128/v1/models -H "Authorization: Bearer YOUR_KEY"
 ```
 
-Näet yhdistettyjen malliesi luettelon. 🎉 Siinä kaikki — aloita koodaaminen, niin OmniRoute huolehtii automaattisesta reitityksestä ja varayhteyksistä.
+Sinun pitäisi nähdä liitetyt mallit luettelossa. 🎉 Siinä kaikki — aloita koodauksen, ja OmniRoute reitittää automaattisesti ja palaa puolestasi.
 
-Jos asiakkaasi ei voi lähettää mukautettuja otsakkeita, OmniRoute tarjoaa myös tokenisoidut yhteensopivuusaliakset:
+Jos asiakkaasi ei voi lähettää mukautettuja otsikoita, OmniRoute paljastaa myös tokenoidut yhteensopivuusaliakset:
 
 ```txt
 OpenAI catalog:   http://localhost:20128/vscode/YOUR_KEY/
@@ -1101,56 +1073,52 @@ Ollama chat:      http://localhost:20128/vscode/YOUR_KEY/api/chat
 Ollama tags:      http://localhost:20128/vscode/YOUR_KEY/api/tags
 ```
 
-Käytä näitä vain asiakkailla, jotka eivät voi liittää `Authorization: Bearer ...` -otsaketta. Otsaketodennus on edelleen suositeltu tapa.
+Käytä näitä vain asiakkaille, jotka eivät voi liittää `Authorization: Bearer ...`. Otsikon todennus pysyy ensisijaisena tilana.
 
 <br/>
 
-## 📦 Lisää asennustapoja — Docker, lähdekoodi, pnpm, Arch
+## 📦 Lisää asennustapoja — Docker, lähde, pnpm, Arch
 
 **🐳 Docker**
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-`:latest` seuraa korkeinta **julkaistua** vakaata SemVer-versiota. Se ei seuraa gitin `main`-haaraa. Kiinnitä GitOps-käyttöä varten versio `:X.Y.Z`. Katso [Docker-julkaisukanavat](docs/guides/DOCKER_GUIDE.md#release-channels). Näköistiedostossa on kiinteä arvo **`OMNIROUTE_MEMORY_MB=1024`**. Se riittää hallintapaneeliin ja kevyeen keskusteluun. **Koodausagentit** (Claude Coden, Codexin, Grokin ja muiden kutsut `POST /v1/responses`-rajapintaan) tarvitsevat huomattavasti suuremman V8-keon, tai prosessi antaa `FATAL ERROR`-virheen noin 12 GiB:n kohdalla kahden päällekkäisen pitkän kontekstin aikana. Mitoita säilö keon kokoa suuremmaksi (natiivipuskurit sijaitsevat V8:n ulkopuolella):
+`:latest` seuraa korkeinta** julkaistu** vakaa SemVer. Se ei seuraa git `main`. Pin `:X.Y.Z` for GitOps. Katso [Docker n vapautuskanavat](docs/guides/DOCKER_GUIDE.md#release-channels).Kuvan nastat**`OMNIROUTE_MEMORY_MB=1024`** . Se riittää kojelautaan ja kevyeen keskusteluun.** Koodaavat aineet** (`POST /v1/responses` Claude Codesta, Codex, Grok, …) tarvitsevat paljon suuremman V8-keon tai prosessin `FATAL ERROR` s kohdassa ~ 12 GiB kahdessa päällekkäisessä pitkässä kontekstissa. Kokoa säiliön koko keon yläpuolelle (natiivipuskurit sijaitsevat V8:n ulkopuolella):
 
-| Työkuorma                                         | Keko (`-e OMNIROUTE_MEMORY_MB`) | Säilö (`--memory`) |
-| ------------------------------------------------- | ------------------------------- | ------------------ |
-| Hallintapaneeli / kevyt keskustelu                | `1024` (näköistiedoston oletus) | ≥2 g               |
-| Yksi koodausagentti                               | `8192`                          | ≥10 g              |
-| Kaksi samanaikaista pitkää `/v1/responses`-kutsua | `10240`–`12288`                 | ≥12–16 g           |
+| Työmäärä                                | kasa (`-e OMNIROUTE_MEMORY_MB`) | Säiliö (`--memory`) |
+| --------------------------------------- | ------------------------------- | ------------------- |
+| Kojelauta / kevyt chat                  | `1024` (kuvan oletusarvo)       | ≥ 2 g               |
+| Yksi koodausagentti                     | `8192`                          | ≥ 10 g              |
+| Kaksi yhtä aikaa pitkää `/v1/responses` | `10240`–`12288`                 | ≥ 12-16 g           |
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
   -e OMNIROUTE_MEMORY_MB=8192 --memory=10g \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-Koko taulukko: [Docker-opas — ajonaikainen RAM](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
+Täysi taulukko: [Docker Guide — runtime RAM](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
 
-> **Dockerin ennakkoversiokanava:** `diegosouzapw/omniroute:next` ja
-> `diegosouzapw/omniroute:next-web` seuraavat nykyistä oletushaaraa `release/v*`.
-> Nämä muuttuvat tunnisteet on tarkoitettu vain julkaisemattomien korjausten
-> testaamiseen, eikä niitä **tueta tuotantokäytössä**. Katso
-> [Docker-julkaisukanavat](docs/guides/DOCKER_GUIDE.md#release-channels).
+> **Docker -kanava ennen julkaisua:** `diegosouzapw/omniroute:next` ja `diegosouzapw/omniroute:next-web` seuraavat nykyistä oletusarvoista `release/v*` -haaraa. Nämä muuttuvat tunnisteet on tarkoitettu vain julkaisemattomien korjausten testaamiseen ja ovat** ei tueta tuotantoa** . Katso [Docker n julkaisukanavat](docs/guides/DOCKER_GUIDE.md#release-channels).
 
 **🥟 Bun**
 
-Tavallista `bun install` -asennusta ja maailmanlaajuista asennusta (`bun install -g omniroute`) tuetaan Bun-ajonaikaisen ympäristön tunnistuksen avulla:
+Normaalia `bun install` ja globaalia asennusta (`bun install -g omniroute`) tuetaan Bun ajonaikaisen tunnistuksen kautta:
 
-- **Sisäänrakennettu `bun:sqlite`**: OmniRoute käyttää Bunin sisäänrakennettua `bun:sqlite`-ajuria Bunia käytettäessä ja käyttää `better-sqlite3`-ajuria Node.js:ssä tai `sql.js`:ää varavaihtoehtona.
-- **Webpack-koontityökalun automaattinen valinta kehityksessä**: Kehitystilassa (`bun run dev`) Bun tunnistetaan automaattisesti ja Turbopack poistetaan käytöstä Webpackin hyväksi natiivien V8-sidosten yhteensopimattomuuksien estämiseksi. Tuotantokoontiversiot (`bun run build`) noudattavat `OMNIROUTE_USE_TURBOPACK`-asetusta täsmälleen kuten Nodessa: Turbopack on oletuksena käytössä, ja `OMNIROUTE_USE_TURBOPACK=0` määrittää koonnin Webpackilla (`Dockerfile.bun` välittää sen `--build-arg`-argumenttina).
-- **Bunille tarkoitettu Dockerfile**: Monivaiheinen `Dockerfile.bun` natiiveja Bun-tuotantokäyttöönottoja varten (`docker build -f Dockerfile.bun -t omniroute:bun .`).
+- **Sisäänrakennettu `bun:sqlite`** : OmniRoute käyttää Bun:n sisäänrakennettua `bun:sqlite` ajuria ajaessaan Bun alla ja palaa `better-sqlite3` ään Node.js ssä tai `sql.js`.
+- **Automaattinen Webpack-niputtajan valinta dev** : Kehitys (`bun run dev`) tunnistaa automaattisesti Bun ja poistaa Turbopack käytöstä Webpackin hyväksi estääkseen alkuperäisen V8-sidosyhteensopivuuden. Tuotantoversiot (`bun run build`) seuraavat `OMNIROUTE_USE_TURBOPACK` täsmälleen kuten Nodessa: Turbopack oletuksena, `OMNIROUTE_USE_TURBOPACK=0` rakentaa Webpackilla (`Dockerfile.bun` paljastaa sen `--build-arg`).
+- **Omistettu Bun Dockerfile** : Monivaiheinen `Dockerfile.bun` alkuperäisille Bun -tuotannon käyttöönotuksille (`docker build -f Dockerfile.bun -t omniroute:bun .`).
 
 ```bash
-# Asenna ja suorita Bunilla
+# Install and run with Bun
 bun install
 bun run dev
 ```
 
-**🛠️ Lähdekoodista**
+**🛠️ Lähteestä**
 
 ```bash
 cp .env.example .env && npm install
@@ -1172,63 +1140,51 @@ yay -S omniroute-bin && systemctl --user enable --now omniroute.service
 **🔧 Nix (Flake)**
 
 ```bash
-# Nix-flakejen käyttö
+# Using Nix flakes
 nix develop
 npm run dev
 
-# Tai devboxin käyttö
+# Or using devbox
 devbox run npm run dev
 ```
 
-📖 [Docker-opas](docs/guides/DOCKER_GUIDE.md) — Compose-profiilit, Caddyn HTTPS ja Cloudflare-tunnelit.
+📖 [Docker Guide](docs/guides/DOCKER_GUIDE.md) — Muodosta profiilit, Caddy HTTPS, Cloudflare tunnelit.
 
 **🦭 Podman**
 
 ```bash
-# 1. Valmistele sidottava tietohakemisto
+# 1. Prepare the bind-mounted data directory
 mkdir -p data
 
-# 2. Vain Linux + paikallinen rootless Podman (älä koskaan käytä etäkäyttöistä Podman Machine -asiakasta):
+# 2. Linux + local rootless Podman only (never a remote Podman Machine client):
 podman unshare chown 1000:1000 ./data
 
-# 3. Aseta ajonaikainen vihje, kokoa paikallinen Compose-näköistiedosto ja käynnistä
+# 3. Set the runtime hint, build the local Compose image, and start
 echo "CONTAINER_HOST=podman" >> .env
 podman compose --profile base up -d --build
 ```
 
-macOS:ssä tai Windowsissa Podman käyttää etäkäyttöistä Podman Machinea: ohita
-`podman unshare` ja noudata [topologiakohtaista tietohakemiston ohjetta](contrib/podman/README.md#data-directory-permissions-by-topology).
+macOS ssa tai Windows ssä Podman käyttää Podman-etäkonetta: ohita `podman unshare` ja noudata [topologiakohtaisia tietohakemistoohjeita](contrib/podman/README.md#data-directory-permissions-by-topology).
 
-📖 [Podman-opas](contrib/podman/README.md) — Compose-koonnit, Podman Machine sekä
-Linux/systemd Quadlet -asetukset.
+📖 [Podman Guide](contrib/podman/README.md) — Luo koontiversiot, Podman Machine ja Linux/systemd Quadlet -asetukset.
 
-**⚡ Nopeampi / kevyempi asennus (ohita natiivikoonti)**
+**⚡ Nopeampi / kevyempi asennus (ohita alkuperäinen koontiversio)**
 
-Natiivinen SQLite-moottori (`better-sqlite3`) on **valinnainen** riippuvuus, joten maailmanlaajuinen
-asennus ei koskaan esty lähdekoodista kääntämisen vuoksi: se käyttää alustallesi ja Node-versiollesi
-sopivaa valmiiksi koottua binaaria, jos sellainen on saatavilla, ja muuten siirtyy läpinäkyvästi
-puhtaasti JavaScriptillä toteutettuun moottoriin
-(`node:sqlite` Node 22:ssa ja sitä uudemmissa versioissa, muutoin mukana toimitettava `sql.js` WASM)
-— koontityökaluja ei tarvita.
+Alkuperäinen SQLite moottori (`better-sqlite3`) on** valinnainen** riippuvuus, joten globaali asennus ei koskaan estä kääntämistä lähteestä: se käyttää valmiiksi rakennettua binaaria, kun se vastaa platform/Node täsi, ja muutoin palaa läpinäkyvästi puhtaaseen JS-moottoriin (`node:sqlite` solmussa 22 +, muuten niputettu `sql.js` WASM) — ei vaadi rakennustyökaluja.
 
-Voit ohittaa asennuksen jälkeisen **natiivisen valmistelun** kokonaan (CI, headless-käyttö tai hitaat koneet).
-Huomautus: tämä ohittaa vain natiivisen SQLite-valmisteluvaiheen (`scripts/postinstall.mjs`); binaarin
-kopiointi-/korjauskoukku (`scripts/build/postinstall.mjs`) suoritetaan edelleen normaalisti:
+Jälkiasennuksen ohittaminen** natiivi lämmittely** kokonaan (CI, päättömät tai hitaat koneet). Huomautus: tämä ohittaa vain alkuperäisen SQLite -alennusvaiheen (`scripts/postinstall.mjs`); binary-copy/repair koukku (`scripts/build/postinstall.mjs`) toimii edelleen normaalisti:
 
 ```bash
-OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # Myös CI=1 ohittaa sen
+OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 also skips it
 ```
 
-Nopeimpia asennuksia varten suosi **pnpm**-paketinhallintaa (sisällön osoitteistava säilö + kiinteät
-linkit — katso edeltä). Jos haluat hallintapaneelittoman headless-ajonaikaisen ympäristön, käytä Dockerin
-`base`-profiilia (edellä) tai [Termux-opasta](docs/guides/TERMUX_GUIDE.md). CLI ja verkkohallintapaneeli
-palvellaan samasta prosessista yhden portin kautta, joten erillistä vain CLI:tä sisältävää pakettia ei tällä hetkellä ole.
+Nopeimpia asennuksia varten** pnpm** (sisältöosoitteellinen kauppa + kovat linkit — katso yllä). Käytä Docker `base` -profiilia (yllä) tai [Termux-opasta](docs/guides/TERMUX_GUIDE.md) saadaksesi kojelautattoman, päättömän suoritusajan. CLI ja web-hallintapaneelia palvelee sama prosessi yhdessä portissa, joten erillistä vain CLI-pakettia ei ole olemassa.
 
 <br/>
 
 <div align="center">
 
-# 🎬 OmniRoute käytännössä
+# 🎬 OmniRoute toiminnassa
 
 </div>
 
@@ -1324,29 +1280,29 @@ Kanoniset mittarit 2026-10-18: **1.976 yksilöllistä videota** · **20.220.289 
 <br/>
 <div align="center">
 
-## 🛠️ Teknologiapino
+## 🛠️ Tech Stack
 
 </div>
 
 <table>
-  <tr><th align="left">Taso</th><th align="left">Teknologia</th></tr>
-  <tr><td nowrap><b>Ajoympäristö</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
-  <tr><td nowrap><b>Ohjelmointikieli</b></td><td>TypeScript 6.0 — <b>100 % TypeScriptiä</b> hakemistoissa <code>src/</code> ja <code>open-sse/</code> (ytimessä ei ole yhtään <code>any</code>-tyyppiä versiosta v2.0 lähtien)</td></tr>
-  <tr><td nowrap><b>Viitekehys</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
-  <tr><td nowrap><b>Tietokanta</b></td><td>better-sqlite3 (SQLite, WAL-kirjaus) + LowDB (JSON-perintö) — 147 toimialamoduulia, 240 migraatiota</td></tr>
-  <tr><td nowrap><b>Muisti</b></td><td>SQLite FTS5 -kokotekstihaku + int8-kvantisoinnit vektoriesityksille, tyypitetty vanheneminen</td></tr>
-  <tr><td nowrap><b>Skeemat</b></td><td>Zod 4 — MCP-työkalujen I/O-validointi + API-sopimukset</td></tr>
+  <tr><th align="left">Kerros</th><th align="left">Tekniikka</th></tr>
+  <tr><td nowrap><b>Suoritusaika</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
+  <tr><td nowrap><b>Kieli</b></td><td>TypeScript 6.0 — <b>100% TypeScript</b> <code>src/</code> ja <code>open-sse/</code> välillä (nolla <code>any</code> ytimessä v2.0:n jälkeen)</td></tr>
+  <tr><td nowrap><b>puitteet</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
+  <tr><td nowrap><b>Tietokanta</b></td><td>better-sqlite3 (SQLite, WAL kirjaus) + LowDB (JSON legacy) — 147 verkkotunnusmoduulia, 240 siirtoa</td></tr>
+  <tr><td nowrap><b>Muisti</b></td><td>SQLite FTS5 kokoteksti + int8-quantized vektori upotukset, kirjoitettu hajoaminen</td></tr>
+  <tr><td nowrap><b>Kaaviot</b></td><td>Zod 4 — MCP työkalu I/O validointi + API sopimukset</td></tr>
   <tr><td nowrap><b>Protokollat</b></td><td>MCP (stdio / HTTP / SSE) + A2A v0.3 (JSON-RPC 2.0 + SSE)</td></tr>
-  <tr><td nowrap><b>Suoratoisto</b></td><td>Server-Sent Events (SSE) + WebSocket-silta (<code>/v1/ws</code>)</td></tr>
-  <tr><td nowrap><b>Pakkaus</b></td><td>12 moottorin putki — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
-  <tr><td nowrap><b>Todennus ja tietoturva</b></td><td>OAuth 2.0 (PKCE) + JWT + API-avaimet + MCP:n rajattu todennus · AES-256-GCM levossa oleville tiedoille · DOMPurify</td></tr>
-  <tr><td nowrap><b>Huomaamattomuus</b></td><td>wreq-js — JA3 / JA4 TLS -sormenjäljen jäljittely, 3-tasoinen välityspalvelin</td></tr>
-  <tr><td nowrap><b>Vikasietoisuus</b></td><td>Piirikatkaisin, eksponentiaalinen perääntyminen, ruuhkapiikkien estäminen, automaattinen yhdistelmien itsekorjaus</td></tr>
-  <tr><td nowrap><b>Lokitus</b></td><td>pino — rakenteiset JSON-lokit pyyntökontekstilla</td></tr>
-  <tr><td nowrap><b>Testaus</b></td><td>Node.js-testiajo + Vitest — <b>yli 60 000 staattista testimäärittelyä</b> yli 8 400 seuratun testitiedoston joukossa (yksikkö-, integraatio-, E2E-, tietoturva- ja ekosysteemitestit)</td></tr>
+  <tr><td nowrap><b>Suoratoisto</b></td><td>Palvelimen lähettämät tapahtumat (SSE) + WebSocket silta (<code>/v1/ws</code>)</td></tr>
+  <tr><td nowrap><b>Puristus</b></td><td>12-moottorinen putkisto — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
+  <tr><td nowrap><b>Auth &amp; turvallisuus</b></td><td>OAuth 2.0 (PKCE) + JWT + API + MCP Scod auth · AES-256-GCM levossa · DOMPurify</td></tr>
+  <tr><td nowrap><b>Stealth</b></td><td>wreq-js — JA3 / JA4 TLS sormenjälkijälki, 3-tason välityspalvelin</td></tr>
+  <tr><td nowrap><b>Joustavuus</b></td><td>Katkaisija, eksponentiaalinen takaisku, ukkosen esto, automaattinen yhdistelmä itsekorjaava</td></tr>
+  <tr><td nowrap><b>Kirjaaminen</b></td><td>pino — strukturoidut JSON -lokit pyyntökontekstilla</td></tr>
+  <tr><td nowrap><b>Testaus</b></td><td>Node.js testijuoksija + Vitest — <b>60 000 + staattisen testauksen ilmoitusta</b> 8 400 + -seuraavalla testitiedostolla (yksikkö, integraatio, E2E, turvallisuus, ekosysteemi)</td></tr>
   <tr><td nowrap><b>Alustat</b></td><td>Työpöytä (Electron) · Android (Termux) · PWA (mikä tahansa selain)</td></tr>
-  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Actions — automaattinen julkaisu npm:ään + Docker Hubiin julkaisun yhteydessä</td></tr>
-  <tr><td nowrap><b>Linkit</b></td><td><a href="https://omniroute.online">Verkkosivusto</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/diegosouzapw/omniroute">Docker Hub</a></td></tr>
+  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Actions — auto npm julkaise + Docker Hub julkaisussa</td></tr>
+  <tr><td nowrap><b>Linkit</b></td><td><a href="https://omniroute.online">Verkkosivusto</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/cheaperinference/omniroute">Docker Hub</a></td></tr>
 </table>
 
 <div align="center">
@@ -1836,17 +1792,17 @@ OmniRoute seisoo jättiläisten harteilla. Se alkoi projektin **[9router](https:
   <tr><td nowrap><b><a href="https://github.com/steipete/CodexBar">CodexBar</a></b></td><td align="center">22,955</td><td>Tunnisti Grok Build -kiintiöpinnan; OmniRoute varmisti ja korjasi sitten aktiivisen wire-muodon itsenäisesti.</td></tr>
 </table>
 
-## 📄 Lisenssi
+## 📄 lisenssi
 
-MIT-lisenssi – katso lisätietoja tiedostosta [LICENSE](LICENSE).
+MIT -lisenssi – katso lisätietoja [LICENSE](LICENSE).
 
 ---
 
 <div align="center">
 
-**[⬆ Takaisin alkuun](#-omniroute)** · Rakennettu ❤️:lla avoimen lähdekoodin tekoäly-yhteisöä varten.
+**[⬆ Takaisin alkuun](#-omniroute)** · Rakennettu ❤️ llä avoimen lähdekoodin AI yhteisölle.
 
-<sub>Tekijä: <a href="https://github.com/diegosouzapw">Diego Souza</a> · OmniRoute v3.8.55 · Node ≥22.22.2 · MIT-lisenssi · <a href="https://omniroute.online">omniroute.online</a></sub>
+<sub>Luonut <a href="https://github.com/diegosouzapw">Diego Souza</a> · OmniRoute v3.8.55 · solmu ≥ 22.22.2 · MIT lisenssi · <a href="https://omniroute.online">omniroute.online</a></sub>
 
 </div>
-<!-- GitHub-keskustelut käytössä yhteisön kysymyksiä ja vastauksia varten -->
+<!-- GitHub Discussions enabled for community Q&A -->

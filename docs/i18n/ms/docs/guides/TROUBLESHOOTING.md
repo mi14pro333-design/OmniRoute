@@ -454,34 +454,34 @@ lihat [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Isu Docker
+## Docker Isu
 
-### IPv6 Docker / Sambungan Ditetapkan Semula
+### Docker IPv6 / Tetapan Semula Sambungan
 
 <a name="docker-ipv6"></a>
 
-**Gejala:** `curl http://localhost:20128/v1/models` mengembalikan `curl: (56) Recv failure: Connection reset by peer`. Papan pemuka dan titik akhir tanpa pengesahan berfungsi, tetapi titik akhir yang disahkan gagal — keadaan ini kelihatan seperti masalah pengesahan tetapi sebenarnya bukan.
+**simptom:** `curl http://localhost:20128/v1/models` kembalikan `curl: (56) Recv failure: Connection reset by peer`. Papan pemuka dan titik akhir yang tidak disahkan berfungsi, tetapi titik akhir yang disahkan gagal — ia kelihatan seperti masalah pengesahan tetapi tidak.
 
-**Punca:** `docker run -p 20128:20128` menerbitkan pada kedua-dua `0.0.0.0` (IPv4) dan `::` (IPv6), tetapi proses di dalam bekas hanya mendengar pada IPv4. Pada hos yang `localhost` diselesaikan kepada `::1` terlebih dahulu, sambungan tiba pada port IPv6 yang diterbitkan tanpa pendengar di belakangnya → sambungan ditetapkan semula.
+**Punca:** `docker run -p 20128:20128` menerbitkan pada kedua-dua `0.0.0.0` (IPv4) dan `::` (IPv6), tetapi proses di dalam bekas mendengar pada IPv4 sahaja. Pada hos yang `localhost` memutuskan untuk `::1` dahulu, sambungan mendarat pada port IPv6 yang diterbitkan tanpa pendengar di belakangnya tetapan semula sambungan →.
 
-**Pembaikan:**
+**Betulkan:**
 
-1. **Diagnostik pantas:** Jalankan `curl -4 http://localhost:20128/v1/models`. Jika ia berfungsi dengan `-4` tetapi gagal tanpanya, anda mempunyai ketidakpadanan pengikatan IPv6.
-2. **Pembaikan kekal:** Ikat kepada IPv4 secara eksplisit dengan menggunakan `-p 127.0.0.1:20128:20128` dalam perintah `docker run` anda:
+1. **Diagnosis cepat:** Lari `curl -4 http://localhost:20128/v1/models`. Jika ia berfungsi dengan `-4` tetapi gagal tanpa, anda mempunyai ketidakpadanan ikatan IPv6.
+2. **Pembetulan kekal:** Ikat kepada IPv4 secara eksplisit dengan menggunakan `-p 127.0.0.1:20128:20128` dalam perintah `docker run` anda:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Ini memaksa pengikatan IPv4 dan turut mengelakkan proksi daripada didedahkan pada semua antara muka hos.
+   Ini memaksa IPv4 mengikat dan juga mengelak daripada mendedahkan proksi pada semua antara muka hos.
 
 ---
 
-### Alat CLI Dipaparkan sebagai Tidak Dipasang
+### Pertunjukan Alat CLI Tidak Dipasang
 
 1. Semak medan masa jalan: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Untuk mod mudah alih: gunakan sasaran imej `runner-cli` (CLI terbina dalam)
-3. Untuk mod lekapan hos: tetapkan `CLI_EXTRA_PATHS` dan lekapkan direktori bin hos sebagai baca sahaja
-4. Jika `installed=true` dan `runnable=false`: perduaan ditemui tetapi gagal dalam pemeriksaan kesihatan
+2. Untuk mod mudah alih: gunakan `runner-cli` sasaran imej ( CLIs dibundel )
+3. Untuk mod lekap hos: tetapkan `CLI_EXTRA_PATHS` dan lekapkan direktori bin hos sebagai baca sahaja
+4. Jika `installed=true` dan `runnable=false`: binari ditemui tetapi gagal pemeriksaan kesihatan
 
 ### Pengesahan Masa Jalan Pantas
 

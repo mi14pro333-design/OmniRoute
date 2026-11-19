@@ -210,7 +210,7 @@
 
 ## 4. API 참조
 
-`/api/services/` 아래의 모든 경로는 다음과 같습니다.**LOCAL_ONLY** (루프백에만 해당, 엄격한 규칙 #17) 루프백이 아닌 요청은 인증 토큰에 관계없이 `403 LOCAL_ONLY` 수신합니다.
+`/api/services/` 아래의 모든 경로는 다음과 같습니다.**LOCAL_ONLY** (루프백에만 해당, 엄격한 규칙 #17). 루프백이 아닌 요청은 인증 토큰에 관계없이 `403 LOCAL_ONLY` 수신합니다.
 
 ### 4.1 9라우터 엔드포인트(11개 경로)
 
@@ -401,7 +401,7 @@ npm에서 9Router를 설치합니다. 자체 `package.json` 및 `node_modules/` 
 | 이벤트      | 데이터      | 설명               |
 | ----------- | ----------- | ------------------ |
 | `snapshot`  | `LogLine[]` | 초기 역사적 꼬리   |
-| `log`       | `LogLine`   | 라이브 로그 라인   |
+| `log`       | `LogLine`   | 라이브 로그라인    |
 | `heartbeat` | `{}`        | 15초마다 연결 유지 |
 
 **LogLine 스키마:**
@@ -492,9 +492,9 @@ open-wa(`@open-wa/wa-automate`)는 헤드리스 Chromium 인스턴스(Puppeteer�
 | `POST` | `/api/services/openwa/auto-start` | 자동 시작 전환                                     |
 | `GET`  | `/api/services/openwa/logs`       | SSE 로그 테일(공유 `[name]/logs` 동적 경로를 통해) |
 
-**API 키:** `WA_KEY` 로 주입됨 — open-wa의 일반 `WA_*` -prefixed env 재정의는 이를 `--key`/`-k` CLI 옵션(`dist/cli/setup.js::envArgs()`, 설치된 4.76.0 패키지에 대해 확인됨)에 매핑합니다. `generateServiceApiKey()` 에 의해 생성되면 접두사 `ow_` 붙습니다. open-wa는 `key`/`api_key` HTTP 헤더( `Authorization: Bearer` 아님)에서 키를 다시 읽습니다. `/api-docs*` 는 검사에서 명시적으로 제외되므로(`setupAuthenticationLayer` in `dist/cli/server.js`) 상태 프로브에는 인증 헤더가 필요하지 않습니다.
+**API 키:** `WA_KEY` 로 주입됨 — open-wa의 일반 `WA_*` -prefixed env 재정의는 이를 `--key`/`-k` CLI 옵션(`dist/cli/setup.js::envArgs()`, 설치된 4.76.0 패키지에 대해 확인됨)에 매핑합니다. `generateServiceApiKey()` 에 의해 생성되면 `ow_` 접두사가 붙습니다. open-wa는 `key`/`api_key` HTTP 헤더( `Authorization: Bearer` 아님)에서 키를 다시 읽습니다. `/api-docs*` 는 검사에서 명시적으로 제외되므로(`setupAuthenticationLayer` in `dist/cli/server.js`) 상태 프로브에는 인증 헤더가 필요하지 않습니다.
 
-**편성:** open-wa는 비공식적이며 WhatsApp — 와 관련이 없습니다. 연결된 번호는 WhatsApp 의 자체 자동화 감지로 인해 금지 위험이 있습니다. 처음 시작할 때 페어링 QR 코드가 stdout에 인쇄되고 기존 로그 panel/SSE 스트림 — 통해 표시됩니다. 이 통합에는 아직 전용 QR 이미지 엔드포인트가 없습니다.
+**편성:** open-wa는 비공식적이며 WhatsApp — 와 관련이 없습니다. 연결된 번호는 WhatsApp 의 자체 자동화 감지로 인해 차단 위험이 있습니다. 처음 시작할 때 페어링 QR 코드가 stdout에 인쇄되고 기존 로그 panel/SSE 스트림 — 통해 표시됩니다. 이 통합에는 아직 전용 QR 이미지 엔드포인트가 없습니다.
 
 ---
 
@@ -536,7 +536,7 @@ sing-box는 Mux — `rotate-key` 경로 없음, API 키 삽입 없음(`needsApiK
 | `POST` | `/api/services/singbox/auto-restart-adopted` | 채택된(기존) 프로세스에 대한 자동 다시 시작 전환   |
 | `GET`  | `/api/services/singbox/logs`                 | SSE 로그 테일(공유 `[name]/logs` 동적 경로를 통해) |
 
-**TPROXY 배선:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`)는 `applyTproxy()` TPROXY 방화벽 규칙을 설치하기 전에 `config.json` 작성하고 감독자를 시작합니다. 감독자가 없거나 `running` 에 도달하지 못하는 경우 이제 (실패를 조용히 받아들이지 않고) 오류 수준에서 기록하므로 운영자는 작동 중인 리스너 없이도 TPROXY 규칙이 적용되었음을 알 수 있습니다.
+**TPROXY 배선:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`)는 `applyTproxy()` TPROXY 방화벽 규칙을 설치하기 전에 `config.json` 작성하고 감독자를 시작합니다. 감독자가 없거나 `running` 에 도달하지 못한 경우 이제 (실패를 조용히 받아들이지 않고) 오류 수준에서 기록하므로 운영자는 작업 중인 리스너 없이도 TPROXY 규칙이 적용되었음을 알 수 있습니다.
 
 ---
 
@@ -556,7 +556,7 @@ GET|POST|... /dashboard/providers/services/9router/embed/[...path]
 - 응답에서 `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` 제거
 - `<base href>` 주입하고 절대 경로를 정규화하기 위해 HTML 응답을 다시 작성합니다(`/foo` → `/dashboard/.../embed/foo`)
 
-내장된 대시보드에 대한 WebSocket 업그레이드는 전용 포트의 Companion Server에 의해 처리됩니다( `src/lib/services/embedWsProxy.ts` 참조).
+내장된 대시보드에 대한 WebSocket 업그레이드는 전용 포트의 동반 서버에 의해 처리됩니다( `src/lib/services/embedWsProxy.ts` 참조). 모든 업그레이드는 HTTP 포함 경로와 동일한 규칙에 따라 터널이 열리기 전에 승인됩니다. 피어는 역방향 프록시 전달 헤더 없이 루프백되어야 하고, 브라우저 `Origin` 대시보드 원본이어야 하며(`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` 루프백 기본값 확장) 호출자는 대시보드 로그인이 비활성화되지 않는 한 대시보드 세션 또는 관리 범위 API 키가 필요합니다.
 
 **보안:** 포함된 프록시 경로는 `LOCAL_ONLY_API_PREFIXES` 로 분류되며 루프백에서만 연결할 수 있습니다. Cloudflare/Ngrok 터널을 통해 JWT 획득한 공격자는 임베디드 서비스로 프록시를 사용할 수 없습니다.
 

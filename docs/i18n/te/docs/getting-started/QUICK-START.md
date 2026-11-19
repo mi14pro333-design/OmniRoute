@@ -8,9 +8,9 @@
 
 ---
 
-## దశ 1: OmniRouteను ఇన్స్టాల్ చేయండి
+## దశ 1: OmniRoute ని ఇన్స్టాల్ చేయండి
 
-మీకు నచ్చిన పద్ధతిని ఎంచుకోండి:
+మీకు ఇష్టమైన పద్ధతిని ఎంచుకోండి:
 
 ### ఎంపిక A: npm (సిఫార్సు చేయబడింది)
 
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### ఎంపిక B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` అనేది **ప్రచురించబడిన** అత్యధిక స్థిరమైన SemVer. ఇది git `main`ను అనుసరించదు. GitOps కోసం `diegosouzapw/omniroute:X.Y.Z`ను పిన్ చేయండి. [ఇమేజ్ ట్యాగ్లు / విడుదల ఛానెల్లు](../guides/DOCKER_GUIDE.md#release-channels) చూడండి.
+`:latest` అత్యధికం** ప్రచురించబడింది** స్థిరమైన SemVer. ఇది చేస్తుంది** కాదు** git `main` ని ట్రాక్ చేయండి. GitOps కోసం `cheaperinference/omniroute:X.Y.Z` పిన్ చేయండి. [చిత్రం ట్యాగ్లు / విడుదల ఛానెల్లను](../guides/DOCKER_GUIDE.md#release-channels) చూడండి.
 
-### ఎంపిక C: సోర్స్ నుండి
+### ఎంపిక సి: మూలం నుండి
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

@@ -67,154 +67,149 @@
 
 <br/>
 
-## 📈 دروازه همچنان در حال رشد است
+## 📈 دروازه به رشد خود ادامه می دهد
 
 <div align="center">
 
-|                              |         v3.8.50         | **v3.8.51** |      `v3.8.55+`       |
-| ---------------------------- | :---------------------: | :---------: | :-------------------: |
-| 🌐 ارائهدهندگان              |           352           |   **358**   |          394          |
-| 🧠 شناسههای یکتای مدل گفتوگو |          1320           |  **1374**   |         1491          |
-| 🖼️ پل چندرسانهای             | 🆕 بینایی + صوت + ویدئو |      ✓      |           ✓           |
-| 📡 کاتالوگ رایگان Radar      |       🆕 اختیاری        |      ✓      |           ✓           |
-| ⚖️ زمانبندی آگاه از سهمیه    |     🆕 Quota-Share      |      ✓      |           ✓           |
-| 📊 تلهمتری سهمیه             |         🆕 زنده         |      ✓      |           ✓           |
-| 🧰 حالت بدون رابط کاربری     |            —            |      —      | 🆕 `serve --headless` |
-| 🛤️ زیرساخت مسیر LTS          |            —            |      —      |  🆕 کانالهای انتشار   |
-| 🔎 API کشف مدل               |            —            |      —      | 🆕 `/v1/models/query` |
+|                            |        نسخه 3.8.50        | **نسخه 3.8.51** |      `v3.8.55+`       |
+| -------------------------- | :-----------------------: | :-------------: | :-------------------: |
+| ارائه دهندگان 🌐           |            352            |     **358**     |          394          |
+| 🧠 مدل چت منحصر به فرد IDs |           1320            |    **1374**     |         1491          |
+| پل مدالیتی 🖼️              | 🆕 vision + audio + video |        ✓        |           ✓           |
+| کاتالوگ رایگان رادار 📡    |      🆕 انتخاب کنید       |        ✓        |           ✓           |
+| زمانبندی آگاهی از سهمیه ⚖️ |      🆕 Quota-Share       |        ✓        |           ✓           |
+| تله متری سهمیه 📊          |          🆕 زنده          |        ✓        |           ✓           |
+| حالت هدلس 🧰               |             —             |        —        | 🆕 `serve --headless` |
+| 🛤️ LTS rail infra          |             —             |        —        |  کانال های انتشار 🆕  |
+| کشف مدل 🔎 API             |             —             |        —        | 🆕 `/v1/models/query` |
 
-**→ [نقشه راه](ROADMAP.md) — حرکت روی مسیر بهسوی `v3.9.0 LTS`**
+**→ [نقشه راه](ROADMAP.md) — سوار بر راه آهن به `v3.9.0 LTS`**
 
 </div>
 
 <br/>
 
-## 🧩 در دسترس
+## 🧩 موجود است
 
-[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)
-![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)
-[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)
-![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
+[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm) ](https://www.npmjs.com/package/omniroute) ![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm) [![Docker Hub](https://img.shields.io/docker/v/cheaperinference/omniroute?label=Docker%20Hub&logo=docker&color=2496ED) ](https://hub.docker.com/r/cheaperinference/omniroute) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square) ](LICENSE) ![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED) ![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
 
 <table>
   <tr>
     <td align="right"><b>🚀 شروع</b></td>
     <td align="center"><a href="#-quick-start">🚀 شروع سریع</a></td>
-    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 نصب</a></td>
-    <td align="center"><a href="#first-run">🆓 اتصال به یک ارائهدهنده</a></td>
+    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 نصب کنید</a></td>
+    <td align="center"><a href="#first-run">🆓 ارائه دهنده را وصل کنید</a></td>
   </tr>
   <tr>
-    <td align="right"><b>💡 یادگیری</b></td>
-    <td align="center"><a href="#-the-promise">💥 وعده</a></td>
+    <td align="right"><b>💡 یاد بگیرید</b></td>
+    <td align="center"><a href="#-the-promise">💥 قول</a></td>
     <td align="center"><a href="#-why-omniroute">🤔 چرا OmniRoute</a></td>
-    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 وجه تمایز</a></td>
+    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 آنچه را متمایز می کند</a></td>
   </tr>
   <tr>
-    <td align="right"><b>⚙️ قابلیتها</b></td>
-    <td align="center"><a href="#-combos--the-flagship">🎯 ترکیبها</a></td>
-    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 ارائهدهندگان</a></td>
-    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI و MCP</a></td>
+    <td align="right"><b>ویژگی های ⚙️</b></td>
+    <td align="center"><a href="#-combos--the-flagship">🎯 Combos</a></td>
+    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">ارائه دهندگان 🌐</a></td>
+    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI &amp; MCP</a></td>
   </tr>
   <tr>
     <td align="right"></td>
-    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ فشردهسازی</a></td>
-    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ محل اجرا</a></td>
+    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">فشرده سازی 🗜️</a></td>
+    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ کجا اجرا می شود</a></td>
     <td align="center"><a href="#-private--local-first">🔒 خصوصی</a></td>
   </tr>
   <tr>
-    <td align="right"><b>👀 مشاهده</b></td>
+    <td align="right"><b>👀 ببینید</b></td>
     <td align="center"><a href="#-omniroute-in-action">🎬 در عمل</a></td>
-    <td align="center"><a href="#-whats-new">✨ چه خبر است</a></td>
-    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 CLIهای سازگار</a></td>
+    <td align="center"><a href="#-whats-new">✨ چه جدید است</a></td>
+    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 سازگار CLIs</a></td>
   </tr>
   <tr>
-    <td align="right"><b>💚 پشتیبانی</b></td>
+    <td align="right"><b>پشتیبانی 💚</b></td>
     <td align="center"><a href="#-support-omniroute">💚 پشتیبانی / اهدا</a></td>
-    <td align="center"><a href="#-community--help">💬 انجمن</a></td>
-    <td align="center"><a href="#-sponsors">💖 حامیان</a></td>
+    <td align="center"><a href="#-community--help">جامعه 💬</a></td>
+    <td align="center"><a href="#-sponsors">حامیان 💖</a></td>
   </tr>
   <tr>
-    <td align="right"><b>📦 پروژه</b></td>
-    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ پشته فناوری</a></td>
-    <td align="center"><a href="#-documentation">📖 مستندات</a></td>
-    <td align="center"><a href="#-1000-contributors">👥 مشارکتکنندگان</a></td>
+    <td align="right"><b>پروژه 📦</b></td>
+    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ Tech Stack</a></td>
+    <td align="center"><a href="#-documentation">اسناد 📖</a></td>
+    <td align="center"><a href="#-1000-contributors">مشارکت کنندگان 👥</a></td>
   </tr>
 </table>
 
 </div>
 
 <div align="center">
-  <b>🌐 به ۶۷ زبان</b>
+  <b>🌐 در 67 زبان</b>
   <br/><br/>
-  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="انگلیسی (en)" title="انگلیسی (en)"></a>
-  <a href="docs/i18n/pt-BR/README.md"><img src="docs/assets/flags/br.svg" width="30" alt="پرتغالی — برزیل (pt-BR)" title="پرتغالی — برزیل (pt-BR)"></a>
-  <a href="docs/i18n/pt/README.md"><img src="docs/assets/flags/pt.svg" width="30" alt="پرتغالی (pt)" title="پرتغالی (pt)"></a>
-  <a href="docs/i18n/es/README.md"><img src="docs/assets/flags/es.svg" width="30" alt="اسپانیایی (es)" title="اسپانیایی (es)"></a>
-  <a href="docs/i18n/fr/README.md"><img src="docs/assets/flags/fr.svg" width="30" alt="فرانسوی (fr)" title="فرانسوی (fr)"></a>
-  <a href="docs/i18n/it/README.md"><img src="docs/assets/flags/it.svg" width="30" alt="ایتالیایی (it)" title="ایتالیایی (it)"></a>
-  <a href="docs/i18n/de/README.md"><img src="docs/assets/flags/de.svg" width="30" alt="آلمانی (de)" title="آلمانی (de)"></a>
-  <a href="docs/i18n/nl/README.md"><img src="docs/assets/flags/nl.svg" width="30" alt="هلندی (nl)" title="هلندی (nl)"></a>
-  <a href="docs/i18n/ru/README.md"><img src="docs/assets/flags/ru.svg" width="30" alt="روسی (ru)" title="روسی (ru)"></a>
-  <a href="docs/i18n/uk-UA/README.md"><img src="docs/assets/flags/ua.svg" width="30" alt="اوکراینی (uk-UA)" title="اوکراینی (uk-UA)"></a>
-  <a href="docs/i18n/pl/README.md"><img src="docs/assets/flags/pl.svg" width="30" alt="لهستانی (pl)" title="لهستانی (pl)"></a>
-  <a href="docs/i18n/cs/README.md"><img src="docs/assets/flags/cz.svg" width="30" alt="چکی (cs)" title="چکی (cs)"></a>
-  <a href="docs/i18n/sk/README.md"><img src="docs/assets/flags/sk.svg" width="30" alt="اسلواکی (sk)" title="اسلواکی (sk)"></a>
-  <a href="docs/i18n/ro/README.md"><img src="docs/assets/flags/ro.svg" width="30" alt="رومانیایی (ro)" title="رومانیایی (ro)"></a>
-  <a href="docs/i18n/hu/README.md"><img src="docs/assets/flags/hu.svg" width="30" alt="مجاری (hu)" title="مجاری (hu)"></a>
-  <a href="docs/i18n/bg/README.md"><img src="docs/assets/flags/bg.svg" width="30" alt="بلغاری (bg)" title="بلغاری (bg)"></a>
-  <a href="docs/i18n/da/README.md"><img src="docs/assets/flags/dk.svg" width="30" alt="دانمارکی (da)" title="دانمارکی (da)"></a>
-  <a href="docs/i18n/fi/README.md"><img src="docs/assets/flags/fi.svg" width="30" alt="فنلاندی (fi)" title="فنلاندی (fi)"></a>
-  <a href="docs/i18n/no/README.md"><img src="docs/assets/flags/no.svg" width="30" alt="نروژی (no)" title="نروژی (no)"></a>
-  <a href="docs/i18n/sv/README.md"><img src="docs/assets/flags/se.svg" width="30" alt="سوئدی (sv)" title="سوئدی (sv)"></a>
-  <a href="docs/i18n/zh-CN/README.md"><img src="docs/assets/flags/cn.svg" width="30" alt="چینی — سادهشده (zh-CN)" title="چینی — سادهشده (zh-CN)"></a>
-  <a href="docs/i18n/zh-TW/README.md"><img src="docs/assets/flags/tw.svg" width="30" alt="چینی — سنتی (zh-TW)" title="چینی — سنتی (zh-TW)"></a>
-  <a href="docs/i18n/ja/README.md"><img src="docs/assets/flags/jp.svg" width="30" alt="ژاپنی (ja)" title="ژاپنی (ja)"></a>
-  <a href="docs/i18n/ko/README.md"><img src="docs/assets/flags/kr.svg" width="30" alt="کرهای (ko)" title="کرهای (ko)"></a>
-  <a href="docs/i18n/th/README.md"><img src="docs/assets/flags/th.svg" width="30" alt="تایلندی (th)" title="تایلندی (th)"></a>
-  <a href="docs/i18n/vi/README.md"><img src="docs/assets/flags/vn.svg" width="30" alt="ویتنامی (vi)" title="ویتنامی (vi)"></a>
-  <a href="docs/i18n/id/README.md"><img src="docs/assets/flags/id.svg" width="30" alt="اندونزیایی (id)" title="اندونزیایی (id)"></a>
-  <a href="docs/i18n/ms/README.md"><img src="docs/assets/flags/my.svg" width="30" alt="مالایی (ms)" title="مالایی (ms)"></a>
-  <a href="docs/i18n/phi/README.md"><img src="docs/assets/flags/ph.svg" width="30" alt="فیلیپینی (phi)" title="فیلیپینی (phi)"></a>
-  <a href="docs/i18n/hi/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="هندی (hi)" title="هندی (hi)"></a>
-  <a href="docs/i18n/gu/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="گجراتی (gu)" title="گجراتی (gu)"></a>
-  <a href="docs/i18n/mr/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="مراتی (mr)" title="مراتی (mr)"></a>
-  <a href="docs/i18n/ta/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="تامیل (ta)" title="تامیل (ta)"></a>
-  <a href="docs/i18n/te/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="تلوگو (te)" title="تلوگو (te)"></a>
-  <a href="docs/i18n/bn/README.md"><img src="docs/assets/flags/bd.svg" width="30" alt="بنگالی (bn)" title="بنگالی (bn)"></a>
+  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="English (en)" title="English (en)"></a>
+  <a href="docs/i18n/pt-BR/README.md"><img src="docs/assets/flags/br.svg" width="30" alt="Português — Brasil (pt-BR)" title="Português — Brasil (pt-BR)"></a>
+  <a href="docs/i18n/pt/README.md"><img src="docs/assets/flags/pt.svg" width="30" alt="Português (pt)" title="Português (pt)"></a>
+  <a href="docs/i18n/es/README.md"><img src="docs/assets/flags/es.svg" width="30" alt="Español (es)" title="Español (es)"></a>
+  <a href="docs/i18n/fr/README.md"><img src="docs/assets/flags/fr.svg" width="30" alt="Français (fr)" title="Français (fr)"></a>
+  <a href="docs/i18n/it/README.md"><img src="docs/assets/flags/it.svg" width="30" alt="Italiano (it)" title="Italiano (it)"></a>
+  <a href="docs/i18n/de/README.md"><img src="docs/assets/flags/de.svg" width="30" alt="Deutsch (de)" title="Deutsch (de)"></a>
+  <a href="docs/i18n/nl/README.md"><img src="docs/assets/flags/nl.svg" width="30" alt="Nederlands (nl)" title="Nederlands (nl)"></a>
+  <a href="docs/i18n/ru/README.md"><img src="docs/assets/flags/ru.svg" width="30" alt="Русский (ru)" title="Русский (ru)"></a>
+  <a href="docs/i18n/uk-UA/README.md"><img src="docs/assets/flags/ua.svg" width="30" alt="Українська (uk-UA)" title="Українська (uk-UA)"></a>
+  <a href="docs/i18n/pl/README.md"><img src="docs/assets/flags/pl.svg" width="30" alt="Polski (pl)" title="Polski (pl)"></a>
+  <a href="docs/i18n/cs/README.md"><img src="docs/assets/flags/cz.svg" width="30" alt="Čeština (cs)" title="Čeština (cs)"></a>
+  <a href="docs/i18n/sk/README.md"><img src="docs/assets/flags/sk.svg" width="30" alt="Slovenčina (sk)" title="Slovenčina (sk)"></a>
+  <a href="docs/i18n/ro/README.md"><img src="docs/assets/flags/ro.svg" width="30" alt="Română (ro)" title="Română (ro)"></a>
+  <a href="docs/i18n/hu/README.md"><img src="docs/assets/flags/hu.svg" width="30" alt="Magyar (hu)" title="Magyar (hu)"></a>
+  <a href="docs/i18n/bg/README.md"><img src="docs/assets/flags/bg.svg" width="30" alt="Български (bg)" title="Български (bg)"></a>
+  <a href="docs/i18n/da/README.md"><img src="docs/assets/flags/dk.svg" width="30" alt="Dansk (da)" title="Dansk (da)"></a>
+  <a href="docs/i18n/fi/README.md"><img src="docs/assets/flags/fi.svg" width="30" alt="Suomi (fi)" title="Suomi (fi)"></a>
+  <a href="docs/i18n/no/README.md"><img src="docs/assets/flags/no.svg" width="30" alt="Norsk (no)" title="Norsk (no)"></a>
+  <a href="docs/i18n/sv/README.md"><img src="docs/assets/flags/se.svg" width="30" alt="Svenska (sv)" title="Svenska (sv)"></a>
+  <a href="docs/i18n/zh-CN/README.md"><img src="docs/assets/flags/cn.svg" width="30" alt="中文 — 简体 (zh-CN)" title="中文 — 简体 (zh-CN)"></a>
+  <a href="docs/i18n/zh-TW/README.md"><img src="docs/assets/flags/tw.svg" width="30" alt="中文 — 繁體 (zh-TW)" title="中文 — 繁體 (zh-TW)"></a>
+  <a href="docs/i18n/ja/README.md"><img src="docs/assets/flags/jp.svg" width="30" alt="日本語 (ja)" title="日本語 (ja)"></a>
+  <a href="docs/i18n/ko/README.md"><img src="docs/assets/flags/kr.svg" width="30" alt="한국어 (ko)" title="한국어 (ko)"></a>
+  <a href="docs/i18n/th/README.md"><img src="docs/assets/flags/th.svg" width="30" alt="ไทย (th)" title="ไทย (th)"></a>
+  <a href="docs/i18n/vi/README.md"><img src="docs/assets/flags/vn.svg" width="30" alt="Tiếng Việt (vi)" title="Tiếng Việt (vi)"></a>
+  <a href="docs/i18n/id/README.md"><img src="docs/assets/flags/id.svg" width="30" alt="Bahasa Indonesia (id)" title="Bahasa Indonesia (id)"></a>
+  <a href="docs/i18n/ms/README.md"><img src="docs/assets/flags/my.svg" width="30" alt="Bahasa Melayu (ms)" title="Bahasa Melayu (ms)"></a>
+  <a href="docs/i18n/phi/README.md"><img src="docs/assets/flags/ph.svg" width="30" alt="Filipino (phi)" title="Filipino (phi)"></a>
+  <a href="docs/i18n/hi/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="हिन्दी (hi)" title="हिन्दी (hi)"></a>
+  <a href="docs/i18n/gu/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ગુજરાતી (gu)" title="ગુજરાતી (gu)"></a>
+  <a href="docs/i18n/mr/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="मराठी (mr)" title="मराठी (mr)"></a>
+  <a href="docs/i18n/ta/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="தமிழ் (ta)" title="தமிழ் (ta)"></a>
+  <a href="docs/i18n/te/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="తెలుగు (te)" title="తెలుగు (te)"></a>
+  <a href="docs/i18n/bn/README.md"><img src="docs/assets/flags/bd.svg" width="30" alt="বাংলা (bn)" title="বাংলা (bn)"></a>
   <a href="docs/i18n/ur/README.md"><img src="docs/assets/flags/pk.svg" width="30" alt="اردو (ur)" title="اردو (ur)"></a>
   <a href="docs/i18n/fa/README.md"><img src="docs/assets/flags/ir.svg" width="30" alt="فارسی (fa)" title="فارسی (fa)"></a>
-  <a href="docs/i18n/ar/README.md"><img src="docs/assets/flags/sa.svg" width="30" alt="عربی (ar)" title="عربی (ar)"></a>
-  <a href="docs/i18n/he/README.md"><img src="docs/assets/flags/il.svg" width="30" alt="عبری (he)" title="عبری (he)"></a>
-  <a href="docs/i18n/tr/README.md"><img src="docs/assets/flags/tr.svg" width="30" alt="ترکی (tr)" title="ترکی (tr)"></a>
-  <a href="docs/i18n/az/README.md"><img src="docs/assets/flags/az.svg" width="30" alt="آذری (az)" title="آذری (az)"></a>
-  <a href="docs/i18n/sw/README.md"><img src="docs/assets/flags/tz.svg" width="30" alt="سواحیلی (sw)" title="سواحیلی (sw)"></a>
-  <a href="docs/i18n/el/README.md"><img src="docs/assets/flags/gr.svg" width="30" alt="یونانی (el)" title="یونانی (el)"></a>
-  <a href="docs/i18n/hr/README.md"><img src="docs/assets/flags/hr.svg" width="30" alt="کرواتی (hr)" title="کرواتی (hr)"></a>
-  <a href="docs/i18n/sr/README.md"><img src="docs/assets/flags/rs.svg" width="30" alt="صربی (sr)" title="صربی (sr)"></a>
-  <a href="docs/i18n/lt/README.md"><img src="docs/assets/flags/lt.svg" width="30" alt="لیتوانیایی (lt)" title="لیتوانیایی (lt)"></a>
-  <a href="docs/i18n/et/README.md"><img src="docs/assets/flags/ee.svg" width="30" alt="استونیایی (et)" title="استونیایی (et)"></a>
-  <a href="docs/i18n/lv/README.md"><img src="docs/assets/flags/lv.svg" width="30" alt="لتونیایی (lv)" title="لتونیایی (lv)"></a>
-  <a href="docs/i18n/sl/README.md"><img src="docs/assets/flags/si.svg" width="30" alt="اسلوونیایی (sl)" title="اسلوونیایی (sl)"></a>
-  <a href="docs/i18n/mt/README.md"><img src="docs/assets/flags/mt.svg" width="30" alt="مالتی (mt)" title="مالتی (mt)"></a>
-  <a href="docs/i18n/ga/README.md"><img src="docs/assets/flags/ie.svg" width="30" alt="ایرلندی (ga)" title="ایرلندی (ga)"></a>
-  <a href="docs/i18n/kn/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="کانّادا (kn)" title="کانّادا (kn)"></a>
-  <a href="docs/i18n/ml/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="مالایالام (ml)" title="مالایالام (ml)"></a>
-  <a href="docs/i18n/or/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="اُریا (or)" title="اُریا (or)"></a>
-  <a href="docs/i18n/pa/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="پنجابی (pa)" title="پنجابی (pa)"></a>
-  <a href="docs/i18n/ne/README.md"><img src="docs/assets/flags/np.svg" width="30" alt="نپالی (ne)" title="نپالی (ne)"></a>
-  <a href="docs/i18n/si/README.md"><img src="docs/assets/flags/lk.svg" width="30" alt="سینهالی (si)" title="سینهالی (si)"></a>
-  <a href="docs/i18n/my/README.md"><img src="docs/assets/flags/mm.svg" width="30" alt="برمهای (my)" title="برمهای (my)"></a>
-  <a href="docs/i18n/km/README.md"><img src="docs/assets/flags/kh.svg" width="30" alt="خمری (km)" title="خمری (km)"></a>
-  <a href="docs/i18n/ha/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="هوسهای (ha)" title="هوسهای (ha)"></a>
-  <a href="docs/i18n/yo/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="یوروبایی (yo)" title="یوروبایی (yo)"></a>
-  <a href="docs/i18n/ig/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="ایگبو (ig)" title="ایگبو (ig)"></a>
-  <a href="docs/i18n/am/README.md"><img src="docs/assets/flags/et.svg" width="30" alt="امهری (am)" title="امهری (am)"></a>
-  <a href="docs/i18n/uz/README.md"><img src="docs/assets/flags/uz.svg" width="30" alt="ازبکی (uz)" title="ازبکی (uz)"></a>
-  <a href="docs/i18n/ka/README.md"><img src="docs/assets/flags/ge.svg" width="30" alt="گرجی (ka)" title="گرجی (ka)"></a>
-  <a href="docs/i18n/hy/README.md"><img src="docs/assets/flags/am.svg" width="30" alt="ارمنی (hy)" title="ارمنی (hy)"></a>
-  <a href="docs/i18n/bs/README.md"><img src="docs/assets/flags/ba.svg" width="30" alt="بوسنیایی (bs)" title="بوسنیایی (bs)"></a>
+  <a href="docs/i18n/ar/README.md"><img src="docs/assets/flags/sa.svg" width="30" alt="العربية (ar)" title="العربية (ar)"></a>
+  <a href="docs/i18n/he/README.md"><img src="docs/assets/flags/il.svg" width="30" alt="עברית (he)" title="עברית (he)"></a>
+  <a href="docs/i18n/tr/README.md"><img src="docs/assets/flags/tr.svg" width="30" alt="Türkçe (tr)" title="Türkçe (tr)"></a>
+  <a href="docs/i18n/az/README.md"><img src="docs/assets/flags/az.svg" width="30" alt="Azərbaycan (az)" title="Azərbaycan (az)"></a>
+  <a href="docs/i18n/sw/README.md"><img src="docs/assets/flags/tz.svg" width="30" alt="Kiswahili (sw)" title="Kiswahili (sw)"></a>
+  <a href="docs/i18n/el/README.md"><img src="docs/assets/flags/gr.svg" width="30" alt="Ελληνικά (el)" title="Ελληνικά (el)"></a>
+  <a href="docs/i18n/hr/README.md"><img src="docs/assets/flags/hr.svg" width="30" alt="Hrvatski (hr)" title="Hrvatski (hr)"></a>
+  <a href="docs/i18n/sr/README.md"><img src="docs/assets/flags/rs.svg" width="30" alt="Српски (sr)" title="Српски (sr)"></a>
+  <a href="docs/i18n/lt/README.md"><img src="docs/assets/flags/lt.svg" width="30" alt="Lietuvių (lt)" title="Lietuvių (lt)"></a>
+  <a href="docs/i18n/et/README.md"><img src="docs/assets/flags/ee.svg" width="30" alt="Eesti (et)" title="Eesti (et)"></a>
+  <a href="docs/i18n/lv/README.md"><img src="docs/assets/flags/lv.svg" width="30" alt="Latviešu (lv)" title="Latviešu (lv)"></a>
+  <a href="docs/i18n/sl/README.md"><img src="docs/assets/flags/si.svg" width="30" alt="Slovenščina (sl)" title="Slovenščina (sl)"></a>
+  <a href="docs/i18n/mt/README.md"><img src="docs/assets/flags/mt.svg" width="30" alt="Malti (mt)" title="Malti (mt)"></a>
+  <a href="docs/i18n/ga/README.md"><img src="docs/assets/flags/ie.svg" width="30" alt="Gaeilge (ga)" title="Gaeilge (ga)"></a>
+  <a href="docs/i18n/kn/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ಕನ್ನಡ (kn)" title="ಕನ್ನಡ (kn)"></a>
+  <a href="docs/i18n/ml/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="മലയാളം (ml)" title="മലയാളം (ml)"></a>
+  <a href="docs/i18n/or/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ଓଡ଼ିଆ (or)" title="ଓଡ଼ିଆ (or)"></a>
+  <a href="docs/i18n/pa/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ਪੰਜਾਬੀ (pa)" title="ਪੰਜਾਬੀ (pa)"></a>
+  <a href="docs/i18n/ne/README.md"><img src="docs/assets/flags/np.svg" width="30" alt="नेपाली (ne)" title="नेपाली (ne)"></a>
+  <a href="docs/i18n/si/README.md"><img src="docs/assets/flags/lk.svg" width="30" alt="සිංහල (si)" title="සිංහල (si)"></a>
+  <a href="docs/i18n/my/README.md"><img src="docs/assets/flags/mm.svg" width="30" alt="မြန်မာ (my)" title="မြန်မာ (my)"></a>
+  <a href="docs/i18n/km/README.md"><img src="docs/assets/flags/kh.svg" width="30" alt="ខ្មែរ (km)" title="ខ្មែរ (km)"></a>
+  <a href="docs/i18n/ha/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Hausa (ha)" title="Hausa (ha)"></a>
+  <a href="docs/i18n/yo/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Yorùbá (yo)" title="Yorùbá (yo)"></a>
+  <a href="docs/i18n/ig/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Igbo (ig)" title="Igbo (ig)"></a>
+  <a href="docs/i18n/am/README.md"><img src="docs/assets/flags/et.svg" width="30" alt="አማርኛ (am)" title="አማርኛ (am)"></a>
+  <a href="docs/i18n/uz/README.md"><img src="docs/assets/flags/uz.svg" width="30" alt="Oʻzbekcha (uz)" title="Oʻzbekcha (uz)"></a>
+  <a href="docs/i18n/ka/README.md"><img src="docs/assets/flags/ge.svg" width="30" alt="ქართული (ka)" title="ქართული (ka)"></a>
+  <a href="docs/i18n/hy/README.md"><img src="docs/assets/flags/am.svg" width="30" alt="Հայերեն (hy)" title="Հայերեն (hy)"></a>
+  <a href="docs/i18n/bs/README.md"><img src="docs/assets/flags/ba.svg" width="30" alt="Bosanski (bs)" title="Bosanski (bs)"></a>
 </div>
 
 <br/>
@@ -586,39 +581,39 @@ OmniRoute دارای مجوز MIT است و بهصورت عمومی نگهدار
 
 <div align="center">
 
-## ✨ موارد جدید
+## ✨ چه جدید است
 
 </div>
 
-> نکات برجسته اخیر از **v3.8.20 → v3.8.55**. تاریخچه کامل در [`CHANGELOG.md`](CHANGELOG.md).
+> نکات برجسته اخیر از** نسخه 3.8.20 → v3.8.55** . تاریخچه کامل در [`CHANGELOG.md`](CHANGELOG.md).
 
-- **⚖️ مسیریابی `quota-weighted`** — استراتژی ترکیبی بیستم حسابهای تمامشده را کنار میگذارد، سپس از میان حسابهای باقیمانده متناسب با سهمیه باقیمانده ÷ بار درخواستهای در حال اجرا انتخاب میکند و مکالمات موجود را به همان حسابها متصل نگه میدارد. → [ترکیب خودکار](docs/routing/AUTO-COMBO.md)
-- **🧰 حالت بدون رابط کاربری** — اجرای `omniroute serve --headless` (یا `OMNIROUTE_HEADLESS=1`) فقط موتور پراکسی `/v1/*` را اجرا میکند و داشبورد و زیرسیستمهای صرفاً مربوط به داشبورد را غیرفعال میسازد. → [حالت بدون رابط کاربری](docs/guides/HEADLESS.md)
-- **🔎 کشف مدل** — `/v1/models` بر اساس قابلیت، زمینه، نوع و متن فیلتر میکند و `POST /v1/models/query` یک فهرست کوتاه و قطعی با همان سطح مشاهدهپذیری هر کلید برمیگرداند. → [مرجع API](docs/reference/API_REFERENCE.md)
-- **🔑 کنترل مسیریابی برای هر کلید** — با `forcedModel` یک کلید API را به یک مدل یا ترکیب مشخص متصل کنید و مدلها و ترکیبهای یک کلید را بهصورت اتمی اضافه یا حذف کنید (`/api/keys/{id}/access`). → [مرجع API](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
-- **🛡️ کنترلهای دقیقتر PII** — انتخاب بر اساس نوع، حداکثر ۲۰ الگوی سفارشی معتبر برای پوشانسازی و شمارندههای تشخیص برای هر نوع؛ خود پوشانسازی همچنان اختیاری است. → [محافظهای امنیتی](docs/security/GUARDRAILS.md)
-- **🌍 ۶۷ زبان** — داشبورد، آینههای مستندات و CLI؛ با اجرای `npm run i18n:add-locale` میتوان یک زبان را با یک فرمان به همهجا افزود. → [راهنمای i18n](docs/guides/I18N.md)
-- **🎛️ OmniConductor** — واگذاری ورودی A2A به ناوگان عاملهای شما، مهارتهای Conductor روی Agent Card و یک پنل داشبورد با گفتوگوی صوتی فشاردادنبرایصحبت در Faro. → [سرور A2A](docs/frameworks/A2A-SERVER.md)
-- **🛂 پذیرش تطبیقی و محافظت در برابر اضافهبار** — درخواستهای سنگین گفتوگو بهجای دریافت خطای 503 در صف قرار میگیرند و اجارههای غلتان RPM برای هر اتصال بهصورت اتمی مدیریت میشوند. → [راهنمای تابآوری](docs/architecture/RESILIENCE_GUIDE.md)
-- **🗂️ ترتیب استاندارد `/v1/models`** — برای هر ارائهدهنده، یک بلوک پیوسته و گروهبندیشده وجود دارد (ترکیبها ابتدا قرار میگیرند) که در همه منابع کاتالوگ پایدار است. → [مرجع API](docs/reference/API_REFERENCE.md)
-- **🗜️ مقاومسازی فشردهسازی** — محافظ تورم بهصورت پیشفرض فعال است، بستههای Caveman برای DE / FR / JA و چینی (wényán) ارائه شدهاند و فیلترهای RTK برای Gradle و .NET در دسترساند. → [فشردهسازی](docs/compression/COMPRESSION_ENGINES.md)
-- **💸 هزینه صادقانه با نرخ ثابت** — ارائهدهندگان اشتراکی و طرحهای کدنویسی در تحلیل هزینه **$0** نمایش داده میشوند؛ بودجه، سهمیه و مسیریابی همچنان برآورد میشوند. → [مرجع API](docs/reference/API_REFERENCE.md)
-- **⚖️ مسیریابی Quota-Share** — سهمیه یک حساب مشترک را بهطور عادلانه میان کلیدهای تجمیعشده تقسیم میکند و با قرضدادن سهمهای بیکار، از منابع بهصورت بهینه استفاده میکند. → [راهنمای تابآوری](docs/architecture/RESILIENCE_GUIDE.md)
-- **🤖 راهاندازی CLI/عامل با یک فرمان** — ۱۵ فرمان `setup-*` ثبتشده؛ `omniroute run`، ۷ CLI را اجرا میکند (Claude Code، Codex، Aider، Goose، OpenCode، Qwen Code و Gemini CLI)؛ `omniroute configure` از ۱۱ هدف با انتخابگر تعاملی ارائهدهنده+مدل و علاقهمندیهای جداگانه برای هر زمینه پشتیبانی میکند. → [یکپارچهسازیهای CLI](docs/guides/CLI-INTEGRATIONS.md)
-- **🛰️ حالت راه دور** — با توکنهای دارای دامنه دسترسی (`connect` / `contexts` / `tokens`) یک OmniRoute راه دور را کنترل کنید؛ همچنین یک کمکیار OAuth با نام `antigravity` برای نصبهای VPS ارائه شده است. → [حالت راه دور](docs/guides/REMOTE-MODE.md)
-- **🧭 مسیریابی خودکار هوشمندتر** — ترکیبهای `auto/<category>:<tier>`، **Fusion** (پنل مدل + داور)، مسیریابی آگاه از وظیفه و بازنویسی مدل / حالت / بودجه دلاری برای هر درخواست. → [ترکیب خودکار](docs/routing/AUTO-COMBO.md)
-- **🗜️ فشردهسازی قابل اتصال** — ۱۲ موتور قابل ترکیب بههمراه Compression Studios: LLMLingua-2، Ultra دو-سطحی، omniglyph، دروازه وفاداری برای هر مرحله، GCF v3.2 و ویرایشگر جابهجایی با کشیدن. → [فشردهسازی](docs/compression/COMPRESSION_ENGINES.md)
-- **🕵️ رمزگشایی شفاف MITM (TPROXY)** — CLIهای ضبطی که متغیرهای محیطی پراکسی را نادیده میگیرند، با CA جداگانه برای هر SNI و نصبکننده مخزن اعتماد. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
-- **💸 تلهمتری هزینه در همهجا** — هدرهای هزینه/مصرف `X-OmniRoute-*` در هر endpoint، هدر صرفهجویی ناشی از HIT کش و سهمیههای هزینه دلاری برای هر کلید. → [مرجع API](docs/reference/API_REFERENCE.md)
-- **🧠 حافظه تحت کنترل شما** — بهصورت پیشفرض خاموش است؛ کوانتیزهسازی برداری int8 و زوال نوعدار بهصورت اختیاری و `x-omniroute-no-memory` برای هر درخواست ارائه میشوند. → [حافظه](docs/frameworks/MEMORY.md)
-- **🛡️ امنیت** — محافظ تزریق پرامپت در هر مسیر LLM (با مجموعه آزمون red-team)، محافظ اختیاری پوشانسازی اعتبارنامه (که کلیدهای API و اسرار افشاشده را در هر دو جهت حذف میکند)، جستوجوی وب رایگان DuckDuckGo بهعنوان آخرین راهحل و یک دروازه ورود اختیاری OIDC برای داشبورد (ورود با گذرواژه همیشه در دسترس میماند). → [محافظهای امنیتی](docs/security/GUARDRAILS.md)
-- **🖼️ endpointهای جدید** — `/v1/ocr` (Mistral OCR) و `/v1/audio/translations` (سبک Whisper) سطح قابلیتهای رسانهای را کامل میکنند. → [مرجع API](docs/reference/API_REFERENCE.md)
-- **🎨 تولید تصویر / ویدئو / صدا** — یک API برای رسانه: xAI Grok Imagine و ویدئوی Novita AI، ComfyUI، Magnific، Adobe Firefly، Segmind و ارائهدهندگان گفتار مانند ElevenLabs. → [مرجع API](docs/reference/API_REFERENCE.md)
-- **🌍 استقرار و عملیات** — `basePath` برای پراکسی معکوس، تشخیص خودکار زبان مرورگر، ردیابی دستگاه برای هر کلید، اعتماد MITM بدون دسترسی root و بومیسازی zh-TW. → [محیط](docs/reference/ENVIRONMENT.md)
-- **🤝 ارائهدهندگان و عاملهای بیشتر** — عاملهای ابری (Codex Cloud، Cursor، Devin و Jules)، Grok Build (xAI) با مرورگر و ورود OAuth، کارت رسمی Ollama، Claude Opus 5 و Sonnet 5، همکاری رسمی Kimi (Code/Web/Moonshot)، Zed، Requesty، SenseNova، Yuanbao، Agnes AI… و یک **کاتالوگ 394 ارائهدهندهای** بازطراحیشده. → [ارائهدهندگان](docs/reference/PROVIDER_REFERENCE.md)
-- **📡 شفافیت مسیریابی** — هر پاسخ دارای هدر `X-OmniRoute-Decision` است که راهبرد/ارائهدهنده/تأخیر ارائهدهنده سرویسدهنده آن را مشخص میکند؛ یک راهبرد ترکیبی جدید با نام `cache-optimized` بههمراه عامل `cacheAffinity` در Auto-Combo، درخواستهای تکراری را به اتصالی که پیشوند کششده را در اختیار دارد بازمیگرداند؛ همچنین endpoint فقطخواندنی `/v1/auto-combo/{channel}/candidates` مجموعه کاندیداهای زنده کانال `auto/*` را نمایش میدهد. → [ترکیب خودکار](docs/routing/AUTO-COMBO.md)
-- **⚡ عملکرد محلی و زیرساخت** — Redis محلی با یک کلیک، استقراردهندههای رله برای Cloudflare Workers / Deno Deploy، و Bifrost و Mux بهعنوان سرویسهای تعبیهشده و تحت نظارت. → [سرویسهای تعبیهشده](docs/frameworks/EMBEDDED-SERVICES.md)
-- **🧩 موارد موجود در بسته** — چارچوب افزونه بههمراه بازارچه، چارچوبهای مهارت Omni/Agent/GitHub، یکپارچهسازی با خزانه Obsidian (۲۲ ابزار MCP)، APIهای Batch و Files سازگار با OpenAI، کش معنایی پاسخ، بازیوارسازی با جدولهای رتبهبندی، کشف عامل ACP (۱۵ عامل داخلی)، خروجیگیری زمانبندیشدهٔ لاگها به BigQuery، توزیع موازی چندمدلی `auto/chaos`، پل ربات Telegram، مدیر نسخهٔ درونبرنامهای و رتبهبندی ارائهدهندگان رایگان LMArena-ELO. → [مستندات](docs/README.md)
+- **مسیریابی ⚖️ `quota-weighted`** — بیستمین استراتژی ترکیبی حسابهای تمامشده را نادیده میگیرد، سپس به نسبت سهمیه باقیمانده ÷ در حین پرواز، در میان بقیه حسابها ترسیم میکند و مکالمات موجود را پین میکند. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **حالت هدلس 🧰** — `omniroute serve --headless` (یا `OMNIROUTE_HEADLESS=1`) فقط موتور پراکسی `/v1/*` را با داشبورد و زیرسیستمهای فقط داشبورد خاموش اجرا میکند. [حالت بدون سر](docs/guides/HEADLESS.md) →
+- **کشف مدل 🔎** — `/v1/models` بر اساس قابلیت، زمینه، نوع و متن فیلتر میکند، و `POST /v1/models/query` یک فهرست کوتاه قطعی را با همان قابلیت مشاهده هر کلید برمیگرداند. → [API مرجع](docs/reference/API_REFERENCE.md)
+- **کنترل مسیریابی به ازای هر کلید 🔑** — یک کلید API را به یک مدل یا ترکیبی با `forcedModel` پین کنید و مدلها و ترکیبهای یک کلید را به صورت اتمی (`/api/keys/{id}/access`) اضافه یا حذف کنید. → [API مرجع](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
+- **کنترل های 🛡️ Finer PII** — انتخاب هر نوع، تا 20 الگوی پوشش سفارشی معتبر و شمارنده های تشخیص هر نوع. پوشاندن خود به صورت انتخابی باقی می ماند. → [گاردریل](docs/security/GUARDRAILS.md)
+- **🌍 67 زبان** داشبورد — ، آینههای اسناد و CLI، با `npm run i18n:add-locale` یک زبان را در همه جا در یک دستور اضافه میکند. [راهنمای](docs/guides/I18N.md) → i18n
+- **🎛️ OmniConductor** — inbound A2A delegation to your agent fleet, Conductor skills on the Agent Card, and a dashboard panel with Faro push-to-talk voice chat. → [A2A Server](docs/frameworks/A2A-SERVER.md)
+- **🛂 پذیرش تطبیقی و حفاظت اضافه بار** — سنگین وزن درخواست های چت به جای 503ing صف، با اجاره RPM اتمی نورد در هر اتصال. [راهنمای تاب آوری](docs/architecture/RESILIENCE_GUIDE.md) →
+- **سفارش 🗂️ متعارف `/v1/models`** — یک بلوک بههم پیوسته گروهبندیکننده ارائهدهنده برای هر ارائهدهنده (کمبوها ابتدا سنجاق میشوند)، در هر منبع کاتالوگ پایدار است. → [API مرجع](docs/reference/API_REFERENCE.md)
+- **سخت شدن فشاری 🗜️** — محافظ تورم پیشفرض، بستههای Caveman برای DE / FR / JA + چینی (wényán)، فیلترهای RTK برای Gradle و .NET. [فشرده سازی](docs/compression/COMPRESSION_ENGINES.md) →
+- **💸 هزینه با نرخ ثابت صادقانه** اشتراک — / ارائه دهندگان برنامه کدنویسی مطالعه می کنند** $0** در تجزیه و تحلیل هزینه؛ بودجه، سهمیه و مسیریابی را ادامه دهید. → [API](docs/reference/API_REFERENCE.md)
+- **⚖️ Quota-Share routing** — سهمیه حساب مشترک را به طور نسبتاً بین کلیدهای ادغام شده تقسیم میکند، بنابراین بخشهای بیحرکت در اختیار شما قرار میگیرد. [راهنمای تاب آوری](docs/architecture/RESILIENCE_GUIDE.md) →
+- **🤖 راه اندازی CLI/agent یک فرمان** — 15 دستور `setup-*` ثبت شده. `omniroute run` 7 CLIs را راه اندازی کرد (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI); `omniroute configure` از 11 هدف با ارائه دهنده تعاملی انتخاب کننده مدل + و موارد دلخواه در هر زمینه پشتیبانی می کند. ادغام → [CLI](docs/guides/CLI-INTEGRATIONS.md)
+- **حالت از راه دور 🛰️** — یک OmniRoute راه دور با توکنهای محدوده (`connect` / `contexts` / `tokens`) + یک کمک کننده `antigravity` OAuth برای نصب VPS درایو میکند. [حالت از راه دور](docs/guides/REMOTE-MODE.md) →
+- **🧭 مسیریابی خودکار هوشمندتر** ترکیبات — `auto/<category>:<tier>` ،** فیوژن** (مدل پنل + قاضی)، مسیریابی با آگاهی از وظایف، مدل هر درخواست / حالت / نادیده گرفتن بودجه USD. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **فشرده سازی قابل اتصال 🗜️** — 12 موتورهای قابل ترکیب + استودیو فشرده سازی: LLMLingua-2، Ultra دو لایه، omniglyph، دروازه وفاداری در هر مرحله، GCF v3.2، ویرایشگر تغییر ترتیب کشیدن. [فشرده سازی](docs/compression/COMPRESSION_ENGINES.md) →
+- **رمزگشایی MITM شفاف 🕵️ (TPROXY)** — با نصبکننده فروشگاه اعتماد CA + ، CLIs را که پروکسی env vars را نادیده میگیرد، ضبط کنید. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
+- **💸 هزینه تله متری در همه جا** سرصفحه — `X-OmniRoute-*` cost/usage در هر نقطه پایانی، هدر ذخیره کش-HIT، سهمیههای خرج هر کلید USD. → [API مرجع](docs/reference/API_REFERENCE.md)
+- **🧠 حافظه شما کنترل می شود** — خاموش به طور پیشفرض، انتخاب کردن در int8 بردار کمی کردن + تایپ واپاشی، هر درخواست `x-omniroute-no-memory`. [حافظه](docs/frameworks/MEMORY.md) →
+- **امنیت 🛡️** محافظ تزریق سریع — در هر مسیر LLM (مجموعه تیم قرمز)، نرده محافظ پوشاننده اعتبارنامه (از هر دو جهت، API keys/secrets به بیرون درز کرده است)، جستجوی رایگان آخرین گزینه DuckDuckGo در وب، و یک گیت ورود به سیستم OIDC اختیاری برای داشبورد (ورود رمز عبور همیشه در دسترس است). → [حفاظ](docs/security/GUARDRAILS.md)
+- **🖼️ نقاط پایانی جدید** — `/v1/ocr` (Mistral OCR) و `/v1/audio/translations` (سبک Whisper) سطح رسانه را گرد می کنند. → [API مرجع](docs/reference/API_REFERENCE.md)
+- **🎨 تولید تصویر / ویدیو / صدا** — one API برای رسانه: xAI Grok Imagine & Novita AI video، ComfyUI، Magnific، Adobe Firefly، Segmind و ارائه دهندگان گفتار مانند ElevenLabs. → [API مرجع](docs/reference/API_REFERENCE.md)
+- **🌍 Deployment & Ops** — معکوس پروکسی `basePath`، تشخیص خودکار به زبان مرورگر، ردیابی هر کلید دستگاه، اعتماد MITM بدون ریشه، محلیسازی zh-TW. [محیط زیست](docs/reference/ENVIRONMENT.md) →
+- **🤝 More providers & agents** — cloud agents (Codex Cloud, Cursor, Devin, Jules), Grok Build (xAI) with browser + OAuth login, Ollama first-class card, Claude Opus 5 & Sonnet 5, Kimi official partnership (Code/Web/Moonshot), Zed, Requesty, SenseNova, Yuanbao, Agnes AI… and a refreshed **394-provider catalog**. → [Providers](docs/reference/PROVIDER_REFERENCE.md)
+- **شفافیت مسیریابی 📡** — هر پاسخ دارای یک هدر `X-OmniRoute-Decision` با نام strategy/provider/latency است که به آن سرویس میدهد، یک استراتژی ترکیبی `cache-optimized` جدید + خودکار ترکیب `cacheAffinity` درخواستهای تکرار مسیر را به اتصالی که پیشوند ذخیرهشده را نگه میدارد، بازمیگردد، و یک نقطه پایانی `/v1/auto-combo/{channel}/candidates` فقط خواندنی استخر نامزد زنده کانال `auto/*` را نشان میدهد. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **عملکرد محلی ⚡ & infra** — Redis محلی با یک کلیک، Cloudflare Workers / Deno Deploy relay deployers، Bifrost & Mux به عنوان سرویسهای تعبیهشده تحت نظارت. → [Embedded Services](docs/frameworks/EMBEDDED-SERVICES.md)
+- **🧩 همچنین در جعبه** چارچوب پلاگین — بازار + ، چارچوبهای مهارت Omni/Agent/GitHub ، ادغام Obsidian vault (22 ابزار MCP )، دسته و فایلهای سازگار با OpenAI APIs، حافظه پنهان پاسخ معنایی، گیمیفیکیشن با تابلوهای امتیازات، کشف عامل ACP (15 عامل داخلی)، صادرات برنامهریزیشده `auto/chaos` به BigQuery-fan-para. bridge، یک مدیر نسخه درون برنامه ای و رتبه بندی ارائه دهندگان Telegram LMARena-ELO. [اسناد](docs/README.md) →
 
 <br/>
 
@@ -768,93 +763,80 @@ omniroute configure codex          # همچنین: claude opencode qwen aider go
 
 <div align="center">
 
-## 🖥️ OmniRoute کجا اجرا میشود — همهجا
+## 🖥️ Where OmniRoute — را در هر کجا اجرا می کند
 
 </div>
 
-> همان برنامه، روی دستگاه شما و با قوانین شما. از نصب سراسری npm گرفته تا **گوشی شما** از طریق Termux.
+> همان برنامه، دستگاه شما، قوانین شما. از نصب جهانی npm تا** گوشی شما** از طریق Termux
 
 <table>
-  <tr><th align="left">پلتفرم</th><th align="left">نصب</th><th align="left">ویژگیهای برجسته</th></tr>
-  <tr><td align="left" nowrap>📦 <b>npm (سراسری)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">یک فرمان، روی هر سیستمعاملی</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Bun (سراسری)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">همان tarball رجیستری، نصب سریعتر</td></tr>
-  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … diegosouzapw/omniroute</code></td><td align="left">پشتیبانی از چند معماری <b>AMD64 + ARM64</b></td></tr>
-  <tr><td align="left" nowrap>🖥️ <b>دسکتاپ (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">پنجره بومی + سینی سیستم — <b>Windows / macOS / Linux</b></td></tr>
-  <tr><td align="left" nowrap>🎩 <b>نوار منو (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">نظارت و بهروزرسانی خودکار سرور — <b>macOS</b></td></tr>
-  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap><code>arm64</code> بومی</td><td align="left">Raspberry Pi، سرورهای ARM، Apple Silicon</td></tr>
-  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">روی <b>گوشی شما</b> اجرا میشود، ۲۴/۷، بدون نیاز به root</td></tr>
-  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"افزودن به صفحه اصلی"</td><td align="left">تمامصفحه، آفلاین، قابل نصب از مرورگر</td></tr>
-  <tr><td align="left" nowrap>🧩 <b>افزونه OpenCode</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">یکپارچهسازی بومی با OpenCode</td></tr>
-  <tr><td align="left" nowrap>🤖 <b>VS Code Copilot Chat</b></td><td align="left" nowrap>نصب افزونه <b>OmniCopilot</b></td><td align="left">هر مدل OmniRoute در انتخابگر بومی Copilot Chat — نسخه پایدار و Insiders</td></tr>
-  <tr><td align="left" nowrap>🛠️ <b>از کد منبع</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">آن را توسعه دهید و مشارکت کنید</td></tr>
+  <tr><th align="left">پلت فرم</th><th align="left">نصب کنید</th><th align="left">نکات برجسته</th></tr>
+  <tr><td align="left" nowrap>📦 <b>npm (جهانی)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">یک فرمان، هر OS</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Bun (جهانی)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">همان رجیستری tarball، نصب سریعتر</td></tr>
+  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … cheaperinference/omniroute</code></td><td align="left">چند قوس <b>AMD64 + ARM64</b></td></tr>
+  <tr><td align="left" nowrap>🖥️ <b>رومیزی (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">سینی سیستم + پنجره بومی — <b>Windows / macOS / Linux</b></td></tr>
+  <tr><td align="left" nowrap>🎩 <b>نوار منو (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">نظارت بر &amp; به روز رسانی خودکار سرور — <b>macOS</b></td></tr>
+  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap><code>arm64</code> بومی</td><td align="left">Raspberry Pi، سرورهای ARM ، Apple Silicon</td></tr>
+  <tr><td align="left" nowrap>📱 <b>اندروید (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">اجرا می شود <b>در گوشی شما</b>, 24/7, بدون ریشه</td></tr>
+  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"افزودن به صفحه اصلی"</td><td align="left">تمام صفحه، آفلاین، قابل نصب از مرورگر</td></tr>
+  <tr><td align="left" nowrap>🧩 <b>OpenCode</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">ادغام OpenCode بومی</td></tr>
+  <tr><td align="left" nowrap>🤖 <b>کد VS Copilot چت</b></td><td align="left" nowrap>نصب کنید <b>OmniCopilot</b> پسوند</td><td align="left">هر مدل OmniRoute در انتخاب کننده چت بومی Copilot — پایدار &amp; خودی</td></tr>
+  <tr><td align="left" nowrap>🛠️ <b>از منبع</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">آن را هک کنید، مشارکت کنید</td></tr>
 </table>
 
-<sub>📖 [راهنمای Docker](docs/guides/DOCKER_GUIDE.md) · [دسکتاپ](electron/README.md) · [سینی نوار منو](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
+<sub>📖 [Docker Guide](docs/guides/DOCKER_GUIDE.md) · [Desktop](electron/README.md) · [Menu-bar tray](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
 
 <br/>
 
 <div align="center">
 
-### 🧩 جدید: OmniRoute در Copilot Chat بومی VS Code
+### 🧩 جدید: OmniRoute در چت VS بومی کد Copilot
 
 </div>
 
-> بدون نوار کناری جدید، بدون رابط گفتوگوی جدید — هر مدلی که OmniRoute ارائه میکند، مستقیماً در
-> **انتخابگر مدل Copilot Chat که همین حالا استفاده میکنید** نمایش داده میشود. از VS Code 1.122،
-> مدلهای ارائهدهنده بدون ورود به GitHub یا اشتراک Copilot کار میکنند — حالت عامل، فراخوانی ابزار و
-> بینایی، بهصورت رایگان.
+> بدون نوار کناری جدید، بدون چت جدید UI — هر مدلی که OmniRoute خدمت میکند درست در صفحه نمایش داده میشود** انتخابگر مدل چت Copilot که قبلاً استفاده میکنید** . از کد VS 1.122، مدلهای ارائهدهنده بدون ورود به سیستم GitHub یا حالت عامل Copilot اشتراک — ، تماس ابزار و دید، به صورت رایگان کار میکنند.
 
-افزونه **[OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)** را نصب کنید، آن را به
-سرور OmniRoute خود متصل کنید (پیشفرض `localhost:20128` است)، سپس Copilot Chat → انتخابگر مدل
-→ **Manage Models…** → **OmniRoute** را باز کنید.
+را نصب کنید** [OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)** برنامه افزودنی، آن را به سمت سرور OmniRoute خود قرار دهید (به طور پیش فرض روی `localhost:20128`)، سپس Copilot Chat را باز کنید → model picker →** مدیریت مدل ها…** →**OmniRoute** .
 
 <table>
-  <tr><th align="left">فروشگاه</th><th align="left">پیوند</th><th align="left">سازگار با</th></tr>
-  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">نصب →</a></td><td align="left">VS Code — نسخه پایدار و Insiders</td></tr>
-  <tr><td align="left" nowrap>🔓 <b>Open VSX Registry</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">نصب →</a></td><td align="left">Cursor، Windsurf، VSCodium، Theia، code-server، Gitpod، Antigravity، Kiro…</td></tr>
+  <tr><th align="left">فروشگاه</th><th align="left">پیوند</th><th align="left">با</th></tr>
+  <tr><td align="left" nowrap>🧩 <b>بازار کد VS</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">→ را نصب کنید</a></td><td align="left">کد VS — پایدار &amp; خودی ها</td></tr>
+  <tr><td align="left" nowrap>🔓 <b>رجیستری VSX را باز کنید</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">→ را نصب کنید</a></td><td align="left">Cursor، Windsurf، VSCodium، تیا، کد سرور، گیتپاد، Antigravity، Kiro…</td></tr>
 </table>
 
-از داخل ویرایشگر: نمای **Extensions** را باز کنید، **"OmniRoute"** را جستوجو کنید، روی **Install**
-کلیک کنید — این روند در هر دو فروشگاه یکسان است. کد منبع، مشکلات و راهنمای انتشار در
-[diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot) قرار دارند.
+از داخل ویرایشگر: باز کنید** برنامه های افزودنی** مشاهده، جستجو** "OmniRoute"** ، کلیک کنید** نصب کنید** — در هر دو فروشگاه به یک شکل عمل می کند. منبع، شمارهها و رانبوک انتشار زنده در [diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot).
 
-<sub>📖 [راهنمای Copilot Chat در VS Code](docs/guides/VSCODE-COPILOT.md) — راهاندازی، موارد نمایشدادهشده در انتخابگر، داشبورد در یک زبانه، عیبیابی</sub>
+<sub>کد 📖 [VS Copilot راهنمای چت](docs/guides/VSCODE-COPILOT.md) راه اندازی — ، آنچه انتخابگر نشان می دهد، داشبورد در یک تب، عیب یابی</sub>
 
 <br/>
 
 <div align="center">
 
-### 🎩 جدید: OmniRouteTray — دروازه شما، ساکن در نوار منو
+### 🎩 جدید: OmniRouteTray — دروازه شما، زندگی در نوار منو
 
 </div>
 
-> `omniroute serve` وقتی همیشه روشن باشد بهترین عملکرد را دارد. **[OmniRouteTray](https://github.com/zoispag/omniroute-tray)**
-> این قابلیت را به برنامهای در نوار منوی macOS تبدیل میکند که آن را تنظیم میکنید و دیگر نگرانش نیستید: سرور را راهاندازی میکند، آن را
-> پس از راهاندازی مجدد سیستم فعال نگه میدارد، آن را درجا بهروزرسانی میکند و بودجه توکن زنده شما را با یک کلیک در دسترس قرار میدهد — **بدون
-> پنجره ترمینال باز، بدون نیاز به مراقبت از `npm install -g omniroute`.**
+> `omniroute serve` وقتی همیشه روشن باشد خوشحال است.** [OmniRouteTray](https://github.com/zoispag/omniroute-tray)** آن را به یک برنامه نوار منوی تنظیم و فراموش کردن برای macOS تبدیل میکند: سرور را راهاندازی میکند، آن را در طول راهاندازی مجدد زنده نگه میدارد، آن را در جای خود بهروزرسانی میکند و بودجه رمز زنده شما را با یک کلیک دورتر از — قرار میدهد.** بدون پنجره ترمینال باز مانده است، هیچ `npm install -g omniroute` برای نگهداری از کودک.**
 
-این برنامه با [Tauri v2](https://v2.tauri.app/) ساخته شده است (هسته Rust آن به اندازه یک خطای گرد کردن کوچک است)، و
-runtime امضاشده Node 24 خود را ارائه میدهد و نصب OmniRoute متعلق به برنامه را مدیریت میکند؛ بنابراین هرگز با
-`node`/`bun` سراسری شما تداخلی ایجاد نمیکند. این برنامه **پیکربندی و پایگاهداده موجود `~/.omniroute/` شما را به اشتراک میگذارد** — پس
-همان OmniRouteای است که از قبل اجرا میکنید، فقط با یک کلاه روی سرش. 🎩
+ساخته شده با [Tauri v2](https://v2.tauri.app/) (هسته Rust به اندازه یک خطای گرد کردن)، زمان اجرا Node 24 امضا شده خود را ارسال می کند و نصب OmniRoute متعلق به برنامه را مدیریت می کند، بنابراین هرگز با `node`/`bun` جهانی شما مبارزه نمی کند. آن را** پیکربندی `~/.omniroute/` و پایگاه داده موجود شما را به اشتراک می گذارد** — پس همان OmniRoute است که قبلاً اجرا میکردید، فقط با یک کلاه. 🎩
 
 <table>
-  <tr><th align="left">چه کاری انجام میدهد</th><th align="left">چگونه</th></tr>
-  <tr><td align="left" nowrap>🟢 <b>بر سرور نظارت میکند</b></td><td align="left">نمونهی <code>omniroute serve</code> را اجرا میکند و بهجای ایجاد نمونهی تکراری، یک نمونهی در حال اجرا را به کار میگیرد</td></tr>
-  <tr><td align="left" nowrap>📊 <b>نمای کلی از مصرف لحظهای</b></td><td align="left">نوارهای سهمیهی ارائهدهندگان، محدودیتهای نشست/هفتگی Claude همراه با شمارش معکوس بازنشانی، و تفکیک هزینهی ۳۰روزه</td></tr>
-  <tr><td align="left" nowrap>🔄 <b>بهروزرسانی خودکار در محل</b></td><td align="left">نصب مرحلهای، جابهجایی اتمی، بازگشت در صورت شکست — همیشه روی جدیدترین نسخه</td></tr>
-  <tr><td align="left" nowrap>🚀 <b>اجرا هنگام ورود</b></td><td align="left">اجرای اختیاری هنگام ورود؛ فقط در نوار سیستم، بدون نماد در Dock</td></tr>
-  <tr><td align="left" nowrap>🩺 <b>عیبیابی و گزارشها</b></td><td align="left">عیبیابی با یک کلیک و دسترسی به گزارشهای سرور</td></tr>
+  <tr><th align="left">کاری که انجام می دهد</th><th align="left">چگونه</th></tr>
+  <tr><td align="left" nowrap>🟢 <b>بر سرور نظارت می کند</b></td><td align="left"><code>omniroute serve</code> را ایجاد می کند، به جای کپی کردن، یک نمونه از قبل در حال اجرا را اتخاذ می کند</td></tr>
+  <tr><td align="left" nowrap>📊 <b>استفاده زنده در یک نگاه</b></td><td align="left">نوارهای سهمیه ارائه دهنده، محدودیت Claude session/weekly با شمارش معکوس بازنشانی، تفکیک هزینه 30 روزه</td></tr>
+  <tr><td align="left" nowrap>🔄 <b>به روز رسانی خودکار در محل</b></td><td align="left">نصب مرحلهای، تعویض اتمی، بازگشت به حالت شکست — همیشه در جدیدترین نسخه</td></tr>
+  <tr><td align="left" nowrap>🚀 <b>با ورود شروع کنید</b></td><td align="left">راه اندازی اختیاری در هنگام ورود. فقط سینی، بدون نماد داک</td></tr>
+  <tr><td align="left" nowrap>🩺 <b>دکتر &amp; سیاهههای مربوط</b></td><td align="left">عیب یابی و دسترسی به گزارش سرور با یک کلیک</td></tr>
 </table>
 
 ```sh
 brew install --cask zoispag/tap/omniroute-tray
 ```
 
-<sub>دانلود را ترجیح میدهید؟ جدیدترین <code>.dmg</code> را از
-<a href="https://github.com/zoispag/omniroute-tray/releases">نسخهها</a> دریافت کنید. کد منبع، مسائل و مستندات ساخت
-در <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a> قرار دارند.
-<br/>💛 یک پروژهی جامعهمحور بهدست <a href="https://github.com/zoispag">@zoispag</a> — انتشار رسمی OmniRoute نیست.</sub>
+<sub>دانلود را ترجیح می دهید؟ جدیدترین <code>.dmg</code> را بگیرید
+<a href="https://github.com/zoispag/omniroute-tray/releases">منتشر می کند</a>. منبع، مسائل و ساخت
+اسناد در <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a> زندگی می کنند.
+<br/>💛 پروژه جامعه توسط <a href="https://github.com/zoispag">@zoispag</a> — یک انتشار رسمی OmniRoute نیست.</sub>
 
 <br/>
 
@@ -937,15 +919,15 @@ claude mcp add --transport http omniroute http://localhost:20128/api/mcp/stream 
 
 <div align="center">
 
-## 🗜️ ذخیرهٔ ۱۵–۹۵٪ توکن — بهصورت خودکار
+## 🗜️ ذخیره 15 تا 95% توکن — به صورت خودکار
 
 </div>
 
-### 📖 نحوهٔ کار — خط لوله، معماری و محاسبهٔ صرفهجویی
+### 📖 چگونه کار می کند — خط لوله، معماری و ریاضیات پس انداز
 
-<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="خط لولهٔ فشردهسازی OmniRoute: یک درخواست نمونهٔ ۱۰٬۰۰۰ توکنی از سمت کلاینت از ۱۲ موتور ترکیبپذیر — Session-Dedup، CCR، Lite، RTK، Responses Tool Output، Headroom، Relevance، Caveman، Aggressive، LLMLingua-2، Ultra و OmniGlyph — عبور میکند و در مثال انباشتهٔ مستندشده میتواند با حدود ۱٬۰۸۰ توکن به ارائهدهنده برسد. محتوای ساختاریافته با محافظهای نگهداشت و دروازههای صحتسنجی در هر مرحله محافظت میشود؛ حالتهای صریحاً اتلافی یا آزمایشی ممکن است محتوای واجد شرایط را تغییر دهند."/>
+<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute compression pipeline: an illustrative 10,000-token client request passes through 12 composable engines — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra and OmniGlyph — and can reach the provider at about 1,080 tokens in the documented stacked example. Structured content is protected by preservation guards and per-step fidelity gates; explicit lossy or experimental modes may transform eligible content."/>
 
-ترکیب انباشتهٔ پیشفرض `RTK → Caveman` اجرا میشود. وقتی هر دو روی یک محمولهٔ ابزار/زمینه عمل میکنند، صرفهجوییها با هم ترکیب میشوند:
+ترکیب پیشفرض انباشته `RTK → Caveman` را اجرا میکند. هنگامی که هر دو بر روی یک محموله tool/context عمل می کنند، پس انداز ترکیب می شود:
 
 ```txt
 combined = 1 − (1 − RTK) × (1 − Caveman_input)
@@ -953,74 +935,74 @@ average  = 1 − (1 − 0.80) × (1 − 0.46) = 89.2%
 range    = 78.4 – 94.6%
 ```
 
-بلوکهای کد، URLها، JSON و دادههای ساختاریافته **همیشه** توسط موتور نگهداشت محافظت میشوند.
+بلوک های کد، URLs، JSON و داده های ساخت یافته هستند** همیشه محافظت می شود** توسط موتور نگهداری
 
-> **وقتی چند توکن کار چندانی انجام نمیدهند، چرا از توکنهای زیاد استفاده کنیم؟** هر درخواست بهصورت **شفاف** از خط لولهٔ فشردهسازی OmniRoute عبور میکند — بدون نیاز به تغییر در کلاینت. اکنون این خط لوله یک **مجموعهٔ ۱۲ موتورهٔ ترکیبپذیر** است که بهترتیب اجرا میشوند و بر اساس ترکیب مسیریابی با هم تلفیق میشوند — با تکیه بر ایدههای [RTK](https://github.com/rtk-ai/rtk)، [Caveman](https://github.com/JuliusBrussee/caveman) (⭐ 90K+)، [LLMLingua-2](https://github.com/microsoft/LLMLingua) و [Troglodita](https://github.com/leninejunior/troglodita) (PT-BR).
+> **چرا از بسیاری از نشانه ها استفاده می کنیم در حالی که تعداد کمی از توکن ها این کار را انجام می دهند؟** هر درخواست از طریق خط لوله فشرده سازی OmniRoute عبور می کند** شفاف** — هیچ مشتری تغییر نمی کند. اکنون یک است** مجموعه ای از 12 موتور قابل ترکیب** که به ترتیب اجرا می شوند و در هر مسیریابی ترکیبی — بر اساس ایده هایی از [RTK](https://github.com/rtk-ai/rtk) ، [Caveman](https://github.com/JuliusBrussee/caveman) (⭐ 90K +)، [LLMLingua-2](https://github.com/microsoft/LLMLingua) ، و [Troglodita](https://github.com/leninejunior/troglodita) (PT-BR) اجرا می شوند.
 
-### 🧱 پشتهٔ ۱۲ موتوره
+### 🧱 پشته 12 موتوره
 
-موتورها بهترتیب خط لوله اجرا میشوند؛ هر موتور را میتوان بهصورت مستقل فعال/غیرفعال کرد و برای هر ترکیب پیکربندی نمود:
-
-<table>
-  <tr><th align="center">#</th><th align="left">موتور</th><th align="left">کاری که انجام میدهد</th></tr>
-  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Session-Dedup</b></td><td align="left">محتوای تکرارشده در نوبتهای مختلف را حذف میکند (مبتنی بر آدرس محتوا، بین نوبتها)</td></tr>
-  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">بلوکهای بزرگ را پشت نشانگرهای بازیابی بایگانی میکند تا در صورت نیاز دریافت شوند</td></tr>
-  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">حذف فاصلههای خالی اضافی و کوتاهسازی URL تصاویر (مبنای سبک با تأخیر کم)</td></tr>
-  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">فیلتر هوشمند نتایج ابزار، حذف موارد تکراری و کوتاهسازی (آگاه از فرمان)</td></tr>
-  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Responses Tool Output</b></td><td align="left">JSON با اولویت حفظ کامل + فشردهسازی محدود تشخیصی برای خروجیهای shell/patch/search/build (Responses API)</td></tr>
-  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Headroom</b></td><td align="left">فشردهسازی بدون اتلاف آرایههای JSON جدولی (حدود ۳۰٪) با استفاده از کُدک <b>GCF</b> همراهشده</td></tr>
-  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Relevance</b></td><td align="left">امتیازدهی استخراجی جملات بر اساس آخرین پرسوجوی کاربر</td></tr>
-  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Caveman</b></td><td align="left">فشردهسازی نثر مبتنی بر قواعد (حدود ۶۵–۷۵٪ در خروجی)</td></tr>
-  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Aggressive</b></td><td align="left">خلاصهسازی + کهنهسازی تدریجی نوبتهای قدیمی</td></tr>
-  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">هرس معنایی ML با استفاده از MobileBERT ONNX — ایمن برای کد، ناهمگام</td></tr>
-  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ultra</b></td><td align="left">هرس توکن اکتشافی با یک سطح اختیاری مدل کوچک (SLM)</td></tr>
-  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">رمزگذاری آزمایشی زمینه بهصورت تصویر برای Claude Fable 5 اندازهگیریشده روی خط مستقیم Anthropic؛ ترنسفورمرهای GPT 5.6 تا زمان دریافت رسیدهای ارائهدهنده همچنان در حالت fail-closed باقی میمانند. چهار پروفایل فشردهسازی (پیشفرض تهاجمی، متعادل، ایمن برای کدنویسی، passthrough) (تهاجمیترین؛ انتخابی)</td></tr>
-</table>
-
-بلوکهای کد، URLها و دادههای ساختاریافته **همیشه** بهصورت بایتبهبایت حفظ میشوند. **پیشتنظیمهای تککلیکی** موتورها را با هم ترکیب میکنند:
+موتورها به ترتیب خط لوله کار می کنند. هر کدام به طور مستقل در هر ترکیب قابل تغییر و تنظیم هستند:
 
 <table>
-  <tr><th align="left">حالت</th><th align="left">صرفهجویی</th><th align="left">مناسب برای</th></tr>
-  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~۱۵٪</td><td align="left">پیشفرض ایمن و همیشهفعال</td></tr>
-  <tr><td align="left" nowrap>🪨 <b>Standard (Caveman)</b></td><td align="left" nowrap>~۳۰٪</td><td align="left">کدنویسی روزمره</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Aggressive</b></td><td align="left" nowrap>~۵۰٪</td><td align="left">نشستهای طولانی با ابزارهای متعدد</td></tr>
-  <tr><td align="left" nowrap>🔥 <b>Ultra</b></td><td align="left" nowrap>~۷۵٪</td><td align="left">بیشترین صرفهجویی</td></tr>
-  <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>۶۰–۹۰٪</td><td align="left">خروجی shell/test/build/git</td></tr>
-  <tr><td align="left" nowrap>🔗 <b>Stacked (RTK → Caveman)</b></td><td align="left" nowrap><b>۷۸–۹۵٪</b></td><td align="left">پرامپتهای ترکیبی + گزارشهای ابزار</td></tr>
+  <tr><th align="center">#</th><th align="left">موتور</th><th align="left">کاری که انجام می دهد</th></tr>
+  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Session-Dedup</b></td><td align="left">محتوای تکراری را در سراسر نوبت رها می کند (خطاب به محتوا، چرخش متقاطع)</td></tr>
+  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">بلوکهای بزرگ را در پشت نشانگرهای بازیابی، بایگانی میکند، برحسب تقاضا واکشی میشود</td></tr>
+  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>ساده</b></td><td align="left">فضای خالی تصویر + برش URL (تأخیر-خط پایه نور)</td></tr>
+  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">فیلتر کردن، حذف و کوتاه کردن نتایج ابزار هوشمند (آگاه از فرمان)</td></tr>
+  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>خروجی ابزار پاسخ</b></td><td align="left">فشردهسازی تشخیصی بدون تلفات اول JSON + برای خروجیهای shell/patch/search/build (پاسخهای API)</td></tr>
+  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>اتاق سر</b></td><td align="left">فشرده سازی جدولی بدون تلفات آرایه های JSON (~ 30%) از طریق فروشنده <b>GCF</b> کدک</td></tr>
+  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>ارتباط</b></td><td align="left">امتیاز گیری جملات استخراجی در برابر آخرین درخواست کاربر</td></tr>
+  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>غارنشین</b></td><td align="left">فشرده سازی نثر مبتنی بر قانون (~ 65-75٪ در خروجی)</td></tr>
+  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>تهاجمی</b></td><td align="left">خلاصه + پیری پیشرونده نوبت های قدیمی</td></tr>
+  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">هرس معنایی ML از طریق MobileBERT ONNX — -safe، async</td></tr>
+  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>فوق العاده</b></td><td align="left">هرس نشانه اکتشافی با یک ردیف مدل کوچک اختیاری (SLM).</td></tr>
+  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">رمزگذاری متن آزمایشی به عنوان تصویر برای اندازه گیری Claude Fable 5 در سیم Anthropic مستقیم. ترانسفورماتورهای GPT 5.6 در انتظار دریافتهای ارائهدهنده بسته باقی میمانند. چهار نمایه فشردهسازی (پیشفرض تهاجمی، متعادل، کدگذاری ایمن، عبور) (تهاجمیترین، انتخاب کردن)</td></tr>
 </table>
 
-**مثال واقعی — حالت Standard:**
+بلوک های کد، URLs و داده های ساخت یافته هستند** همیشه حفظ شده است** بایت کامل** تنظیمات از پیش تعیین شده با یک کلیک** ترکیب موتورها:
 
-> **قبل (۶۹ توکن):** _"دلیل رندر مجدد کامپوننت React شما احتمالاً این است که در هر چرخهٔ رندر یک مرجع شیء جدید ایجاد میکنید. وقتی یک شیء درونخطی را بهعنوان prop ارسال میکنید، مقایسهٔ سطحی React هر بار آن را شیئی متفاوت میبیند و همین باعث رندر مجدد میشود. پیشنهاد میکنم برای یادسپاری شیء از useMemo استفاده کنید."_
->
-> **بعد (۱۹ توکن):** _"مرجع شیء جدید در هر رندر. prop شیء درونخطی = مرجع جدید = رندر مجدد. آن را در useMemo قرار دهید."_
->
-> **همان پاسخ. ۷۲٪ توکن کمتر. بدون هیچ افت دقتی.** ✅
+<table>
+  <tr><th align="left">حالت</th><th align="left">پس انداز</th><th align="left">بهترین برای</th></tr>
+  <tr><td align="left" nowrap>🪶 <b>ساده</b></td><td align="left" nowrap>~15%</td><td align="left">پیش فرض ایمن همیشه روشن</td></tr>
+  <tr><td align="left" nowrap>🪨 <b>استاندارد (غارنشین)</b></td><td align="left" nowrap>~30%</td><td align="left">کد نویسی روزانه</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>تهاجمی</b></td><td align="left" nowrap>~50%</td><td align="left">جلسات طولانی ابزار سنگین</td></tr>
+  <tr><td align="left" nowrap>🔥 <b>فوق العاده</b></td><td align="left" nowrap>~75%</td><td align="left">حداکثر پس انداز</td></tr>
+  <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>60–90%</td><td align="left">خروجی Shell/test/build/git</td></tr>
+  <tr><td align="left" nowrap>🔗 <b>انباشته (RTK → غارنشین)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">دستورهای مختلط سیاهههای مربوط به ابزار +</td></tr>
+</table>
 
-**مثال PT-BR — حالت [Troglodita](https://github.com/leninejunior/troglodita):**
+**مثال واقعی حالت استاندارد — :**
 
-> **قبل (42 توکن):** _«مشکل این است که کامپوننت دوباره رندر میشود، چون در هر چرخهٔ رندر یک مرجع جدید برای شیء ایجاد میشود. پیشنهاد میکنم از useMemo استفاده کنید.»_
+> **قبل (69 توکن):** _"دلیل اینکه مولفه React شما دوباره رندر می شود این است که شما در هر چرخه رندر یک مرجع شی جدید ایجاد می کنید. وقتی یک شی درون خطی را به عنوان یک پایه ارسال می کنید، مقایسه سطحی React هر بار آن را به عنوان یک شی متفاوت می بیند که باعث رندر مجدد می شود. من توصیه می کنم از useMemo برای به خاطر سپردن شی استفاده کنید."_
 >
-> **بعد (12 توکن):** _«بازرندر: مرجع جدید در هر چرخه (شیء درونخطی بازایجاد میشود). استفاده از `useMemo`.»_
+> **بعد از (19 توکن):** _"شیء جدید به هر رندر اشاره می کند. شیء درون خطی prop = جدید ref = رندر می شود. در useMemo بپیچید."_
 >
-> **همان پاسخ. حدود ۷۰٪ توکن کمتر. دقت فنی دستنخورده.** ✅
+> **همان پاسخ. 72 درصد توکن کمتر. افت دقت صفر** ✅
+
+**حالت — [Troglodita](https://github.com/leninejunior/troglodita) مثال PT-BR:**
+
+> **Antes (42 توکن):** _"O problema é que o componente está re renderizando porque uma nova referência de objeto está sendo criada em cada ciclo de renderização. Eu recomendaria usar useMemo."_
+>
+> **Depois (12 توکن):** _"Render: ref nova cada ciclo (objeto inline recriado). Usar `useMemo`."_
+>
+> **پاسخ مسما. ~ 70% meno tokens. Precisão técnica intacta.** ✅
 
 <br/>
 
-### 🎚️ فراتر از موتورها — سبکهای خروجی، پیچ تنظیم تطبیقی و کنترل هر درخواست
+### 🎚️ فراتر از سبکهای خروجی — موتور، شمارهگیر تطبیقی و کنترل هر درخواست
 
-۱۲ موتور بالا، آنچه را **وارد** میشود کوچکتر میکنند. سه لایهٔ دیگر شکل میدهند که چه چیزی **چگونه**، **چه زمانی** و به چه صورتی **خارج** شود:
+12 موتور بالا آنچه را که می رود کوچک می کنند** در** . سه لایه دیگر شکل می گیرد** چگونه** ،** چه زمانی** ، و آنچه می آید** بیرون** :
 
-- **🪄 سبکهای خروجی** _(هدایت محور خروجی)_ — دستورالعملهای قطعی و سازگار با کش را برای شکلدهی پاسخ تزریق میکنند؛ قابل ترکیب هستند و هرکدام شدت `lite` / `full` / `ultra` دارند. افزودن یک سبک، تنها به یک ورودی در رجیستری نیاز دارد:
-  - **نثر مختصر** — حذف عبارتهای زائد، حروف تعریف و تردید؛ حفظ دقیق محتوای فنی.
-  - **کد کمتر** — رویکرد YAGNIِ «برنامهنویس ارشد تنبل»: کوچکترین تغییرِ کارآمد، بدون زیرساخت اضافیِ درخواستنشده.
-  - **دماسبی (برنامهنویس ارشد تنبل)** — بالا رفتن از نردبان YAGNI، رفع علت ریشهای، کوچکترین تفاوتِ کارآمد.
-  - **من ADHD دارم (اول اقدام)** — اقدام بعدی در ابتدا، مراحل شمارهگذاریشده، یک گام بعدی مشخص و بدون مقدمه.
-  - **CJK مختصر (文言)** — سبک فوقمختصر چینی کلاسیک (محدود به locale `zh`).
-- **🎯 بودجهٔ تطبیقی زمینه** _(پیچ تنظیم)_ — بهجای یک آستانهٔ توکن روشن/خاموش، فقط تا حد لازم، ارزانترین و کماتلافترین موتورها را فعال میکند تا در **پنجرهٔ زمینهٔ مدل** جا شود. سیاست: `reserve-output` (پیشفرض، آگاه از مدل) · `percentage` · `absolute`. حالت: `floor` (تضمین جا شدن) · `replace-autotrigger` (انتخاب صریح شما برنده است) · `off` (آستانهٔ قدیمی).
-- **🎛️ محل تصمیمگیری فشردهسازی** _(اولویت، از زیاد به کم)_ — هدر `x-omniroute-compression` در هر درخواست › بازنویسی ترکیب مسیریابی › پروفایل نامگذاریشدهٔ فعال › فعالسازی تطبیقی / خودکار › پیشفرض پنل › خاموش. طرح اعمالشده در هدر پاسخ `X-OmniRoute-Compression: <mode>; source=<source>` بازتاب داده میشود.
+- **سبک های خروجی 🪄** _(فرمان محور خروجی)_ دستورالعملهای شکلدهی پاسخ قطعی و ایمن در حافظه پنهان — تزریق میکند. قابل ترکیب، هر کدام در شدت `lite` / `full` / `ultra`. افزودن یک سبک یک ورودی رجیستری یک خطی است:
+  - **نثر کوتاه** پرکننده قطره — / مقالات / پرچین; مواد فنی را دقیق نگه دارید
+  - **کد کمتر** — "توسعه ارشد تنبل" YAGNI: کوچکترین تغییر کاری، بدون داربست درخواستی.
+  - **دم اسبی (طرفدار ارشد تنبل)** — از نردبان YAGNI بالا بروید، علت اصلی را برطرف کنید، کوچکترین تفاوت کاری.
+  - **من ADHD دارم (اول اقدام)** — اقدام بعدی منجر می شود، مراحل شماره گذاری شده، یک مرحله بعدی مشخص، بدون مقدمه.
+  - **ترسه CJK (文言)** — کلاسیک-چینی سبک فوقالعاده مختصر (محلی-دردار به `zh`).
+- **🎯 بافت-بودجه تطبیقی** _(شماره گیری)_ — به جای یک آستانه رمز on/off ، ارزان ترین و کم ضررترین موتورها را فقط تا جایی که لازم است افزایش دهید.** متناسب با پنجره زمینه مدل** . خط مشی: `reserve-output` (پیش فرض، مدل آگاه) · `percentage` · `absolute`. حالت: `floor` (ضمانت تناسب) · `replace-autotrigger` (انتخاب صریح شما برنده است) · `off` (آستانه میراث).
+- **🎛️ جایی که فشرده سازی تصمیم می گیرد** _(اولویت، → زیاد کم)_ — در هر درخواست سرصفحه `x-omniroute-compression` › نادیده گرفتن مسیریابی- ترکیبی › نمایه با نام فعال › تطبیقی / فعال کننده خودکار › پیش فرض پانل › خاموش. طرح اعمال شده در هدر پاسخ `X-OmniRoute-Compression: <mode>; source=<source>` بازتاب می یابد.
 
-فعالسازی خودکار بر اساس آستانهٔ توکن، تغییر وضعیت با پیچ تنظیم تطبیقی، تثبیت یک پروفایل نامگذاریشده، تنظیم یکباره برای هر درخواست یا اختصاص یک خط لوله به هر ترکیب مسیریابی — هرکدام که با بار کاری سازگار باشد. یک **چارچوب ارزیابی** آفلاین و اختیاری (`npm run eval:compression`) پیش از انتشار تغییر، وفاداری در برابر صرفهجویی را روی یک پیکرهٔ ثابت امتیازدهی میکند.
+راهاندازی خودکار با آستانه رمز، چرخاننده تطبیقی را برگردانید، نمایهای نامگذاری شده را پین کنید، برای هر درخواست یک بار تنظیم کنید، یا یک خط لوله را به ازای هر مسیریابی ترکیبی — تعیین کنید که با حجم کار مطابقت دارد. انتخاب آفلاین** مهار** (`npm run eval:compression`) قبل از اینکه تغییری را تبلیغ کنید، وفاداری در مقابل پس انداز را در یک پیکره سنجاق شده امتیاز می دهد.
 
 📖 [`COMPRESSION_GUIDE.md`](docs/compression/COMPRESSION_GUIDE.md) · [`RTK_COMPRESSION.md`](docs/compression/RTK_COMPRESSION.md) · [`COMPRESSION_ENGINES.md`](docs/compression/COMPRESSION_ENGINES.md)
 
@@ -1032,40 +1014,30 @@ range    = 78.4 – 94.6%
 
 </div>
 
-**۱) نصب و اجرا**
+**1) نصب و اجرا کنید**
 
 ```bash
 npm install -g omniroute
 omniroute
 ```
 
-> 💡 هشدارهای `npm warn ERESOLVE` یا هشدارهای وابستگی همتا را میبینید؟ [بیضرر هستند](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).
-> **از npm 11 یا نسخههای جدیدتر استفاده میکنید؟** npm ممکن است اسکریپتهای چرخهٔ حیات بسته را مسدود کند، مگر اینکه اجازهٔ اجرای آنها داده شود. `postinstall` مربوط به OmniRoute (`node scripts/build/postinstall.mjs`) برای آمادهسازی فایلهای زمان اجرای بومی آن ضروری است. هنگام نصب سراسری، به بستههایی که در هشدار npm نام برده شدهاند اجازه دهید. برای مجموعهٔ بستههای گزارششده توسط OmniRoute 3.8.55:
+> 💡 هشدارهای `npm warn ERESOLVE` یا peer-dep را ببینید؟ [آنها بی ضرر هستند](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated)** از npm 11 یا بالاتر استفاده می کنید؟** npm ممکن است اسکریپت های چرخه عمر بسته را مسدود کند مگر اینکه مجاز باشند. OmniRoute `postinstall` (`node scripts/build/postinstall.mjs`) برای آماده سازی فایل های زمان اجرا بومی آن مورد نیاز است. هنگام نصب جهانی، بستههای نامگذاری شده در هشدار npm را مجاز کنید. برای مجموعه بسته گزارش شده توسط OmniRoute 3.8.55:
 >
-> ```bash
-> npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute
-> ```
+> `bash npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute `
 >
-> برای استفادهٔ مجدد از این فهرست مجاز در نصبهای سراسری آینده، آن را یکبار پیکربندی و سپس بهطور معمول نصب کنید:
+> برای استفاده مجدد از این لیست مجاز برای نصب های جهانی آینده، آن را یک بار پیکربندی کنید، سپس به طور معمول نصب کنید:
 >
-> ```bash
-> npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user
-> npm install -g omniroute
-> ```
+> `bash npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user npm install -g omniroute `
 >
-> فهرست وابستگیها ممکن است بین نسخهها تغییر کند؛ اگر npm فهرست متفاوتی گزارش کرد، از نام بستههای موجود در همان هشدار استفاده کنید. اجازه دادن به یک بسته، اجرای اسکریپتهای نصب آن را مجاز میکند.
-> **از Gemini Web یا ارائهدهندهٔ دیگری مبتنی بر کوکی وب استفاده میکنید؟** بستهٔ npm شامل
-> Playwright است، اما باینری Chromium آن را ندارد. پیش از ارسال نخستین درخواست به ارائهدهندهٔ وب، یادداشت
-> [راهاندازی Chromium در Playwright](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium)
-> را ببینید.
+> لیست وابستگی می تواند بین نسخه ها تغییر کند. اگر npm لیست دیگری را گزارش کرد، از نام بسته های آن هشدار استفاده کنید. اجازه دادن به یک بسته به اسکریپت های نصب آن اجازه اجرا می دهد.** از Gemini Web یا دیگر ارائه دهنده کوکی وب استفاده می کنید؟** بسته npm شامل Playwright است اما نه باینری Chromium آن. قبل از ارائه اولین درخواست ارائهدهنده وب، یادداشت [راهاندازی Playwright Chromium](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium) را ببینید.
 
 داشبورد در `http://localhost:20128` · API در `http://localhost:20128/v1`.
 
-**۲) اتصال به یک ارائهدهندهٔ واجد شرایط با حساب خودتان**
+**2) یک ارائه دهنده واجد شرایط را با استفاده از حساب شخصی خود وصل کنید**
 
-داشبورد → **ارائهدهندگان** → ارائهدهندهای را انتخاب کنید که شرایط فعلی و سهمیهٔ آن با مورد استفادهٔ شما سازگار باشد → کلید API آن را اضافه کنید یا فرایند حساب کاربریاش را تکمیل کنید. سطوح رایگان ممکن است به ثبتنام، تأیید یا روش پرداخت نیاز داشته باشند. [راهنمای سطوح رایگان](docs/getting-started/FREE-TIERS-GUIDE.md) را بررسی کنید؛ دسترسی بدون کلید تضمینشده نیست و ارائهدهندگانی که با `tos: avoid` علامتگذاری شدهاند، بهطور پیشفرض از `auto` کنار گذاشته میشوند.
+داشبورد →** ارائه دهندگان** → ارائهدهندهای را انتخاب کنید که شرایط فعلی و سهمیهاش متناسب با مورد استفاده شما باشد. → کلید API را اضافه کند یا جریان حسابش را کامل کند. سطوح رایگان ممکن است نیاز به ثبت نام، تأیید یا روش پرداخت داشته باشند. [راهنمای ردیف های رایگان](docs/getting-started/FREE-TIERS-GUIDE.md) را مرور کنید. در دسترس بودن بدون کلید تضمین نمی شود و ارائه دهندگانی که `tos: avoid` علامت گذاری شده اند به طور پیش فرض از `auto` مستثنی هستند.
 
-**۳) اشاره دادن ابزار کدنویسی**
+**3) به ابزار کدنویسی خود اشاره کنید**
 
 ```txt
 Base URL: http://localhost:20128/v1
@@ -1073,15 +1045,15 @@ API Key:  [copy from Dashboard → Endpoints]
 Model:    auto            (routes among eligible connections — or choose provider/model)
 ```
 
-**۴) بررسی عملکرد**
+**4) بررسی کنید که کار می کند**
 
 ```bash
 curl http://localhost:20128/v1/models -H "Authorization: Bearer YOUR_KEY"
 ```
 
-باید مدلهای متصلشدهٔ خود را در فهرست ببینید. 🎉 همین است — کدنویسی را شروع کنید و OmniRoute برای شما بهطور خودکار مسیریابی و بازگشت به گزینهٔ جایگزین را انجام میدهد.
+شما باید مدل های متصل خود را در لیست مشاهده کنید. 🎉 همین است. — شروع به کدنویسی می کند و OmniRoute مسیرهای خودکار را برای شما انجام می دهد.
 
-اگر کلاینت شما نمیتواند هدرهای سفارشی ارسال کند، OmniRoute همچنین نامهای مستعار سازگار با توکن را ارائه میدهد:
+اگر مشتری شما نمی تواند هدرهای سفارشی ارسال کند، OmniRoute نام مستعار سازگاری توکن شده را نیز نشان می دهد:
 
 ```txt
 OpenAI catalog:   http://localhost:20128/vscode/YOUR_KEY/
@@ -1092,56 +1064,52 @@ Ollama chat:      http://localhost:20128/vscode/YOUR_KEY/api/chat
 Ollama tags:      http://localhost:20128/vscode/YOUR_KEY/api/tags
 ```
 
-این موارد را فقط برای کلاینتهایی استفاده کنید که نمیتوانند `Authorization: Bearer ...` را پیوست کنند. احراز هویت با هدر همچنان حالت ترجیحی است.
+از اینها فقط برای مشتریانی استفاده کنید که نمی توانند `Authorization: Bearer ...` وصل کنند. Header auth حالت ترجیحی باقی می ماند.
 
 <br/>
 
-## 📦 روشهای بیشتر نصب — Docker، کد منبع، pnpm، Arch
+## 📦 روش های نصب بیشتر — Docker, source, pnpm, Arch
 
 **🐳 Docker**
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-`:latest` بالاترین نسخهٔ پایدار **منتشرشده**ٔ SemVer را دنبال میکند. این برچسب git `main` را دنبال نمیکند. برای GitOps، `:X.Y.Z` را ثابت کنید. به [کانالهای انتشار Docker](docs/guides/DOCKER_GUIDE.md#release-channels) مراجعه کنید. این image مقدار **`OMNIROUTE_MEMORY_MB=1024`** را ثابت میکند. این مقدار برای داشبورد و یک گفتوگوی سبک کافی است. **عاملهای کدنویسی** (`POST /v1/responses` از Claude Code، Codex، Grok، …) به heap بسیار بزرگتری از V8 نیاز دارند؛ در غیر این صورت، فرایند در حدود ۱۲ GiB، هنگام اجرای دو متن طولانیِ همپوشان، با `FATAL ERROR` متوقف میشود. اندازهٔ کانتینر را بیشتر از heap در نظر بگیرید (بافرهای native خارج از V8 قرار دارند):
+`:latest` بالاترین را دنبال می کند** منتشر شده است** ثابت SemVer. git `main` را ردیابی نمی کند. پین `:X.Y.Z` برای GitOps. به [کانالهای انتشار Docker](docs/guides/DOCKER_GUIDE.md#release-channels) مراجعه کنید. پینهای تصویر**`OMNIROUTE_MEMORY_MB=1024`** . این برای داشبورد و یک چت سبک کافی است.** عوامل کدنویسی** (`POST /v1/responses` از کد Claude ، Codex، Grok، ...) به یک پشته V8 بسیار بزرگتر یا فرآیند `FATAL ERROR` در ~ 12 GiB تحت دو زمینه طولانی با هم همپوشانی نیاز دارید. اندازه ظرف را بالای پشته قرار دهید (بافرهای بومی خارج از V8 قرار دارند):
 
-| بار کاری                         | Heap (`-e OMNIROUTE_MEMORY_MB`) | کانتینر (`--memory`) |
-| -------------------------------- | ------------------------------- | -------------------- |
-| داشبورد / گفتوگوی سبک            | `1024` (پیشفرض image)           | ≥2 g                 |
-| یک عامل کدنویسی                  | `8192`                          | ≥10 g                |
-| دو `/v1/responses` طولانی همزمان | `10240`–`12288`                 | ≥12–16 g             |
+| حجم کار                          | هیپ (`-e OMNIROUTE_MEMORY_MB`) | ظرف (`--memory`) |
+| -------------------------------- | ------------------------------ | ---------------- |
+| داشبورد / چت سبک                 | `1024` (پیشفرض تصویر)          | ≥ 2 گرم          |
+| یک عامل کد نویسی                 | `8192`                         | ≥ 10 گرم         |
+| دو `/v1/responses` طولانی همزمان | `10240`–`12288`                | ≥ 12-16 گرم      |
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
   -e OMNIROUTE_MEMORY_MB=8192 --memory=10g \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-جدول کامل: [راهنمای Docker — RAM زمان اجرا](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
+جدول کامل: [Docker Guide — runtime RAM](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
 
-> **کانال Docker پیشانتشار:** `diegosouzapw/omniroute:next` و
-> `diegosouzapw/omniroute:next-web` شاخهٔ پیشفرض فعلی `release/v*`
-> را دنبال میکنند. این برچسبهای قابلتغییر فقط برای آزمایش اصلاحات منتشرنشده در نظر گرفته شدهاند و
-> برای **محیط production پشتیبانی نمیشوند**. به
-> [کانالهای انتشار Docker](docs/guides/DOCKER_GUIDE.md#release-channels) مراجعه کنید.
+> **کانال Docker پیش از انتشار:** `diegosouzapw/omniroute:next` و `diegosouzapw/omniroute:next-web` از شاخه پیش فرض `release/v*` فعلی پیروی می کنند. این تگهای قابل تغییر فقط برای آزمایش رفعهای منتشر نشده در نظر گرفته شدهاند و هستند** برای تولید پشتیبانی نمی شود** . به [کانال های انتشار Docker](docs/guides/DOCKER_GUIDE.md#release-channels) مراجعه کنید.
 
 **🥟 Bun**
 
-نصب استاندارد `bun install` و نصب سراسری (`bun install -g omniroute`) از طریق تشخیص runtime مربوط به Bun پشتیبانی میشوند:
+نصب استاندارد `bun install` و جهانی (`bun install -g omniroute`) از طریق تشخیص زمان اجرا Bun پشتیبانی می شود:
 
-- **`bun:sqlite` داخلی**: OmniRoute هنگام اجرا تحت Bun از درایور داخلی `bun:sqlite` استفاده میکند و هنگام اجرا روی Node.js یا `sql.js`، به `better-sqlite3` برمیگردد.
-- **انتخاب خودکار bundler مربوط به Webpack در حالت توسعه**: حالت توسعه (`bun run dev`) بهطور خودکار Bun را تشخیص میدهد و برای جلوگیری از ناسازگاریهای native V8 binding، Turbopack را غیرفعال و از Webpack استفاده میکند. buildهای production (`bun run build`) دقیقاً از `OMNIROUTE_USE_TURBOPACK` مانند Node پیروی میکنند: بهطور پیشفرض Turbopack و برای build با Webpack، مقدار `OMNIROUTE_USE_TURBOPACK=0` (`Dockerfile.bun` آن را بهعنوان `--build-arg` در اختیار میگذارد).
-- **Dockerfile اختصاصی Bun**: `Dockerfile.bun` چندمرحلهای برای استقرارهای production بومی Bun (`docker build -f Dockerfile.bun -t omniroute:bun .`).
+- **`bun:sqlite` توکار** : OmniRoute هنگام اجرای زیر Bun از درایور `bun:sqlite` داخلی Bun استفاده میکند و در Node.js یا `sql.js` به `better-sqlite3` برمیگردد.
+- **انتخاب خودکار باندلر Webpack در توسعه دهنده** : توسعه (`bun run dev`) به طور خودکار Bun شناسایی می کند و Turbopack به نفع Webpack غیرفعال می کند تا از ناسازگاری های اتصال V8 بومی جلوگیری کند. ساختهای تولیدی (`bun run build`) دقیقاً مانند Node از `OMNIROUTE_USE_TURBOPACK` پیروی میکنند: Turbopack به طور پیشفرض، `OMNIROUTE_USE_TURBOPACK=0` برای ساخت با Webpack (`Dockerfile.bun` آن را به عنوان `--build-arg` نشان میدهد).
+- **اختصاصی Bun Dockerfile** : `Dockerfile.bun` چند مرحله ای برای استقرار تولید Bun بومی (`docker build -f Dockerfile.bun -t omniroute:bun .`).
 
 ```bash
-# نصب و اجرا با Bun
+# Install and run with Bun
 bun install
 bun run dev
 ```
 
-**🛠️ از کد منبع**
+**🛠️ از منبع**
 
 ```bash
 cp .env.example .env && npm install
@@ -1160,53 +1128,48 @@ pnpm add -g omniroute@latest --allow-build=better-sqlite3 --allow-build=@swc/cor
 yay -S omniroute-bin && systemctl --user enable --now omniroute.service
 ```
 
-**🔧 Nix (Flake)**
+**🔧 Nix (فلیک)**
 
 ```bash
-# استفاده از Nix flakes
+# Using Nix flakes
 nix develop
 npm run dev
 
-# یا استفاده از devbox
+# Or using devbox
 devbox run npm run dev
 ```
 
-📖 [راهنمای Docker](docs/guides/DOCKER_GUIDE.md) — پروفایلهای Compose، HTTPS با Caddy و تونلهای Cloudflare.
+📖 [Docker راهنمای](docs/guides/DOCKER_GUIDE.md) — نوشتن پروفایل، Caddy HTTPS، تونل Cloudflare.
 
-**🦭 Podman**
+**🦭 پودمان**
 
 ```bash
-# ۱. آمادهسازی پوشهٔ دادهٔ متصلشده
+# 1. Prepare the bind-mounted data directory
 mkdir -p data
 
-# ۲. فقط Linux + Podman محلیِ rootless (هرگز یک کلاینت Podman Machine راه دور):
+# 2. Linux + local rootless Podman only (never a remote Podman Machine client):
 podman unshare chown 1000:1000 ./data
 
-# ۳. تنظیم راهنمای runtime، ساخت image محلی Compose و شروع
+# 3. Set the runtime hint, build the local Compose image, and start
 echo "CONTAINER_HOST=podman" >> .env
 podman compose --profile base up -d --build
 ```
 
-در macOS یا Windows، Podman از یک Podman Machine راه دور استفاده میکند: `podman unshare` را نادیده بگیرید و
-[راهنمای پوشهٔ دادهٔ مخصوص topology](contrib/podman/README.md#data-directory-permissions-by-topology) را دنبال کنید.
+در macOS یا Windows، Podman از یک ماشین Podman راه دور استفاده میکند: `podman unshare` را رد کنید و [راهنمای فهرست دادههای مخصوص توپولوژی را](contrib/podman/README.md#data-directory-permissions-by-topology) دنبال کنید.
 
-📖 [راهنمای Podman](contrib/podman/README.md) — buildهای Compose، Podman Machine و
-راهاندازی Linux/systemd Quadlet.
+📖 [Podman Guide](contrib/podman/README.md) — Compose builds، Podman Machine و Linux/systemd Quadlet setup.
 
-**⚡ نصب سریعتر / کمحجمتر (رد کردن build native)**
+**نصب سریعتر / ناب ⚡ (از ساخت بومی صرفنظر کنید)**
 
-موتور native SQLite (`better-sqlite3`) یک وابستگی **اختیاری** است؛ بنابراین نصب سراسری هرگز بهدلیل کامپایل از کد منبع متوقف نمیشود: اگر binary ازپیشساختهای با platform/Node شما مطابقت داشته باشد، از آن استفاده میکند و در غیر این صورت، بهصورت شفاف به یک موتور pure-JS برمیگردد
-(`node:sqlite` در Node 22+ و در غیر این صورت، `sql.js` WASM همراه) — بدون نیاز به ابزارهای build.
+موتور SQLite بومی (`better-sqlite3`) یک است** اختیاری** وابستگی، بنابراین یک نصب سراسری هرگز کامپایل از منبع را مسدود نمی کند: زمانی که با platform/Node شما مطابقت دارد از یک باینری از پیش ساخته شده استفاده می کند و در غیر این صورت به طور شفاف به یک موتور خالص JS (`node:sqlite` در Node 22 +، در غیر این صورت `sql.js` WASM همراه) — بدون نیاز به ابزار ساخت برمی گردد.
 
-برای رد کردن کامل **گرمسازی native** پس از نصب (CI، محیط headless یا دستگاههای کند). توجه: این کار فقط مرحلهٔ گرمسازی native SQLite (`scripts/postinstall.mjs`) را رد میکند؛ hook کپی/تعمیر binary (`scripts/build/postinstall.mjs`) همچنان بهطور عادی اجرا میشود:
+برای رد شدن از نصب پس از نصب** گرم کردن بومی** به طور کامل (CI، ماشین های بدون سر یا کند). توجه: این فقط مرحله گرم کردن SQLite بومی (`scripts/postinstall.mjs`) را رد می کند. قلاب binary-copy/repair (`scripts/build/postinstall.mjs`) هنوز به طور معمول کار می کند:
 
 ```bash
-OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 نیز آن را رد میکند
+OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 also skips it
 ```
 
-برای سریعترین نصبها، **pnpm** را ترجیح دهید (store مبتنی بر content-address و hard link — به بالا مراجعه کنید).
-برای runtime بدون داشبورد و headless، از پروفایل Docker `base` (بالا) یا
-[راهنمای Termux](docs/guides/TERMUX_GUIDE.md) استفاده کنید. CLI و داشبورد وب توسط همان فرایند روی یک پورت ارائه میشوند؛ بنابراین امروزه package جداگانهای فقط برای CLI وجود ندارد.
+برای سریع ترین نصب ترجیح می دهند** pnpm** (لینکهای سخت + فروشگاه آدرسدهی محتوا — را در بالا ببینید). برای یک زمان اجرا بدون داشبورد و بدون هد از نمایه Docker `base` (بالا) یا [راهنمای Termux](docs/guides/TERMUX_GUIDE.md) استفاده کنید. CLI و داشبورد وب با فرآیند یکسانی در یک پورت ارائه میشوند، بنابراین امروزه بستهای جداگانه برای CLI وجود ندارد.
 
 <br/>
 
@@ -1308,29 +1271,29 @@ OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 نیز آن را 
 <br/>
 <div align="center">
 
-## 🛠️ پشتهٔ فناوری
+## 🛠️ Tech Stack
 
 </div>
 
 <table>
-  <tr><th align="left">لایه</th><th align="left">فناوری</th></tr>
-  <tr><td nowrap><b>محیط اجرا</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
-  <tr><td nowrap><b>زبان</b></td><td>TypeScript 6.0 — <b>۱۰۰٪ TypeScript</b> در <code>src/</code> و <code>open-sse/</code> (بدون <code>any</code> در هسته از نسخهٔ 2.0)</td></tr>
+  <tr><th align="left">لایه</th><th align="left">تکنولوژی</th></tr>
+  <tr><td nowrap><b>زمان اجرا</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
+  <tr><td nowrap><b>زبان</b></td><td>TypeScript 6.0 — <b>100% TypeScript</b> در سراسر <code>src/</code> و <code>open-sse/</code> (صفر <code>any</code> در هسته از نسخه 2.0)</td></tr>
   <tr><td nowrap><b>چارچوب</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
-  <tr><td nowrap><b>پایگاه داده</b></td><td>better-sqlite3 (SQLite، ثبت وقایع WAL) + LowDB (JSON قدیمی) — ۱۴۷ ماژول دامنه، ۲۴۰ مهاجرت</td></tr>
-  <tr><td nowrap><b>حافظه</b></td><td>متن کامل SQLite FTS5 + embeddingهای برداری کوانتیزهشده با int8، زوال نوعدار</td></tr>
-  <tr><td nowrap><b>شِماها</b></td><td>Zod 4 — اعتبارسنجی ورودی/خروجی ابزار MCP + قراردادهای API</td></tr>
-  <tr><td nowrap><b>پروتکلها</b></td><td>MCP (stdio / HTTP / SSE) + A2A v0.3 (JSON-RPC 2.0 + SSE)</td></tr>
-  <tr><td nowrap><b>جریانسازی</b></td><td>رویدادهای ارسالی از سرور (SSE) + پل WebSocket (<code>/v1/ws</code>)</td></tr>
-  <tr><td nowrap><b>فشردهسازی</b></td><td>خط لولهٔ ۱۲ موتوره — RTK، Caveman، LLMLingua-2 (MobileBERT ONNX)، GCF، OmniGlyph</td></tr>
-  <tr><td nowrap><b>احراز هویت و امنیت</b></td><td>OAuth 2.0 (PKCE) + JWT + کلیدهای API + احراز هویت محدودهدار MCP · AES-256-GCM در حالت سکون · DOMPurify</td></tr>
-  <tr><td nowrap><b>ناپیدایی</b></td><td>wreq-js — جعل اثرانگشت TLS در سطح JA3 / JA4، پروکسی ۳ سطحی</td></tr>
-  <tr><td nowrap><b>تابآوری</b></td><td>مدارشکن، عقبنشینی نمایی، مقابله با هجوم همزمان، خودترمیمی خودکار ترکیبی</td></tr>
-  <tr><td nowrap><b>گزارشگیری</b></td><td>pino — گزارشهای JSON ساختیافته با زمینهٔ درخواست</td></tr>
-  <tr><td nowrap><b>آزمایش</b></td><td>اجرای آزمون Node.js + Vitest — <b>بیش از ۶۰٬۰۰۰ اعلان آزمون ایستا</b> در بیش از ۸٬۴۰۰ فایل آزمون ردیابیشده (واحد، یکپارچهسازی، E2E، امنیت، اکوسیستم)</td></tr>
-  <tr><td nowrap><b>سکوها</b></td><td>رومیزی (Electron) · Android (Termux) · PWA (هر مرورگری)</td></tr>
-  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Actions — انتشار خودکار npm + Docker Hub هنگام انتشار نسخه</td></tr>
-  <tr><td nowrap><b>پیوندها</b></td><td><a href="https://omniroute.online">وبسایت</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/diegosouzapw/omniroute">Docker Hub</a></td></tr>
+  <tr><td nowrap><b>پایگاه داده</b></td><td>better-sqlite3 (SQLite، WAL journaling) + LowDB (میراث JSON ) — 147 ماژول دامنه، 240 مهاجرت</td></tr>
+  <tr><td nowrap><b>حافظه</b></td><td>SQLite FTS5 متن کامل + int8-quantized embeddings vector, typed cay</td></tr>
+  <tr><td nowrap><b>طرحواره ها</b></td><td>Zod 4 — MCP ابزار I/O اعتبار سنجی قراردادهای + API</td></tr>
+  <tr><td nowrap><b>پروتکل ها</b></td><td>MCP (stdio / HTTP / SSE) + A2A 0.3 (JSON-RPC 2.0 + SSE)</td></tr>
+  <tr><td nowrap><b>پخش جریانی</b></td><td>رویدادهای ارسال شده توسط سرور (SSE) + WebSocket bridge (<code>/v1/ws</code>)</td></tr>
+  <tr><td nowrap><b>فشرده سازی</b></td><td>خط لوله 12 موتوره — RTK, غارنشین, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
+  <tr><td nowrap><b>امنیت &amp;</b></td><td>OAuth 2.0 (PKCE) + JWT + API کلیدهای + MCP scoped auth · AES-256-GCM در حالت استراحت · DOMPurify</td></tr>
+  <tr><td nowrap><b>مخفی کاری</b></td><td>جعل هویت اثر انگشت wreq-js — JA3 / JA4 TLS ، پروکسی 3 سطحی</td></tr>
+  <tr><td nowrap><b>تاب آوری</b></td><td>مدار شکن، عقب نشینی نمایی، ضد رعد و برق، گله، خود ترمیم خودکار ترکیبی</td></tr>
+  <tr><td nowrap><b>ورود به سیستم</b></td><td>سیاهههای مربوط JSON ساختار یافته pino — با زمینه درخواست</td></tr>
+  <tr><td nowrap><b>تست کردن</b></td><td>Node.js test runner + Vitest — <b>60000 اعلامیه تست استاتیک +</b> در سراسر 8400 فایل آزمایشی ردیابی شده + (واحد، ادغام، E2E، امنیت، اکوسیستم)</td></tr>
+  <tr><td nowrap><b>پلتفرم ها</b></td><td>دسکتاپ (Electron) · اندروید (Termux) · PWA (هر مرورگر)</td></tr>
+  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Actions — auto npm + Docker Hub را در زمان انتشار منتشر می کند</td></tr>
+  <tr><td nowrap><b>پیوندها</b></td><td><a href="https://omniroute.online">وب سایت</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/cheaperinference/omniroute">Docker Hub</a></td></tr>
 </table>
 
 <div align="center">
@@ -1820,17 +1783,17 @@ OmniRoute بر شانههای غولها ایستاده است. این پروژ�
   <tr><td nowrap><b><a href="https://github.com/steipete/CodexBar">CodexBar</a></b></td><td align="center">22,955</td><td>سطح سهمیهٔ Grok Build را شناسایی کرد؛ سپس OmniRoute قالب wire زنده را بهطور مستقل راستیآزمایی و اصلاح کرد.</td></tr>
 </table>
 
-## 📄 مجوز
+## مجوز 📄
 
-مجوز MIT - برای جزئیات به [LICENSE](LICENSE) مراجعه کنید.
+مجوز MIT - برای جزئیات بیشتر به [LICENSE](LICENSE) مراجعه کنید.
 
 ---
 
 <div align="center">
 
-**[⬆ بازگشت به بالا](#-omniroute)** · با ❤️ برای جامعهٔ هوش مصنوعی متنباز ساخته شده است.
+**[⬆ بازگشت به بالا](#-omniroute)** · ساخته شده با ❤️ برای جامعه AI منبع باز.
 
-<sub>ساختهشده توسط <a href="https://github.com/diegosouzapw">Diego Souza</a> · OmniRoute v3.8.55 · Node ≥22.22.2 · مجوز MIT · <a href="https://omniroute.online">omniroute.online</a></sub>
+<sub>ایجاد شده توسط <a href="https://github.com/diegosouzapw">دیگو سوزا</a> · OmniRoute v3.8.55 · Node ≥ 22.22.2 · MIT · <a href="https://omniroute.online">omniroute.online</a></sub>
 
 </div>
-<!-- GitHub Discussions برای پرسشوپاسخ جامعه فعال است -->
+<!-- GitHub Discussions enabled for community Q&A -->

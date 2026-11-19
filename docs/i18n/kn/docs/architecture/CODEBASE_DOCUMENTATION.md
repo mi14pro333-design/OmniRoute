@@ -477,11 +477,11 @@ open-sse/
 
 ### 4.7 `open-sse/config/`
 
-ಪೂರೈಕೆದಾರರ ದಾಖಲಾತಿಗಳು `cliFingerprints.ts` `providerRegistry.ts`, `providerModels.ts`, `providerHeaderProfiles.ts`), ಪ್ರತಿ-ಫಾರ್ಮ್ಯಾಟ್ ಮಾಡೆಲ್ ನೋಂದಣಿಗಳು (`audioRegistry.ts`, `embeddingRegistry.ts`, `imageRegistry.ts`, `moderationRegistry.ts`, `musicRegistry.ts`, `rerankRegistry.ts`, `searchRegistry.ts`, `videoRegistry.ts`), ಗುರುತಿನ ಸಹಾಯಕರು (`codexIdentity.ts`, `codexInstructions.ts`, `anthropicHeaders.ts`, `antigravityUpstream.ts`, `antigravityModelAliases.ts` `defaultThinkingSignature.ts` `toolCloaking.ts`, ರುಜುವಾತು ಸಹಾಯಕರು (`credentialLoader.ts`, `codexClient.ts`), ಮತ್ತು ಕ್ಲೌಡ್ ಅಡಾಪ್ಟರ್ಗಳು (`azureAi.ts`, `bedrock.ts`, `datarobot.ts`, `glmProvider.ts`, `oci.ts`, `maritalk.ts`, `petals.ts`, `runway.ts` `watsonx.ts` `sap.ts`, `ollamaModels.ts`, `errorConfig.ts`, `constants.ts` `registryUtils.ts`.
+ಪೂರೈಕೆದಾರರ ದಾಖಲಾತಿಗಳು (`providerRegistry.ts`, `providerModels.ts`, `providerHeaderProfiles.ts`), ಪ್ರತಿ-ಫಾರ್ಮ್ಯಾಟ್ ಮಾಡೆಲ್ ನೋಂದಣಿಗಳು (`audioRegistry.ts`, `embeddingRegistry.ts`, `imageRegistry.ts` `cliFingerprints.ts` `moderationRegistry.ts`, `musicRegistry.ts`, `rerankRegistry.ts`, `searchRegistry.ts`, `videoRegistry.ts`), ಗುರುತಿನ ಸಹಾಯಕರು (`codexIdentity.ts`, `codexInstructions.ts`, `anthropicHeaders.ts`, `antigravityUpstream.ts`, `antigravityModelAliases.ts` `defaultThinkingSignature.ts` `toolCloaking.ts`, ರುಜುವಾತು ಸಹಾಯಕರು (`credentialLoader.ts`, `codexClient.ts`), ಮತ್ತು ಕ್ಲೌಡ್ ಅಡಾಪ್ಟರ್ಗಳು (`azureAi.ts`, `bedrock.ts`, `datarobot.ts`, `glmProvider.ts`, `oci.ts`, `maritalk.ts`, `petals.ts`, `runway.ts` `watsonx.ts` `sap.ts`, `ollamaModels.ts`, `errorConfig.ts`, `constants.ts` `registryUtils.ts`.
 
 ### 4.8 `open-sse/utils/`
 
-ಸ್ಟ್ರೀಮಿಂಗ್ ಪ್ರೈಮಿಟಿವ್ಸ್ ಮತ್ತು ಪ್ರೊವೈಡರ್ ಸಹಾಯಕರು: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts` `ollamaTransform.ts` `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `progressTracker.ts` `error.ts` `cors.ts` `logger.ts` `requestLogger.ts`, `sleep.ts`.
+ಸ್ಟ್ರೀಮಿಂಗ್ ಪ್ರೈಮಿಟಿವ್ಸ್ ಮತ್ತು ಪ್ರೊವೈಡರ್ ಸಹಾಯಕರು: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts` `logger.ts` `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `cors.ts` `error.ts` `progressTracker.ts`, `sleep.ts` `ollamaTransform.ts`
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-ಉದ್ದೇಶದ ಆಧಾರದ ಮೇಲೆ 6 ಉಪಫೋಲ್ಡರ್ಗಳಾಗಿ ಸಂಘಟಿಸಲಾಗಿದೆ.
+ಉದ್ದೇಶದಿಂದ 6 ಉಪ ಫೋಲ್ಡರ್ಗಳಾಗಿ ಆಯೋಜಿಸಲಾಗಿದೆ.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, ಜೊತೆಗೆ ಓದಲು-ಮಾತ್ರವಾದ PR ಮೇಲ್ವಿಚಾರಣಾ ಸಹಾಯಕಗಳು
-  `ci-discriminate.sh` (ಒಂದು ಉಲ್ಲೇಖ PR ಅಥವಾ base-red ಸಮಸ್ಯೆಯೊಂದಿಗೆ ಹೋಲಿಸಿ, PRನ ವಿಫಲವಾಗುತ್ತಿರುವ ಪರಿಶೀಲನೆಗಳ ಗುರುತುಗಳನ್ನು ಸ್ವಂತ / ಆನುವಂಶಿಕ /
-  ಅಜ್ಞಾತ ಎಂದು ವಿಂಗಡಿಸುತ್ತದೆ) ಮತ್ತು `audit-worktree.sh`
-  (ಡರ್ಟಿ ಫೈಲ್ಗಳು, ಸಂರಕ್ಷಿತ ಸರ್ಫೇಸ್ಗಳು, ತೆಗೆದುಹಾಕಿದ assertಗಳು, suppression ಎಣಿಕೆಗಳು, ಉಳಿದಿರುವ
-  ತಾತ್ಕಾಲಿಕ tsconfigಗಳು, PR head ಮತ್ತು ಸ್ಥಳೀಯ HEAD ನಡುವಿನ ಹೋಲಿಕೆ — ಕೆಲಸಗಾರನ PR ಅನ್ನು ಸ್ವೀಕರಿಸುವ ಮೊದಲು).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, ಜೊತೆಗೆ ಓದಲು-ಮಾತ್ರ PR PR ಉಲ್ಲೇಖ `ci-discriminate.sh` ಅಥವಾ ಮೂಲ-ಕೆಂಪು ಸಮಸ್ಯೆಯ ವಿರುದ್ಧ ಸ್ವಂತ/ಆನುವಂಶಿಕ/ಅಜ್ಞಾತ ಸಹಿಯನ್ನು ವಿಫಲವಾಗಿದೆ- PR ಮತ್ತು `audit-worktree.sh` (ಕೊಳಕು ಫೈಲ್ಗಳು, ಸಂರಕ್ಷಿತ ಮೇಲ್ಮೈಗಳು, ತೆಗೆದುಹಾಕಲಾದ ಸಮರ್ಥನೆಗಳು, ನಿಗ್ರಹ ಎಣಿಕೆಗಳು, ಉಳಿದ tmp tsconfigs, PR ಹೆಡ್ vs ಸ್ಥಳೀಯ HEAD — PR ಸ್ವೀಕರಿಸುವ ಮೊದಲು).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

@@ -182,13 +182,13 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ---
 
-## Docker-ის უსაფრთხოება
+## Docker უსაფრთხოება
 
-- საწარმოო გარემოში გამოიყენეთ არა-root მომხმარებელი
-- საიდუმლო მნიშვნელობები დაამონტაჟეთ მხოლოდ წაკითხვად ტომებად
-- არასოდეს დააკოპიროთ `.env` ფაილები Docker-ის იმიჯებში
-- სენსიტიური ფაილების გამოსარიცხად გამოიყენეთ `.dockerignore`
-- HTTPS-ის უკან მუშაობისას დააყენეთ `AUTH_COOKIE_SECURE=true`
+- გამოიყენეთ არა root მომხმარებელი წარმოებაში
+- დაამონტაჟეთ საიდუმლოებები მხოლოდ წასაკითხად ტომებად
+- არასოდეს დააკოპიროთ `.env` ფაილები Docker სურათებში
+- გამოიყენეთ `.dockerignore` მგრძნობიარე ფაილების გამოსარიცხად
+- დააყენეთ `AUTH_COOKIE_SECURE=true` როდესაც HTTPS მიღმაა
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

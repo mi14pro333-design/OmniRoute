@@ -42,17 +42,17 @@ npm run uninstall:full
 
 ## 手動アンインストール
 
-### NPM グローバルインストール
+### NPMグローバル インストール
 
 ```bash
-# グローバルパッケージを削除
+# Remove the global package
 npm uninstall -g omniroute
 
-# （任意）データディレクトリを削除
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### pnpm グローバルインストール
+### pnpm グローバル インストール
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,51 +62,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# コンテナを停止して削除
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# ボリュームを削除（すべてのデータを削除）
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# （任意）イメージを削除
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker作成
 
 ```bash
-# コンテナを停止して削除
+# Stop and remove containers
 docker compose down
 
-# ボリュームも削除（すべてのデータを削除）
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Electron デスクトップアプリ
+### Electronデスクトップアプリ
 
 **Windows:**
 
-- `設定 → アプリ → OmniRoute → アンインストール` を開く
-- または、インストールディレクトリから NSIS アンインストーラーを実行する
+- `Settings → Apps → OmniRoute → Uninstall`を開く
+- または、インストール ディレクトリからNSISアンインストーラーを実行します
 
 **macOS:**
 
-- `/Applications` から `OmniRoute.app` をゴミ箱にドラッグする
-- データを削除: `rm -rf ~/Library/Application Support/omniroute`
+- `OmniRoute.app` `/Applications`からゴミ箱にドラッグします
+- データの削除: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
-- AppImage ファイルを削除する
-- データを削除: `rm -rf ~/.omniroute`
+- AppImageファイルを削除します
+- データの削除: `rm -rf ~/.omniroute`
 
-### ソースからのインストール (git clone)
+### ソースインストール (git clone)
 
 ```bash
-# クローンしたディレクトリを削除
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# （任意）データディレクトリを削除
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

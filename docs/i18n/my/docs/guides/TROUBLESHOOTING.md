@@ -440,34 +440,34 @@ Kiro အကောင့်နှစ်ခုကို ဘေးချင်း�
 
 ## Docker ပြဿနာများ
 
-### Docker IPv6 / ချိတ်ဆက်မှု Reset ဖြစ်ခြင်း
+### Docker IPv6 / ချိတ်ဆက်မှုကို ပြန်လည်သတ်မှတ်ပါ။
 
 <a name="docker-ipv6"></a>
 
-**လက္ခဏာများ:** `curl http://localhost:20128/v1/models` က `curl: (56) Recv failure: Connection reset by peer` ကို ပြန်ပေးသည်။ Dashboard နှင့် authentication မလိုသော endpoint များ အလုပ်လုပ်သော်လည်း authenticated endpoint များ မအောင်မြင်ပါ — auth ပြဿနာတစ်ခုကဲ့သို့ ထင်ရသော်လည်း အမှန်တကယ် မဟုတ်ပါ။
+**ရောဂါလက္ခဏာများ-** `curl http://localhost:20128/v1/models` `curl: (56) Recv failure: Connection reset by peer` ပြန်ပေးသည်။ ဒက်ရှ်ဘုတ်နှင့် အထောက်အထားမခိုင်လုံသော အဆုံးမှတ်များ အလုပ်လုပ်သော်လည်း စစ်မှန်သော အဆုံးမှတ်များ မအောင်မြင်ပါက — သည် စစ်မှန်သော ပြဿနာနှင့် တူသော်လည်း မဟုတ်ပါ။
 
-**အကြောင်းရင်း:** `docker run -p 20128:20128` သည် `0.0.0.0` (IPv4) နှင့် `::` (IPv6) နှစ်ခုလုံးတွင် publish လုပ်သော်လည်း container အတွင်းရှိ process က IPv4 ပေါ်တွင်သာ listen လုပ်သည်။ `localhost` ကို `::1` အဖြစ် ဦးစွာ resolve လုပ်သော host များတွင် connection သည် ၎င်းနောက်ကွယ်၌ listener မရှိသော IPv6 published port သို့ ရောက်ရှိသွားသောကြောင့် → connection reset ဖြစ်သည်။
+**အကြောင်းအရင်း-** `docker run -p 20128:20128` `0.0.0.0` (IPv4) နှင့် `::` (IPv6) နှစ်မျိုးလုံးတွင် ထုတ်ဝေသော်လည်း ကွန်တိန်နာအတွင်းရှိ လုပ်ငန်းစဉ်သည် IPv4 တွင်သာ နားထောင်သည်။ `localhost` မှ `::1` ကို ဦးစွာဖြေရှင်းသည့် host များတွင်၊ ချိတ်ဆက်မှုသည် IPv6 ၏နောက်ကွယ်ရှိ နားဆင်သူမရှိဘဲ → ချိတ်ဆက်မှုကို ပြန်လည်သတ်မှတ်မည်ဖြစ်သည်။
 
-**ဖြေရှင်းနည်း:**
+**ပြင်ဆင်ပါ**
 
-1. **အမြန်စစ်ဆေးနည်း:** `curl -4 http://localhost:20128/v1/models` ကို run ပါ။ `-4` ဖြင့် အလုပ်လုပ်သော်လည်း ၎င်းမပါဘဲ မအောင်မြင်ပါက IPv6 bind မကိုက်ညီမှုရှိနေသည်။
-2. **အမြဲတမ်းဖြေရှင်းနည်း:** သင့် `docker run` command တွင် `-p 127.0.0.1:20128:20128` ကို အသုံးပြု၍ IPv4 သို့ တိတိကျကျ bind လုပ်ပါ:
+1. **အမြန်ရောဂါရှာဖွေရေး-** `curl -4 http://localhost:20128/v1/models` ပြေးပါ။ `-4` နှင့်အလုပ်လုပ်သော်လည်းမအောင်မြင်ပါက၊ သင့်တွင် IPv6 bind mismatch တစ်ခုရှိသည်။
+2. **အမြဲတမ်းပြင်ဆင်မှု-** သင်၏ `docker run` command တွင် `-p 127.0.0.1:20128:20128` အသုံးပြုခြင်းဖြင့် IPv4 နှင့် ပြတ်သားစွာ စည်းပါ-
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   ဤနည်းသည် IPv4 bind ကို အတင်းအကျပ် အသုံးပြုစေပြီး host interface အားလုံးပေါ်တွင် proxy ကို ဖော်ထုတ်ခြင်းမှလည်း ရှောင်ရှားပေးသည်။
+   ၎င်းသည် IPv4 bind ကို တွန်းအားပေးပြီး လက်ခံသူ အင်တာဖေ့စ်အားလုံးတွင် ပရောက်စီကို ထုတ်ဖော်ခြင်းကိုလည်း ရှောင်ကြဉ်ပါသည်။
 
 ---
 
-### CLI Tool ကို Install မလုပ်ထားဟု ပြသခြင်း
+### CLI Tool သည် ထည့်သွင်းမထားသည်ကို ပြသသည်။
 
-1. Runtime field များကို စစ်ဆေးပါ: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Portable mode အတွက် bundled CLI များပါဝင်သော image target `runner-cli` ကို အသုံးပြုပါ
-3. Host mount mode အတွက် `CLI_EXTRA_PATHS` ကို သတ်မှတ်ပြီး host bin directory ကို read-only အဖြစ် mount လုပ်ပါ
-4. `installed=true` နှင့် `runnable=false` ဖြစ်ပါက binary ကို တွေ့ရှိသော်လည်း healthcheck မအောင်မြင်ခြင်းဖြစ်သည်
+1. runtime အကွက်များကို စစ်ဆေးပါ- `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. ခရီးဆောင်မုဒ်အတွက်- image target `runner-cli` (bundled CLIs) ကိုသုံးပါ။
+3. host mount mode အတွက်- `CLI_EXTRA_PATHS` နှင့် mount host bin directory ကို read-only အဖြစ် သတ်မှတ်ပါ။
+4. အကယ်၍ `installed=true` နှင့် `runnable=false`: binary ကိုတွေ့ရှိသော်လည်း ကျန်းမာရေးစစ်ဆေးမှု မအောင်မြင်ပါ။
 
-### Runtime ကို အမြန်စစ်ဆေးခြင်း
+### အမြန် Runtime Validation
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

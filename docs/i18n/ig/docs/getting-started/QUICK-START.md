@@ -12,7 +12,7 @@
 
 Họrọ usoro masịrị gị:
 
-### Nhọrọ A: npm (A tụrụ aro)
+### Nhọrọ A: npm (A kwadoro)
 
 ```bash
 npm install -g omniroute
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### Nhọrọ B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` bụ SemVer kwụsiri ike kachasị elu e **bipụtara**. Ọ naghị eso git `main`. Jiri `diegosouzapw/omniroute:X.Y.Z` kpọchie ụdị ahụ maka GitOps. Lee [Mkpado Image / Ọwa Mwepụta](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` bụ nke kachasị elu** bipụtara** SemVer kwụsiri ike. Ọ na-eme** ọ bụghị** egwu git `main`. Pin `cheaperinference/omniroute:X.Y.Z` maka GitOps. Hụ [mkpado onyonyo / ọwa mwepụta](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Nhọrọ C: Site na Source
+### Nhọrọ C: Site na Isi Iyi
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

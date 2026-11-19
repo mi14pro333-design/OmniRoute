@@ -426,7 +426,7 @@ open-sse/
 
 ### 4.2 `open-sse/executors/`
 
-170 უმაღლესი დონის შემსრულებელი მოდული (`*.ts` მინუს `base.ts`, `index.ts` და ტესტები — დათვლა `npm run check:docs-counts` ზომები). ყველა შემსრულებელი კლასი ვრცელდება `BaseExecutor` (`base.ts`), პირდაპირ ან `DefaultExecutor` ან სხვა შემსრულებლის მეშვეობით; დარჩენილი მოდულები არის თითო პროვაიდერის დამხმარეები (ინსტრუმენტების სქემები, fetch/TTS გადამყვანები, უცნაურობის დამმუშავებლები). შემსრულებლები მოიცავს:
+170 უმაღლესი დონის შემსრულებელი მოდული (`*.ts` მინუს `base.ts`, `index.ts` და ტესტები — დათვლა `npm run check:docs-counts` ზომები). ყველა შემსრულებელი კლასი ვრცელდება `BaseExecutor` (`base.ts`), პირდაპირ ან `DefaultExecutor` ან სხვა შემსრულებლის მეშვეობით; დანარჩენი მოდულები არის თითო პროვაიდერის დამხმარეები (ინსტრუმენტების სქემები, fetch/TTS გადამყვანები, უცნაურობის დამმუშავებლები). შემსრულებლები მოიცავს:
 
 `antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder`, `vertex` `devin-desktop` `claudeIdentity.ts` იდენტობა ( `index.ts` ) დახმარება.
 
@@ -481,7 +481,7 @@ Provider registries (`providerRegistry.ts`, `providerModels.ts`, `providerHeader
 
 ### 4.8 `open-sse/utils/`
 
-პრიმიტივების სტრიმინგი და პროვაიდერის დამხმარეები: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `progressTracker.ts`, `cors.ts` `logger.ts` `error.ts` `requestLogger.ts`, `sleep.ts` `ollamaTransform.ts`
+პრიმიტივების სტრიმინგი და პროვაიდერის დამხმარეები: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts` `ollamaTransform.ts` `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts` `cors.ts` `error.ts`, `logger.ts`, `sleep.ts`.
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-დანიშნულების მიხედვით ორგანიზებულია 6 ქვე-საქაღალდედ.
+ორგანიზებულია 6 ქვესაქაღალდეში დანიშნულების მიხედვით.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, ასევე PR-ების მონიტორინგისთვის განკუთვნილი მხოლოდ წაკითხვადი დამხმარე სკრიპტები:
-  `ci-discriminate.sh` (PR-ის წარუმატებელი შემოწმებების ხელწერებს ახარისხებს საკუთარ /
-  მემკვიდრეობით / უცნობ კატეგორიებად, ეტალონურ PR-თან ან საბაზისო წარუმატებლობის საკითხთან შედარებით) და `audit-worktree.sh`
-  (შეცვლილი ფაილები, დაცული ზედაპირები, წაშლილი მტკიცებები, ჩახშობების რაოდენობა, დარჩენილი
-  დროებითი tsconfig-ები, PR-ის head ადგილობრივ HEAD-თან შედარებით — მუშაკის PR-ის მიღებამდე).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, პლუს მხოლოდ წაკითხვადი PR ძიძების დამხმარეები `ci-discriminate.sh` (ახარისხებს PR ის ხელმოწერის უცნობ ცნობას PR ში ძირითადი წითელი საკითხი) და `audit-worktree.sh` (ბინძური ფაილები, დაცული ზედაპირები, ამოღებული მტკიცებულებები, ჩახშობის რაოდენობა, დარჩენილი tmp tsconfigs, PR head vs ადგილობრივი HEAD — მუშის PR მიღებამდე).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

@@ -74,15 +74,18 @@ onRequest: (ctx) => {
 
 ## Plugin-Kontext (`PluginContext`)
 
-| Feld        | Typ                       | Beschreibung                   |
-| ----------- | ------------------------- | ------------------------------ |
-| `requestId` | `string`                  | Eindeutige Anfragekennung      |
-| `model`     | `string`                  | Name des angeforderten Modells |
-| `provider`  | `string`                  | ID des Ziel-Providers          |
-| `body`      | `Record<string, unknown>` | Anfrage-Body                   |
-| `headers`   | `Record<string, string>`  | Anfrage-Header                 |
-| `metadata`  | `Record<string, unknown>` | Veränderbare Metadaten         |
-| `timestamp` | `number`                  | Zeitstempel der Anfrage        |
+| Feld         | Typ                       | Beschreibung                            |
+| ------------ | ------------------------- | --------------------------------------- |
+| `requestId`  | `string`                  | Eindeutiger Anforderungsbezeichner      |
+| `model`      | `string`                  | Angeforderter Modellname                |
+| `provider`   | `string`                  | Zielanbieter ID                         |
+| `body`       | `Record<string, unknown>` | Anforderungstext                        |
+| `headers`    | `Record<string, string>`  | Anforderungsheader (siehe Hinweis)      |
+| `metadata`   | `Record<string, unknown>` | Veränderbare Metadaten                  |
+| `timestamp`  | `number`                  | Zeitstempel anfordern                   |
+| `apiKeyInfo` | `object` (optional)       | API -Schlüsselmetadaten (siehe Hinweis) |
+
+Der Kontext enthält niemals die Anmeldeinformationen des Clients: Die Header `authorization`, `x-api-key`, `proxy-authorization` und `cookie` werden entfernt (jede Groß-/Kleinschreibung), und `apiKeyInfo` behält die Metadaten des Schlüssels (z. B. `id`, `name` und `scopes`), jedoch nicht den Schlüsselwert oder seinen Fingerabdruck (`redactPluginContext()` in `src/lib/plugins/hooks.ts`). Dies gilt für `onRequest`, `onResponse` und `onError`.
 
 ## Manifest (`plugin.json`)
 
@@ -140,17 +143,16 @@ Oder als einfache boolesche Werte (Standardpriorität 100):
 
 ## Berechtigungssystem
 
-Plugins werden in einem isolierten VM-Kontext ausgeführt. Der Zugriff auf externe Ressourcen erfordert ausdrückliche Berechtigungen:
+Plugins sind** nicht sandboxed** . Jedes aktive Plugin wird als separater, gewöhnlicher untergeordneter Node.js Prozess (`loadPlugin()` in `src/lib/plugins/loader.ts`) unter demselben Betriebssystembenutzer wie OmniRoute ausgeführt, ohne VM Kontext und ohne Node.js -Berechtigungsflags. Der Plugin-Code kann `node:fs`, `node:child_process`, `fetch` und jedes andere Node.js API verwenden: Er kann jede Datei lesen und schreiben, die der OmniRoute Benutzer lesen und schreiben kann (einschließlich des Datenverzeichnisses), Programme ausführen und das Netzwerk erreichen.
 
-| Berechtigung | Gewährt                                                      |
-| ------------ | ------------------------------------------------------------ |
-| `network`    | `fetch`, `AbortController`, `Headers`, `Request`, `Response` |
-| `file-read`  | `fs.readFile`, `fs.readdir`, `fs.stat`                       |
-| `file-write` | `fs.writeFile`, `fs.mkdir`, `fs.rm`                          |
-| `env`        | Schreibgeschützter `process.env`-Proxy                       |
-| `exec`       | `child_process.exec`, `child_process.execSync`               |
+Das `requires.permissions` des Manifests akzeptiert `network`, `file-read`, `file-write`, `env` und `exec`, aber heute hat nur `env` einen Effekt zur Laufzeit:
 
-Ohne eine Berechtigung sind die entsprechenden globalen Objekte in der Sandbox schlicht nicht verfügbar.
+| Erlaubnis                                    | Wirkung heute                                                                                                                                                                                                                         |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `env`                                        | Der Plugin-Prozess empfängt auch `PORT`, `HOSTNAME`, `TZ` und `TMPDIR`. Ohne sie empfängt es nur `PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `NODE_ENV`, `PLUGIN_ENTRY` und `PLUGIN_NAME` (plus `SystemRoot` und `windir` auf Windows). |
+| `network`, `file-read`, `file-write`, `exec` | Keiner. Es handelt sich lediglich um Deklarationen: Wenn sie fehlen, wird nichts blockiert.                                                                                                                                           |
+
+Die Installation eines Plugins ist wie die Installation jedes anderen Programms auf dem Host. Installieren Sie nur Plugins, deren Quelle Sie vertrauen.
 
 ## Konfigurationsschema
 

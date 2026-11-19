@@ -182,13 +182,13 @@ O servidor rejeita ativamente valores reconhecidamente fracos, como `changeme`, 
 
 ---
 
-## Segurança do Docker
+## segurança Docker
 
-- Utilize um utilizador não root em produção
-- Monte os segredos como volumes só de leitura
-- Nunca copie ficheiros `.env` para imagens Docker
-- Utilize `.dockerignore` para excluir ficheiros sensíveis
-- Defina `AUTH_COOKIE_SECURE=true` quando estiver atrás de HTTPS
+- Utilizar utilizador não root na produção
+- Monte segredos como volumes de leitura apenas
+- Nunca copie ficheiros `.env` em imagens Docker
+- Utilize `.dockerignore` para excluir ficheiros confidenciais
+- Defina `AUTH_COOKIE_SECURE=true` quando estiver atrás HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

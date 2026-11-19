@@ -182,13 +182,13 @@ Der Server weist bekanntermaßen unsichere Werte wie `changeme`, `secret` oder `
 
 ---
 
-## Docker-Sicherheit
+## Docker Sicherheit
 
-- In der Produktion einen Nicht-Root-Benutzer verwenden
-- Secrets als schreibgeschützte Volumes einbinden
-- `.env`-Dateien niemals in Docker-Images kopieren
-- `.dockerignore` verwenden, um sensible Dateien auszuschließen
-- Hinter HTTPS `AUTH_COOKIE_SECURE=true` festlegen
+- Verwenden Sie in der Produktion einen Nicht-Root-Benutzer
+- Hängen Sie Geheimnisse als schreibgeschützte Volumes ein
+- Kopieren Sie niemals `.env` Dateien in Docker -Bilder
+- Verwenden Sie `.dockerignore`, um vertrauliche Dateien auszuschließen
+- Setzen Sie `AUTH_COOKIE_SECURE=true` hinter HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

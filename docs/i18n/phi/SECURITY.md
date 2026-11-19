@@ -182,13 +182,13 @@ Aktibong tinatanggihan ng server ang mga kilalang mahinang value tulad ng `chang
 
 ---
 
-## Seguridad ng Docker
+## Docker Seguridad
 
-- Gumamit ng non-root user sa production
-- I-mount ang mga lihim bilang mga read-only volume
-- Huwag kailanman kopyahin ang mga `.env` file sa mga Docker image
-- Gumamit ng `.dockerignore` upang ibukod ang mga sensitibong file
-- Itakda ang `AUTH_COOKIE_SECURE=true` kapag nasa likod ng HTTPS
+- Gumamit ng non-root user sa produksyon
+- I-mount ang mga lihim bilang read-only na volume
+- Huwag kailanman kopyahin ang mga `.env` file sa Docker na mga imahe
+- Gamitin ang `.dockerignore` upang ibukod ang mga sensitibong file
+- Itakda ang `AUTH_COOKIE_SECURE=true` kapag nasa likod HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

@@ -445,36 +445,36 @@ angalia [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Matatizo ya Docker
+## Docker Masuala
 
-### Docker IPv6 / Muunganisho Kuwekwa Upya
+### Docker IPv6 / Rudisha Muunganisho
 
 <a name="docker-ipv6"></a>
 
-**Dalili:** `curl http://localhost:20128/v1/models` hurejesha `curl: (56) Recv failure: Connection reset by peer`. Dashibodi na endpoint zisizohitaji uthibitishaji hufanya kazi, lakini endpoint zinazohitaji uthibitishaji hushindwa — inaonekana kama tatizo la uthibitishaji, lakini sivyo.
+**Dalili:** `curl http://localhost:20128/v1/models` inarudi `curl: (56) Recv failure: Connection reset by peer`. Dashibodi na sehemu za mwisho ambazo hazijaidhinishwa hufanya kazi, lakini miisho iliyoidhinishwa inashindwa — inaonekana kama shida ya uthibitishaji lakini sivyo.
 
-**Sababu:** `docker run -p 20128:20128` huchapisha kwenye `0.0.0.0` (IPv4) na `::` (IPv6), lakini mchakato ulio ndani ya kontena husikiliza IPv4 pekee. Kwenye host ambazo `localhost` hutafsiriwa kuwa `::1` kwanza, muunganisho hufika kwenye port ya IPv6 iliyochapishwa bila listener nyuma yake → muunganisho unawekwa upya.
+**Sababu:** `docker run -p 20128:20128` huchapisha kwa `0.0.0.0` (IPv4) na `::` (IPv6), lakini mchakato ndani ya chombo husikiza IPv4 pekee. Kwenye seva pangishi ambapo `localhost` inatatua kuwa `::1` kwanza, muunganisho hutua kwenye mlango uliochapishwa IPv6 bila msikilizaji nyuma yake muunganisho → umewekwa upya.
 
-**Suluhisho:**
+**Rekebisha:**
 
-1. **Uchunguzi wa haraka:** Endesha `curl -4 http://localhost:20128/v1/models`. Ikiwa inafanya kazi kwa kutumia `-4` lakini inashindwa bila hiyo, una kutolingana kwa bind ya IPv6.
-2. **Suluhisho la kudumu:** Fanya bind kwa IPv4 moja kwa moja kwa kutumia `-p 127.0.0.1:20128:20128` kwenye amri yako ya `docker run`:
+1. **Utambuzi wa haraka:** Endesha `curl -4 http://localhost:20128/v1/models`. Ikiwa inafanya kazi na `-4` lakini itashindwa bila, unayo kutolingana kwa IPv6.
+2. **Marekebisho ya kudumu:** Funga kwa IPv4 kwa uwazi kwa kutumia `-p 127.0.0.1:20128:20128` katika amri yako `docker run` :
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Hii hulazimisha bind ya IPv4 na pia huepuka kufichua proxy kwenye interface zote za host.
+   Hii hulazimisha IPv4 kumfunga na pia huepuka kufichua proksi kwenye violesura vyote vya seva pangishi.
 
 ---
 
-### Zana ya CLI Inaonyesha Haijasakinishwa
+### CLI Tool Shows Haijasakinishwa
 
-1. Kagua sehemu za runtime: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Kwa hali inayobebeka: tumia target ya image `runner-cli` (CLI zilizojumuishwa)
-3. Kwa hali ya mount ya host: weka `CLI_EXTRA_PATHS` na ufanye mount ya saraka ya bin ya host kwa hali ya kusoma pekee
-4. Ikiwa `installed=true` na `runnable=false`: binary ilipatikana lakini healthcheck ilishindwa
+1. Angalia sehemu za wakati wa kukimbia: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Kwa hali ya kubebeka: tumia lengwa la picha `runner-cli` ( CLIs iliyounganishwa)
+3. Kwa modi ya kupachika mwenyeji: weka `CLI_EXTRA_PATHS` na weka saraka ya bin mwenyeji kama kusoma tu
+4. Ikiwa `installed=true` na `runnable=false`: binary ilipatikana lakini imeshindwa ukaguzi wa afya
 
-### Uthibitishaji wa Haraka wa Runtime
+### Uthibitishaji wa Muda wa Kuendesha Haraka
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

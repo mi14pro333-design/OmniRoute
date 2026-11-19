@@ -184,11 +184,11 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ## Docker 보안
 
-- 프로덕션에서는 루트가 아닌 사용자를 사용합니다
-- 시크릿을 읽기 전용 볼륨으로 마운트합니다
-- `.env` 파일을 Docker 이미지에 절대 복사하지 않습니다
-- `.dockerignore`를 사용하여 민감한 파일을 제외합니다
-- HTTPS 뒤에서 실행할 때는 `AUTH_COOKIE_SECURE=true`로 설정합니다
+- 프로덕션에서 루트가 아닌 사용자 사용
+- 비밀을 읽기 전용 볼륨으로 마운트
+- `.env` 파일을 Docker 이미지로 복사하지 마십시오.
+- `.dockerignore` 사용하여 민감한 파일 제외
+- HTTPS 뒤에 있을 때 `AUTH_COOKIE_SECURE=true` 설정
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

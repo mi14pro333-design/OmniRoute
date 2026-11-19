@@ -424,7 +424,7 @@ open-sse/
 
 ### 4.2 `open-sse/executors/`
 
-170 ta yuqori darajadagi ijrochi modullari (`*.ts` minus `base.ts`, `index.ts` va testlar — `npm run check:docs-counts` o'lchovlari). Har bir bajaruvchi sinfi `BaseExecutor` (`base.ts`) ni bevosita yoki `DefaultExecutor` yoki boshqa bajaruvchi orqali kengaytiradi; qolgan modullar provayder uchun yordamchilardir (asbob sxemalari, fetch/TTS adapterlari, quik ishlov beruvchilar). Ijrochilarga quyidagilar kiradi:
+170 ta yuqori darajadagi ijrochi modullari (`*.ts` minus `base.ts`, `index.ts` va testlar — soni `npm run check:docs-counts` o'lchovlari). Har bir bajaruvchi sinfi `BaseExecutor` (`base.ts`) ni bevosita yoki `DefaultExecutor` yoki boshqa bajaruvchi orqali kengaytiradi; qolgan modullar provayder uchun yordamchilardir (asbob sxemalari, fetch/TTS adapterlari, quik ishlov beruvchilar). Ijrochilarga quyidagilar kiradi:
 
 `antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex` `vertex` `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode` `petals` `perplexity-web`, `pollinations`, `qoder`, plus `devin-desktop`(birgalikda identifikatsiya yordamchisi) va `claudeIdentity.ts` (ro'yxatga olish kitobi) `index.ts`
 
@@ -479,7 +479,7 @@ Provayder registrlari (`providerRegistry.ts`, `providerModels.ts`, `providerHead
 
 ### 4.8 `open-sse/utils/`
 
-Streaming primitivlari va provayder yordamchilari: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, , `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `progressTracker.ts`, `cors.ts` `logger.ts` `error.ts` `requestLogger.ts`, `sleep.ts` `ollamaTransform.ts`
+Streaming primitivlari va provayder yordamchilari: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `sleep.ts` `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts` `progressTracker.ts` `usageTracking.ts` `requestLogger.ts`, `cors.ts`, `error.ts`, `logger.ts`, `ollamaTransform.ts`.
 
 ---
 
@@ -564,37 +564,14 @@ Koʻp ishlatiladigan buyruqlar:
 
 ## 8. `scripts/`
 
-Maqsadiga ko‘ra 6 ta quyi jildga ajratilgan.
+Maqsadiga ko'ra 6 ta pastki jildga ajratilgan.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, shuningdek, PR’larni faqat o‘qish rejimida nazorat qilish yordamchilari:
-  `ci-discriminate.sh` (PR’dagi muvaffaqiyatsiz tekshiruv signaturalarini etalon PR yoki
-  asosiy tarmoqdagi xatolik muammosiga nisbatan o‘ziga tegishli / meros bo‘lib o‘tgan /
-  noma’lum toifalarga ajratadi) va `audit-worktree.sh`
-  (o‘zgartirilgan fayllar, himoyalangan qismlar, olib tashlangan assert’lar, bostirishlar
-  soni, qolib ketgan vaqtinchalik tsconfig’lar, PR’dagi head va mahalliy HEAD taqqoslanishi —
-  worker’ning PR’i qabul qilinishidan oldin).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, plus faqat o‘qishga mo‘ljallangan PR chaqaloqqa qarashli yordamchilar akkauntlari (signallari) mos yozuvlar `ci-discriminate.sh` yoki asosiy- PR masalaga qarshi PR / meros / noma'lum) va `audit-worktree.sh` (iflos fayllar, himoyalangan sirtlar, o'chirilgan tasdiqlar, bostirish hisoblari, qolgan tmp tsconfigs, PR head vs local HEAD — ishchi PR qabul qilinishidan oldin).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

@@ -212,7 +212,7 @@ arayüzü düğmesinin aynı anda tetiklenmesi durumunda yarış koşullarını 
 
 ## 4. API referansı
 
-`/api/services/` kapsamındaki tüm rotalar**LOCAL_ONLY** (yalnızca geridöngü, zor kural #17). Geridöngü olmayan istekler, kimlik doğrulama belirteci ne olursa olsun `403 LOCAL_ONLY` alır.
+`/api/services/` kapsamındaki tüm rotalar**LOCAL_ONLY** (yalnızca geridöngü, kesin kural #17). Geridöngü olmayan istekler, kimlik doğrulama belirteci ne olursa olsun `403 LOCAL_ONLY` alır.
 
 ### 4.1 9Yönlendirici uç noktaları (11 rota)
 
@@ -239,7 +239,7 @@ arayüzü düğmesinin aynı anda tetiklenmesi durumunda yarış koşullarını 
 | `409` | Zaten kuruluyor (kilit basılı tutuluyor)                      |
 | `500` | npm kurulumu başarısız oldu — kolay hata için `message` bakın |
 
-**Notlar:** `execFile('npm', [...])` — kullanır, kabuk yok, enterpolasyon yok (katı kural #13). EACCES hataları dostane mesajlar olarak ortaya çıkar.
+**Notlar:** `execFile('npm', [...])` — kullanır, kabuk yok, enterpolasyon yok ( #13 katı kuralı). EACCES hataları dostane mesajlar olarak ortaya çıkar.
 
 ---
 
@@ -300,7 +300,7 @@ arayüzü düğmesinin aynı anda tetiklenmesi durumunda yarış koşullarını 
 
 #### `POST /api/services/9router/update`
 
-9Router'ı daha yeni bir npm sürümüne günceller. Hizmet çalışıyorsa önce durdurulur, npm kurulumu çalıştırılır (daha yeni sürümün yerine yüklenmesi) ve ardından hizmet yeniden başlatılır.
+9Router'ı daha yeni bir npm sürümüne günceller. Hizmet çalışıyorsa, önce durdurulur, npm kurulumu çalıştırılır (daha yeni sürümün yerine yüklenmesi) ve ardından hizmet yeniden başlatılır.
 
 **Talep gövdesi** (hepsi isteğe bağlı):
 
@@ -320,7 +320,7 @@ arayüzü düğmesinin aynı anda tetiklenmesi durumunda yarış koşullarını 
 
 #### `POST /api/services/9router/rotate-key`
 
-9Router için yeni bir API anahtarı oluşturur, onu kullanımda değilken şifreler ve hizmeti (çalışıyorsa) yeniden başlatarak yeni anahtarı ortamından alır. Eski anahtar hemen geçersiz kılınır.
+9Router için yeni bir API anahtarı oluşturur, onu kullanımda değilken şifreler ve hizmeti yeniden başlatır (çalışıyorsa), böylece yeni anahtarı ortamından alır. Eski anahtar hemen geçersiz kılınır.
 
 **Talep gövdesi:** hiçbiri
 
@@ -337,7 +337,7 @@ arayüzü düğmesinin aynı anda tetiklenmesi durumunda yarış koşullarını 
 
 #### `GET /api/services/9router/status`
 
-Sürüm meta verileri ve API anahtarı önizlemesi dahil olmak üzere birleştirilmiş canlı + DB durumunu döndürür.
+Sürüm meta verileri ve API anahtarı önizlemesi de dahil olmak üzere birleştirilmiş canlı + DB durumunu döndürür.
 
 **Yanıtlar:**
 
@@ -370,7 +370,7 @@ Sürüm meta verileri ve API anahtarı önizlemesi dahil olmak üzere birleştir
 
 #### `POST /api/services/9router/auto-start`
 
-Otomatik başlatma bayrağını değiştirin. `enabled: true` olduğunda, OmniRoute bir sonraki açılışında hizmet otomatik olarak başlar (hizmet yüklüyse).
+Otomatik başlatma bayrağını açın/kapatın. `enabled: true` olduğunda, OmniRoute bir sonraki açılışında hizmet otomatik olarak başlar (eğer hizmet kuruluysa).
 
 **Talep gövdesi:**
 
@@ -538,7 +538,7 @@ sing-box, Mux — ile aynı uç nokta şekline sahiptir, `rotate-key` yolu yok, 
 | `POST` | `/api/services/singbox/auto-restart-adopted` | Kabul edilen (önceden var olan) bir süreç için otomatik yeniden başlatmayı açın/kapatın |
 | `GET`  | `/api/services/singbox/logs`                 | SSE günlük kuyruğu (paylaşılan `[name]/logs` dinamik rota aracılığıyla)                 |
 
-**TPROXY kablolama:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`), `config.json` yazar ve `applyTproxy()` TPROXY güvenlik duvarı kurallarını yüklemeden önce denetçiyi başlatır. Denetleyici eksikse veya `running` ulaşamazsa, artık hata seviyesinde kayıt yapar (arızayı sessizce yutmak yerine), böylece operatör, arkasında çalışan bir dinleyici olmadan TPROXY kurallarının uygulandığını anlayabilir.
+**TPROXY kablolama:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`), `config.json` yazar ve `applyTproxy()` TPROXY güvenlik duvarı kurallarını yüklemeden önce denetçiyi başlatır. Denetleyici eksikse veya `running` ulaşamazsa, artık hata düzeyinde kayıt yapar (arızayı sessizce yutmak yerine), böylece operatör, arkasında çalışan bir dinleyici olmadan TPROXY kurallarının uygulandığını anlayabilir.
 
 ---
 
@@ -558,7 +558,7 @@ Bu vekil:
 - Yanıttan `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` çıkarılır
 - `<base href>` enjekte etmek ve mutlak yolları normalleştirmek için HTML yanıtlarını yeniden yazar (`/foo` → `/dashboard/.../embed/foo`)
 
-Gömülü kontrol paneli için WebSocket yükseltmeleri, özel bir bağlantı noktasındaki yardımcı bir sunucu tarafından gerçekleştirilir (bkz. `src/lib/services/embedWsProxy.ts`).
+Gömülü kontrol paneli için WebSocket yükseltmeleri, özel bir bağlantı noktasındaki yardımcı bir sunucu tarafından gerçekleştirilir (bkz. `src/lib/services/embedWsProxy.ts`). Her yükseltme, HTTP yerleştirme rotasıyla aynı kurallarla tünel açılmadan önce yetkilendirilir: eş, ters proxy yönlendirme başlığı olmadan geridöngü olmalıdır, bir tarayıcı `Origin` bir kontrol paneli kaynağı olmalıdır (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` geridöngü varsayılanlarını genişletir) ve kontrol panelinde oturum açma devre dışı bırakılmadığı sürece arayan kişinin bir kontrol paneli oturumuna veya yönetim kapsamı API anahtarına ihtiyacı vardır.
 
 **Güvenlik:** Gömülü proxy yolları `LOCAL_ONLY_API_PREFIXES` altında sınıflandırılır ve yalnızca geridöngüden erişilebilir. Cloudflare/Ngrok tüneli aracılığıyla JWT elde eden bir saldırgan, yerleşik hizmetlere proxy olarak erişemez.
 

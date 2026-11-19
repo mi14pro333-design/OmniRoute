@@ -182,13 +182,13 @@ Seva hukataa moja kwa moja thamani dhaifu zinazojulikana kama `changeme`, `secre
 
 ---
 
-## Usalama wa Docker
+## Docker Usalama
 
-- Tumia mtumiaji asiye root katika mazingira ya uzalishaji
-- Pachika siri kama volume za kusoma pekee
-- Kamwe usinakili faili za `.env` ndani ya image za Docker
-- Tumia `.dockerignore` kuondoa faili nyeti
-- Weka `AUTH_COOKIE_SECURE=true` unapokuwa nyuma ya HTTPS
+- Tumia mtumiaji asiye na mizizi katika uzalishaji
+- Weka siri kama juzuu za kusoma tu
+- Usiwahi kunakili faili `.env` kwenye picha Docker
+- Tumia `.dockerignore` kutenga faili nyeti
+- Weka `AUTH_COOKIE_SECURE=true` ukiwa nyuma ya HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

@@ -182,13 +182,13 @@ Server secara aktif menolak nilai lemah yang umum diketahui seperti `changeme`, 
 
 ---
 
-## Keamanan Docker
+## Docker Keamanan
 
 - Gunakan pengguna non-root dalam produksi
 - Pasang rahasia sebagai volume hanya-baca
-- Jangan pernah menyalin file `.env` ke dalam image Docker
+- Jangan pernah menyalin file `.env` ke gambar Docker
 - Gunakan `.dockerignore` untuk mengecualikan file sensitif
-- Tetapkan `AUTH_COOKIE_SECURE=true` saat berada di belakang HTTPS
+- Atur `AUTH_COOKIE_SECURE=true` saat di belakang HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

@@ -470,7 +470,7 @@ open-sse/
 
 - **110 अद्वितीय साधने** `server.ts` मध्ये वायर्ड ( `schemas/tools.ts` + मेमरी, कौशल्य, GitHub-कौशल्य, पूल, गेमिफिकेशन, प्लगइन, Notion, Obsidian, स्थानिक-कॉर्पस आणि कॉम्प्रेशन मॉड्यूल — युनियन `countUniqueMcpTools` द्वारे मोजले जाणारे 45 कॅनोनिकल).
 - **3 वाहतूक** : stdio, HTTP स्ट्रीम करण्यायोग्य, SSE.
-- **33 स्कोप** `src/shared/constants/mcpScopes.ts` मधील रनटाइम — बेस लिस्टवर लागू केले जाते, पूर्ण सेट म्हणजे प्रत्येक टूल मॉड्यूलद्वारे घोषित केलेल्या स्कोपचे संघटन.
+- **33 स्कोप** `src/shared/constants/mcpScopes.ts` मध्ये रनटाइम — बेस लिस्टवर लागू केले जाते, पूर्ण सेट म्हणजे प्रत्येक टूल मॉड्यूलद्वारे घोषित केलेल्या स्कोपचे युनियन.
 - लेखापरीक्षण सारणी: `mcp_tool_audit` ( `audit.ts` द्वारे पॉप्युलेट केलेले).
 - फाइल्स: `server.ts`, `index.ts`, `httpTransport.ts`, `audit.ts`, `scopeEnforcement.ts`, `runtimeHeartbeat.ts`, `descriptionCompressor.ts`, `schemas/{tools, a2a, audit, index}.ts`, `tools/{advancedTools, compressionTools, memoryTools, skillTools}.ts`, अधिक `__tests__/` अंतर्गत चाचण्या.
 - संपूर्ण टूल कॅटलॉगसाठी [MCP-SERVER.md](../frameworks/MCP-SERVER.md) पहा.
@@ -481,7 +481,7 @@ open-sse/
 
 ### 4.8 `open-sse/utils/`
 
-स्ट्रीमिंग आदिम आणि प्रदाता मदतनीस: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts` `ollamaTransform.ts` `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`.
+स्ट्रीमिंग आदिम आणि प्रदाता मदतनीस: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts` `sleep.ts` `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `ollamaTransform.ts`.
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-उद्देशानुसार 6 उपफोल्डर्समध्ये संघटित केले आहे.
+हेतूनुसार 6 सबफोल्डर्समध्ये व्यवस्थापित.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, तसेच केवळ-वाचनयोग्य PR देखरेख सहाय्यके
-  `ci-discriminate.sh` (संदर्भ PR किंवा base-red समस्येशी तुलना करून PR च्या अयशस्वी तपासणी स्वाक्षऱ्यांचे स्वतःच्या / वारशाने आलेल्या /
-  अज्ञात अशा प्रकारांत वर्गीकरण करते) आणि `audit-worktree.sh`
-  (अस्वच्छ फाइल्स, संरक्षित पृष्ठभाग, काढून टाकलेली asserts, suppression संख्या, शिल्लक
-  tmp tsconfigs, PR head विरुद्ध स्थानिक HEAD — कार्यकर्त्याचा PR स्वीकारण्यापूर्वी).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, तसेच केवळ वाचण्याजोगी PR PR' किंवा बेबीसिटिंग मदत `ci-discriminate.sh` किंवा बेस-रेड इश्यू विरुद्ध स्वत:च्या/वारसा मिळालेल्या/अज्ञात PR अयशस्वी तपासा) आणि `audit-worktree.sh` (घाणेरड्या फायली, संरक्षित पृष्ठभाग, काढून टाकलेले दावा, सप्रेशन संख्या, उरलेले tmp tsconfigs, PR head vs local HEAD — कामगाराच्या PR स्वीकारण्यापूर्वी).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

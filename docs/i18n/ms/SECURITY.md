@@ -182,13 +182,13 @@ Pelayan secara aktif menolak nilai lemah yang diketahui seperti `changeme`, `sec
 
 ---
 
-## Keselamatan Docker
+## Docker Keselamatan
 
-- Gunakan pengguna bukan root dalam persekitaran pengeluaran
-- Lekapkan rahsia sebagai volum baca sahaja
+- Gunakan pengguna bukan akar dalam pengeluaran
+- Lekapkan rahsia sebagai jilid baca sahaja
 - Jangan sekali-kali menyalin fail `.env` ke dalam imej Docker
 - Gunakan `.dockerignore` untuk mengecualikan fail sensitif
-- Tetapkan `AUTH_COOKIE_SECURE=true` apabila berada di belakang HTTPS
+- Tetapkan `AUTH_COOKIE_SECURE=true` apabila di belakang HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

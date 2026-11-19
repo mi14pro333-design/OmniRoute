@@ -182,13 +182,13 @@ Máy chủ chủ động từ chối các giá trị yếu đã biết như `cha
 
 ---
 
-## Bảo mật Docker
+## bảo mật Docker
 
-- Sử dụng người dùng không phải root trong môi trường production
-- Gắn kết các bí mật dưới dạng volume chỉ đọc
-- Tuyệt đối không sao chép các tệp `.env` vào image Docker
+- Sử dụng người dùng không phải root trong sản xuất
+- Gắn kết bí mật dưới dạng tập chỉ đọc
+- Không bao giờ sao chép tập tin `.env` vào hình ảnh Docker
 - Sử dụng `.dockerignore` để loại trừ các tệp nhạy cảm
-- Đặt `AUTH_COOKIE_SECURE=true` khi chạy phía sau HTTPS
+- Đặt `AUTH_COOKIE_SECURE=true` khi đứng sau HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

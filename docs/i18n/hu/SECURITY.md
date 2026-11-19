@@ -182,13 +182,13 @@ A kiszolgáló aktívan elutasítja az ismerten gyenge értékeket, például a 
 
 ---
 
-## Docker-biztonság
+## Docker Security
 
-- Éles környezetben használjon nem root felhasználót
-- A titkos értékeket csak olvasható kötetekként csatolja
-- Soha ne másoljon `.env` fájlokat Docker-lemezképekbe
-- Használja a `.dockerignore` fájlt az érzékeny fájlok kizárására
-- HTTPS mögötti használat esetén állítsa be az `AUTH_COOKIE_SECURE=true` értéket
+- Használjon nem root felhasználót a termelésben
+- Csatlakoztassa a titkokat csak olvasható kötetként
+- Soha ne másoljon `.env` fájlokat Docker képekbe
+- Használja `.dockerignore` az érzékeny fájlok kizárásához
+- Állítsa be `AUTH_COOKIE_SECURE=true` HTTPS mögött
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

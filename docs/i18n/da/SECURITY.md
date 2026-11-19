@@ -182,13 +182,13 @@ Serveren afviser aktivt kendte svage værdier såsom `changeme`, `secret` eller 
 
 ---
 
-## Docker-sikkerhed
+## Docker Sikkerhed
 
-- Brug en ikke-root-bruger i produktion
-- Monter hemmeligheder som skrivebeskyttede diskenheder
-- Kopiér aldrig `.env`-filer ind i Docker-images
-- Brug `.dockerignore` til at udelukke følsomme filer
-- Angiv `AUTH_COOKIE_SECURE=true`, når HTTPS anvendes
+- Brug ikke-rodbruger i produktionen
+- Monter hemmeligheder som skrivebeskyttede bind
+- Kopier aldrig `.env` filer til Docker -billeder
+- Brug `.dockerignore` til at ekskludere følsomme filer
+- Indstil `AUTH_COOKIE_SECURE=true`, når du er bagud HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

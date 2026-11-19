@@ -38,25 +38,25 @@
 | **ዳሪዮ**         | `@askalf/dario`               |  3456   | የክላውድ-የደንበኝነት ምዝገባ ተኪ — alternative/failover ወደ CLIProxyAPI ለ Claude-Code ቅርጽ ያለው ትራፊክ; የተወጋው ቁልፍ `DARIO_ADMIN_TOKEN` gating የ `/admin/*` OAuth መቆጣጠሪያ አውሮፕላን ይሆናል።                                                    |
 | **ክፍት-ዋ**       | `@open-wa/wa-automate`        |  8323   | WhatsApp የድር አውቶሜሽን (ጭንቅላት የሌለው Chromium በአሻንጉሊት በኩል)። የህይወት ዑደት የሚተዳደረው — ብቻ የማዞሪያ ኢላማ አይደለም።                                                                                                                         |
 | **LLMLingua**   | `@atjsh/llmlingua-2`          |  20135  | ፈጣን-መጭመቂያ sidecar — እውነተኛ LLMLingua-2 ONNX ሞዴል (JS/TS የ Microsoft's አልጎሪዝም ወደብ)። `open-sse/services/compression/engines/llmlingua/index.ts` በ HTTP ላይ `/compress` ወደ እሱ ይልካል። በህይወት ሳይክል የሚተዳደረው — ብቻ የማዞሪያ ኢላማ አይደለም። |
-| **መዘመር-ሳጥን**    | GitHub ልቀቅ ሁለትዮሽ (`singbox`)  |  20140  | TPROXY sidecar backing `applyTproxy()`'s transparent-proxy interception (`src/mitm/tproxy/setup.ts`)። ጫኚው የተሰካውን፣ የተረጋገጠውን መለቀቅ ያወርዳል። የህይወት ዑደት የሚተዳደረው — ብቻ የማዞሪያ ኢላማ አይደለም ( LLM ፕሮክሲ የለም)                          |
+| **መዘመር-ሳጥን**    | GitHub ልቀቅ ሁለትዮሽ (`singbox`)  |  20140  | TPROXY sidecar backing `applyTproxy()`'s transparent-proxy interception (`src/mitm/tproxy/setup.ts`)። ጫኚው የተሰካውን፣ የተረጋገጠውን መለቀቅ ያወርዳል። በህይወት ዑደት የሚተዳደረው — ብቻ የማዞሪያ ዒላማ አይደለም ( LLM ተኪ የለም)                            |
 
 ስምንቱም ተመሳሳይ የቁጥጥር ሞዴል ይከተላሉ፡-
 
 - OmniRoute በ `DATA_DIR/services/{name}/` ስር ይጭናቸዋል (ከ OmniRoute የራሱ `package.json` የተገለለ)
 - OmniRoute እንደ ሕፃን ሂደቶች ይፈልቃል እና ይከታተላቸዋል
 - OmniRoute ጊዜ ያለፈበት API ቁልፍ በልጁ አካባቢ ውስጥ በመርፌ ያለማቋረጥ ይሽከረከራል (የሚመለከተው ከሆነ)
-- ሁሉም የአስተዳደር መንገዶች (`/api/services/*`) ናቸው።**LOCAL_ONLY** — ከ loopback ብቻ ተደራሽ ነው (ከባድ ህግ ቁጥር 17)
+- ሁሉም የአስተዳደር መንገዶች (`/api/services/*`) ናቸው።**LOCAL_ONLY** — ከ loopback ብቻ ተደራሽ ነው (ከባድ ህግ #17)
 
 ### ቁልፍ ውሳኔዎች (ከዲዛይን እቅድ)
 
-| ውሳኔ                         | ዋጋ                                                               |
-| --------------------------- | ---------------------------------------------------------------- |
-| ወደ 9 ራውተር ቤተኛ UI ዳሽቦርድ መድረስ | ተገላቢጦሽ ተኪ በ `/dashboard/providers/services/9router/embed/*`      |
-| የመጫኛ ዘዴ                     | `npm install {package}` በ `execFile` በኩል (የሼል ጣልቃ ገብነት የለም)      |
-| የፍጆታ ሁነታ                    | አቅራቢው በማዞሪያ ሞተር ውስጥ እንደ `9router/{sub}/{model}` ተመዝግቧል           |
-| API ቁልፍ አስተዳደር              | OmniRoute ያመነጫል፣ በእረፍት (AES-256-GCM) ያመስጥራል፣ እና በ env በኩል ያስገባል። |
-| ዳሽቦርድ አካባቢ                  | `/dashboard/providers/services` (ሶስት ትሮች)                        |
-| በራስ-ሰር ጀምር                  | በአገልግሎት ቀያይር፣ ነባሪ OFF                                            |
+| ውሳኔ                         | ዋጋ                                                              |
+| --------------------------- | --------------------------------------------------------------- |
+| ወደ 9 ራውተር ቤተኛ UI ዳሽቦርድ መድረስ | ተገላቢጦሽ ተኪ በ `/dashboard/providers/services/9router/embed/*`     |
+| የመጫኛ ዘዴ                     | `npm install {package}` በ `execFile` በኩል (የሼል ጣልቃ ገብነት የለም)     |
+| የፍጆታ ሁነታ                    | በማዞሪያ ሞተር ውስጥ አቅራቢ እንደ `9router/{sub}/{model}` ተመዝግቧል           |
+| API ቁልፍ አስተዳደር              | OmniRoute ያመነጫል፣ በእረፍት ጊዜ (AES-256-GCM) ያመሰጥር እና በ env በኩል ይሰጣል |
+| ዳሽቦርድ አካባቢ                  | `/dashboard/providers/services` (ሶስት ትሮች)                       |
+| በራስ-ሰር ጀምር                  | በአገልግሎት ቀያይር፣ ነባሪ OFF                                           |
 
 ---
 
@@ -210,7 +210,7 @@
 
 ## 4. API ማጣቀሻ
 
-ሁሉም መንገዶች በ `/api/services/` ስር ናቸው።**LOCAL_ONLY** (loopback ብቻ፣ ጠንካራ ህግ ቁጥር 17)። የድግግሞሽ ያልሆኑ ጥያቄዎች የአውት ቶከን ምንም ቢሆኑም `403 LOCAL_ONLY` ይቀበላሉ።
+ሁሉም መንገዶች በ `/api/services/` ስር ናቸው።**LOCAL_ONLY** (loopback ብቻ፣ ጠንካራ ህግ #17)። የድግግሞሽ ያልሆኑ ጥያቄዎች የአውት ቶከን ምንም ቢሆኑም `403 LOCAL_ONLY` ይቀበላሉ።
 
 ### 4.1 9 ራውተር የመጨረሻ ነጥቦች (11 መስመሮች)
 
@@ -237,7 +237,7 @@
 | `409` | ቀድሞውንም በመጫን ላይ (መቆለፊያ ተይዟል)                            |
 | `500` | npm መጫን አልተሳካም — ለጓደኛ ስህተት `message` ይመልከቱ             |
 
-**ማስታወሻዎች፡-** `execFile('npm', [...])` — ምንም ሼል የለም, ምንም interpolation (ከባድ ህግ #13) ይጠቀማል. EACCES ስህተቶች እንደ ወዳጃዊ መልዕክቶች ብቅ አሉ።
+**ማስታወሻዎች፡-** `execFile('npm', [...])` — ምንም ሼል የለም፣ ምንም interpolation (hard rule #13) ይጠቀማል። EACCES ስህተቶች እንደ ወዳጃዊ መልዕክቶች ብቅ አሉ።
 
 ---
 
@@ -273,7 +273,7 @@
 
 #### `POST /api/services/9router/stop`
 
-9 ራውተርን በጸጋ ያቁሙ። SIGTERM ን ይልካል፣ 15 ሰከንድ ይጠብቃል፣ ከዚያ SIGKILL በህይወት ካለ። ቀድሞውንም ሲቆም የማይመች።
+9 ራውተርን በጸጋ ያቁሙ። SIGTERM ይልካል፣ 15 ሰከንድ ይጠብቃል፣ ከዚያ SIGKILL በህይወት ካለ። ቀድሞውንም ሲቆም የማይመች።
 
 **አካል ጠይቅ፡** ምንም
 
@@ -292,7 +292,7 @@
 
 **አካል ጠይቅ፡** ምንም
 
-**ምላሾች፡-** ልክ እንደ `start` (የመጨረሻ `ServiceStatus` ይመልሳል)።
+**ምላሾች፡-** ልክ እንደ `start` (የመጨረሻውን `ServiceStatus` ይመልሳል)።
 
 ---
 
@@ -329,7 +329,7 @@
 | `200` | `{ keyRotated: true, restarted: boolean }` |
 | `500` | ማሽከርከር አልተሳካም።                             |
 
-**ደህንነት፡** አዲሱ ቁልፍ በምላሹ በጭራሽ አይመለስም (የመረጃ ፍሰት የለም)። በ `version_manager` ሠንጠረዥ ውስጥ ኢንክሪፕት የተደረገ (AES-256-GCM) ተቀምጧል።
+**ደህንነት፡** አዲሱ ቁልፍ በምላሹ በጭራሽ አይመለስም (የምስክር ወረቀት የለም)። በ `version_manager` ሠንጠረዥ ውስጥ ኢንክሪፕት የተደረገ (AES-256-GCM) ተቀምጧል።
 
 ---
 
@@ -536,7 +536,7 @@ LLMLingua ፈጣን-መጭመቂያ የጎን መኪና መጠቅለያ `@atjsh/
 | `POST` | `/api/services/singbox/auto-restart-adopted` | ለተቀበለ (ቅድመ-ነባር) ሂደት ራስ-ዳግም ማስጀመርን ቀይር        |
 | `GET`  | `/api/services/singbox/logs`                 | SSE ሎግ ጅራት (በተጋራ `[name]/logs` ተለዋዋጭ መንገድ)   |
 
-**TPROXY ሽቦ;** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) `config.json` ይጽፋል እና የ TPROXY ፋየርዎል ደንቦችን `applyTproxy()` በፊት ተቆጣጣሪውን ይጀምራል። ተቆጣጣሪው ከጠፋ ወይም `running` ላይ መድረስ ካልቻለ፣ አሁን በስህተት ደረጃ ተመዝግቧል (ውድቀቱን በዝምታ ከመዋጥ ይልቅ) ስለዚህ አንድ ኦፕሬተር ከኋላቸው የሚሰራ አድማጭ ሳይኖር የ TPROXY ህጎች መተግበራቸውን መንገር ይችላል።
+**TPROXY ሽቦ;** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) `config.json` ይጽፋል እና የ TPROXY ፋየርዎል ደንቦችን `applyTproxy()` በፊት ተቆጣጣሪውን ይጀምራል። ተቆጣጣሪው ከጠፋ ወይም `running` ላይ መድረስ ካልቻለ፣ አሁን በስህተት ደረጃ ተመዝግቧል (ውድቀቱን በፀጥታ ከመዋጥ ይልቅ) ስለዚህ አንድ ኦፕሬተር የ TPROXY ህጎችን ከኋላቸው የሚሠራ አድማጭ ሳይኖር መተግበሩን ይነግራል።
 
 ---
 
@@ -556,9 +556,9 @@ GET|POST|... /dashboard/providers/services/9router/embed/[...path]
 - ስክሪፕስ `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` ከምላሹ
 - `<base href>` ለመወጋት እና ፍጹም ዱካዎችን መደበኛ ለማድረግ HTML ምላሾችን እንደገና ይጽፋል (`/foo` → `/dashboard/.../embed/foo`)
 
-ለተከተተው ዳሽቦርድ WebSocket ማሻሻያዎች የሚስተናገዱት በአንድ የተወሰነ ወደብ ላይ ባለው ተጓዳኝ አገልጋይ ነው ( `src/lib/services/embedWsProxy.ts` ይመልከቱ)።
+ለተከተተው ዳሽቦርድ WebSocket ማሻሻያዎች የሚስተናገዱት በአንድ የተወሰነ ወደብ ላይ ባለው ተጓዳኝ አገልጋይ ነው ( `src/lib/services/embedWsProxy.ts` ይመልከቱ)። እያንዳንዱ ማሻሻያ ዋሻው ከመከፈቱ በፊት የተፈቀደ ነው፣ እንደ HTTP ከተከተተው መንገድ ጋር ተመሳሳይ ህጎች አሉት፡ እኩያው ምንም የተገላቢጦሽ ተኪ ማስተላለፊያ ራስጌ፣ አሳሽ `Origin` የዳሽቦርድ መነሻ መሆን አለበት (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` የ loopback ነባሪዎችን ያራዝመዋል) እና ደዋዩ የዳሽቦርድ ክፍለ ጊዜ ወይም የአስተዳደር-scope API ቁልፍ ከዳሽቦርድ መግቢያ ካልሆነ በስተቀር ያስፈልገዋል።
 
-**ደህንነት፡** የተከተቱት ተኪ መንገዶች በ `LOCAL_ONLY_API_PREFIXES` ስር የተከፋፈሉ ሲሆኑ ከ loopback ብቻ ሊገኙ ይችላሉ። በ Cloudflare/Ngrok መሿለኪያ በኩል JWT ያገኘ አጥቂ ለተከተቱ አገልግሎቶች ፕሮክሲ ማድረግ አይችልም።
+**ደህንነት፡** የተከተቱት የተኪ መንገዶች በ `LOCAL_ONLY_API_PREFIXES` ስር የተከፋፈሉ ሲሆን ከ loopback ብቻ ሊገኙ ይችላሉ። በ Cloudflare/Ngrok መሿለኪያ በኩል JWT ያገኘ አጥቂ ለተከተቱ አገልግሎቶች ፕሮክሲ ማድረግ አይችልም።
 
 ---
 

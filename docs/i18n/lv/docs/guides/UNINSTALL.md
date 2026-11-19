@@ -40,19 +40,19 @@ Tādējādi tiek noņemta lietotne un **neatgriezeniski dzēsti** visi dati:
 
 ---
 
-## Manuāla noņemšana
+## Manuāla atinstalēšana
 
-### Globālā instalēšana ar NPM
+### NPM globālā instalēšana
 
 ```bash
-# Noņemt globālo pakotni
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Pēc izvēles) Noņemt datu mapi
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Globālā instalēšana ar pnpm
+### pnpm globālā instalēšana
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,24 +62,26 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Apturēt un noņemt konteineru
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Noņemt tilpumu (tiks dzēsti visi dati)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Pēc izvēles) Noņemt attēlu
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Rakstīt
 
 ```bash
-# Apturēt un noņemt konteinerus
+# Stop and remove containers
 docker compose down
 
-# Turklāt noņemt tilpumus (tiks dzēsti visi dati)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
@@ -87,26 +89,26 @@ docker compose down -v
 
 **Windows:**
 
-- Atvērt `Iestatījumi → Lietojumprogrammas → OmniRoute → Deinstalēt`
-- Vai palaist NSIS deinstalatoru no instalācijas mapes
+- Atveriet `Settings → Apps → OmniRoute → Uninstall`
+- Vai arī palaidiet NSIS atinstalētāju no instalēšanas direktorija
 
 **macOS:**
 
-- Novietojiet `OmniRoute.app` no `/Applications` mapes uz Kubelu
+- Velciet `OmniRoute.app` no `/Applications` uz Miskaste
 - Noņemt datus: `rm -rf ~/Library/Application Support/omniroute`
 
 **Linux:**
 
-- Noņemt AppImage failu
+- Noņemiet AppImage failu
 - Noņemt datus: `rm -rf ~/.omniroute`
 
-### Instalēšana no pirmavota (git clone)
+### Avota instalēšana (git klons)
 
 ```bash
-# Noņemt klonēto mapi
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Pēc izvēles) Noņemt datu mapi
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

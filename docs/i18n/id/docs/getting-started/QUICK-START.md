@@ -10,9 +10,9 @@
 
 ## Langkah 1: Instal OmniRoute
 
-Pilih metode yang Anda inginkan:
+Pilih metode pilihan Anda:
 
-### Opsi A: npm (Direkomendasikan)
+### Opsi A: npm (Disarankan)
 
 ```bash
 npm install -g omniroute
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### Opsi B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` adalah versi SemVer stabil **yang telah dipublikasikan** dengan nomor tertinggi. Tag ini **tidak** mengikuti `main` di git. Sematkan `diegosouzapw/omniroute:X.Y.Z` untuk GitOps. Lihat [Tag Image / Kanal Rilis](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` adalah yang tertinggi** diterbitkan** SemVer stabil. Memang benar** bukan** lacak git `main`. Sematkan `cheaperinference/omniroute:X.Y.Z` untuk GitOps. Lihat [Tag Gambar / Saluran Rilis](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Opsi C: Dari Kode Sumber
+### Opsi C: Dari Sumber
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

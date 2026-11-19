@@ -67,23 +67,23 @@
 
 <br/>
 
-## 📈 Lüüs kasvab pidevalt
+## 📈 Värav kasvab pidevalt
 
 <div align="center">
 
-|                                  |          v3.8.50           | **v3.8.51** |      `v3.8.55+`       |
-| -------------------------------- | :------------------------: | :---------: | :-------------------: |
-| 🌐 Teenusepakkujad               |            352             |   **358**   |          394          |
-| 🧠 Unikaalsed vestlusmudeli ID-d |            1320            |  **1374**   |         1491          |
-| 🖼️ Modaalsuste sild              | 🆕 nägemine + heli + video |      ✓      |           ✓           |
-| 📡 Radari tasuta kataloog        |        🆕 lubamisel        |      ✓      |           ✓           |
-| ⚖️ Kvooditeadlik ajastamine      |       🆕 Quota-Share       |      ✓      |           ✓           |
-| 📊 Kvoodi telemeetria            |        🆕 reaalajas        |      ✓      |           ✓           |
-| 🧰 Päiseta režiim                |             —              |      —      | 🆕 `serve --headless` |
-| 🛤️ LTS-i taristu                 |             —              |      —      | 🆕 väljalaskekanalid  |
-| 🔎 Mudelite avastamise API       |             —              |      —      | 🆕 `/v1/models/query` |
+|                               |          v3.8.50          | **v3.8.51** |      `v3.8.55+`       |
+| ----------------------------- | :-----------------------: | :---------: | :-------------------: |
+| 🌐 pakkujad                   |            352            |   **358**   |          394          |
+| 🧠 Unikaalne vestlusmudel IDs |           1320            |  **1374**   |         1491          |
+| 🖼️ Modality Bridge            | 🆕 vision + audio + video |      ✓      |           ✓           |
+| 📡 Radari tasuta kataloog     |         🆕 opt-in         |      ✓      |           ✓           |
+| ⚖️ Kvooditeadlik ajakava      |       🆕 kvoodiosa        |      ✓      |           ✓           |
+| 📊 kvoodi telemeetria         |          🆕 live          |      ✓      |           ✓           |
+| 🧰 Peata režiim               |             —             |      —      | 🆕 `serve --headless` |
+| 🛤️ LTS raudtee infra          |             —             |      —      |  🆕 vabastuskanalid   |
+| 🔎 Mudeli avastamine API      |             —             |      —      | 🆕 `/v1/models/query` |
 
-**→ [Teekaart](ROADMAP.md) — liigu mööda rööbast versioonini `v3.9.0 LTS`**
+**→ [Teekaart](ROADMAP.md) — sõites raudteel `v3.9.0 LTS`-sse**
 
 </div>
 
@@ -91,54 +91,49 @@
 
 ## 🧩 Saadaval
 
-[![npm version](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)
-![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)
-[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)
-![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
+[![npm versioon](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm) ](https://www.npmjs.com/package/omniroute) ![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm) [![Docker Hub](https://img.shields.io/docker/v/cheaperinference/omniroute?label=Docker%20Hub&logo=docker&color=2496ED) ](https://hub.docker.com/r/cheaperinference/omniroute) [![Litsents: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square) ](LICENSE) ![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED) ![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
 
 <table>
   <tr>
-    <td align="right"><b>🚀 Alustamine</b></td>
-    <td align="center"><a href="#-quick-start">🚀 Kiirstart</a></td>
-    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 Installimine</a></td>
-    <td align="center"><a href="#first-run">🆓 Ühenda teenusepakkuja</a></td>
+    <td align="right"><b>🚀 Start</b></td>
+    <td align="center"><a href="#-quick-start">🚀 Quick Start</a></td>
+    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 Install</a></td>
+    <td align="center"><a href="#first-run">🆓 Ühendage teenusepakkuja</a></td>
   </tr>
   <tr>
-    <td align="right"><b>💡 Õppimine</b></td>
-    <td align="center"><a href="#-the-promise">💥 Lubadus</a></td>
+    <td align="right"><b>💡 Õpi</b></td>
+    <td align="center"><a href="#-the-promise">💥 The Promise</a></td>
     <td align="center"><a href="#-why-omniroute">🤔 Miks OmniRoute</a></td>
-    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 Mille poolest see erineb</a></td>
+    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 Mis eristab</a></td>
   </tr>
   <tr>
-    <td align="right"><b>⚙️ Funktsioonid</b></td>
-    <td align="center"><a href="#-combos--the-flagship">🎯 Kombod</a></td>
-    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 Teenusepakkujad</a></td>
-    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI ja MCP</a></td>
+    <td align="right"><b>⚙️ omadused</b></td>
+    <td align="center"><a href="#-combos--the-flagship">🎯 kombinatsioonid</a></td>
+    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 pakkujad</a></td>
+    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI &amp; MCP</a></td>
   </tr>
   <tr>
     <td align="right"></td>
-    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ Tihendamine</a></td>
-    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ Kus see töötab</a></td>
+    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ Kompressioon</a></td>
+    <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ kus see jookseb</a></td>
     <td align="center"><a href="#-private--local-first">🔒 Privaatne</a></td>
   </tr>
   <tr>
-    <td align="right"><b>👀 Vaata</b></td>
-    <td align="center"><a href="#-omniroute-in-action">🎬 Tegelikkuses</a></td>
-    <td align="center"><a href="#-whats-new">✨ Mis on uut</a></td>
-    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 Ühilduvad CLI-d</a></td>
+    <td align="right"><b>👀 Vaata seda</b></td>
+    <td align="center"><a href="#-omniroute-in-action">🎬 tegevuses</a></td>
+    <td align="center"><a href="#-whats-new">✨ Mida uut</a></td>
+    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 Ühildub CLIs</a></td>
   </tr>
   <tr>
-    <td align="right"><b>💚 Toetus</b></td>
-    <td align="center"><a href="#-support-omniroute">💚 Toeta / anneta</a></td>
-    <td align="center"><a href="#-community--help">💬 Kogukond</a></td>
-    <td align="center"><a href="#-sponsors">💖 Toetajad</a></td>
+    <td align="right"><b>💚 tugi</b></td>
+    <td align="center"><a href="#-support-omniroute">💚 Toetage / annetage</a></td>
+    <td align="center"><a href="#-community--help">💬 kogukond</a></td>
+    <td align="center"><a href="#-sponsors">💖 sponsorid</a></td>
   </tr>
   <tr>
-    <td align="right"><b>📦 Projekt</b></td>
-    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ Tehnoloogiapinu</a></td>
-    <td align="center"><a href="#-documentation">📖 Dokumentatsioon</a></td>
+    <td align="right"><b>📦 projekt</b></td>
+    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ Tech Stack</a></td>
+    <td align="center"><a href="#-documentation">📖 Docs</a></td>
     <td align="center"><a href="#-1000-contributors">👥 Kaastöötajad</a></td>
   </tr>
 </table>
@@ -148,73 +143,73 @@
 <div align="center">
   <b>🌐 67 keeles</b>
   <br/><br/>
-  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="Inglise keel (en)" title="Inglise keel (en)"></a>
-  <a href="docs/i18n/pt-BR/README.md"><img src="docs/assets/flags/br.svg" width="30" alt="Portugali keel — Brasiilia (pt-BR)" title="Portugali keel — Brasiilia (pt-BR)"></a>
-  <a href="docs/i18n/pt/README.md"><img src="docs/assets/flags/pt.svg" width="30" alt="Portugali keel (pt)" title="Portugali keel (pt)"></a>
-  <a href="docs/i18n/es/README.md"><img src="docs/assets/flags/es.svg" width="30" alt="Hispaania keel (es)" title="Hispaania keel (es)"></a>
-  <a href="docs/i18n/fr/README.md"><img src="docs/assets/flags/fr.svg" width="30" alt="Prantsuse keel (fr)" title="Prantsuse keel (fr)"></a>
-  <a href="docs/i18n/it/README.md"><img src="docs/assets/flags/it.svg" width="30" alt="Itaalia keel (it)" title="Itaalia keel (it)"></a>
-  <a href="docs/i18n/de/README.md"><img src="docs/assets/flags/de.svg" width="30" alt="Saksa keel (de)" title="Saksa keel (de)"></a>
-  <a href="docs/i18n/nl/README.md"><img src="docs/assets/flags/nl.svg" width="30" alt="Hollandi keel (nl)" title="Hollandi keel (nl)"></a>
-  <a href="docs/i18n/ru/README.md"><img src="docs/assets/flags/ru.svg" width="30" alt="Vene keel (ru)" title="Vene keel (ru)"></a>
-  <a href="docs/i18n/uk-UA/README.md"><img src="docs/assets/flags/ua.svg" width="30" alt="Ukraina keel (uk-UA)" title="Ukraina keel (uk-UA)"></a>
-  <a href="docs/i18n/pl/README.md"><img src="docs/assets/flags/pl.svg" width="30" alt="Poola keel (pl)" title="Poola keel (pl)"></a>
-  <a href="docs/i18n/cs/README.md"><img src="docs/assets/flags/cz.svg" width="30" alt="Tšehhi keel (cs)" title="Tšehhi keel (cs)"></a>
-  <a href="docs/i18n/sk/README.md"><img src="docs/assets/flags/sk.svg" width="30" alt="Slovaki keel (sk)" title="Slovaki keel (sk)"></a>
-  <a href="docs/i18n/ro/README.md"><img src="docs/assets/flags/ro.svg" width="30" alt="Rumeenia keel (ro)" title="Rumeenia keel (ro)"></a>
-  <a href="docs/i18n/hu/README.md"><img src="docs/assets/flags/hu.svg" width="30" alt="Ungari keel (hu)" title="Ungari keel (hu)"></a>
-  <a href="docs/i18n/bg/README.md"><img src="docs/assets/flags/bg.svg" width="30" alt="Bulgaaria keel (bg)" title="Bulgaaria keel (bg)"></a>
-  <a href="docs/i18n/da/README.md"><img src="docs/assets/flags/dk.svg" width="30" alt="Taani keel (da)" title="Taani keel (da)"></a>
-  <a href="docs/i18n/fi/README.md"><img src="docs/assets/flags/fi.svg" width="30" alt="Soome keel (fi)" title="Soome keel (fi)"></a>
-  <a href="docs/i18n/no/README.md"><img src="docs/assets/flags/no.svg" width="30" alt="Norra keel (no)" title="Norra keel (no)"></a>
-  <a href="docs/i18n/sv/README.md"><img src="docs/assets/flags/se.svg" width="30" alt="Rootsi keel (sv)" title="Rootsi keel (sv)"></a>
-  <a href="docs/i18n/zh-CN/README.md"><img src="docs/assets/flags/cn.svg" width="30" alt="Hiina keel — lihtsustatud (zh-CN)" title="Hiina keel — lihtsustatud (zh-CN)"></a>
-  <a href="docs/i18n/zh-TW/README.md"><img src="docs/assets/flags/tw.svg" width="30" alt="Hiina keel — traditsiooniline (zh-TW)" title="Hiina keel — traditsiooniline (zh-TW)"></a>
-  <a href="docs/i18n/ja/README.md"><img src="docs/assets/flags/jp.svg" width="30" alt="Jaapani keel (ja)" title="Jaapani keel (ja)"></a>
-  <a href="docs/i18n/ko/README.md"><img src="docs/assets/flags/kr.svg" width="30" alt="Korea keel (ko)" title="Korea keel (ko)"></a>
-  <a href="docs/i18n/th/README.md"><img src="docs/assets/flags/th.svg" width="30" alt="Tai keel (th)" title="Tai keel (th)"></a>
-  <a href="docs/i18n/vi/README.md"><img src="docs/assets/flags/vn.svg" width="30" alt="Vietnami keel (vi)" title="Vietnami keel (vi)"></a>
-  <a href="docs/i18n/id/README.md"><img src="docs/assets/flags/id.svg" width="30" alt="Indoneesia keel (id)" title="Indoneesia keel (id)"></a>
-  <a href="docs/i18n/ms/README.md"><img src="docs/assets/flags/my.svg" width="30" alt="Malai keel (ms)" title="Malai keel (ms)"></a>
-  <a href="docs/i18n/phi/README.md"><img src="docs/assets/flags/ph.svg" width="30" alt="Filipiini keel (phi)" title="Filipiini keel (phi)"></a>
-  <a href="docs/i18n/hi/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Hindi keel (hi)" title="Hindi keel (hi)"></a>
-  <a href="docs/i18n/gu/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Gudžarati keel (gu)" title="Gudžarati keel (gu)"></a>
-  <a href="docs/i18n/mr/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Marathi keel (mr)" title="Marathi keel (mr)"></a>
-  <a href="docs/i18n/ta/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Tamili keel (ta)" title="Tamili keel (ta)"></a>
-  <a href="docs/i18n/te/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Telugu keel (te)" title="Telugu keel (te)"></a>
-  <a href="docs/i18n/bn/README.md"><img src="docs/assets/flags/bd.svg" width="30" alt="Bengali keel (bn)" title="Bengali keel (bn)"></a>
-  <a href="docs/i18n/ur/README.md"><img src="docs/assets/flags/pk.svg" width="30" alt="Urdu keel (ur)" title="Urdu keel (ur)"></a>
-  <a href="docs/i18n/fa/README.md"><img src="docs/assets/flags/ir.svg" width="30" alt="Pärsia keel (fa)" title="Pärsia keel (fa)"></a>
-  <a href="docs/i18n/ar/README.md"><img src="docs/assets/flags/sa.svg" width="30" alt="Araabia keel (ar)" title="Araabia keel (ar)"></a>
-  <a href="docs/i18n/he/README.md"><img src="docs/assets/flags/il.svg" width="30" alt="Heebrea keel (he)" title="Heebrea keel (he)"></a>
-  <a href="docs/i18n/tr/README.md"><img src="docs/assets/flags/tr.svg" width="30" alt="Türgi keel (tr)" title="Türgi keel (tr)"></a>
-  <a href="docs/i18n/az/README.md"><img src="docs/assets/flags/az.svg" width="30" alt="Aserbaidžaani keel (az)" title="Aserbaidžaani keel (az)"></a>
-  <a href="docs/i18n/sw/README.md"><img src="docs/assets/flags/tz.svg" width="30" alt="Suahiili keel (sw)" title="Suahiili keel (sw)"></a>
-  <a href="docs/i18n/el/README.md"><img src="docs/assets/flags/gr.svg" width="30" alt="Kreeka keel (el)" title="Kreeka keel (el)"></a>
-  <a href="docs/i18n/hr/README.md"><img src="docs/assets/flags/hr.svg" width="30" alt="Horvaadi keel (hr)" title="Horvaadi keel (hr)"></a>
-  <a href="docs/i18n/sr/README.md"><img src="docs/assets/flags/rs.svg" width="30" alt="Serbia keel (sr)" title="Serbia keel (sr)"></a>
-  <a href="docs/i18n/lt/README.md"><img src="docs/assets/flags/lt.svg" width="30" alt="Leedu keel (lt)" title="Leedu keel (lt)"></a>
-  <a href="docs/i18n/et/README.md"><img src="docs/assets/flags/ee.svg" width="30" alt="Eesti keel (et)" title="Eesti keel (et)"></a>
-  <a href="docs/i18n/lv/README.md"><img src="docs/assets/flags/lv.svg" width="30" alt="Läti keel (lv)" title="Läti keel (lv)"></a>
-  <a href="docs/i18n/sl/README.md"><img src="docs/assets/flags/si.svg" width="30" alt="Sloveeni keel (sl)" title="Sloveeni keel (sl)"></a>
-  <a href="docs/i18n/mt/README.md"><img src="docs/assets/flags/mt.svg" width="30" alt="Malta keel (mt)" title="Malta keel (mt)"></a>
-  <a href="docs/i18n/ga/README.md"><img src="docs/assets/flags/ie.svg" width="30" alt="Iiri keel (ga)" title="Iiri keel (ga)"></a>
-  <a href="docs/i18n/kn/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Kannada keel (kn)" title="Kannada keel (kn)"></a>
-  <a href="docs/i18n/ml/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Malajalami keel (ml)" title="Malajalami keel (ml)"></a>
-  <a href="docs/i18n/or/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Oria keel (or)" title="Oria keel (or)"></a>
-  <a href="docs/i18n/pa/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="Pandžabi keel (pa)" title="Pandžabi keel (pa)"></a>
-  <a href="docs/i18n/ne/README.md"><img src="docs/assets/flags/np.svg" width="30" alt="Nepali keel (ne)" title="Nepali keel (ne)"></a>
-  <a href="docs/i18n/si/README.md"><img src="docs/assets/flags/lk.svg" width="30" alt="Singali keel (si)" title="Singali keel (si)"></a>
-  <a href="docs/i18n/my/README.md"><img src="docs/assets/flags/mm.svg" width="30" alt="Birma keel (my)" title="Birma keel (my)"></a>
-  <a href="docs/i18n/km/README.md"><img src="docs/assets/flags/kh.svg" width="30" alt="Khmeeri keel (km)" title="Khmeeri keel (km)"></a>
-  <a href="docs/i18n/ha/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Hausa keel (ha)" title="Hausa keel (ha)"></a>
-  <a href="docs/i18n/yo/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Joruba keel (yo)" title="Joruba keel (yo)"></a>
-  <a href="docs/i18n/ig/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Igbo keel (ig)" title="Igbo keel (ig)"></a>
-  <a href="docs/i18n/am/README.md"><img src="docs/assets/flags/et.svg" width="30" alt="Amhaari keel (am)" title="Amhaari keel (am)"></a>
-  <a href="docs/i18n/uz/README.md"><img src="docs/assets/flags/uz.svg" width="30" alt="Usbeki keel (uz)" title="Usbeki keel (uz)"></a>
-  <a href="docs/i18n/ka/README.md"><img src="docs/assets/flags/ge.svg" width="30" alt="Gruusia keel (ka)" title="Gruusia keel (ka)"></a>
-  <a href="docs/i18n/hy/README.md"><img src="docs/assets/flags/am.svg" width="30" alt="Armeenia keel (hy)" title="Armeenia keel (hy)"></a>
-  <a href="docs/i18n/bs/README.md"><img src="docs/assets/flags/ba.svg" width="30" alt="Bosnia keel (bs)" title="Bosnia keel (bs)"></a>
+  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="English (en)" title="English (en)"></a>
+  <a href="docs/i18n/pt-BR/README.md"><img src="docs/assets/flags/br.svg" width="30" alt="Português — Brasil (pt-BR)" title="Português — Brasil (pt-BR)"></a>
+  <a href="docs/i18n/pt/README.md"><img src="docs/assets/flags/pt.svg" width="30" alt="Português (pt)" title="Português (pt)"></a>
+  <a href="docs/i18n/es/README.md"><img src="docs/assets/flags/es.svg" width="30" alt="Español (es)" title="Español (es)"></a>
+  <a href="docs/i18n/fr/README.md"><img src="docs/assets/flags/fr.svg" width="30" alt="Français (fr)" title="Français (fr)"></a>
+  <a href="docs/i18n/it/README.md"><img src="docs/assets/flags/it.svg" width="30" alt="Italiano (it)" title="Italiano (it)"></a>
+  <a href="docs/i18n/de/README.md"><img src="docs/assets/flags/de.svg" width="30" alt="Deutsch (de)" title="Deutsch (de)"></a>
+  <a href="docs/i18n/nl/README.md"><img src="docs/assets/flags/nl.svg" width="30" alt="Nederlands (nl)" title="Nederlands (nl)"></a>
+  <a href="docs/i18n/ru/README.md"><img src="docs/assets/flags/ru.svg" width="30" alt="Русский (ru)" title="Русский (ru)"></a>
+  <a href="docs/i18n/uk-UA/README.md"><img src="docs/assets/flags/ua.svg" width="30" alt="Українська (uk-UA)" title="Українська (uk-UA)"></a>
+  <a href="docs/i18n/pl/README.md"><img src="docs/assets/flags/pl.svg" width="30" alt="Polski (pl)" title="Polski (pl)"></a>
+  <a href="docs/i18n/cs/README.md"><img src="docs/assets/flags/cz.svg" width="30" alt="Čeština (cs)" title="Čeština (cs)"></a>
+  <a href="docs/i18n/sk/README.md"><img src="docs/assets/flags/sk.svg" width="30" alt="Slovenčina (sk)" title="Slovenčina (sk)"></a>
+  <a href="docs/i18n/ro/README.md"><img src="docs/assets/flags/ro.svg" width="30" alt="Română (ro)" title="Română (ro)"></a>
+  <a href="docs/i18n/hu/README.md"><img src="docs/assets/flags/hu.svg" width="30" alt="Magyar (hu)" title="Magyar (hu)"></a>
+  <a href="docs/i18n/bg/README.md"><img src="docs/assets/flags/bg.svg" width="30" alt="Български (bg)" title="Български (bg)"></a>
+  <a href="docs/i18n/da/README.md"><img src="docs/assets/flags/dk.svg" width="30" alt="Dansk (da)" title="Dansk (da)"></a>
+  <a href="docs/i18n/fi/README.md"><img src="docs/assets/flags/fi.svg" width="30" alt="Suomi (fi)" title="Suomi (fi)"></a>
+  <a href="docs/i18n/no/README.md"><img src="docs/assets/flags/no.svg" width="30" alt="Norsk (no)" title="Norsk (no)"></a>
+  <a href="docs/i18n/sv/README.md"><img src="docs/assets/flags/se.svg" width="30" alt="Svenska (sv)" title="Svenska (sv)"></a>
+  <a href="docs/i18n/zh-CN/README.md"><img src="docs/assets/flags/cn.svg" width="30" alt="中文 — 简体 (zh-CN)" title="中文 — 简体 (zh-CN)"></a>
+  <a href="docs/i18n/zh-TW/README.md"><img src="docs/assets/flags/tw.svg" width="30" alt="中文 — 繁體 (zh-TW)" title="中文 — 繁體 (zh-TW)"></a>
+  <a href="docs/i18n/ja/README.md"><img src="docs/assets/flags/jp.svg" width="30" alt="日本語 (ja)" title="日本語 (ja)"></a>
+  <a href="docs/i18n/ko/README.md"><img src="docs/assets/flags/kr.svg" width="30" alt="한국어 (ko)" title="한국어 (ko)"></a>
+  <a href="docs/i18n/th/README.md"><img src="docs/assets/flags/th.svg" width="30" alt="ไทย (th)" title="ไทย (th)"></a>
+  <a href="docs/i18n/vi/README.md"><img src="docs/assets/flags/vn.svg" width="30" alt="Tiếng Việt (vi)" title="Tiếng Việt (vi)"></a>
+  <a href="docs/i18n/id/README.md"><img src="docs/assets/flags/id.svg" width="30" alt="Bahasa Indonesia (id)" title="Bahasa Indonesia (id)"></a>
+  <a href="docs/i18n/ms/README.md"><img src="docs/assets/flags/my.svg" width="30" alt="Bahasa Melayu (ms)" title="Bahasa Melayu (ms)"></a>
+  <a href="docs/i18n/phi/README.md"><img src="docs/assets/flags/ph.svg" width="30" alt="Filipino (phi)" title="Filipino (phi)"></a>
+  <a href="docs/i18n/hi/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="हिन्दी (hi)" title="हिन्दी (hi)"></a>
+  <a href="docs/i18n/gu/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ગુજરાતી (gu)" title="ગુજરાતી (gu)"></a>
+  <a href="docs/i18n/mr/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="मराठी (mr)" title="मराठी (mr)"></a>
+  <a href="docs/i18n/ta/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="தமிழ் (ta)" title="தமிழ் (ta)"></a>
+  <a href="docs/i18n/te/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="తెలుగు (te)" title="తెలుగు (te)"></a>
+  <a href="docs/i18n/bn/README.md"><img src="docs/assets/flags/bd.svg" width="30" alt="বাংলা (bn)" title="বাংলা (bn)"></a>
+  <a href="docs/i18n/ur/README.md"><img src="docs/assets/flags/pk.svg" width="30" alt="اردو (ur)" title="اردو (ur)"></a>
+  <a href="docs/i18n/fa/README.md"><img src="docs/assets/flags/ir.svg" width="30" alt="فارسی (fa)" title="فارسی (fa)"></a>
+  <a href="docs/i18n/ar/README.md"><img src="docs/assets/flags/sa.svg" width="30" alt="العربية (ar)" title="العربية (ar)"></a>
+  <a href="docs/i18n/he/README.md"><img src="docs/assets/flags/il.svg" width="30" alt="עברית (he)" title="עברית (he)"></a>
+  <a href="docs/i18n/tr/README.md"><img src="docs/assets/flags/tr.svg" width="30" alt="Türkçe (tr)" title="Türkçe (tr)"></a>
+  <a href="docs/i18n/az/README.md"><img src="docs/assets/flags/az.svg" width="30" alt="Azərbaycan (az)" title="Azərbaycan (az)"></a>
+  <a href="docs/i18n/sw/README.md"><img src="docs/assets/flags/tz.svg" width="30" alt="Kiswahili (sw)" title="Kiswahili (sw)"></a>
+  <a href="docs/i18n/el/README.md"><img src="docs/assets/flags/gr.svg" width="30" alt="Ελληνικά (el)" title="Ελληνικά (el)"></a>
+  <a href="docs/i18n/hr/README.md"><img src="docs/assets/flags/hr.svg" width="30" alt="Hrvatski (hr)" title="Hrvatski (hr)"></a>
+  <a href="docs/i18n/sr/README.md"><img src="docs/assets/flags/rs.svg" width="30" alt="Српски (sr)" title="Српски (sr)"></a>
+  <a href="docs/i18n/lt/README.md"><img src="docs/assets/flags/lt.svg" width="30" alt="Lietuvių (lt)" title="Lietuvių (lt)"></a>
+  <a href="docs/i18n/et/README.md"><img src="docs/assets/flags/ee.svg" width="30" alt="Eesti (et)" title="Eesti (et)"></a>
+  <a href="docs/i18n/lv/README.md"><img src="docs/assets/flags/lv.svg" width="30" alt="Latviešu (lv)" title="Latviešu (lv)"></a>
+  <a href="docs/i18n/sl/README.md"><img src="docs/assets/flags/si.svg" width="30" alt="Slovenščina (sl)" title="Slovenščina (sl)"></a>
+  <a href="docs/i18n/mt/README.md"><img src="docs/assets/flags/mt.svg" width="30" alt="Malti (mt)" title="Malti (mt)"></a>
+  <a href="docs/i18n/ga/README.md"><img src="docs/assets/flags/ie.svg" width="30" alt="Gaeilge (ga)" title="Gaeilge (ga)"></a>
+  <a href="docs/i18n/kn/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ಕನ್ನಡ (kn)" title="ಕನ್ನಡ (kn)"></a>
+  <a href="docs/i18n/ml/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="മലയാളം (ml)" title="മലയാളം (ml)"></a>
+  <a href="docs/i18n/or/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ଓଡ଼ିଆ (or)" title="ଓଡ଼ିଆ (or)"></a>
+  <a href="docs/i18n/pa/README.md"><img src="docs/assets/flags/in.svg" width="30" alt="ਪੰਜਾਬੀ (pa)" title="ਪੰਜਾਬੀ (pa)"></a>
+  <a href="docs/i18n/ne/README.md"><img src="docs/assets/flags/np.svg" width="30" alt="नेपाली (ne)" title="नेपाली (ne)"></a>
+  <a href="docs/i18n/si/README.md"><img src="docs/assets/flags/lk.svg" width="30" alt="සිංහල (si)" title="සිංහල (si)"></a>
+  <a href="docs/i18n/my/README.md"><img src="docs/assets/flags/mm.svg" width="30" alt="မြန်မာ (my)" title="မြန်မာ (my)"></a>
+  <a href="docs/i18n/km/README.md"><img src="docs/assets/flags/kh.svg" width="30" alt="ខ្មែរ (km)" title="ខ្មែរ (km)"></a>
+  <a href="docs/i18n/ha/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Hausa (ha)" title="Hausa (ha)"></a>
+  <a href="docs/i18n/yo/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Yorùbá (yo)" title="Yorùbá (yo)"></a>
+  <a href="docs/i18n/ig/README.md"><img src="docs/assets/flags/ng.svg" width="30" alt="Igbo (ig)" title="Igbo (ig)"></a>
+  <a href="docs/i18n/am/README.md"><img src="docs/assets/flags/et.svg" width="30" alt="አማርኛ (am)" title="አማርኛ (am)"></a>
+  <a href="docs/i18n/uz/README.md"><img src="docs/assets/flags/uz.svg" width="30" alt="Oʻzbekcha (uz)" title="Oʻzbekcha (uz)"></a>
+  <a href="docs/i18n/ka/README.md"><img src="docs/assets/flags/ge.svg" width="30" alt="ქართული (ka)" title="ქართული (ka)"></a>
+  <a href="docs/i18n/hy/README.md"><img src="docs/assets/flags/am.svg" width="30" alt="Հայերեն (hy)" title="Հայերեն (hy)"></a>
+  <a href="docs/i18n/bs/README.md"><img src="docs/assets/flags/ba.svg" width="30" alt="Bosanski (bs)" title="Bosanski (bs)"></a>
 </div>
 
 <br/>
@@ -595,39 +590,39 @@ praeguse kataloogi kohta leiate teavet aadressilt **[radar.omniroute.online/plan
 
 <div align="center">
 
-## ✨ Mis on uut
+## ✨ Mida uut
 
 </div>
 
-> Hiljutised põhipunktid versioonidest **v3.8.20 → v3.8.55**. Täielik ajalugu failis [`CHANGELOG.md`](CHANGELOG.md).
+> Hiljutised esiletõstmised saidilt** v3.8.20 → v3.8.55** . Täielik ajalugu [`CHANGELOG.md`](CHANGELOG.md).
 
-- **⚖️ `quota-weighted` marsruutimine** — 20. kombineeritud strateegia jätab ammendunud kontod vahele ja valib ülejäänute seast vastavalt allesjäänud kvoodi ÷ aktiivsete päringute koormuse suhtele, hoides olemasolevad vestlused samale kontole kinnitatuna. → [Automaatne kombineerimine](docs/routing/AUTO-COMBO.md)
-- **🧰 Peata režiim** — `omniroute serve --headless` (või `OMNIROUTE_HEADLESS=1`) käivitab ainult `/v1/*` puhverserveri mootori ning lülitab armatuurlaua ja ainult armatuurlauaga seotud alamsüsteemid välja. → [Peata režiim](docs/guides/HEADLESS.md)
-- **🔎 Mudelite tuvastamine** — `/v1/models` filtreerib võimekuse, konteksti, tüübi ja teksti järgi ning `POST /v1/models/query` tagastab lühikese deterministliku valiku sama võtmekohase nähtavusega. → [API viide](docs/reference/API_REFERENCE.md)
-- **🔑 Võtmepõhine marsruutimise juhtimine** — kinnitage API-võti ühe mudeli või kombinatsiooni külge parameetriga `forcedModel` ning lisage võtmele mudeleid ja kombinatsioone või eemaldage neid aatomiliselt (`/api/keys/{id}/access`). → [API viide](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
-- **🛡️ Täpsemad isikuandmete kaitse juhtelemendid** — tüübipõhine valik, kuni 20 valideeritud kohandatud maskeerimismustrit ja tüübipõhised tuvastusloendurid; maskeerimine ise jääb valikuliseks. → [Kaitsemeetmed](docs/security/GUARDRAILS.md)
-- **🌍 67 keelt** — armatuurlaud, dokumentatsiooni peeglid ja CLI, kus `npm run i18n:add-locale` lisab ühe käsuga keele kõikjale. → [i18n-i juhend](docs/guides/I18N.md)
-- **🎛️ OmniConductor** — sissetulev A2A-delegeerimine teie agentide kogumile, Conductori oskused Agent Cardil ning armatuurlaua paneel Faro push-to-talk-häälvestlusega. → [A2A-server](docs/frameworks/A2A-SERVER.md)
-- **🛂 Kohanduv lubamine ja ülekoormuse kaitse** — mahukad vestluspäringud lähevad 503-vea andmise asemel järjekorda ning ühenduse kohta kasutatakse aatomilisi RPM-i libisevaid rendilepinguid. → [Vastupidavuse juhend](docs/architecture/RESILIENCE_GUIDE.md)
-- **🗂️ Kanooniline `/v1/models` järjestus** — iga pakkuja kohta on üks külgnev pakkuja järgi rühmitatud plokk (kombinatsioonid eespool), mis on kõigis kataloogiallikates stabiilne. → [API viide](docs/reference/API_REFERENCE.md)
-- **🗜️ Tihendamise tugevdamine** — vaikimisi lubatud paisumise kaitse, Cavemani pakid DE / FR / JA + hiina keele (wényán) jaoks, RTK-filtrid Gradle'i ja .NET-i jaoks. → [Tihendamine](docs/compression/COMPRESSION_ENGINES.md)
-- **💸 Aus kindlasummaline kulu** — tellimus- ja kodeerimisplaanide pakkujate kuluanalüüs näitab **$0**; eelarve, kvoot ja marsruutimine jätkavad hinnangute arvutamist. → [API viide](docs/reference/API_REFERENCE.md)
-- **⚖️ Quota-Share'i marsruutimine** — jagab jagatud konto kvoodi kogumis olevate võtmete vahel õiglaselt ja annab jõude seisvad osad teistele kasutusse. → [Vastupidavuse juhend](docs/architecture/RESILIENCE_GUIDE.md)
-- **🤖 CLI-de ja agentide seadistamine ühe käsuga** — 15 registreeritud `setup-*`-käsku; `omniroute run` käivitab 7 CLI-d (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI); `omniroute configure` toetab 11 sihtmärki koos interaktiivse pakkuja- ja mudelivalijaga ning kontekstipõhiste lemmikutega. → [CLI-integratsioonid](docs/guides/CLI-INTEGRATIONS.md)
-- **🛰️ Kaug režiim** — juhtige kauget OmniRoute'i piiratud ulatusega märkidega (`connect` / `contexts` / `tokens`) ning kasutage VPS-i installatsioonide jaoks `antigravity` OAuth-i abivahendit. → [Kaug režiim](docs/guides/REMOTE-MODE.md)
-- **🧭 Nutikam automaatne marsruutimine** — `auto/<category>:<tier>`-kombinatsioonid, **Fusion** (mudelipaneel + hindaja), ülesandeteadlik marsruutimine ning päringupõhised mudeli-, režiimi- ja USD-eelarve ülekirjutused. → [Automaatne kombineerimine](docs/routing/AUTO-COMBO.md)
-- **🗜️ Laiendatav tihendamine** — 12 kombineeritavat mootorit ja Compression Studios: LLMLingua-2, kahetasemeline Ultra, omniglyph, sammupõhine täpsusvärav, GCF v3.2 ja lohistamisega ümberjärjestamise redaktor. → [Tihendamine](docs/compression/COMPRESSION_ENGINES.md)
-- **🕵️ Läbipaistev MITM-i dekrüpteerimine (TPROXY)** — hõive-CLI-d, mis eiravad puhverserveri keskkonnamuutujaid, koos SNI-põhise CA ja usalduspoe paigaldajaga. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
-- **💸 Kulu telemeetria kõikjal** — `X-OmniRoute-*`-kulu- ja kasutuspäised igal lõpp-punktil, vahemälu HIT-i säästupäis ja võtmekohased USD-kulukvoodid. → [API viide](docs/reference/API_REFERENCE.md)
-- **🧠 Teie juhitav mälu** — vaikimisi välja lülitatud, valikuline int8-vektori kvantimine ja tüübipõhine aegumine, päringupõhine `x-omniroute-no-memory`. → [Mälu](docs/frameworks/MEMORY.md)
-- **🛡️ Turvalisus** — iga LLM-marsruudi prompt-süstimise kaitse (punase meeskonna testikomplekt), valikuline mandaatide maskeerimise kaitsemeede (eemaldab lekkinud API-võtmed ja saladused mõlemas suunas), tasuta DuckDuckGo viimase abinõuna kasutatav veebiotsing ning valikuline OIDC-sisselogimise värav armatuurlauale (parooliga sisselogimine jääb alati kättesaadavaks). → [Kaitsemeetmed](docs/security/GUARDRAILS.md)
-- **🖼️ Uued lõpp-punktid** — `/v1/ocr` (Mistral OCR) ja `/v1/audio/translations` (Whisperi-laadne) täiendavad meediafunktsioone. → [API viide](docs/reference/API_REFERENCE.md)
-- **🎨 Piltide, video ja heli genereerimine** — üks API meedia jaoks: xAI Grok Imagine'i ja Novita AI video, ComfyUI, Magnific, Adobe Firefly, Segmind ning kõnepakkujad, näiteks ElevenLabs. → [API viide](docs/reference/API_REFERENCE.md)
-- **🌍 Juurutamine ja haldus** — pöördproksi `basePath`, brauseri keele automaattuvastus, võtmekohane seadmete jälgimine, rootita MITM-i usaldus ja zh-TW lokaliseerimine. → [Keskkond](docs/reference/ENVIRONMENT.md)
-- **🤝 Rohkem pakkujaid ja agente** — pilveagendid (Codex Cloud, Cursor, Devin, Jules), Grok Build (xAI) brauseri ja OAuthi sisselogimisega, Ollama esmaklassiline kaart, Claude Opus 5 ja Sonnet 5, Kimi ametlik partnerlus (Code/Web/Moonshot), Zed, Requesty, SenseNova, Yuanbao, Agnes AI… ning värskendatud **394 pakkuja kataloog**. → [Pakkujad](docs/reference/PROVIDER_REFERENCE.md)
-- **📡 Marsruutimise läbipaistvus** — iga vastus sisaldab `X-OmniRoute-Decision`-päist, mis nimetab seda teenindanud strateegia/pakkuja/latentsuse; uus `cache-optimized`-kombineeritud strateegia ja Auto-Combo `cacheAffinity`-tegur suunavad korduvad päringud tagasi ühendusse, millel on vahemällu salvestatud prefiks; ainult lugemiseks mõeldud `/v1/auto-combo/{channel}/candidates`-lõpp-punkt avaldab `auto/*`-kanali aktiivse kandidaatide kogumi. → [Automaatne kombineerimine](docs/routing/AUTO-COMBO.md)
-- **⚡ Kohalik jõudlus ja taristu** — ühe klõpsuga kohalik Redis, Cloudflare Workersi / Deno Deployi relee juurutajad, Bifrost ja Mux jälgitavate manustatud teenustena. → [Manustatud teenused](docs/frameworks/EMBEDDED-SERVICES.md)
-- **🧩 Samuti komplektis** — pluginate raamistik ja turg, Omni/Agenti/GitHubi oskuste raamistikud, Obsidiani varamu integratsioon (22 MCP-tööriista), OpenAI-ga ühilduvad Batchi ja Filesi API-d, semantiline vastuste vahemälu, edetabelitega mängustamine, ACP-agendi avastamine (15 sisseehitatud agenti), ajastatud logide eksport BigQuerysse, `auto/chaos` paralleelne mitme mudeliga fan-out, Telegrami roboti sild, rakendusesisene versioonihaldur ja LMArena-ELO tasuta pakkujate pingeread. → [Dokumentatsioon](docs/README.md)
+- **⚖️ `quota-weighted` marsruutimine** — 20. kombineeritud strateegia jätab ammendatud kontod vahele, seejärel loosib ülejäänud osa proportsionaalselt järelejäänud kvoodiga ÷ lennu ajal, hoides olemasolevad vestlused kinni. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **🧰 Peata režiim** — `omniroute serve --headless` (või `OMNIROUTE_HEADLESS=1`) käitab ainult `/v1/*` puhverserveri mootorit, kui armatuurlaud ja ainult armatuurlauale mõeldud alamsüsteemid on välja lülitatud. → [peata režiim](docs/guides/HEADLESS.md)
+- **🔎 mudeli avastus** — `/v1/models` filtreerib võimekuse, konteksti, liigi ja teksti järgi ning `POST /v1/models/query` tagastab lühikese deterministliku lühiloendi, millel on samasugune nähtavus võtme kohta. → [API Viide](docs/reference/API_REFERENCE.md)
+- **🔑 klahvipõhine marsruutimise juhtimine** — kinnitage API klahv ühele mudelile või kombinatsioonile `forcedModel` ga ning lisage või eemaldage võtme mudelid ja kombinatsioonid aatomipõhiselt (`/api/keys/{id}/access`). → [API Viide](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
+- **🛡️ Peenem PII juhtnupud** — tüübi valik, kuni 20 kinnitatud kohandatud maskeerimismustrit ja tüübi tuvastusloendurit; maskeerimine jääb vabatahtlikuks. → [kaitsepiirded](docs/security/GUARDRAILS.md)
+- **🌍 67 keelt** — armatuurlaud, dokumentide peeglid ja CLI, `npm run i18n:add-locale` lisab keele kõikjale ühe käsuga. → [i18n juhend](docs/guides/I18N.md)
+- **🎛️ OmniConductor** — sissetulev A2A delegeerimine teie agendiparki, dirigendioskused agendikaardil ja armatuurlaua paneel Faro push-to-talk häälvestlusega. → [A2A server](docs/frameworks/A2A-SERVER.md)
+- **🛂 Adaptiivne sissepääs ja ülekoormuskaitse** — raskekaalu vestlustaotlused nõuavad 503ingi asemel järjekorda, kusjuures RPM -liisingud on iga ühenduse kohta saadaval. → [vastupidavuse juhend](docs/architecture/RESILIENCE_GUIDE.md)
+- **🗂️ Kanooniline `/v1/models` tellimine** — üks külgnev pakkujate rühmitatud plokk pakkuja kohta (kõigepealt kinnitatud kombinatsioonid), stabiilne kõigis kataloogiallikates. → [API Viide](docs/reference/API_REFERENCE.md)
+- **🗜️ Survekarastus** — vaikimisi sisse lülitatud inflatsioonikaitse, Cavemani komplektid DE / FR / JA + hiina (wényán) jaoks, RTK filtrid Gradle & .NET. → [kompressioon](docs/compression/COMPRESSION_ENGINES.md)
+- **💸 Aus kindlasummaline kulu** — abonemendi / kodeerimisplaani pakkujad loevad** 0 dollarit** kuluanalüütikas; eelarve, kvoot ja marsruutimine jätkavad prognoosimist. → [API Viide](docs/reference/API_REFERENCE.md)
+- **⚖️ kvoodijagamise marsruutimine** — jagas jagatud konto kvoodi õiglaselt koondatud võtmete vahel, säästes tööd, nii et jõudeolevad lõigud laenutatakse välja. → [vastupidavuse juhend](docs/architecture/RESILIENCE_GUIDE.md)
+- **🤖 Ühe käsuga CLI/agent häälestus** — 15 registreeritud `setup-*` käsku; `omniroute run` käivitab 7 CLIs (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI); `omniroute configure` toetab 11 sihtmärki koos interaktiivse pakkuja + mudelivalija ja kontekstipõhiste lemmikutega. → [CLI integratsioonid](docs/guides/CLI-INTEGRATIONS.md)
+- **🛰️ kaugjuhtimisrežiim** — juhib kaug- OmniRoute koos ulatusega žetoonidega (`connect` / `contexts` / `tokens`) + `antigravity` OAuth abimees VPS installimiseks. → [kaugjuhtimisrežiim](docs/guides/REMOTE-MODE.md)
+- **🧭 Nutikam automaatne marsruutimine** — `auto/<category>:<tier>` kombod,** Fusioon** (mudelipaneeli + kohtunik), ülesanneteadlik marsruutimine, päringupõhine mudel / režiim / USD-eelarve alistamine. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **🗜️ Ühendatav kompressioon** — 12 komponeeritavat mootorit + Compression Studios: LLMLingua-2, kahetasandiline Ultra, omniglyph, sammupõhine truudusvärav, GCF v3.2, lohistatava ümberkorraldamise redaktor. → [tihendamine](docs/compression/COMPRESSION_ENGINES.md)
+- **🕵️ läbipaistev MITM dekrüpt (TPROXY)** — -hõive CLIs mis eiravad puhverserveri env-varse, SNI-põhise CA + usalduspoe installiprogrammiga. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
+- **💸 Kulude telemeetria kõikjal** — `X-OmniRoute-*` cost/usage päised igas lõpp-punktis, vahemälu-HIT säästupäis, võtmepõhised USD kulukvoodid. → [API Viide](docs/reference/API_REFERENCE.md)
+- **🧠 Teie kontrollitav mälu** — vaikimisi välja lülitatud, luba int8 vektorkvantimine + tüüpiline lagunemine, päringupõhine `x-omniroute-no-memory`. → [Mälu](docs/frameworks/MEMORY.md)
+- **🛡️ Turvalisus** — kiire süstimiskaitse igal LLM marsruudil (punase meeskonna komplekt), volitatud mandaadi varjav kaitsepiire (redakteerib lekkinud API keys/secrets mõlemas suunas), tasuta DuckDuckGo viimase võimaluse veebiotsing ja valikuline OIDC sisselogimisvärav armatuurlaua jaoks (sisselogimine on alati saadaval). → [kaitsepiirded](docs/security/GUARDRAILS.md)
+- **🖼️ Uued lõpp-punktid** — `/v1/ocr` (Mistral OCR) ja `/v1/audio/translations` (sosina stiilis) ümardavad kandja pinda. → [API Viide](docs/reference/API_REFERENCE.md)
+- **🎨 Pildi / video / heli genereerimine** — one API meedia jaoks: xAI Grok Imagine & Novita AI video, ComfyUI, Magnific, Adobe Firefly, Segmind ja kõnepakkujad, nagu ElevenLabs. → [API Viide](docs/reference/API_REFERENCE.md)
+- **🌍 juurutamine ja operatsioonid** — pöördpuhverserver `basePath`, brauseri keele automaattuvastus, klahvipõhine seadme jälgimine, juurteta MITM usaldus, zh-TW lokaliseerimine. → [Keskkond](docs/reference/ENVIRONMENT.md)
+- **🤝 Rohkem pakkujaid ja agente** — pilvagendid (Codex Cloud, Cursor, Devin, Jules), Grok ehitamine (xAI) brauseri + OAuth sisselogimisega, Ollama esmaklassiline kaart, Claude Opus 5 ja Sonnet 5, Kimi ametlik partnerlus (Code/Web/Moonshot, Zed, SenseNova Yuanbao, Agnes AI… ja värskendatud** 394-pakkuja kataloog** . → [pakkujad](docs/reference/PROVIDER_REFERENCE.md)
+- **📡 Marsruutimise läbipaistvus** — iga vastus kannab `X-OmniRoute-Decision` päist, mis nimetab seda teenindanud strategy/provider/latency, uut `cache-optimized` -kombostrateegiat + Auto-Combo `cacheAffinity` -teguri korduspäringud suunab tagasi vahemällu salvestatud eesliidet sisaldavasse ühendustesse ja kirjutuskaitstud `/v1/auto-combo/{channel}/candidates` -otspunkt paljastab `auto/*` kanali reaalajas kandidaatide kogumi. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **⚡ Kohalik jõudlus ja infra** — ühe klõpsuga kohalik Redis, Cloudflare töötajad / Deno juurutavad relee juurutajad, Bifrost & Mux järelevalvega manustatud teenustena. → [manustatud teenused](docs/frameworks/EMBEDDED-SERVICES.md)
+- **🧩 Ka karbis** — pistikprogrammide raamistik + turg, Omni/Agent/GitHub oskuste raamistikud, Obsidian võlvi integreerimine (22 MCP tööriista), OpenAI-ga ühilduv Batch & Files APIs, semantilise vastuse vahemälu, gamifitseerimine edetabelitega, ACP -agendi leidmine ( BigQuery paralleelset agenti), ajastatud logide eksportimine, `auto/chaos` -out Telegram korda bot Bridge, rakendusesisene versioonihaldur ja LMArena-ELO tasuta pakkujate edetabel. → [Docs](docs/README.md)
 
 <br/>
 
@@ -781,89 +776,76 @@ eemal sinu shelli ajaloost. → [CLI integratsioonid](docs/guides/CLI-INTEGRATIO
 
 </div>
 
-> Sama rakendus, sinu masin, sinu reeglid. Alates globaalsest npm-i installist kuni **sinu telefonini** Termuxi kaudu.
+> Sama rakendus, teie masin, teie reeglid. Globaalsest npm-installist kuni** oma telefoni** Termuxi kaudu.
 
 <table>
-  <tr><th align="left">Platvorm</th><th align="left">Paigaldamine</th><th align="left">Tähtsündmused</th></tr>
-  <tr><td align="left" nowrap>📦 <b>npm (globaalne)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">Üks käsk, mis tahes operatsioonisüsteem</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Bun (globaalne)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">Sama registri tarball, kiirem paigaldus</td></tr>
-  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … diegosouzapw/omniroute</code></td><td align="left">Mitme arhitektuuri tugi: <b>AMD64 + ARM64</b></td></tr>
-  <tr><td align="left" nowrap>🖥️ <b>Töölaud (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">Natiivne aken + süsteemisalv — <b>Windows / macOS / Linux</b></td></tr>
-  <tr><td align="left" nowrap>🎩 <b>Menüüriba (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">Jälgib serverit ja uuendab seda automaatselt — <b>macOS</b></td></tr>
-  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>natiivne <code>arm64</code></td><td align="left">Raspberry Pi, ARM-serverid, Apple Silicon</td></tr>
-  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">Töötab <b>sinu telefonis</b> ööpäev läbi, ilma juurõigusteta</td></tr>
-  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"Lisa avakuvale"</td><td align="left">Täisekraan, võrguühenduseta kasutatav, brauserist paigaldatav</td></tr>
-  <tr><td align="left" nowrap>🧩 <b>OpenCode'i plugin</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">Natiivne OpenCode'i integratsioon</td></tr>
-  <tr><td align="left" nowrap>🤖 <b>VS Code Copilot Chat</b></td><td align="left" nowrap>paigalda laiendus <b>OmniCopilot</b></td><td align="left">Kõik OmniRoute'i mudelid natiivses Copilot Chati valijas — stabiilne versioon ja Insiders</td></tr>
-  <tr><td align="left" nowrap>🛠️ <b>Lähtekoodist</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">Kohanda seda ja panusta</td></tr>
+  <tr><th align="left">Platvorm</th><th align="left">Installige</th><th align="left">Esiletõstmised</th></tr>
+  <tr><td align="left" nowrap>📦 <b>npm (ülemaailmne)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">Üks käsk, mis tahes OS</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Bun (ülemaailmne)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">Sama registri tarball, kiirem installimine</td></tr>
+  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … cheaperinference/omniroute</code></td><td align="left">Mitmekaareline <b>AMD64 + ARM64</b></td></tr>
+  <tr><td align="left" nowrap>🖥️ <b>Lauaarvuti (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">Native aken + süsteemne salv — <b>Windows / macOS / Linux</b></td></tr>
+  <tr><td align="left" nowrap>🎩 <b>Menüüriba (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">Jälgib &amp; automaatset värskendamist serveri — <b>macOS</b></td></tr>
+  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>põline <code>arm64</code></td><td align="left">Raspberry Pi, ARM serverid, Apple Silicon</td></tr>
+  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">Jookseb <b>oma telefonis</b>, 24/7, juur puudub</td></tr>
+  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>"Lisa avakuvale"</td><td align="left">Täisekraan, võrguühenduseta, brauserist installitav</td></tr>
+  <tr><td align="left" nowrap>🧩 <b>OpenCode pistikprogramm</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">Algne OpenCode integratsioon</td></tr>
+  <tr><td align="left" nowrap>🤖 <b>VS kood Copilot vestlus</b></td><td align="left" nowrap>installida <b>OmniCopilot</b> pikendamine</td><td align="left">Iga OmniRoute mudel algses Copilot vestluse valijas — stabiilne &amp; sisering</td></tr>
+  <tr><td align="left" nowrap>🛠️ <b>Allikast</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">Hakkige, panustage</td></tr>
 </table>
 
-<sub>📖 [Dockeri juhend](docs/guides/DOCKER_GUIDE.md) · [Töölaud](electron/README.md) · [Menüüriba salv](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
+<sub>📖 [Docker juhend](docs/guides/DOCKER_GUIDE.md) · [Töölaud](electron/README.md) · [Menüüriba salv](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
 
 <br/>
 
 <div align="center">
 
-### 🧩 Uus: OmniRoute otse VS Code'i natiivsesse Copilot Chatti
+### 🧩 Uus: OmniRoute VS Code loomulikus Copilot vestluses
 
 </div>
 
-> Pole uut külgriba ega uut vestlusliidest — kõik OmniRoute'i pakutavad mudelid kuvatakse otse
-> **Copilot Chati mudelivalijas, mida juba kasutad**. Alates VS Code'i versioonist 1.122 töötavad
-> pakkujate mudelid ilma GitHubi sisselogimise või Copiloti tellimuseta — agendirežiim,
-> tööriistakutsed ja nägemisvõimekus täiesti tasuta.
+> Pole uut külgriba ega uut vestlust UI — iga mudel, OmniRoute teenindab, kuvatakse otse**Copilot Chati mudelivalija, mida juba kasutate** . Alates VS koodist 1.122 töötavad pakkuja mudelid ilma GitHub sisselogimise või Copilot tellimuseta — -agendi režiimi, tööriistade kutsumise ja nägemiseta tasuta.
 
-Paigalda laiendus **[OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)**, suuna see
-oma OmniRoute'i serverile (vaikimisi `localhost:20128`), seejärel ava Copilot Chat → mudelivalija
-→ **Halda mudeleid…** → **OmniRoute**.
+Installige** [OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)** laiendus, suunake see oma OmniRoute serverile (vaikimisi `localhost:20128`), seejärel avage Copilot Chat → mudelivalija →** Halda mudeleid…** →**OmniRoute** .
 
 <table>
-  <tr><th align="left">Pood</th><th align="left">Link</th><th align="left">Töötab koos</th></tr>
-  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">Paigalda →</a></td><td align="left">VS Code — stabiilne versioon ja Insiders</td></tr>
-  <tr><td align="left" nowrap>🔓 <b>Open VSX Registry</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">Paigalda →</a></td><td align="left">Cursor, Windsurf, VSCodium, Theia, code-server, Gitpod, Antigravity, Kiro…</td></tr>
+  <tr><th align="left">Kauplus</th><th align="left">Link</th><th align="left">Töötab koos</th></tr>
+  <tr><td align="left" nowrap>🧩 <b>VS kooditurg</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">Installige →</a></td><td align="left">VS kood — stabiilne &amp; Insiders</td></tr>
+  <tr><td align="left" nowrap>🔓 <b>Avage VSX register</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">Installige →</a></td><td align="left">Cursor, Windsurf, VSCodium, Theia, koodiserver, Gitpod, Antigravity, Kiro…</td></tr>
 </table>
 
-Redaktoris ava vaade **Laiendused**, otsi **"OmniRoute"**, klõpsa **Paigalda**
-— mõlemas poes toimib see samamoodi. Lähtekood, probleemid ja avaldamise juhend asuvad
-asukohas [diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot).
+Redaktori seest: avage** Laiendused** vaadata, otsida** "OmniRoute"** , klõpsake** Installige** — töötab mõlemas poes ühtemoodi. Allikas, väljaanded ja avaldamisjuhend on saadaval aadressil [diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot).
 
-<sub>📖 [VS Code Copilot Chati juhend](docs/guides/VSCODE-COPILOT.md) — seadistamine, mida valija kuvab, juhtpaneel vahekaardil, tõrkeotsing</sub>
+<sub>📖 [VS kood Copilot vestlusjuhend](docs/guides/VSCODE-COPILOT.md) — seadistamine, valija kuvamine, armatuurlaud vahekaardil, veaotsing</sub>
 
 <br/>
 
 <div align="center">
 
-### 🎩 Uus: OmniRouteTray — sinu värav, mis elab menüüribal
+### 🎩 Uus: OmniRouteTray — teie värav, mis asub menüüribal
 
 </div>
 
-> `omniroute serve` on kõige õnnelikum siis, kui see on alati sisse lülitatud. **[OmniRouteTray](https://github.com/zoispag/omniroute-tray)**
-> muudab selle macOS-i puhul seadista-ja-unusta-tüüpi menüüribarakenduseks: see käivitab serveri, hoiab seda
-> taaskäivituste järel töös, uuendab seda kohapeal ja teeb sinu jooksva tokenieelarve ühe klõpsu kaugusel kättesaadavaks — **ei
-> mingit avatuks jäetud terminaliakent ega `npm install -g omniroute` käsu eest hoolitsemist.**
+> `omniroute serve` on kõige õnnelikum, kui see on alati sisse lülitatud.** [OmniRouteTray](https://github.com/zoispag/omniroute-tray)** muudab selle macOS menüüriba määramise ja unustamise rakenduseks: see käivitab serveri, hoiab seda elus kogu taaskäivitamise ajal, värskendab seda ja asetab teie reaalajas märgi eelarve ühe kliki kaugusel —** pole terminali akent lahti jäetud, pole `npm install -g omniroute` lapsehoidmiseks.**
 
-See on loodud [Tauri v2](https://v2.tauri.app/) abil (Rusti tuum, mis on ümardusvea suurune) ning sisaldab
-oma allkirjastatud Node 24 käituskeskkonda ja haldab rakenduse enda OmniRoute'i paigaldust, nii et see ei lähe kunagi
-sinu globaalse `node`/`bun`-iga konflikti. See **jagab sinu olemasolevat `~/.omniroute/` konfiguratsiooni ja andmebaasi** — seega
-on see sama OmniRoute, mida juba kasutad, lihtsalt kübaraga. 🎩
+[Tauri v2-](https://v2.tauri.app/) ga (ümardusvea suurune Rust-tuum) ehitatud see tarnib oma allkirjastatud Node 24 käitusaja ja haldab rakendusele kuuluvat OmniRoute installi, nii et see ei võitle kunagi teie globaalse `node`/`bun`. See** jagab teie olemasolevat `~/.omniroute/` konfiguratsiooni ja andmebaasi** — nii et see on sama OmniRoute, mida te juba jooksite, ainult mütsiga. 🎩
 
 <table>
   <tr><th align="left">Mida see teeb</th><th align="left">Kuidas</th></tr>
-  <tr><td align="left" nowrap>🟢 <b>Jälgib serverit</b></td><td align="left">Käivitab <code>omniroute serve</code>i ja võtab juba töötava eksemplari üle, selle asemel et luua duplikaat</td></tr>
-  <tr><td align="left" nowrap>📊 <b>Kasutus ülevaatlikult</b></td><td align="left">Teenusepakkujate kvoodiribad, Claude'i seansi- ja nädalapiirangud koos lähtestamiseni jäänud aja loenduritega ning 30 päeva kulude jaotus</td></tr>
-  <tr><td align="left" nowrap>🔄 <b>Uuendab end automaatselt</b></td><td align="left">Ettevalmistatud paigaldus, aatomivahetus, tõrke korral tagasivõtmine — alati uusim väljalase</td></tr>
-  <tr><td align="left" nowrap>🚀 <b>Käivita sisselogimisel</b></td><td align="left">Valikuline käivitamine sisselogimisel; ainult süsteemisalves, dokis ikooni pole</td></tr>
-  <tr><td align="left" nowrap>🩺 <b>Diagnostika ja logid</b></td><td align="left">Diagnostika ja serverilogidele juurdepääs ühe klõpsuga</td></tr>
+  <tr><td align="left" nowrap>🟢 <b>Jälgib serverit</b></td><td align="left">Loob <code>omniroute serve</code>, võtab selle dubleerimise asemel kasutusele juba töötava eksemplari</td></tr>
+  <tr><td align="left" nowrap>📊 <b>Reaalajas kasutamine lühidalt</b></td><td align="left">Pakkuja kvoodiribad, Claude session/weekly limiidid lähtestatud loenduritega, 30-päevane kulude jaotus</td></tr>
+  <tr><td align="left" nowrap>🔄 <b>Automaatsed värskendused paigas</b></td><td align="left">Järkjärguline installimine, aatomivahetus, rikke korral tagasipööramine — alati uusimal versioonil</td></tr>
+  <tr><td align="left" nowrap>🚀 <b>Alusta sisselogimisel</b></td><td align="left">Valikuline käivitamine sisselogimisel; ainult salv, dokiikooni pole</td></tr>
+  <tr><td align="left" nowrap>🩺 <b>Doktor &amp; palgid</b></td><td align="left">Ühe klõpsuga diagnostika ja juurdepääs serveri logile</td></tr>
 </table>
 
 ```sh
 brew install --cask zoispag/tap/omniroute-tray
 ```
 
-<sub>Kas eelistad allalaadimist? Laadi uusim <code>.dmg</code> alla lehelt
-<a href="https://github.com/zoispag/omniroute-tray/releases">väljalasked</a>. Lähtekood, probleemid ja ehitamise
-dokumentatsioon asuvad aadressil <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a>.
-<br/>💛 Kogukonnaprojekt, mille autor on <a href="https://github.com/zoispag">@zoispag</a> — mitte OmniRoute'i ametlik väljalase.</sub>
+<sub>Kas eelistate allalaadimist? Hangi uusim <code>.dmg</code> saidilt
+<a href="https://github.com/zoispag/omniroute-tray/releases">Väljaanded</a>. Allikas, probleemid ja ehitus
+docs reaalajas aadressil <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a>.
+<br/>💛 Kogukonna projekt <a href="https://github.com/zoispag">@zoispag</a> — ei ole ametlik OmniRoute väljaanne.</sub>
 
 <br/>
 
@@ -945,15 +927,15 @@ claude mcp add --transport http omniroute http://localhost:20128/api/mcp/stream 
 
 <div align="center">
 
-## 🗜️ Säästa automaatselt 15–95% tokeneid
+## 🗜️ Säästke 15–95% žetoonidest — automaatselt
 
 </div>
 
-### 📖 Kuidas see töötab — konveier, arhitektuur ja säästuarvutus
+### 📖 Kuidas see töötab? — torujuhe, arhitektuur ja säästumatemaatika
 
-<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute'i tihenduskonveier: illustreeriv 10 000 tokeniga kliendipäring läbib 12 kombineeritavat mootorit — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra ja OmniGlyph — ning võib dokumenteeritud kihilise näite korral jõuda teenusepakkujani ligikaudu 1080 tokeniga. Struktureeritud sisu kaitsevad säilitamisvalvurid ja iga etapi täpsusväravad; selgesõnalised kadudega või eksperimentaalsed režiimid võivad sobivat sisu teisendada."/>
+<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute compression pipeline: an illustrative 10,000-token client request passes through 12 composable engines — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra and OmniGlyph — and can reach the provider at about 1,080 tokens in the documented stacked example. Structured content is protected by preservation guards and per-step fidelity gates; explicit lossy or experimental modes may transform eligible content."/>
 
-Vaikimisi kihiline kombinatsioon käivitab `RTK → Caveman`. Kui mõlemad töötlevad sama tööriista-/kontekstiandmekogumit, liituvad säästud:
+Vaikimisi virnastatud kombinatsioon töötab `RTK → Caveman`. Kui mõlemad toimivad sama tool/context kasuliku koormusega, on säästuühend:
 
 ```txt
 combined = 1 − (1 − RTK) × (1 − Caveman_input)
@@ -961,74 +943,74 @@ average  = 1 − (1 − 0.80) × (1 − 0.46) = 89.2%
 range    = 78.4 – 94.6%
 ```
 
-Koodiplokid, URL-id, JSON ja struktureeritud andmed on säilitamismootori poolt **alati kaitstud**.
+Koodiplokid, URLs, JSON ja struktureeritud andmed on** alati kaitstud** säilitusmootori poolt.
 
-> **Miks kasutada paljusid tokeneid, kui vähestest piisab?** Iga päring läbib OmniRoute'i tihenduskonveieri **läbipaistvalt** — kliendis pole muudatusi vaja. Nüüd koosneb see **12 kombineeritava mootori kihist**, mis töötavad järjekorras ning mida saab iga marsruutimiskombinatsiooni puhul omavahel valida ja kombineerida — tuginedes [RTK](https://github.com/rtk-ai/rtk), [Caveman](https://github.com/JuliusBrussee/caveman) (⭐ 90K+), [LLMLingua-2](https://github.com/microsoft/LLMLingua) ja [Troglodita](https://github.com/leninejunior/troglodita) (PT-BR) ideedele.
+> **Miks kasutada palju märke, kui vähesed märgid teevad asja ära?** Iga päring läbib OmniRoute tihenduskonveieri** läbipaistvalt** — klient ei muutu. Nüüd on a** 12 kokkupandavat mootorit** mis töötavad järjekorras ja segavad ja sobitavad marsruutimise kombinatsiooni — mis tugineb [RTK](https://github.com/rtk-ai/rtk), [Cavemani](https://github.com/JuliusBrussee/caveman) (⭐ 90K +), [LLMLingua-2](https://github.com/microsoft/LLMLingua) ja [Troglodita](https://github.com/leninejunior/troglodita) (PT-BR) ideedele.
 
-### 🧱 12 mootori kiht
+### 🧱 12 mootoriga virn
 
-Mootorid töötavad konveieri järjekorras; igaüht saab iga kombinatsiooni puhul eraldi sisse või välja lülitada ja seadistada:
+Mootorid töötavad torustiku järjekorras; igaüks neist on eraldi lülitatav ja konfigureeritav kombinatsiooni kohta:
 
 <table>
   <tr><th align="center">#</th><th align="left">Mootor</th><th align="left">Mida see teeb</th></tr>
-  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Session-Dedup</b></td><td align="left">Eemaldab pöörete vahel korduva sisu (sisuaadressipõhine, pööreteülene)</td></tr>
-  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">Arhiveerib suured plokid hankimismarkerite taha ja hangib need vajaduse korral</td></tr>
-  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">Tühimärkide ja pildi-URL-ide kärpimine (väikese latentsusega baas)</td></tr>
-  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">Tööriistatulemuste nutikas filtreerimine, duplikaatide eemaldamine ja kärpimine (käskudest teadlik)</td></tr>
-  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Responses Tool Output</b></td><td align="left">Kadudeta esmajärjekorras JSON ja piiratud diagnostiline tihendus shelli-/paigaotsingu-/otsingu-/ehitusväljunditele (Responses API)</td></tr>
-  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Headroom</b></td><td align="left">JSON-massiivide kadudeta tabelipõhine tihendamine (~30%), kasutades kaasatud <b>GCF</b>-koodekit</td></tr>
-  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Relevance</b></td><td align="left">Lausete ekstraktiivne hindamine viimase kasutajapäringu põhjal</td></tr>
-  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Caveman</b></td><td align="left">Reeglipõhine proosa tihendamine (~65–75% väljundist)</td></tr>
-  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Aggressive</b></td><td align="left">Vanaemuste kokkuvõtete loomine ja järkjärguline vananemine</td></tr>
-  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">ML-põhine semantiline kärpimine MobileBERT ONNX-i kaudu — kooditurvaline, asünkroonne</td></tr>
-  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ultra</b></td><td align="left">Heuristiline tokenite kärpimine valikulise väikese mudeli (SLM) tasemega</td></tr>
-  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">Eksperimentaalne konteksti pildina kodeerimine mõõdetud Claude Fable 5 jaoks otse Anthropic'u ühendusel; GPT 5.6 transformerid jäävad teenusepakkuja kviitungeid oodates tõrkekindlalt suletuks. Neli tihendusprofiili (vaikimisi agressiivne, tasakaalustatud, kodeerimiskindel, läbipääs) (kõige agressiivsem; lubamine on vajalik)</td></tr>
+  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Seanss-Dedup</b></td><td align="left">Loobub pööretel korduvast sisust (sisu adresseeritud, ristpöörded)</td></tr>
+  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">Arhiveerib suured plokid hankimise markerite taha, tuuakse nõudmisel</td></tr>
+  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">Tühik + pildi-URL-i kärpimine (latentsusvalguse baasjoon)</td></tr>
+  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">Nutikas tööriistade tulemuste filtreerimine, dedup ja kärpimine (käskuteadlik)</td></tr>
+  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Vastuste tööriista väljund</b></td><td align="left">Lossless-first JSON + piiratud diagnostiline tihendus shell/patch/search/build väljundite jaoks (vastused API)</td></tr>
+  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Pearuum</b></td><td align="left">JSON massiivide (~ 30%) kadudeta tabelitihendamine müüja kaudu <b>GCF</b> kodek</td></tr>
+  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Asjakohasus</b></td><td align="left">Väljavõttev lause hindamine viimase kasutajapäringu põhjal</td></tr>
+  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Koopamees</b></td><td align="left">Reeglipõhine proosa tihendamine (~ 65–75% väljundist)</td></tr>
+  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Agressiivne</b></td><td align="left">Kokkuvõte + vanade pöörete progresseeruv vananemine</td></tr>
+  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">ML semantiline pügamine MobileBERT kaudu ONNX — koodiohutu, asünkrooniline</td></tr>
+  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ultra</b></td><td align="left">Heuristiline märgi pügamine valikulise väikese mudeli (SLM) tasemega</td></tr>
+  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">Eksperimentaalne konteksti-kujutise kodeering mõõdetud Claude Fable 5 jaoks otse Anthropic juhtmel; GPT 5.6 trafod jäävad teenusepakkuja kviitungite ootel tõrgeteta suletuks. Neli tihendusprofiili (agressiivne vaikimisi, tasakaalustatud, kodeerimisohutu, läbiv) (kõige agressiivsem; lubatav)</td></tr>
 </table>
 
-Koodiplokid, URL-id ja struktureeritud andmed säilitatakse **alati** baiditäpselt. **Ühe klõpsuga eelseaded** kombineerivad mootoreid:
+Koodiplokid, URLs ja struktureeritud andmed on** alati säilinud** bait-täiuslik.** Eelseaded ühe klõpsuga** kombineerida mootoreid:
 
 <table>
-  <tr><th align="left">Režiim</th><th align="left">Sääst</th><th align="left">Sobib kõige paremini</th></tr>
-  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~15%</td><td align="left">Alati sisse lülitatud turvaline vaikevalik</td></tr>
-  <tr><td align="left" nowrap>🪨 <b>Standard (Caveman)</b></td><td align="left" nowrap>~30%</td><td align="left">Igapäevane kodeerimine</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Aggressive</b></td><td align="left" nowrap>~50%</td><td align="left">Pikad tööriistamahukad sessioonid</td></tr>
-  <tr><td align="left" nowrap>🔥 <b>Ultra</b></td><td align="left" nowrap>~75%</td><td align="left">Maksimaalne sääst</td></tr>
-  <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>60–90%</td><td align="left">Shelli-/testi-/ehitus-/git-väljund</td></tr>
-  <tr><td align="left" nowrap>🔗 <b>Stacked (RTK → Caveman)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">Segatud viibad ja tööriistalogid</td></tr>
+  <tr><th align="left">Režiim</th><th align="left">Säästud</th><th align="left">Parim jaoks</th></tr>
+  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~15%</td><td align="left">Alati sisse lülitatud turvaline vaikeseade</td></tr>
+  <tr><td align="left" nowrap>🪨 <b>Standard (koopamees)</b></td><td align="left" nowrap>~30%</td><td align="left">Igapäevane kodeerimine</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Agressiivne</b></td><td align="left" nowrap>~50%</td><td align="left">Pikad tööriistamahukad seansid</td></tr>
+  <tr><td align="left" nowrap>🔥 <b>Ultra</b></td><td align="left" nowrap>~75%</td><td align="left">Maksimaalne kokkuhoid</td></tr>
+  <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>60–90%</td><td align="left">Shell/test/build/git väljund</td></tr>
+  <tr><td align="left" nowrap>🔗 <b>Virnastatud (RTK → Caveman)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">Segatud küsib + tööriista logid</td></tr>
 </table>
 
-**Tõeline näide — Standard-režiim:**
+**Tõeline näide — standardrežiimist:**
 
-> **Enne (69 tokenit):** _"Põhjus, miks sinu Reacti komponent uuesti renderdatakse, on tõenäoliselt see, et lood igal renderdustsüklil uue objektiviite. Kui edastad inline-objekti propina, näeb Reacti pinnapealne võrdlus seda iga kord erineva objektina, mis käivitab uue renderduse. Soovitan objekti mällu salvestamiseks kasutada useMemot."_
+> **Enne (69 märki):** _"Põhjus, miks teie React komponenti uuesti renderdatakse, on tõenäoline, kuna loote igas renderdustsüklis uue objektiviide. Kui edastate sisemise objekti rekvisiidina, näeb React madal võrdlus seda iga kord erineva objektina, mis käivitab uuesti renderdamise. Soovitaksin kasutada useMemo objekti meeldejätmiseks."_
 >
-> **Pärast (19 tokenit):** _"Uus objektiviide iga renderduse ajal. Inline-objekti prop = uus viide = uus renderdus. Ümbritse useMemoga."_
+> **Pärast (19 märki):** _"Uus objekt viitab igale renderdusele. Sisesisene objekti prop = uus ref = uuesti renderdamine. Murdke useMemo."_
 >
-> **Sama vastus. 72% vähem tokeneid. Täpsus ei langenud üldse.** ✅
+> **Sama vastus. 72% vähem märke. Null täpsuskadu.** ✅
 
-**PT-BR näide — [Troglodita](https://github.com/leninejunior/troglodita) režiim:**
+**PT-BR näide — [Troglodita](https://github.com/leninejunior/troglodita) režiimist:**
 
-> **Enne (42 tokenit):** _"Probleem seisneb selles, et komponent renderdatakse uuesti, kuna igas renderdustsüklis luuakse uus objektiviide. Soovitaksin kasutada useMemo."_
+> **Antes (42 märki):** _"O problem é que o componente está re-renderizando porque uma nova referência de objeto está sendo criada em cada ciclo de renderização. Eu recomendaria usar useMemo."_
 >
-> **Pärast (12 tokenit):** _"Uuesti renderdamine: igas tsüklis uus viide (inline-objekt luuakse uuesti). Kasuta `useMemo`."_
+> **Depois (12 märki):** _"Uuesti renderda: ref nova cada ciclo (objeto inline recriado). Usar `useMemo`."_
 >
-> **Sama vastus. ~70% vähem tokeneid. Tehniline täpsus säilib.** ✅
+> **Mesma resposta. ~ 70% menos žetoonid. Precisão técnica intacta.** ✅
 
 <br/>
 
-### 🎚️ Mootoritest kaugemale — väljundistiilid, adaptiivne ketas ja päringupõhine juhtimine
+### 🎚️ Lisaks mootoritele — väljundstiilidele, adaptiivne ketas ja päringupõhine juhtimine
 
-Ülaltoodud 12 mootorit lühendavad seda, mis läheb **sisse**. Veel kolm kihti kujundavad **kuidas**, **millal** ja mis tuleb **välja**:
+Ülaltoodud 12 mootorit kahandavad seda, mis läheb** sisse** . Veel kolm kihti kuju** kuidas** ,** millal** , ja mis tuleb** välja** :
 
-- **🪄 Väljundistiilid** _(väljunditelje suunamine)_ — lisavad deterministlikud, vahemäluturvalised vastuse kujundamise juhised; neid saab kombineerida ning igaühel on intensiivsuse tasemed `lite` / `full` / `ultra`. Stiili lisamiseks piisab ühest registrikirjest:
-  - **Napikas proosa** — eemalda täitematerjal / artiklid / ebakindlust väljendavad sõnad; säilita tehniline sisu täpsena.
-  - **Vähem koodi** — "laisk vanemarendaja" YAGNI: väikseim toimiv muudatus, ilma soovimatu taristuta.
-  - **Pats (laisk vanemarendaja)** — liigu YAGNI-redelil üles, lahenda juurpõhjus, tee väikseim toimiv diff.
-  - **Mul on ADHD (tegevus esikohal)** — järgmine tegevus on eesotsas, sammud nummerdatud, üks konkreetne järgmine samm, sissejuhatuseta.
-  - **Napikas CJK (文言)** — klassikalise hiina keele ülinapikas stiil (lokaat piirab selle `zh`-ga).
-- **🎯 Adaptiivne konteksti-eelarve** _(ketas)_ — ühe sisse-/väljalülitatava tokeniläve asemel suurendatakse kõige odavamaid ja vähima infokaoga mootoreid ainult nii palju, kui on vaja, et **mahtuda mudeli kontekstiaknasse**. Reegel: `reserve-output` (vaikimisi, mudeliteadlik) · `percentage` · `absolute`. Režiim: `floor` (tagab mahtumise) · `replace-autotrigger` (sinu otsene valik on ülimuslik) · `off` (pärandlävi).
-- **🎛️ Kus tihendamine otsustatakse** _(ülimuslikkus, kõrgem → madalam)_ — päringupõhine `x-omniroute-compression` päis › marsruutimiskombinatsiooni ülekirjutus › aktiivne nimega profiil › adaptiivne / automaatne käivitamine › paneeli vaikeväärtus › väljas. Rakendatud plaan kajastub vastuse päises `X-OmniRoute-Compression: <mode>; source=<source>`.
+- **🪄 väljundstiilid** _(väljundtelje juhtimine)_ — inject deterministlikud, vahemälu ohutud vastuse kujundamise juhised; kombineeritav, igaüks `lite` / `full` / `ultra` intensiivsusega. Stiili lisamine on üherealine registrikirje:
+  - **Lühike proosa** — drop filler / esemed / maandamine; hoida tehnilist sisu täpselt.
+  - **Vähem koodi** — "laisk vanem arendaja" YAGNI: väikseim töökorras muudatus, ei mingeid tellinguid.
+  - **Hobusesaba (laisk vanem arendaja)** — ronige mööda YAGNI redelit, parandage algpõhjus, väikseim töö erinevus.
+  - **Mul on ADHD (action-first)** — järgmise tegevuse juhised, sammud nummerdatud, üks konkreetne järgmine samm, preambula puudub.
+  - **Terse CJK (文言)** — klassikaline-hiina ülimalt lühike stiil (kohalik `zh`).
+- **🎯 Kohanduv kontekstieelarve** _(valik)_ — ühe on/off märgi läve asemel suurendage odavaimaid ja kõige kadudeta mootoreid ainult nii palju, kui see on vajalik** sobitada mudeli kontekstiaknaga** . Poliitika: `reserve-output` (vaikimisi, mudeliteadlik) · `percentage` · `absolute`. Režiim: `floor` (sobivuse garantii) · `replace-autotrigger` (teie selge valik võidab) · `off` (pärandlävi).
+- **🎛️ Kui kompressioon on otsustatud** _(eesjärjestus, kõrge → madal)_ — päringu kohta `x-omniroute-compression` päis › marsruutimise kombineeritud alistamine › aktiivne nimega profiil › adaptiivne / automaatne päästik › paneeli vaikeseade › välja lülitatud. Rakendatud plaan kajab tagasi `X-OmniRoute-Compression: <mode>; source=<source>` vastuse päises.
 
-Automaatne käivitamine tokeniläve alusel, adaptiivse ketta sisselülitamine, nimega profiili kinnitamine, ühekordne päringupõhine seadistus või konveieri määramine iga marsruutimiskombinatsiooni jaoks — vali see, mis töökoormusega sobib. Lubatav võrguühenduseta **hindamisraamistik** (`npm run eval:compression`) hindab enne muudatuse avaldamist kinnitatud korpuse põhjal truudust ja säästu.
+Automaatne käivitamine lubade läve järgi, keerake kohanduvat valikuketast, kinnitage nimeline profiil, määrake ühekordne päring või määrake konveier marsruutimiskombinatsioon — olenevalt sellest, kumb sobib töökoormusega. Võrguühenduseta lubamine** eval rakmed** (`npm run eval:compression`) hindab kinnitatud korpusel enne muudatuse propageerimist truudust vs. säästu.
 
 📖 [`COMPRESSION_GUIDE.md`](docs/compression/COMPRESSION_GUIDE.md) · [`RTK_COMPRESSION.md`](docs/compression/RTK_COMPRESSION.md) · [`COMPRESSION_ENGINES.md`](docs/compression/COMPRESSION_ENGINES.md)
 
@@ -1036,44 +1018,34 @@ Automaatne käivitamine tokeniläve alusel, adaptiivse ketta sisselülitamine, n
 
 <div align="center">
 
-# ⚡ Kiirstart
+# ⚡ Quick Start
 
 </div>
 
-**1) Paigalda ja käivita**
+**1) Installige ja käivitage**
 
 ```bash
 npm install -g omniroute
 omniroute
 ```
 
-> 💡 Näed `npm warn ERESOLVE`-i või sõltuvuste vastastikuse ühilduvuse hoiatusi? [Need on ohutud](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).
-> **Kasutad npm-i versiooni 11 või uuemat?** npm võib paketi elutsükli skriptid blokeerida, kui neid pole lubatud. OmniRoute'i `postinstall` (`node scripts/build/postinstall.mjs`) on vajalik natiivse käitusaegse taristu ettevalmistamiseks. Luba globaalsel paigaldamisel npm-i hoiatuses nimetatud paketid. OmniRoute 3.8.55 teatatud paketiloendi korral:
+> 💡 Kas näete `npm warn ERESOLVE` või võrdõiguslikke hoiatusi? [Nad on kahjutud](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).** Kas kasutate npm 11 või hilisemat?** npm võib blokeerida paketi elutsükli skripte, kui need pole lubatud. OmniRoute `postinstall` (`node scripts/build/postinstall.mjs`) on vajalik oma käitusaja failide ettevalmistamiseks. Globaalsel installimisel lubage npm-i hoiatuses nimetatud paketid. Paketikomplekti puhul, millest teatab OmniRoute 3.8.55:
 >
-> ```bash
-> npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute
-> ```
+> `bash npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute `
 >
-> Selle lubatud pakettide loendi taaskasutamiseks tulevastel globaalsetel paigaldamistel seadista see üks kord ja paigalda seejärel tavapäraselt:
+> Selle lubatud loendi tulevaste globaalsete installide jaoks uuesti kasutamiseks seadistage see üks kord ja seejärel installige tavapäraselt:
 >
-> ```bash
-> npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user
-> npm install -g omniroute
-> ```
+> `bash npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user npm install -g omniroute `
 >
-> Sõltuvuste loend võib versioonide vahel muutuda; kui npm teatab teisest loendist, kasuta selles hoiatuses toodud pakettide nimesid. Paketi lubamine lubab selle paigaldusskriptidel käivituda.
-> **Kasutad Gemini Webi või mõnda muud veebiküpsistel põhinevat pakkujat?** npm-pakett sisaldab
-> Playwrighti, kuid mitte selle Chromiumi binaarfaili. Enne esimest veebipakkuja päringut vaata
-> [Playwright Chromiumi seadistuse](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium)
-> märkust.
+> Sõltuvuste loend võib versioonide vahel muutuda; kui npm teatab teistsugusest loendist, kasutage selle hoiatuse paketinimesid. Paketi lubamine lubab selle installiskripte käitada.** Kas kasutate Gemini veebi või mõnda muud veebiküpsiste pakkujat?** Npm-pakett sisaldab Playwright, kuid mitte selle Chromiumi binaarfaili. Enne esimese veebipakkuja taotluse esitamist vaadake [Playwright Chromiumi seadistusmärkust](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium).
 
-Töölaud asub aadressil `http://localhost:20128` · API aadressil `http://localhost:20128/v1`.
+Armatuurlaud at `http://localhost:20128` · API ja `http://localhost:20128/v1`.
 
-**2) Ühenda sobilik pakkuja oma kontoga**
+**2) Ühendage sobiv teenusepakkuja, kasutades oma kontot**
 
-Töölaud → **Pakkujad** → vali pakkuja, kelle kehtivad tingimused ja kvoot sobivad sinu kasutusjuhuga → lisa selle API-võti või lõpeta konto seadistusvoog. Tasuta paketid võivad nõuda registreerumist, heakskiitu või makseviisi. Tutvu [tasuta pakettide juhendiga](docs/getting-started/FREE-TIERS-GUIDE.md); võtmeta kättesaadavus ei ole garanteeritud ning pakkujad, mille märge on `tos: avoid`, jäetakse vaikimisi `auto`-ist välja.
+Armatuurlaud →** Pakkujad** → vali teenusepakkuja, kelle praegused tingimused ja kvoot sobivad teie kasutusjuhtumiga. → lisab oma API võtme või lõpetab kontovoo. Tasuta tasemed võivad nõuda registreerumist, heakskiitu või makseviisi. Vaadake üle [tasuta tasandite juhend](docs/getting-started/FREE-TIERS-GUIDE.md) ; võtmeta saadavus pole garanteeritud ja `tos: avoid` tähistatud pakkujad on vaikimisi `auto` st välja jäetud.
 
-**3) Suuna oma kodeerimistööriist**
+**3) Suunake oma kodeerimistööriist**
 
 ```txt
 Base URL: http://localhost:20128/v1
@@ -1081,15 +1053,15 @@ API Key:  [copy from Dashboard → Endpoints]
 Model:    auto            (routes among eligible connections — or choose provider/model)
 ```
 
-**4) Kontrolli, et kõik töötab**
+**4) Veenduge, et see töötab**
 
 ```bash
 curl http://localhost:20128/v1/models -H "Authorization: Bearer YOUR_KEY"
 ```
 
-Peaksid nägema oma ühendatud mudeleid. 🎉 Kõik — alusta kodeerimist ning OmniRoute valib sinu eest automaatselt marsruudi ja varuühenduse.
+Peaksite nägema oma ühendatud mudelite loendit. 🎉 See on kõik, — alustab kodeerimist ja OmniRoute automaatse marsruudi ja langeb teie eest tagasi.
 
-Kui sinu klient ei saa kohandatud päiseid saata, pakub OmniRoute ka tokeniseeritud ühilduvusaliasi:
+Kui teie klient ei saa kohandatud päiseid saata, paljastab OmniRoute ka tokeniseeritud ühilduvuse varjunimed:
 
 ```txt
 OpenAI catalog:   http://localhost:20128/vscode/YOUR_KEY/
@@ -1100,56 +1072,52 @@ Ollama chat:      http://localhost:20128/vscode/YOUR_KEY/api/chat
 Ollama tags:      http://localhost:20128/vscode/YOUR_KEY/api/tags
 ```
 
-Kasuta neid ainult klientidega, mis ei saa lisada `Authorization: Bearer ...`. Päise kaudu autentimine jääb eelistatud režiimiks.
+Kasutage neid ainult nende klientide jaoks, kes ei saa `Authorization: Bearer ...` lisada. Eelistatud režiimiks jääb päise autentimine.
 
 <br/>
 
-## 📦 Rohkem paigaldusviise — Docker, lähtekood, pnpm, Arch
+## 📦 Rohkem installimeetodeid — Docker, allikas, pnpm, Arch
 
 **🐳 Docker**
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-`:latest` järgib kõrgeimat **avaldatud** stabiilset SemVer-versiooni. See ei järgi git-i haru `main`. GitOpsi jaoks kasuta fikseeritud silti `:X.Y.Z`. Vaata jaotist [Dockeri väljalaskekanalid](docs/guides/DOCKER_GUIDE.md#release-channels). Tõmmispildis on **`OMNIROUTE_MEMORY_MB=1024`** fikseeritud. Sellest piisab juhtpaneeli ja kerge vestluse jaoks. **Programmeerimisagendid** (Claude Code'i, Codexi, Groki jne päringud `POST /v1/responses`) vajavad palju suuremat V8 kuhja, vastasel juhul annab protsess kahe kattuva pika konteksti korral ligikaudu 12 GiB juures vea `FATAL ERROR`. Määra konteineri maht kuhjast suuremaks (natiivsed puhvrid asuvad väljaspool V8-t):
+`:latest` järgib kõrgeimat** avaldatud** stabiilne SemVer. See ei jälgi git `main`. Kinnitage `:X.Y.Z` GitOps jaoks. Vaadake jaotist [Docker Release Channels](docs/guides/DOCKER_GUIDE.md#release-channels). Kujutise tihvtid**`OMNIROUTE_MEMORY_MB=1024`** . Sellest piisab armatuurlauale ja kergeks vestluseks.** Kodeerivad ained** (`POST /v1/responses` koodist Claude Code, Codex, Grok, …) vajavad palju suuremat V8 hunnikut või protsessi `FATAL ERROR` s ~ 12 GiB juures kahe kattuva pika konteksti all. Määrake konteineri suurus kuhja kohal (natiivsed puhvrid asuvad väljaspool V8):
 
-| Töökoormus                                     | Kuhi (`-e OMNIROUTE_MEMORY_MB`)   | Konteiner (`--memory`) |
-| ---------------------------------------------- | --------------------------------- | ---------------------- |
-| Juhtpaneel / kerge vestlus                     | `1024` (tõmmispildi vaikeväärtus) | ≥2 g                   |
-| Üks programmeerimisagent                       | `8192`                            | ≥10 g                  |
-| Kaks samaaegset pikka `/v1/responses` päringut | `10240`–`12288`                   | ≥12–16 g               |
+| Töökoormus                            | hunnik (`-e OMNIROUTE_MEMORY_MB`) | konteiner (`--memory`) |
+| ------------------------------------- | --------------------------------- | ---------------------- |
+| Armatuurlaud / kerge vestlus          | `1024` (pildi vaikeseade)         | ≥ 2 g                  |
+| Üks kodeeriv agent                    | `8192`                            | ≥ 10 g                 |
+| Kaks samaaegset pikka `/v1/responses` | `10240`–`12288`                   | ≥ 12–16 g              |
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
   -e OMNIROUTE_MEMORY_MB=8192 --memory=10g \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-Täielik tabel: [Dockeri juhend — käitusaegne RAM](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
+Täielik tabel: [Docker juhend — käitusaja RAM](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
 
-> **Dockeri eelväljalaskekanal:** `diegosouzapw/omniroute:next` ja
-> `diegosouzapw/omniroute:next-web` järgivad praegust vaikeharu `release/v*`.
-> Need muudetavad sildid on mõeldud ainult avaldamata paranduste testimiseks ja
-> neid **ei toetata tootmiskeskkonnas**. Vaata jaotist
-> [Dockeri väljalaskekanalid](docs/guides/DOCKER_GUIDE.md#release-channels).
+> **Väljalaskeeelne Docker kanal:** `diegosouzapw/omniroute:next` ja `diegosouzapw/omniroute:next-web` järgivad praegust `release/v*` vaikeharu. Need muudetavad sildid on mõeldud ainult avaldamata paranduste testimiseks ja on** tootmist ei toetata** . Vaadake jaotist [Docker väljalaskekanalid](docs/guides/DOCKER_GUIDE.md#release-channels).
 
 **🥟 Bun**
 
-Standardset käsku `bun install` ja globaalset paigaldust (`bun install -g omniroute`) toetatakse Bun-i käituskeskkonna tuvastamise kaudu:
+Standardset `bun install` ja globaalset installimist (`bun install -g omniroute`) toetatakse Bun käitusaja tuvastamise kaudu:
 
-- **Sisseehitatud `bun:sqlite`**: Bun-i all töötades kasutab OmniRoute Bun-i sisseehitatud `bun:sqlite` draiverit ning Node.js-i korral `better-sqlite3` või `sql.js` varuvarianti.
-- **Webpacki komplektija automaatne valimine arenduses**: arenduskeskkond (`bun run dev`) tuvastab Bun-i automaatselt ja keelab Turbopacki Webpacki kasuks, et vältida natiivsete V8 siduste ühildamatust. Tootmisjärgud (`bun run build`) järgivad muutujat `OMNIROUTE_USE_TURBOPACK` täpselt samamoodi nagu Node'is: vaikimisi Turbopack, Webpackiga koostamiseks `OMNIROUTE_USE_TURBOPACK=0` (`Dockerfile.bun` pakub seda argumendina `--build-arg`).
-- **Eraldi Bun-i Dockerfile**: mitmeetapiline `Dockerfile.bun` natiivsete Bun-i tootmisjuurutuste jaoks (`docker build -f Dockerfile.bun -t omniroute:bun .`).
+- **Sisseehitatud `bun:sqlite`** : OmniRoute kasutab Bun all töötades Bun sisseehitatud `bun:sqlite` draiverit, langedes Node.js või `sql.js` puhul tagasi `better-sqlite3`.
+- **Automaatne veebipaketi komplekteerija valimine arendajas** : arendus (`bun run dev`) tuvastab automaatselt Bun ja keelab Turbopack Webpacki kasuks, et vältida natiivse V8 sidumise kokkusobimatust. Tootmisjärgud (`bun run build`) järgivad `OMNIROUTE_USE_TURBOPACK` täpselt nagu sõlmes: vaikimisi Turbopack, `OMNIROUTE_USE_TURBOPACK=0` Webpackiga ehitamiseks (`Dockerfile.bun` paljastab selle `--build-arg`).
+- **Spetsiaalne Bun Dockerfile** : mitmeastmeline `Dockerfile.bun` loomulike Bun -tootmise juurutuste jaoks (`docker build -f Dockerfile.bun -t omniroute:bun .`).
 
 ```bash
-# Paigalda ja käivita Bun-iga
+# Install and run with Bun
 bun install
 bun run dev
 ```
 
-**🛠️ Lähtekoodist**
+**🛠️ Allikast**
 
 ```bash
 cp .env.example .env && npm install
@@ -1171,62 +1139,51 @@ yay -S omniroute-bin && systemctl --user enable --now omniroute.service
 **🔧 Nix (Flake)**
 
 ```bash
-# Nix flakesi kasutamine
+# Using Nix flakes
 nix develop
 npm run dev
 
-# Või devboxi kasutamine
+# Or using devbox
 devbox run npm run dev
 ```
 
-📖 [Dockeri juhend](docs/guides/DOCKER_GUIDE.md) — Compose'i profiilid, Caddy HTTPS, Cloudflare'i tunnelid.
+📖 [Docker Juhend](docs/guides/DOCKER_GUIDE.md) — Profiilide koostamine, Caddy HTTPS, Cloudflare tunnelid.
 
 **🦭 Podman**
 
 ```bash
-# 1. Valmista ette sidushaagitud andmekataloog
+# 1. Prepare the bind-mounted data directory
 mkdir -p data
 
-# 2. Ainult Linux + kohalik juurõigusteta Podman (mitte kunagi Podman Machine'i kaugklient):
+# 2. Linux + local rootless Podman only (never a remote Podman Machine client):
 podman unshare chown 1000:1000 ./data
 
-# 3. Määra käituskeskkonna vihje, koosta kohalik Compose'i tõmmispilt ja käivita
+# 3. Set the runtime hint, build the local Compose image, and start
 echo "CONTAINER_HOST=podman" >> .env
 podman compose --profile base up -d --build
 ```
 
-macOS-is või Windowsis kasutab Podman Podman Machine'i kaugmasinat: jäta `podman unshare` vahele ja
-järgi [topoloogiapõhiseid andmekataloogi juhiseid](contrib/podman/README.md#data-directory-permissions-by-topology).
+macOS või Windows puhul kasutab Podman kaug-Podmani masinat: jätke `podman unshare` vahele ja järgige [topoloogiaspetsiifilisi andmekataloogi juhiseid](contrib/podman/README.md#data-directory-permissions-by-topology).
 
-📖 [Podmani juhend](contrib/podman/README.md) — Compose'i järgud, Podman Machine ja
-Linuxi/systemd Quadleti seadistus.
+📖 [Podmani juhend](contrib/podman/README.md) — Koostage järge, Podmani masinat ja Linux/systemd Quadleti seadistamist.
 
-**⚡ Kiirem / kergem paigaldus (jäta natiivne järk vahele)**
+**⚡ Kiirem / leanim installimine (jätke omaversioon vahele)**
 
-Natiivne SQLite'i mootor (`better-sqlite3`) on **valikuline** sõltuvus, mistõttu globaalne
-paigaldus ei takerdu kunagi lähtekoodist kompileerimise taha: sobivuse korral kasutatakse
-sinu platvormi/Node'i jaoks eelkompileeritud binaarfaili, vastasel juhul minnakse läbipaistvalt
-üle puhtalt JS-il põhinevale mootorile (`node:sqlite` Node 22+ korral, muidu komplekti kuuluvale
-`sql.js` WASM-ile) — koostamistööriistu pole vaja.
+Algne SQLite mootor (`better-sqlite3`) on an** valikuline** sõltuvus, nii et globaalne installimine ei blokeeri kunagi allikast kompileerimist: see kasutab eelehitatud binaarfaili, kui see sobib teie platform/Node, ja muul juhul taandub läbipaistvalt puhtale JS-mootorile (`node:sqlite` sõlmel 22 +, vastasel juhul komplektis olev `sql.js` WASM) — pole ehitustööriistu vaja.
 
-Paigaldusjärgse **natiivse eelsoojenduse** täielikuks vahelejätmiseks (CI, kasutajaliideseta või aeglastel masinatel).
-Märkus: see jätab vahele ainult natiivse SQLite'i eelsoojenduse etapi (`scripts/postinstall.mjs`);
-binaarfaili kopeerimise/parandamise haak (`scripts/build/postinstall.mjs`) töötab endiselt tavapäraselt:
+Järelinstalli vahelejätmiseks** kohalik soojendus** täielikult (CI, peata või aeglased masinad). Märkus: see jätab vahele ainult algse SQLite soojendusetapi (`scripts/postinstall.mjs`); binary-copy/repair konks (`scripts/build/postinstall.mjs`) töötab ikka normaalselt:
 
 ```bash
-OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # Ka CI=1 jätab selle vahele
+OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 also skips it
 ```
 
-Kiireimaks paigalduseks eelista **pnpm-i** (sisupõhine hoidla + püsilingid — vaata eespool).
-Ilma juhtpaneelita ja kasutajaliideseta käituskeskkonna jaoks kasuta Dockeri profiili `base` (eespool) või
-[Termuxi juhendit](docs/guides/TERMUX_GUIDE.md). CLI-d ja veebipõhist juhtpaneeli teenindab
-sama protsess ühe pordi kaudu, seega eraldi ainult CLI jaoks mõeldud paketti praegu pole.
+Kiireimate installide jaoks eelistage** pnpm** (sisu aadressiga pood + kõvad lingid — vt ülal). Armatuurlauavaba ja peata käitusaja saavutamiseks kasutage Docker `base` profiili (ülal) või [Termuxi juhendit](docs/guides/TERMUX_GUIDE.md). CLI ja veebi armatuurlauda teenindavad sama protsess ühes pordis, seega pole täna eraldi ainult CLI-paketti.
 
 <br/>
 
 <div align="center">
 
-# 🎬 OmniRoute töös
+# 🎬 OmniRoute tegevuses
 
 </div>
 
@@ -1322,29 +1279,29 @@ Kanoonilised mõõdikud seisuga 2026-10-18: **1.976 unikaalset videot** · **20.
 <br/>
 <div align="center">
 
-## 🛠️ Tehnoloogiavirn
+## 🛠️ Tech Stack
 
 </div>
 
 <table>
   <tr><th align="left">Kiht</th><th align="left">Tehnoloogia</th></tr>
-  <tr><td nowrap><b>Käituskeskkond</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
-  <tr><td nowrap><b>Keel</b></td><td>TypeScript 6.0 — <b>100% TypeScript</b> kataloogides <code>src/</code> ja <code>open-sse/</code> (alates versioonist v2.0 pole tuumas ühtegi <code>any</code>-tüüpi)</td></tr>
+  <tr><td nowrap><b>Kestus</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
+  <tr><td nowrap><b>Keel</b></td><td>TypeScript 6.0 — <b>100% TypeScript</b> <code>src/</code> ja <code>open-sse/</code> vahel (null <code>any</code> d tuumas alates versioonist 2.0)</td></tr>
   <tr><td nowrap><b>Raamistik</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
-  <tr><td nowrap><b>Andmebaas</b></td><td>better-sqlite3 (SQLite, WAL-i logimine) + LowDB (JSON-i pärand) — 147 domeenimoodulit, 240 migratsiooni</td></tr>
-  <tr><td nowrap><b>Mälu</b></td><td>SQLite FTS5 täistekstiotsing + int8-kvantiseeritud vektormanused, tüübistatud hääbumine</td></tr>
-  <tr><td nowrap><b>Skeemid</b></td><td>Zod 4 — MCP tööriistade I/O valideerimine + API-lepingud</td></tr>
+  <tr><td nowrap><b>Andmebaas</b></td><td>better-sqlite3 (SQLite, WAL ajakirjandus) + LowDB (JSON legacy) — 147 domeenimoodulit, 240 migratsiooni</td></tr>
+  <tr><td nowrap><b>Mälu</b></td><td>SQLite FTS5 täistekst + int8-quantized vektormanused, trükitud lagunemine</td></tr>
+  <tr><td nowrap><b>Skeemid</b></td><td>Zod 4 — MCP tööriist I/O valideerimine + API lepingud</td></tr>
   <tr><td nowrap><b>Protokollid</b></td><td>MCP (stdio / HTTP / SSE) + A2A v0.3 (JSON-RPC 2.0 + SSE)</td></tr>
-  <tr><td nowrap><b>Voogedastus</b></td><td>Serveri saadetud sündmused (SSE) + WebSocketi sild (<code>/v1/ws</code>)</td></tr>
-  <tr><td nowrap><b>Tihendamine</b></td><td>12 mootoriga konveier — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
-  <tr><td nowrap><b>Autentimine ja turve</b></td><td>OAuth 2.0 (PKCE) + JWT + API-võtmed + MCP ulatusega autentimine · AES-256-GCM puhkeolekus · DOMPurify</td></tr>
-  <tr><td nowrap><b>Varjatus</b></td><td>wreq-js — JA3 / JA4 TLS-i sõrmejälje jäljendamine, 3-tasemeline puhverserver</td></tr>
-  <tr><td nowrap><b>Töökindlus</b></td><td>Ahelakatkesti, eksponentsiaalne tagasilangus, tormijooksu vältimine, automaatne kombineeritud enesetaastus</td></tr>
-  <tr><td nowrap><b>Logimine</b></td><td>pino — struktureeritud JSON-logid päringu kontekstiga</td></tr>
-  <tr><td nowrap><b>Testimine</b></td><td>Node.js-i testikäitaja + Vitest — <b>60 000+ staatilist testideklaratsiooni</b> enam kui 8400 jälgitavas testifailis (üksus-, integratsiooni-, E2E-, turbe- ja ökosüsteemitestid)</td></tr>
-  <tr><td nowrap><b>Platvormid</b></td><td>Töölaud (Electron) · Android (Termux) · PWA (mis tahes brauser)</td></tr>
-  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Actions — automaatne npm-i avaldamine + Docker Hubi avaldamine väljalaske korral</td></tr>
-  <tr><td nowrap><b>Lingid</b></td><td><a href="https://omniroute.online">Veebisait</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/diegosouzapw/omniroute">Docker Hub</a></td></tr>
+  <tr><td nowrap><b>Voogesitus</b></td><td>Serveri poolt saadetud sündmused (SSE) + WebSocket sild (<code>/v1/ws</code>)</td></tr>
+  <tr><td nowrap><b>Kokkusurumine</b></td><td>12 mootoriga torujuhe — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
+  <tr><td nowrap><b>Auth &amp; turvalisus</b></td><td>OAuth 2.0 (PKCE) + JWT + API + MCP ulatusega autentimine · AES-256-GCM puhkeolekus · DOMPurify</td></tr>
+  <tr><td nowrap><b>Stealth</b></td><td>wreq-js — JA3 / JA4 TLS sõrmejälje jäljendamine, 3-tasemeline puhverserver</td></tr>
+  <tr><td nowrap><b>Vastupidavus</b></td><td>Kaitselüliti, eksponentsiaalne tagasilülitus, äikesevastane kari, automaatne kombineeritud iseparandus</td></tr>
+  <tr><td nowrap><b>Logimine</b></td><td>pino — struktureeritud JSON logid päringu kontekstiga</td></tr>
+  <tr><td nowrap><b>Testimine</b></td><td>Node.js testijooksja + Vitest — <b>60 000 + staatilise testi deklaratsiooni</b> 8400 + jälgitava testfaili vahel (üksus, integratsioon, E2E, turvalisus, ökosüsteem)</td></tr>
+  <tr><td nowrap><b>Platvormid</b></td><td>Lauaarvuti (Electron) · Android (Termux) · PWA (mis tahes brauser)</td></tr>
+  <tr><td nowrap><b>CI/CD</b></td><td>GitHub toimingud — automaatne npm avaldamine + Docker jaotur vabastamisel</td></tr>
+  <tr><td nowrap><b>Lingid</b></td><td><a href="https://omniroute.online">Veebisait</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/cheaperinference/omniroute">Docker jaotur</a></td></tr>
 </table>
 
 <div align="center">
@@ -1834,17 +1791,17 @@ OmniRoute seisab hiiglaste õlgadel. See sai alguse projekti **[9router](https:/
   <tr><td nowrap><b><a href="https://github.com/steipete/CodexBar">CodexBar</a></b></td><td align="center">22,955</td><td>Tuvastas Grok Buildi kvoodipinna; seejärel kontrollis ja parandas OmniRoute aktiivse juhtmevormingu sõltumatult.</td></tr>
 </table>
 
-## 📄 Litsents
+## 📄 litsents
 
-MIT-litsents – üksikasju vt [LICENSE](LICENSE).
+MIT litsents – vaadake üksikasju [LICENSE](LICENSE) st.
 
 ---
 
 <div align="center">
 
-**[⬆ Tagasi üles](#-omniroute)** · Loodud ❤️ abil avatud lähtekoodiga tehisintellekti kogukonna jaoks.
+**[⬆ Tagasi üles](#-omniroute)** · Loodud koos ❤️ avatud lähtekoodiga AI kogukonna jaoks.
 
-<sub>Loonud <a href="https://github.com/diegosouzapw">Diego Souza</a> · OmniRoute v3.8.55 · Node ≥22.22.2 · MIT-litsents · <a href="https://omniroute.online">omniroute.online</a></sub>
+<sub>Looja <a href="https://github.com/diegosouzapw">Diego Souza</a> · OmniRoute v3.8.55 · sõlm ≥ 22.22.2 · MIT litsents · <a href="https://omniroute.online">omniroute.online</a></sub>
 
 </div>
-<!-- GitHub Discussions on kogukonna küsimuste ja vastuste jaoks lubatud -->
+<!-- GitHub Discussions enabled for community Q&A -->

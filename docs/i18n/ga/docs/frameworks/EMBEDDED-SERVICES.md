@@ -238,7 +238,7 @@ Suiteáil 9Router ó npm. Cruthaíonn `DATA_DIR/services/9router/` lena `package
 | `409`  | Suiteáil cheana féin (glas ar siúl)                                     |
 | `500`  | Theip ar shuiteáil npm — féach `message` le haghaidh earráid chairdiúil |
 
-**Nótaí:** Úsáideann sé `execFile('npm', [...])` — gan bhlaosc, gan idirshuíomh (riail chrua #13). tugtar aghaidh ar earráidí EACCES mar theachtaireachtaí cairdiúil.
+**Nótaí:** Úsáideann `execFile('npm', [...])` — gan bhlaosc, gan idirshuíomh (riail chrua #13). tugtar aghaidh ar earráidí EACCES mar theachtaireachtaí cairdiúil.
 
 ---
 
@@ -528,7 +528,7 @@ tá an cruth críochphointe céanna ag an mbosca canta agus atá ag Mux — no b
 | Modh   | Conair                                       | Cur síos                                                             |
 | ------ | -------------------------------------------- | -------------------------------------------------------------------- |
 | `POST` | `/api/services/singbox/install`              | Íoslódáil + fíoraigh an scaoileadh bosca amhránaíochta pinned        |
-| `POST` | `/api/services/singbox/start`                | Tosaigh bosca amhránaíochta (`sing-box run -c config.json`)          |
+| `POST` | `/api/services/singbox/start`                | Tosaigh bosca canta (`sing-box run -c config.json`)                  |
 | `POST` | `/api/services/singbox/stop`                 | Stop bosca amhrán                                                    |
 | `POST` | `/api/services/singbox/restart`              | Atosaigh an bosca amhránaíochta                                      |
 | `POST` | `/api/services/singbox/update`               | Re-verify/reinstall an scaoileadh pinned                             |
@@ -557,9 +557,9 @@ an seachfhreastalaí seo:
 - Stiallacha `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` ón bhfreagra
 - Athscríobhtar freagraí HTML chun `<base href>` a instealladh agus normalú cosáin absalóideacha (`/foo` → `/dashboard/.../embed/foo`)
 
-láimhseálann freastalaí compánach uasghráduithe WebSocket don deais leabaithe ar phort tiomnaithe (féach `src/lib/services/embedWsProxy.ts`).
+láimhseálann freastalaí compánach uasghráduithe WebSocket don deais leabaithe ar phort tiomnaithe (féach `src/lib/services/embedWsProxy.ts`). Tá gach uasghrádú údaraithe sula n-osclaíonn an tollán, leis na rialacha céanna leis an mbealach leabaithe HTTP : ní mór don phiaraí a bheith loopback gan aon cheanntásc seoltaí droim ar aghaidh seachfhreastalaí, ní mór do bhrabhsálaí `Origin` a bheith ina bhunadh an deais (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` na mainneachtainí loopback a leathnú), agus tá seisiún deais nó eochair API scóip bhainistíochta ag teastáil ón nglaoiteoir mura bhfuil logáil isteach ar an painéal díchumasaithe.
 
-**Slándáil:** Aicmítear na bealaí seachfhreastalaí leabaithe faoi `LOCAL_ONLY_API_PREFIXES` agus ní féidir iad a bhaint amach ach ó loopback. Ní féidir le hionsaí a fhaigheann JWT trí thollán Cloudflare/Ngrok seachfhreastalaí isteach i seirbhísí leabaithe.
+**Slándáil:** Aicmítear na bealaí seachfhreastalaí leabaithe faoi `LOCAL_ONLY_API_PREFIXES` agus ní féidir iad a bhaint amach ach ó loopback. Ní féidir le hionsaitheoir a fhaigheann JWT trí thollán Cloudflare/Ngrok seachfhreastalaí isteach i seirbhísí leabaithe.
 
 ---
 

@@ -8,9 +8,9 @@
 
 ---
 
-## 第 1 步：安装 OmniRoute
+## 第1步：安装OmniRoute
 
-选择你偏好的方式：
+选择您喜欢的方法：
 
 ### 选项 A：npm（推荐）
 
@@ -18,15 +18,15 @@
 npm install -g omniroute
 ```
 
-### 选项 B：Docker
+### 选项B： Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` 是已**发布**的最高稳定 SemVer 版本。它**不会**跟踪 git `main`。对于 GitOps，请固定使用 `diegosouzapw/omniroute:X.Y.Z`。请参阅[镜像标签/发布渠道](../guides/DOCKER_GUIDE.md#release-channels)。
+`:latest`是最高的**发表**稳定SemVer。确实如此**不是**跟踪 git `main`。将`cheaperinference/omniroute:X.Y.Z`固定为GitOps。请参阅[图像标签/发布渠道](../guides/DOCKER_GUIDE.md#release-channels)。
 
-### 选项 C：从源代码安装
+### 选项 C：来自源头
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

@@ -450,10 +450,9 @@ server/
   함께 구성됩니다. 아이콘은 `Icon.tsx` 및 `constants/iconMap.ts`를 통해
   사용합니다. `docs/architecture/DESIGN_SYSTEM.md`를 참조하세요.
 
-## 4. `open-sse/` — 스트리밍 엔진 워크스페이스
+## 4. `open-sse/` — 스트리밍 엔진 작업 공간
 
-`@omniroute/open-sse`로 게시되는 별도의 npm 워크스페이스입니다. 요청
-처리, 실행기, 변환기, 서비스, 트랜스포머 및 MCP 서버를 담당합니다.
+별도의 npm 작업 공간이 `@omniroute/open-sse` 로 게시되었습니다. 요청 처리, 실행자, 번역자, 서비스, 변환기 및 MCP 서버를 소유합니다.
 
 ```
 open-sse/
@@ -473,124 +472,82 @@ open-sse/
 
 ### 4.1 `open-sse/handlers/`
 
-| Handler                 | Purpose                                                             |
-| ----------------------- | ------------------------------------------------------------------- |
-| `chatCore.ts`           | 기본 채팅 파이프라인(캐시, 속도 제한, 콤보 라우팅, 실행기 디스패치) |
-| `responsesHandler.ts`   | OpenAI Responses API 진입점                                         |
-| `embeddings.ts`         | 임베딩                                                              |
-| `imageGeneration.ts`    | 이미지 생성                                                         |
-| `audioSpeech.ts`        | 텍스트 음성 변환                                                    |
-| `audioTranscription.ts` | 음성을 텍스트로 변환                                                |
-| `videoGeneration.ts`    | 동영상 생성                                                         |
-| `musicGeneration.ts`    | 음악 생성                                                           |
-| `rerank.ts`             | 재순위화                                                            |
-| `moderations.ts`        | 조정                                                                |
-| `search.ts`             | 웹 검색                                                             |
-| `sseParser.ts`          | SSE 이벤트 파서                                                     |
-| `usageExtractor.ts`     | 업스트림 스트림에서 토큰 수 추출                                    |
-| `responseSanitizer.ts`  | 공급자별 불필요한 데이터 제거                                       |
-| `responseTranslator.ts` | 공급자 응답과 변환기 계층 간 연결                                   |
+| 매니저                  | 목적                                                            |
+| ----------------------- | --------------------------------------------------------------- |
+| `chatCore.ts`           | 기본 채팅 파이프라인(캐시, 속도 제한, 콤보 라우팅, 실행자 파견) |
+| `responsesHandler.ts`   | OpenAI 응답 API 진입점                                          |
+| `embeddings.ts`         | 임베딩                                                          |
+| `imageGeneration.ts`    | 이미지 생성                                                     |
+| `audioSpeech.ts`        | 텍스트 음성 변환                                                |
+| `audioTranscription.ts` | 음성-텍스트                                                     |
+| `videoGeneration.ts`    | 비디오 생성                                                     |
+| `musicGeneration.ts`    | 음악세대                                                        |
+| `rerank.ts`             | 순위 재지정                                                     |
+| `moderations.ts`        | 절도                                                            |
+| `search.ts`             | 웹 검색                                                         |
+| `sseParser.ts`          | SSE 이벤트 파서                                                 |
+| `usageExtractor.ts`     | 업스트림 스트림에서 토큰 수를 가져옵니다.                       |
+| `responseSanitizer.ts`  | 스트립 공급자별 노이즈                                          |
+| `responseTranslator.ts` | 제공자 응답과 번역자 레이어 사이의 접착                         |
 
 ### 4.2 `open-sse/executors/`
 
-170개의 최상위 실행기 모듈(`*.ts`에서 `base.ts`, `index.ts` 및 테스트 제외)입니다. 이 개수는
-`npm run check:docs-counts`가 측정합니다. 모든 실행기 클래스는 `BaseExecutor`(`base.ts`)를
-직접 상속하거나 `DefaultExecutor` 또는 다른 실행기를 통해 상속합니다. 나머지 모듈은 공급자별
-헬퍼(도구 스키마, fetch/TTS 어댑터, 특이 동작 처리기)입니다. 실행기에는 다음이 포함됩니다:
+170개의 최상위 실행기 모듈(`*.ts` 빼기 `base.ts`, `index.ts` 및 테스트 — `npm run check:docs-counts` 측정 개수). 모든 실행기 클래스는 직접적으로 또는 `DefaultExecutor` 나 다른 실행기를 통해 `BaseExecutor` (`base.ts`)를 확장합니다. 나머지 모듈은 공급자별 도우미(도구 스키마, fetch/TTS 어댑터, 쿼크 처리기)입니다. 실행자에는 다음이 포함됩니다.
 
-`antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`,
-`chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`,
-`muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`,
-`pollinations`, `qoder`, `vertex`, `devin-desktop`, 그리고
-`claudeIdentity.ts`(공유 ID 헬퍼) 및 `index.ts`(레지스트리)입니다.
+`antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder`, `vertex`, `devin-desktop`, `claudeIdentity.ts` ( 공유 신원 도우미 ) 및 `index.ts` (레지스트리).
 
-> 참고: 여기에 나열되지 않은 공급자는 일반적인
-> OpenAI 호환 실행기를 사용하는 `default.ts`에서 처리합니다. 전체 공급자 카탈로그(394개)는
-> `src/shared/constants/providers.ts`에 있습니다.
+> 참고: 여기에 나열되지 않은 공급자는 일반 OpenAI 호환 실행기를 사용하여 `default.ts` 에서 제공됩니다. 전체 공급자 카탈로그(394개 공급자)는 `src/shared/constants/providers.ts` 에 있습니다.
 
 ### 4.3 `open-sse/translator/`
 
-허브 앤 스포크 방식의 변환(OpenAI가 허브)입니다.
+허브 앤 스포크 번역(OpenAI 가 허브입니다).
 
-- **9개의 요청 변환기**(`translator/request/`):
-  `antigravity-to-openai`, `claude-to-gemini`, `claude-to-openai`,
-  `gemini-to-openai`, `openai-responses`, `openai-to-claude`,
-  `openai-to-cursor`, `openai-to-gemini`, `openai-to-kiro`.
-- **9개의 응답 변환기**(`translator/response/`):
-  `claude-to-openai`, `cursor-to-openai`, `gemini-to-claude`, `gemini-to-openai`,
-  `kiro-to-openai`, `openai-responses`, `openai-to-antigravity`,
-  `openai-to-claude`.
-- **9개의 헬퍼**(`translator/helpers/`):
-  `claudeHelper`, `geminiHelper`, `geminiToolsSanitizer`, `maxTokensHelper`,
-  `openaiHelper`, `responsesApiHelper`, `schemaCoercion`, `toolCallHelper` 및
-  헬퍼 테스트입니다.
-- **이미지 헬퍼**(`translator/image/sizeMapper.ts`).
-- 최상위 항목: `bootstrap.ts`, `formats.ts`, `registry.ts`, `index.ts`.
+- **9명의 번역가 요청** (`translator/request/`): `antigravity-to-openai`, `claude-to-gemini`, `claude-to-openai`, `gemini-to-openai`, `openai-responses`, `openai-to-claude`, `openai-to-cursor`, `openai-to-gemini`, `openai-to-kiro`.
+- **9명의 응답 번역가** (`translator/response/`): `claude-to-openai`, `cursor-to-openai`, `gemini-to-claude`, `gemini-to-openai`, `kiro-to-openai`, `openai-responses`, `openai-to-antigravity`, `openai-to-claude`.
+- **도우미 9명** (`translator/helpers/`): `claudeHelper`, `geminiHelper`, `geminiToolsSanitizer`, `maxTokensHelper`, `openaiHelper`, `responsesApiHelper`, `schemaCoercion`, `toolCallHelper` 및 도우미 테스트.
+- **이미지 도우미** (`translator/image/sizeMapper.ts`).
+- 최상위 레벨: `bootstrap.ts`, `formats.ts`, `registry.ts`, `index.ts`.
 
 ### 4.4 `open-sse/transformer/`
 
-- `responsesTransformer.ts` — `TransformStream` 기반 Responses API ↔ Chat
-  Completions 변환기(`responses/` 라우트 catch-all에서 사용).
+- `responsesTransformer.ts` — `TransformStream` -based 응답 API ↔ 채팅 완료 변환기( `responses/` 경로 포괄 기능에서 사용됨).
 
 ### 4.5 `open-sse/services/`
 
-주요 항목(`open-sse/services/` 아래의 전체 목록):
+주요 내용( `open-sse/services/` 아래 전체 목록):
 
-| 우려 사항         | 파일                                                                                                                                                                                                                                                     |
+| 우려              | 파일                                                                                                                                                                                                                                                     |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Combo 라우팅      | `combo.ts` (22개 전략), `comboConfig.ts`, `comboMetrics.ts`, `comboManifestMetrics.ts`, `comboAgentMiddleware.ts`                                                                                                                                        |
-| Auto Combo 엔진   | `autoCombo/` — `engine.ts`, `scoring.ts`, `taskFitness.ts`, `virtualFactory.ts`, `modePacks.ts`, `autoPrefix.ts`, `persistence.ts`, `providerDiversity.ts`, `providerRegistryAccessor.ts`, `routerStrategy.ts`, `selfHealing.ts`, `index.ts`             |
-| 복원력            | `accountFallback.ts` (쿨다운 + 잠금), `errorClassifier.ts`, `requestRejectedStreak.ts`, `emergencyFallback.ts`, `rateLimitManager.ts`, `rateLimitSemaphore.ts`, `accountSemaphore.ts`, `accountSelector.ts`                                              |
+| 콤보 라우팅       | `combo.ts` (22개 전략), `comboConfig.ts`, `comboMetrics.ts`, `comboManifestMetrics.ts`, `comboAgentMiddleware.ts`                                                                                                                                        |
+| 자동 콤보 엔진    | `autoCombo/` — `engine.ts`, `scoring.ts`, `taskFitness.ts`, `virtualFactory.ts`, `modePacks.ts`, `autoPrefix.ts`, `persistence.ts`, `providerDiversity.ts`, `providerRegistryAccessor.ts`, `routerStrategy.ts`, `selfHealing.ts`, `index.ts`             |
+| 회복력            | `accountFallback.ts` (쿨다운 + 잠금), `errorClassifier.ts`, `requestRejectedStreak.ts`, `emergencyFallback.ts`, `rateLimitManager.ts`, `rateLimitSemaphore.ts`, `accountSemaphore.ts`, `accountSelector.ts`                                              |
 | 할당량            | `quotaMonitor.ts`, `quotaPreflight.ts`, `bailianQuotaFetcher.ts`, `codexQuotaFetcher.ts`, `deepseekQuotaFetcher.ts`, `openrouterQuotaFetcher.ts`, `openrouterFreeWindow.ts`, `llmgatewayQuotaFetcher.ts`, `crofUsageFetcher.ts`, `antigravityCredits.ts` |
 | 캐싱              | `reasoningCache.ts`, `searchCache.ts`, `signatureCache.ts`, `requestDedup.ts`                                                                                                                                                                            |
 | 라우팅 인텔리전스 | `intentClassifier.ts`, `taskAwareRouter.ts`, `backgroundTaskDetector.ts`, `volumeDetector.ts`, `wildcardRouter.ts`, `workflowFSM.ts`, `specificityDetector.ts`, `specificityRules.ts`, `specificityTypes.ts`                                             |
 | 모델 처리         | `modelCapabilities.ts`, `modelDeprecation.ts`, `modelFamilyFallback.ts`, `modelStrip.ts`, `model.ts`, `provider.ts`, `providerRequestDefaults.ts`, `providerCostData.ts`, `payloadRules.ts`                                                              |
-| 압축              | `compression/` — 전체 압축 엔진 연결                                                                                                                                                                                                                     |
+| 압축              | `compression/` — 완전 압축 엔진 배선                                                                                                                                                                                                                     |
 | 토큰 + 세션       | `tokenRefresh.ts`, `sessionManager.ts`, `apiKeyRotator.ts`, `contextManager.ts`, `contextHandoff.ts`, `systemPrompt.ts`, `roleNormalizer.ts`, `responsesInputSanitizer.ts`, `toolSchemaSanitizer.ts`, `toolLimitDetector.ts`, `thinkingBudget.ts`        |
-| 계층 / 매니페스트 | `tierResolver.ts`, `tierConfig.ts`, `tierDefaults.json`, `tierTypes.ts`, `manifestAdapter.ts`                                                                                                                                                            |
+| 계층/매니페스트   | `tierResolver.ts`, `tierConfig.ts`, `tierDefaults.json`, `tierTypes.ts`, `manifestAdapter.ts`                                                                                                                                                            |
 | IP / 네트워크     | `ipFilter.ts`, `webSearchFallback.ts`                                                                                                                                                                                                                    |
 | 배치              | `batchProcessor.ts`                                                                                                                                                                                                                                      |
-| 사용량            | `usage.ts`                                                                                                                                                                                                                                               |
+| 용법              | `usage.ts`                                                                                                                                                                                                                                               |
 
 ### 4.6 `open-sse/mcp-server/`
 
-- `server.ts`에 연결된 **고유 도구 110개** (`schemas/tools.ts`의 표준 도구 45개 +
-  메모리, 스킬, GitHub 스킬, 풀, 게이미피케이션, 플러그인, Notion, Obsidian,
-  로컬 코퍼스 및 압축 모듈 — `countUniqueMcpTools`로 합집합을 계산).
-- **3개 전송 방식**: stdio, HTTP Streamable, SSE.
-- 런타임에 적용되는 **33개 스코프** — 기본 목록은 `src/shared/constants/mcpScopes.ts`에 있으며, 전체 집합은 각 도구 모듈에 선언된 스코프의 합집합입니다.
-- 감사 테이블: `mcp_tool_audit` (`audit.ts`에서 채움).
-- 파일: `server.ts`, `index.ts`, `httpTransport.ts`, `audit.ts`, `scopeEnforcement.ts`,
-  `runtimeHeartbeat.ts`, `descriptionCompressor.ts`, `schemas/{tools, a2a, audit, index}.ts`,
-  `tools/{advancedTools, compressionTools, memoryTools, skillTools}.ts`,
-  그리고 `__tests__/` 아래의 테스트.
-- 전체 도구 카탈로그는 [MCP-SERVER.md](../frameworks/MCP-SERVER.md)를 참조하세요.
+- **110개의 독특한 도구** `server.ts` 로 연결됩니다( `schemas/tools.ts` + 메모리, 기술, GitHub 기술, 풀, 게임화, 플러그인, Notion, Obsidian, local-corpus 및 `countUniqueMcpTools` 로 계산되는 압축 모듈 — 통합의 45개 표준).
+- **3개의 운송수단** : stdio, HTTP 스트리밍 가능, SSE.
+- **스코프 33개** `src/shared/constants/mcpScopes.ts` 의 런타임 — 기본 목록에 적용되며 전체 세트는 각 도구 모듈에서 선언된 범위의 통합입니다.
+- 감사 테이블: `mcp_tool_audit` ( `audit.ts` 로 채워짐)
+- 파일: `server.ts`, `index.ts`, `httpTransport.ts`, `audit.ts`, `scopeEnforcement.ts`, `runtimeHeartbeat.ts`, `descriptionCompressor.ts`, `schemas/{tools, a2a, audit, index}.ts`, `tools/{advancedTools, compressionTools, memoryTools, skillTools}.ts` 및 `__tests__/` 아래의 테스트.
+- 전체 도구 카탈로그는 [MCP-SERVER.md](../frameworks/MCP-SERVER.md) 참조하세요.
 
 ### 4.7 `open-sse/config/`
 
-프로바이더 레지스트리(`providerRegistry.ts`, `providerModels.ts`,
-`providerHeaderProfiles.ts`), 형식별 모델 레지스트리(`audioRegistry.ts`,
-`embeddingRegistry.ts`, `imageRegistry.ts`, `moderationRegistry.ts`,
-`musicRegistry.ts`, `rerankRegistry.ts`, `searchRegistry.ts`, `videoRegistry.ts`),
-식별자 도우미(`codexIdentity.ts`, `codexInstructions.ts`,
-`anthropicHeaders.ts`, `antigravityUpstream.ts`, `antigravityModelAliases.ts`,
-`cliFingerprints.ts`, `toolCloaking.ts`, `defaultThinkingSignature.ts`),
-자격 증명 도우미(`credentialLoader.ts`, `codexClient.ts`), 클라우드
-어댑터(`azureAi.ts`, `bedrock.ts`, `datarobot.ts`, `glmProvider.ts`,
-`maritalk.ts`, `oci.ts`, `petals.ts`, `runway.ts`, `sap.ts`, `watsonx.ts`,
-`ollamaModels.ts`, `errorConfig.ts`, `constants.ts`, `registryUtils.ts`).
+공급자 레지스트리(`providerRegistry.ts`, `providerModels.ts`, `providerHeaderProfiles.ts`), 형식별 모델 레지스트리(`audioRegistry.ts`, `embeddingRegistry.ts`, `imageRegistry.ts`, `moderationRegistry.ts`, `musicRegistry.ts`, `rerankRegistry.ts`, `searchRegistry.ts`, `videoRegistry.ts`), ID 도우미(`codexIdentity.ts`, `codexInstructions.ts`, `anthropicHeaders.ts`, `antigravityUpstream.ts`, `antigravityModelAliases.ts`, `cliFingerprints.ts`, `toolCloaking.ts`, `defaultThinkingSignature.ts`), 자격 증명 도우미(`credentialLoader.ts`, `codexClient.ts`) 및 클라우드 어댑터(`azureAi.ts`, `bedrock.ts`, `datarobot.ts`, `glmProvider.ts`, `maritalk.ts`, `oci.ts`, `petals.ts`, `runway.ts`, `sap.ts`, `watsonx.ts`, `ollamaModels.ts`, `errorConfig.ts`, `constants.ts`, `registryUtils.ts`).
 
 ### 4.8 `open-sse/utils/`
 
-스트리밍 기본 요소 및 프로바이더 헬퍼: `stream.ts`, `streamHandler.ts`,
-`streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`,
-`sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`,
-`networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`,
-`cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`,
-`comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`,
-`thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`,
-`progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`,
-`ollamaTransform.ts`.
+스트리밍 기본 요소 및 공급자 도우미: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
 
 ---
 
@@ -675,35 +632,14 @@ bin/
 
 ## 8. `scripts/`
 
-목적에 따라 6개의 하위 폴더로 구성되어 있습니다.
+목적에 따라 6개의 하위 폴더로 구성됩니다.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs` 및 읽기 전용 PR 모니터링 도우미인
-  `ci-discriminate.sh`(PR에서 실패한 검사 시그니처를 참조 PR 또는 base-red 이슈와 비교하여 자체 /
-  상속됨 / 알 수 없음으로 분류)와 `audit-worktree.sh`
-  (작업자의 PR을 승인하기 전에 변경된 파일, 보호된 영역, 제거된 assert, 억제 처리 횟수, 남아 있는
-  임시 tsconfig, PR head와 로컬 HEAD 비교를 검사).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs` 및 읽기 전용 PR 보육 도우미 `ci-discriminate.sh` ( PR 의 실패 확인 서명을 참조 PR 또는 base-red에 대해 자체 / 상속 / 알 수 없음으로 정렬 문제) 및 `audit-worktree.sh` (더티 파일, 보호된 표면, 제거된 어설션, 억제 횟수, 남은 tmp tsconfigs, 작업자의 PR 허용되기 전의 PR 헤드 대 로컬 HEAD — ).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

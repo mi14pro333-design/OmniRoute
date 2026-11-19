@@ -340,11 +340,11 @@ docker start omniroute
 
 ## 6. የላቀ ደህንነት
 
-### nginxን ለCloudflare IPዎች ብቻ ይገድቡ
+### nginxን ወደ Cloudflare IPs ገድብ
 
 ```bash
 cat > /etc/nginx/cloudflare-ips.conf << 'CF'
-# የCloudflare IPv4 ክልሎች — በየጊዜው ያዘምኑ
+# Cloudflare IPv4 ranges — update periodically
 # https://www.cloudflare.com/ips-v4/
 set_real_ip_from 173.245.48.0/20;
 set_real_ip_from 103.21.244.0/22;
@@ -365,31 +365,31 @@ real_ip_header CF-Connecting-IP;
 CF
 ```
 
-የሚከተለውን በ`nginx.conf` ውስጥ ባለው `http {}` ብሎክ ውስጥ ያክሉ፦
+በ `http {}` ብሎክ ውስጥ የሚከተለውን ወደ `nginx.conf` ያክሉ።
 
 ```nginx
 include /etc/nginx/cloudflare-ips.conf;
 ```
 
-### fail2banን ይጫኑ
+### fail2ban ጫን
 
 ```bash
 apt install -y fail2ban
 systemctl enable fail2ban
 systemctl start fail2ban
 
-# ሁኔታውን ያረጋግጡ
+# Check status
 fail2ban-client status sshd
 ```
 
-### ወደ Docker ወደብ ቀጥተኛ መዳረሻን ያግዱ
+### ወደ Docker ወደብ ቀጥተኛ መዳረሻን አግድ
 
 ```bash
-# ወደ ወደብ 20128 ቀጥተኛ ውጫዊ መዳረሻን ይከልክሉ
+# Prevent direct external access to port 20128
 iptables -I DOCKER-USER -p tcp --dport 20128 -j DROP
 iptables -I DOCKER-USER -i lo -p tcp --dport 20128 -j ACCEPT
 
-# ደንቦቹ እንዲቆዩ ያድርጉ
+# Persist the rules
 apt install -y iptables-persistent
 netfilter-persistent save
 ```

@@ -12,7 +12,7 @@
 
 Wybierz preferowaną metodę:
 
-### Opcja A: npm (zalecana)
+### Opcja A: npm (zalecane)
 
 ```bash
 npm install -g omniroute
@@ -21,12 +21,12 @@ npm install -g omniroute
 ### Opcja B: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` oznacza najnowszą **opublikowaną** stabilną wersję SemVer. Nie śledzi gałęzi git `main`. W przypadku GitOps przypnij wersję `diegosouzapw/omniroute:X.Y.Z`. Zobacz [Tagi obrazów / kanały wydań](../guides/DOCKER_GUIDE.md#release-channels).
+`:latest` jest najwyższa** opublikowany** stabilny SemVer. To prawda** nie** śledź git `main`. Pin `cheaperinference/omniroute:X.Y.Z` dla GitOps. Zobacz [Znaczniki obrazów/Kanały wydań](../guides/DOCKER_GUIDE.md#release-channels).
 
-### Opcja C: Ze źródeł
+### Opcja C: Ze źródła
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

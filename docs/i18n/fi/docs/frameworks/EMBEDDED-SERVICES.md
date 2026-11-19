@@ -45,7 +45,7 @@ Kaikki kahdeksan noudattavat samaa valvontamallia:
 - OmniRoute asentaa ne `DATA_DIR/services/{name}/` n alle (eristettynä OmniRoute:n omasta `package.json`)
 - OmniRoute synnyttää ja valvoo niitä lapsiprosesseina
 - OmniRoute ruiskuttaa lyhytaikaisen API -avaimen lapsen ympäristöön ja pyörittää sitä ilman seisokkeja (tarvittaessa)
-- Kaikki hallintareitit (`/api/services/*`) ovat**LOCAL_ONLY** — käytettävissä vain silmukan kautta (kova sääntö 17)
+- Kaikki hallintareitit (`/api/services/*`) ovat**LOCAL_ONLY** — käytettävissä vain silmukan kautta (kova sääntö #17)
 
 ### Keskeiset päätökset (suunnittelusuunnitelmasta)
 
@@ -515,7 +515,7 @@ LLMLingua on pikapakkaus sivuvaunun kääre `@atjsh/llmlingua-2` (todellinen ONN
 
 **Sivuvaunusopimus:** palvelinkomentosarja paljastaa `GET /health` (instant — ei odota mallia) ja `POST /compress` (`{ text, rate }` → `{ text, compressed, ratio }`). Malli latautuu laiskasti ensimmäisellä `/compress` -kutsulla.
 
-**Kompressiojohdot:** `open-sse/services/compression/engines/llmlingua/index.ts` `httpSidecarBackend` kutsuu `LLMLINGUA_BASE_URL` (oletus `http://127.0.0.1:20135`) ja hyväksyy vain sivuvaunun vastauksen, kun se on ehdottomasti lyhyempi kuin syöte; kaikki viat (ei käynnissä, aikakatkaisu, ei-operaatiovaste) palaavat prosessin sisäiseen worker-säikeen taustajärjestelmään (`./worker.ts`).
+**Kompressiojohdot:** `open-sse/services/compression/engines/llmlingua/index.ts` `httpSidecarBackend` kutsuu `LLMLINGUA_BASE_URL` (oletus `http://127.0.0.1:20135`) ja hyväksyy vain sivuvaunun vastauksen, kun se on ehdottomasti lyhyempi kuin syöte; kaikki viat (ei käynnissä, aikakatkaisu, ei-operaatiovaste) palaavat prosessin sisäiseen worker-säikeen taustaohjelmaan (`./worker.ts`).
 
 ---
 
@@ -526,7 +526,7 @@ sing-boxilla on sama päätepisteen muoto kuin Mux — no `rotate-key` route, ei
 | Menetelmä | Polku                                        | Kuvaus                                                                                  |
 | --------- | -------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `POST`    | `/api/services/singbox/install`              | Lataa + verify kiinnitetty sing-box-julkaisu                                            |
-| `POST`    | `/api/services/singbox/start`                | Aloita laululaatikko (`sing-box run -c config.json`)                                    |
+| `POST`    | `/api/services/singbox/start`                | Aloita sing-box (`sing-box run -c config.json`)                                         |
 | `POST`    | `/api/services/singbox/stop`                 | Lopeta lauluboksi                                                                       |
 | `POST`    | `/api/services/singbox/restart`              | Käynnistä laululaatikko uudelleen                                                       |
 | `POST`    | `/api/services/singbox/update`               | Re-verify/reinstall kiinnitetty vapautus                                                |
@@ -553,11 +553,11 @@ Tämä välityspalvelin:
 - Poistaa saapuvat `cookie` ja `authorization` otsikot (ei OmniRoute istunnon vuotoa)
 - Ruiskuttaa `Authorization: Bearer {apiKey}` 9reitittimen todennusta varten
 - Poistaa vastauksesta `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*`
-- Kirjoittaa uudelleen HTML -vastaukset injektoimaan `<base href>` ja normalisoimaan absoluuttiset polut (`/foo` → `/dashboard/.../embed/foo`)
+- Kirjoittaa uudelleen HTML vastaukset lisäämään `<base href>` ja normalisoimaan absoluuttiset polut (`/foo` → `/dashboard/.../embed/foo`)
 
-WebSocket päivitykset sulautettuun kojelautaan hoitaa kumppanipalvelin erillisessä portissa (katso `src/lib/services/embedWsProxy.ts`).
+WebSocket päivitykset sulautettuun kojelautaan hoitaa kumppanipalvelin erillisessä portissa (katso `src/lib/services/embedWsProxy.ts`). Jokainen päivitys valtuutetaan ennen tunnelin avautumista samoilla säännöillä kuin HTTP -upotusreitillä: vertaissovelluksen on oltava takaisinkytkentä ilman käänteisen välityspalvelimen edelleenlähetysotsikkoa, selaimen `Origin` on oltava kojelaudan alkuperä (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` laajentaa silmukan oletusarvoja) ja soittaja tarvitsee kojelautaistunnon tai dashboard-sco logiless on dashboard-sco API.
 
-**Turvallisuus:** Upotetut välityspalvelimen reitit luokitellaan `LOCAL_ONLY_API_PREFIXES` kategoriaan, ja niihin pääsee vain silmukan kautta. Hyökkääjä, joka saa JWT Cloudflare/Ngrok tunnelin kautta, ei voi käyttää välityspalvelinta sulautettuihin palveluihin.
+**Turvallisuus:** Upotusvälityspalvelimen reitit on luokiteltu `LOCAL_ONLY_API_PREFIXES` kategoriaan, ja niihin pääsee vain silmukan kautta. Hyökkääjä, joka saa JWT Cloudflare/Ngrok tunnelin kautta, ei voi käyttää välityspalvelinta sulautettuihin palveluihin.
 
 ---
 

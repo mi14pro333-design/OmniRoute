@@ -8,25 +8,25 @@
 
 ---
 
-## चरण 1: OmniRoute इंस्टॉल करें
+## चरण 1: OmniRoute स्थापित करें
 
 अपनी पसंदीदा विधि चुनें:
 
-### विकल्प A: npm (अनुशंसित)
+### विकल्प ए: एनपीएम (अनुशंसित)
 
 ```bash
 npm install -g omniroute
 ```
 
-### विकल्प B: Docker
+### विकल्प बी: Docker
 
 ```bash
-docker run -d --name omniroute -p 20128:20128 diegosouzapw/omniroute:latest
+docker run -d --name omniroute -p 20128:20128 cheaperinference/omniroute:latest
 ```
 
-`:latest` उच्चतम **प्रकाशित** स्थिर SemVer है। यह git `main` को ट्रैक **नहीं** करता। GitOps के लिए `diegosouzapw/omniroute:X.Y.Z` को पिन करें। [इमेज टैग / रिलीज़ चैनल](../guides/DOCKER_GUIDE.md#release-channels) देखें।
+`:latest` उच्चतम है** प्रकाशित** स्थिर SemVer. ऐसा होता है** नहीं** ट्रैक गिट `main`। GitOps के लिए `cheaperinference/omniroute:X.Y.Z` पिन करें। [छवि टैग/रिलीज़ चैनल](../guides/DOCKER_GUIDE.md#release-channels) देखें।
 
-### विकल्प C: स्रोत से
+### विकल्प सी: स्रोत से
 
 ```bash
 git clone https://github.com/diegosouzapw/OmniRoute.git

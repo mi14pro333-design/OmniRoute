@@ -67,79 +67,74 @@
 
 <br/>
 
-## 📈 Gateway продължава да се разраства
+## 📈 Порталът продължава да расте
 
 <div align="center">
 
-|                                    |          v3.8.50          | **v3.8.51** |      `v3.8.55+`       |
-| ---------------------------------- | :-----------------------: | :---------: | :-------------------: |
-| 🌐 Доставчици                      |            352            |   **358**   |          394          |
-| 🧠 Уникални ID на чат модели       |           1320            |  **1374**   |         1491          |
-| 🖼️ Мост за модалности              | 🆕 зрение + аудио + видео |      ✓      |           ✓           |
-| 📡 Безплатен каталог на Radar      |  🆕 с включване по избор  |      ✓      |           ✓           |
-| ⚖️ Планиране, съобразено с квотата |      🆕 Quota-Share       |      ✓      |           ✓           |
-| 📊 Телеметрия на квотата           |     🆕 в реално време     |      ✓      |           ✓           |
-| 🧰 Безглавен режим                 |             —             |      —      | 🆕 `serve --headless` |
-| 🛤️ LTS инфраструктура              |             —             |      —      | 🆕 канали за издания  |
-| 🔎 API за откриване на модели      |             —             |      —      | 🆕 `/v1/models/query` |
+|                               |          v3.8.50          | **v3.8.51** |        `v3.8.55+`        |
+| ----------------------------- | :-----------------------: | :---------: | :----------------------: |
+| 🌐 доставчици                 |            352            |   **358**   |           394            |
+| 🧠 Уникален чат модел IDs     |           1320            |  **1374**   |           1491           |
+| 🖼️ модален мост               | 🆕 vision + аудио + видео |      ✓      |            ✓             |
+| Безплатен каталог на 📡 Radar |      включване в 🆕       |      ✓      |            ✓             |
+| ⚖️ График с квота             |   🆕 Споделяне на квота   |      ✓      |            ✓             |
+| 📊 квота телеметрия           |        🆕 на живо         |      ✓      |            ✓             |
+| 🧰 Режим без глава            |             —             |      —      |  🆕 `serve --headless`   |
+| 🛤️ LTS релса инфра            |             —             |      —      | канали за издаване на 🆕 |
+| 🔎 Откриване на модел API     |             —             |      —      |  🆕 `/v1/models/query`   |
 
-**→ [Пътна карта](ROADMAP.md) — по релсите към `v3.9.0 LTS`**
+**→ [Пътна карта](ROADMAP.md) — каране на релсата към `v3.9.0 LTS`**
 
 </div>
 
 <br/>
 
-## 🧩 Налично
+## 🧩 Наличен
 
-[![npm версия](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm)](https://www.npmjs.com/package/omniroute)
-![NPM месечни](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm)
-[![Docker Hub](https://img.shields.io/docker/v/diegosouzapw/omniroute?label=Docker%20Hub&logo=docker&color=2496ED)](https://hub.docker.com/r/diegosouzapw/omniroute)
-[![Лиценз: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
-![Изтегляния от Docker](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED)
-![Изтегляния на Electron](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
+[![npm версия](https://img.shields.io/npm/v/omniroute?color=cb3837&logo=npm) ](https://www.npmjs.com/package/omniroute) ![NPM Monthly](https://img.shields.io/npm/dm/omniroute?label=npm/month&color=cb3837&logo=npm) [![Docker център](https://img.shields.io/docker/v/cheaperinference/omniroute?label=Docker%20Hub&logo=docker&color=2496ED) ](https://hub.docker.com/r/cheaperinference/omniroute) [![Лиценз: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square) ](LICENSE) ![Docker Pulls](https://img.shields.io/docker/pulls/diegosouzapw/omniroute?label=docker%20pulls&logo=docker&color=2496ED) ![Electron Downloads](https://img.shields.io/github/downloads/diegosouzapw/omniroute/total?style=flat&label=electron%20downloads&logo=electron&color=47848F)
 
 <table>
   <tr>
-    <td align="right"><b>🚀 Начало</b></td>
+    <td align="right"><b>🚀 Старт</b></td>
     <td align="center"><a href="#-quick-start">🚀 Бърз старт</a></td>
-    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">📦 Инсталиране</a></td>
+    <td align="center"><a href="#-more-install-methods--docker-source-pnpm-arch">Инсталиране 📦</a></td>
     <td align="center"><a href="#first-run">🆓 Свързване на доставчик</a></td>
   </tr>
   <tr>
     <td align="right"><b>💡 Научете</b></td>
     <td align="center"><a href="#-the-promise">💥 Обещанието</a></td>
     <td align="center"><a href="#-why-omniroute">🤔 Защо OmniRoute</a></td>
-    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 С какво се отличава</a></td>
+    <td align="center"><a href="#-what-sets-omniroute-apart">🏆 Какво отличава</a></td>
   </tr>
   <tr>
-    <td align="right"><b>⚙️ Функции</b></td>
-    <td align="center"><a href="#-combos--the-flagship">🎯 Комбинации</a></td>
-    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 Доставчици</a></td>
-    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI и MCP</a></td>
+    <td align="right"><b>Функции ⚙️</b></td>
+    <td align="center"><a href="#-combos--the-flagship">🎯 комбинации</a></td>
+    <td align="center"><a href="#-394-ai-providers--153-catalog-marked-free">🌐 доставчици</a></td>
+    <td align="center"><a href="#-full-cli--a2a--mcp">🔌 CLI &amp; MCP</a></td>
   </tr>
   <tr>
     <td align="right"></td>
-    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ Компресиране</a></td>
+    <td align="center"><a href="#%EF%B8%8F-save-1595-tokens--automatically">🗜️ компресия</a></td>
     <td align="center"><a href="#%EF%B8%8F-where-omniroute-runs--anywhere">🖥️ Къде работи</a></td>
-    <td align="center"><a href="#-private--local-first">🔒 Поверителност</a></td>
+    <td align="center"><a href="#-private--local-first">🔒 Частно</a></td>
   </tr>
   <tr>
     <td align="right"><b>👀 Вижте го</b></td>
-    <td align="center"><a href="#-omniroute-in-action">🎬 На практика</a></td>
+    <td align="center"><a href="#-omniroute-in-action">🎬 в действие</a></td>
     <td align="center"><a href="#-whats-new">✨ Какво ново</a></td>
-    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 Съвместими CLI инструменти</a></td>
+    <td align="center"><a href="#-compatible-clis--coding-agents">🤖 Съвместим CLIs</a></td>
   </tr>
   <tr>
-    <td align="right"><b>💚 Подкрепа</b></td>
-    <td align="center"><a href="#-support-omniroute">💚 Подкрепете / Дарете</a></td>
-    <td align="center"><a href="#-community--help">💬 Общност</a></td>
+    <td align="right"><b>Поддръжка 💚</b></td>
+    <td align="center"><a href="#-support-omniroute">💚 Поддръжка / Дарение</a></td>
+    <td align="center"><a href="#-community--help">💬 общност</a></td>
     <td align="center"><a href="#-sponsors">💖 Спонсори</a></td>
   </tr>
   <tr>
-    <td align="right"><b>📦 Проект</b></td>
-    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ Технологичен стек</a></td>
-    <td align="center"><a href="#-documentation">📖 Документация</a></td>
-    <td align="center"><a href="#-1000-contributors">👥 Сътрудници</a></td>
+    <td align="right"><b>📦 проект</b></td>
+    <td align="center"><a href="#%EF%B8%8F-tech-stack">🛠️ технически стек</a></td>
+    <td align="center"><a href="#-documentation">📖 документи</a></td>
+    <td align="center"><a href="#-1000-contributors">сътрудници 👥</a></td>
   </tr>
 </table>
 
@@ -148,7 +143,7 @@
 <div align="center">
   <b>🌐 На 67 езика</b>
   <br/><br/>
-  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="Английски (en)" title="Английски (en)"></a>
+  <a href="README.md"><img src="docs/assets/flags/us.svg" width="30" alt="English (en)" title="English (en)"></a>
   <a href="docs/i18n/pt-BR/README.md"><img src="docs/assets/flags/br.svg" width="30" alt="Português — Brasil (pt-BR)" title="Português — Brasil (pt-BR)"></a>
   <a href="docs/i18n/pt/README.md"><img src="docs/assets/flags/pt.svg" width="30" alt="Português (pt)" title="Português (pt)"></a>
   <a href="docs/i18n/es/README.md"><img src="docs/assets/flags/es.svg" width="30" alt="Español (es)" title="Español (es)"></a>
@@ -598,35 +593,35 @@ Radar се използва само по желание и поддържа е�
 
 </div>
 
-> Последни акценти от **v3.8.20 → v3.8.55**. Пълната история е в [`CHANGELOG.md`](CHANGELOG.md).
+> Последни акценти от** v3.8.20 → v3.8.55** . Пълна история в [`CHANGELOG.md`](CHANGELOG.md).
 
-- **⚖️ Маршрутизиране с `quota-weighted`** — 20-ата комбо стратегия пропуска изчерпаните акаунти, след което избира измежду останалите пропорционално на оставащата квота ÷ натоварването на текущите заявки, като запазва съществуващите разговори към същия акаунт. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
-- **🧰 Headless режим** — `omniroute serve --headless` (или `OMNIROUTE_HEADLESS=1`) стартира само прокси енджина `/v1/*`, като таблото и подсистемите, предназначени само за таблото, са изключени. → [Headless режим](docs/guides/HEADLESS.md)
-- **🔎 Откриване на модели** — `/v1/models` филтрира по възможности, контекст, вид и текст, а `POST /v1/models/query` връща кратък детерминистичен списък с еднаква видимост за всеки ключ. → [Справочник за API](docs/reference/API_REFERENCE.md)
-- **🔑 Управление на маршрутизирането за всеки ключ** — фиксирайте API ключ към един модел или комбо чрез `forcedModel` и атомарно добавяйте или премахвайте моделите и комботата на даден ключ (`/api/keys/{id}/access`). → [Справочник за API](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
-- **🛡️ По-прецизен контрол на личните данни (PII)** — избор по тип, до 20 валидирани персонализирани шаблона за маскиране и броячи за откриване по тип; самото маскиране остава незадължително. → [Предпазни мерки](docs/security/GUARDRAILS.md)
-- **🌍 67 езика** — табло, огледала на документацията и CLI, като `npm run i18n:add-locale` добавя език навсякъде с една команда. → [Ръководство за i18n](docs/guides/I18N.md)
-- **🎛️ OmniConductor** — входящо A2A делегиране към вашия парк от агенти, умения на Conductor в Agent Card и панел в таблото с гласов чат „натисни и говори“, поддържан от Faro. → [A2A сървър](docs/frameworks/A2A-SERVER.md)
-- **🛂 Адаптивен прием и защита от претоварване** — тежките заявки за чат се поставят на опашка вместо да връщат 503, с атомарни плъзгащи се RPM лизинги за всяка връзка. → [Ръководство за устойчивост](docs/architecture/RESILIENCE_GUIDE.md)
-- **🗂️ Каноничен ред на `/v1/models`** — един непрекъснат блок, групиран по доставчик, за всеки доставчик (комботата са първи), стабилен при всеки източник на каталог. → [Справочник за API](docs/reference/API_REFERENCE.md)
-- **🗜️ Подсилена компресия** — защита от раздуване, включена по подразбиране, Caveman пакети за DE / FR / JA + китайски (wényán), RTK филтри за Gradle и .NET. → [Компресия](docs/compression/COMPRESSION_ENGINES.md)
-- **💸 Реалистична тарифа с фиксирана ставка** — доставчиците на абонаменти / планове за програмиране се отчитат с **$0** в анализа на разходите; бюджетът, квотата и маршрутизирането продължават да изчисляват оценки. → [Справочник за API](docs/reference/API_REFERENCE.md)
-- **⚖️ Маршрутизиране с Quota-Share** — справедливо разделя квотата на споделен акаунт между пул от ключове, като използва ресурсите ефективно и предоставя неизползваните дялове на други заявки. → [Ръководство за устойчивост](docs/architecture/RESILIENCE_GUIDE.md)
-- **🤖 Настройка на CLI/агенти с една команда** — 15 регистрирани команди `setup-*`; `omniroute run` стартира 7 CLI инструмента (Claude Code, Codex, Aider, Goose, OpenCode, Qwen Code, Gemini CLI); `omniroute configure` поддържа 11 целеви системи с интерактивен избор на доставчик и модел и предпочитани модели за всеки контекст. → [CLI интеграции](docs/guides/CLI-INTEGRATIONS.md)
-- **🛰️ Отдалечен режим** — управлявайте отдалечен OmniRoute с токени с ограничен обхват (`connect` / `contexts` / `tokens`) + OAuth помощник `antigravity` за инсталации на VPS. → [Отдалечен режим](docs/guides/REMOTE-MODE.md)
-- **🧭 По-интелигентно автоматично маршрутизиране** — комбота `auto/<category>:<tier>`, **Fusion** (панел от модели + съдия), маршрутизиране според задачата, замени на модел / режим / USD бюджет за всяка заявка. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
-- **🗜️ Модулна компресия** — 12 комбинируеми енджина + Compression Studios: LLMLingua-2, двустепенна Ultra, omniglyph, проверка на точността за всяка стъпка, GCF v3.2, редактор с плъзгане и пренареждане. → [Компресия](docs/compression/COMPRESSION_ENGINES.md)
-- **🕵️ Прозрачно MITM декриптиране (TPROXY)** — CLI инструменти за прихващане, които игнорират променливите на прокси средата, с CA за всеки SNI + инсталатор на хранилище за доверие. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
-- **💸 Телеметрия на разходите навсякъде** — заглавки за разходи/използване `X-OmniRoute-*` на всяка крайна точка, заглавка за спестявания от cache-HIT и квоти за разходи в USD за всеки ключ. → [Справочник за API](docs/reference/API_REFERENCE.md)
-- **🧠 Памет под ваш контрол** — изключена по подразбиране, незадължително int8 векторно квантуване + типизирано затихване, `x-omniroute-no-memory` за всяка заявка. → [Памет](docs/frameworks/MEMORY.md)
-- **🛡️ Сигурност** — защита от prompt injection при всеки LLM маршрут (набор от red-team тестове), незадължителна защита за маскиране на идентификационни данни (заличава изтекли API ключове/тайни и в двете посоки), безплатно уеб търсене в DuckDuckGo като последна мярка и незадължителна OIDC защитна стена за вход към таблото (входът с парола винаги остава достъпен). → [Предпазни мерки](docs/security/GUARDRAILS.md)
-- **🖼️ Нови крайни точки** — `/v1/ocr` (Mistral OCR) и `/v1/audio/translations` (в стил Whisper) допълват медийната повърхност. → [Справочник за API](docs/reference/API_REFERENCE.md)
-- **🎨 Генериране на изображения / видео / аудио** — един API за медии: xAI Grok Imagine и видео от Novita AI, ComfyUI, Magnific, Adobe Firefly, Segmind и доставчици на реч като ElevenLabs. → [Справочник за API](docs/reference/API_REFERENCE.md)
-- **🌍 Внедряване и операции** — `basePath` за обратен прокси, автоматично откриване на езика на браузъра, проследяване на устройствата за всеки ключ, доверие към MITM без root, локализация на zh-TW. → [Среда](docs/reference/ENVIRONMENT.md)
-- **🤝 Повече доставчици и агенти** — облачни агенти (Codex Cloud, Cursor, Devin, Jules), Grok Build (xAI) с браузър и OAuth вход, първокласна карта за Ollama, Claude Opus 5 и Sonnet 5, официално партньорство с Kimi (Code/Web/Moonshot), Zed, Requesty, SenseNova, Yuanbao, Agnes AI… и обновен **каталог с 394 доставчици**. → [Доставчици](docs/reference/PROVIDER_REFERENCE.md)
-- **📡 Прозрачност на маршрутизирането** — всеки отговор съдържа заглавка `X-OmniRoute-Decision`, която посочва стратегията/доставчика/латентността, обслужили заявката; нова комбо стратегия `cache-optimized` и коефициентът `cacheAffinity` на Auto-Combo насочват повтарящите се заявки обратно към връзката, която съдържа кеширания префикс; а достъпната само за четене крайна точка `/v1/auto-combo/{channel}/candidates` показва текущия пул от кандидати на канал `auto/*`. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
-- **⚡ Локална производителност и инфраструктура** — локален Redis с едно кликване, деплойъри за relay в Cloudflare Workers / Deno Deploy, Bifrost и Mux като контролирани вградени услуги. → [Вградени услуги](docs/frameworks/EMBEDDED-SERVICES.md)
-- **🧩 Също включено** — framework за плъгини и marketplace, frameworks за уменията на Omni/Agent/GitHub, интеграция с vault на Obsidian (22 MCP инструмента), съвместими с OpenAI Batch и Files APIs, семантичен кеш за отговори, геймификация с класации, откриване на ACP агенти (15 вградени агента), планиран експорт на логове към BigQuery, паралелно разпределяне към множество модели с `auto/chaos`, мост към Telegram bot, мениджър на версии в приложението и класации на безплатни доставчици по LMArena-ELO. → [Документация](docs/README.md)
+- **⚖️ `quota-weighted` маршрутизиране** — 20-та комбинирана стратегия пропуска изчерпаните акаунти, след което тегли между останалите пропорционално на остатъчната квота ÷ натоварване по време на полет, като запазва съществуващите разговори фиксирани. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **🧰 Режим без глава** — `omniroute serve --headless` (или `OMNIROUTE_HEADLESS=1`) изпълнява само `/v1/*` прокси машината, като таблото и подсистемите само за табло са изключени. → [Режим без глава](docs/guides/HEADLESS.md)
+- **🔎 Откриване на модел** — `/v1/models` филтрира по възможност, контекст, тип и текст, а `POST /v1/models/query` връща кратък детерминистичен кратък списък със същата видимост за всеки ключ. → [API Справка](docs/reference/API_REFERENCE.md)
+- **🔑 Контрол на маршрутизирането по ключ** — прикачете ключ API към един модел или комбо с `forcedModel` и добавете или премахнете моделите и комбинациите на ключ атомно (`/api/keys/{id}/access`). → [API Справка](docs/reference/API_REFERENCE.md) · [OpenAPI](docs/openapi.yaml)
+- **🛡️ По-фини PII контроли** — избор на тип, до 20 валидирани персонализирани шаблона за маскиране и броячи за откриване на тип; самото маскиране остава включено. → [Предпазни огради](docs/security/GUARDRAILS.md)
+- **🌍 67 езика** — dashboard, docs огледала и CLI, като `npm run i18n:add-locale` добавя език навсякъде с една команда. Ръководство → [i18n](docs/guides/I18N.md)
+- **🎛️ OmniConductor** — входящо A2A делегиране към вашия флот от агенти, умения за диригент на картата на агента и панел на таблото с гласов чат Faro с пряк разговор. → [A2A сървър](docs/frameworks/A2A-SERVER.md)
+- **🛂 Адаптивно приемане и защита от претоварване** — тежка опашка с заявки за чат вместо 503ing, с атомни RPM подвижни лизинг на връзка. → [Ръководство за устойчивост](docs/architecture/RESILIENCE_GUIDE.md)
+- **🗂️ Канонично `/v1/models` подреждане** — един непрекъснат блок, групиран от доставчик, на доставчик (комботата са фиксирани първи), стабилен във всеки източник на каталог. → [API Справка](docs/reference/API_REFERENCE.md)
+- **🗜️ Компресионно втвърдяване** — предпазител за надуване по подразбиране, пакети Caveman за DE / FR / JA + китайски (wényán), RTK филтри за Gradle & .NET. → [компресия](docs/compression/COMPRESSION_ENGINES.md)
+- **💸 Честни фиксирани разходи** — абонамент / доставчици на план за кодиране четат** $0** в анализа на разходите; бюджет, квота и маршрут продължават да оценяват. → [API Справка](docs/reference/API_REFERENCE.md)
+- **⚖️ Quota-Share маршрутизиране** — разделя квотата на споделен акаунт справедливо между обединени ключове, запазвайки работата, така че неактивните части се дават назаем. [Ръководство за устойчивост](docs/architecture/RESILIENCE_GUIDE.md) →
+- **🤖 CLI/agent настройка с една команда** — 15 регистрирани `setup-*` команди; `omniroute run` стартира 7 CLIs (Claude код, Codex, Aider, Goose, OpenCode, Qwen код, Gemini CLI); `omniroute configure` поддържа 11 цели с интерактивен инструмент за избор на модел + на доставчика и любими за всеки контекст. → [CLI интеграции](docs/guides/CLI-INTEGRATIONS.md)
+- **🛰️ Дистанционен режим** — управлява отдалечен OmniRoute с токени с обхват (`connect` / `contexts` / `tokens`) + `antigravity` OAuth помощник за VPS инсталации. → [Дистанционен режим](docs/guides/REMOTE-MODE.md)
+- **🧭 По-интелигентно автоматично маршрутизиране** — `auto/<category>:<tier>` комбинации,** синтез** (панел на модела + съдия), маршрутизиране в зависимост от задачата, модел/режим на заявка/замени на бюджет в USD. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **🗜️ Плъгируема компресия** — 12 композируеми машини + Compression Studios: LLMLingua-2, двуслоен Ultra, omniglyph, порта за точност на стъпка, GCF v3.2, редактор за пренареждане на плъзгане. → [компресия](docs/compression/COMPRESSION_ENGINES.md)
+- **🕵️ Прозрачен MITM декриптиране (TPROXY)** — улавя CLIs, които игнорират прокси env vars, с инсталатор за per-SNI CA + trust-store. → [MITM/TPROXY](docs/security/MITM-TPROXY-DECRYPT.md)
+- **💸 Ценова телеметрия навсякъде** — `X-OmniRoute-*` cost/usage заглавки на всяка крайна точка, заглавка за спестяване на cache-HIT, квоти за разход на USD за ключ. → [API Справка](docs/reference/API_REFERENCE.md)
+- **🧠 Памет, която контролирате** — изключен по подразбиране, включване int8 векторно квантуване + въведено затихване, на заявка `x-omniroute-no-memory`. → [памет](docs/frameworks/MEMORY.md)
+- **🛡️ сигурност** — prompt-injection guard на всеки LLM маршрут (червен екипен пакет), парапет за маскиране на идентификационни данни за включване (редактира изтекъл API keys/secrets в двете посоки), безплатно DuckDuckGo последно търсене в мрежата и опционален OIDC портал за влизане за таблото за управление (парола за влизане винаги остава достъпна). → [Предпазни огради](docs/security/GUARDRAILS.md)
+- **🖼️ Нови крайни точки** — `/v1/ocr` (Mistral OCR) и `/v1/audio/translations` (в стил Whisper) допълват медийната повърхност. → [API Справка](docs/reference/API_REFERENCE.md)
+- **🎨 Генериране на изображения/видео/аудио** — един API за медии: xAI Grok Imagine & Novita AI video, ComfyUI, Magnific, Adobe Firefly, Segmind и доставчици на реч като ElevenLabs. → [API Справка](docs/reference/API_REFERENCE.md)
+- **🌍 Внедряване и операции** — обратен прокси `basePath`, автоматично откриване на езика на браузъра, проследяване на устройство по ключ, MITM доверие без root, zh-TW локализация. → [среда](docs/reference/ENVIRONMENT.md)
+- **🤝 Още доставчици и агенти** — облачни агенти (Codex Cloud, Cursor, Devin, Jules), Grok Build (xAI) с браузър + OAuth login, Ollama първокласна карта, Claude Opus 5 & Sonnet 5, Kimi официално партньорство (Code/Web/Moonshot), Zed, Requesty, SenseNova, Yuanbao, Agnes AI… и обновен** 394-каталог на доставчика** . → [доставчици](docs/reference/PROVIDER_REFERENCE.md)
+- **📡 Прозрачност на маршрутизирането** — всеки отговор носи `X-OmniRoute-Decision` хедър, наименуващ strategy/provider/latency, който го е обслужил, нова `cache-optimized` комбинирана стратегия + Auto-Combo `cacheAffinity` фактор насочва повторните заявки обратно към връзката, която държи кеширания префикс, и `/v1/auto-combo/{channel}/candidates` крайна точка само за четене излага набора от кандидати на живо на `auto/*` канал. → [Auto-Combo](docs/routing/AUTO-COMBO.md)
+- **⚡ Локално представяне и инфра** — локално Redis с едно щракване, Cloudflare Workers / Deno Deploy relay deployers, Bifrost & Mux като контролирани вградени услуги. → [вградени услуги](docs/frameworks/EMBEDDED-SERVICES.md)
+- **🧩 Също в кутията** — plugin framework + marketplace, Omni/Agent/GitHub frameworks frameworks, Obsidian vault интеграция (22 MCP инструмента), OpenAI-съвместим Batch & Files APIs, кеш за семантични отговори, gamification с класации, ACP агент откриване (15 вградени агенти), планирано експортиране на регистрационни файлове към BigQuery, `auto/chaos` паралелно многомоделно fan-out, Telegram бот мост, an мениджър на версии в приложението и класации на безплатни доставчици на LMArena-ELO. → [документи](docs/README.md)
 
 <br/>
 
@@ -776,92 +771,80 @@ omniroute configure codex          # също: claude opencode qwen aider goose 
 
 <div align="center">
 
-## 🖥️ Къде работи OmniRoute — навсякъде
+## 🖥️ Къде OmniRoute изпълнява — навсякъде
 
 </div>
 
-> Същото приложение, вашата машина, вашите правила. От глобална инсталация чрез npm до **вашия телефон** посредством Termux.
+> Същото приложение, вашата машина, вашите правила. От глобална инсталация на npm до** вашия телефон** чрез Termux.
 
 <table>
-  <tr><th align="left">Платформа</th><th align="left">Инсталиране</th><th align="left">Акценти</th></tr>
-  <tr><td align="left" nowrap>📦 <b>npm (глобално)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">Една команда, всяка ОС</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Bun (глобално)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">Същият registry tarball, по-бързи инсталации</td></tr>
-  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … diegosouzapw/omniroute</code></td><td align="left">Multi-arch <b>AMD64 + ARM64</b></td></tr>
-  <tr><td align="left" nowrap>🖥️ <b>Настолно приложение (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">Нативен прозорец + системна област — <b>Windows / macOS / Linux</b></td></tr>
-  <tr><td align="left" nowrap>🎩 <b>Лента с менюта (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">Наблюдава и автоматично обновява сървъра — <b>macOS</b></td></tr>
-  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>нативен <code>arm64</code></td><td align="left">Raspberry Pi, ARM сървъри, Apple Silicon</td></tr>
-  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">Работи <b>на вашия телефон</b>, 24/7, без root</td></tr>
-  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>„Добавяне към началния екран“</td><td align="left">На цял екран, офлайн, с инсталиране от браузъра</td></tr>
-  <tr><td align="left" nowrap>🧩 <b>OpenCode плъгин</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">Нативна интеграция с OpenCode</td></tr>
-  <tr><td align="left" nowrap>🤖 <b>VS Code Copilot Chat</b></td><td align="left" nowrap>инсталирайте разширението <b>OmniCopilot</b></td><td align="left">Всеки модел на OmniRoute в нативния избор на модели на Copilot Chat — стабилна версия и Insiders</td></tr>
-  <tr><td align="left" nowrap>🛠️ <b>От изходния код</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">Разработвайте по него, допринасяйте</td></tr>
+  <tr><th align="left">Платформа</th><th align="left">Инсталирайте</th><th align="left">Акценти</th></tr>
+  <tr><td align="left" nowrap>📦 <b>npm (глобален)</b></td><td align="left" nowrap><code>npm install -g omniroute</code></td><td align="left">Една команда, всеки OS</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Bun (глобален)</b></td><td align="left" nowrap><code>bun add -g omniroute</code></td><td align="left">Същият архив на регистъра, по-бързи инсталации</td></tr>
+  <tr><td align="left" nowrap>🐳 <b>Docker</b></td><td align="left" nowrap><code>docker run … cheaperinference/omniroute</code></td><td align="left">Многоарков <b>AMD64 + ARM64</b></td></tr>
+  <tr><td align="left" nowrap>🖥️ <b>Настолен компютър (Electron)</b></td><td align="left" nowrap><code>npm run electron:build</code></td><td align="left">Основен прозорец + системна област — <b>Windows / macOS / Linux</b></td></tr>
+  <tr><td align="left" nowrap>🎩 <b>Лента с менюта (OmniRouteTray)</b></td><td align="left" nowrap><code>brew install --cask zoispag/tap/omniroute-tray</code></td><td align="left">Наблюдава &amp; автоматично актуализира сървъра — <b>macOS</b></td></tr>
+  <tr><td align="left" nowrap>💪 <b>ARM</b></td><td align="left" nowrap>роден <code>arm64</code></td><td align="left">Raspberry Pi, ARM сървъри, Apple Silicon</td></tr>
+  <tr><td align="left" nowrap>📱 <b>Android (Termux)</b></td><td align="left" nowrap><code>pkg install nodejs && npx -y omniroute</code></td><td align="left">Бяга <b>на вашия телефон</b>, 24/7, без root</td></tr>
+  <tr><td align="left" nowrap>📲 <b>PWA</b></td><td align="left" nowrap>„Добавяне към началния екран“</td><td align="left">Цял екран, офлайн, може да се инсталира от браузър</td></tr>
+  <tr><td align="left" nowrap>🧩 <b>OpenCode плъгин</b></td><td align="left" nowrap><code>@omniroute/opencode-provider</code></td><td align="left">Вградена OpenCode интеграция</td></tr>
+  <tr><td align="left" nowrap>🤖 <b>VS код Copilot Чат</b></td><td align="left" nowrap>инсталирайте <b>OmniCopilot</b> разширение</td><td align="left">Всеки OmniRoute модел в родния инструмент за избор на Copilot чат — stable &amp; Insiders</td></tr>
+  <tr><td align="left" nowrap>🛠️ <b>От източника</b></td><td align="left" nowrap><code>npm install && npm run dev</code></td><td align="left">Хакнете го, допринесете</td></tr>
 </table>
 
-<sub>📖 [Ръководство за Docker](docs/guides/DOCKER_GUIDE.md) · [Настолно приложение](electron/README.md) · [Трей в лентата с менюта](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
+<sub>📖 [Docker Ръководство](docs/guides/DOCKER_GUIDE.md) · [Настолен компютър](electron/README.md) · [Лента с менюта](https://github.com/zoispag/omniroute-tray) · [Termux](docs/guides/TERMUX_GUIDE.md) · [PWA](docs/guides/PWA_GUIDE.md) · [OpenCode](docs/frameworks/OPENCODE.md)</sub>
 
 <br/>
 
 <div align="center">
 
-### 🧩 Ново: OmniRoute във вградения Copilot Chat на VS Code
+### 🧩 Ново: OmniRoute в родния Copilot чат на VS кода
 
 </div>
 
-> Без нова странична лента, без нов интерфейс за чат — всеки модел, който OmniRoute предоставя, се показва директно в
-> **избора на модели в Copilot Chat, който вече използвате**. От VS Code 1.122 моделите на доставчици работят
-> без влизане с GitHub или абонамент за Copilot — режим на агент, извикване на инструменти и визуално възприемане, при
-> това безплатно.
+> Без нова странична лента, без нов чат UI — всеки модел, OmniRoute обслужва, се показва направо в**Copilot Избор на модел на чат, който вече използвате** . От VS Code 1.122 моделите на доставчици работят без GitHub влизане или Copilot абонамент — агент режим, извикване на инструмент и визия, безплатно.
 
-Инсталирайте разширението **[OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)**, насочете го
-към вашия OmniRoute сървър (по подразбиране `localhost:20128`), след което отворете Copilot Chat → избора на модели
-→ **Управление на модели…** → **OmniRoute**.
+Инсталирайте** [OmniCopilot](https://github.com/diegosouzapw/OmniCopilot)** разширение, насочете го към вашия OmniRoute сървър (по подразбиране `localhost:20128`), след което отворете Copilot Chat → инструмент за избор на модел →** Управление на модели...** →**OmniRoute** .
 
 <table>
   <tr><th align="left">Магазин</th><th align="left">Връзка</th><th align="left">Работи с</th></tr>
-  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">Инсталиране →</a></td><td align="left">VS Code — стабилна версия и Insiders</td></tr>
-  <tr><td align="left" nowrap>🔓 <b>Open VSX Registry</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">Инсталиране →</a></td><td align="left">Cursor, Windsurf, VSCodium, Theia, code-server, Gitpod, Antigravity, Kiro…</td></tr>
+  <tr><td align="left" nowrap>🧩 <b>VS Code Marketplace</b></td><td align="left"><a href="https://marketplace.visualstudio.com/items?itemName=diegosouzapw.omnicopilot">Инсталирайте →</a></td><td align="left">VS код — stable &amp; Insiders</td></tr>
+  <tr><td align="left" nowrap>🔓 <b>Отворете регистъра VSX</b></td><td align="left"><a href="https://open-vsx.org/extension/diegosouzapw/omnicopilot">Инсталирайте →</a></td><td align="left">Cursor, Windsurf, VSCodium, Theia, кодов сървър, Gitpod, Antigravity, Kiro…</td></tr>
 </table>
 
-От редактора: отворете изгледа **Разширения**, потърсете **„OmniRoute“**, натиснете **Инсталиране**
-— работи по един и същ начин и в двата магазина. Изходният код, проблемите и ръководството за публикуване са в
-[diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot).
+От вътрешността на редактора: отворете** Разширения** преглед, търсене** "OmniRoute"** , щракнете** Инсталирайте** — работи по същия начин и в двата магазина. Източник, проблеми и сборник за публикуване на живо в [diegosouzapw/OmniCopilot](https://github.com/diegosouzapw/OmniCopilot).
 
-<sub>📖 [Ръководство за Copilot Chat във VS Code](docs/guides/VSCODE-COPILOT.md) — настройка, какво показва изборът, табло в раздел, отстраняване на неизправности</sub>
+<sub>📖 [VS Код Copilot Ръководство за чат](docs/guides/VSCODE-COPILOT.md) — настройка, какво показва инструментът за избор, табло в раздел, отстраняване на неизправности</sub>
 
 <br/>
 
 <div align="center">
 
-### 🎩 Ново: OmniRouteTray — вашият шлюз, който живее в лентата с менюта
+### 🎩 Ново: OmniRouteTray — вашият шлюз, живеещ в лентата с менюта
 
 </div>
 
-> `omniroute serve` работи най-добре, когато е постоянно включен. **[OmniRouteTray](https://github.com/zoispag/omniroute-tray)**
-> превръща това в приложение за лентата с менюта на macOS, което настройвате веднъж и забравяте: стартира сървъра, поддържа го активен
-> след рестартирания, обновява го на място и поставя информацията за текущия ви бюджет на токени на едно кликване разстояние — **без
-> отворен терминален прозорец и без `npm install -g omniroute`, за който да се грижите.**
+> `omniroute serve` е най-щастлива, когато е винаги включена.** [OmniRouteTray](https://github.com/zoispag/omniroute-tray)** превръща това в приложение за лента с менюта за задаване и забравяне за macOS: стартира сървъра, поддържа го активен при рестартиране, актуализира го на място и поставя бюджета ви на живо токен на едно кликване разстояние —** няма терминален прозорец, оставен отворен, няма `npm install -g omniroute` за детегледачка.**
 
-Създадено с [Tauri v2](https://v2.tauri.app/) (Rust ядро с размера на грешка при закръгляне), то се доставя
-със собствен подписан Node 24 runtime и управлява собствена за приложението инсталация на OmniRoute, така че никога не влиза в конфликт с вашия
-глобален `node`/`bun`. То **споделя съществуващата ви конфигурация и база данни в `~/.omniroute/`** — така че това е същият OmniRoute, който вече използвате, просто с шапка. 🎩
+Създаден с [Tauri v2](https://v2.tauri.app/) (Rust ядро с размер на грешка при закръгляване), той доставя своя собствена подписана среда за изпълнение на Node 24 и управлява OmniRoute инсталация, притежавана от приложение, така че никога да не се бори с глобалния ви `node`/`bun`. то** споделя вашата съществуваща `~/.omniroute/` конфигурация и база данни** — така че това е същият OmniRoute, който вече изпълнявате, само с шапка. 🎩
 
 <table>
-  <tr><th align="left">Какво прави</th><th align="left">Как</th></tr>
-  <tr><td align="left" nowrap>🟢 <b>Наблюдава сървъра</b></td><td align="left">Стартира <code>omniroute serve</code>, като приема вече работеща инстанция, вместо да я дублира</td></tr>
-  <tr><td align="left" nowrap>📊 <b>Преглед на използването в реално време</b></td><td align="left">Ленти за квотите на доставчиците, сесийни/седмични лимити на Claude с обратно броене до нулирането, разбивка на разходите за 30 дни</td></tr>
-  <tr><td align="left" nowrap>🔄 <b>Автоматични актуализации на място</b></td><td align="left">Поетапна инсталация, атомарна замяна, връщане назад при неуспех — винаги с най-новата версия</td></tr>
-  <tr><td align="left" nowrap>🚀 <b>Стартиране при влизане</b></td><td align="left">Незадължително стартиране при влизане; само в системната област, без икона в Dock</td></tr>
-  <tr><td align="left" nowrap>🩺 <b>Диагностика и журнали</b></td><td align="left">Диагностика с едно щракване и достъп до журналите на сървъра</td></tr>
+  <tr><th align="left">Какво прави</th><th align="left">как</th></tr>
+  <tr><td align="left" nowrap>🟢 <b>Наблюдава сървъра</b></td><td align="left">Поражда <code>omniroute serve</code>, приема вече работещ екземпляр, вместо да го дублира</td></tr>
+  <tr><td align="left" nowrap>📊 <b>Използване на живо с един поглед</b></td><td align="left">Ленти за квоти на доставчика, Claude session/weekly лимити с обратно броене за нулиране, разбивка на разходите за 30 дни</td></tr>
+  <tr><td align="left" nowrap>🔄 <b>Автоматични актуализации на място</b></td><td align="left">Поетапно инсталиране, атомна смяна, връщане назад при повреда — винаги на най-новата версия</td></tr>
+  <tr><td align="left" nowrap>🚀 <b>Започнете при влизане</b></td><td align="left">Незадължително стартиране при влизане; само тава, без икона на докинг станция</td></tr>
+  <tr><td align="left" nowrap>🩺 <b>Доктор &amp; регистрира</b></td><td align="left">Диагностика с едно щракване и достъп до регистър на сървъра</td></tr>
 </table>
 
 ```sh
 brew install --cask zoispag/tap/omniroute-tray
 ```
 
-<sub>Предпочитате изтегляне? Вземете най-новия <code>.dmg</code> от
-<a href="https://github.com/zoispag/omniroute-tray/releases">Издания</a>. Изходният код, проблемите и документацията
-за компилация са налични в <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a>.
-<br/>💛 Проект на общността от <a href="https://github.com/zoispag">@zoispag</a> — неофициално издание на OmniRoute.</sub>
+<sub>Предпочитате изтегляне? Вземете най-новата <code>.dmg</code> от
+<a href="https://github.com/zoispag/omniroute-tray/releases">Издания</a>. Източник, проблеми и изграждане
+документи на живо в <a href="https://github.com/zoispag/omniroute-tray">zoispag/omniroute-tray</a>.
+<br/>💛 Обществен проект от <a href="https://github.com/zoispag">@zoispag</a> — не е официална версия OmniRoute.</sub>
 
 <br/>
 
@@ -944,15 +927,15 @@ claude mcp add --transport http omniroute http://localhost:20128/api/mcp/stream 
 
 <div align="center">
 
-## 🗜️ Автоматично спестяване на 15–95% от токените
+## 🗜️ Спестете 15–95% токени — Автоматично
 
 </div>
 
-### 📖 Как работи — конвейер, архитектура и математика на спестяванията
+### 📖 Как работи — тръбопровод, архитектура и математика за спестявания
 
-<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="Конвейер за компресиране на OmniRoute: илюстративна клиентска заявка от 10 000 токена преминава през 12 композируеми енджина — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra и OmniGlyph — и може да достигне до доставчика с около 1 080 токена в документирания комбиниран пример. Структурираното съдържание е защитено от предпазители за запазване и проверки за вярност на всяка стъпка; изрично зададените губещи или експериментални режими могат да трансформират допустимото съдържание."/>
+<img src="./docs/diagrams/compression-pipeline.svg" width="100%" alt="OmniRoute compression pipeline: an illustrative 10,000-token client request passes through 12 composable engines — Session-Dedup, CCR, Lite, RTK, Responses Tool Output, Headroom, Relevance, Caveman, Aggressive, LLMLingua-2, Ultra and OmniGlyph — and can reach the provider at about 1,080 tokens in the documented stacked example. Structured content is protected by preservation guards and per-step fidelity gates; explicit lossy or experimental modes may transform eligible content."/>
 
-Комбинацията по подразбиране изпълнява `RTK → Caveman`. Когато и двата енджина действат върху един и същ payload на инструмент/контекст, спестяванията се натрупват:
+Подредената комбинация по подразбиране изпълнява `RTK → Caveman`. Когато и двете действат върху един и същи tool/context полезен товар, спестяванията се комбинират:
 
 ```txt
 combined = 1 − (1 − RTK) × (1 − Caveman_input)
@@ -960,74 +943,74 @@ average  = 1 − (1 − 0.80) × (1 − 0.46) = 89.2%
 range    = 78.4 – 94.6%
 ```
 
-Блоковете с код, URL адресите, JSON и структурираните данни са **винаги защитени** от енджина за запазване.
+Кодови блокове, URLs, JSON и структурирани данни са** винаги защитени** от двигателя за запазване.
 
-> **Защо да използвате много токени, когато малко токени вършат работа?** Всяка заявка преминава през конвейера за компресиране на OmniRoute **прозрачно** — без промени по клиента. Сега това е **стек от 12 композируеми енджина**, които се изпълняват по ред и могат да се комбинират за всеки маршрут — надграждайки идеи от [RTK](https://github.com/rtk-ai/rtk), [Caveman](https://github.com/JuliusBrussee/caveman) (⭐ 90K+), [LLMLingua-2](https://github.com/microsoft/LLMLingua) и [Troglodita](https://github.com/leninejunior/troglodita) (PT-BR).
+> **Защо да използвате много жетони, когато малко жетони вършат работа?** Всяка заявка преминава през тръбопровода за компресиране на OmniRoute** прозрачно** — няма промени в клиента. Сега е а** стек от 12 композируеми двигателя** които се изпълняват в ред и се смесват и съпоставят за комбо за маршрутизиране — надграждайки идеи от [RTK](https://github.com/rtk-ai/rtk), [Caveman](https://github.com/JuliusBrussee/caveman) (⭐ 90K +), [LLMLingua-2](https://github.com/microsoft/LLMLingua) и [Troglodita](https://github.com/leninejunior/troglodita) (PT-BR).
 
-### 🧱 Стекът от 12 енджина
+### 🧱 Стекът от 12 двигателя
 
-Енджините се изпълняват в реда на конвейера; всеки може да се включва или изключва независимо и да се конфигурира за всяка комбинация:
+Двигателите работят в тръбопроводен ред; всеки може да се превключва и конфигурира независимо за комбо:
 
 <table>
-  <tr><th align="center">#</th><th align="left">Енджин</th><th align="left">Какво прави</th></tr>
-  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Session-Dedup</b></td><td align="left">Премахва съдържание, повтарящо се между ходовете (адресирано чрез съдържанието, между ходове)</td></tr>
-  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">Архивира големи блокове зад маркери за извличане, които се получават при поискване</td></tr>
-  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">Премахване на празни интервали и съкращаване на URL адреси на изображения (базова линия с ниска латентност)</td></tr>
-  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">Интелигентно филтриране, премахване на дубликати и съкращаване на резултати от инструменти (съобразено с командите)</td></tr>
-  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Responses Tool Output</b></td><td align="left">Компресиране на JSON с приоритет на запазването + ограничена диагностична компресия за shell/patch/search/build резултати (Responses API)</td></tr>
-  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Headroom</b></td><td align="left">Компресиране без загуби на таблични JSON масиви (~30%) чрез вградения codec <b>GCF</b></td></tr>
-  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Relevance</b></td><td align="left">Екстрактивно оценяване на изречения спрямо последната потребителска заявка</td></tr>
-  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>Caveman</b></td><td align="left">Компресиране на проза чрез правила (~65–75% върху изхода)</td></tr>
-  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Aggressive</b></td><td align="left">Обобщаване + постепенно състаряване на старите ходове</td></tr>
-  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">ML семантично прореждане чрез MobileBERT ONNX — безопасно за код, асинхронно</td></tr>
-  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ultra</b></td><td align="left">Евристично прореждане на токени с опционално ниво с малък модел (SLM)</td></tr>
-  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">Експериментално кодиране на контекста като изображение за измерен Claude Fable 5 по директния проводник на Anthropic; GPT 5.6 трансформърите остават в режим fail-closed до получаване на потвърждения от доставчика. Четири профила за компресиране (агресивен по подразбиране, балансиран, безопасен за кодиране, passthrough) (най-агресивен; включва се изрично)</td></tr>
+  <tr><th align="center">#</th><th align="left">Двигател</th><th align="left">Какво прави</th></tr>
+  <tr><td align="center" nowrap>1</td><td align="left" nowrap><b>Сесия-Dedup</b></td><td align="left">Пуска съдържание, повтарящо се през завои (адресирано на съдържание, кръстосано завиване)</td></tr>
+  <tr><td align="center" nowrap>2</td><td align="left" nowrap><b>CCR</b></td><td align="left">Архивира големи блокове зад маркери за извличане, извлечени при поискване</td></tr>
+  <tr><td align="center" nowrap>3</td><td align="left" nowrap><b>Lite</b></td><td align="left">Празно пространство + изображение-URL подрязване (базова линия на латентност-светлина)</td></tr>
+  <tr><td align="center" nowrap>4</td><td align="left" nowrap><b>RTK</b></td><td align="left">Интелигентно филтриране на резултата от инструмента, премахване на дублиране и отрязване (командно съобразено)</td></tr>
+  <tr><td align="center" nowrap>5</td><td align="left" nowrap><b>Резултати от инструмента за отговори</b></td><td align="left">Lossless-first JSON + ограничена диагностична компресия за shell/patch/search/build изходи (Отговори API)</td></tr>
+  <tr><td align="center" nowrap>6</td><td align="left" nowrap><b>Пространство за главата</b></td><td align="left">Таблично уплътняване без загуби на JSON масиви (~ 30%) чрез доставчик <b>GCF</b> кодек</td></tr>
+  <tr><td align="center" nowrap>7</td><td align="left" nowrap><b>Уместност</b></td><td align="left">Точкуване на екстрактивно изречение спрямо последното потребителско запитване</td></tr>
+  <tr><td align="center" nowrap>8</td><td align="left" nowrap><b>пещерен човек</b></td><td align="left">Базирана на правила компресия на проза (~ 65–75% при извеждане)</td></tr>
+  <tr><td align="center" nowrap>9</td><td align="left" nowrap><b>Агресивен</b></td><td align="left">Обобщение + прогресивно стареене на стари завои</td></tr>
+  <tr><td align="center" nowrap>10</td><td align="left" nowrap><b>LLMLingua-2</b></td><td align="left">ML семантично съкращаване чрез MobileBERT ONNX — безопасен код, асинхронен</td></tr>
+  <tr><td align="center" nowrap>11</td><td align="left" nowrap><b>Ултра</b></td><td align="left">Евристично подрязване на токени с незадължително ниво на малък модел (SLM).</td></tr>
+  <tr><td align="center" nowrap>12</td><td align="left" nowrap><b>OmniGlyph</b></td><td align="left">Експериментално кодиране на контекст като изображение за измерен Claude Fable 5 на директния Anthropic проводник; GPT 5.6 трансформаторите остават неуспешно затворени в очакване на разписки от доставчика. Четири профила на компресиране (агресивен по подразбиране, балансиран, безопасен за кодиране, преминаващ) (най-агресивен; по избор)</td></tr>
 </table>
 
-Блоковете с код, URL адресите и структурираните данни са **винаги запазени** байт по байт. **Предварително зададените режими с едно щракване** комбинират енджините:
+Кодови блокове, URLs и структурирани данни са** винаги запазени** байт-съвършен.** Предварителни настройки с едно щракване** комбинирайте двигателите:
 
 <table>
-  <tr><th align="left">Режим</th><th align="left">Спестяване</th><th align="left">Най-подходящ за</th></tr>
-  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~15%</td><td align="left">Безопасна настройка по подразбиране, винаги включена</td></tr>
-  <tr><td align="left" nowrap>🪨 <b>Standard (Caveman)</b></td><td align="left" nowrap>~30%</td><td align="left">Ежедневно програмиране</td></tr>
-  <tr><td align="left" nowrap>⚡ <b>Aggressive</b></td><td align="left" nowrap>~50%</td><td align="left">Дълги сесии с много инструменти</td></tr>
-  <tr><td align="left" nowrap>🔥 <b>Ultra</b></td><td align="left" nowrap>~75%</td><td align="left">Максимално спестяване</td></tr>
+  <tr><th align="left">Режим</th><th align="left">Спестявания</th><th align="left">Най-доброто за</th></tr>
+  <tr><td align="left" nowrap>🪶 <b>Lite</b></td><td align="left" nowrap>~15%</td><td align="left">Винаги включена безопасна настройка по подразбиране</td></tr>
+  <tr><td align="left" nowrap>🪨 <b>Стандартен (пещерен човек)</b></td><td align="left" nowrap>~30%</td><td align="left">Ежедневно кодиране</td></tr>
+  <tr><td align="left" nowrap>⚡ <b>Агресивен</b></td><td align="left" nowrap>~50%</td><td align="left">Дълги сесии с много инструменти</td></tr>
+  <tr><td align="left" nowrap>🔥 <b>Ултра</b></td><td align="left" nowrap>~75%</td><td align="left">Максимални спестявания</td></tr>
   <tr><td align="left" nowrap>🧰 <b>RTK</b></td><td align="left" nowrap>60–90%</td><td align="left">Shell/test/build/git изход</td></tr>
-  <tr><td align="left" nowrap>🔗 <b>Stacked (RTK → Caveman)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">Смесени подсказки + журнали от инструменти</td></tr>
+  <tr><td align="left" nowrap>🔗 <b>Подредени (RTK → пещерен човек)</b></td><td align="left" nowrap><b>78–95%</b></td><td align="left">Регистри на инструмента + за смесени подкани</td></tr>
 </table>
 
-**Пример от практиката — режим Standard:**
+**Реален пример — Стандартен режим:**
 
-> **Преди (69 токена):** _"Причината вашият React компонент да се изобразява повторно вероятно е, че създавате нова референция към обект при всеки цикъл на изобразяване. Когато подадете вграден обект като prop, плиткото сравнение на React го възприема като различен обект всеки път, което задейства повторно изобразяване. Препоръчвам да използвате useMemo, за да запаметите обекта."_
+> **Преди (69 токена):** _"Причината, поради която вашият React компонент се изобразява повторно, вероятно е, защото създавате нова препратка към обект при всеки цикъл на изобразяване. Когато подадете вграден обект като проп, плиткото сравнение на React го вижда като различен обект всеки път, което задейства повторно изобразяване. Бих препоръчал използването на useMemo за памет на обекта."_
 >
-> **След (19 токена):** _"Нова референция към обект при всяко изобразяване. Вграден обект като prop = нова референция = повторно изобразяване. Обвийте го в useMemo."_
+> **След (19 токена):** _"Нов обект ref всяко изобразяване. Вграден обект prop = нов ref = повторно изобразяване. Обвиване в useMemo."_
 >
 > **Същият отговор. 72% по-малко токени. Нулева загуба на точност.** ✅
 
-**Пример на PT-BR — режим [Troglodita](https://github.com/leninejunior/troglodita):**
+**PT-BR пример — [Troglodita](https://github.com/leninejunior/troglodita) режим:**
 
-> **Преди (42 токена):** _„Проблемът е, че компонентът се рендерира повторно, защото при всеки цикъл на рендиране се създава нова референция към обект. Бих препоръчал да използвате useMemo.“_
+> **Анте (42 жетона):** _"O problem é que o componente está re-renderizando porque uma nova referência de objeto está sendo criada em cada ciclo de renderização. Eu recomendaria usar useMemo."_
 >
-> **След (12 токена):** _„Повторно рендиране: нова референция при всеки цикъл (вграденият обект се създава отново). Използвайте `useMemo`.“_
+> **Depois (12 жетона):** _"Re-render: ref nova cada ciclo (objeto inline recriado). Usar `useMemo`."_
 >
-> **Същият отговор. ~70% по-малко токени. Техническата точност е запазена.** ✅
+> **Mesma reposta. ~ 70% menos жетони. Precisão técnica intacta.** ✅
 
 <br/>
 
-### 🎚️ Отвъд енджините — стилове на изхода, адаптивният регулатор и контролът за всяка заявка
+### 🎚️ Отвъд стиловете на изход — на двигателите, адаптивният циферблат и управлението на заявка
 
-12-те енджина по-горе намаляват това, което **влиза**. Още три слоя определят **как**, **кога** и какво **излиза**:
+12-те двигателя по-горе свиват това, което става** в** . Още три слоя форма** как** ,** когато** , и какво идва** навън** :
 
-- **🪄 Стилове на изхода** _(насочване по оста на изхода)_ — инжектират детерминистични, безопасни за кеширане инструкции за оформяне на отговора; могат да се комбинират, като всеки е с интензитет `lite` / `full` / `ultra`. Добавянето на стил е един ред в регистъра:
-  - **Сбит текст** — премахва пълнежа / членовете / уклончивите формулировки; запазва техническото съдържание напълно точно.
-  - **По-малко код** — YAGNI подход на „мързелив старши разработчик“: най-малката работеща промяна, без непоискана инфраструктура.
-  - **Конска опашка (мързелив старши разработчик)** — изкачва стълбицата на YAGNI, отстранява първопричината, най-малкият работещ diff.
-  - **Имам ADHD (действие на първо място)** — следващото действие е първо, стъпките са номерирани, една конкретна следваща стъпка, без увод.
-  - **Сбит CJK (文言)** — ултрасбит стил на класическия китайски (ограничен според локала до `zh`).
-- **🎯 Адаптивен бюджет за контекста** _(регулаторът)_ — вместо един праг на токените с включено/изключено състояние, най-евтините и най-малко губещи енджини се активират само дотолкова, доколкото е необходимо, за да се вместят в контекстния прозорец на модела. Политика: `reserve-output` (по подразбиране, съобразена с модела) · `percentage` · `absolute`. Режим: `floor` (гарантира вместяването) · `replace-autotrigger` (изричният ви избор има предимство) · `off` (старият праг).
-- **🎛️ Къде се определя компресирането** _(приоритет, от висок към нисък)_ — заглавка за всяка заявка `x-omniroute-compression` › заместване на комбинацията за маршрутизиране › активен именуван профил › adaptive / auto-trigger › настройка по подразбиране на панела › off. Приложеният план се връща в заглавката на отговора `X-OmniRoute-Compression: <mode>; source=<source>`.
+- **🪄 изходни стилове** _(насочване на изходната ос)_ — инжектиране на детерминистични, безопасни за кеширане инструкции за оформяне на реакция; комбинирани, всеки с интензитет `lite` / `full` / `ultra`. Добавянето на стил е запис в системния регистър от един ред:
+  - **Лаконична проза** — капка пълнител / артикули / хеджиране; поддържайте точно техническото съдържание.
+  - **По-малко код** — "мързелив старши разработчик" YAGNI: най-малката работна промяна, без неискано скеле.
+  - **Конска опашка (мързелив старши разработчик)** — изкачете стълбата YAGNI, поправете основната причина, най-малката работеща разлика.
+  - **Имам ADHD (първо действие)** — води до следващо действие, номерирани стъпки, една конкретна следваща стъпка, без преамбюл.
+  - **Кратък CJK (文言)** — класически-китайски ултра-лаконичен стил (локал, свързан с `zh`).
+- **🎯 Адаптивен контекст-бюджет** _(циферблатът)_ — вместо един праг on/off токен, ескалирайте най-евтините двигатели с най-без загуби само доколкото е необходимо за** пасват на контекстния прозорец на модела** . Политика: `reserve-output` (по подразбиране, съобразена с модела) · `percentage` · `absolute`. Режим: `floor` (гаранция за съответствие) · `replace-autotrigger` (вашият изричен избор печели) · `off` (наследен праг).
+- **🎛️ Където се определя компресията** _(предимство, висок → нисък)_ — за заявка `x-omniroute-compression` заглавие › отмяна на комбинация от маршрути › активен наименуван профил › адаптивен / автоматично задействан › панел по подразбиране › изключен. Приложеният план отразява обратно в заглавката на отговора `X-OmniRoute-Compression: <mode>; source=<source>`.
 
-Автоматично задействайте компресирането чрез праг на токените, включете адаптивния регулатор, фиксирайте именуван профил, задайте еднократна настройка за заявка или задайте pipeline за всяка комбинация за маршрутизиране — което най-добре отговаря на работното натоварване. Опционалният офлайн **тестов набор за оценяване** (`npm run eval:compression`) оценява вярността спрямо спестяванията върху фиксиран корпус, преди да внедрите промяна.
+Автоматично задействане чрез праг на токена, обръщане на адаптивния циферблат, закрепване на наименуван профил, задаване на еднократно за всяка заявка или присвояване на конвейер за комбо за маршрутизиране — което отговаря на работното натоварване. Включване офлайн** eval колан** (`npm run eval:compression`) оценява вярност спрямо спестявания на фиксиран корпус, преди да популяризирате промяна.
 
 📖 [`COMPRESSION_GUIDE.md`](docs/compression/COMPRESSION_GUIDE.md) · [`RTK_COMPRESSION.md`](docs/compression/RTK_COMPRESSION.md) · [`COMPRESSION_ENGINES.md`](docs/compression/COMPRESSION_ENGINES.md)
 
@@ -1039,40 +1022,30 @@ range    = 78.4 – 94.6%
 
 </div>
 
-**1) Инсталиране и стартиране**
+**1) Инсталирайте и стартирайте**
 
 ```bash
 npm install -g omniroute
 omniroute
 ```
 
-> 💡 Виждате `npm warn ERESOLVE` или предупреждения за peer зависимости? [Те са безвредни](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).
-> **Използвате npm 11 или по-нова версия?** npm може да блокира скриптовете за жизнения цикъл на пакетите, освен ако не бъдат разрешени. `postinstall` на OmniRoute (`node scripts/build/postinstall.mjs`) е необходим за подготовката на собствените runtime файлове. Разрешете пакетите, посочени в предупреждението на npm, при глобално инсталиране. За набора от пакети, отчетен от OmniRoute 3.8.55:
+> 💡 Виждате ли `npm warn ERESOLVE` или peer-dep предупреждения? [Те са безвредни](docs/guides/TROUBLESHOOTING.md#npm-install-warnings-eresolve--peer--deprecated).** Използвате npm 11 или по-нова версия?** npm може да блокира скриптове от жизнения цикъл на пакета, освен ако не са разрешени. OmniRoute(`node scripts/build/postinstall.mjs`) на `postinstall` е необходим, за да подготви собствените си файлове за изпълнение. Разрешете пакетите, посочени в предупреждението на npm, когато инсталирате глобално. За набора пакети, отчетен от OmniRoute 3.8.55:
 >
-> ```bash
-> npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute
-> ```
+> `bash npm install -g --allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild omniroute `
 >
-> За да използвате този списък с разрешени пакети при бъдещи глобални инсталации, конфигурирайте го веднъж и след това инсталирайте нормално:
+> За да използвате повторно този разрешен списък за бъдещи глобални инсталации, конфигурирайте го веднъж, след което инсталирайте нормално:
 >
-> ```bash
-> npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user
-> npm install -g omniroute
-> ```
+> `bash npm config set allow-scripts=omniroute,keytar,onnxruntime-node,@parcel/watcher,@swc/core,protobufjs,esbuild --location=user npm install -g omniroute `
 >
-> Списъкът със зависимости може да се променя между изданията; ако npm отчете различен списък, използвайте имената на пакетите от това предупреждение. Разрешаването на даден пакет позволява изпълнението на неговите скриптове за инсталиране.
-> **Използвате Gemini Web или друг доставчик с уеб бисквитки?** Пакетът npm включва
-> Playwright, но не и неговия двоичен файл Chromium. Вижте бележката
-> [Настройване на Playwright Chromium](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium)
-> преди първата заявка към уеб доставчик.
+> Списъкът със зависимости може да се променя между версиите; ако npm докладва различен списък, използвайте имената на пакетите от това предупреждение. Разрешаването на пакет разрешава изпълнението на неговите инсталационни скриптове.** Използвате Gemini Web или друг доставчик на уеб бисквитки?** Пакетът npm включва Playwright, но не и двоичния файл на Chromium. Вижте бележката [за настройка на Playwright Chromium](docs/guides/TROUBLESHOOTING.md#gemini-web-and-playwright-chromium), преди да направите първата заявка за уеб доставчик.
 
-Табло на `http://localhost:20128` · API на `http://localhost:20128/v1`.
+Табло за управление в `http://localhost:20128` · API в `http://localhost:20128/v1`.
 
-**2) Свържете допустим доставчик със собствения си акаунт**
+**2) Свържете отговарящ на условията доставчик, като използвате собствения си акаунт**
 
-Табло → **Доставчици** → изберете доставчик, чиито актуални условия и квота отговарят на вашия случай на употреба → добавете неговия API ключ или завършете процедурата за акаунта. Безплатните планове може да изискват регистрация, одобрение или платежен метод. Прегледайте [Ръководството за безплатните планове](docs/getting-started/FREE-TIERS-GUIDE.md); наличността без ключ не е гарантирана, а доставчиците, маркирани с `tos: avoid`, са изключени от `auto` по подразбиране.
+Табло →** Доставчици** → изберете доставчик, чиито настоящи условия и квота отговарят на вашия случай на използване → добавете своя API ключ или завършете потока на своя акаунт. Безплатните нива може да изискват регистрация, одобрение или начин на плащане. Прегледайте [ръководството за безплатни нива](docs/getting-started/FREE-TIERS-GUIDE.md) ; наличността без ключ не е гарантирана и доставчиците, отбелязани с `tos: avoid` са изключени от `auto` по подразбиране.
 
-**3) Насочете инструмента си за програмиране**
+**3) Насочете вашия инструмент за кодиране**
 
 ```txt
 Base URL: http://localhost:20128/v1
@@ -1080,15 +1053,15 @@ API Key:  [copy from Dashboard → Endpoints]
 Model:    auto            (routes among eligible connections — or choose provider/model)
 ```
 
-**4) Проверете дали работи**
+**4) Уверете се, че работи**
 
 ```bash
 curl http://localhost:20128/v1/models -H "Authorization: Bearer YOUR_KEY"
 ```
 
-Трябва да видите изброените свързани модели. 🎉 Това е всичко — започнете да програмирате, а OmniRoute автоматично ще избира маршрути и ще използва резервни варианти вместо вас.
+Трябва да видите вашите свързани модели изброени. 🎉 Това е всичко — стартира кодиране и OmniRoute автоматично маршрутизира и се връща вместо вас.
 
-Ако клиентът ви не може да изпраща персонализирани заглавки, OmniRoute предоставя и токенизирани псевдоними за съвместимост:
+Ако вашият клиент не може да изпрати персонализирани заглавки, OmniRoute също излага токенизирани псевдоними за съвместимост:
 
 ```txt
 OpenAI catalog:   http://localhost:20128/vscode/YOUR_KEY/
@@ -1099,56 +1072,52 @@ Ollama chat:      http://localhost:20128/vscode/YOUR_KEY/api/chat
 Ollama tags:      http://localhost:20128/vscode/YOUR_KEY/api/tags
 ```
 
-Използвайте ги само за клиенти, които не могат да добавят `Authorization: Bearer ...`. Удостоверяването чрез заглавка остава предпочитаният режим.
+Използвайте ги само за клиенти, които не могат да прикачат `Authorization: Bearer ...`. Удостоверяването на заглавката остава предпочитаният режим.
 
 <br/>
 
-## 📦 Още методи за инсталиране — Docker, от изходен код, pnpm, Arch
+## 📦 Още методи за инсталиране — Docker, източник, pnpm, Arch
 
 **🐳 Docker**
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-`:latest` следва най-високата **публикувана** стабилна версия по SemVer. Тя не следва git `main`. Фиксирайте `:X.Y.Z` за GitOps. Вижте [Docker канали за издания](docs/guides/DOCKER_GUIDE.md#release-channels). Образът фиксира **`OMNIROUTE_MEMORY_MB=1024`**. Това е достатъчно за таблото и лек чат. **Агентите за програмиране** (`POST /v1/responses` от Claude Code, Codex, Grok, …) се нуждаят от значително по-голяма V8 heap памет, в противен случай процесът завършва с `FATAL ERROR` при около 12 GiB при два припокриващи се дълги контекста. Оразмерете контейнера над размера на heap паметта (нативните буфери се намират извън V8):
+`:latest` следва най-високата** публикувани** стабилен SemVer. Не проследява git `main`. Закачете `:X.Y.Z` за GitOps. Вижте [каналите за издаване на Docker](docs/guides/DOCKER_GUIDE.md#release-channels). Щифтовете на изображението**`OMNIROUTE_MEMORY_MB=1024`** . Това е достатъчно за таблото и лек чат.** Кодиращи агенти** (`POST /v1/responses` от Claude Code, Codex, Grok, …) се нуждаят от много по-голям V8 куп или процесът `FATAL ERROR` s при ~ 12 GiB под два припокриващи се дълги контекста. Оразмерете контейнера над купчината (родните буфери се намират извън V8):
 
-| Работно натоварване                    | Heap (`-e OMNIROUTE_MEMORY_MB`)             | Контейнер (`--memory`) |
-| -------------------------------------- | ------------------------------------------- | ---------------------- |
-| Табло / лек чат                        | `1024` (стойност по подразбиране за образа) | ≥2 g                   |
-| Един агент за програмиране             | `8192`                                      | ≥10 g                  |
-| Два едновременни дълги `/v1/responses` | `10240`–`12288`                             | ≥12–16 g               |
+| Натовареност                           | Купчина (`-e OMNIROUTE_MEMORY_MB`)   | Контейнер (`--memory`) |
+| -------------------------------------- | ------------------------------------ | ---------------------- |
+| Табло за управление / лек чат          | `1024` (изображение по подразбиране) | ≥ 2 g                  |
+| Един кодиращ агент                     | `8192`                               | ≥ 10 g                 |
+| Две едновременни дълги `/v1/responses` | `10240`–`12288`                      | ≥ 12–16 g              |
 
 ```bash
 docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
   -e OMNIROUTE_MEMORY_MB=8192 --memory=10g \
-  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+  -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
 ```
 
-Пълната таблица е в: [Ръководство за Docker — RAM по време на изпълнение](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
+Пълна таблица: [Docker Guide — runtime RAM](docs/guides/DOCKER_GUIDE.md#runtime-ram-for-coding-agents).
 
-> **Docker канал за предварителни издания:** `diegosouzapw/omniroute:next` и
-> `diegosouzapw/omniroute:next-web` следват текущия клон по подразбиране `release/v*`.
-> Тези променливи тагове са предназначени единствено за тестване на неиздадени корекции и
-> **не се поддържат за продукционна употреба**. Вижте
-> [Docker канали за издания](docs/guides/DOCKER_GUIDE.md#release-channels).
+> **Предварителен Docker канал:** `diegosouzapw/omniroute:next` и `diegosouzapw/omniroute:next-web` следват текущия клон `release/v*` по подразбиране. Тези променливи тагове са предназначени само за тестване на неиздадени корекции и са** не се поддържа за производство** . Вижте [Docker Release Channels](docs/guides/DOCKER_GUIDE.md#release-channels).
 
 **🥟 Bun**
 
-Стандартните `bun install` и глобалната инсталация (`bun install -g omniroute`) се поддържат чрез откриване на средата за изпълнение на Bun:
+Стандартната `bun install` и глобалната инсталация (`bun install -g omniroute`) се поддържат чрез откриване по време на изпълнение Bun :
 
-- **Вграден `bun:sqlite`**: OmniRoute използва вградения в Bun драйвер `bun:sqlite`, като преминава към `better-sqlite3` при Node.js или `sql.js`.
-- **Автоматичен избор на Webpack bundler в режим за разработка**: Разработката (`bun run dev`) автоматично открива Bun и деактивира Turbopack в полза на Webpack, за да предотврати несъвместимости с нативните V8 свързвания. Продукционните компилации (`bun run build`) следват `OMNIROUTE_USE_TURBOPACK` точно както при Node: Turbopack по подразбиране, а `OMNIROUTE_USE_TURBOPACK=0` за компилация с Webpack (`Dockerfile.bun` го предоставя като `--build-arg`).
-- **Специален Dockerfile за Bun**: Многоетапен `Dockerfile.bun` за продукционни внедрявания с нативен Bun (`docker build -f Dockerfile.bun -t omniroute:bun .`).
+- **Вградена `bun:sqlite`** : OmniRoute използва вградения `bun:sqlite` драйвер на Bun, когато работи под Bun, връщайки се към `better-sqlite3` на Node.js или `sql.js`.
+- **Автоматичен избор на Webpack bundler в dev** : Разработката (`bun run dev`) автоматично открива Bun и деактивира Turbopack в полза на Webpack, за да предотврати несъвместимости на нативното свързване на V8. Производствените компилации (`bun run build`) следват `OMNIROUTE_USE_TURBOPACK` точно както при Node: Turbopack по подразбиране, `OMNIROUTE_USE_TURBOPACK=0` за изграждане с Webpack (`Dockerfile.bun` го излага като `--build-arg`).
+- **Специализиран Bun Docker файл** : Многоетапен `Dockerfile.bun` за собствени производствени внедрявания Bun (`docker build -f Dockerfile.bun -t omniroute:bun .`).
 
 ```bash
-# Инсталиране и стартиране с Bun
+# Install and run with Bun
 bun install
 bun run dev
 ```
 
-**🛠️ От изходен код**
+**🛠️ От източника**
 
 ```bash
 cp .env.example .env && npm install
@@ -1170,54 +1139,45 @@ yay -S omniroute-bin && systemctl --user enable --now omniroute.service
 **🔧 Nix (Flake)**
 
 ```bash
-# Използване на Nix flakes
+# Using Nix flakes
 nix develop
 npm run dev
 
-# Или чрез devbox
+# Or using devbox
 devbox run npm run dev
 ```
 
-📖 [Ръководство за Docker](docs/guides/DOCKER_GUIDE.md) — профили на Compose, Caddy HTTPS, Cloudflare тунели.
+📖 [Docker Ръководство](docs/guides/DOCKER_GUIDE.md) — Съставете профили, Caddy HTTPS, Cloudflare тунели.
 
-**🦭 Podman**
+**🦭 Подман**
 
 ```bash
-# 1. Подгответе директорията с данни, монтирана чрез bind mount
+# 1. Prepare the bind-mounted data directory
 mkdir -p data
 
-# 2. Само за Linux + локален rootless Podman (никога отдалечен Podman Machine клиент):
+# 2. Linux + local rootless Podman only (never a remote Podman Machine client):
 podman unshare chown 1000:1000 ./data
 
-# 3. Задайте подсказката за средата на изпълнение, изградете локалния Compose образ и стартирайте
+# 3. Set the runtime hint, build the local Compose image, and start
 echo "CONTAINER_HOST=podman" >> .env
 podman compose --profile base up -d --build
 ```
 
-В macOS или Windows Podman използва отдалечен Podman Machine: пропуснете
-`podman unshare` и следвайте [указанията за директорията с данни според топологията](contrib/podman/README.md#data-directory-permissions-by-topology).
+На macOS или Windows Podman използва отдалечена машина Podman: пропуснете `podman unshare` и следвайте [указанията за специфична за топологията директория с данни](contrib/podman/README.md#data-directory-permissions-by-topology).
 
-📖 [Ръководство за Podman](contrib/podman/README.md) — компилации с Compose, Podman Machine и
-настройка на Linux/systemd Quadlet.
+📖 [Podman Ръководство](contrib/podman/README.md) — Compose компилации, Podman Machine и настройка на Linux/systemd Quadlet.
 
-**⚡ По-бърза / по-лека инсталация (пропускане на нативната компилация)**
+**⚡ По-бързо / по-просто инсталиране (пропуснете собствената компилация)**
 
-Нативният SQLite engine (`better-sqlite3`) е **незадължителна** зависимост, така че глобалната
-инсталация никога не се блокира от компилация от изходен код: използва предварително компилиран
-двоичен файл, когато такъв съвпада с вашата платформа/Node, а в противен случай прозрачно преминава
-към engine на чист JavaScript (`node:sqlite` при Node 22+, а в противен случай включения `sql.js` WASM) — не са необходими инструменти за компилация.
+Родният SQLite двигател (`better-sqlite3`) е an** по желание** зависимост, така че глобалната инсталация никога не блокира компилирането от източника: тя използва предварително изграден двоичен файл, когато съвпада с вашия platform/Node, и в противен случай се връща прозрачно към чист JS двигател (`node:sqlite` на възел 22 +, в противен случай пакетът `sql.js` WASM) — не са необходими инструменти за изграждане.
 
-За да пропуснете изцяло **нативното загряване** след инсталацията (CI, headless среда или бавни машини).
-Забележка: това пропуска само стъпката за загряване на нативния SQLite (`scripts/postinstall.mjs`); hook-ът за копиране/поправка на двоичния файл (`scripts/build/postinstall.mjs`) продължава да се изпълнява нормално:
+За да пропуснете слединсталацията** родна загрявка** изцяло (CI, безглави или бавни машини). Забележка: това само пропуска естествената стъпка за загряване SQLite (`scripts/postinstall.mjs`); куката binary-copy/repair (`scripts/build/postinstall.mjs`) все още работи нормално:
 
 ```bash
-OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 също го пропуска
+OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 also skips it
 ```
 
-За най-бързи инсталации предпочитайте **pnpm** (хранилище с адресиране по съдържание + твърди връзки — вижте по-горе).
-За runtime без табло, в headless режим, използвайте Docker профила `base` (по-горе) или
-[ръководството за Termux](docs/guides/TERMUX_GUIDE.md). CLI и уеб таблото се обслужват от
-един и същ процес на един порт, така че към момента няма отделен пакет само за CLI.
+За най-бързи инсталации предпочитайте** pnpm** (твърди връзки на магазин + с адресиране на съдържание — вижте по-горе). За среда за изпълнение без табло за управление използвайте Docker `base` профила (по-горе) или [ръководството Termux](docs/guides/TERMUX_GUIDE.md). CLI и уеб таблото за управление се обслужват от един и същ процес на един порт, така че днес няма отделен пакет само за CLI.
 
 <br/>
 
@@ -1319,29 +1279,29 @@ OMNIROUTE_SKIP_POSTINSTALL=1 npm install -g omniroute   # CI=1 също го п�
 <br/>
 <div align="center">
 
-## 🛠️ Технологичен стек
+## 🛠️ технически стек
 
 </div>
 
 <table>
-  <tr><th align="left">Слой</th><th align="left">Технология</th></tr>
-  <tr><td nowrap><b>Среда за изпълнение</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
-  <tr><td nowrap><b>Език</b></td><td>TypeScript 6.0 — <b>100% TypeScript</b> в <code>src/</code> и <code>open-sse/</code> (нула <code>any</code> в ядрото от v2.0)</td></tr>
-  <tr><td nowrap><b>Рамка</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
-  <tr><td nowrap><b>База данни</b></td><td>better-sqlite3 (SQLite, WAL журнал) + LowDB (JSON наследена) — 147 домейнни модула, 240 миграции</td></tr>
-  <tr><td nowrap><b>Памет</b></td><td>Пълнотекстово търсене чрез SQLite FTS5 + векторни embedding-и с int8 квантизация, типизирано затихване</td></tr>
-  <tr><td nowrap><b>Схеми</b></td><td>Zod 4 — валидиране на входа/изхода на MCP инструментите + API договори</td></tr>
-  <tr><td nowrap><b>Протоколи</b></td><td>MCP (stdio / HTTP / SSE) + A2A v0.3 (JSON-RPC 2.0 + SSE)</td></tr>
-  <tr><td nowrap><b>Поточно предаване</b></td><td>Server-Sent Events (SSE) + WebSocket мост (<code>/v1/ws</code>)</td></tr>
-  <tr><td nowrap><b>Компресия</b></td><td>12-двигателен конвейер — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
-  <tr><td nowrap><b>Удостоверяване и сигурност</b></td><td>OAuth 2.0 (PKCE) + JWT + API ключове + MCP удостоверяване с обхват · AES-256-GCM при съхранение · DOMPurify</td></tr>
-  <tr><td nowrap><b>Прикритост</b></td><td>wreq-js — имитация на JA3 / JA4 TLS отпечатък, прокси на 3 нива</td></tr>
-  <tr><td nowrap><b>Устойчивост</b></td><td>Прекъсвач на веригата, експоненциално отстъпване, защита от ефекта на тълпата, автоматично комбинирано самовъзстановяване</td></tr>
-  <tr><td nowrap><b>Регистриране</b></td><td>pino — структурирани JSON регистри с контекст на заявката</td></tr>
-  <tr><td nowrap><b>Тестване</b></td><td>Тестов изпълнител на Node.js + Vitest — <b>над 60 000 статични декларации на тестове</b> в над 8 400 проследявани тестови файла (модулни, интеграционни, E2E, за сигурност, за екосистемата)</td></tr>
-  <tr><td nowrap><b>Платформи</b></td><td>Настолни компютри (Electron) · Android (Termux) · PWA (всеки браузър)</td></tr>
-  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Actions — автоматично публикуване в npm + Docker Hub при издание</td></tr>
-  <tr><td nowrap><b>Връзки</b></td><td><a href="https://omniroute.online">Уебсайт</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/diegosouzapw/omniroute">Docker Hub</a></td></tr>
+  <tr><th align="left">Слой</th><th align="left">технология</th></tr>
+  <tr><td nowrap><b>Време за изпълнение</b></td><td>Node.js 22.x / 24.x LTS — <code>&gt;=22.22.2 &lt;23 || &gt;=24.0.0 &lt;27</code></td></tr>
+  <tr><td nowrap><b>език</b></td><td>TypeScript 6.0 — <b>100% TypeScript</b> през <code>src/</code> и <code>open-sse/</code> (нула <code>any</code> в ядрото от v2.0)</td></tr>
+  <tr><td nowrap><b>рамка</b></td><td>Next.js 16 + React 19 + Tailwind CSS 4</td></tr>
+  <tr><td nowrap><b>База данни</b></td><td>better-sqlite3 (SQLite, WAL журналиране) + LowDB (JSON наследство) — 147 домейн модула, 240 миграции</td></tr>
+  <tr><td nowrap><b>памет</b></td><td>SQLite FTS5 пълен текст + int8-quantized векторни вграждания, въведен разпад</td></tr>
+  <tr><td nowrap><b>Схеми</b></td><td>Zod 4 — MCP инструмент I/O валидиране + API договори</td></tr>
+  <tr><td nowrap><b>протоколи</b></td><td>MCP (stdio / HTTP / SSE) + A2A v0.3 (JSON-RPC 2.0 + SSE)</td></tr>
+  <tr><td nowrap><b>Поточно предаване</b></td><td>Събития, изпратени от сървъра (SSE) + WebSocket мост (<code>/v1/ws</code>)</td></tr>
+  <tr><td nowrap><b>Компресия</b></td><td>12-двигателен тръбопровод — RTK, Caveman, LLMLingua-2 (MobileBERT ONNX), GCF, OmniGlyph</td></tr>
+  <tr><td nowrap><b>Auth &amp; сигурност</b></td><td>OAuth 2.0 (PKCE) + JWT + API Ключове + MCP удостоверяване с обхват · AES-256-GCM в покой · DOMPurify</td></tr>
+  <tr><td nowrap><b>Стелт</b></td><td>wreq-js — JA3 / JA4 TLS имитиране на пръстови отпечатъци, прокси на 3 нива</td></tr>
+  <tr><td nowrap><b>Устойчивост</b></td><td>Прекъсвач, експоненциално отдръпване, анти-гръмотевично стадо, автоматично комбинирано самолечение</td></tr>
+  <tr><td nowrap><b>Сеч</b></td><td>pino — структурирани JSON регистрационни файлове с контекст на заявка</td></tr>
+  <tr><td nowrap><b>Тестване</b></td><td>Node.js тест бегач + Vitest — <b>60 000 + статични тестови декларации</b> в 8400 + проследени тестови файла (единица, интеграция, E2E, сигурност, екосистема)</td></tr>
+  <tr><td nowrap><b>Платформи</b></td><td>Десктоп (Electron) · Android (Termux) · PWA (всеки браузър)</td></tr>
+  <tr><td nowrap><b>CI/CD</b></td><td>GitHub Действия — auto npm публикуване + Docker Hub при пускане</td></tr>
+  <tr><td nowrap><b>Връзки</b></td><td><a href="https://omniroute.online">уебсайт</a> · <a href="https://www.npmjs.com/package/omniroute">npm</a> · <a href="https://hub.docker.com/r/cheaperinference/omniroute">Docker хъб</a></td></tr>
 </table>
 
 <div align="center">
@@ -1831,17 +1791,17 @@ OmniRoute е изграден върху постиженията на гига�
   <tr><td nowrap><b><a href="https://github.com/steipete/CodexBar">CodexBar</a></b></td><td align="center">22,955</td><td>Идентифицира повърхността на квотата за Grok Build; след това OmniRoute независимо провери и коригира актуалния wire формат.</td></tr>
 </table>
 
-## 📄 Лиценз
+## 📄 лиценз
 
-Лиценз MIT — вижте [LICENSE](LICENSE) за подробности.
+MIT лиценз - вижте [LICENSE](LICENSE) за подробности.
 
 ---
 
 <div align="center">
 
-**[⬆ Обратно към началото](#-omniroute)** · Създадено ❤️ за общността на AI с отворен код.
+**[⬆ Обратно в началото](#-omniroute)** · Създаден с ❤️ за AI общността с отворен код.
 
-<sub>Създадено от <a href="https://github.com/diegosouzapw">Diego Souza</a> · OmniRoute v3.8.55 · Node ≥22.22.2 · Лиценз MIT · <a href="https://omniroute.online">omniroute.online</a></sub>
+<sub>Създаден от <a href="https://github.com/diegosouzapw">Диего Соуза</a> · OmniRoute v3.8.55 · Възел ≥ 22.22.2 · MIT лиценз · <a href="https://omniroute.online">omniroute.онлайн</a></sub>
 
 </div>
-<!-- GitHub Discussions е активирана за въпроси и отговори от общността -->
+<!-- GitHub Discussions enabled for community Q&A -->

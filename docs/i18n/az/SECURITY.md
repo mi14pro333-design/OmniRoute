@@ -182,13 +182,13 @@ Server `changeme`, `secret` və ya `password` kimi məlum zəif dəyərləri akt
 
 ---
 
-## Docker Təhlükəsizliyi
+## Docker Təhlükəsizlik
 
-- İstehsal mühitində root olmayan istifadəçidən istifadə edin
-- Məxfi dəyərləri yalnız oxuma üçün nəzərdə tutulmuş volume-lar kimi qoşun
-- `.env` fayllarını heç vaxt Docker image-lərinə köçürməyin
+- İstehsalda kök olmayan istifadəçidən istifadə edin
+- Sirləri yalnız oxuna bilən cildlər kimi bağlayın
+- Heç vaxt `.env` fayllarını Docker şəkillərinə köçürməyin
 - Həssas faylları istisna etmək üçün `.dockerignore` istifadə edin
-- HTTPS arxasında işləyərkən `AUTH_COOKIE_SECURE=true` təyin edin
+- HTTPS arxasında olduqda `AUTH_COOKIE_SECURE=true` təyin edin
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

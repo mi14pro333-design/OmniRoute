@@ -42,17 +42,17 @@ Dette fjerner applikasjonen **og sletter permanent** alle data:
 
 ## Manuell avinstallering
 
-### Global NPM-installasjon
+### NPM global installasjon
 
 ```bash
-# Fjern den globale pakken
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Valgfritt) Fjern datakatalogen
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Global pnpm-installasjon
+### pnpm Global installasjon
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,33 +62,35 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Stopp og fjern containeren
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Fjern volumet (sletter alle data)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Valgfritt) Fjern imaget
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Skriv
 
 ```bash
-# Stopp og fjern containere
+# Stop and remove containers
 docker compose down
 
-# Fjern også volumer (sletter alle data)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
-### Electron-skrivebordsapp
+### Electron skrivebordsapp
 
 **Windows:**
 
-- Åpne `Innstillinger → Apper → OmniRoute → Avinstaller`
-- Eller kjør NSIS-avinstalleringsprogrammet fra installasjonskatalogen
+- Åpne `Settings → Apps → OmniRoute → Uninstall`
+- Eller kjør NSIS -avinstalleringsprogrammet fra installasjonskatalogen
 
 **macOS:**
 
@@ -97,16 +99,16 @@ docker compose down -v
 
 **Linux:**
 
-- Fjern AppImage-filen
+- Fjern AppImage filen
 - Fjern data: `rm -rf ~/.omniroute`
 
-### Kildekodeinstallasjon (git clone)
+### Kildeinstallasjon (git-klone)
 
 ```bash
-# Fjern den klonede katalogen
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Valgfritt) Fjern datakatalogen
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 

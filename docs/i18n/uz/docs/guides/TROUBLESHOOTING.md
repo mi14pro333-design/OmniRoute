@@ -441,36 +441,36 @@ To‘liq tafsilotlar va ikkita Kiro hisobini yonma-yon qo‘shish bo‘yicha bos
 
 ---
 
-## Docker bilan bogʻliq muammolar
+## Docker muammolari
 
-### Docker IPv6 / Ulanishning uzilishi
+### Docker IPv6 / Ulanishni tiklash
 
 <a name="docker-ipv6"></a>
 
-**Alomatlar:** `curl http://localhost:20128/v1/models` buyrugʻi `curl: (56) Recv failure: Connection reset by peer` xatosini qaytaradi. Boshqaruv paneli va autentifikatsiya talab qilmaydigan endpointlar ishlaydi, ammo autentifikatsiya talab qiladigan endpointlar ishlamaydi — bu autentifikatsiya muammosiga oʻxshaydi, lekin aslida unday emas.
+**Alomatlar:** `curl http://localhost:20128/v1/models` `curl: (56) Recv failure: Connection reset by peer` ni qaytaradi. Boshqaruv paneli va autentifikatsiya qilinmagan so'nggi nuqtalar ishlaydi, lekin autentifikatsiya qilingan so'nggi nuqtalar muvaffaqiyatsiz tugadi — bu autentifikatsiya muammosiga o'xshaydi, lekin unday emas.
 
-**Sabab:** `docker run -p 20128:20128` portni ham `0.0.0.0` (IPv4), ham `::` (IPv6) manzillarida eʼlon qiladi, ammo konteyner ichidagi jarayon faqat IPv4 orqali tinglaydi. `localhost` avval `::1` manziliga aniqlanadigan xostlarda ulanish ortida tinglovchi boʻlmagan eʼlon qilingan IPv6 portiga tushadi → ulanish uziladi.
+**Sabab:** `docker run -p 20128:20128` ikkala `0.0.0.0` (IPv4) va `::` (IPv6) da nashr etadi, lekin konteyner ichidagi jarayon faqat IPv4 da tinglaydi. `localhost` birinchi bo'lib `::1` ga o'tadigan xostlarda ulanish IPv6 nashr etilgan portga tushadi, uning orqasida tinglovchi yo'q, → ulanish qayta tiklanadi.
 
 **Tuzatish:**
 
-1. **Tezkor diagnostika:** `curl -4 http://localhost:20128/v1/models` buyrugʻini ishga tushiring. Agar u `-4` bilan ishlasa, ammo usiz ishlamasa, sizda IPv6 bogʻlash nomuvofiqligi mavjud.
-2. **Doimiy tuzatish:** `docker run` buyrugʻida `-p 127.0.0.1:20128:20128` dan foydalanib, IPv4 manziliga aniq bogʻlang:
+1. **Tez diagnostika:** `curl -4 http://localhost:20128/v1/models` ishga tushiring. Agar u `-4` bilan ishlayotgan bo'lsa, lekin u holda muvaffaqiyatsiz bo'lsa, sizda IPv6 ulanishi mos kelmasligi mavjud.
+2. **Doimiy tuzatish:** `docker run` buyrug'ida `-p 127.0.0.1:20128:20128` dan foydalanib, IPv4 -ga aniq bog'lang:
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Bu IPv4 bogʻlanishini majburlaydi va proksining xostdagi barcha interfeyslarda ochiq boʻlishiga ham yoʻl qoʻymaydi.
+   Bu IPv4 ulanishini majburlaydi va barcha xost interfeyslarida proksi-serverni ochishdan qochadi.
 
 ---
 
-### CLI vositasi oʻrnatilmagan deb koʻrsatiladi
+### CLI Tool Shows o'rnatilmagan
 
-1. Bajarilish muhiti maydonlarini tekshiring: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Portativ rejim uchun: `runner-cli` obraz nishonidan foydalaning (CLI vositalari ichiga kiritilgan)
-3. Xostni ulash rejimi uchun: `CLI_EXTRA_PATHS` ni sozlang va xostdagi bin katalogini faqat oʻqish rejimida ulang
-4. Agar `installed=true` va `runnable=false` boʻlsa: bajariladigan fayl topilgan, ammo holat tekshiruvidan oʻta olmagan
+1. Ish vaqti maydonlarini tekshiring: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Portativ rejim uchun: tasvir maqsadli `runner-cli` (jamlangan CLIs) dan foydalaning
+3. Xost o'rnatish rejimi uchun: `CLI_EXTRA_PATHS` va mount host bin katalogini faqat o'qish uchun qilib belgilang
+4. Agar `installed=true` va `runnable=false`: binar topildi, lekin sog'liqni tekshirish muvaffaqiyatsiz tugadi
 
-### Bajarilish muhitini tezkor tekshirish
+### Tez ish vaqtini tekshirish
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

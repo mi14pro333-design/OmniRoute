@@ -454,36 +454,36 @@ consultați [`docs/guides/KIRO_SETUP.md`](./KIRO_SETUP.md).
 
 ---
 
-## Probleme cu Docker
+## Docker Probleme
 
-### IPv6 Docker / Resetarea conexiunii
+### Docker IPv6 / Resetare conexiune
 
 <a name="docker-ipv6"></a>
 
-**Simptome:** `curl http://localhost:20128/v1/models` returnează `curl: (56) Recv failure: Connection reset by peer`. Panoul de control și endpointurile neautentificate funcționează, dar endpointurile autentificate eșuează — pare a fi o problemă de autentificare, dar nu este.
+**Simptome:** `curl http://localhost:20128/v1/models` returnează `curl: (56) Recv failure: Connection reset by peer`. Tabloul de bord și punctele finale neautentificate funcționează, dar punctele finale autentificate nu reușesc — pare o problemă de autentificare, dar nu este.
 
-**Cauză:** `docker run -p 20128:20128` publică atât pe `0.0.0.0` (IPv4), cât și pe `::` (IPv6), dar procesul din container ascultă numai pe IPv4. Pe gazdele unde `localhost` se rezolvă mai întâi la `::1`, conexiunea ajunge la portul IPv6 publicat, fără un serviciu care să asculte în spatele acestuia → conexiunea este resetată.
+**Cauza:** `docker run -p 20128:20128` publică atât pe `0.0.0.0` (IPv4) cât și `::` (IPv6), dar procesul din interiorul containerului ascultă numai pe IPv4. Pe gazdele în care `localhost` se rezolvă mai întâi la `::1`, conexiunea aterizează pe portul publicat IPv6 fără niciun ascultător în spatele acestuia, resetarea conexiunii →.
 
 **Remediere:**
 
-1. **Diagnostic rapid:** Rulați `curl -4 http://localhost:20128/v1/models`. Dacă funcționează cu `-4`, dar eșuează fără acesta, există o nepotrivire de asociere IPv6.
-2. **Remediere permanentă:** Asociați explicit adresa IPv4 utilizând `-p 127.0.0.1:20128:20128` în comanda `docker run`:
+1. **Diagnosticare rapida:** Rulați `curl -4 http://localhost:20128/v1/models`. Dacă funcționează cu `-4`, dar nu reușește fără, aveți o nepotrivire IPv6 bind.
+2. **Remediere permanentă:** Leagă la IPv4 în mod explicit folosind `-p 127.0.0.1:20128:20128` în comanda ta `docker run` :
    ```bash
    docker run -d --name omniroute --restart unless-stopped --stop-timeout 40 \
-     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data diegosouzapw/omniroute:latest
+     -p 127.0.0.1:20128:20128 -v omniroute-data:/app/data cheaperinference/omniroute:latest
    ```
-   Aceasta forțează asocierea IPv4 și evită, de asemenea, expunerea proxy-ului pe toate interfețele gazdei.
+   Acest lucru forțează legarea IPv4 și, de asemenea, evită expunerea proxy-ului pe toate interfețele gazdă.
 
 ---
 
-### Instrumentul CLI apare ca neinstalat
+### Instrumentul CLI arată că nu este instalat
 
-1. Verificați câmpurile mediului de execuție: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
-2. Pentru modul portabil: utilizați ținta de imagine `runner-cli` (CLI-uri incluse)
-3. Pentru modul de montare de pe gazdă: setați `CLI_EXTRA_PATHS` și montați directorul binar al gazdei doar pentru citire
-4. Dacă `installed=true` și `runnable=false`: binarul a fost găsit, dar verificarea stării de funcționare a eșuat
+1. Verificați câmpurile de rulare: `curl http://localhost:20128/api/cli-tools/runtime/codex | jq`
+2. Pentru modul portabil: utilizați imaginea țintă `runner-cli` ( CLIs inclus)
+3. Pentru modul de montare gazdă: setați `CLI_EXTRA_PATHS` și montați directorul bin gazdă ca doar pentru citire
+4. Dacă `installed=true` și `runnable=false`: binar a fost găsit, dar nu a reușit verificarea sănătății
 
-### Validare rapidă a mediului de execuție
+### Validare rapidă a timpului de rulare
 
 ```bash
 curl -s http://localhost:20128/api/cli-tools/codex-settings | jq '{installed,runnable,commandPath,runtimeMode,reason}'

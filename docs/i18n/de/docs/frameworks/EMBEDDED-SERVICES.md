@@ -45,7 +45,7 @@ Alle acht folgen dem gleichen Aufsichtsmodell:
 - OmniRoute installiert sie unter `DATA_DIR/services/{name}/` (isoliert von OmniRoute eigenem `package.json`)
 - OmniRoute erzeugt und überwacht sie als untergeordnete Prozesse
 - OmniRoute fügt einen kurzlebigen API Schlüssel in die Umgebung des Kindes ein und rotiert ihn ohne Ausfallzeit (sofern zutreffend).
-- Alle Verwaltungsrouten (`/api/services/*`) sind**LOCAL_ONLY** — nur über Loopback zugänglich (harte Regel Nr. 17)
+- Alle Verwaltungsrouten (`/api/services/*`) sind**LOCAL_ONLY** — nur über Loopback zugänglich (harte Regel #17)
 
 ### Wichtige Entscheidungen (aus dem Entwurfsplan)
 
@@ -209,7 +209,7 @@ Race Conditions, wenn beispielsweise der automatische Start und eine UI-Schaltfl
 
 ## 4. API -Referenz
 
-Alle Routen unter `/api/services/` sind**LOCAL_ONLY** (Nur Loopback, harte Regel Nr. 17). Nicht-Loopback-Anfragen erhalten `403 LOCAL_ONLY` unabhängig vom Authentifizierungstoken.
+Alle Routen unter `/api/services/` sind**LOCAL_ONLY** (Nur Loopback, harte Regel #17). Nicht-Loopback-Anfragen erhalten `403 LOCAL_ONLY` unabhängig vom Authentifizierungstoken.
 
 ### 4.1 9Router-Endpunkte (11 Routen)
 
@@ -236,7 +236,7 @@ Installieren Sie 9Router von npm. Erstellt `DATA_DIR/services/9router/` mit sein
 | `409`  | Wird bereits installiert (Sperre gehalten)                                 |
 | `500`  | npm-Installation fehlgeschlagen. — siehe `message` für freundlichen Fehler |
 
-**Hinweise:** Verwendet `execFile('npm', [...])` — keine Shell, keine Interpolation (harte Regel Nr. 13). EACCES Fehler werden als freundliche Nachrichten angezeigt.
+**Hinweise:** Verwendet `execFile('npm', [...])` — keine Shell, keine Interpolation (harte Regel #13). EACCES Fehler werden als freundliche Nachrichten angezeigt.
 
 ---
 
@@ -392,7 +392,7 @@ SSE Stream von Live-Protokollen aus stdout/stderr Ringpuffer von 9Router.
 
 | Param    | Typ       | Standard | Beschreibung                                                                              |
 | -------- | --------- | -------- | ----------------------------------------------------------------------------------------- |
-| `tail`   | `integer` | 200      | Wie viele historische Zeilen werden zuerst gesendet (maximal 1000)                        |
+| `tail`   | `integer` | 200      | Wie viele historische Zeilen werden zuerst gesendet (maximal 1000)?                       |
 | `filter` | `string`  | keiner   | Groß- und Kleinschreibung berücksichtigender Teilstringfilter (kein Regex — ReDoS-sicher) |
 
 **SSE Veranstaltungen:**
@@ -457,16 +457,16 @@ Mux hat die gleiche Endpunktform wie CLIProxyAPI — keine `rotate-key` Route in
 
 Bifrost ist ein Go AI-Gateway-Relay-Backend (`@maximhq/bifrost`). Es verwendet die gleiche Endpunktform wie CLIProxyAPI (kein `rotate-key` — Bifrost verwaltet seine eigenen Anbieterschlüssel in `config.json` unter seinem `-app-dir`).
 
-| Verfahren | Weg                                | Beschreibung                                                                      |
-| --------- | ---------------------------------- | --------------------------------------------------------------------------------- |
-| `POST`    | `/api/services/bifrost/install`    | Installieren Sie Bifrost von npm (`@maximhq/bifrost`)                             |
-| `POST`    | `/api/services/bifrost/start`      | Bifrost auf Port 8080 starten (Standard)                                          |
-| `POST`    | `/api/services/bifrost/stop`       | Stoppt Bifrost                                                                    |
-| `POST`    | `/api/services/bifrost/restart`    | Starten Sie Bifrost neu                                                           |
-| `POST`    | `/api/services/bifrost/update`     | Auf eine neuere Version aktualisieren                                             |
-| `GET`     | `/api/services/bifrost/status`     | Live- + DB -Status                                                                |
-| `POST`    | `/api/services/bifrost/auto-start` | Automatischen Start umschalten                                                    |
-| `GET`     | `/api/services/bifrost/logs`       | SSE -Protokollende (über eine gemeinsam genutzte dynamische `[name]/logs` -Route) |
+| Verfahren | Weg                                | Beschreibung                                                                 |
+| --------- | ---------------------------------- | ---------------------------------------------------------------------------- |
+| `POST`    | `/api/services/bifrost/install`    | Installieren Sie Bifrost von npm (`@maximhq/bifrost`)                        |
+| `POST`    | `/api/services/bifrost/start`      | Bifrost auf Port 8080 starten (Standard)                                     |
+| `POST`    | `/api/services/bifrost/stop`       | Stoppt Bifrost                                                               |
+| `POST`    | `/api/services/bifrost/restart`    | Starten Sie Bifrost neu                                                      |
+| `POST`    | `/api/services/bifrost/update`     | Auf eine neuere Version aktualisieren                                        |
+| `GET`     | `/api/services/bifrost/status`     | Live- + DB -Status                                                           |
+| `POST`    | `/api/services/bifrost/auto-start` | Automatischen Start umschalten                                               |
+| `GET`     | `/api/services/bifrost/logs`       | SSE -Protokollende (über gemeinsam genutzte dynamische `[name]/logs` -Route) |
 
 **Verkabelung verlegen:** Wenn `BIFROST_BASE_URL` nicht konfiguriert ist und die überwachte Bifrost-Instanz läuft, verwendet `getBifrostRoutingConfig()` (in `routingBackend.ts`) automatisch `http://127.0.0.1:{port}` als Relay-Basis URL. Die explizite `BIFROST_BASE_URL` Umgebung hat immer Vorrang.
 
@@ -480,16 +480,16 @@ Gleiche Lebenszyklusform wie die anderen Dienste (`install`, `start`, `stop`, `r
 
 open-wa (`@open-wa/wa-automate`) steuert eine kopflose Chromium-Instanz (über Puppeteer), um WhatsApp Web zu automatisieren. Es verwendet die gleiche Endpunktform wie Mux (noch keine `rotate-key` Route). Es wird lebenszyklusverwaltet, nur — ist kein Routing-Ziel, kein Layer-4 executor/provider Eintrag.
 
-| Verfahren | Weg                               | Beschreibung                                                                      |
-| --------- | --------------------------------- | --------------------------------------------------------------------------------- |
-| `POST`    | `/api/services/openwa/install`    | Open-wa von npm (`@open-wa/wa-automate`) installieren                             |
-| `POST`    | `/api/services/openwa/start`      | Open-wa auf Port 8323 starten (Standard)                                          |
-| `POST`    | `/api/services/openwa/stop`       | Stoppen Sie Open-Wa                                                               |
-| `POST`    | `/api/services/openwa/restart`    | Starten Sie open-wa neu                                                           |
-| `POST`    | `/api/services/openwa/update`     | Auf eine neuere Version aktualisieren                                             |
-| `GET`     | `/api/services/openwa/status`     | Live- + DB -Status                                                                |
-| `POST`    | `/api/services/openwa/auto-start` | Automatischen Start umschalten                                                    |
-| `GET`     | `/api/services/openwa/logs`       | SSE -Protokollende (über eine gemeinsam genutzte dynamische `[name]/logs` -Route) |
+| Verfahren | Weg                               | Beschreibung                                                                 |
+| --------- | --------------------------------- | ---------------------------------------------------------------------------- |
+| `POST`    | `/api/services/openwa/install`    | Open-wa von npm (`@open-wa/wa-automate`) installieren                        |
+| `POST`    | `/api/services/openwa/start`      | Open-wa auf Port 8323 starten (Standard)                                     |
+| `POST`    | `/api/services/openwa/stop`       | Stoppen Sie Open-Wa                                                          |
+| `POST`    | `/api/services/openwa/restart`    | Starten Sie open-wa neu                                                      |
+| `POST`    | `/api/services/openwa/update`     | Auf eine neuere Version aktualisieren                                        |
+| `GET`     | `/api/services/openwa/status`     | Live- + DB -Status                                                           |
+| `POST`    | `/api/services/openwa/auto-start` | Automatischen Start umschalten                                               |
+| `GET`     | `/api/services/openwa/logs`       | SSE -Protokollende (über gemeinsam genutzte dynamische `[name]/logs` -Route) |
 
 **API -Schlüssel:** injiziert als `WA_KEY` — open-was generische `WA_*` -prefixed env-Überschreibung ordnet es der Option `--key`/`-k` CLI zu (`dist/cli/setup.js::envArgs()`, überprüft anhand des installierten 4.76.0-Pakets). Bei der Generierung durch `generateServiceApiKey()` wird `ow_` vorangestellt. open-wa liest den Schlüssel aus einem `key`/`api_key` HTTP Header (nicht `Authorization: Bearer`) zurück; `/api-docs*` ist explizit von der Prüfung ausgenommen (`setupAuthenticationLayer` in `dist/cli/server.js`), sodass der Integritätstest keinen Authentifizierungsheader benötigt.
 
@@ -511,11 +511,11 @@ LLMLingua ist ein Sidecar mit Prompt-Komprimierung, der `@atjsh/llmlingua-2` ums
 | `GET`     | `/api/services/llmlingua/status`               | Live- + DB -Status                                                                          |
 | `POST`    | `/api/services/llmlingua/auto-start`           | Automatischen Start umschalten                                                              |
 | `POST`    | `/api/services/llmlingua/auto-restart-adopted` | Schalten Sie den automatischen Neustart einer übernommenen (bereits vorhandenen) Instanz um |
-| `GET`     | `/api/services/llmlingua/logs`                 | SSE -Protokollende (über eine gemeinsam genutzte dynamische `[name]/logs` -Route)           |
+| `GET`     | `/api/services/llmlingua/logs`                 | SSE -Protokollende (über gemeinsam genutzte dynamische `[name]/logs` -Route)                |
 
 **Beiwagenvertrag:** Das Serverskript macht `GET /health` (Instant — wartet nicht auf das Modell) und `POST /compress` (`{ text, rate }` → `{ text, compressed, ratio }`) verfügbar. Das Modell wird beim ersten `/compress` -Aufruf langsam geladen.
 
-**Kompressionsverkabelung:** `open-sse/services/compression/engines/llmlingua/index.ts` `httpSidecarBackend` ruft `LLMLINGUA_BASE_URL` (Standard `http://127.0.0.1:20135`) auf und akzeptiert die Antwort des Sidecars nur, wenn sie unbedingt kürzer als die Eingabe ist; Jeder Fehler (nicht ausgeführt, Zeitüberschreitung, keine Reaktion) fällt auf das In-Process-Worker-Thread-Backend (`./worker.ts`) zurück.
+**Kompressionsverkabelung:** `open-sse/services/compression/engines/llmlingua/index.ts`'s `httpSidecarBackend` ruft `LLMLINGUA_BASE_URL` (Standard `http://127.0.0.1:20135`) auf und akzeptiert die Antwort des Sidecars nur, wenn sie unbedingt kürzer als die Eingabe ist; Jeder Fehler (nicht ausgeführt, Zeitüberschreitung, keine Reaktion) fällt auf das In-Process-Worker-Thread-Backend (`./worker.ts`) zurück.
 
 ---
 
@@ -533,7 +533,7 @@ sing-box hat die gleiche Endpunktform wie Mux — keine `rotate-key` Route, kein
 | `GET`     | `/api/services/singbox/status`               | Live- + DB -Status                                                                              |
 | `POST`    | `/api/services/singbox/auto-start`           | Automatischen Start umschalten                                                                  |
 | `POST`    | `/api/services/singbox/auto-restart-adopted` | Schalten Sie den automatischen Neustart für einen übernommenen (bereits vorhandenen) Prozess um |
-| `GET`     | `/api/services/singbox/logs`                 | SSE -Protokollende (über eine gemeinsam genutzte dynamische `[name]/logs` -Route)               |
+| `GET`     | `/api/services/singbox/logs`                 | SSE -Protokollende (über gemeinsam genutzte dynamische `[name]/logs` -Route)                    |
 
 **TPROXY Verkabelung:** `ensureSingboxTproxy()` (`src/mitm/tproxy/setup.ts`) schreibt `config.json` und startet den Supervisor, bevor `applyTproxy()` die TPROXY -Firewallregeln installiert. Wenn der Supervisor fehlt oder `running` nicht erreicht, protokolliert er jetzt auf Fehlerebene (anstatt den Fehler stillschweigend zu verschlucken), sodass ein Bediener erkennen kann, dass die TPROXY Regeln angewendet wurden, ohne dass ein funktionierender Listener dahinter steckte.
 
@@ -555,7 +555,7 @@ Dieser Proxy:
 - Entfernt `set-cookie`, `content-security-policy`, `x-frame-options`, `cross-origin-*` aus der Antwort
 - Schreibt HTML Antworten um, um `<base href>` einzufügen und absolute Pfade zu normalisieren (`/foo` → `/dashboard/.../embed/foo`).
 
-WebSocket Upgrades für das eingebettete Dashboard werden von einem Begleitserver an einem dedizierten Port verwaltet (siehe `src/lib/services/embedWsProxy.ts`).
+WebSocket Upgrades für das eingebettete Dashboard werden von einem Begleitserver an einem dedizierten Port verwaltet (siehe `src/lib/services/embedWsProxy.ts`). Jedes Upgrade wird autorisiert, bevor der Tunnel geöffnet wird, mit den gleichen Regeln wie die HTTP Einbettungsroute: Der Peer muss ein Loopback ohne Reverse-Proxy-Weiterleitungsheader sein, ein Browser- `Origin` muss ein Dashboard-Ursprung sein (`LIVE_WS_ALLOWED_ORIGINS` / `LIVE_WS_ALLOWED_HOSTS` erweitern die Loopback-Standardeinstellungen), und der Aufrufer benötigt eine Dashboard-Sitzung oder einen API -Schlüssel für den Verwaltungsbereich, es sei denn, die Dashboard-Anmeldung ist deaktiviert.
 
 **Sicherheit:** Die eingebetteten Proxy-Routen sind unter `LOCAL_ONLY_API_PREFIXES` klassifiziert und können nur über Loopback erreicht werden. Ein Angreifer, der ein JWT über einen Cloudflare/Ngrok Tunnel erhält, kann keine Proxy-Verbindung zu eingebetteten Diensten herstellen.
 

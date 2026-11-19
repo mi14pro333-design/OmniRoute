@@ -426,7 +426,7 @@ open-sse/
 
 ### 4.2 `open-sse/executors/`
 
-170 модулів виконавців верхнього рівня (`*.ts` мінус `base.ts`, `index.ts` і тести — кількість вимірів `npm run check:docs-counts` ). Кожен клас виконавця розширює `BaseExecutor` (`base.ts`) безпосередньо або через `DefaultExecutor` або інший виконавець; решта модулів є допоміжними для кожного постачальника (схеми інструментів, адаптери fetch/TTS, обробники особливостей). До виконавців належать:
+170 модулів-виконавців верхнього рівня (`*.ts` мінус `base.ts`, `index.ts` і тести — кількість вимірювань `npm run check:docs-counts` ). Кожен клас виконавця розширює `BaseExecutor` (`base.ts`) безпосередньо або через `DefaultExecutor` або інший виконавець; решта модулів є допоміжними для кожного постачальника (схеми інструментів, адаптери fetch/TTS, обробники особливостей). До виконавців належать:
 
 `antigravity`, `azure-openai`, `blackbox-web`, `cliproxyapi`, `chatgpt-web-codex`, `cloudflare-ai`, `codex`, `commandCode`, `cursor`, `default`, `devin-cli`, `muse-spark-web`, `nlpcloud`, `opencode`, `perplexity-web`, `petals`, `pollinations`, `qoder`, `vertex`, `devin-desktop`, а також `claudeIdentity.ts` (помічник спільної ідентифікації) та `index.ts` (реєстр).
 
@@ -468,7 +468,7 @@ Hub-and-spoke переклад (OpenAI — центр).
 
 ### 4.6 `open-sse/mcp-server/`
 
-- **110 унікальних інструментів** підключено до `server.ts` (45 канонічних пам’яті `schemas/tools.ts` +, навичок, навичок GitHub, пулу, гейміфікації, плагіна, Notion, Obsidian, локального корпусу та модулів стиснення — union, підрахованих `countUniqueMcpTools`).
+- **110 унікальних інструментів** підключено до `server.ts` (45 канонічних у `schemas/tools.ts` + пам’ять, навички, навички GitHub, пул, гейміфікація, плагін, Notion, Obsidian, локальний корпус і модулі стиснення — об’єднання підраховано `countUniqueMcpTools`).
 - **3 транспорти** : stdio, HTTP Streamable, SSE.
 - **33 приціли** застосований під час виконання базового списку — в `src/shared/constants/mcpScopes.ts`, повний набір є об’єднанням областей, оголошених кожним модулем інструменту.
 - Таблиця аудиту: `mcp_tool_audit` (заповнюється `audit.ts`).
@@ -481,7 +481,7 @@ Hub-and-spoke переклад (OpenAI — центр).
 
 ### 4.8 `open-sse/utils/`
 
-Потокові примітиви та помічники провайдерів: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorChecksum.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
+Потокові примітиви та помічники провайдерів: `stream.ts`, `streamHandler.ts`, `streamHelpers.ts`, `streamPayloadCollector.ts`, `streamReadiness.ts`, `sseHeartbeat.ts`, `proxyFetch.ts`, `proxyDispatcher.ts`, `tlsClient.ts`, `networkProxy.ts`, `awsSigV4.ts`, `cacheControlPolicy.ts`, `cursorAgentProtobuf.ts`, `cursorVersionDetector.ts`, `comfyuiClient.ts`, `kieTask.ts`, `bypassHandler.ts`, `aiSdkCompat.ts`, `thinkTagParser.ts`, `urlSanitize.ts`, `usageTracking.ts`, `requestLogger.ts`, `progressTracker.ts`, `cors.ts`, `error.ts`, `logger.ts`, `sleep.ts`, `ollamaTransform.ts`.
 
 ---
 
@@ -566,35 +566,14 @@ bin/
 
 ## 8. `scripts/`
 
-Організовано в 6 підпапок за призначенням.
+Організовано в 6 вкладених папок за призначенням.
 
-- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`,
-  `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`,
-  `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`,
-  `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`,
-  `native-binary-compat.mjs`.
-- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`,
-  `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`,
-  `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`,
-  `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`,
-  `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`,
-  `system-info.mjs`, а також допоміжні засоби лише для читання для нагляду за PR:
-  `ci-discriminate.sh` (сортує сигнатури невдалих перевірок PR на власні / успадковані /
-  невідомі шляхом порівняння з еталонним PR або задачею щодо помилок у базовій гілці) і `audit-worktree.sh`
-  (змінені файли, захищені компоненти, видалені твердження, кількість придушень, залишкові
-  тимчасові tsconfig-файли, голова PR порівняно з локальним HEAD — перед прийняттям PR виконавця).
-- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`,
-  `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`,
-  `check-deprecated-versions.mjs`, `check-route-validation.mjs`,
-  `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`,
-  `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
+- **`scripts/build/`** — `build-next-isolated.mjs`, `prepublish.ts`, `prepare-electron-standalone.mjs`, `pack-artifact-policy.ts`, `validate-pack-artifact.ts`, `postinstall.mjs`, `postinstallSupport.mjs`, `uninstall.mjs`, `bootstrap-env.mjs`, `runtime-env.mjs`, `native-binary-compat.mjs`.
+- **`scripts/dev/`** — `run-next.mjs`, `run-next-playwright.mjs`, `run-standalone.mjs`, `standalone-server-ws.mjs`, `responses-ws-proxy.mjs`, `v1-ws-bridge.mjs`, `smoke-electron-packaged.mjs`, `run-playwright-tests.mjs`, `run-ecosystem-tests.mjs`, `run-protocol-clients-tests.mjs`, `sync-env.mjs`, `healthcheck.mjs`, `system-info.mjs`, а також помічники няні PR лише для читання `ci-discriminate.sh` (сортує підписи PR, що не перевіряються, на власні/успадковані/невідомі за посиланням PR або базово-червона проблема) і `audit-worktree.sh` (брудні файли, захищені поверхні, видалені твердження, підрахунки придушення, залишкові tmp tsconfigs, PR голова проти локального HEAD — перед тим, як робочий PR буде прийнятий).
+- **`scripts/check/`** — `check-cycles.mjs`, `check-docs-sync.mjs`, `check-docs-counts-sync.mjs`, `check-env-doc-sync.mjs`, `check-deprecated-versions.mjs`, `check-route-validation.mjs`, `check-t11-any-budget.mjs`, `check-pr-test-policy.mjs`, `check-supported-node-runtime.ts`, `test-report-summary.mjs`.
 - **`scripts/docs/`** — `generate-docs-index.mjs`, `gen-provider-reference.ts`.
-- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`,
-  `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`,
-  `validate_translation.py`, `check_translations.py`, `i18n_autotranslate.py`,
-  `untranslatable-keys.json`.
-- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`,
-  `migrate-env.mjs`, `dbsetup.js`.
+- **`scripts/i18n/`** — `generate-multilang.mjs`, `run-visual-qa.mjs`, `generate-qa-checklist.mjs`, `apply-priority-overrides.mjs`, `validate_translation.py`, `check_translations.py`, `untranslatable-keys.json`.
+- **`scripts/ad-hoc/`** — `cursor-tap.cjs`, `sync-cursor-models.mjs`, `dbsetup.js`.
 
 ---
 

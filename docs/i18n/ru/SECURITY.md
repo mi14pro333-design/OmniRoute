@@ -182,13 +182,13 @@ STORAGE_ENCRYPTION_KEY=$(openssl rand -hex 32)
 
 ---
 
-## Безопасность Docker
+## Docker безопасность
 
-- Используйте в рабочей среде пользователя без прав root
-- Подключайте секреты как тома только для чтения
-- Никогда не копируйте файлы `.env` в образы Docker
+- Использовать пользователя без полномочий root в производстве
+- Монтировать секреты как тома, доступные только для чтения.
+- Никогда не копируйте файлы `.env` в изображения Docker
 - Используйте `.dockerignore`, чтобы исключить конфиденциальные файлы
-- При работе через HTTPS задавайте `AUTH_COOKIE_SECURE=true`
+- Установите `AUTH_COOKIE_SECURE=true` когда находитесь за HTTPS
 
 ```bash
 docker run -d \
@@ -200,7 +200,7 @@ docker run -d \
   -e JWT_SECRET="$(openssl rand -base64 48)" \
   -e API_KEY_SECRET="$(openssl rand -hex 32)" \
   -e STORAGE_ENCRYPTION_KEY="$(openssl rand -hex 32)" \
-  diegosouzapw/omniroute:latest
+  cheaperinference/omniroute:latest
 ```
 
 ---

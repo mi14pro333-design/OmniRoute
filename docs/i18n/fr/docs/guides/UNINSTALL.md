@@ -42,17 +42,17 @@ Cette commande supprime l’application **et efface définitivement** toutes les
 
 ## Désinstallation manuelle
 
-### Installation globale avec NPM
+### Installation globale NPM
 
 ```bash
-# Supprimer le package global
+# Remove the global package
 npm uninstall -g omniroute
 
-# (Facultatif) Supprimer le répertoire de données
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
-### Installation globale avec pnpm
+### Installation globale de pnpm
 
 ```bash
 pnpm uninstall -g omniroute
@@ -62,51 +62,53 @@ rm -rf ~/.omniroute
 ### Docker
 
 ```bash
-# Arrêter et supprimer le conteneur
+# Stop and remove the container
 docker stop omniroute
 docker rm omniroute
 
-# Supprimer le volume (efface toutes les données)
+# Remove the volume (deletes all data)
 docker volume rm omniroute-data
 
-# (Facultatif) Supprimer l’image
+# (Optional) Remove the image
+docker rmi cheaperinference/omniroute:latest
+# Older installs pulled the legacy name:
 docker rmi diegosouzapw/omniroute:latest
 ```
 
-### Docker Compose
+### Docker Composer
 
 ```bash
-# Arrêter et supprimer les conteneurs
+# Stop and remove containers
 docker compose down
 
-# Supprimer également les volumes (efface toutes les données)
+# Also remove volumes (deletes all data)
 docker compose down -v
 ```
 
 ### Application de bureau Electron
 
-**Windows :**
+**Windows:**
 
-- Ouvrez `Paramètres → Applications → OmniRoute → Désinstaller`
-- Ou exécutez le programme de désinstallation NSIS depuis le répertoire d’installation
+- Ouvrir `Settings → Apps → OmniRoute → Uninstall`
+- Ou exécutez le programme de désinstallation NSIS à partir du répertoire d'installation
 
-**macOS :**
+**macOS:**
 
-- Faites glisser `OmniRoute.app` depuis `/Applications` vers la Corbeille
-- Supprimez les données : `rm -rf ~/Library/Application Support/omniroute`
+- Faites glisser `OmniRoute.app` de `/Applications` vers la corbeille
+- Supprimer des données : `rm -rf ~/Library/Application Support/omniroute`
 
-**Linux :**
+**Linux:**
 
 - Supprimez le fichier AppImage
-- Supprimez les données : `rm -rf ~/.omniroute`
+- Supprimer des données : `rm -rf ~/.omniroute`
 
-### Installation depuis les sources (git clone)
+### Installation source (clone git)
 
 ```bash
-# Supprimer le répertoire cloné
+# Remove the cloned directory
 rm -rf /path/to/omniroute
 
-# (Facultatif) Supprimer le répertoire de données
+# (Optional) Remove data directory
 rm -rf ~/.omniroute
 ```
 
